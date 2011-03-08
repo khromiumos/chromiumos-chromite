@@ -148,6 +148,16 @@ config['x86-mario-pre-flight-branch'].update({
   'push_overlays': 'both',
 })
 
+config['x86-alex-pre-flight-branch'] = default.copy()
+config['x86-alex-pre-flight-branch'].update({
+  'board' : 'x86-alex',
+  'master' : True,
+
+  'uprev' : True,
+  'rev_overlays': 'both',
+  'push_overlays': 'both',
+})
+
 config['x86-agz-bin'] = default.copy()
 config['x86-agz-bin'].update({
   'board' : 'x86-agz',
