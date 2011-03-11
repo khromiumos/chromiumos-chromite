@@ -163,7 +163,7 @@ def Build(buildroot, emptytree, build_autotest=True, usepkg=True):
   if emptytree:
     cmd = ['sh', '-c', 'EXTRA_BOARD_FLAGS=--emptytree %s' % build_packages_cmd]
   else:
-    cmd = [build_packages_cmd]
+    cmd = ['sh', '-c', build_packages_cmd]
 
   if not build_autotest: cmd.append('--nowithautotest')
   if not usepkg: cmd.append('--nousepkg')
