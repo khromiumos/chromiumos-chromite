@@ -158,10 +158,12 @@ def SetupBoard(buildroot, board='x86-generic'):
 def Build(buildroot, emptytree, build_autotest=True, usepkg=True):
   """Wrapper around build_packages."""
   cwd = os.path.join(buildroot, 'src', 'scripts')
+  USE='chrome_pdf chrome_internal'
+  build_packages_cmd = 'USE="%s" ./build_packages' % USE
   if emptytree:
-    cmd = ['sh', '-c', 'EXTRA_BOARD_FLAGS=--emptytree ./build_packages']
+    cmd = ['sh', '-c', 'EXTRA_BOARD_FLAGS=--emptytree %s' % build_packages_cmd]
   else:
-    cmd = ['./build_packages']
+    cmd = [build_packages_cmd]
 
   if not build_autotest: cmd.append('--nowithautotest')
   if not usepkg: cmd.append('--nousepkg')
