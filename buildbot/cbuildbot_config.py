@@ -143,9 +143,9 @@ config['x86-alex-pre-flight-branch'].update({
   'board' : 'x86-alex',
   'master' : True,
 
-  'uprev' : False,
+  'uprev' : True,
   'rev_overlays': 'both',
-  'push_overlays': 'both',
+  'push_overlays': None,
 })
 
 config['x86-mario-pre-flight-branch'] = default.copy()
