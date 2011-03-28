@@ -399,6 +399,7 @@ def LegacyArchiveBuild(buildroot, bot_id, buildconfig, buildnumber,
          '--gsd_gen_index',
            '/b/scripts/gsd_generate_index/gsd_generate_index.py',
          '--gsutil', '/b/scripts/slave/gsutil',
+         '--official_build',
   ]
   # Give the right args to archive_build.
   if buildconfig.get('factory_test_mod', True): cmd.append('--factory_test_mod')
