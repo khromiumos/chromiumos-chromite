@@ -142,7 +142,7 @@ def RevGitPushWithRetry(retries=5):
   """
   for retry in range(1, retries + 1):
     try:
-      cros_build_lib.RunCommand('repo sync .', shell=True)
+      cros_build_lib.RunCommand('repo sync', shell=True)
       cros_build_lib.RunCommand('git push', shell=True)
       break
     except cros_build_lib.RunCommandError:
