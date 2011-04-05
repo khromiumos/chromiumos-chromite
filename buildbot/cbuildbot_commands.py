@@ -121,13 +121,15 @@ def PreFlightRinse(buildroot, board, tracking_branch, overlays):
 
 def FullCheckout(buildroot, tracking_branch,
                  retries=_DEFAULT_RETRIES,
+                 manifest_file='full.xml',
                  url='http://git.chromium.org/git/manifest'):
   """Performs a full checkout and clobbers any previous checkouts."""
   _CleanUpMountPoints(buildroot)
   cros_lib.OldRunCommand(['sudo', 'rm', '-rf', buildroot])
   os.makedirs(buildroot)
   branch = tracking_branch.split('/');
-  cros_lib.OldRunCommand(['repo', 'init', '-u', url, '-b', '%s' % branch[-1]],
+  cros_lib.OldRunCommand(['repo', 'init', '-u', url, '-m', manifest_file,
+                          '-b', '%s' % branch[-1]],
                          cwd=buildroot, input='\n\ny\n')
   _RepoSync(buildroot, retries)
 

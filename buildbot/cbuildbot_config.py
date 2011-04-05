@@ -32,7 +32,7 @@ quick_unit -- If unittests is true, only run the unit tests for packages which
 
 vm_tests -- Runs the smoke suite and au test harness in a qemu-based VM
             using KVM.
-quick_vm -- If vm_tests is true, run a minimal au test harness suite.            
+quick_vm -- If vm_tests is true, run a minimal au test harness suite.
 
 usepkg -- Use binary packages to bootstrap, when possible. (emerge --usepkg)
 chroot_replace -- wipe and replace chroot, but not source.
@@ -157,7 +157,15 @@ config['x86-alex-pre-flight-branch'].update({
   'rev_overlays': 'both',
   'push_overlays': 'both',
 })
+config['x86-alex-factory-partner'] = default.copy()
+config['x86-alex-factory-partner'].update({
+  'board' : 'x86-alex',
+  'master' : False,
 
+  'uprev' : True,
+  'rev_overlays': 'both',
+  'push_overlays': None,
+})
 config['x86-agz-bin'] = default.copy()
 config['x86-agz-bin'].update({
   'board' : 'x86-agz',

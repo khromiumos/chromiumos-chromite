@@ -88,6 +88,9 @@ def main():
   parser.add_option('-u', '--url', dest='url',
                     default='http://git.chromium.org/git/manifest',
                     help='Run the buildbot on internal manifest')
+  parser.add_option('-M', '--manifest-file', dest='manifest_file',
+                    default='full.xml',
+                    help='The manifest file to sync to')
 
   (options, args) = parser.parse_args()
 

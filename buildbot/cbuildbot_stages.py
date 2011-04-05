@@ -147,6 +147,7 @@ class SyncStage(BuilderStage):
     if self._options.clobber or not os.path.isdir(os.path.join(self._build_root,
                                                                '.repo')):
       commands.FullCheckout(self._build_root, self._options.tracking_branch,
+                            manifest_file=self._options.manifest_file,
                             url=self._options.url)
       self._ExtractOverlays()
     else:
