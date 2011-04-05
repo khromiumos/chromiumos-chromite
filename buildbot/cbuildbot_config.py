@@ -162,7 +162,7 @@ config['x86-alex-factory-partner'].update({
   'board' : 'x86-alex',
   'master' : False,
 
-  'uprev' : True,
+  'uprev' : False,
   'rev_overlays': 'both',
   'push_overlays': None,
 })
