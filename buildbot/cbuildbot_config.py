@@ -162,7 +162,7 @@ config['x86-zgb-pre-flight-branch'].update({
   'uprev' : True,
   'rev_overlays': 'both',
   'push_overlays': 'both',
-  'gs_path': 'gs://chromeos-zgb-mario/pre-flight-branch'
+  'gs_path': 'gs://chromeos-x86-zgb/pre-flight-branch'
 })
 config['x86-mario-pre-flight-branch'] = default.copy()
 config['x86-mario-pre-flight-branch'].update({
