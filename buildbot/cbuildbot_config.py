@@ -154,7 +154,15 @@ config['x86-alex-pre-flight-branch'].update({
   'rev_overlays': 'both',
   'push_overlays': None,
 })
+config['x86-zgb-pre-flight-branch'] = default.copy()
+config['x86-zgb-pre-flight-branch'].update({
+  'board' : 'x86-zgb',
+  'master' : True,
 
+  'uprev' : True,
+  'rev_overlays': 'both',
+  'push_overlays': 'both',
+})
 config['x86-mario-pre-flight-branch'] = default.copy()
 config['x86-mario-pre-flight-branch'].update({
   'board' : 'x86-mario',
