@@ -184,8 +184,7 @@ def Build(buildroot, emptytree, build_autotest=True, usepkg=True,
           extra_env=None):
   """Wrapper around build_packages."""
   cwd = os.path.join(buildroot, 'src', 'scripts')
-  USE='chrome_pdf chrome_internal'
-  cmd = [USE, './build_packages']
+  cmd = ['./build_packages']
   if extra_env is None:
     env = {}
   else:

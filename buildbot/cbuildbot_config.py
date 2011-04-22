@@ -174,6 +174,7 @@ config['x86-mario-pre-flight-branch'].update({
   'uprev' : True,
   'rev_overlays': 'both',
   'push_overlays': 'both',
+  'useflags': ['chrome_pdf', 'chrome_internal'],
 })
 
 config['x86-agz-bin'] = default.copy()
