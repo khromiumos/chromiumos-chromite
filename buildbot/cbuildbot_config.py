@@ -169,6 +169,9 @@ config['x86-alex-pre-flight-branch'].update({
 config['tegra2-aebl-pre-flight-branch'] = default.copy()
 config['tegra2-aebl-pre-flight-branch'].update({
   'board' : 'tegra2_aebl',
+  # VM/tests are broken on arm.
+  'unittests' : False,
+  'vm_tests' : False,
   'master' : True,
 
   'uprev' : True,
