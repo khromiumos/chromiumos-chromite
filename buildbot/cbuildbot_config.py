@@ -166,6 +166,17 @@ config['x86-alex-pre-flight-branch'].update({
   'push_overlays': None,
 })
 
+config['tegra2-aebl-pre-flight-branch'] = default.copy()
+config['tegra2-aebl-pre-flight-branch'].update({
+  'board' : 'tegra2_aebl',
+  'master' : True,
+
+  'uprev' : True,
+  'rev_overlays': 'both',
+  'push_overlays': 'both',
+  'gs_path': 'gs://chromeos-tegra2-aebl/pre-flight-branch'
+})
+
 config['x86-mario-pre-flight-branch'] = default.copy()
 config['x86-mario-pre-flight-branch'].update({
   'board' : 'x86-mario',
