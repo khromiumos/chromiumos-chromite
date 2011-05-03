@@ -153,7 +153,8 @@ config['x86-mario-pre-flight-queue'].update({
   'uprev' : True,
   'rev_overlays': 'both',
   'push_overlays': 'private',
-  'gs_path': 'gs://chromeos-x86-mario/pre-flight-master'
+  'gs_path': 'gs://chromeos-x86-mario/pre-flight-master',
+  'git_url' : 'ssh://gerrit-int.chromium.org:29419/chromeos/manifest-internal',
 })
 
 config['x86-alex-pre-flight-branch'] = default.copy()
@@ -164,6 +165,7 @@ config['x86-alex-pre-flight-branch'].update({
   'uprev' : True,
   'rev_overlays': 'both',
   'push_overlays': None,
+  'git_url' : 'ssh://gerrit-int.chromium.org:29419/chromeos/manifest-internal',
 })
 
 config['x86-mario-pre-flight-branch'] = default.copy()
@@ -175,6 +177,7 @@ config['x86-mario-pre-flight-branch'].update({
   'rev_overlays': 'both',
   'push_overlays': 'both',
   'useflags': ['chrome_pdf', 'chrome_internal'],
+  'git_url' : 'ssh://gerrit-int.chromium.org:29419/chromeos/manifest-internal',
 })
 
 config['x86-agz-bin'] = default.copy()
