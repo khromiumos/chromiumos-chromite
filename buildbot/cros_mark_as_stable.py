@@ -379,6 +379,7 @@ class EBuild(object):
       dir = 'platform'
     else:
       dir = 'third_party'
+
     srcdir = os.path.join(srcroot, dir, subdir)
 
     if not os.path.isdir(srcdir):
@@ -559,13 +560,15 @@ def main(argv):
     # the cwd being set to the overlay directory. We should instead pass in
     # this parameter so that we don't need to modify the cwd globally.
     os.chdir(overlay)
+    tracking_branch = 'remotes/m/%s' % os.path.basename(
+        gflags.FLAGS.tracking_branch)
 
     if command == 'clean':
-      Clean(gflags.FLAGS.tracking_branch)
+      Clean(tracking_branch)
     elif command == 'push':
-      PushChange(STABLE_BRANCH_NAME, gflags.FLAGS.tracking_branch)
+      PushChange(STABLE_BRANCH_NAME, tracking_branch)
     elif command == 'commit' and ebuilds:
-      work_branch = GitBranch(STABLE_BRANCH_NAME, gflags.FLAGS.tracking_branch)
+      work_branch = GitBranch(STABLE_BRANCH_NAME, tracking_branch)
       work_branch.CreateBranch()
       if not work_branch.Exists():
         Die('Unable to create stabilizing branch in %s' % overlay)
