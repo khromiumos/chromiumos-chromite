@@ -260,6 +260,14 @@ add_config('tegra2-kaen-pre-flight-branch', [internal, {
   'rev_overlays': 'both',
   'push_overlays': 'both',
   'gs_path': 'gs://chromeos-tegra2-kaen/pre-flight-branch',
+  # VM/tests are broken on arm.
+  'unittests' : False,
+  'vm_tests' : False,
+
+  # These images don't work for arm.
+  'factory_install_mod' : False,
+  'factory_test_mod' : False,
+
 }])
 
 add_config('tegra2-aebl-pre-flight-branch', [internal, {
@@ -270,6 +278,14 @@ add_config('tegra2-aebl-pre-flight-branch', [internal, {
   'rev_overlays': 'both',
   'push_overlays': None,
   'gs_path': 'gs://chromeos-tegra2-aebl/pre-flight-branch',
+  # VM/tests are broken on arm.
+  'unittests' : False,
+  'vm_tests' : False,
+
+  # These images don't work for arm.
+  'factory_install_mod' : False,
+  'factory_test_mod' : False,
+
 }])
 
 
