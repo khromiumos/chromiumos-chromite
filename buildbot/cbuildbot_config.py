@@ -268,7 +268,7 @@ add_config('tegra2-aebl-pre-flight-branch', [internal, {
 
   'uprev' : True,
   'rev_overlays': 'both',
-  'push_overlays': 'both',
+  'push_overlays': None,
   'gs_path': 'gs://chromeos-tegra2-aebl/pre-flight-branch',
 }])
 
