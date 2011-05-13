@@ -252,6 +252,27 @@ add_config('x86-mario-pre-flight-branch', [internal, {
   'push_overlays': 'both',
 }])
 
+add_config('tegra2-kaen-pre-flight-branch', [internal, {
+  'board' : 'tegra2_kaen',
+  'master' : True,
+
+  'uprev' : True,
+  'rev_overlays': 'both',
+  'push_overlays': 'both',
+  'gs_path': 'gs://chromeos-tegra2-kaen/pre-flight-branch',
+}])
+
+add_config('tegra2-aebl-pre-flight-branch', [internal, {
+  'board' : 'tegra2_aebl',
+  'master' : True,
+
+  'uprev' : True,
+  'rev_overlays': 'both',
+  'push_overlays': 'both',
+  'gs_path': 'gs://chromeos-tegra2-aebl/pre-flight-branch',
+}])
+
+
 add_config('x86-agz-bin', [{
   'board' : 'x86-agz',
 
