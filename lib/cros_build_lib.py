@@ -10,11 +10,15 @@ import re
 import signal
 import subprocess
 import sys
+import time
 from terminal import Color
 
 
 _STDOUT_IS_TTY = hasattr(sys.stdout, 'isatty') and sys.stdout.isatty()
 
+class GitPushFailed(Exception):
+  """Raised when a git push failed after retry."""
+  pass
 
 class CommandResult(object):
   """An object to store various attributes of a child process."""
@@ -324,6 +328,64 @@ def ReinterpretPathForChroot(path):
 
   new_path = os.path.join('/home', os.getenv('USER'), 'trunk', relative_path)
   return new_path
+
+
+def GetPushBranch(branch, cwd):
+  """Gets the appropriate push branch for the specified branch / directory.
+
+  If branch has a valid tracking branch, we should push to that branch. If
+  the tracking branch is a revision, we can't push to that, so we should look
+  at the default branch from the manifest.
+
+  Args:
+    branch: Branch to examine for tracking branch.
+    cwd: Directory to look in.
+  """
+  info = {}
+  for key in ('remote', 'merge'):
+    cmd = ['git', 'config', 'branch.%s.%s' % (branch, key)]
+    info[key] = RunCommand(cmd, redirect_stdout=True, cwd=cwd).output.strip()
+  if not info['merge'].startswith('refs/heads/'):
+    output = RunCommand(['repo', 'manifest', '-o', '-'], redirect_stdout=True,
+                        cwd=cwd).output
+    m = re.search(r'<default[^>]*revision="(refs/heads/[^"]*)"', output)
+    assert m
+    info['merge'] = m.group(1)
+  assert info['merge'].startswith('refs/heads/')
+  return info['remote'], info['merge'].replace('refs/heads/', '')
+
+
+def GitPushWithRetry(branch, cwd, dryrun=False, retries=5):
+  """General method to push local git changes.
+
+    Args:
+      branch: Local branch to push.  Branch should have already been created
+        with a local change committed ready to push to the remote branch.  Must
+        also already be checked out to that branch.
+      cwd: Directory to push in.
+      dryrun: Git push --dry-run if set to True.
+      retries: The number of times to retry before giving up, default: 5
+
+    Raises:
+      GitPushFailed if push was unsuccessful after retries
+  """
+  remote, push_branch = GetPushBranch(branch, cwd)
+  for retry in range(1, retries + 1):
+    try:
+      RunCommand(['git', 'remote', 'update'], cwd=cwd)
+      RunCommand(['git', 'rebase', '%s/%s' % (remote, push_branch)], cwd=cwd)
+      push_command = ['git', 'push', remote, '%s:%s' % (branch, push_branch)]
+      if dryrun:
+        push_command.append('--dry-run')
+
+      RunCommand(push_command, cwd=cwd)
+      break
+    except RunCommandError:
+      if retry < retries:
+        print 'Error pushing changes trying again (%s/%s)' % (retry, retries)
+        time.sleep(5 * retry)
+  else:
+    raise GitPushFailed('Failed to push change after %s retries' % retries)
 
 
 def GetCallerName():
