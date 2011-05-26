@@ -288,6 +288,22 @@ add_config('tegra2-aebl-pre-flight-branch', [internal, {
 
 }])
 
+add_config('tegra2-seaboard-pre-flight-branch', [internal, {
+  'board' : 'tegra2_seaboard',
+  'master' : True,
+
+  'uprev' : True,
+  'rev_overlays': 'both',
+  'push_overlays': None,
+  # VM/tests are broken on arm.
+  'unittests' : False,
+  'vm_tests' : False,
+
+  # These images don't work for arm.
+  'factory_install_mod' : False,
+  'factory_test_mod' : False,
+
+}])
 
 add_config('x86-agz-bin', [{
   'board' : 'x86-agz',
