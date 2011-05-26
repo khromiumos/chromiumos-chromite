@@ -259,6 +259,7 @@ add_config('x86-mario-pre-flight-branch', [internal, {
   'uprev' : True,
   'rev_overlays': 'both',
   'push_overlays': 'both',
+  'gs_path': 'gs://chromeos-x86-mario/pre-flight-branch'
 }])
 
 add_config('x86-agz-bin', [{
