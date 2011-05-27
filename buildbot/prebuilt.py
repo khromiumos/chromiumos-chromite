@@ -51,10 +51,10 @@ _HOST_PACKAGES_PATH = 'chroot/var/lib/portage/pkgs'
 _CATEGORIES_PATH = 'chroot/etc/portage/categories'
 _HOST_TARGET = 'amd64'
 _BOARD_PATH = 'chroot/build/%(board)s'
-# board/board-target/version/packages/'
-_REL_BOARD_PATH = 'board/%(board)s/%(version)s/packages'
-# host/host-target/version/packages/'
-_REL_HOST_PATH = 'host/%(target)s/%(version)s/packages'
+# board/board-target/version/'
+_REL_BOARD_PATH = 'board/%(board)s/%(version)s'
+# host/host-target/version/'
+_REL_HOST_PATH = 'host/%(target)s/%(version)s'
 # Private overlays to look at for builds to filter
 # relative to build path
 _PRIVATE_OVERLAY_DIR = 'src/private-overlays'
@@ -131,10 +131,12 @@ def UpdateLocalFile(filename, value, key='PORTAGE_BINHOST'):
   new_file_fh.close()
 
 
-def RevGitPushWithRetry(retries=5):
+def RevGitPushWithRetry(tracking_branch, cwd, retries=5):
   """Repo sync and then push git changes in flight.
 
     Args:
+      tracking_branch: Branch to rebase against.
+      cwd: Directory to push in.
       retries: The number of times to retry before giving up, default: 5
 
     Raises:
@@ -142,8 +144,9 @@ def RevGitPushWithRetry(retries=5):
   """
   for retry in range(1, retries + 1):
     try:
-      cros_build_lib.RunCommand('repo sync .', shell=True)
-      cros_build_lib.RunCommand('git push', shell=True)
+      cros_build_lib.RunCommand(['git', 'remote', 'update'], cwd=cwd)
+      cros_build_lib.RunCommand(['git', 'rebase', tracking_branch], cwd=cwd)
+      cros_build_lib.RunCommand(['git', 'push'], cwd=cwd)
       break
     except cros_build_lib.RunCommandError:
       if retry < retries:
@@ -151,6 +154,22 @@ def RevGitPushWithRetry(retries=5):
         time.sleep(5 * retry)
   else:
     raise GitPushFailed('Failed to push change after %s retries' % retries)
+
+
+def _GetTrackingBranch(branch, cwd):
+  """Get the tracking branch for the specified branch / directory.
+
+  Args:
+    branch: Branch to examine for tracking branch.
+    cwd: Directory to look in.
+  """
+  info = {}
+  for key in ('remote', 'merge'):
+    cmd = ['git', 'config', 'branch.%s.%s' % (branch, key)]
+    info[key] = cros_build_lib.RunCommand(cmd, redirect_stdout=True,
+                                          cwd=cwd).output.strip()
+  assert info["merge"].startswith("refs/heads/")
+  return info["merge"].replace("refs/heads", info["remote"])
 
 
 def RevGitFile(filename, value, retries=5, key='PORTAGE_BINHOST'):
@@ -165,28 +184,31 @@ def RevGitFile(filename, value, retries=5, key='PORTAGE_BINHOST'):
         (Default: PORTAGE_BINHOST)
   """
   prebuilt_branch = 'prebuilt_branch'
-  old_cwd = os.getcwd()
-  os.chdir(os.path.dirname(filename))
-
-  commit = cros_build_lib.RunCommand('git rev-parse HEAD', shell=True,
-                                     redirect_stdout=True).output
-  cros_build_lib.RunCommand('git remote update', shell=True)
-  cros_build_lib.RunCommand('repo start %s .' % prebuilt_branch, shell=True)
-  git_ssh_config_cmd = (
-    'git config url.ssh://git@gitrw.chromium.org:9222.pushinsteadof '
-    'http://git.chromium.org/git')
-  cros_build_lib.RunCommand(git_ssh_config_cmd, shell=True)
+  cwd = os.path.abspath(os.path.dirname(filename))
+  commit = cros_build_lib.RunCommand(['git', 'rev-parse', 'HEAD'], cwd=cwd,
+                                     redirect_stdout=True).output.rstrip()
+  git_ssh_config_cmd = [
+      'git',
+      'config',
+      'url.ssh://gerrit.chromium.org:29418.insteadof',
+      'http://git.chromium.org']
+  cros_build_lib.RunCommand(git_ssh_config_cmd, cwd=cwd)
+  cros_build_lib.RunCommand(['git', 'remote', 'update'], cwd=cwd)
+  cros_build_lib.RunCommand(['repo', 'start', prebuilt_branch, '.'], cwd=cwd)
+  tracking_branch = _GetTrackingBranch(prebuilt_branch, cwd=cwd)
   description = 'Update %s="%s" in %s' % (key, value, filename)
   print description
   try:
     UpdateLocalFile(filename, value, key)
-    cros_build_lib.RunCommand('git config push.default tracking', shell=True)
-    cros_build_lib.RunCommand('git commit -am "%s"' % description, shell=True)
-    RevGitPushWithRetry(retries)
+    cros_build_lib.RunCommand(['git', 'config', 'push.default', 'tracking'],
+                              cwd=cwd)
+    cros_build_lib.RunCommand(['git', 'add', filename], cwd=cwd)
+    cros_build_lib.RunCommand(['git', 'commit', '-m', description], cwd=cwd)
+    RevGitPushWithRetry(tracking_branch, cwd, retries)
   finally:
-    cros_build_lib.RunCommand('repo abandon %s .' % prebuilt_branch, shell=True)
-    cros_build_lib.RunCommand('git checkout %s' % commit, shell=True)
-    os.chdir(old_cwd)
+    cros_build_lib.RunCommand(['git', 'checkout', commit], cwd=cwd)
+    cros_build_lib.RunCommand(['repo', 'abandon', 'prebuilt_branch', '.'],
+                              cwd=cwd)
 
 
 def GetVersion():
@@ -240,7 +262,7 @@ def ShouldFilterPackage(file_path):
   return False
 
 
-def _RetryRun(cmd, print_cmd=True, shell=False, cwd=None):
+def _RetryRun(cmd, print_cmd=True, cwd=None):
   """Run the specified command, retrying if necessary.
 
   Args:
@@ -257,13 +279,13 @@ def _RetryRun(cmd, print_cmd=True, shell=False, cwd=None):
   # cros_build_lib.
   for attempt in range(_RETRIES):
     try:
-      output = cros_build_lib.RunCommand(cmd, print_cmd=print_cmd, shell=shell,
+      output = cros_build_lib.RunCommand(cmd, print_cmd=print_cmd,
                                          cwd=cwd)
       return True
     except cros_build_lib.RunCommandError:
-      print 'Failed to run %s' % cmd
+      print 'Failed to run %r' % cmd
   else:
-    print 'Retry failed run %s, giving up' % cmd
+    print 'Retry failed run %r, giving up' % cmd
     return False
 
 
@@ -283,11 +305,11 @@ def _GsUpload(args):
                  'public-read-write']
   acl_cmd = None
   if acl in CANNED_ACLS:
-    cmd = '%s cp -a %s %s %s' % (_GSUTIL_BIN, acl, local_file, remote_file)
+    cmd = [_GSUTIL_BIN, 'cp', '-a', acl, local_file, remote_file]
   else:
     # For private uploads we assume that the overlay board is set up properly
     # and a googlestore_acl.xml is present, if not this script errors
-    cmd = '%s cp -a private %s %s' % (_GSUTIL_BIN, local_file, remote_file)
+    cmd = [_GSUTIL_BIN, 'cp', '-a', 'private', local_file, remote_file]
     if not os.path.exists(acl):
       print >> sys.stderr, ('You are specifying either a file that does not '
                             'exist or an unknown canned acl: %s. Aborting '
@@ -295,14 +317,14 @@ def _GsUpload(args):
       # emulate the failing of an upload since we are not uploading the file
       return (local_file, remote_file)
 
-    acl_cmd = '%s setacl %s %s' % (_GSUTIL_BIN, acl, remote_file)
+    acl_cmd = [_GSUTIL_BIN, 'setacl', acl, remote_file]
 
-  if not _RetryRun(cmd, print_cmd=False, shell=True):
+  if not _RetryRun(cmd, print_cmd=False):
     return (local_file, remote_file)
 
   if acl_cmd:
     # Apply the passed in ACL xml file to the uploaded object.
-    _RetryRun(acl_cmd, print_cmd=False, shell=True)
+    _RetryRun(acl_cmd, print_cmd=False)
 
 
 def RemoteUpload(acl, files, pool=10):
@@ -422,10 +444,9 @@ def UpdateBinhostConfFile(path, key, value):
     config_file = file(path, 'w')
     config_file.close()
   UpdateLocalFile(path, value, key)
-  cros_build_lib.RunCommand('git add %s' % filename, cwd=cwd, shell=True)
+  cros_build_lib.RunCommand(['git', 'add', filename],  cwd=cwd)
   description = 'Update %s=%s in %s' % (key, value, filename)
-  cros_build_lib.RunCommand('git commit -m "%s"' % description, cwd=cwd,
-      shell=True)
+  cros_build_lib.RunCommand(['git', 'commit', '-m', description], cwd=cwd)
 
 
 def _GrabAllRemotePackageIndexes(binhost_urls):
@@ -499,21 +520,45 @@ class PrebuiltUploader(object):
         error_msg = ['%s -> %s\n' % args for args in failed_uploads if args]
         raise UploadFailed('Error uploading:\n%s' % error_msg)
     else:
-      pkgs = ' '.join(p['CPV'] + '.tbz2' for p in uploads)
+      pkgs = [p['CPV'] + '.tbz2' for p in uploads]
       ssh_server, remote_path = remote_location.split(':', 1)
-      d = { 'pkg_index': tmp_packages_file.name,
-            'pkgs': pkgs,
-            'remote_packages': '%s/Packages' % remote_location.rstrip('/'),
-            'remote_path': remote_path.rstrip('/'),
-            'remote_location': remote_location.rstrip('/'),
-            'ssh_server': ssh_server }
-      cmds = ['ssh %(ssh_server)s mkdir -p %(remote_path)s' % d,
-              'rsync -av --chmod=a+r %(pkg_index)s %(remote_packages)s' % d]
+      remote_path = remote_path.rstrip('/')
+      pkg_index = tmp_packages_file.name
+      remote_location = remote_location.rstrip('/')
+      remote_packages = '%s/Packages' % remote_location
+      cmds = [['ssh', ssh_server, 'mkdir', '-p', remote_path],
+              ['rsync', '-av', '--chmod=a+r', pkg_index, remote_packages]]
       if pkgs:
-        cmds.append('rsync -Rav %(pkgs)s %(remote_location)s/' % d)
+        cmds.append(['rsync', '-Rav'] + pkgs + [remote_location + '/'])
       for cmd in cmds:
-        if not _RetryRun(cmd, shell=True, cwd=package_path):
-          raise UploadFailed('Could not run %s' % cmd)
+        if not _RetryRun(cmd, cwd=package_path):
+          raise UploadFailed('Could not run %r' % cmd)
+
+  def _UploadBoardTarball(self, board_path, url_suffix):
+    """Upload a tarball of the board at the specified path to Google Storage.
+
+    Args:
+      board_path: The path to the board dir.
+      url_suffix: The remote subdirectory where we should upload the packages.
+    """
+    remote_location = '%s/%s' % (self._upload_location.rstrip('/'), url_suffix)
+    assert remote_location.startswith('gs://')
+    cwd, boardname = os.path.split(board_path.rstrip(os.path.sep))
+    tmpdir = tempfile.mkdtemp()
+    try:
+      tarfile = os.path.join(tmpdir, '%s.tbz2' % boardname)
+      cmd = ['sudo', 'tar', '-I', 'pbzip2', '-cf', tarfile]
+      excluded_paths = ('usr/lib/debug', 'usr/local/autotest', 'packages',
+                        'tmp')
+      for path in excluded_paths:
+        cmd.append('--exclude=%s/%s/*' % (boardname, path))
+      cmd.append(boardname)
+      cros_build_lib.RunCommand(cmd, cwd=cwd)
+      remote_tarfile = '%s/%s.tbz2' % (remote_location.rstrip('/'), boardname)
+      if _GsUpload((tarfile, remote_tarfile, self._acl)):
+        sys.exit(1)
+    finally:
+      cros_build_lib.RunCommand(['sudo', 'rm', '-rf', tmpdir], cwd=cwd)
 
   def _SyncHostPrebuilts(self, build_path, version, key, git_sync,
                         sync_binhost_conf):
@@ -540,11 +585,12 @@ class PrebuiltUploader(object):
     # Upload prebuilts.
     package_path = os.path.join(build_path, _HOST_PACKAGES_PATH)
     url_suffix = _REL_HOST_PATH % {'version': version, 'target': _HOST_TARGET}
-    self._UploadPrebuilt(package_path, url_suffix)
+    packages_url_suffix = '%s/packages' % url_suffix.rstrip('/')
+    self._UploadPrebuilt(package_path, packages_url_suffix)
 
     # Record URL where prebuilts were uploaded.
     url_value = '%s/%s/' % (self._binhost_base_url.rstrip('/'),
-                            url_suffix.rstrip('/'))
+                            packages_url_suffix.rstrip('/'))
     if git_sync:
       git_file = os.path.join(build_path, _PREBUILT_MAKE_CONF[_HOST_TARGET])
       RevGitFile(git_file, url_value, key=key)
@@ -554,7 +600,7 @@ class PrebuiltUploader(object):
       UpdateBinhostConfFile(binhost_conf, key, url_value)
 
   def _SyncBoardPrebuilts(self, board, build_path, version, key, git_sync,
-                         sync_binhost_conf):
+                          sync_binhost_conf, upload_board_tarball):
     """Synchronize board prebuilt files.
 
     Args:
@@ -567,16 +613,30 @@ class PrebuiltUploader(object):
           prebuilt packages generated here.
       sync_binhost_conf: If set, update binhost config file in
           chromiumos-overlay for the current board.
+      upload_board_tarball: Include a tarball of the board in our upload.
     """
-    # Upload prebuilts.
     board_path = os.path.join(build_path, _BOARD_PATH % {'board': board})
     package_path = os.path.join(board_path, 'packages')
     url_suffix = _REL_BOARD_PATH % {'board': board, 'version': version}
-    self._UploadPrebuilt(package_path, url_suffix)
+    packages_url_suffix = '%s/packages' % url_suffix.rstrip('/')
+
+    # Upload board tarballs in the background.
+    if upload_board_tarball:
+      tar_process = multiprocessing.Process(target=self._UploadBoardTarball,
+                                            args=(board_path, url_suffix))
+      tar_process.start()
+
+    # Upload prebuilts.
+    self._UploadPrebuilt(package_path, packages_url_suffix)
+
+    # Make sure we finished uploading the board tarballs.
+    if upload_board_tarball:
+      tar_process.join()
+      assert tar_process.exitcode == 0
 
     # Record URL where prebuilts were uploaded.
     url_value = '%s/%s/' % (self._binhost_base_url.rstrip('/'),
-                            url_suffix.rstrip('/'))
+                            packages_url_suffix.rstrip('/'))
     if git_sync:
       git_file = DeterminePrebuiltConfFile(build_path, board)
       RevGitFile(git_file, url_value, key=key)
@@ -627,12 +687,20 @@ def ParseOptions():
                     help='Update binhost.conf')
   parser.add_option('-P', '--private', dest='private', action='store_true',
                     default=False, help='Mark gs:// uploads as private.')
+  parser.add_option('', '--upload-board-tarball', dest='upload_board_tarball',
+                    action='store_true', default=False,
+                    help='Upload board tarball to Google Storage.')
 
   options, args = parser.parse_args()
   if not options.build_path:
     usage(parser, 'Error: you need provide a chroot path')
   if not options.upload:
     usage(parser, 'Error: you need to provide an upload location using -u')
+
+
+  if options.upload_board_tarball and not options.upload.startswith('gs://'):
+    usage(parser, 'Error: --upload-board-tarball only works with gs:// URLs.\n'
+                  '--upload must be a gs:// URL.')
 
   if options.private:
     if options.sync_host:
@@ -684,7 +752,8 @@ def main():
   if options.board:
     uploader._SyncBoardPrebuilts(options.board, options.build_path, version,
                                  options.key, options.git_sync,
-                                 options.sync_binhost_conf)
+                                 options.sync_binhost_conf,
+                                 options.upload_board_tarball)
 
 if __name__ == '__main__':
   main()
