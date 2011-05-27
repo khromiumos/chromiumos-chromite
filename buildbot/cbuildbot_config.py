@@ -160,11 +160,13 @@ config['x86-mario-pre-flight-queue'].update({
 config['x86-alex-pre-flight-branch'] = default.copy()
 config['x86-alex-pre-flight-branch'].update({
   'board' : 'x86-alex',
-  'master' : False,
+  'master' : True,
 
   'uprev' : True,
   'rev_overlays': 'both',
-  'push_overlays': None,
+  'push_overlays': 'both',
+  'useflags': ['chrome_pdf', 'chrome_internal'],
+  'gs_path': 'gs://chromeos-x86-alex/pre-flight-branch',
   'git_url' : 'ssh://gerrit-int.chromium.org:29419/chromeos/manifest-internal',
 })
 
