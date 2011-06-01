@@ -384,7 +384,7 @@ def LegacyArchiveBuild(buildroot, bot_id, buildconfig, buildnumber,
 
   # Fixed properties
   keep_max = 3
-  gsutil_archive = 'gs://chromeos-archive/' + bot_id
+  gsutil_archive = 'gs://chromeos-image-archive/' + bot_id
   cwd = os.path.join(buildroot, 'src', 'scripts')
   cmd = ['./archive_build.sh',
          '--build_number', str(buildnumber),
