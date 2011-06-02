@@ -252,20 +252,22 @@ add_config('x86-mario-pre-flight-queue', [internal, {
 
 add_config('x86-alex-pre-flight-branch', [internal, {
   'board' : 'x86-alex',
-  'master' : False,
-
-  'uprev' : True,
-  'rev_overlays': 'both',
-  'push_overlays': None,
-}])
-
-add_config('x86-mario-pre-flight-branch', [internal, {
-  'board' : 'x86-mario',
   'master' : True,
 
   'uprev' : True,
   'rev_overlays': 'both',
   'push_overlays': 'both',
+  'useflags' : ['chrome_internal', 'chrome_pdf'],
+  'gs_path': 'gs://chromeos-x86-alex/pre-flight-branch',
+}])
+
+add_config('x86-mario-pre-flight-branch', [internal, {
+  'board' : 'x86-mario',
+  'master' : False,
+
+  'uprev' : True,
+  'rev_overlays': 'both',
+  'push_overlays': None,
 }])
 
 add_config('x86-agz-bin', [{
@@ -362,6 +364,7 @@ add_config('arm-tegra2_kaen-private-bin', [internal, arm, {
   'push_overlays': None,
 
   'gs_path' : None,
+  'useflags' : ['chrome_internal', 'chrome_pdf'],
 }])
 
 add_config('arm-tegra2_aebl-private-bin', [internal, arm, {
@@ -372,6 +375,7 @@ add_config('arm-tegra2_aebl-private-bin', [internal, arm, {
   'push_overlays': None,
 
   'gs_path' : None,
+  'useflags' : ['chrome_internal', 'chrome_pdf'],
 }])
 
 add_config('arm-tegra2_dev-board-private-bin', [internal, arm, {
@@ -392,6 +396,7 @@ add_config('x86-zgb-private-bin', [internal, {
   'push_overlays': None,
 
   'gs_path' : None,
+  'useflags' : ['chrome_internal', 'chrome_pdf'],
 }])
 
 add_config('x86-mario-private-bin', [internal, {
@@ -402,16 +407,18 @@ add_config('x86-mario-private-bin', [internal, {
   'push_overlays': None,
 
   'gs_path' : None,
+  'useflags' : ['chrome_internal', 'chrome_pdf'],
 }])
 
 add_config('x86-alex-private-bin', [internal, {
-  'board' : 'x86-dogfood',
+  'board' : 'x86-alex',
 
   'uprev' : True,
   'rev_overlays': 'both',
   'push_overlays': None,
 
   'gs_path' : None,
+  'useflags' : ['chrome_internal', 'chrome_pdf'],
 }])
 
 add_config('x86-mario-private-full', [internal, full, official, {
