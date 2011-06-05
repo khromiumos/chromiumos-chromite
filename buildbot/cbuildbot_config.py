@@ -377,7 +377,7 @@ add_config('arm-tegra2_dev-board-private-bin', [internal, arm, {
 }])
 
 add_config('x86-zgb-private-bin', [internal, {
-  'board' : 'x86-dogfood',
+  'board' : 'x86-zgb',
 
   'uprev' : True,
   'rev_overlays': 'both',
@@ -388,7 +388,7 @@ add_config('x86-zgb-private-bin', [internal, {
 }])
 
 add_config('x86-mario-private-bin', [internal, {
-  'board' : 'x86-dogfood',
+  'board' : 'x86-mario',
 
   'uprev' : True,
   'rev_overlays': 'both',
