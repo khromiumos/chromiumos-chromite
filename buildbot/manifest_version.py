@@ -92,6 +92,11 @@ def _PushGitChanges(git_repo, message, use_repo=False, dry_run=True):
     else:
       cros_lib.RunCommand(['git', 'pull', '--force'], cwd=git_repo)
 
+# TODO Test fix for chromium-os:16249
+#    cros_lib.RunCommand(['git',
+#                         'config',
+#                         'url.ssh://gerrit.chromium.org:29418.pushinsteadof',
+#                         'http://git.chromium.org'], cwd=git_repo)
     cros_lib.RunCommand(['git',
                          'config',
                          'url.ssh://gerrit.chromium.org:29418.insteadof',
