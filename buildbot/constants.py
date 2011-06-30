@@ -81,4 +81,4 @@ VALID_BUILD_TYPES = [PFQ_TYPE, COMMIT_QUEUE_TYPE, CHROME_PFQ_TYPE,
                      REFRESH_PACKAGES_TYPE]
 
 VERSION_FILE = os.path.join('src/third_party/chromiumos-overlay',
-                            'chromeos/config/chromeos_version.sh')
+                            'chromeos/config/chromeos_version_new.sh')
