@@ -261,6 +261,17 @@ add_config('x86-alex-pre-flight-branch', [internal, {
   'gs_path': 'gs://chromeos-x86-alex/pre-flight-branch',
 }])
 
+config['x86-alex_nogobi-private-bin'] = default.copy()
+config['x86-alex_nogobi-private-bin'].update({
+  'board' : 'x86-alex_nogobi',
+  'master' : False,
+
+  'uprev' : True,
+  'rev_overlays': 'both',
+  'push_overlays': None,
+  'git_url' : 'ssh://gerrit-int.chromium.org:29419/chromeos/manifest-internal',
+})
+
 add_config('x86-mario-pre-flight-branch', [internal, {
   'board' : 'x86-mario',
   'master' : False,
@@ -436,6 +447,11 @@ add_config('x86-mario-release', [internal, full, official, release, {
 
 add_config('x86-alex-release', [internal, full, official, release, {
   'board' : 'x86-alex',
+  'prebuilts' : False,
+}])
+
+add_config('x86-alex_nogobi-release', [internal, full, official, release, {
+  'board' : 'x86-alex_nogobi',
   'prebuilts' : False,
 }])
 
