@@ -405,20 +405,20 @@ add_config('x86-mario-pre-flight-queue', [internal, {
 
 add_config('x86-alex-pre-flight-branch', [internal, {
   'board' : 'x86-alex',
-  'master' : False,
-
-  'uprev' : True,
-  'overlays': 'both',
-  'push_overlays': None,
-}])
-
-add_config('x86-mario-pre-flight-branch', [internal, {
-  'board' : 'x86-mario',
   'master' : True,
 
   'uprev' : True,
   'overlays': 'both',
   'push_overlays': 'both',
+}])
+
+add_config('x86-mario-pre-flight-branch', [internal, {
+  'board' : 'x86-mario',
+  'master' : False,
+
+  'uprev' : True,
+  'overlays': 'both',
+  'push_overlays': None,
 }])
 
 add_config('arm-tegra2_seaboard-private-bin', [internal, arm, binary, {
