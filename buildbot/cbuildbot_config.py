@@ -457,8 +457,8 @@ add_config('x86-alex-private-bin', [internal, binary, {
   'board' : 'x86-alex',
 }])
 
-add_config('x86-alex_nogobi-private-bin', [internal, binary, {
-  'board' : 'x86-alex_nogobi',
+add_config('x86-alex_he-private-bin', [internal, binary, {
+  'board' : 'x86-alex_he',
 }])
 
 add_config('stumpy-private-bin', [internal, binary, {
@@ -508,8 +508,8 @@ add_config('x86-alex-release', [internal, full, official, release, {
   'board' : 'x86-alex',
 }])
 
-add_config('x86-alex_nogobi-release', [internal, full, official, release, {
-  'board' : 'x86-alex_nogobi',
+add_config('x86-alex_he-release', [internal, full, official, release, {
+  'board' : 'x86-alex_he',
 }])
 
 add_config('x86-zgb-release', [internal, full, official, release, {
