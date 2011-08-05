@@ -261,9 +261,9 @@ add_config('x86-alex-pre-flight-branch', [internal, {
   'gs_path': 'gs://chromeos-x86-alex/pre-flight-branch',
 }])
 
-config['x86-alex_nogobi-private-bin'] = default.copy()
-config['x86-alex_nogobi-private-bin'].update({
-  'board' : 'x86-alex_nogobi',
+config['x86-alex_he-private-bin'] = default.copy()
+config['x86-alex_he-private-bin'].update({
+  'board' : 'x86-alex_he',
   'master' : False,
 
   'uprev' : True,
@@ -450,8 +450,8 @@ add_config('x86-alex-release', [internal, full, official, release, {
   'prebuilts' : False,
 }])
 
-add_config('x86-alex_nogobi-release', [internal, full, official, release, {
-  'board' : 'x86-alex_nogobi',
+add_config('x86-alex_he-release', [internal, full, official, release, {
+  'board' : 'x86-alex_he',
   'prebuilts' : False,
 }])
 
