@@ -459,6 +459,7 @@ add_config('x86-alex-private-bin', [internal, binary, {
 
 add_config('x86-alex_he-private-bin', [internal, binary, {
   'board' : 'x86-alex_he',
+  'prebuilts' : False,
 }])
 
 add_config('stumpy-private-bin', [internal, binary, {
@@ -510,6 +511,7 @@ add_config('x86-alex-release', [internal, full, official, release, {
 
 add_config('x86-alex_he-release', [internal, full, official, release, {
   'board' : 'x86-alex_he',
+  'prebuilts' : False,
 }])
 
 add_config('x86-zgb-release', [internal, full, official, release, {
