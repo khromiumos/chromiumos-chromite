@@ -449,6 +449,11 @@ add_config('x86-zgb-private-bin', [internal, binary, {
   'board' : 'x86-zgb',
 }])
 
+add_config('x86-zgb_he-private-bin', [internal, binary, {
+  'board' : 'x86-zgb_he',
+  'prebuilts' : False,
+}])
+
 add_config('x86-mario-private-bin', [internal, binary, {
   'board' : 'x86-mario',
 }])
@@ -516,6 +521,11 @@ add_config('x86-alex_he-release', [internal, full, official, release, {
 
 add_config('x86-zgb-release', [internal, full, official, release, {
   'board' : 'x86-zgb',
+}])
+
+add_config('x86-zgb_he-release', [internal, full, official, release, {
+  'board' : 'x86-zgb_he',
+  'prebuilts' : False,
 }])
 
 add_config('stumpy-release', [internal, full, official, release, {
