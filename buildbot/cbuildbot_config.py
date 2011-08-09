@@ -398,6 +398,18 @@ add_config('x86-zgb-private-bin', [internal, {
   'useflags' : ['chrome_internal', 'chrome_pdf'],
 }])
 
+config['x86-zgb_he-private-bin'] = default.copy()
+config['x86-zgb_he-private-bin'].update({
+  'board' : 'x86-zgb_he',
+
+  'uprev' : True,
+  'rev_overlays': 'both',
+  'push_overlays': None,
+  'useflags' : ['chrome_internal', 'chrome_pdf'],
+})
+
+
+
 add_config('x86-mario-private-bin', [internal, {
   'board' : 'x86-mario',
 
@@ -457,6 +469,11 @@ add_config('x86-alex_he-release', [internal, full, official, release, {
 
 add_config('x86-zgb-release', [internal, full, official, release, {
   'board' : 'x86-zgb',
+  'prebuilts' : False,
+}])
+
+add_config('x86-zgb_he-release', [internal, full, official, release, {
+  'board' : 'x86-zgb_he',
   'prebuilts' : False,
 }])
 
