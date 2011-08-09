@@ -406,6 +406,7 @@ config['x86-zgb_he-private-bin'].update({
   'rev_overlays': 'both',
   'push_overlays': None,
   'useflags' : ['chrome_internal', 'chrome_pdf'],
+  'git_url' : 'ssh://gerrit-int.chromium.org:29419/chromeos/manifest-internal',
 })
 
 
