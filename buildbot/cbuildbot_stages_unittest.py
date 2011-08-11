@@ -479,7 +479,7 @@ class TestStageTest(AbstractStageTest):
     os.path.isdir(self.build_root + '/.repo').AndReturn(True)
     stages.TestStage._CreateTestRoot().AndReturn(self.fake_results_dir)
     commands.RunUnitTests(self.build_root, self.build_config['board'],
-                          full=True)
+                          full=True, nowithdebug=mox.IgnoreArg())
     commands.RunTestSuite(self.build_root,
                           self.build_config['board'],
                           mox.IgnoreArg(),
@@ -508,7 +508,7 @@ class TestStageTest(AbstractStageTest):
     os.path.isdir(self.build_root + '/.repo').AndReturn(True)
     stages.TestStage._CreateTestRoot().AndReturn(self.fake_results_dir)
     commands.RunUnitTests(self.build_root, self.build_config['board'],
-                          full=False)
+                          full=False, nowithdebug=mox.IgnoreArg())
     commands.RunTestSuite(self.build_root,
                           self.build_config['board'],
                           mox.IgnoreArg(),
@@ -745,6 +745,7 @@ class BuildTargetStageTest(AbstractStageTest):
     self.build_config['fast'] = True
     self.build_config['useflags'] = ['ALPHA', 'BRAVO', 'CHARLIE']
     self.build_config['skip_toolchain_update'] = False
+    self.build_config['nowithdebug'] = False
 
     proper_env = {'USE' : ' '.join(self.build_config['useflags'])}
 
@@ -754,6 +755,7 @@ class BuildTargetStageTest(AbstractStageTest):
                    usepkg=True,
                    fast=True,
                    skip_toolchain_update=False,
+                   nowithdebug=False,
                    extra_env=proper_env)
 
     commands.BuildImage(self.build_root,
@@ -777,6 +779,7 @@ class BuildTargetStageTest(AbstractStageTest):
                    fast=mox.IgnoreArg(),
                    usepkg=mox.IgnoreArg(),
                    skip_toolchain_update=mox.IgnoreArg(),
+                   nowithdebug=mox.IgnoreArg(),
                    extra_env={})
     commands.BuildImage(self.build_root,
                         self.build_config['board'],
@@ -798,6 +801,7 @@ class BuildTargetStageTest(AbstractStageTest):
     self.build_config['usepkg_build_packages'] = True
     self.build_config['fast'] = True
     self.build_config['useflags'] = ['ALPHA', 'BRAVO', 'CHARLIE']
+    self.build_config['nowithdebug'] = True
     self.build_config['skip_toolchain_update'] = False
 
     proper_env = {'USE' : ' '.join(self.build_config['useflags'])}
@@ -808,6 +812,7 @@ class BuildTargetStageTest(AbstractStageTest):
                    usepkg=True,
                    fast=True,
                    skip_toolchain_update=False,
+                   nowithdebug=True,
                    extra_env=proper_env)
 
     commands.BuildImage(self.build_root,
