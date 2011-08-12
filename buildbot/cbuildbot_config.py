@@ -479,6 +479,15 @@ add_config('x86-mario-pre-flight-branch', [internal, {
   'push_overlays': 'both',
 }])
 
+add_config('tegra2_aebl-pre-flight-branch', [internal, {
+  'board' : 'tegra2_aebl',
+  'master' : True,
+
+  'uprev' : True,
+  'overlays': 'both',
+  'push_overlays': None,
+}])
+
 add_config('arm-tegra2_seaboard-private-bin', [internal, arm, binary, {
   'board' : 'tegra2_seaboard',
   'prebuilts' : False,
