@@ -486,6 +486,9 @@ add_config('tegra2_aebl-pre-flight-branch', [internal, {
   'uprev' : True,
   'overlays': 'both',
   'push_overlays': None,
+  'build_tests' : False,
+  'unittests' : False,
+  'vm_tests' : False,
 }])
 
 add_config('arm-tegra2_seaboard-private-bin', [internal, arm, binary, {
