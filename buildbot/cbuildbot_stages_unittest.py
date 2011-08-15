@@ -375,7 +375,8 @@ class TestStageTest(AbstractStageTest):
 
     os.path.isdir(self.build_root + '/.repo').AndReturn(True)
     stages.TestStage._CreateTestRoot().AndReturn(self.fake_results_dir)
-    commands.RunUnitTests(self.build_root, full=True)
+    commands.RunUnitTests(self.build_root, full=True,
+                          nowithdebug=mox.IgnoreArg())
     commands.RunTestSuite(self.build_root,
                           self.build_config['board'],
                           os.path.join(self.fake_results_dir,
@@ -401,7 +402,8 @@ class TestStageTest(AbstractStageTest):
 
     os.path.isdir(self.build_root + '/.repo').AndReturn(True)
     stages.TestStage._CreateTestRoot().AndReturn(self.fake_results_dir)
-    commands.RunUnitTests(self.build_root, full=False)
+    commands.RunUnitTests(self.build_root, full=False,
+                          nowithdebug=mox.IgnoreArg())
     commands.RunTestSuite(self.build_root,
                             self.build_config['board'],
                             os.path.join(self.fake_results_dir,
@@ -544,6 +546,7 @@ class BuildTargetStageTest(AbstractStageTest):
     self.build_config['usepkg_build_packages'] = True
     self.build_config['fast'] = True
     self.build_config['useflags'] = ['ALPHA', 'BRAVO', 'CHARLIE']
+    self.build_config['nowithdebug'] = False
     proper_env = {'USE' : ' '.join(self.build_config['useflags'])}
 
     board = self.build_config['board']
@@ -556,6 +559,7 @@ class BuildTargetStageTest(AbstractStageTest):
                    emptytree=True,
                    usepkg=True,
                    fast=True,
+                   nowithdebug=False,
                    extra_env=proper_env)
 
     commands.UploadPrebuilts(
@@ -583,6 +587,7 @@ class BuildTargetStageTest(AbstractStageTest):
                    emptytree=mox.IgnoreArg(),
                    fast=mox.IgnoreArg(),
                    usepkg=mox.IgnoreArg(),
+                   nowithdebug=mox.IgnoreArg(),
                    extra_env={})
     commands.BuildImage(self.build_root, extra_env={})
 
@@ -604,6 +609,7 @@ class BuildTargetStageTest(AbstractStageTest):
                    emptytree=False,
                    fast=mox.IgnoreArg(),
                    usepkg=mox.IgnoreArg(),
+                   nowithdebug=False,
                    extra_env=proper_env)
 
     commands.BuildImage(self.build_root, extra_env=proper_env)

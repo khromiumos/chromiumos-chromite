@@ -509,6 +509,7 @@ class BuildTargetStage(BuilderStage):
                    build_autotest=build_autotest,
                    fast=self._build_config['fast'],
                    usepkg=self._build_config['usepkg_build_packages'],
+                   nowithdebug=self._build_config['nowithdebug'],
                    extra_env=env)
 
     if self._prebuilt_type == 'full':
@@ -542,7 +543,8 @@ class TestStage(BuilderStage):
   def _PerformStage(self):
     if self._build_config['unittests']:
       commands.RunUnitTests(self._build_root,
-                            full=(not self._build_config['quick_unit']))
+                            full=(not self._build_config['quick_unit']),
+                            nowithdebug=self._build_config['nowithdebug'])
 
     if self._build_config['vm_tests']:
       test_results_dir = self._CreateTestRoot()

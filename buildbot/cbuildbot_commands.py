@@ -230,7 +230,8 @@ def SetupBoard(buildroot, board, fast, usepkg):
   # TODO(sosa): Add prebuilt call for boards in build_type == chroot.
 
 
-def Build(buildroot, emptytree, build_autotest, fast, usepkg, extra_env=None):
+def Build(buildroot, emptytree, build_autotest, fast, usepkg, nowithdebug,
+          extra_env=None):
   """Wrapper around build_packages."""
   cwd = os.path.join(buildroot, 'src', 'scripts')
   cmd = ['./build_packages']
@@ -250,6 +251,9 @@ def Build(buildroot, emptytree, build_autotest, fast, usepkg, extra_env=None):
     key = 'EXTRA_BOARD_FLAGS'
     prev = env.get(key)
     env[key] = (prev and prev + ' ' or '') + '--emptytree'
+
+  if nowithdebug:
+    cmd.append('--nowithdebug')
 
   cros_lib.RunCommand(cmd, cwd=cwd, enter_chroot=True, extra_env=env)
 
@@ -273,12 +277,15 @@ def BuildVMImageForTesting(buildroot, extra_env=None):
                       ], cwd=cwd, enter_chroot=True, extra_env=extra_env)
 
 
-def RunUnitTests(buildroot, full):
+def RunUnitTests(buildroot, full, nowithdebug):
   cwd = os.path.join(buildroot, 'src', 'scripts')
 
   cmd = ['cros_run_unit_tests']
 
-  # If we aren't running ALL tests, then restrict to just the packages
+  if nowithdebug:
+    cmd.append('--nowithdebug')
+
+# If we aren't running ALL tests, then restrict to just the packages
   #   uprev noticed were changed.
   if not full:
     cmd += ['--package_file=%s' %

@@ -290,13 +290,14 @@ class CBuildBotTest(mox.MoxTestBase):
                    emptytree=False,
                    build_autotest=False,
                    fast=True,
-                   usepkg=False)
+                   usepkg=False,
+                   nowithdebug=False)
     self.mox.VerifyAll()
 
   def testBuildMaximum(self):
     """Base case where Build is called with all options (except extra_evn)."""
     buildroot = '/bob/'
-    cros_lib.RunCommand(['./build_packages', '--fast'],
+    cros_lib.RunCommand(['./build_packages', '--fast', '--nowithdebug'],
                         cwd=mox.StrContains(buildroot),
                         enter_chroot=True,
                         extra_env={'EXTRA_BOARD_FLAGS': '--emptytree'})
@@ -305,7 +306,8 @@ class CBuildBotTest(mox.MoxTestBase):
                    emptytree=True,
                    fast=True,
                    build_autotest=True,
-                   usepkg=True)
+                   usepkg=True,
+                   nowithdebug=True)
     self.mox.VerifyAll()
 
   def testBuildWithEnv(self):
@@ -324,6 +326,7 @@ class CBuildBotTest(mox.MoxTestBase):
                    build_autotest=False,
                    fast=False,
                    usepkg=False,
+                   nowithdebug=False,
                    extra_env=extra)
     self.mox.VerifyAll()
 
