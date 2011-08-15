@@ -490,6 +490,7 @@ add_config('tegra2_aebl-pre-flight-branch', [internal, {
   'unittests' : False,
   'vm_tests' : False,
   'prebuilts' : True,
+  'git_sync': True,
 }])
 
 add_config('arm-tegra2_seaboard-private-bin', [internal, arm, binary, {
