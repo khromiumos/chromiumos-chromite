@@ -485,6 +485,25 @@ add_config('arm-tegra2_seaboard-private-bin', [internal, arm, binary, {
   'usepkg_build_packages' : False,
 }])
 
+add_config('tegra2_aebl-pre-flight-branch', [internal, {
+  'board' : 'tegra2_aebl',
+  'master' : True,
+
+  'uprev' : True,
+  'overlays': 'both',
+  'push_overlays': None,
+  'build_tests' : False,
+  'unittests' : False,
+  'vm_tests' : False,
+  'prebuilts' : True,
+  'git_sync': True,
+}])
+
+add_config('arm-tegra2_aebl-release', [
+    arm, internal, full, official, release, {
+  'board' : 'tegra2_aebl',
+}])
+
 add_config('arm-tegra2_kaen-private-bin', [internal, arm, binary, {
   'board' : 'tegra2_kaen',
 }])
