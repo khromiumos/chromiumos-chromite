@@ -618,6 +618,7 @@ add_config('arm-tegra2_seaboard-release', [
 add_config('arm-tegra2_aebl-release', [
     arm, internal, full, official, release, {
   'board' : 'tegra2_aebl',
+  'push_image': False,
 }])
 
 add_config('arm-tegra2_arthur-release', [
@@ -628,6 +629,7 @@ add_config('arm-tegra2_arthur-release', [
 add_config('arm-tegra2_kaen-release', [
     arm, internal, full, official, release, {
   'board' : 'tegra2_kaen',
+  'push_image': False,
 }])
 add_config('x86-mario-binhost', [internal, full, official, release, {
   'board' : 'x86-mario',
