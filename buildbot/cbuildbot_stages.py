@@ -346,7 +346,9 @@ class ManifestVersionedSyncStage(BuilderStage):
 
   def InitializeManifestManager(self):
     """Initializes a manager that manages manifests for associated stages."""
-    increment = 'branch' if self._tracking_branch == 'master' else 'patch'
+    # TODO(scottz): Branch hardcoded as incremental type.
+    # When we branch for point fixes this needs to be set to patch
+    increment = 'branch'
 
     ManifestVersionedSyncStage.manifest_manager = \
         manifest_version.BuildSpecsManager(
