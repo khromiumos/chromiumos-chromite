@@ -327,7 +327,7 @@ def RunTestSuite(buildroot, board, results_dir, full=True):
   if full:
     cmd = ['bin/ctest',
            '--board=%s' % board,
-           '--channel=dev-channel',
+           '--channel=use-local-image',
            '--zipbase=http://chromeos-images.corp.google.com',
            '--type=vm',
            '--no_graphics',
