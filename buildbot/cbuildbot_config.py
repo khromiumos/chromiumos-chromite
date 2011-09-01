@@ -495,7 +495,7 @@ add_config('tegra2_aebl-pre-flight-branch', [internal, {
 
   'uprev' : True,
   'overlays': 'both',
-  'push_overlays': None,
+  'push_overlays': 'both',
   'build_tests' : False,
   'unittests' : False,
   'vm_tests' : False,
