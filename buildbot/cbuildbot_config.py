@@ -495,6 +495,7 @@ add_config('tegra2_aebl-pre-flight-branch', [internal, {
   'vm_tests' : False,
   'prebuilts' : True,
   'git_sync': True,
+  'binhost_key': 'FULL_BINHOST',
 }])
 
 add_config('arm-tegra2_seaboard-private-bin', [internal, arm, binary, {
