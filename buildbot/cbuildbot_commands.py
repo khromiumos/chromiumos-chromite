@@ -184,8 +184,9 @@ def FullCheckout(buildroot, tracking_branch,
   cros_lib.OldRunCommand(['sudo', 'rm', '-rf', buildroot])
   os.makedirs(buildroot)
   branch = tracking_branch.split('/');
-  cros_lib.OldRunCommand(['repo', 'init', '-q', '-u', url, '-b',
-                         '%s' % branch[-1]], cwd=buildroot, input='\n\ny\n')
+  cros_lib.OldRunCommand(['repo', 'init', '--repo-url', constants.REPO_URL,
+                          '-q', '-u', url, '-b',
+                          '%s' % branch[-1]], cwd=buildroot, input='\n\ny\n')
   _RepoSync(buildroot, retries)
 
 
