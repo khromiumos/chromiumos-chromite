@@ -520,7 +520,7 @@ add_config('x86-mario-pre-flight-queue', [internal, {
 
 add_config('x86-alex-pre-flight-branch', [internal, {
   'board' : 'x86-alex',
-  'master' : False,
+  'master' : True,
 
   'uprev' : True,
   'overlays': 'both',
