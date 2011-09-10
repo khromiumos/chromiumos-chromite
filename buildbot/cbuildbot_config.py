@@ -527,6 +527,21 @@ add_config('x86-alex-pre-flight-branch', [internal, {
   'push_overlays': 'both',
 }])
 
+add_config('stumpy-pre-flight-branch', [internal, {
+  'board' : 'stumpy',
+  'master' : True,
+
+  'uprev' : True,
+  'overlays': 'both',
+  'push_overlays': 'both',
+  'build_tests' : False,
+  'unittests' : False,
+  'vm_tests' : False,
+  'prebuilts' : True,
+  'git_sync': True,
+  'binhost_key': 'FULL_BINHOST',
+}])
+
 add_config('x86-mario-pre-flight-branch', [internal, {
   'board' : 'x86-mario',
   'master' : True,
