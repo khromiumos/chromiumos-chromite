@@ -870,10 +870,11 @@ def BuildImageZip(archive_dir, image_dir):
   return filename
 
 
-def BuildFactoryZip(archive_dir, image_root):
+def BuildFactoryZip(buildroot, archive_dir, image_root):
   """Build factory_image.zip in archive_dir.
 
   Args:
+    buildroot: Root directory where build occurs.
     archive_dir: Directory to store image.zip.
     image_root: Directory containing factory_shim and factory_test symlinks.
 
@@ -881,11 +882,16 @@ def BuildFactoryZip(archive_dir, image_root):
   """
   filename = 'factory_image.zip'
   zipfile = os.path.join(archive_dir, filename)
-  patterns = ['factory_image', 'factory_install', 'partition', 'netboot',
-              'hwid']
-  cmd = ['zip', zipfile, '-r', _FACTORY_SHIM, _FACTORY_TEST]
-  for pattern in patterns:
-    cmd.extend(['--include', '*%s*' % pattern])
+  scripts_dir = os.path.join(buildroot, 'src', 'scripts')
+  bin_dir = os.path.join(buildroot, 'chroot', 'usr', 'bin')
+  dev_dir = os.path.join(buildroot, 'src', 'platform', 'dev')
+  cmd = [os.path.join(scripts_dir, 'archive_factory'),
+         '--factory_test', _FACTORY_TEST,
+         '--factory_install', _FACTORY_SHIM,
+         '--scripts', scripts_dir,
+         '--dev', dev_dir,
+         '--bin', bin_dir,
+         '--output', zipfile]
   cros_lib.RunCommand(cmd, cwd=image_root)
   return filename
 
