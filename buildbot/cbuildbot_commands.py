@@ -5,6 +5,7 @@
 """Module containing the various individual commands a builder can run."""
 
 import constants
+import glob
 import os
 import re
 import shutil
@@ -880,19 +881,61 @@ def BuildFactoryZip(buildroot, archive_dir, image_root):
 
   Returns the basename of the zipfile.
   """
+
+  def glob_in_dir(dir_base, pattern):
+    return [os.path.relpath(matched, dir_base)
+            for matched in glob.glob(os.path.join(dir_base, pattern))]
+
   filename = 'factory_image.zip'
   zipfile = os.path.join(archive_dir, filename)
-  scripts_dir = os.path.join(buildroot, 'src', 'scripts')
-  bin_dir = os.path.join(buildroot, 'chroot', 'usr', 'bin')
-  dev_dir = os.path.join(buildroot, 'src', 'platform', 'dev')
-  cmd = [os.path.join(scripts_dir, 'archive_factory'),
-         '--factory_test', _FACTORY_TEST,
-         '--factory_install', _FACTORY_SHIM,
-         '--scripts', scripts_dir,
-         '--dev', dev_dir,
-         '--bin', bin_dir,
-         '--output', zipfile]
-  cros_lib.RunCommand(cmd, cwd=image_root)
+
+  chroot_tmp = os.path.join(buildroot, 'chroot', 'tmp')
+  temp_dir = tempfile.mkdtemp(prefix='cbuildbot_factory', dir=chroot_tmp)
+
+  symlinks_map = {
+      'install_shim': os.path.join(image_root, _FACTORY_SHIM),
+      'factory_test': os.path.join(image_root, _FACTORY_TEST),
+      'hwid': os.path.join(image_root, _FACTORY_TEST, 'hwid'),
+      'bin': os.path.join(buildroot, 'chroot', 'usr', 'bin'),
+      'scripts': os.path.join(buildroot, 'src', 'scripts'),
+      'dev': os.path.join(buildroot, 'src', 'platform', 'dev'),
+      'src': '.',
+      'platform': '.',
+  }
+
+  for dest, source in symlinks_map.items():
+    os.symlink(source, os.path.join(temp_dir, dest))
+
+  # Adds resources as normal files.
+  resources = ['bin/cgpt',
+               'dev/autoupdate.py',
+               'dev/buildutil.py',
+               'dev/devserver.py',
+               'dev/static',
+               'install_shim/netboot/*',
+               'scripts/chromeos-common.sh',
+               'scripts/common.sh',
+               'scripts/lib/cros_image_common.sh',
+               'scripts/lib/shflags/shflags',
+               'scripts/make_factory_package.sh',
+               'scripts/make_universal_factory_shim.sh',
+               'scripts/mk_memento_images.sh',
+               'factory_test/*factory_image*',
+               'factory_test/*partition*',
+               'hwid/hwid*',
+               'install_shim/*factory_install*',
+               'install_shim/*partition*',
+              ]
+  cmd = ['zip', '-db', '-dd', zipfile]
+  for pattern in resources:
+    cmd += glob_in_dir(temp_dir, pattern)
+  cros_lib.RunCommand(cmd, cwd=temp_dir)
+
+  # Adds special symlinks.
+  cmd = ['zip', '--grow', '--symlinks', zipfile, 'platform', 'src']
+  cros_lib.RunCommand(cmd, cwd=temp_dir)
+
+  shutil.rmtree(temp_dir)
   return filename
 
 
