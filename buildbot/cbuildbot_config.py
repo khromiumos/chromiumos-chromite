@@ -663,6 +663,13 @@ add_config('x86-alex_he-release', [internal, full, official, release, {
 
 add_config('x86-zgb-release', [internal, full, official, release, {
   'board' : 'x86-zgb',
+  # For factory branch, we don't need those options.
+  'archive_build_debug' : False,
+  'chrome_tests' : False,
+  'quick_vm' : False,
+  'test_mod': False,
+  'upload_symbols': False,
+  'vm_tests' : False,
 }])
 
 add_config('x86-zgb_he-release', [internal, full, official, release, {
