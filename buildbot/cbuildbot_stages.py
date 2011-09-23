@@ -1074,7 +1074,7 @@ class ArchiveStage(NonHaltingBuilderStage):
       # Upload image.zip to Google Storage.
       commands.UploadArchivedFile(archive_path, upload_url, filename, debug)
 
-      if config['chromeos_official']:
+      if config['chromeos_official'] and config['test_mod']:
         # Build hwqual image and upload to Google Storage.
         version = os.path.basename(os.path.realpath(image_dir))
         hwqual_name = 'chromeos-hwqual-%s-%s' % (board, version)
@@ -1193,5 +1193,3 @@ class PublishUprevChangesStage(NonHaltingBuilderStage):
                        self._build_config['board'],
                        BuilderStage.push_overlays,
                        self._options.debug)
-
-
