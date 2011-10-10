@@ -263,7 +263,7 @@ release = {
   'prebuilts' : False,
   'push_image' : True,
   'upload_symbols' : True,
-  'nowithdebug' : False,
+  'nowithdebug' : True,
   # --official
   # --officialversion
 }
