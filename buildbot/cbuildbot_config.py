@@ -551,7 +551,7 @@ add_config('x86-alex-pre-flight-branch', [internal, {
   'important': True,
 
   'uprev' : True,
-  'vm_tests': constants.SIMPLE_AU_TEST_TYPE,
+  'vm_tests': None,
   'overlays': 'private',
   'push_overlays': 'private',
   'gs_path': 'gs://chromeos-x86-alex/pre-flight-master',
