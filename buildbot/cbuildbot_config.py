@@ -548,17 +548,10 @@ add_config('x86-mario-pre-flight-queue', [internal, {
 add_config('x86-alex-pre-flight-branch', [internal, {
   'board' : 'x86-alex',
   'master' : True,
-  'important': True,
 
   'uprev' : True,
-  'vm_tests': None,
-  'overlays': 'private',
-  'push_overlays': 'private',
-  'gs_path': 'gs://chromeos-x86-alex/pre-flight-master',
-  'manifest_version' : True,
-
-  'trybot_list' : True,
-  'description' : 'internal x86 PFQ',
+  'overlays': 'both',
+  'push_overlays': 'both',
 }])
 
 add_config('x86-mario-pre-flight-branch', [internal, {
