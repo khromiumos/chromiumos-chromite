@@ -550,6 +550,7 @@ add_config('x86-alex-pre-flight-branch', [internal, {
   'master' : True,
 
   'uprev' : True,
+  'vm_tests': None,
   'overlays': 'both',
   'push_overlays': 'both',
 }])
