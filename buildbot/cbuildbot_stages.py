@@ -975,7 +975,8 @@ class PublishUprevChangesStage(NonHaltingBuilderStage):
   """Makes uprev changes from pfq live for developers."""
   def _PerformStage(self):
     _, push_overlays = self._ExtractOverlays()
-    commands.UprevPush(self._build_root,
-                       self._build_config['board'],
-                       push_overlays,
-                       self._options.debug)
+    if push_overlays:
+      commands.UprevPush(self._build_root,
+                         self._build_config['board'],
+                         push_overlays,
+                         self._options.debug)
