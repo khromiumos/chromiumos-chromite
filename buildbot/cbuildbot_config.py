@@ -584,6 +584,21 @@ add_config('x86-mario-pre-flight-branch', [internal, pfq_branch, {
   'board' : 'x86-mario',
 }])
 
+add_config('lumpy-pre-flight-branch', [internal, {
+  'board' : 'lumpy',
+  'master' : True,
+
+  'uprev' : True,
+  'overlays': 'both',
+  'push_overlays': 'both',
+  'build_tests' : True,
+  'unittests' : True,
+  'vm_tests' : constants.SIMPLE_AU_TEST_TYPE,
+  'prebuilts' : True,
+  'git_sync': True,
+  'binhost_key': 'FULL_BINHOST',
+}])
+
 add_config('arm-tegra2_seaboard-private-bin', [internal, arm, binary, {
   'board' : 'tegra2_seaboard',
   'prebuilts' : False,
