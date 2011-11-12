@@ -654,6 +654,21 @@ add_config('stumpy-release', [internal, full, official, release, {
 
 add_config('lumpy-release', [internal, full, official, release, {
   'board' : 'lumpy',
+  'push_image': False,
+}])
+
+add_config('lumpy-pre-flight-branch', [internal, {
+  'board' : 'lumpy',
+  'master' : True,
+
+  'uprev' : True,
+  'overlays': 'both',
+  'push_overlays': 'both',
+  'build_tests' : False,
+  'unittests' : False,
+  'vm_tests' : False,
+  'prebuilts' : True,
+  'git_sync': True,
 }])
 
 add_config('arm-tegra2_seaboard-release', [
