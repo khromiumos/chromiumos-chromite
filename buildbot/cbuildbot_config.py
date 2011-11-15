@@ -593,7 +593,7 @@ add_config('lumpy-pre-flight-branch', [internal, {
   'push_overlays': 'both',
   'build_tests' : True,
   'unittests' : True,
-  'vm_tests' : constants.SIMPLE_AU_TEST_TYPE,
+  'vm_tests' : False,
   'prebuilts' : True,
   'git_sync': True,
   'binhost_key': 'FULL_BINHOST',
