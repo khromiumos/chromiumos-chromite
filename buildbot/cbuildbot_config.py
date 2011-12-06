@@ -489,8 +489,8 @@ add_config('arm-tegra2_seaboard-private-bin', [internal, arm, binary, {
   'usepkg_build_packages' : False,
 }])
 
-add_config('tegra2_aebl-pre-flight-branch', [internal, {
-  'board' : 'tegra2_aebl',
+add_config('tegra2_kaen-pre-flight-branch', [internal, {
+  'board' : 'tegra2_kaen',
   'master' : True,
 
   'uprev' : True,
