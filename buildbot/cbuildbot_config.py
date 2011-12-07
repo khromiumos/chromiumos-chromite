@@ -650,6 +650,7 @@ add_config('x86-zgb_he-release', [internal, full, official, release, {
 
 add_config('stumpy-release', [internal, full, official, release, {
   'board' : 'stumpy',
+  'push_image': False,
 }])
 
 add_config('lumpy-release', [internal, full, official, release, {
