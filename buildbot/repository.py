@@ -156,6 +156,8 @@ class RepoRepository(object):
       self._FixRepoToolUrl()
 
       self._ReinitializeIfNecessary(local_manifest)
+
+      FixBrokenExistingRepos(self.directory)
       cros_lib.OldRunCommand(['repo', 'sync', '--jobs', '4'],
                              cwd=self.directory, num_retries=2)
 
