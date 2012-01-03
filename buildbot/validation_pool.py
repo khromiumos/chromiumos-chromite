@@ -19,6 +19,7 @@ from chromite.buildbot import lkgm_manager
 from chromite.buildbot import patch as cros_patch
 from chromite.lib import cros_build_lib
 
+
 _BUILD_DASHBOARD = 'http://build.chromium.org/p/chromiumos'
 _BUILD_INT_DASHBOARD = 'http://chromeos-botmaster.mtv.corp.google.com:8026'
 
