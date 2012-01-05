@@ -282,6 +282,7 @@ pfq_branch = pfq.copy()
 pfq_branch.update({
   'overlays': 'both',
   'push_overlays': 'both',
+  'vm_tests' : constants.SIMPLE_AU_TEST_TYPE,
 })
 
 commit_queue = {
