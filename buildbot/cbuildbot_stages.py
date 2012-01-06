@@ -157,7 +157,11 @@ class ManifestVersionedSyncStage(SyncStage):
 
   def InitializeManifestManager(self):
     """Initializes a manager that manages manifests for associated stages."""
-    increment = 'build' if self._tracking_branch == 'master' else 'branch'
+    # On the master branch, increment the build number. On the factory-1412.B
+    # branch, increment the patch number. For other branches, increment
+    # the branch build number.
+    _BRANCH_INCREMENT_TYPE = {'master': 'build', 'factory-1412.B': 'patch'}
+    increment = _BRANCH_INCREMENT_TYPE.get(self._tracking_branch, 'branch')
 
     dry_run = self._options.debug
     source_repo = repository.RepoRepository(
