@@ -140,7 +140,7 @@ class RepoRepository(object):
                          constants.REPO_URL],
                          cwd=os.path.join(self.directory, '.repo/repo'))
 
-  def Sync(self, local_manifest=None):
+  def Sync(self, local_manifest=None, cleanup=True):
     """Sync/update the source.  Changes manifest if specified.
 
     local_manifest:  If set, checks out source to manifest.  DEFAULT_MANIFEST
@@ -157,7 +157,9 @@ class RepoRepository(object):
 
       self._ReinitializeIfNecessary(local_manifest)
 
-      FixBrokenExistingRepos(self.directory)
+      if cleanup:
+        FixBrokenExistingRepos(self.directory)
+
       cros_lib.OldRunCommand(['repo', 'sync', '--jobs', '4'],
                              cwd=self.directory, num_retries=2)
 
