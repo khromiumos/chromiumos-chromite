@@ -651,11 +651,23 @@ add_config('x86-zgb_he-release', [internal, full, official, release, {
 add_config('stumpy-release', [internal, full, official, release, {
   'board' : 'stumpy',
   'push_image': False,
+  'uprev' : True,
+  'overlays': 'both',
+  'build_tests' : False,
+  'unittests' : False,
+  'vm_tests' : False,
+  'prebuilts' : False,
 }])
 
 add_config('lumpy-release', [internal, full, official, release, {
   'board' : 'lumpy',
   'push_image': False,
+  'uprev' : True,
+  'overlays': 'both',
+  'build_tests' : False,
+  'unittests' : False,
+  'vm_tests' : False,
+  'prebuilts' : False,
 }])
 
 add_config('lumpy-pre-flight-branch', [internal, {
