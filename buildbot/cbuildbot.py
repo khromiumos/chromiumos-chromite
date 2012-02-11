@@ -376,7 +376,7 @@ class SimpleBuilder(Builder):
                                            archive_stage)
     chrome_test_stage = self._GetStageInstance(stages.ChromeTestStage,
                                                board, archive_stage)
-    unit_test_stage = self._GetStageInstance(stages.UnitTestStage, board)
+    self._RunStage(stages.UnitTestStage, board)
     prebuilts_stage = self._GetStageInstance(stages.UploadPrebuiltsStage,
                                              board)
     self.archive_url = archive_stage.GetDownloadUrl()
@@ -398,7 +398,7 @@ class SimpleBuilder(Builder):
                 suite=suite,
                 platform=self.build_config['platform'])
             steps.append(hw_test_stage.Run)
-      steps += [unit_test_stage.Run, prebuilts_stage.Run]
+      steps += [prebuilts_stage.Run]
       # Run the steps in parallel. If any exceptions occur, RunParallelSteps
       # will combine them into a single BackgroundException and throw it.
       background.RunParallelSteps(steps)
