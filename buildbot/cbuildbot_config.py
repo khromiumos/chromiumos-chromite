@@ -326,7 +326,7 @@ release = {
   #   --bvt --clean --no-gstorage --ctest
   'build_type' : constants.CANARY_TYPE,
   'build_tests' : True,
-  'chrome_tests' : True,
+  'chrome_tests' : False,
   'manifest_version' : True,
   'images': ['base', 'test', 'factory_test', 'factory_install'],
   'push_image' : True,
