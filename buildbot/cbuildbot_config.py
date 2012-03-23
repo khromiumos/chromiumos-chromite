@@ -727,6 +727,7 @@ _release.add_config('lumpy-release',
 _release.add_config('link-release',
   boards=['link'],
   prebuilts=False,
+  vm_tests=None,
 )
 
 _arm_release = _release.derive(arm)
