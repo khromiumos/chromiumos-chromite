@@ -219,6 +219,13 @@ class ManifestVersionedSyncStage(SyncStage):
                                                      build_config)
     self.repo = None
 
+    # 1. If we're uprevving Chrome, Chrome might have changed even if the
+    #    manifest has not, so we should force a build to double check. This
+    #    means that we'll create a new manifest, even if there are no changes.
+    # 2. If we're running with --debug, we should always run through to
+    #    completion, so as to ensure a complete test.
+    self._force = self._chrome_rev or options.debug
+
   def HandleSkip(self):
     """Initializes a manifest manager to the specified version if skipped."""
     if self._options.force_version:
@@ -242,12 +249,17 @@ class ManifestVersionedSyncStage(SyncStage):
 
     self._InitializeRepo(stable_sync=True)
 
+    # If chrome_rev is somehow set, fail.
+    assert not self._chrome_rev, \
+        'chrome_rev is unsupported on release builders.'
+
     ManifestVersionedSyncStage.manifest_manager = \
         manifest_version.BuildSpecsManager(
             source_repo=self.repo,
             manifest_repo=self._GetManifestVersionsRepoUrl(read_only=dry_run),
             build_name=self._bot_id,
             incr_type=increment,
+            force=self._force,
             dry_run=dry_run)
 
   def GetNextManifest(self):
@@ -300,6 +312,7 @@ class LKGMCandidateSyncStage(ManifestVersionedSyncStage):
         build_name=self._bot_id,
         build_type=self._build_config['build_type'],
         incr_type=increment,
+        force=self._force,
         dry_run=dry_run)
 
   def GetNextManifest(self):
