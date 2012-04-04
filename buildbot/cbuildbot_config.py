@@ -670,6 +670,31 @@ add_config('lumpy-release', [internal, full, official, release, {
   'prebuilts' : False,
 }])
 
+add_config('kiev-pre-flight-branch', [internal, {
+  'board' : 'kiev',
+  'master' : True,
+
+  'uprev' : True,
+  'overlays': 'both',
+  'push_overlays': 'both',
+  'build_tests' : False,
+  'unittests' : False,
+  'vm_tests' : False,
+  'prebuilts' : True,
+  'git_sync': False,
+}])
+
+add_config('kiev-release', [internal, full, official, release, {
+  'board' : 'kiev',
+  'push_image': False,
+  'uprev' : True,
+  'overlays': 'both',
+  'build_tests' : False,
+  'unittests' : False,
+  'vm_tests' : False,
+  'prebuilts' : False,
+}])
+
 add_config('lumpy-pre-flight-branch', [internal, {
   'board' : 'lumpy',
   'master' : True,
