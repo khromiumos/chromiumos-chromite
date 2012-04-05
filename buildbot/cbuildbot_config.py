@@ -680,7 +680,7 @@ add_config('kiev-pre-flight-branch', [internal, {
   'build_tests' : False,
   'unittests' : False,
   'vm_tests' : False,
-  'prebuilts' : True,
+  'prebuilts' : False,
   'git_sync': False,
 }])
 
