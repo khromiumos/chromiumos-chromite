@@ -746,6 +746,7 @@ _release.add_config('stumpy-release',
 
 _release.add_config('lumpy-release',
   boards=['lumpy'],
+  hw_tests=['bvt'],
 )
 
 _release.add_config('link-release',
