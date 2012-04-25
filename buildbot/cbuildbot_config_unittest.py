@@ -221,6 +221,5 @@ class CBuildBotTest(mox.MoxTestBase):
             'must end in %s.' % (branch, tracking_branch, branch))
 
 
->>>>>>> f78976e... Encapsulate modifications to factory/firmware builders on TOT.
 if __name__ == '__main__':
   unittest.main()

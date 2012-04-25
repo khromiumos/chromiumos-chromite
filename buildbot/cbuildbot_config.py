@@ -773,6 +773,11 @@ _firmware_release = _release.derive(
 #  boards=['x86-mario'],
 #)
 
+_factory_release.add_config('link-factory',
+  boards=['link'],
+  prebuilts=False,
+)
+
 def _InjectDisplayPosition(config_source):
   """Add field to help buildbot masters order builders on the waterfall."""
   def _GetSortKey(items):
