@@ -895,6 +895,24 @@ def BuildRecoveryImage(buildroot, board, image_dir, extra_env):
                       cwd=scripts_dir)
 
 
+def BuildTarball(buildroot, input_list, tarball_output, cwd=None):
+  """Tars files and directories from input_list to tarball_output.
+
+  Args:
+    buildroot: Root directory where build occurs.
+    input_list: A list of files and directories to be archived.
+    tarball_output: Path of output tar archive file.
+    cwd: Current working directory when tar command is executed.
+  """
+  pbzip2 = os.path.join(buildroot, 'chroot', 'usr', 'bin', 'pbzip2')
+  cmd = ['tar',
+         '--use-compress-program=%s' % pbzip2,
+         '--checkpoint=10000',
+         '-cf', tarball_output]
+  cmd += input_list
+  cros_lib.RunCommand(cmd, cwd=cwd)
+
+
 def BuildAutotestTarball(buildroot, board, image_dir):
   """Tar up the autotest artifacts into image_dir.
 
@@ -905,17 +923,11 @@ def BuildAutotestTarball(buildroot, board, image_dir):
 
   Returns the basename of the autotest tarball.
   """
-  filename = 'autotest.tar.bz2'
+  autotest_tarball = os.path.join(image_dir, 'autotest.tar.bz2')
   cwd = os.path.join(buildroot, 'chroot', 'build', board, 'usr', 'local')
-  pbzip2 = os.path.join(buildroot, 'chroot', 'usr', 'bin', 'pbzip2')
-  cmd = ['tar',
-         'cf',
-         os.path.join(image_dir, filename),
-         '--checkpoint=10000',
-         '--use-compress-program=%s' % pbzip2,
-         'autotest']
-  cros_lib.RunCommand(cmd, cwd=cwd)
-  return filename
+
+  BuildTarball(buildroot, ['autotest'], autotest_tarball, cwd=cwd)
+  return autotest_tarball
 
 
 def BuildImageZip(archive_dir, image_dir):
@@ -934,6 +946,31 @@ def BuildImageZip(archive_dir, image_dir):
   cmd = ['zip', zipfile, '-r', '.']
   cros_lib.RunCommand(cmd, cwd=image_dir)
   return filename
+
+
+def BuildFirmwareArchive(buildroot, board, archive_dir):
+  """Build firmware_from_source.tar.bz2 in archive_dir from build root.
+
+  Args:
+    buildroot: Root directory where build occurs.
+    board: Board name of build target.
+    archive_dir: Directory to store output file.
+
+  Returns the basename of the archived file, or None if the target board does
+  not have firmware from source.
+  """
+  files = ['image.bin', 'ec.bin']
+  firmware_root = os.path.join(buildroot, 'chroot', 'build', board, 'firmware')
+  source_list = [image_file
+                 for image_file in files
+                 if os.path.exists(os.path.join(firmware_root, image_file))]
+  if not source_list:
+    return None
+
+  archive_name = 'firmware_from_source.tar.bz2'
+  archive_file = os.path.join(archive_dir, archive_name)
+  BuildTarball(buildroot, source_list, archive_file, cwd=firmware_root)
+  return archive_name
 
 
 def BuildFactoryZip(archive_dir, image_root):

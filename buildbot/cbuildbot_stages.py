@@ -953,6 +953,12 @@ class ArchiveStage(NonHaltingBuilderStage):
       shutil.copy(os.path.join(image_dir, filename), archive_path)
       commands.UploadArchivedFile(archive_path, upload_url, filename, debug)
 
+    def ArchiveFirmwareImages():
+      """Archive firmware images built from source if available."""
+      filename = commands.BuildFirmwareArchive(buildroot, board, archive_path)
+      if filename:
+        commands.UploadArchivedFile(archive_path, upload_url, filename, debug)
+
     def BuildAndArchiveAllImages():
       # If we're an official build, generate the recovery image. To conserve
       # loop devices, we try to only run one instance of build_image at a
@@ -962,6 +968,7 @@ class ArchiveStage(NonHaltingBuilderStage):
         commands.BuildRecoveryImage(buildroot, board, image_dir, extra_env)
 
       background.RunParallelSteps([BuildAndArchiveFactoryImages,
+                                   ArchiveFirmwareImages,
                                    ArchiveRegularImages])
 
     background.RunParallelSteps([
