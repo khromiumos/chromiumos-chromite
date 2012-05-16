@@ -852,11 +852,12 @@ class ArchiveStage(NonHaltingBuilderStage):
     if config['useflags']:
       extra_env['USE'] = ' '.join(config['useflags'])
 
-    # The following three functions are run in parallel.
+    # The following functions are run in parallel.
     #  1. UploadUpdatePayloads: Upload update payloads from test phase.
     #  2. UploadTestResults: Upload results from test phase.
     #  3. ArchiveDebugSymbols: Generate and upload debug symbols.
     #  4. BuildAndArchiveAllImages: Build and archive images.
+    #  5. BuildFirmwareImages: Build and archive firmware image.
 
     def UploadUpdatePayloads():
       """Uploads update payloads when ready."""
@@ -953,6 +954,12 @@ class ArchiveStage(NonHaltingBuilderStage):
       shutil.copy(os.path.join(image_dir, filename), archive_path)
       commands.UploadArchivedFile(archive_path, upload_url, filename, debug)
 
+    def ArchiveFirmwareImages():
+      """Archive firmware images built from source if available."""
+      filename = commands.BuildFirmwareArchive(buildroot, board, archive_path)
+      if filename:
+        commands.UploadArchivedFile(archive_path, upload_url, filename, debug)
+
     def BuildAndArchiveAllImages():
       # If we're an official build, generate the recovery image. To conserve
       # loop devices, we try to only run one instance of build_image at a
@@ -968,7 +975,8 @@ class ArchiveStage(NonHaltingBuilderStage):
       UploadUpdatePayloads,
       UploadTestResults,
       ArchiveDebugSymbols,
-      BuildAndArchiveAllImages])
+      BuildAndArchiveAllImages,
+      ArchiveFirmwareImages])
 
     # Update and upload LATEST file.
     commands.UpdateLatestFile(self._bot_archive_root, self._set_version)
