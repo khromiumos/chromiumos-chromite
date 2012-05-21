@@ -843,6 +843,14 @@ def _CreateParser():
                           help='Used with manifest logic.  Forces use of this '
                                'version rather than create or get latest.')
 
+  # Dummy arguments for compatibility with higher branches.
+  group.add_option('--sourceroot', default=None, type='string',
+                   help=optparse.SUPPRESS_HELP)
+  group.add_option('--nobootstrap', dest='bootstrap', default=True,
+                   action='store_false', help=optparse.SUPPRESS_HELP)
+  group.add_option('-b', '--branch', default=None, type='string',
+                   help=optparse.SUPPRESS_HELP)
+
   parser.add_option_group(group)
 
   # Debug options
