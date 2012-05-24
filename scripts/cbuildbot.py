@@ -104,15 +104,6 @@ def _GetChromiteTrackingBranch():
   return cros_lib.GetPushBranch(cwd)[1]
 
 
-def _CheckBuildRootBranch(buildroot, tracking_branch):
-  """Make sure buildroot branch is the same as Chromite branch."""
-  manifest_branch = cros_lib.GetManifestDefaultBranch(buildroot)
-  if manifest_branch != tracking_branch:
-    cros_lib.Die('Chromite is not on same branch as buildroot checkout\n' +
-                 'Chromite is on branch %s.\n' % tracking_branch +
-                 'Buildroot checked out to %s\n' % manifest_branch)
-
-
 def _PreProcessPatches(gerrit_patches, local_patches):
   """Validate patches ASAP to catch user errors.  Also generate patch info.
 
@@ -146,12 +137,6 @@ def _PreProcessPatches(gerrit_patches, local_patches):
     cros_lib.Die(str(e))
 
   return gerrit_patch_info, local_patch_info
-
-
-def _IsIncrementalBuild(buildroot, clobber):
-  """Returns True if we are reusing an existing buildroot."""
-  repo_dir = os.path.join(buildroot, '.repo')
-  return not clobber and os.path.isdir(repo_dir)
 
 
 class Builder(object):
@@ -202,10 +187,6 @@ class Builder(object):
           self.options.gerrit_patches, self.options.local_patches)
 
     bs.BuilderStage.SetTrackingBranch(self.tracking_branch)
-
-    # Check branch matching early.
-    if _IsIncrementalBuild(self.options.buildroot, self.options.clobber):
-      _CheckBuildRootBranch(self.options.buildroot, self.tracking_branch)
 
     self._RunStage(stages.CleanUpStage)
 
