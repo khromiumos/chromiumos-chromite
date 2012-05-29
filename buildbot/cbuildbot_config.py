@@ -702,10 +702,10 @@ internal_paladin = internal.derive(paladin, overlays=constants.PRIVATE_OVERLAYS)
 internal_incremental = internal.derive(incremental,
                                        overlays=constants.BOTH_OVERLAYS)
 
-internal_pfq_branch.add_config('x86-alex-pre-flight-branch',
+internal_pfq_branch.add_config('link-pre-flight-branch',
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['x86-alex'],
+  boards=['link'],
 )
 
 internal_arm_paladin = internal_paladin.derive(arm)
@@ -967,8 +967,8 @@ _firmware_release = _release.derive(
 #  boards=['x86-mario'],
 #)
 
-_factory_release.add_config('daisy-factory',
-  boards=['daisy'],
+_factory_release.add_config('link-factory',
+  boards=['link'],
 )
 
 def _InjectDisplayPosition(config_source):
