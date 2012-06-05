@@ -701,10 +701,11 @@ internal_paladin = internal.derive(paladin, overlays=constants.BOTH_OVERLAYS,
 internal_incremental = internal.derive(incremental,
                                        overlays=constants.BOTH_OVERLAYS)
 
-internal_pfq_branch.add_config('x86-alex-pre-flight-branch',
+internal_pfq_branch.add_config('daisy-pre-flight-branch',
+  arm,
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['x86-alex'],
+  boards=['daisy'],
 )
 
 internal_arm_paladin = internal_paladin.derive(arm)
@@ -969,6 +970,7 @@ _firmware_release = _release.derive(
 #)
 
 _factory_release.add_config('daisy-factory',
+  arm,
   boards=['daisy'],
 )
 
