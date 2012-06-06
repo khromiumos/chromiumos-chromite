@@ -126,8 +126,8 @@ def BuildRootGitCleanup(buildroot, debug_run):
             return
 
   # Build list of directories to cleanup.
-  result = cros_lib.RunCommandCaptureOutput(['repo', 'list'], print_cmd=False,
-                                            cwd=buildroot)
+  result = cros_lib.RunCommand(['repo', 'list'], print_cmd=False,
+                               redirect_stdout=True, cwd=buildroot)
   dirs = []
   for line in result.output.splitlines():
     subdir, _ = line.split(' ', 1)
