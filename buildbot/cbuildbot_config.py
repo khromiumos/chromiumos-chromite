@@ -706,6 +706,9 @@ internal_pfq_branch.add_config('link-pre-flight-branch',
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
   boards=['link'],
+  build_tests=False,
+  unittests=False,
+  vm_tests=None,
 )
 
 internal_arm_paladin = internal_paladin.derive(arm)
@@ -952,6 +955,7 @@ _firmware_release = _release.derive(
   push_image=False,
   uprev=True,
   overlays=constants.BOTH_OVERLAYS,
+  images=['base', 'factory_install'],
   build_tests=False,
   unittests=False,
   vm_tests=None,
