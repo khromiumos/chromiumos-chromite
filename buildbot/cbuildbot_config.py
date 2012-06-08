@@ -955,9 +955,8 @@ _firmware_release = _release.derive(
   push_image=False,
   uprev=True,
   overlays=constants.BOTH_OVERLAYS,
-  images=['base', 'factory_install'],
-  build_tests=False,
-  unittests=False,
+  build_tests=True,
+  unittests=True,
   vm_tests=None,
   prebuilts=False,
 )
