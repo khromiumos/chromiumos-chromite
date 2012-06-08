@@ -957,7 +957,7 @@ _firmware_release = _release.derive(
   overlays=constants.BOTH_OVERLAYS,
   build_tests=True,
   unittests=True,
-  vm_tests=None,
+  vm_tests=constants.SIMPLE_AU_TEST_TYPE,
   prebuilts=False,
 )
 
