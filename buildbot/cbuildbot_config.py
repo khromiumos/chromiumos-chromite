@@ -714,10 +714,10 @@ internal_paladin = internal.derive(paladin, overlays=constants.BOTH_OVERLAYS,
 internal_incremental = internal.derive(incremental,
                                        overlays=constants.BOTH_OVERLAYS)
 
-internal_pfq_branch.add_config('x86-alex-pre-flight-branch',
+internal_pfq_branch.add_config('parrot-pre-flight-branch',
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['x86-alex'],
+  boards=['parrot'],
 )
 
 internal_arm_paladin = internal_paladin.derive(arm)
@@ -1004,9 +1004,8 @@ _factory_release.add_config('x86-mario-factory',
 
 # This is an example factory branch configuration for arm.
 # Modify it to match your factory branch.
-_factory_release.add_config('daisy-factory',
-  arm,
-  boards=['daisy'],
+_factory_release.add_config('parrot-factory',
+  boards=['parrot'],
 )
 
 def _InjectDisplayPosition(config_source):
