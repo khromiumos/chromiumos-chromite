@@ -448,7 +448,7 @@ class BuildSpecsManager(object):
   def HasCheckoutBeenBuilt(self):
     """Checks to see if we've previously built this checkout.
     """
-    if self.latest_passed and self.latest == self.latest_passed:
+    if self.latest_processed and self.latest == self.latest_processed:
       latest_spec_file = '%s.xml' % os.path.join(
           self.all_specs_dir, self.latest_processed)
       # We've built this checkout before if the manifest isn't different than
