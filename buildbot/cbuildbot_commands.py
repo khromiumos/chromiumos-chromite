@@ -158,7 +158,7 @@ def WipeOldOutput(buildroot):
     board: Delete image directories for this board name.
   """
   image_dir = os.path.join('src', 'build', 'images')
-  cros_lib.RunCommand(['rm', '-rf', image_dir], cwd=buildroot)
+  cros_lib.SudoRunCommand(['rm', '-rf', image_dir], cwd=buildroot)
 
 
 def MakeChroot(buildroot, replace, use_sdk, chrome_root=None, extra_env=None):
