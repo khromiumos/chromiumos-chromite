@@ -424,6 +424,9 @@ class BuildSpecsManager(object):
     if (self.latest != self.latest_processed and
         self._GetSpecAge(self.latest) < self.LONG_MAX_TIMEOUT_SECONDS):
       self.latest_unprocessed = self.latest
+    cros_build_lib.Info('self.latest_unprocessed = %s', self.latest_unprocessed)
+    cros_build_lib.Info('self.latest = %s', self.latest)
+    cros_build_lib.Info('self.latest_processed = %s', self.latest_processed)
 
   def GetCurrentVersionInfo(self):
     """Returns the current version info from the version file."""
@@ -438,9 +441,13 @@ class BuildSpecsManager(object):
           self.all_specs_dir, self.latest_processed)
       # We've built this checkout before if the manifest isn't different than
       # the last one we've built.
+      different = self.cros_source.IsManifestDifferent(latest_spec_file)
+      cros_build_lib.Info('HasCheckoutBeenBuilt returning not %s', different)
+      cros_build_lib.Info('not different = %s', not different)
       return not self.cros_source.IsManifestDifferent(latest_spec_file)
     else:
       # We've never built this manifest before so this checkout is always new.
+      cros_build_lib.Info('HasCheckoutBeenBuilt returning False')
       return False
 
   def CreateManifest(self):
@@ -565,6 +572,8 @@ class BuildSpecsManager(object):
         cros_build_lib.CreatePushBranch(PUSH_BRANCH, self.manifest_dir,
                                         sync=False)
         if not self.latest_unprocessed:
+          cros_build_lib.Info('not self.latest_unprocessed = %s',
+                              not self.latest_unprocessed)
           version = self.GetNextVersion(version_info)
           new_manifest = self.CreateManifest()
           self.PublishManifest(new_manifest, version)
