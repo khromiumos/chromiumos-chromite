@@ -442,8 +442,8 @@ class BuildSpecsManager(object):
       # We've built this checkout before if the manifest isn't different than
       # the last one we've built.
       different = self.cros_source.IsManifestDifferent(latest_spec_file)
-      cros_build_lib.Info('HasCheckoutBeenBuilt returning not %s', different)
-      cros_build_lib.Info('not different = %s', not different)
+      cros_build_lib.Info('IsManifestDifferent = %s', different)
+      cros_build_lib.Info('HasCheckoutBeenBuilt returning %s', not different)
       return not self.cros_source.IsManifestDifferent(latest_spec_file)
     else:
       # We've never built this manifest before so this checkout is always new.

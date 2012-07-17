@@ -367,5 +367,8 @@ class RepoRepository(object):
           continue
 
         if line1 != line2:
+          logging.debug('Current and other manifest differ.')
+          logging.debug('current: %s', line1)
+          logging.debug('other  : %s', line2)
           return True
       return False
