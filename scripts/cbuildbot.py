@@ -936,8 +936,7 @@ def _FinishParsing(options, args):
   """
   # Setup logging levels first so any parsing triggered log messages
   # are appropriately filtered.
-  logging.getLogger().setLevel(
-    logging.DEBUG if options.debug else logging.INFO)
+  logging.getLogger().setLevel(logging.DEBUG)
 
   if options.chrome_root:
     if options.chrome_rev != constants.CHROME_REV_LOCAL:
