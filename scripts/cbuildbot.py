@@ -824,6 +824,9 @@ def _CreateParser():
                           help='Used with manifest logic.  Forces use of this '
                                'version rather than create or get latest.')
 
+  # Added for --remote compatibility against ToT; no-op option.
+  group.add_option('--remote-version', help=optparse.SUPPRESS_HELP)
+
   # Dummy arguments for compatibility with higher branches.
   group.add_option('--sourceroot', default=None, type='string',
                    help=optparse.SUPPRESS_HELP)
