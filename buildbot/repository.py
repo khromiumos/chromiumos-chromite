@@ -366,9 +366,9 @@ class RepoRepository(object):
           logging.debug('%s ignored %s', line1, line2)
           continue
 
-        if line1 != line2:
+        if line1.strip() != line2.strip():
           logging.debug('Current and other manifest differ.')
-          logging.debug('current: %s', line1)
-          logging.debug('other  : %s', line2)
+          logging.debug('current: "%s"', line1)
+          logging.debug('other  : "%s"', line2)
           return True
       return False
