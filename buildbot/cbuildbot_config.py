@@ -969,7 +969,6 @@ _arm_release.add_config('arm-ironhide-release',
 
 _factory_release = _release.derive(
   prebuilts=False,
-  push_image=False,
   upload_hw_test_artifacts=False,
 )
 
