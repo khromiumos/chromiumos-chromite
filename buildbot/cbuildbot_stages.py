@@ -932,7 +932,7 @@ class HWTestStage(BoardSpecificBuilderStage, NonHaltingBuilderStage):
     build = '%s/%s' % (self._bot_id, self._archive_stage.GetVersion())
 
     try:
-      with cros_lib.SubCommandTimeout(HWTestStage.INSTRASTRUCTURE_TIMEOUT):
+      with cros_lib.SubCommandTimeout(HWTestStage.INFRASTRUCTURE_TIMEOUT):
         commands.RunHWTestSuite(build, self._suite, self._current_board,
                                 self._options.debug)
 
