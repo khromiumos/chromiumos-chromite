@@ -703,10 +703,10 @@ internal_paladin = internal.derive(paladin, overlays=constants.BOTH_OVERLAYS,
 internal_incremental = internal.derive(incremental,
                                        overlays=constants.BOTH_OVERLAYS)
 
-internal_pfq_branch.add_config('x86-alex-pre-flight-branch',
+internal_pfq_branch.add_config('parrot-pre-flight-branch',
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['x86-alex'],
+  boards=['parrot'],
 )
 
 internal_arm_paladin = internal_paladin.derive(arm)
@@ -984,8 +984,8 @@ _firmware_release = _release.derive(
 
 # This is an example firmware branch configuration for x86.
 # Modify it to match your firmware branch.
-_firmware_release.add_config('x86-mario-firmware',
-  boards=['x86-mario'],
+_firmware_release.add_config('parrot-firmware',
+  boards=['parrot'],
 )
 
 # This is an example firmware branch configuration for arm.
