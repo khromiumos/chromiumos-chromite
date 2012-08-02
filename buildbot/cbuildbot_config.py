@@ -711,7 +711,7 @@ internal_pfq_branch.add_config('snow-pre-flight-branch',
   arm,
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['snow'],
+  boards=['daisy'],
 )
 
 internal_arm_paladin = internal_paladin.derive(arm)
@@ -993,7 +993,7 @@ _firmware_release.add_config('x86-mario-firmware',
 # Modify it to match your firmware branch.
 _firmware_release.add_config('snow-firmware',
   arm,
-  boards=['snow'],
+  boards=['daisy'],
 )
 
 # This is an example factory branch configuration for x86.
