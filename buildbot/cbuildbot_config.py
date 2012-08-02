@@ -707,10 +707,11 @@ internal_paladin = internal.derive(paladin,
 internal_incremental = internal.derive(incremental,
                                        overlays=constants.BOTH_OVERLAYS)
 
-internal_pfq_branch.add_config('x86-alex-pre-flight-branch',
+internal_pfq_branch.add_config('snow-pre-flight-branch',
+  arm,
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['x86-alex'],
+  boards=['snow'],
 )
 
 internal_arm_paladin = internal_paladin.derive(arm)
@@ -990,9 +991,9 @@ _firmware_release.add_config('x86-mario-firmware',
 
 # This is an example firmware branch configuration for arm.
 # Modify it to match your firmware branch.
-_firmware_release.add_config('daisy-firmware',
+_firmware_release.add_config('snow-firmware',
   arm,
-  boards=['daisy'],
+  boards=['snow'],
 )
 
 # This is an example factory branch configuration for x86.
