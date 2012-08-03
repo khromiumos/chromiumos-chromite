@@ -707,7 +707,7 @@ internal_paladin = internal.derive(paladin,
 internal_incremental = internal.derive(incremental,
                                        overlays=constants.BOTH_OVERLAYS)
 
-internal_pfq_branch.add_config('snow-pre-flight-branch',
+internal_pfq_branch.add_config('daisy-pre-flight-branch',
   arm,
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
