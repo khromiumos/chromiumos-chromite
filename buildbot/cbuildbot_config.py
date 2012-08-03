@@ -991,7 +991,7 @@ _firmware_release.add_config('x86-mario-firmware',
 
 # This is an example firmware branch configuration for arm.
 # Modify it to match your firmware branch.
-_firmware_release.add_config('snow-firmware',
+_firmware_release.add_config('daisy-firmware',
   arm,
   boards=['daisy'],
 )
