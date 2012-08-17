@@ -31,8 +31,11 @@ GIT_HTTP_URL = 'http://%s/git' % GIT_HOST
 CHROMITE_PROJECT = 'chromiumos/chromite'
 CHROMITE_URL = GIT_HTTP_URL + '/%s' % CHROMITE_PROJECT
 
-MANIFEST_URL = GIT_HTTP_URL + '/chromiumos/manifest'
-MANIFEST_INT_URL = GERRIT_INT_SSH_URL + '/chromeos/manifest-internal'
+MANIFEST_PROJECT = 'chromiumos/manifest'
+MANIFEST_INT_PROJECT = 'chromeos/manifest-internal'
+
+MANIFEST_URL = '%s/%s' % (GIT_HTTP_URL, MANIFEST_PROJECT)
+MANIFEST_INT_URL = '%s/%s' % (GERRIT_INT_SSH_URL, MANIFEST_INT_PROJECT)
 
 # TODO(sosa): Move to manifest-versions-external once its created
 MANIFEST_VERSIONS_SUFFIX = '/chromiumos/manifest-versions'
