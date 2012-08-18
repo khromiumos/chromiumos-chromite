@@ -54,11 +54,13 @@ class CommandResult(object):
 
 class RunCommandError(Exception):
   """Error caught in RunCommand() method."""
-  def __init__(self, msg, result):
-    self.result = result
-    self.msg = msg
+  def __init__(self, msg, result, exception=None):
+    self.msg, self.result, self.exception = msg, result, exception
+    if exception is not None and not isinstance(exception, Exception):
+      raise ValueError("exception must be an exception instance; got %r"
+                       % (exception,))
     Exception.__init__(self, msg)
-    self.args = (msg, result)
+    self.args = (msg, result, exception)
 
   def __str__(self):
     items = ['return code: %s' % (self.result.returncode,)]
@@ -430,7 +432,8 @@ def RunCommand(cmd, print_cmd=True, error_ok=False, error_message=None,
     if e.errno == errno.EACCES:
       estr += '; does the program need `chmod a+x`?'
     if not error_ok:
-      raise RunCommandError(estr, CommandResult(cmd=cmd))
+      raise RunCommandError(estr, CommandResult(cmd=cmd),
+                            exception=e)
     else:
       Warning(estr)
   except Exception, e:
