@@ -35,6 +35,14 @@ CHROMITE_URL = '%s/%s' % (GIT_HTTP_URL, CHROMITE_PROJECT)
 MANIFEST_URL = GIT_HTTP_URL + '/chromiumos/manifest'
 MANIFEST_INT_URL = GERRIT_INT_SSH_URL + '/chromeos/manifest-internal'
 
+# CrOS remotes specified in the manifests.
+EXTERNAL_REMOTE = 'cros'
+INTERNAL_REMOTE = 'cros-internal'
+CROS_REMOTES = {
+    EXTERNAL_REMOTE : GERRIT_SSH_URL,
+    INTERNAL_REMOTE : GERRIT_INT_SSH_URL
+}
+
 # TODO(sosa): Move to manifest-versions-external once its created
 MANIFEST_VERSIONS_SUFFIX = '/chromiumos/manifest-versions'
 MANIFEST_VERSIONS_INT_SUFFIX = '/chromeos/manifest-versions'

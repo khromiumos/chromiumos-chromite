@@ -1174,10 +1174,11 @@ def PrepareLocalPatches(manifest, patches):
     project, branch = patch.split(':')
     project_dir = manifest.GetProjectPath(project, True)
     tracking_branch = manifest.GetProjectsLocalRevision(project)
+    remote = manifest.GetAttributeForProject(project, 'remote')
 
     patch_info.extend(GeneratePatchesFromRepo(
         project_dir, project, tracking_branch, branch,
-        manifest.ProjectIsInternal(project)))
+        (remote == constants.INTERNAL_REMOTE)))
 
   return patch_info
 
