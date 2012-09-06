@@ -983,6 +983,10 @@ _factory_release.add_config('daisy-factory',
   boards=['daisy'],
 )
 
+_factory_release.add_config('link-factory',
+  boards=['link'],
+)
+
 def _InjectDisplayPosition(config_source):
   """Add field to help buildbot masters order builders on the waterfall."""
   def _GetSortKey(items):
