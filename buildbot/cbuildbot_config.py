@@ -730,10 +730,10 @@ internal_paladin = internal.derive(paladin,
 internal_incremental = internal.derive(incremental,
                                        overlays=constants.BOTH_OVERLAYS)
 
-internal_pfq_branch.add_config('x86-alex-pre-flight-branch',
+internal_pfq_branch.add_config('link-pre-flight-branch',
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['x86-alex'],
+  boards=['link'],
 )
 
 internal_arm_paladin = internal_paladin.derive(arm)
