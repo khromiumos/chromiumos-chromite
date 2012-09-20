@@ -841,12 +841,17 @@ class BuildTargetStageTest(AbstractStageTest):
                                     'src/build/images/x86-generic')
     latest_image_dir = os.path.join(self.images_root, 'latest')
     latest_built_image_dir = os.path.join(self.images_root, 'latest-cbuildbot')
+    self.mox.StubOutWithMock(manifest_version.VersionInfo, 'VersionString')
+    self.mox.StubOutWithMock(manifest_version.VersionInfo, '_LoadFromFile')
     self.mox.StubOutWithMock(os, 'readlink')
     self.mox.StubOutWithMock(os, 'symlink')
     os.readlink(latest_image_dir).AndReturn('myimage')
+    self.branch = '22'
     self.version = '1423.0.0'
+    self.branch_version = 'R%s-%s' % (self.branch, self.version)
+    manifest_version.VersionInfo._LoadFromFile()
+    manifest_version.VersionInfo.chrome_branch = self.branch
     self.version_to_test = self.version
-    os.readlink(latest_built_image_dir).AndReturn(self.version)
     self.latest_cbuildbot = '%s-cbuildbot' % latest_image_dir
     os.symlink('myimage', self.latest_cbuildbot)
 
@@ -938,8 +943,7 @@ class BuildTargetStageTest(AbstractStageTest):
                                       ).AndReturn(full_autotest_tarball)
     self.archive_stage_mock.AutotestTarballsReady(tarballs)
     self.archive_stage_mock.FullAutotestTarballReady(full_autotest_tarball)
-    os.path.isdir(self.latest_cbuildbot).AndReturn(True)
-    self.archive_stage_mock.SetVersion(self.version)
+    self.archive_stage_mock.SetVersion(self.branch_version)
 
     shutil.copyfile(full_autotest_tarball_path,
                     os.path.join(self.images_root, 'latest-cbuildbot',
@@ -963,8 +967,7 @@ class BuildTargetStageTest(AbstractStageTest):
     self.archive_stage_mock.AutotestTarballsReady(None)
     commands.BuildImage(self.build_root, self._current_board, ['test'],
                         root_boost=None, version=self.version, extra_env={})
-    os.path.isdir(self.latest_cbuildbot).AndReturn(True)
-    self.archive_stage_mock.SetVersion(self.version)
+    self.archive_stage_mock.SetVersion(self.branch_version)
 
     self.mox.ReplayAll()
     self.RunStage()
@@ -996,8 +999,7 @@ class BuildTargetStageTest(AbstractStageTest):
     commands.BuildImage(self.build_root, self._current_board, ['test'],
                         root_boost=None, version=self.version,
                         extra_env=proper_env)
-    os.path.isdir(self.latest_cbuildbot).AndReturn(True)
-    self.archive_stage_mock.SetVersion(self.version)
+    self.archive_stage_mock.SetVersion(self.branch_version)
 
     self.mox.ReplayAll()
     self.RunStage()
@@ -1033,6 +1035,7 @@ class BuildTargetStageTest(AbstractStageTest):
                                             test_suites_tarball_name)
     tarballs = [autotest_tarball_path, test_suites_tarball_path]
 
+    manifest_version.VersionInfo.VersionString().AndReturn(self.version)
     commands.Build(self.build_root,
                    self._current_board,
                    build_autotest=True,
@@ -1050,8 +1053,7 @@ class BuildTargetStageTest(AbstractStageTest):
     commands.BuildAutotestTarballs(self.build_root, self._current_board,
                                    fake_autotest_dir).AndReturn(tarballs)
     self.archive_stage_mock.AutotestTarballsReady(tarballs)
-    os.path.isdir(self.latest_cbuildbot).AndReturn(True)
-    self.archive_stage_mock.SetVersion('%s-b%s' % (self.version,
+    self.archive_stage_mock.SetVersion('%s-b%s' % (self.branch_version,
                                                    self.options.buildnumber))
     self.mox.ReplayAll()
     self.RunStage()
