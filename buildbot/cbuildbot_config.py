@@ -750,10 +750,10 @@ internal_incremental = internal.derive(
   description='Incremental Builds (internal)',
 )
 
-internal_pfq_branch.add_config('x86-alex-pre-flight-branch',
+internal_pfq_branch.add_config('stout-pre-flight-branch',
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['x86-alex'],
+  boards=['stout'],
 )
 
 internal_arm_paladin = internal_paladin.derive(arm)
@@ -995,8 +995,8 @@ _firmware_release.add_config('daisy-firmware',
 
 # This is an example factory branch configuration for x86.
 # Modify it to match your factory branch.
-_factory_release.add_config('x86-mario-factory',
-  boards=['x86-mario'],
+_factory_release.add_config('stout-factory',
+  boards=['stout'],
 )
 
 # This is an example factory branch configuration for arm.
