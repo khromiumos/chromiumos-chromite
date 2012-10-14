@@ -1013,10 +1013,7 @@ class BuildTargetStage(BoardSpecificBuilderStage):
     else:
       self._archive_stage.AutotestTarballsReady(None)
 
-    if self._build_config['images']:
-      steps.append(self._BuildImages)
-    else:
-      self._CommunicateVersion()
+    steps.append(self._BuildImages)
     background.RunParallelSteps(steps)
 
     # TODO(yjhong): Remove this and instruct archive_hwqual to copy the tarball
@@ -1649,9 +1646,8 @@ class ArchiveStage(BoardSpecificBuilderStage):
       if 'base' in config['images']:
         commands.BuildRecoveryImage(buildroot, board, image_dir, extra_env)
 
-      if config['images']:
-        background.RunParallelSteps([BuildAndArchiveFactoryImages,
-                                     ArchiveRegularImages])
+      background.RunParallelSteps([BuildAndArchiveFactoryImages,
+                                   ArchiveRegularImages])
 
     def UploadArtifact(filename):
       """Upload generated artifact to Google Storage."""
@@ -1703,16 +1699,12 @@ class ArchiveStage(BoardSpecificBuilderStage):
       # the image server.
       # TODO: When we support branches fully, the friendly name of the branch
       # needs to be used with PushImages
-      sign_types = []
-      if config['name'].endswith('-firmware'):
-        sign_types += ['firmware']
       commands.PushImages(buildroot,
                           board=board,
                           branch_name='master',
                           archive_url=upload_url,
                           dryrun=debug or not config['push_image'],
-                          profile=self._options.profile or config['profile'],
-                          sign_types=sign_types)
+                          profile=self._options.profile or config['profile'])
 
     def ArchiveReleaseArtifacts():
       steps = [ArchiveDebugSymbols, BuildAndArchiveAllImages,
@@ -1721,14 +1713,11 @@ class ArchiveStage(BoardSpecificBuilderStage):
       PushImage()
 
     def BuildAndArchiveArtifacts(num_upload_processes=10):
-      # Run archiving steps in parallel.
-      steps = [ArchiveReleaseArtifacts, ArchiveArtifactsForHWTesting,
-               ArchiveTestResults]
-      if config['images']:
-        steps.append(ArchiveStrippedChrome)
-
       with bg_task_runner(upload_symbols_queue, UploadSymbols, 1):
         with bg_task_runner(upload_queue, UploadArtifact, num_upload_processes):
+          # Run archiving steps in parallel.
+          steps = [ArchiveReleaseArtifacts, ArchiveStrippedChrome,
+                   ArchiveArtifactsForHWTesting, ArchiveTestResults]
           background.RunParallelSteps(steps)
 
     def MarkAsLatest():
