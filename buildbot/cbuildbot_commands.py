@@ -1262,9 +1262,11 @@ def BuildFactoryZip(buildroot, board, archive_dir, image_root):
       buildroot, 'chroot', 'build', board, 'usr', 'local', 'factory', 'bundle')
   if os.path.exists(bundle_src_dir):
     for f in os.listdir(bundle_src_dir):
-      os.symlink(os.path.join(bundle_src_dir, f),
-                 os.path.join(temp_dir, f))
-      cmd.extend(['--include', os.path.join(f, '*')])
+      src_path = os.path.join(bundle_src_dir, f)
+      os.symlink(src_path, os.path.join(temp_dir, f))
+      cmd.extend(['--include',
+                  f if os.path.isfile(src_path) else
+                  os.path.join(f, '*')])
 
   cros_build_lib.RunCommandCaptureOutput(cmd, cwd=temp_dir)
   shutil.rmtree(temp_dir)
@@ -1366,3 +1368,8 @@ def GenerateNPlus1Payloads(build_root, build_config, target_image_path,
          '--nplus1_archive_dir=%s' % archive_dir,
         ]
   cros_build_lib.RunCommandCaptureOutput(cmd)
+
+
+logging.basicConfig(level=logging.DEBUG)
+import sys
+BuildFactoryZip(*sys.argv[1:])
