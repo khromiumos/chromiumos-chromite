@@ -1210,24 +1210,6 @@ def BuildFirmwareArchive(buildroot, board, archive_dir):
   return archive_name
 
 
-def OverlaySymlinks(src_dir, dest_dir):
-  """Overlays symlinks from src_dir to dest_dir.
-
-  Recursively walks the src_dir tree, and for each file, adds a symlink
-  from the corresponding path under dest_dir to the path under src_dir.
-  """
-  for dirpath, dummy_dirnames, filenames in os.walk(os.path.realpath(src_dir)):
-    for f in filenames:
-      src_path = os.path.join(dirpath, f)
-      rel_path = os.path.relpath(src_path, src_dir)
-      dest_path = os.path.join(dest_dir, rel_path)
-      if not os.path.exists(os.path.dirname(dest_path)):
-        os.makedirs(os.path.dirname(dest_path))
-      if os.path.lexists(dest_path):
-        raise Exception('%s already exists; unable to overlay %s' %
-                        (dest_path, src_path))
-      os.symlink(src_path, dest_path)
-
 def BuildFactoryZip(buildroot, board, archive_dir, image_root):
   """Build factory_image.zip in archive_dir.
 
@@ -1283,7 +1265,10 @@ def BuildFactoryZip(buildroot, board, archive_dir, image_root):
   bundle_src_dir = os.path.join(
       buildroot, 'chroot', 'build', board, 'usr', 'local', 'factory', 'bundle')
   if os.path.exists(bundle_src_dir):
-    OverlaySymlinks(bundle_src_dir, temp_dir)
+    for f in os.listdir(bundle_src_dir):
+      os.symlink(os.path.join(bundle_src_dir, f),
+                 os.path.join(temp_dir, f))
+      cmd.extend(['--include', os.path.join(f, '*')])
 
   cros_build_lib.RunCommandCaptureOutput(cmd, cwd=temp_dir)
   shutil.rmtree(temp_dir)

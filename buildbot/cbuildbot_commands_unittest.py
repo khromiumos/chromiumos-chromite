@@ -425,32 +425,6 @@ class CBuildBotTest(cros_test_lib.MoxTempDirTestCase):
                         dryrun=False, profile=profile_name)
     self.mox.VerifyAll()
 
-  def testOverlaySymlinks(self):
-    src = os.path.join(self.tempdir, 'src')
-    os.mkdir(src)
-    dest = os.path.join(self.tempdir, 'dest')
-    os.mkdir(dest)
-
-    # Create some source files.
-    open(os.path.join(src, '1.txt'), 'w')
-    os.mkdir(os.path.join(src, 'a'))
-    open(os.path.join(src, 'a', 'a1.txt'), 'w')
-    os.mkdir(os.path.join(src, 'b'))
-    open(os.path.join(src, 'b', 'b1.txt'), 'w')
-
-    # Create some pre-existing destination files.
-    os.mkdir(os.path.join(dest, 'b'))
-    open(os.path.join(dest, 'b', 'b2.txt'), 'w')
-
-    # Overlay it.
-    commands.OverlaySymlinks(src, dest)
-
-    # Check symlinks and files.
-    for p in ('a/a1.txt', 'b/b1.txt'):
-      self.assertEquals(
-          os.path.join(os.path.realpath(src), p),
-          os.readlink(os.path.join(dest, p)))
-    self.assertTrue(os.path.isfile(os.path.join(dest, 'b', 'b2.txt')))
 
 if __name__ == '__main__':
   cros_test_lib.main()
