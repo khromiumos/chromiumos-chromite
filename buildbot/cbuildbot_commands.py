@@ -1368,8 +1368,3 @@ def GenerateNPlus1Payloads(build_root, build_config, target_image_path,
          '--nplus1_archive_dir=%s' % archive_dir,
         ]
   cros_build_lib.RunCommandCaptureOutput(cmd)
-
-
-logging.basicConfig(level=logging.DEBUG)
-import sys
-BuildFactoryZip(*sys.argv[1:])
