@@ -647,7 +647,7 @@ class BuildSpecsManager(object):
     if fail_if_exists:
       # This HTTP header tells Google Storage toreturn the PreconditionFailed
       # error message if the file already exists.
-      cmd += ['-h', 'x-goog-if-sequence-number-match: 0']
+      cmd += ['-h', 'x-goog-if-generation-match: 0']
     url = self._GetStatusUrl(self.build_name, version)
     cmd += ['cp', '-', url]
 

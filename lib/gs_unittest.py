@@ -138,11 +138,11 @@ class GSContextTest(cros_test_lib.TempDirMixin, mox.MoxTestBase):
     ctx5 = self.MkContext()
     self.assertGSCommand(ctx5, ['cp', '--', local_path(5),
                                 expected_remote(5)],
-                         headers=['x-goog-if-sequence-number-match:0'])
+                         headers=['x-goog-if-generation-match:0'])
     ctx6 = self.MkContext()
     self.assertGSCommand(ctx6, ['cp', '--', self.gsutil_bin,
                                 expected_remote(6)],
-                         headers=['x-goog-if-sequence-number-match:6'])
+                         headers=['x-goog-if-generation-match:6'])
     ctx7 = self.MkContext()
     ret = self.assertGSCommand(ctx7, ['cp', '--', local_path(7),
                                       expected_remote(7)])
@@ -188,7 +188,7 @@ class GSContextTest(cros_test_lib.TempDirMixin, mox.MoxTestBase):
     ctx2 = self.MkContext(suppress_DoCommand=False, retries=2, sleep=1)
     cros_build_lib.RetryCommand(
        cros_build_lib.RunCommandCaptureOutput, ctx2._retries,
-       [self.gsutil_bin, '-h',  'x-goog-if-sequence-number-match:1',
+       [self.gsutil_bin, '-h',  'x-goog-if-generation-match:1',
         'cp', '--', '/blah', 'gs://foon'],
        sleep=ctx2._sleep_time, extra_env={'BOTO_CONFIG':self.boto_file})
 
