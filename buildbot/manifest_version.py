@@ -658,7 +658,7 @@ class BuildSpecsManager(object):
     # Create the inflight file, if it is not already present. Because we
     # pass in the fail_if_already_exists HTTP header, Google Storage will
     # return the PreconditionFailed error message if the file already exists.
-    fail_if_already_exists = 'x-goog-if-sequence-number-match: 0'
+    fail_if_already_exists = 'x-goog-if-generation-match: 0'
     inflight_suffix = '%s/inflight/%s' % (version, self.build_name)
     cmd = [constants.GSUTIL_BIN, '-h', fail_if_already_exists, 'cp',
            '/dev/null', '%s/%s' % (BUILD_STATUS_URL, inflight_suffix)]
