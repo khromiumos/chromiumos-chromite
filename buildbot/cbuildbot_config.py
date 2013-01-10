@@ -959,6 +959,7 @@ _arm_release.add_config('arm-tegra2_kaen-release',
 
 _arm_release.add_config('daisy-release',
   boards=['daisy'],
+  hw_tests=['bvt'],
 )
 
 # Factory and Firmware releases much inherit from these classes.  Modifications
