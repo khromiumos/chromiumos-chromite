@@ -895,6 +895,13 @@ internal_pfq_branch.add_config('x86-alex-pre-flight-branch',
   boards=['x86-alex'],
 )
 
+internal_pfq_branch.add_config('spring-pre-flight-branch',
+  arm,
+  master=True,
+  push_overlays=constants.BOTH_OVERLAYS,
+  boards=['daisy_spring'],
+)
+
 internal_arm_paladin = internal_paladin.derive(arm)
 
 internal_paladin.add_config('mario-paladin',
