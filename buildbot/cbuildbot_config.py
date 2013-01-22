@@ -1180,6 +1180,11 @@ _factory_release.add_config('daisy-factory',
   boards=['daisy'],
 )
 
+_factory_release.add_config('spring-factory',
+  arm,
+  boards=['daisy_spring'],
+)
+
 
 def _GetDisplayPosition(config_name, type_order=CONFIG_TYPE_DUMP_ORDER):
   """Given a config_name, return display position specified by suffix_order.
