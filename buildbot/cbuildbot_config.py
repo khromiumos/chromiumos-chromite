@@ -946,6 +946,13 @@ internal_pfq_branch.add_config('x86-alex-pre-flight-branch',
   boards=['x86-alex'],
 )
 
+internal_pfq_branch.add_config('spring-pre-flight-branch',
+  arm,
+  master=True,
+  push_overlays=constants.BOTH_OVERLAYS,
+  boards=['daisy_spring'],
+)
+
 internal_arm_paladin = internal_paladin.derive(arm)
 
 internal_paladin.add_config('mario-paladin',
@@ -1246,6 +1253,11 @@ _factory_release.add_config('x86-mario-factory',
 _factory_release.add_config('daisy-factory',
   arm,
   boards=['daisy'],
+)
+
+_factory_release.add_config('spring-factory',
+  arm,
+  boards=['daisy_spring'],
 )
 
 
