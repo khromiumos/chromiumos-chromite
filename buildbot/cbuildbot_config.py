@@ -691,6 +691,7 @@ chrome_pgo = chrome_pfq.derive(
   usepkg_build_packages=False,
 
   vm_tests=None,
+  hw_tests=['PGO_record'],
   hw_tests_critical=True,
   hw_tests_pool=constants.HWTEST_CHROME_PFQ_POOL,
   hw_tests_num=1,
@@ -725,6 +726,7 @@ chrome_perf = chrome_info.derive(
   upload_hw_test_artifacts=True,
 
   hw_copy_perf_results=True,
+  hw_tests=['pyauto_perf'],
   hw_tests_critical=True,
   hw_tests_pool=constants.HWTEST_CHROME_PERF_POOL,
   hw_tests_num=1,
@@ -1016,11 +1018,13 @@ _release = full.derive(official, internal,
 
 _release.add_config('x86-mario-release',
   boards=['x86-mario'],
+  hw_tests=['bvt'],
 )
 
 _config.add_group('x86-alex-release-group',
   _release.add_config('x86-alex-release',
     boards=['x86-alex'],
+    hw_tests=['bvt'],
   ),
   _release.add_config('x86-alex_he-release',
     boards=['x86-alex_he'],
@@ -1034,6 +1038,7 @@ _config.add_group('x86-alex-release-group',
 _config.add_group('x86-zgb-release-group',
   _release.add_config('x86-zgb-release',
     boards=['x86-zgb'],
+    hw_tests=['bvt'],
   ),
   _release.add_config('x86-zgb_he-release',
     boards=['x86-zgb_he'],
@@ -1045,29 +1050,35 @@ _config.add_group('x86-zgb-release-group',
 
 _release.add_config('stumpy-release',
   boards=['stumpy'],
+  hw_tests=['bvt'],
 )
 
 _release.add_config('lumpy-release',
   boards=['lumpy'],
+  hw_tests=['bvt'],
   critical_for_chrome=True,
 )
 
 _release.add_config('link-release',
   boards=['link'],
+  hw_tests=['bvt'],
   useflags=official['useflags'] + ['highdpi'],
   prebuilts=False,
 )
 
 _release.add_config('kiev-release',
   boards=['kiev'],
+  hw_tests=['bvt'],
 )
 
 _release.add_config('parrot-release',
   boards=['parrot'],
+  hw_tests=['bvt'],
 )
 
 _release.add_config('stout-release',
   boards=['stout'],
+  hw_tests=['bvt'],
   hw_tests_num=3,
 )
 
@@ -1089,6 +1100,7 @@ _arm_release.add_config('arm-tegra2_kaen-release',
 _arm_release.add_config('daisy-release',
   boards=['daisy'],
   useflags=official['useflags'] + ['widevine_cdm'],
+  hw_tests=['bvt'],
   hw_tests_num=4,
   critical_for_chrome=True,
 )
