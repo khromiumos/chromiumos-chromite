@@ -524,6 +524,7 @@ def GenerateMinidumpStackTraces(buildroot, board, gzipped_test_tarball,
 
   # We need to unzip the test results tarball first because we cannot update
   # a compressed tarball.
+  gzipped_test_tarball = os.path.abspath(gzipped_test_tarball)
   cros_build_lib.RunCommand([gzip, '-df', gzipped_test_tarball])
   test_tarball = os.path.splitext(gzipped_test_tarball)[0] + '.tar'
 
@@ -551,8 +552,8 @@ def GenerateMinidumpStackTraces(buildroot, board, gzipped_test_tarball,
             log_stdout_to_file=minidump_stack_trace)
         filename = ArchiveFile(minidump_stack_trace, archive_dir)
         stack_trace_filenames.append(filename)
-    cros_build_lib.RunCommand(['tar', 'uf', test_tarball,
-                               '--directory=%s' % temp_dir, '.'])
+    cmd = ['tar', 'uf', test_tarball, '.']
+    cros_build_lib.RunCommand(cmd, cwd=temp_dir)
   cros_build_lib.RunCommand('%s -c %s > %s'
                             % (gzip, test_tarball, gzipped_test_tarball),
                             shell=True)
