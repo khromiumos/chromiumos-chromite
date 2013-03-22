@@ -37,8 +37,8 @@ GIT_HOST = 'git.chromium.org'
 GERRIT_SSH_URL = 'ssh://%s:%s' % (GERRIT_HOST, GERRIT_PORT)
 GERRIT_INT_SSH_URL = 'ssh://%s:%s' % (GERRIT_INT_HOST, GERRIT_INT_PORT)
 GERRIT_HTTP_URL = 'https://%s' % GERRIT_HOST
-GIT_HTTP_URL = 'https://%s/git' % GIT_HOST
-GIT_HTTP_TESTING_URL = 'https://chromium.googlesource.com/'
+GIT_HTTP_URL = 'http://%s/git' % GIT_HOST
+GIT_HTTP_TESTING_URL = 'http://chromium.googlesource.com/'
 
 REPO_PROJECT = 'external/repo'
 REPO_URL = '%s/%s' % (GIT_HTTP_URL, REPO_PROJECT)
