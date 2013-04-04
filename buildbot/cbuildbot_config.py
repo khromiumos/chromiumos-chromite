@@ -970,6 +970,12 @@ internal_paladin.add_config('stout-paladin',
   paladin_builder_name='stout paladin',
 )
 
+internal_paladin.add_config('stout32-paladin',
+  boards=['stout32'],
+  paladin_builder_name='stout32 paladin',
+  important=False,
+)
+
 internal_paladin.add_config('butterfly-paladin',
   boards=['butterfly'],
   paladin_builder_name='butterfly paladin',
@@ -1082,6 +1088,10 @@ _release.add_config('stout-release',
   hw_tests_num=3,
 )
 
+_release.add_config('stout32-release',
+  boards=['stout32'],
+)
+
 _release.add_config('butterfly-release',
   boards=['butterfly'],
   useflags=official['useflags'] + ['oem_wallpaper'],
@@ -1144,6 +1154,7 @@ _x86_firmware_boards = (
   'lumpy',
   'parrot',
   'stout',
+  'stout32',
   'stumpy',
   'x86-mario',
 )
