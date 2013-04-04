@@ -707,6 +707,8 @@ internal_pfq_branch.add_config('parrot-pre-flight-branch',
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
   boards=['parrot'],
+  unittests=False,
+  vm_tests=None,
 )
 
 internal_arm_paladin = internal_paladin.derive(arm)
