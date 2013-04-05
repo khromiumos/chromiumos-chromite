@@ -9,21 +9,14 @@
 import json
 import mox
 import os
-import re
 import subprocess
 import sys
 import unittest
-import urllib
 
 import constants
 sys.path.insert(0, constants.SOURCE_ROOT)
 from chromite.buildbot import cbuildbot_config
 from chromite.lib import cros_build_lib
-
-CHROMIUM_WATCHING_URL = ("http://src.chromium.org/viewvc/" +
-    "chrome/trunk/tools/build/masters/" +
-    "master.chromium.chromiumos" + "/" +
-    "master_chromiumos_cros_cfg.py")
 
 # pylint: disable=W0212,R0904
 class CBuildBotTest(mox.MoxTestBase):
@@ -177,30 +170,6 @@ class CBuildBotTest(mox.MoxTestBase):
                         "ARM builder %s can't run vm tests!" % build_name)
         self.assertTrue(config['chrome_tests'] is False,
                         "ARM builder %s can't run chrome tests!" % build_name)
-
-  def testImportantMattersToChrome(self):
-    # TODO(ferringb): Decorate this as a network test.
-    namefinder = re.compile(r" *params='([^' ]*)[ ']")
-    req = urllib.urlopen(CHROMIUM_WATCHING_URL)
-    watched_configs = []
-    for m in [namefinder.match(line) for line in req.read().splitlines()]:
-      if m:
-        watched_configs.append(m.group(1))
-
-    watched_boards = []
-    for config in watched_configs:
-      watched_boards.extend(cbuildbot_config.config[config]['boards'])
-
-    watched_boards = set(watched_boards)
-
-    for build_name, config in cbuildbot_config.config.iteritems():
-      if (config['important'] and
-          config['chrome_rev'] == constants.CHROME_REV_LATEST and
-          config['build_type'] == constants.CHROME_PFQ_TYPE):
-        boards = set(config['boards'])
-        self.assertTrue(boards.issubset(watched_boards),
-                        'Config %s: boards %r are not watched on Chromium' %
-                        (build_name, list(boards - watched_boards)))
 
   #TODO: Add test for compare functionality
   def testJSONDumpLoadable(self):
