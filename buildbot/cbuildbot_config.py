@@ -977,7 +977,7 @@ internal_arm_paladin.add_config('daisy-paladin',
   upload_hw_test_artifacts=True,
 )
 
-internal_arm_paladin.add_config('spring-paladin',
+internal_arm_paladin.add_config('daisy_spring-paladin',
   boards=['daisy_spring'],
   paladin_builder_name='daisy spring paladin',
   important=False,
@@ -1178,7 +1178,7 @@ _arm_release.add_config('daisy-release',
   critical_for_chrome=True,
 )
 
-_arm_release.add_config('spring-release',
+_arm_release.add_config('daisy_spring-release',
   boards=['daisy_spring'],
   hw_tests=[],
 )
