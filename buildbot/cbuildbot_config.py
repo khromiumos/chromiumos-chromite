@@ -1030,7 +1030,8 @@ sonic = _config(
   hw_tests=[],
 )
 
-internal_pfq_branch.add_config('daisy_spring-pre-flight-branch',
+internal_pfq_branch.add_config('spring-pre-flight-branch',
+  arm,
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
   boards=['daisy_spring'],
@@ -1446,11 +1447,10 @@ _factory_release.add_config('x86-mario-factory',
   boards=['x86-mario'],
 )
 
-# This is an example factory branch configuration for arm.
-# Modify it to match your factory branch.
-_factory_release.add_config('daisy-factory',
+# This is a factory branch configuration for arm.
+_factory_release.add_config('spring-factory',
   arm,
-  boards=['daisy'],
+  boards=['daisy_spring'],
 )
 
 
