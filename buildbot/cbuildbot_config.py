@@ -1030,7 +1030,7 @@ sonic = _config(
   hw_tests=[],
 )
 
-internal_pfq_branch.add_config('spring-pre-flight-branch',
+internal_pfq_branch.add_config('daisy_spring-pre-flight-branch',
   arm,
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
