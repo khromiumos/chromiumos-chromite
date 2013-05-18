@@ -309,7 +309,7 @@ _settings = dict(
 # vm_tests -- Run vm test type defined in constants.
   vm_tests=constants.SIMPLE_AU_TEST_TYPE,
 
-  # A list of HWTestConfig objects to run.
+# A list of HWTestConfig objects to run.
   hw_tests=[],
 
 # upload_hw_test_artifacts -- If true, uploads artifacts for hw testing.
