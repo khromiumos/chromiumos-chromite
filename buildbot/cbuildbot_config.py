@@ -1448,7 +1448,7 @@ _factory_release.add_config('x86-mario-factory',
 )
 
 # This is a factory branch configuration for arm.
-_factory_release.add_config('spring-factory',
+_factory_release.add_config('daisy_spring-factory',
   arm,
   boards=['daisy_spring'],
 )
