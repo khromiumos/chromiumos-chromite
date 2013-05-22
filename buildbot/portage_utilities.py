@@ -289,9 +289,9 @@ class EBuild(object):
                             subdir_path, self._pkgname))
 
     # Verify that we're grabbing the commit id from the right project name.
-    cmd = ('git config --get remote.cros.projectname || '
-           'git config --get remote.cros-internal.projectname')
-    real_project = self._RunCommand(cmd, cwd=subdir_path, shell=True).rstrip()
+    cmd = ['repo', 'forall', '.', '-c',
+           'git config --get remote.${REPO_REMOTE}.projectname']
+    real_project = self._RunCommand(cmd, cwd=subdir_path).rstrip()
     if project != real_project:
       cros_build_lib.Die('Project name mismatch for %s '
                          '(found %s, expected %s)' % (
