@@ -1299,7 +1299,6 @@ _arm_release.add_config('daisy-release',
 
 _arm_release.add_config('daisy_spring-release',
   boards=['daisy_spring'],
-  hw_tests=[],
 )
 
 _arm_release.add_config('peach_pit-release',
