@@ -1528,11 +1528,10 @@ _factory_release.add_config('x86-mario-factory',
   boards=['x86-mario'],
 )
 
-# This is an example factory branch configuration for arm.
-# Modify it to match your factory branch.
-_factory_release.add_config('daisy-factory',
+# This is a factory branch configuration for arm.
+_factory_release.add_config('peach_pit-factory',
   arm,
-  boards=['daisy'],
+  boards=['peach_pit'],
 )
 
 
