@@ -1635,7 +1635,6 @@ _factory_release.add_config('x86-mario-factory',
 # This is a factory branch configuration for arm.
 _factory_release.add_config('peach_pit-factory',
   arm,
-  manifest_version=False,
   boards=['peach_pit'],
 )
 
