@@ -1160,12 +1160,6 @@ sonic = _config(
   hw_tests=[],
 )
 
-internal_pfq_branch.add_config('peach_pit-pre-flight-branch',
-  master=True,
-  push_overlays=constants.BOTH_OVERLAYS,
-  boards=['peach_pit'],
-)
-
 ### Master paladin (CQ builder).
 
 internal_paladin.add_config('mario-paladin',
@@ -1624,18 +1618,18 @@ def _AddFirmwareConfigs():
 
 _AddFirmwareConfigs()
 
-
-# This is an example factory branch configuration for x86.
-# Modify it to match your factory branch.
 _factory_release.add_config('peach_pit-factory',
+  arm,
   boards=['peach_pit'],
 )
 
-# This is an example factory branch configuration for arm.
-# Modify it to match your factory branch.
-_factory_release.add_config('daisy-factory',
-  arm,
-  boards=['daisy'],
+# Reduce the pre-flight to a firmware config.
+internal_pfq_branch.add_config('peach_pit-pre-flight-branch',
+  _firmware,
+  master=True,
+  push_overlays=constants.BOTH_OVERLAYS,
+  boards=['peach_pit'],
+  description='Firmware Branch PFQ',
 )
 
 
