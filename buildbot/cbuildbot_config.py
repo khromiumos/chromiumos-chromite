@@ -1477,6 +1477,7 @@ _x86_firmware_boards = (
   'stout32',
   'slippy',
   'stumpy',
+  'wolf',
   'x86-mario',
 )
 
@@ -1530,11 +1531,11 @@ _factory_release.add_config('daisy-factory',
 )
 
 # Firmware pre-flight-branch.
-internal_pfq_branch.add_config('falco-pre-flight-branch',
+internal_pfq_branch.add_config('wolf-pre-flight-branch',
   _firmware,
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['falco'],
+  boards=['wolf'],
   description='Firmware Branch PFQ',
 )
 
