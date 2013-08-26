@@ -1424,7 +1424,6 @@ _release.add_config('butterfly-release',
 
 _release.add_config('falco-release',
   boards=['falco'],
-  hw_tests=HWTestConfig.DefaultList(file_bugs=True),
   # TODO(sosa): Restore temp removal of vm testing once devserver bug
   # crbug.com/251309 is fixed.
   vm_tests=None,
@@ -1471,7 +1470,6 @@ _release.add_config('parrot64-release',
 
 _release.add_config('peppy-release',
   boards=['peppy'],
-  hw_tests=[],
   # TODO(sosa): Restore temp removal of vm testing once devserver bug
   # crbug.com/251309 is fixed.
   vm_tests=None,
@@ -1491,7 +1489,6 @@ _release.add_config('sonic-release',
 
 _release.add_config('stout-release',
   boards=['stout'],
-  hw_tests=HWTestConfig.DefaultList(num=3, file_bugs=True),
 )
 
 _release.add_config('stout32-release',
