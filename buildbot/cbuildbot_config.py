@@ -1629,6 +1629,10 @@ _factory_release.add_config('peppy-factory',
   boards=['peppy'],
 )
 
+_factory_release.add_config('wolf-factory',
+  boards=['wolf'],
+)
+
 # This is an example factory branch configuration for arm.
 # Modify it to match your factory branch.
 _factory_release.add_config('daisy-factory',
