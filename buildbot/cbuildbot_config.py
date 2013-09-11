@@ -1449,20 +1449,16 @@ _release.add_config('lumpy-release',
 
 _release.add_config('parrot-release',
   boards=['parrot'],
+  # Disable hwtest for parrot, as hwtest for parrot32 and parrot64 are enabled.
+  hw_tests=[],
 )
 
 _release.add_config('parrot32-release',
   boards=['parrot32'],
-  # TODO(moch): Need to setup machines in the lab with this configuration
-  # Until then disabling hw_tests so that builder works
-  hw_tests=[],
 )
 
 _release.add_config('parrot64-release',
   boards=['parrot64'],
-  # TODO(moch): Need to setup machines in the lab with this configuration
-  # Until then disabling hw_tests so that builder works
-  hw_tests=[],
   # TODO(sosa): Restore temp removal of vm testing once devserver bug
   # crbug.com/251309 is fixed.
   vm_tests=None,
