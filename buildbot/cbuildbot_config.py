@@ -1469,6 +1469,7 @@ _depthcharge_full_internal = full.derive(
 _x86_firmware_boards = (
   'butterfly',
   'falco',
+  'leon',
   'link',
   'lumpy',
   'parrot',
@@ -1530,11 +1531,11 @@ _factory_release.add_config('daisy-factory',
 )
 
 # Firmware pre-flight-branch.
-internal_pfq_branch.add_config('falco-pre-flight-branch',
+internal_pfq_branch.add_config('leon-pre-flight-branch',
   _firmware,
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['falco'],
+  boards=['leon'],
   description='Firmware Branch PFQ',
 )
 
