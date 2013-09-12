@@ -1625,6 +1625,10 @@ _factory_release.add_config('falco-factory',
   boards=['falco'],
 )
 
+_factory_release.add_config('leon-factory',
+  boards=['leon'],
+)
+
 _factory_release.add_config('peppy-factory',
   boards=['peppy'],
 )
