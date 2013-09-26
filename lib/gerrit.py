@@ -8,7 +8,6 @@ import itertools
 import json
 import logging
 import operator
-import re
 
 from chromite.buildbot import constants
 from chromite.lib import cros_build_lib
@@ -74,27 +73,6 @@ class GerritHelper(object):
       raise ValueError('Remote %s not supported.' % remote)
 
     return cls(host, remote, ssh_port=port, **kwds)
-
-  @classmethod
-  def FromManifestProject(cls, manifest, project, **kwds):
-    """Get the GerritHelper instance for a given project.
-
-    Args:
-      manifest: cros_build_lib.ManifestCheckout object.
-      project: Project to look up.
-    """
-    remote = manifest.GetAttributeForProject(project, 'remote')
-    return cls.FromRemote(remote, **kwds)
-
-  @classmethod
-  def GetCrosInternal(cls, **kwds):
-    """Convenience method for accessing private ChromeOS gerrit."""
-    return cls.FromRemote(constants.INTERNAL_REMOTE, **kwds)
-
-  @classmethod
-  def GetCrosExternal(cls, **kwds):
-    """Convenience method for accessing public ChromiumOS gerrit."""
-    return cls.FromRemote(constants.EXTERNAL_REMOTE, **kwds)
 
   @property
   def ssh_url(self):
@@ -470,9 +448,25 @@ class GerritHelper(object):
              % (change.gerrit_number, change.patch_number))
     self._SqlQuery(query, dryrun=dryrun, is_command=True)
 
+  def SubmitChange(self, change, dryrun=False):
+    """Submits patch using Gerrit Review."""
+    cmd = self.GetGerritReviewCommand(
+        ['--submit', '%s,%s' % (change.gerrit_number, change.patch_number)])
+    if dryrun:
+      logging.info('Would have run: %s', ' '.join(map(repr, cmd)))
+      return
+    try:
+      cros_build_lib.RunCommand(cmd)
+    except cros_build_lib.RunCommandError:
+      cros_build_lib.Error('Command failed', exc_info=True)
+
 
 class GerritOnBorgHelper(GerritHelper):
   """Helper class to manage interaction with the gerrit-on-borg service."""
+
+  # Fields that appear in gerrit change query results
+  MORE_CHANGES = '_more_changes'
+  SORTKEY = '_sortkey'
 
   def __init__(self, host, remote, **kwds):
     kwds['ssh_port'] = 0
@@ -524,8 +518,9 @@ class GerritOnBorgHelper(GerritHelper):
           3, cmd, redirect_stdout=True, print_cmd=self.print_cmd)
       if result:
         return result.output.split()[0]
-    except cros_build_lib.RunCommandError as e:
-      logging.error('Command "%s" failed.' % ' '.join(cmd))
+    except cros_build_lib.RunCommandError:
+      logging.error('Command "%s" failed.', ' '.join(map(repr, cmd)),
+                    exc_info=True)
 
   def QuerySingleRecord(self, change=None, **query_kwds):
     dryrun = query_kwds.get('dryrun')
@@ -539,65 +534,151 @@ class GerritOnBorgHelper(GerritHelper):
       return None
     elif len(results) != 1:
       raise QueryNotSpecific('Query %s returned too many results: %s'
-                             % (change, json.dumps(results, indent=2)))
+                             % (change, results))
     return results[0]
 
   def Query(self, change=None, sort=None, current_patch=True, options=(),
-            dryrun=False, raw=False, _resume_sortkey=None, **query_kwds):
+            dryrun=False, raw=False, sortkey=None, **query_kwds):
     if options:
       raise GerritException('"options" argument unsupported on gerrit-on-borg.')
-    if change and not query_kwds:
-      if dryrun:
-        logging.info('Would have run gob_util.GetChange(%s, %s)' % (
-            self.host, change))
-        return
-      return gob_util.GetChange(self.host, change)
-    if change and query_kwds.get('change'):
-      raise GerritException('Bad query params: provided a change-id-like query, '
-                            'and a "change" search parameter')
-    if _resume_sortkey:
-      query_kwds['resume_sortkey'] = _resume_sortkey
+    url_prefix = gob_util.GetGerritFetchUrl(self.host)
     o_params = ['DETAILED_ACCOUNTS']
     if current_patch:
-      o_params.extend('CURRENT_REVISION', 'DETAILED_LABELS')
+      o_params.extend(['CURRENT_COMMIT', 'CURRENT_REVISION', 'DETAILED_LABELS'])
+
+    if change and change.isdigit() and not query_kwds:
+      if dryrun:
+        logging.info('Would have run gob_util.GetChangeDetail(%s, %s, %s)',
+                     self.host, change, o_params)
+        return []
+      change = gob_util.GetChangeDetail(self.host, change, o_params=o_params)
+      if change is None:
+        return []
+      patch_dict = cros_patch.GerritPatch.ConvertQueryResults(change, self.host)
+      if raw:
+        return [patch_dict]
+      return [cros_patch.GerritPatch(patch_dict, self.remote, url_prefix)]
+
+    if change and query_kwds.get('change'):
+      raise GerritException('Bad query params: provided a change-id-like query,'
+                            ' and a "change" search parameter')
+
     if dryrun:
-      logging.info(
-          'Would have run gob_util.QueryChanges(%s, %s, first_param=%s limit=%d)'
-          % (self.host, repr(query_kwds), change, self._GERRIT_MAX_QUERY_RETURN))
-      return
+      logging.info('Would have run gob_util.QueryChanges(%s, %s, '
+                   'first_param=%s, limit=%d)', self.host, repr(query_kwds),
+                   change, self._GERRIT_MAX_QUERY_RETURN)
+      return []
 
     moar = gob_util.QueryChanges(
-        self.host, query_kwds, first_param=change,
+        self.host, query_kwds, first_param=change, sortkey=sortkey,
         limit=self._GERRIT_MAX_QUERY_RETURN, o_params=o_params)
     result = list(moar)
-    while moar and moar[-1].get('_more_changes'):
-      query_kwds['resume_sortkey'] = result[-1].get['_sortkey']
-      moar = gob_util.QueryChanges(self.host, query_kwds, first_param=change,
-                                   limit=self._GERRIT_MAX_QUERY_RETURN)
+    while moar and self.MORE_CHANGES in moar[-1]:
+      if self.SORTKEY not in moar[-1]:
+        raise GerritException(
+            'Gerrit query has more results, but is missing _sortkey field.')
+      sortkey = moar[-1][self.SORTKEY]
+      moar = gob_util.QueryChanges(
+          self.host, query_kwds, first_param=change, sortkey=sortkey,
+          limit=self._GERRIT_MAX_QUERY_RETURN, o_params=o_params)
       result.extend(moar)
+    result = [cros_patch.GerritPatch.ConvertQueryResults(
+        x, self.host) for x in result]
     if sort:
       result = sorted(result, key=operator.itemgetter(sort))
     if raw:
       return result
-    return [cros_patch.GerritPatch.FromGerritOnBorgQuery(
-        x, self.remote, self.host) for x in result]
+    return [cros_patch.GerritPatch(x, self.remote, url_prefix) for x in result]
 
   def QueryMultipleCurrentPatchset(self, changes):
     if not changes:
       return
-    results = gob_util.MultiQueryChanges(self.host, [({}, c) for c in changes],
-                                         limit=self._GERRIT_MAX_QUERY_RETURN)
-    for change, result in itertools.izip(changes, results):
-      if not result:
+    url_prefix = gob_util.GetGerritFetchUrl(self.host)
+    o_params = [
+        'CURRENT_COMMIT',
+        'CURRENT_REVISION',
+        'DETAILED_ACCOUNTS',
+        'DETAILED_LABELS',
+    ]
+    moar = gob_util.MultiQueryChanges(self.host, {}, changes,
+                                      limit=self._GERRIT_MAX_QUERY_RETURN,
+                                      o_params=o_params)
+    results = list(moar)
+    while moar and self.MORE_CHANGES in moar[-1]:
+      if self.SORTKEY not in moar[-1]:
+        raise GerritException(
+            'Gerrit query has more results, but is missing _sortkey field.')
+      sortkey = moar[-1][self.SORTKEY]
+      moar = gob_util.MultiQueryChanges(self.host, {}, changes,
+                                        limit=self._GERRIT_MAX_QUERY_RETURN,
+                                        sortkey=sortkey, o_params=o_params)
+      results.extend(moar)
+    for change in changes:
+      change_results = [x for x in results if (
+          str(x.get('_number')) == change or x.get('change_id') == change)]
+      if not change_results:
         raise GerritException('Change %s not found on server %s.'
                               % (change, self.host))
-      elif len(result) > 1:
+      elif len(change_results) > 1:
+        logging.warning(json.dumps(change_results, indent=2))
         raise GerritException(
             'Query for change %s returned multiple results.' % change)
-      yield change, result[0]
+      patch_dict = cros_patch.GerritPatch.ConvertQueryResults(change_results[0],
+                                                              self.host)
+      yield change, cros_patch.GerritPatch(patch_dict, self.remote, url_prefix)
+
+  @staticmethod
+  def _to_changenum(change):
+    """Unequivocally return a gerrit change number.
+
+    The argument may either be an number, which will be returned unchanged;
+    or an instance of GerritPatch, in which case the gerrit number wil be
+    extracted and converted to its 'external' (i.e., raw numeric) form.
+    """
+    if isinstance(change, cros_patch.GerritPatch):
+      change = cros_patch.FormatGerritNumber(change.gerrit_number,
+                                             force_external=True)
+    return change
+
+  def SetReview(self, change, msg=None, labels=None, dryrun=False):
+    if not msg and not labels:
+      return
+    if dryrun:
+      if msg:
+        logging.info('Would have add message "%s" to change "%s".',
+                     msg, change)
+      if labels:
+        for key, val in labels.iteritems():
+          logging.info('Would have set label "%s" to "%s" for change "%s".',
+              key, val, change)
+      return
+    gob_util.SetReview(
+        self.host, self._to_changenum(change), msg=msg, labels=labels)
 
   def RemoveCommitReady(self, change, dryrun=False):
-    gob_util.ResetReviewLabels(self.host, change, label='Commit-Queue')
+    if dryrun:
+      logging.info('Would have reset Commit-Queue label for %s', change)
+      return
+    gob_util.ResetReviewLabels(
+        self.host, self._to_changenum(change), label='Commit-Queue')
+
+  def SubmitChange(self, change, dryrun=False):
+    if dryrun:
+      logging.info('Would have submitted change %s', change)
+      return
+    gob_util.SubmitChange(self.host, self._to_changenum(change))
+
+  def AbandonChange(self, change, dryrun=False):
+    if dryrun:
+      logging.info('Would have abandoned change %s', change)
+      return
+    gob_util.AbandonChange(self.host, self._to_changenum(change))
+
+  def RestoreChange(self, change, dryrun=False):
+    if dryrun:
+      logging.info('Would have restored change %s', change)
+      return
+    gob_util.RestoreChange(self.host, self._to_changenum(change))
 
 
 def GetGerritPatchInfo(patches):
@@ -666,6 +747,16 @@ def GetGerritHelperForChange(change):
   function.
   """
   return GetGerritHelper(change.remote)
+
+
+def GetCrosInternal(**kwds):
+  """Convenience method for accessing private ChromeOS gerrit."""
+  return GetGerritHelper(constants.INTERNAL_REMOTE, **kwds)
+
+
+def GetCrosExternal(**kwds):
+  """Convenience method for accessing public ChromiumOS gerrit."""
+  return GetGerritHelper(constants.EXTERNAL_REMOTE, **kwds)
 
 
 def GetChangeRef(change_number, patchset=None):
