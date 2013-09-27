@@ -30,6 +30,14 @@ del _path
 
 EXTERNAL_GERRIT_SSH_REMOTE = 'gerrit'
 
+# Retry a push in GitPush if git returns a error response with any of that
+# messages. It's all observed 'bad' GoB responses so far.
+GIT_TRANSIENT_ERRORS = (
+    r'! \[remote rejected\].* -> .* \(error in hook\)',
+    r'! \[remote rejected\].* -> .* \(failed to lock\)',
+    r'remote error: Internal Server Error',
+)
+
 
 def FindRepoDir(path):
   """Returns the nearest higher-level repo dir from the specified path.
@@ -872,6 +880,52 @@ def GetTrackingBranch(git_repo, branch=None, for_checkout=True, fallback=True,
   return 'origin', 'master'
 
 
+def CreateBranch(git_repo, branch, branch_point='HEAD', track=False):
+  """Create a branch.
+
+  Args:
+    git_repo: Git repository to act on.
+    branch: Name of the branch to create.
+    branch_point: The ref to branch from.  Defaults to 'HEAD'.
+    track: Whether to setup the branch to track its starting ref.
+  """
+  cmd = ['checkout', '-B', branch, branch_point]
+  if track:
+    cmd.append('--track')
+  RunGit(git_repo, cmd)
+
+
+def GitPush(git_repo, refspec, push_to, dryrun=False, force=False, retry=True):
+  """Wrapper for pushing to a branch.
+
+  Arguments:
+    git_repo: Git repository to act on.
+    refspec: The local ref to push to the remote.
+    push_to: A RemoteRef object representing the remote ref to push to.
+    force: Whether to bypass non-fastforward checks.
+    retry: Retry a push in case of transient errors.
+  """
+  cmd = ['push', push_to.remote, '%s:%s' % (refspec, push_to.ref)]
+
+  if dryrun:
+    cmd.append('--dry-run')
+  if force:
+    cmd.append('--force')
+
+  def _ShouldRetry(exc):
+    """Returns True if push operation failed with a transient error."""
+    if not isinstance(exc, cros_build_lib.RunCommandError):
+      return False
+    return any(re.search(msg, exc.result.error) for msg in GIT_TRANSIENT_ERRORS)
+
+  if retry:
+    cros_build_lib.GenericRetry(_ShouldRetry, 10, RunGit, git_repo,
+                                cmd, sleep=3)
+  else:
+    RunGit(git_repo, cmd)
+
+
+# TODO(build): Switch callers of this function to use CreateBranch instead.
 def CreatePushBranch(branch, git_repo, sync=True, remote_push_branch=None):
   """Create a local branch for pushing changes inside a repo repository.
 

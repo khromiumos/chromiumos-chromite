@@ -15,6 +15,7 @@ import os
 import pickle
 import sys
 import time
+import unittest
 
 import constants
 sys.path.insert(0, constants.SOURCE_ROOT)
@@ -127,7 +128,7 @@ class Base(cros_test_lib.TestCase):
     return l
 
 
-class MoxBase(Base, cros_test_lib.MoxTestCase):
+class MoxBase(Base, cros_test_lib.MoxTestCase, cros_test_lib.MockTestCase):
 
   def setUp(self):
     self.mox.StubOutWithMock(validation_pool, '_RunCommand')
@@ -137,6 +138,8 @@ class MoxBase(Base, cros_test_lib.MoxTestCase):
     # the code is either misbehaving, or that the tests are bad.
     self.mox.StubOutWithMock(gerrit.GerritHelper, 'Query')
     self.mox.StubOutWithMock(gerrit.GerritHelper, '_SqlQuery')
+    self.PatchObject(validation_pool.ValidationPool, 'ReloadChanges',
+                     side_effect=lambda x: x)
 
   def MakeHelper(self, cros_internal=None, cros=None):
     # pylint: disable=W0201
@@ -155,6 +158,8 @@ class MoxBase(Base, cros_test_lib.MoxTestCase):
     # We use a custom mock class to fix a pymox bug where multiple mocks
     # sometimes equal each other (depending on stubs used).
     patch = MockPatch(cros_patch.GerritPatch)
+    # pylint: disable=W0201
+    patch.HasApproval = lambda _cat, _value: True
     mox_ = getattr(self, 'mox', None)
     if mox_:
       mox_._mock_objects.append(patch)
@@ -240,6 +245,7 @@ class TestPatchSeries(MoxBase):
         [applied_result, failed_tot_result, failed_inflight_result])
     return result
 
+  @unittest.skipIf(constants.USE_GOB, 'Magic constants are broken for GoB.')
   def testApplyWithDeps(self):
     """Test that we can apply changes correctly and respect deps.
 
@@ -310,6 +316,7 @@ class TestPatchSeries(MoxBase):
     self.assertResults(series, patches, [patch1, patch2, patch3])
     self.mox.VerifyAll()
 
+  @unittest.skipIf(constants.USE_GOB, 'Magic constants are broken for GoB.')
   def testGerritLazyMapping(self):
     """Given a patch lacking a gerrit number, via gerrit, map it to that change.
 
@@ -340,6 +347,7 @@ class TestPatchSeries(MoxBase):
     self.assertTrue(applied[1] is patch1)
     self.mox.VerifyAll()
 
+  @unittest.skipIf(constants.USE_GOB, 'Magic constants are broken for GoB.')
   def testCrosGerritDeps(self, cros_internal=True):
     """Test that we can apply changes correctly and respect deps.
 
@@ -380,6 +388,7 @@ class TestPatchSeries(MoxBase):
     query = change.id if query is None else query
     return helper.QuerySingleRecord(query, must_match=True)
 
+  @unittest.skipIf(constants.USE_GOB, 'Magic constants are broken for GoB.')
   def testApplyMissingDep(self):
     """Test that we don't try to apply a change without met dependencies.
 
@@ -398,6 +407,7 @@ class TestPatchSeries(MoxBase):
                        [], [patch2])
     self.mox.VerifyAll()
 
+  @unittest.skipIf(constants.USE_GOB, 'Magic constants are broken for GoB.')
   def testApplyWithCommittedDeps(self):
     """Test that we apply a change with dependency already committed."""
     series = self.GetPatchSeries()
@@ -614,6 +624,7 @@ class TestCoreLogic(MoxBase):
     pool._HandleApplySuccess(patch)
     self.mox.VerifyAll()
 
+  @unittest.skipIf(constants.USE_GOB, 'Magic constants are broken for GoB.')
   def testHandleApplyFailure(self):
     failures = [cros_patch.ApplyPatchException(x) for x in self.GetPatches(4)]
 
@@ -640,6 +651,7 @@ class TestCoreLogic(MoxBase):
     slave_pool._HandleApplyFailure(unnotified_patches)
     self.mox.VerifyAll()
 
+  @unittest.skipIf(constants.USE_GOB, 'Magic constants are broken for GoB.')
   def testSubmitPoolFailures(self):
     pool = self.MakePool(dryrun=False)
     patch1, patch2, patch3 = patches = self.GetPatches(3)
@@ -661,15 +673,9 @@ class TestCoreLogic(MoxBase):
     gerrit.GerritHelper.IsChangeCommitted(
         str(patch2.gerrit_number), False).InAnyOrder().AndReturn(False)
 
+    pool._HandleCouldNotSubmit(patch1).InAnyOrder()
     pool._HandleCouldNotSubmit(patch2).InAnyOrder()
-
-    pool._SubmitChange(patch1).AndReturn(None)
-    gerrit.GerritHelper.IsChangeCommitted(
-        str(patch1.gerrit_number), False).AndReturn(True)
-
-    pool._SubmitChange(patch3).AndRaise(
-        cros_build_lib.RunCommandError('blah', None))
-    pool._HandleCouldNotSubmit(patch3).InAnyOrder().AndReturn(None)
+    pool._HandleCouldNotSubmit(patch3).InAnyOrder()
 
     cros_build_lib.TreeOpen(
         validation_pool.ValidationPool.STATUS_URL,
@@ -680,6 +686,7 @@ class TestCoreLogic(MoxBase):
                       pool.SubmitPool)
     self.mox.VerifyAll()
 
+  @unittest.skipIf(constants.USE_GOB, 'Magic constants are broken for GoB.')
   def testSubmitPool(self):
     pool = self.MakePool(dryrun=False)
     passed = self.GetPatches(3)
@@ -710,6 +717,7 @@ class TestCoreLogic(MoxBase):
     pool.SubmitPool()
     self.mox.VerifyAll()
 
+  @unittest.skipIf(constants.USE_GOB, 'Magic constants are broken for GoB.')
   def testSubmitNonManifestChanges(self):
     """Simple test to make sure we can submit non-manifest changes."""
     pool = self.MakePool(dryrun=False)
@@ -739,15 +747,17 @@ class TestCoreLogic(MoxBase):
     pool.SubmitNonManifestChanges()
     self.mox.VerifyAll()
 
+  @unittest.skipIf(constants.USE_GOB, 'Magic constants are broken for GoB.')
   def testGerritSubmit(self):
     """Tests submission review string looks correct."""
     pool = self.MakePool(dryrun=False)
+    self.mox.StubOutWithMock(cros_build_lib, 'RunCommand')
 
     patch = self.GetPatches(1)
     # Force int conversion of gerrit_number to ensure the test is sane.
     cmd = ('ssh -p 29418 gerrit.chromium.org gerrit review '
            '--submit %i,%i' % (int(patch.gerrit_number), patch.patch_number))
-    validation_pool._RunCommand(cmd.split(), False).AndReturn(None)
+    cros_build_lib.RunCommand(cmd.split())
     self.mox.ReplayAll()
     pool._SubmitChange(patch)
     self.mox.VerifyAll()
@@ -1092,6 +1102,8 @@ class MockCreateDisjointTransactions(cros_test_lib.MockTestCase, Base):
                      side_effect=self.GetGerritPatch)
     self.PatchObject(validation_pool.PatchSeries, '_LookupHelper',
                      autospec=True)
+    self.PatchObject(validation_pool.ValidationPool, 'ReloadChanges',
+                     side_effect=lambda x: x)
 
   def GetDepsForChange(self, patch):
     return self.deps[patch], []
@@ -1106,6 +1118,7 @@ class MockCreateDisjointTransactions(cros_test_lib.MockTestCase, Base):
     return patches
 
 
+@unittest.skipIf(constants.USE_GOB, 'Magic constants are broken for GoB.')
 class TestCreateDisjointTransactions(MockCreateDisjointTransactions):
   """Test the CreateDisjointTransactions function."""
 
@@ -1143,6 +1156,7 @@ class TestCreateDisjointTransactions(MockCreateDisjointTransactions):
     self.assertEqual(0, call_count)
 
 
+@unittest.skipIf(constants.USE_GOB, 'Magic constants are broken for GoB.')
 class SubmitPoolTest(MockCreateDisjointTransactions,
                      cros_build_lib_unittest.RunCommandTestCase):
   """Test full ability to submit and reject CL pools."""
