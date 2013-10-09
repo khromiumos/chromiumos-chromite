@@ -1183,10 +1183,10 @@ sonic = _config(
   hw_tests=[],
 )
 
-internal_pfq_branch.add_config('x86-alex-pre-flight-branch',
+internal_pfq_branch.add_config('samus-pre-flight-branch',
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['x86-alex'],
+  boards=['samus'],
 )
 
 internal.add_config('test-ap',
@@ -1724,10 +1724,9 @@ def _AddFirmwareConfigs():
 _AddFirmwareConfigs()
 
 
-# This is an example factory branch configuration for x86.
-# Modify it to match your factory branch.
-_factory_release.add_config('x86-mario-factory',
-  boards=['x86-mario'],
+# This is the factory branch configuration for samus.
+_factory_release.add_config('samus-factory',
+  boards=['samus'],
 )
 
 # This is an example factory branch configuration for arm.
