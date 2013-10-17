@@ -1621,6 +1621,10 @@ def _AddFirmwareConfigs():
 _AddFirmwareConfigs()
 
 
+_factory_release.add_config('beltino-factory',
+  boards=['beltino'],
+)
+
 _factory_release.add_config('falco-factory',
   boards=['falco'],
 )
