@@ -1582,8 +1582,6 @@ _release.add_config('fox_wtm2-release',
 
 _release.add_config('leon-release',
   boards=['leon'],
-  hw_tests=[],
-  vm_tests=None,
 )
 
 _release.add_config('link-release',
