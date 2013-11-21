@@ -1205,10 +1205,10 @@ sonic = _config(
   hw_tests=[],
 )
 
-internal_pfq_branch.add_config('x86-alex-pre-flight-branch',
+internal_pfq_branch.add_config('panther-pre-flight-branch',
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['x86-alex'],
+  boards=['panther'],
 )
 
 internal.add_config('test-ap',
