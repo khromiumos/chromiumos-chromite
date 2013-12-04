@@ -1788,10 +1788,8 @@ def _AddFirmwareConfigs():
 _AddFirmwareConfigs()
 
 
-# This is an example factory branch configuration for x86.
-# Modify it to match your factory branch.
-_factory_release.add_config('x86-mario-factory',
-  boards=['x86-mario'],
+_factory_release.add_config('panther-factory',
+  boards=['panther'],
 )
 
 # This is an example factory branch configuration for arm.
