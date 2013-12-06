@@ -1100,9 +1100,12 @@ class GerritPatch(GitRepoPatch):
       approvals = []
       for label, label_data in change['labels'].iteritems():
         for review_data in label_data.get('all', []):
+          label_type = constants.GERRIT_ON_BORG_LABELS.get(label)
+          if not label_type:
+            continue
           granted_on = review_data.get('date', change['created'])
           approvals.append({
-              'type': constants.GERRIT_ON_BORG_LABELS[label],
+              'type': label_type,
               'description': label,
               'value': str(review_data.get('value', '0')),
               'grantedOn': _convert_tm(granted_on),
