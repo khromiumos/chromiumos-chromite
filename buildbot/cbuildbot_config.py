@@ -1612,6 +1612,8 @@ _release.add_group('parrot-release-group',
   ),
   _release.add_config('parrot_ivb-release',
     boards=['parrot_ivb'],
+    unittests=None,
+    vm_tests=None,
   )
 )
 
