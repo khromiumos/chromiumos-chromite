@@ -156,6 +156,7 @@ def BuildRootGitCleanup(buildroot):
     buildroot: buildroot to clean up.
   """
   lock_path = os.path.join(buildroot, '.clean_lock')
+  deleted_paths = multiprocessing.Event()
 
   def RunCleanupCommands(cwd):
     with locking.FileLock(lock_path, verbose=False).read_lock() as lock:
@@ -172,6 +173,7 @@ def BuildRootGitCleanup(buildroot):
         logging.warn('\n%s', result.error)
         logging.warn('Deleting %s because %s failed', cwd, e.result.cmd)
         lock.write_lock()
+        deleted_paths.set()
         osutils.RmDir(cwd, ignore_missing=True)
         # Delete the backing store as well for production jobs, because we
         # want to make sure any corruption is wiped.  Don't do it for
@@ -189,6 +191,13 @@ def BuildRootGitCleanup(buildroot):
   dirs = [[os.path.join(buildroot, attrs['path'])] for attrs in
           git.ManifestCheckout.Cached(buildroot).projects.values()]
   parallel.RunTasksInProcessPool(RunCleanupCommands, dirs)
+
+  # repo shares git object directories amongst multiple project paths. If the
+  # first pass deleted an object dir for a project path, then other repositories
+  # (project paths) of that same project may now be broken. Do a second pass to
+  # clean them up as well.
+  if deleted_paths.is_set():
+    parallel.RunTasksInProcessPool(RunCleanupCommands, dirs)
 
 
 def CleanUpMountPoints(buildroot):
