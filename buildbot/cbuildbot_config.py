@@ -1098,11 +1098,11 @@ sonic = _config(
   hw_tests=[],
 )
 
-internal_pfq_branch.add_config('spring-pre-flight-branch',
+internal_pfq_branch.add_config('skate-pre-flight-branch',
   arm,
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['daisy_spring'],
+  boards=['daisy_skate'],
 )
 
 ### Master paladin (CQ builder).
@@ -1512,9 +1512,9 @@ _factory_release.add_config('x86-mario-factory',
 )
 
 # This is a factory branch configuration for arm.
-_factory_release.add_config('spring-factory',
+_factory_release.add_config('skate-factory',
   arm,
-  boards=['daisy_spring'],
+  boards=['daisy_skate'],
 )
 
 
