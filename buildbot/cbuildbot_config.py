@@ -937,11 +937,11 @@ internal_incremental = internal.derive(
   description='Incremental Builds (internal)',
 )
 
-internal_pfq_branch.add_config('daisy_spring-pre-flight-branch',
+internal_pfq_branch.add_config('daisy_skate-pre-flight-branch',
   arm,
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['daisy_spring'],
+  boards=['daisy_skate'],
 )
 
 internal_arm_paladin = internal_paladin.derive(arm)
@@ -1161,6 +1161,10 @@ _arm_release.add_config('spring-release',
   boards=['daisy_spring'],
 )
 
+_arm_release.add_config('skate-release',
+  boards=['daisy_skate'],
+)
+
 # Factory and Firmware releases much inherit from these classes.  Modifications
 # for these release builders should go here.
 
@@ -1209,6 +1213,7 @@ _x86_depthcharge_firmware_boards = (
 _arm_firmware_boards = (
   'daisy',
   'daisy_spring',
+  'daisy_skate',
 )
 
 def _AddFirmwareConfigs():
