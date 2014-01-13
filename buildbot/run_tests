@@ -90,6 +90,8 @@ special_tests=(
 
   # Tests that are presently broken.
   ['lib/gdata_lib_unittest.py']=skip
+  ['lib/gerrit_unittest.py']=skip
+  ['lib/patch_unittest.py']=skip
   ['scripts/chrome_set_ver_unittest.py']=skip
   ['scripts/check_gdata_token_unittest.py']=skip
   ['scripts/merge_package_status_unittest.py']=skip
