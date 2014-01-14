@@ -1171,10 +1171,11 @@ sonic = _config(
   hw_tests=[],
 )
 
-internal_pfq_branch.add_config('x86-alex-pre-flight-branch',
+internal_pfq_branch.add_config('daisy-pre-flight-branch',
+  arm,
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['x86-alex'],
+  boards=['daisy'],
 )
 
 stumpy_test_ap = internal.derive(
