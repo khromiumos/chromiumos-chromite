@@ -1950,6 +1950,7 @@ _x86_depthcharge_firmware_boards = (
   'rambi',
   'samus',
   'squawks',
+  'zako',
 )
 
 _arm_firmware_boards = (
