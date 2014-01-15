@@ -1310,12 +1310,6 @@ sonic = _config(
   hw_tests=[],
 )
 
-internal_pfq_branch.add_config('rambi-pre-flight-branch',
-  master=True,
-  push_overlays=constants.BOTH_OVERLAYS,
-  boards=['rambi'],
-)
-
 internal.add_config('test-ap',
   vm_tests=None,
   description='stumpy image used for WiFi testing',
@@ -1994,6 +1988,12 @@ def _AddFirmwareConfigs():
 
 _AddFirmwareConfigs()
 
+internal_pfq_branch.add_config('rambi-pre-flight-branch',
+  _firmware,
+  master=True,
+  push_overlays=constants.BOTH_OVERLAYS,
+  boards=['rambi'],
+)
 
 # This is an example factory branch configuration for x86.
 # Modify it to match your factory branch.
