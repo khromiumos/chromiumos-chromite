@@ -1938,6 +1938,7 @@ _x86_firmware_boards = (
   'stumpy',
   'wolf',
   'x86-mario',
+  'zako',
 )
 
 _x86_depthcharge_firmware_boards = (
