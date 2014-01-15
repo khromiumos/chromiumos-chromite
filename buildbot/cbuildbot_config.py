@@ -58,7 +58,7 @@ def OverrideConfigForTrybot(build_config, options):
   """Apply trybot-specific configuration settings.
 
   Args:
-    build_config:  The build configuration dictionary to override.
+    build_config: The build configuration dictionary to override.
       The dictionary is not modified.
     options: The options passed on the commandline.
 
@@ -1298,10 +1298,10 @@ sonic = _config(
   hw_tests=[],
 )
 
-internal_pfq_branch.add_config('x86-alex-pre-flight-branch',
+internal_pfq_branch.add_config('zako-pre-flight-branch',
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['x86-alex'],
+  boards=['zako'],
 )
 
 internal.add_config('test-ap',
@@ -1985,8 +1985,8 @@ _AddFirmwareConfigs()
 
 # This is an example factory branch configuration for x86.
 # Modify it to match your factory branch.
-_factory_release.add_config('x86-mario-factory',
-  boards=['x86-mario'],
+_factory_release.add_config('zako-factory',
+  boards=['zako'],
 )
 
 # This is an example factory branch configuration for arm.
