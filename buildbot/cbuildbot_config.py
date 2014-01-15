@@ -58,7 +58,7 @@ def OverrideConfigForTrybot(build_config, options):
   """Apply trybot-specific configuration settings.
 
   Args:
-    build_config:  The build configuration dictionary to override.
+    build_config: The build configuration dictionary to override.
       The dictionary is not modified.
     options: The options passed on the commandline.
 
@@ -1310,10 +1310,10 @@ sonic = _config(
   hw_tests=[],
 )
 
-internal_pfq_branch.add_config('x86-alex-pre-flight-branch',
+internal_pfq_branch.add_config('rambi-pre-flight-branch',
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['x86-alex'],
+  boards=['rambi'],
 )
 
 internal.add_config('test-ap',
