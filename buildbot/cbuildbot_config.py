@@ -942,6 +942,8 @@ internal_pfq_branch.add_config('daisy_skate-pre-flight-branch',
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
   boards=['daisy_skate'],
+  images=[],
+  packages=('virtual/chromeos-firmware',),
 )
 
 internal_arm_paladin = internal_paladin.derive(arm)
