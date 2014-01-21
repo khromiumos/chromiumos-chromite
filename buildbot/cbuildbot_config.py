@@ -1205,12 +1205,6 @@ sonic = _config(
   hw_tests=[],
 )
 
-internal_pfq_branch.add_config('monroe-pre-flight-branch',
-  master=True,
-  push_overlays=constants.BOTH_OVERLAYS,
-  boards=['monroe'],
-)
-
 internal.add_config('test-ap',
   vm_tests=None,
   description='stumpy image used for WiFi testing',
@@ -1786,6 +1780,15 @@ def _AddFirmwareConfigs():
     )
 
 _AddFirmwareConfigs()
+
+
+# Pre-flight defnition for this branch.
+internal_pfq_branch.add_config('monroe-pre-flight-branch',
+  _firmware,
+  master=True,
+  push_overlays=constants.BOTH_OVERLAYS,
+  boards=['monroe'],
+)
 
 
 # This is an example factory branch configuration for x86.
