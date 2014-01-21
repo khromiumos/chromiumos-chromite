@@ -1205,12 +1205,6 @@ sonic = _config(
   hw_tests=[],
 )
 
-internal_pfq_branch.add_config('panther-pre-flight-branch',
-  master=True,
-  push_overlays=constants.BOTH_OVERLAYS,
-  boards=['panther'],
-)
-
 internal.add_config('test-ap',
   vm_tests=None,
   description='stumpy image used for WiFi testing',
@@ -1787,6 +1781,14 @@ def _AddFirmwareConfigs():
 
 _AddFirmwareConfigs()
 
+
+# This is a pre-flight for the firmware branch.
+internal_pfq_branch.add_config('panther-pre-flight-branch',
+  _firmware,
+  master=True,
+  push_overlays=constants.BOTH_OVERLAYS,
+  boards=['panther'],
+)
 
 # This is an example factory branch configuration for x86.
 # Modify it to match your factory branch.
