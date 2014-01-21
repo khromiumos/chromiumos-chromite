@@ -1298,12 +1298,6 @@ sonic = _config(
   hw_tests=[],
 )
 
-internal_pfq_branch.add_config('zako-pre-flight-branch',
-  master=True,
-  push_overlays=constants.BOTH_OVERLAYS,
-  boards=['zako'],
-)
-
 internal.add_config('test-ap',
   vm_tests=None,
   description='stumpy image used for WiFi testing',
@@ -1983,6 +1977,14 @@ def _AddFirmwareConfigs():
     )
 
 _AddFirmwareConfigs()
+
+# On this branch, preflight against the firmware build only.
+internal_pfq_branch.add_config('zako-pre-flight-branch',
+  _firmware,
+  master=True,
+  push_overlays=constants.BOTH_OVERLAYS,
+  boards=['zako'],
+)
 
 
 # This is an example factory branch configuration for x86.
