@@ -937,13 +937,6 @@ internal_incremental = internal.derive(
   description='Incremental Builds (internal)',
 )
 
-internal_pfq_branch.add_config('daisy_spring-pre-flight-branch',
-  arm,
-  master=True,
-  push_overlays=constants.BOTH_OVERLAYS,
-  boards=['daisy_spring'],
-)
-
 internal_arm_paladin = internal_paladin.derive(arm)
 
 internal_paladin.add_config('mario-paladin',
@@ -1173,7 +1166,7 @@ _factory_release = _release.derive(
   description='Factory Builds',
 )
 
-_firmware_release = _release.derive(
+_firmware = _config(
   images=[],
   packages=('virtual/chromeos-firmware',),
   usepkg_setup_board=True,
@@ -1189,6 +1182,8 @@ _firmware_release = _release.derive(
   trybot_list=False,
   description='Firmware Builds',
 )
+
+_firmware_release = _release.derive(_firmware)
 
 _depthcharge_release = _firmware_release.derive(useflags=['depthcharge'])
 
@@ -1231,6 +1226,14 @@ def _AddFirmwareConfigs():
     )
 
 _AddFirmwareConfigs()
+
+internal_pfq_branch.add_config('daisy_spring-pre-flight-branch',
+  _firmware,
+  arm,
+  master=True,
+  push_overlays=constants.BOTH_OVERLAYS,
+  boards=['daisy_spring'],
+)
 
 
 # This is an example factory branch configuration for x86.
