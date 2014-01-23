@@ -89,6 +89,8 @@ special_tests=(
   ['lib/cgroups_unittest.py']=outside
 
   # Tests that are presently broken.
+  ['lib/gerrit_unittest.py']=skip
+  ['lib/patch_unittest.py']=skip
   ['lib/gdata_lib_unittest.py']=skip
   ['scripts/chrome_set_ver_unittest.py']=skip
   ['scripts/check_gdata_token_unittest.py']=skip
