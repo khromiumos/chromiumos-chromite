@@ -1289,12 +1289,6 @@ sonic = _config(
   hw_tests=[],
 )
 
-internal_pfq_branch.add_config('x86-alex-pre-flight-branch',
-  master=True,
-  push_overlays=constants.BOTH_OVERLAYS,
-  boards=['x86-alex'],
-)
-
 internal.add_config('test-ap',
   vm_tests=None,
   description='stumpy image used for WiFi testing',
@@ -1825,12 +1819,14 @@ _arm_release.add_config('peach_pi-release',
 # Naming conventions also must be followed.  Factory and firmware branches must
 # end in -factory or -firmware suffixes.
 
-_factory_release = _release.derive(
+_factory = _config(
   upload_hw_test_artifacts=False,
   upload_symbols=False,
   hw_tests=[],
   description='Factory Builds',
 )
+
+_factory_release = _release.derive(_factory)
 
 _firmware = _config(
   images=[],
@@ -1927,8 +1923,8 @@ _AddFirmwareConfigs()
 
 # This is an example factory branch configuration for x86.
 # Modify it to match your factory branch.
-_factory_release.add_config('x86-mario-factory',
-  boards=['x86-mario'],
+_factory_release.add_config('monroe-factory',
+  boards=['monroe'],
 )
 
 # This is an example factory branch configuration for arm.
@@ -1936,6 +1932,13 @@ _factory_release.add_config('x86-mario-factory',
 _factory_release.add_config('daisy-factory',
   arm,
   boards=['daisy'],
+)
+
+internal_pfq_branch.add_config('monroe-pre-flight-branch',
+  _factory,
+  master=True,
+  push_overlays=constants.BOTH_OVERLAYS,
+  boards=['monroe'],
 )
 
 
