@@ -1733,8 +1733,6 @@ _release.add_config('monroe-release',
 
 _release.add_config('panther-release',
   boards=['panther'],
-  hw_tests=[],
-  vm_tests=None,
 )
 
 _release.add_group('parrot-release-group',
