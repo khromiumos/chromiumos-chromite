@@ -1906,6 +1906,7 @@ _firmware = _config(
   upload_symbols=False,
   signer_tests=False,
   trybot_list=False,
+  prebuilts=True,
 )
 
 _firmware_release = _release.derive(_firmware,

@@ -1004,6 +1004,7 @@ def UploadPrebuilts(category, chrome_rev, private_bucket, buildroot, **kwargs):
     extra_args.extend(['--key', _PREFLIGHT_BINHOST])
   else:
     assert category in (constants.BUILD_FROM_SOURCE_TYPE,
+                        constants.CANARY_TYPE,
                         constants.CHROOT_BUILDER_TYPE)
     extra_args.extend(['--key', _FULL_BINHOST])
 
