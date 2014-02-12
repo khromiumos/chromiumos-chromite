@@ -1910,6 +1910,24 @@ _firmware = _config(
   git_sync=True,
 )
 
+_firmware_pfq = _config(
+  images=[],
+  packages=('virtual/chromeos-firmware',),
+  usepkg_setup_board=True,
+  usepkg_build_packages=True,
+  sync_chrome=False,
+  build_tests=False,
+  chrome_sdk=False,
+  unittests=False,
+  vm_tests=None,
+  hw_tests=[],
+  dev_installer_prebuilts=False,
+  upload_hw_test_artifacts=False,
+  upload_symbols=False,
+  signer_tests=False,
+  trybot_list=False,
+)
+
 _firmware_release = _release.derive(_firmware,
   description='Firmware Canary',
 )
@@ -1991,7 +2009,7 @@ def _AddFirmwareConfigs():
 _AddFirmwareConfigs()
 
 internal_pfq_branch.add_config('rambi-pre-flight-branch',
-  _firmware,
+  _firmware_pfq,
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
   boards=['rambi'],
