@@ -1348,10 +1348,11 @@ internal_incremental = internal.derive(
   description='Incremental Builds (internal)',
 )
 
-internal_pfq_branch.add_config('x86-alex-pre-flight-branch',
+internal_pfq_branch.add_config('peach_pit-pre-flight-branch',
+  arm,
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['x86-alex'],
+  boards=['peach_pit'],
 )
 
 # A test-ap image is just a test image with a special profile enabled.
@@ -2134,6 +2135,15 @@ _factory_release.add_config('daisy-factory',
   boards=['daisy'],
 )
 
+_factory_release.add_config('peach_pit-factory',
+  arm,
+  boards=['peach_pit'],
+)
+
+_factory_release.add_config('peach_pi-factory',
+  arm,
+  boards=['peach_pi'],
+)
 
 def GetDisplayPosition(config_name, type_order=CONFIG_TYPE_DUMP_ORDER):
   """Given a config_name, return display position specified by suffix_order.
