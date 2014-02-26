@@ -149,6 +149,7 @@ def ValidateClobber(buildroot):
 
 # =========================== Main Commands ===================================
 
+
 def BuildRootGitCleanup(buildroot):
   """Put buildroot onto manifest branch. Delete branches created on last run.
 
@@ -156,7 +157,7 @@ def BuildRootGitCleanup(buildroot):
     buildroot: buildroot to clean up.
   """
   lock_path = os.path.join(buildroot, '.clean_lock')
-  deleted_paths = multiprocessing.Event()
+  deleted_objdirs = multiprocessing.Event()
 
   def RunCleanupCommands(cwd):
     with locking.FileLock(lock_path, verbose=False).read_lock() as lock:
@@ -171,21 +172,24 @@ def BuildRootGitCleanup(buildroot):
       except cros_build_lib.RunCommandError, e:
         result = e.result
         logging.warn('\n%s', result.error)
-        logging.warn('Deleting %s because %s failed', cwd, e.result.cmd)
+
+        # If there's no repository corruption, just delete the index.
+        corrupted = git.IsGitRepositoryCorrupted(cwd)
         lock.write_lock()
-        deleted_paths.set()
+        logging.warn('Deleting %s because %s failed', cwd, result.cmd)
         osutils.RmDir(cwd, ignore_missing=True)
-        # Delete the backing store as well for production jobs, because we
-        # want to make sure any corruption is wiped.  Don't do it for
-        # tryjobs so the error is visible and can be debugged.
-        logging.warn('Deleting %s as well', repo_store)
-        osutils.RmDir(repo_store, ignore_missing=True)
         cros_build_lib.PrintBuildbotStepWarnings()
-      else:
-        # Delete all branches created by cbuildbot.
-        if os.path.isdir(repo_store):
-          git.RunGit(cwd, ['--git-dir', repo_store, 'branch', '-D'] +
-                          list(constants.CREATED_BRANCHES), error_code_ok=True)
+        if corrupted:
+          # Looks like the object dir is corrupted. Delete the whole repository.
+          deleted_objdirs.set()
+          for store in (repo_git_store, repo_obj_store):
+            logging.warn('Deleting %s as well', store)
+            osutils.RmDir(store, ignore_missing=True)
+
+      # Delete all branches created by cbuildbot.
+      if os.path.isdir(repo_git_store):
+        cmd = ['branch', '-D'] + list(constants.CREATED_BRANCHES)
+        git.RunGit(repo_git_store, cmd, error_code_ok=True)
 
   # Cleanup all of the directories.
   dirs = [[os.path.join(buildroot, attrs['path'])] for attrs in
@@ -196,7 +200,7 @@ def BuildRootGitCleanup(buildroot):
   # first pass deleted an object dir for a project path, then other repositories
   # (project paths) of that same project may now be broken. Do a second pass to
   # clean them up as well.
-  if deleted_paths.is_set():
+  if deleted_objdirs.is_set():
     parallel.RunTasksInProcessPool(RunCleanupCommands, dirs)
 
 
