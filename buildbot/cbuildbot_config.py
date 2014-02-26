@@ -1347,6 +1347,7 @@ internal_incremental = internal.derive(
 
 internal_pfq_branch.add_config('rambi-pre-flight-branch',
   master=True,
+  vm_tests=None,
   push_overlays=constants.BOTH_OVERLAYS,
   boards=['rambi'],
 )
@@ -2115,18 +2116,22 @@ _AddFirmwareConfigs()
 # This is an example factory branch configuration for x86.
 # Modify it to match your factory branch.
 _factory_release.add_config('rambi-factory',
+  vm_tests=None,
   boards=['rambi'],
 )
 
 _factory_release.add_config('squawks-factory',
+  vm_tests=None,
   boards=['squawks'],
 )
 
 _factory_release.add_config('glimmer-factory',
+  vm_tests=None,
   boards=['glimmer'],
 )
 
 _factory_release.add_config('clapper-factory',
+  vm_tests=None,
   boards=['clapper'],
 )
 
