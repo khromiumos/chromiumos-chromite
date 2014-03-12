@@ -1394,6 +1394,12 @@ internal_paladin.add_config('clapper-paladin',
   important=False,
 )
 
+internal_paladin.add_config('enguarde-paladin',
+  boards=['enguarde'],
+  paladin_builder_name='enguarde paladin',
+  important=False,
+)
+
 # amd64 full compile
 internal_paladin.add_config('falco-paladin',
   full_paladin,
@@ -1743,6 +1749,11 @@ _release.add_config('clapper-release',
   hw_tests=[],
 )
 
+_release.add_config('enguarde-release',
+  boards=['enguarde'],
+  hw_tests=[],
+)
+
 _release.add_config('falco-release',
   boards=['falco'],
 )
@@ -1973,6 +1984,7 @@ _x86_firmware_boards = (
   'beltino',
   'butterfly',
   'clapper',
+  'enguarde',
   'falco',
   'glimmer',
   'kip',
@@ -1998,6 +2010,7 @@ _x86_firmware_boards = (
 _x86_depthcharge_firmware_boards = (
   'bayleybay',
   'clapper',
+  'enguarde',
   'glimmer',
   'kip',
   'leon',
