@@ -25,6 +25,7 @@ from chromite.buildbot import portage_utilities
 from chromite.lib import cros_build_lib
 from chromite.lib import gerrit
 from chromite.lib import git
+from chromite.lib import gob_util
 from chromite.lib import gs
 from chromite.lib import patch as cros_patch
 
@@ -304,12 +305,11 @@ class PatchSeries(object):
       remote = constants.INTERNAL_REMOTE
     return self._helper_pool.GetHelper(remote)
 
-  def _GetGerritPatch(self, change, query, parent_lookup=False):
+  def _GetGerritPatch(self, query, parent_lookup=False):
     """Query the configured helpers looking for a given change.
 
     Args:
-      change: A cros_patch.GitRepoPatch derivative that we're querying
-        on behalf of.
+      project: The gerrit project to query.
       query: The ChangeId we're searching for.
       parent_lookup: If True, this means we're tracing out the git parents
         of the given change- as such limit the query purely to that
@@ -317,7 +317,12 @@ class PatchSeries(object):
     """
     helper = self._LookupHelper(query)
     query = query_text = cros_patch.FormatPatchDep(query, force_external=True)
-    change = helper.QuerySingleRecord(query_text, must_match=True)
+    if constants.USE_GOB:
+      change = helper.QuerySingleRecord(query_text, must_match=False)
+      if not change:
+        return
+    else:
+      change = helper.QuerySingleRecord(query_text, must_match=True)
     # If the query was a gerrit number based query, check the projects/change-id
     # to see if we already have it locally, but couldn't map it since we didn't
     # know the gerrit number at the time of the initial injection.
@@ -339,16 +344,16 @@ class PatchSeries(object):
     return change
 
   @_PatchWrapException
-  def _LookupUncommittedChanges(self, parent, deps, parent_lookup=False,
+  def _LookupUncommittedChanges(self, leaf, deps, parent_lookup=False,
                                 limit_to=None):
     """Given a set of deps (changes), return unsatisfied dependencies.
 
     Args:
-      parent: The change we're resolving for.
-      deps: A sequence of dependencies for the parent that we need to identify
+      leaf: The change we're resolving for.
+      deps: A sequence of dependencies for the leaf that we need to identify
         as either merged, or needing resolving.
       parent_lookup: If True, this means we're trying to trace out the git
-        parentage of a change, thus limit the lookup to the parent's project
+        parentage of a change, thus limit the lookup to the leaf's project
         and branch.
       limit_to: If non-None, then this must be a mapping (preferably a
         cros_patch.PatchCache for translation reasons) of which non-committed
@@ -372,15 +377,15 @@ class PatchSeries(object):
       dep_change = self._lookup_cache[dep]
 
       if (parent_lookup and dep_change is not None and
-          (parent.project != dep_change.project or
-           parent.tracking_branch != dep_change.tracking_branch)):
+          (leaf.project != dep_change.project or
+           leaf.tracking_branch != dep_change.tracking_branch)):
         logging.warn('Found different CL with matching lookup key in cache')
         dep_change = None
 
       if dep_change is None:
-        dep_change = self._GetGerritPatch(parent, dep,
-                                          parent_lookup=parent_lookup)
-
+        dep_change = self._GetGerritPatch(dep, parent_lookup=parent_lookup)
+      if dep_change is None:
+        continue
       if getattr(dep_change, 'IsAlreadyMerged', lambda: False)():
         continue
       elif limit_to is not None and dep_change not in limit_to:
@@ -1355,7 +1360,6 @@ class ValidationPool(object):
     assert self.is_master, 'Non-master builder calling SubmitPool'
     assert not self.pre_cq, 'Trybot calling SubmitPool'
 
-    changes_that_failed_to_submit = []
     # We use the default timeout here as while we want some robustness against
     # the tree status being red i.e. flakiness, we don't want to wait too long
     # as validation can become stale.
@@ -1363,21 +1367,45 @@ class ValidationPool(object):
         self.STATUS_URL, self.SLEEP_TIMEOUT):
       raise TreeIsClosedException()
 
+    # Reload all of the changes from the Gerrit server so that we have a fresh
+    # view of their approval status. This is needed so that our filtering that
+    # occurs below will be mostly up-to-date.
+    changes = list(self.ReloadChanges(changes))
+    changes_that_failed_to_submit = []
+
     plans, _ = self._patch_series.CreateDisjointTransactions(changes)
 
     for plan in plans:
+      # First, verify that all changes have their approvals. We do this up front
+      # to reduce the risk of submitting a subset of a cyclic set of changes
+      # without approvals.
+      submit_changes = True
+      filtered_plan = self.FilterNonMatchingChanges(plan)
+      for change in set(plan) - set(filtered_plan):
+        logging.error('Aborting plan due to change %s', change)
+        submit_changes = False
+
+      # Now, actually submit all of the changes.
+      submitted_changes = 0
       for change in plan:
         was_change_submitted = False
-        logging.info('Change %s will be submitted', change)
-        try:
+        if submit_changes:
+          logging.info('Change %s will be submitted', change)
           self._SubmitChange(change)
-          was_change_submitted = self._helper_pool.ForChange(
-              change).IsChangeCommitted(str(change.gerrit_number), self.dryrun)
-        except cros_build_lib.RunCommandError:
-          logging.error('gerrit review --submit failed for change.')
-        finally:
-          if not was_change_submitted:
-            changes_that_failed_to_submit.append(change)
+          was_change_submitted = self._IsChangeCommitted(change)
+          submitted_changes += int(was_change_submitted)
+
+        if not was_change_submitted:
+          changes_that_failed_to_submit.append(change)
+          submit_changes = False
+
+      if submitted_changes and not submit_changes:
+        # We can't necessarily revert our changes, because other developers
+        # might have chumped changes on top. For now, just print an error
+        # message. If you see this error a lot, consider implementing
+        # a best-effort attempt at reverting changes.
+        logging.error('Partial transaction aborted.')
+        logging.error('Some changes were erroneously submitted.')
 
     for change in changes_that_failed_to_submit:
       logging.error('Could not submit %s', str(change))
@@ -1386,12 +1414,46 @@ class ValidationPool(object):
     if changes_that_failed_to_submit:
       raise FailedToSubmitAllChangesException(changes_that_failed_to_submit)
 
+  def ReloadChanges(self, changes):
+    """Reload the specified |changes| from the server.
+
+    Return the reloaded changes.
+    """
+    # Split the changes into internal and external changes. This is needed
+    # because we have two servers (internal and external).
+    int_numbers, ext_numbers = [], []
+    for change in changes:
+      number = str(change.gerrit_number)
+      if change.internal:
+        int_numbers.append(number)
+      else:
+        ext_numbers.append(number)
+
+    # QueryMultipleCurrentPatchset returns a tuple of the patch number and the
+    # changes.
+    int_pool = gerrit.GetCrosInternal()
+    ext_pool = gerrit.GetCrosExternal()
+    return ([x[1] for x in int_pool.QueryMultipleCurrentPatchset(int_numbers)] +
+            [x[1] for x in ext_pool.QueryMultipleCurrentPatchset(ext_numbers)])
+
+  def _IsChangeCommitted(self, change, default=None):
+    """Return whether |change| was committed.
+
+    If an error occurs, return |default|.
+    """
+    try:
+      return self._helper_pool.ForChange(
+          change).IsChangeCommitted(str(change.gerrit_number),
+                                    self.dryrun)
+    except cros_build_lib.RunCommandError:
+      logging.error('Could not determine whether %s was committed.', change,
+                    exc_info=True)
+      return default
+
   def _SubmitChange(self, change):
     """Submits patch using Gerrit Review."""
-    cmd = self._helper_pool.ForChange(change).GetGerritReviewCommand(
-        ['--submit', '%s,%s' % (change.gerrit_number, change.patch_number)])
-
-    _RunCommand(cmd, self.dryrun)
+    self._helper_pool.ForChange(change).SubmitChange(
+        change, dryrun=self.dryrun)
 
   def RemoveCommitReady(self, change):
     """Remove the commit ready bit for the specified |change|."""
@@ -1787,8 +1849,7 @@ class PaladinMessage():
     return self.message + ('\n\nCommit queue documentation: %s' %
                            self._PALADIN_DOCUMENTATION_URL)
 
-  def Send(self, dryrun):
-    """Sends the message to the developer."""
+  def _SendViaSSH(self, dryrun):
     # Gerrit requires that commit messages are enclosed in quotes, and that
     # any backslashes or quotes within these quotes are escaped.
     # See com.google.gerrit.sshd.CommandFactoryProvider#split.
@@ -1798,3 +1859,21 @@ class PaladinMessage():
         ['-m', message,
          '%s,%s' % (self.patch.gerrit_number, self.patch.patch_number)])
     _RunCommand(cmd, dryrun)
+
+  def _SendViaHTTP(self, dryrun):
+    body = { 'message': self._ConstructPaladinMessage() }
+    path = 'changes/%s/revisions/%s/review' % (
+        self.patch.gerrit_number, self.patch.revision)
+    if dryrun:
+      logging.info('Would have sent %r to %s', body, path)
+      return
+    conn = gob_util.CreateHttpConn(
+        self.helper.host, path, reqtype='POST', body=body)
+    gob_util.ReadHttpResponse(conn)
+
+  def Send(self, dryrun):
+    """Sends the message to the developer."""
+    if constants.USE_GOB:
+      self._SendViaHTTP(dryrun)
+    else:
+      self._SendViaSSH(dryrun)
