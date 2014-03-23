@@ -2135,6 +2135,11 @@ _factory_release.add_config('clapper-factory',
   boards=['clapper'],
 )
 
+_factory_release.add_config('quawks-factory',
+  vm_tests=None,
+  boards=['quawks'],
+)
+
 # This is an example factory branch configuration for arm.
 # Modify it to match your factory branch.
 _factory_release.add_config('daisy-factory',
