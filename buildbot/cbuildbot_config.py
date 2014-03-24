@@ -1440,6 +1440,13 @@ internal_paladin.add_config('parrot-paladin',
   upload_hw_test_artifacts=True,
 )
 
+internal_paladin.add_config('quawks-paladin',
+  incompatible_instruction_set,
+  boards=['quawks'],
+  paladin_builder_name='quawks paladin',
+  important=False,
+)
+
 internal_paladin.add_config('rambi-paladin',
   incompatible_instruction_set,
   boards=['rambi'],
@@ -1791,6 +1798,14 @@ _release.add_config('peppy-release',
   boards=['peppy'],
 )
 
+# quawks-release does not enable vm_tests or unittests due to the compiler
+# flags enabled for baytrail.
+_release.add_config('quawks-release',
+  incompatible_instruction_set,
+  boards=['quawks'],
+  hw_tests=[],
+)
+
 # rambi-release does not enable vm_tests or unittests due to the compiler
 # flags enabled for baytrail.
 _release.add_config('rambi-release',
@@ -1956,6 +1971,7 @@ _x86_firmware_boards = (
   'panther',
   'parrot',
   'peppy',
+  'quawks',
   'rambi',
   'samus',
   'squawks',
@@ -1973,6 +1989,7 @@ _x86_depthcharge_firmware_boards = (
   'glimmer',
   'leon',
   'link',
+  'quawks',
   'rambi',
   'samus',
   'squawks',
