@@ -1450,6 +1450,12 @@ internal_paladin.add_config('enguarde-paladin',
   important=False,
 )
 
+internal_paladin.add_config('expresso-paladin',
+  boards=['expresso'],
+  paladin_builder_name='expresso paladin',
+  important=False,
+)
+
 # amd64 full compile
 internal_paladin.add_config('falco-paladin',
   full_paladin,
@@ -1838,6 +1844,11 @@ _release.add_config('enguarde-release',
   hw_tests=[],
 )
 
+_release.add_config('expresso-release',
+  boards=['expresso'],
+  hw_tests=[],
+)
+
 _release.add_config('falco-release',
   boards=['falco'],
 )
@@ -2097,6 +2108,7 @@ _x86_firmware_boards = (
   'butterfly',
   'clapper',
   'enguarde',
+  'expresso',
   'falco',
   'glimmer',
   'kip',
@@ -2126,6 +2138,7 @@ _x86_depthcharge_firmware_boards = (
   'bayleybay',
   'clapper',
   'enguarde',
+  'expresso',
   'glimmer',
   'kip',
   'leon',
