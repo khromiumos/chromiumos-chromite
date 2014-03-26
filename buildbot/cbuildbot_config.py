@@ -1909,6 +1909,12 @@ _release.add_config('squawks-release',
   boards=['squawks'],
 )
 
+_release.add_config('quawks-release',
+  incompatible_instruction_set,
+  boards=['quawks'],
+  hw_tests=[],
+)
+
 _release.add_config('stout-release',
   boards=['stout'],
 )
@@ -2066,6 +2072,7 @@ _x86_firmware_boards = (
   'panther',
   'parrot',
   'peppy',
+  'quawks',
   'rambi',
   'samus',
   'squawks',
@@ -2084,6 +2091,7 @@ _x86_depthcharge_firmware_boards = (
   'glimmer',
   'leon',
   'link',
+  'quawks',
   'rambi',
   'samus',
   'squawks',
