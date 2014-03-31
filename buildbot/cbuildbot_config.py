@@ -2150,6 +2150,11 @@ _factory_release.add_config('quawks-factory',
   boards=['quawks'],
 )
 
+_factory_release.add_config('enguarde-factory',
+  vm_tests=None,
+  boards=['enguarde'],
+)
+
 # This is an example factory branch configuration for arm.
 # Modify it to match your factory branch.
 _factory_release.add_config('daisy-factory',
