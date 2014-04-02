@@ -2002,8 +2002,6 @@ _release.add_config('lumpy-release',
 
 _release.add_config('monroe-release',
   boards=['monroe'],
-  hw_tests=[],
-  vm_tests=[],
 )
 
 _release.add_config('panther-release',
