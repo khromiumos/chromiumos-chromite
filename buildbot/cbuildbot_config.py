@@ -1526,6 +1526,12 @@ internal_paladin.add_config('squawks-paladin',
   important=False,
 )
 
+internal_paladin.add_config('swanky-paladin',
+  boards=['swanky'],
+  paladin_builder_name='swanky paladin',
+  important=False,
+)
+
 internal_paladin.add_config('peppy-paladin',
   boards=['peppy'],
   paladin_builder_name='peppy paladin',
@@ -1933,6 +1939,10 @@ _release.add_config('stumpy-release',
   boards=['stumpy'],
 )
 
+_release.add_config('swanky-release',
+  boards=['swanky'],
+)
+
 _release.add_config('winky-release',
   boards=['winky'],
   hw_tests=[],
@@ -2093,6 +2103,7 @@ _x86_firmware_boards = (
   'stout32',
   'slippy',
   'stumpy',
+  'swanky',
   'winky',
   'wolf',
   'x86-mario',
@@ -2110,6 +2121,7 @@ _x86_depthcharge_firmware_boards = (
   'rambi',
   'samus',
   'squawks',
+  'swanky',
   'winky',
   'zako',
 )
