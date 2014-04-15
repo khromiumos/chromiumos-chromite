@@ -1839,7 +1839,6 @@ _release.add_config('butterfly-release',
 _release.add_config('clapper-release',
   incompatible_instruction_set,
   boards=['clapper'],
-  hw_tests=[],
 )
 
 _release.add_config('enguarde-release',
@@ -1874,7 +1873,6 @@ _release.add_config('fox_wtm2-release',
 _release.add_config('glimmer-release',
   incompatible_instruction_set,
   boards=['glimmer'],
-  hw_tests=[],
 )
 
 _release.add_config('gnawty-release',
@@ -1927,7 +1925,6 @@ _release.add_config('peppy-release',
 _release.add_config('rambi-release',
   incompatible_instruction_set,
   boards=['rambi'],
-  hw_tests=[],
 )
 
 _release.add_config('samus-release',
