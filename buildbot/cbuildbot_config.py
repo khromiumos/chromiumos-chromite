@@ -1857,7 +1857,6 @@ _release.add_config('falco-release',
 
 _release.add_config('falco_li-release',
   boards=['falco_li'],
-  hw_tests=[],
 )
 
 _release.add_config('fox_wtm2-release',
