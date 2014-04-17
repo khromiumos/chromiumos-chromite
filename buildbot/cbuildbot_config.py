@@ -2193,6 +2193,31 @@ _factory_release.add_config('enguarde-factory',
   boards=['enguarde'],
 )
 
+_factory_release.add_config('swanky-factory',
+  vm_tests=None,
+  boards=['swanky'],
+)
+
+_factory_release.add_config('expresso-factory',
+  vm_tests=None,
+  boards=['expresso'],
+)
+
+_factory_release.add_config('winky-factory',
+  vm_tests=None,
+  boards=['winky'],
+)
+
+_factory_release.add_config('gnawty-factory',
+  vm_tests=None,
+  boards=['gnawty'],
+)
+
+_factory_release.add_config('kip-factory',
+  vm_tests=None,
+  boards=['kip'],
+)
+
 # This is an example factory branch configuration for arm.
 # Modify it to match your factory branch.
 _factory_release.add_config('daisy-factory',
