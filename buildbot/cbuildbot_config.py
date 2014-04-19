@@ -2358,9 +2358,19 @@ _factory_release.add_config('x86-mario-factory',
 
 # This is an example factory branch configuration for arm.
 # Modify it to match your factory branch.
-_factory_release.add_config('daisy-factory',
+_factory_release.add_config('nyan-factory',
   arm,
-  boards=['daisy'],
+  boards=['nyan'],
+)
+
+_factory_release.add_config('nyan_big-factory',
+  arm,
+  boards=['nyan_big'],
+)
+
+_factory_release.add_config('nyan_blaze-factory',
+  arm,
+  boards=['nyan_blaze'],
 )
 
 _payloads = internal.derive(
