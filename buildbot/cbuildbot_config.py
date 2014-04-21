@@ -2349,6 +2349,12 @@ def _AddFirmwareConfigs():
 
 _AddFirmwareConfigs()
 
+internal_pfq_branch.add_config('nyan-pre-flight-branch',
+  _firmware,
+  master=True,
+  push_overlays=constants.BOTH_OVERLAYS,
+  boards=['nyan'],
+)
 
 # This is an example factory branch configuration for x86.
 # Modify it to match your factory branch.
