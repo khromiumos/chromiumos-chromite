@@ -2313,6 +2313,9 @@ _arm_firmware_boards = (
   'daisy',
   'daisy_skate',
   'daisy_spring',
+  'nyan',
+  'nyan_big',
+  'nyan_blaze',
   'peach_pit',
   'peach_pi',
 )
