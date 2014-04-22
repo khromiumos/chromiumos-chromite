@@ -1505,12 +1505,6 @@ internal_incremental = internal.derive(
   description='Incremental Builds (internal)',
 )
 
-internal_pfq_branch.add_config('x86-alex-pre-flight-branch',
-  master=True,
-  push_overlays=constants.BOTH_OVERLAYS,
-  boards=['x86-alex'],
-)
-
 # A test-ap image is just a test image with a special profile enabled.
 # Note that each board enabled for test-ap use has to have the testbed-ap
 # profile linked to from its private overlay.
