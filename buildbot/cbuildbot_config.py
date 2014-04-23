@@ -1844,12 +1844,10 @@ _release.add_config('clapper-release',
 
 _release.add_config('enguarde-release',
   boards=['enguarde'],
-  hw_tests=[],
 )
 
 _release.add_config('expresso-release',
   boards=['expresso'],
-  hw_tests=[],
 )
 
 _release.add_config('falco-release',
@@ -1951,7 +1949,6 @@ _release.add_config('squawks-release',
 _release.add_config('quawks-release',
   incompatible_instruction_set,
   boards=['quawks'],
-  hw_tests=[],
 )
 
 _release.add_config('stout-release',
