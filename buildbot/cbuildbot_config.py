@@ -1943,17 +1943,14 @@ _release.add_config('butterfly-release',
 
 _release.add_config('clapper-release',
   boards=['clapper'],
-  hw_tests=[],
 )
 
 _release.add_config('enguarde-release',
   boards=['enguarde'],
-  hw_tests=[],
 )
 
 _release.add_config('expresso-release',
   boards=['expresso'],
-  hw_tests=[],
 )
 
 _release.add_config('falco-release',
@@ -1962,7 +1959,6 @@ _release.add_config('falco-release',
 
 _release.add_config('falco_li-release',
   boards=['falco_li'],
-  hw_tests=[],
 )
 
 _release.add_config('fox_wtm2-release',
@@ -1975,7 +1971,6 @@ _release.add_config('fox_wtm2-release',
 
 _release.add_config('glimmer-release',
   boards=['glimmer'],
-  hw_tests=[],
 )
 
 _release.add_config('gnawty-release',
@@ -2025,7 +2020,6 @@ _release.add_config('peppy-release',
 
 _release.add_config('quawks-release',
   boards=['quawks'],
-  hw_tests=[],
 )
 
 _release.add_config('rambi-release',
