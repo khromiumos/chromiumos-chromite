@@ -1827,6 +1827,7 @@ _factory = _config(
   upload_hw_test_artifacts=False,
   upload_symbols=False,
   hw_tests=[],
+  chrome_sdk=False,
   description='Factory Builds',
 )
 
