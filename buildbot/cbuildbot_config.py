@@ -1107,6 +1107,7 @@ _x86_full_boards = frozenset([
   'stout',
   'stout32',
   'stumpy',
+  'tricky',
   'x32-generic',
   'x86-alex',
   'x86-generic',
@@ -1766,6 +1767,10 @@ _release.add_config('stout32-release',
 
 _release.add_config('stumpy-release',
   boards=['stumpy'],
+)
+
+_release.add_config('tricky-release',
+  boards=['tricky'],
 )
 
 _release.add_config('wolf-release',
