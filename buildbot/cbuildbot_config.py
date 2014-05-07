@@ -1521,12 +1521,6 @@ internal_incremental = internal.derive(
   description='Incremental Builds (internal)',
 )
 
-internal_pfq_branch.add_config('x86-alex-pre-flight-branch',
-  master=True,
-  push_overlays=constants.BOTH_OVERLAYS,
-  boards=['x86-alex'],
-)
-
 # A test-ap image is just a test image with a special profile enabled.
 # Note that each board enabled for test-ap use has to have the testbed-ap
 # profile linked to from its private overlay.
@@ -2298,6 +2292,7 @@ _x86_firmware_boards = (
   'leon',
   'link',
   'lumpy',
+  'mccloud',
   'monroe',
   'panther',
   'parrot',
@@ -2326,6 +2321,7 @@ _x86_depthcharge_firmware_boards = (
   'kip',
   'leon',
   'link',
+  'mccloud',
   'quawks',
   'rambi',
   'samus',
@@ -2369,6 +2365,12 @@ def _AddFirmwareConfigs():
 
 _AddFirmwareConfigs()
 
+internal_pfq_branch.add_config('mccloud-pre-flight-branch',
+  _firmware,
+  master=True,
+  push_overlays=constants.BOTH_OVERLAYS,
+  boards=['mccloud'],
+)
 
 # This is an example factory branch configuration for x86.
 # Modify it to match your factory branch.
