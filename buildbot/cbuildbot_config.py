@@ -1922,8 +1922,12 @@ _AddFirmwareConfigs()
 
 # This is an example factory branch configuration for x86.
 # Modify it to match your factory branch.
-_factory_release.add_config('monroe-factory',
-  boards=['monroe'],
+_factory_release.add_config('tricky-factory',
+  boards=['tricky'],
+)
+
+_factory_release.add_config('mccloud-factory',
+  boards=['mccloud'],
 )
 
 # This is an example factory branch configuration for arm.
@@ -1933,11 +1937,11 @@ _factory_release.add_config('daisy-factory',
   boards=['daisy'],
 )
 
-internal_pfq_branch.add_config('monroe-pre-flight-branch',
+internal_pfq_branch.add_config('tricky-pre-flight-branch',
   _factory,
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['monroe'],
+  boards=['tricky'],
 )
 
 
