@@ -1835,7 +1835,6 @@ _grouped_variant_release = _release.derive(_grouped_variant_config)
 
 _release.add_config('x86-mario-release',
   boards=['x86-mario'],
-  master=True,
 )
 
 ### Release config groups.
@@ -1843,6 +1842,7 @@ _release.add_config('x86-mario-release',
 _config.add_group('x86-alex-release-group',
   _release.add_config('x86-alex-release',
     boards=['x86-alex'],
+    master=True,
   ),
   _grouped_variant_release.add_config('x86-alex_he-release',
     boards=['x86-alex_he'],
