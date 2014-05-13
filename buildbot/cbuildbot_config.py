@@ -2194,7 +2194,6 @@ _AddGroupConfig('slippy', 'peppy', (
 # building it.
 _AddGroupConfig('beltino', 'panther', (
     'monroe',
-    'tricky',
     'zako',
 ))
 
@@ -2206,13 +2205,11 @@ _AddGroupConfig('rambi-a', 'rambi', (
 ))
 
 _AddGroupConfig('rambi-b', 'glimmer', (
-    'gnawty',
     'kip',
     'quawks',
 ))
 
 _AddGroupConfig('rambi-c', 'squawks', (
-    'swanky',
     'winky',
 ))
 
@@ -2230,7 +2227,6 @@ _AddGroupConfig('peach', 'peach_pit', (
 # nyan-based boards
 _AddGroupConfig('nyan', 'nyan', (
     'nyan_big',
-    'nyan_blaze',
 ))
 
 # Factory and Firmware releases much inherit from these classes.  Modifications
