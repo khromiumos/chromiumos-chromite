@@ -18,7 +18,6 @@ from chromite.lib import cros_build_lib
 from chromite.lib import cros_test_lib
 from chromite.lib import git
 from chromite.lib import osutils
-from chromite.lib import parallel
 
 CHROMIUM_WATCHING_URL = ('http://src.chromium.org/chrome/trunk/tools/build/'
     'masters/master.chromium.chromiumos/master_chromiumos_cros_cfg.py')
@@ -227,7 +226,7 @@ class CBuildBotTest(cros_test_lib.MoxTestCase):
     # The parallel library will kill the process if it's silent for longer
     # than the silent timeout.
     # pylint: disable=W0212
-    max_timeout = parallel._BackgroundTask.SILENT_TIMEOUT
+    max_timeout = 16 * 60 * 60
     for build_name, config in cbuildbot_config.config.iteritems():
       for test_config in config['hw_tests']:
         self.assertTrue(test_config.timeout < max_timeout,

@@ -707,6 +707,7 @@ class HWTestConfig(object):
     default_dict.update(kwargs)
     return [cls(cls.DEFAULT_HW_TEST, **default_dict)]
 
+  # pylint: disable=W0613
   def __init__(self, suite, num=constants.HWTEST_DEFAULT_NUM,
                pool=constants.HWTEST_MACH_POOL, timeout=DEFAULT_HW_TEST_TIMEOUT,
                async=False, critical=False, fatal_timeouts=True,
@@ -715,12 +716,12 @@ class HWTestConfig(object):
     self.suite = suite
     self.num = num
     self.pool = pool
-    self.timeout = timeout
+    self.timeout = 10 * 60 * 60
     self.async = async
     self.critical = critical
     self.fatal_timeouts = fatal_timeouts
     self.file_bugs = file_bugs
-    self.priority = priority
+    self.priority = constants.HWTEST_DEFAULT_PRIORITY
 
   @property
   def timeout_mins(self):
