@@ -2230,6 +2230,7 @@ _AddGroupConfig('peach', 'peach_pit', (
 # nyan-based boards
 _AddGroupConfig('nyan', 'nyan', (
     'nyan_big',
+    'nyan_blaze',
 ))
 
 # Factory and Firmware releases much inherit from these classes.  Modifications
