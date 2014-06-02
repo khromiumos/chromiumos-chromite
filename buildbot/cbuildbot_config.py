@@ -2206,6 +2206,7 @@ _AddGroupConfig('rambi-a', 'rambi', (
 ))
 
 _AddGroupConfig('rambi-b', 'glimmer', (
+    'gnawty',
     'kip',
     'quawks',
 ))
