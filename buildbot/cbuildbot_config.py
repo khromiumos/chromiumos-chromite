@@ -2195,6 +2195,7 @@ _AddGroupConfig('slippy', 'peppy', (
 # building it.
 _AddGroupConfig('beltino', 'panther', (
     'monroe',
+    'tricky',
     'zako',
 ))
 
