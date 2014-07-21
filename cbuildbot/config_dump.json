@@ -4357,8 +4357,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             },
             {
@@ -4552,8 +4551,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "beltino-b-full-group": {
@@ -5060,8 +5058,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             },
             {
@@ -5358,8 +5355,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "beltino-chrome-pfq": {
@@ -6634,8 +6630,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             },
             {
@@ -7035,8 +7030,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "beltino-tot-chrome-pfq-informational": {
@@ -8001,8 +7995,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "butterfly-tot-chrome-pfq-informational": {
@@ -9163,8 +9156,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "clapper-tot-chrome-pfq-informational": {
@@ -11237,8 +11229,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             },
             {
@@ -11346,8 +11337,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             }
         ],
@@ -11440,8 +11430,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "daisy-release-pgo-generate": {
@@ -11549,8 +11538,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "daisy-release-pgo-use": {
@@ -11658,8 +11646,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "daisy-tot-chrome-pfq-informational": {
@@ -14912,8 +14899,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "enguarde-tot-chrome-pfq-informational": {
@@ -15975,8 +15961,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "expresso-tot-chrome-pfq-informational": {
@@ -16850,8 +16835,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "falco-tot-chrome-pfq-informational": {
@@ -17531,8 +17515,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "falco_li-tot-chrome-pfq-informational": {
@@ -19075,8 +19058,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "glimmer-tot-chrome-pfq-informational": {
@@ -20138,8 +20120,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "gnawty-tot-chrome-pfq-informational": {
@@ -20945,8 +20926,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             },
             {
@@ -21140,8 +21120,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "kip-chrome-pfq": {
@@ -22011,8 +21990,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "kip-tot-chrome-pfq-informational": {
@@ -23074,8 +23052,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "leon-tot-chrome-pfq-informational": {
@@ -24140,8 +24117,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "link-tot-chrome-pfq-informational": {
@@ -24628,8 +24604,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "lumpy-chrome-perf": {
@@ -25599,8 +25574,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "lumpy-release-pgo": {
@@ -25724,8 +25698,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             },
             {
@@ -25833,8 +25806,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             }
         ],
@@ -25927,8 +25899,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "lumpy-release-pgo-generate": {
@@ -26036,8 +26007,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "lumpy-release-pgo-use": {
@@ -26145,8 +26115,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "lumpy-tot-chrome-pfq-informational": {
@@ -27115,8 +27084,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "mccloud-tot-chrome-pfq-informational": {
@@ -28281,8 +28249,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "monroe-tot-chrome-pfq-informational": {
@@ -32044,8 +32011,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "panther-test-ap": {
@@ -33401,8 +33367,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "parrot-release-group": {
@@ -33524,8 +33489,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             },
             {
@@ -33719,8 +33683,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "parrot-release-pgo": {
@@ -33844,8 +33807,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             },
             {
@@ -33953,8 +33915,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             }
         ],
@@ -34047,8 +34008,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "parrot-release-pgo-generate": {
@@ -34156,8 +34116,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "parrot-release-pgo-use": {
@@ -34265,8 +34224,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "parrot-tot-chrome-pfq-informational": {
@@ -38038,8 +37996,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "peppy-tot-chrome-pfq-informational": {
@@ -38928,8 +38885,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             },
             {
@@ -39424,8 +39380,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "pre-cq-group": {
@@ -40872,8 +40827,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "quawks-tot-chrome-pfq-informational": {
@@ -41667,8 +41621,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             },
             {
@@ -42068,8 +42021,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "rambi-b-full-group": {
@@ -42671,8 +42623,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             },
             {
@@ -43072,8 +43023,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "rambi-c-full-group": {
@@ -43580,8 +43530,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             },
             {
@@ -43878,8 +43827,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "rambi-chrome-pfq": {
@@ -44846,8 +44794,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "rambi-tot-chrome-pfq-informational": {
@@ -46005,8 +45952,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "samus-tot-chrome-pfq-informational": {
@@ -47470,8 +47416,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             },
             {
@@ -48077,8 +48022,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "sandybridge-release-group": {
@@ -48200,8 +48144,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             },
             {
@@ -48601,8 +48544,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "slippy-chrome-pfq": {
@@ -49857,8 +49799,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "slippy-release-group": {
@@ -49980,8 +49921,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             },
             {
@@ -50484,8 +50424,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "slippy-tot-chrome-pfq-informational": {
@@ -51547,8 +51486,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "squawks-tot-chrome-pfq-informational": {
@@ -52713,8 +52651,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "stout-tot-chrome-pfq-informational": {
@@ -53588,8 +53525,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "stumpy-test-ap": {
@@ -55030,8 +54966,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "swanky-tot-chrome-pfq-informational": {
@@ -56189,8 +56124,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "tricky-tot-chrome-pfq-informational": {
@@ -57252,8 +57186,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "winky-tot-chrome-pfq-informational": {
@@ -58127,8 +58060,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "wolf-tot-chrome-pfq-informational": {
@@ -59572,8 +59504,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "x86-alex-release-group": {
@@ -59695,8 +59626,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             },
             {
@@ -59886,8 +59816,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "x86-alex-release-pgo": {
@@ -60011,8 +59940,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             },
             {
@@ -60120,8 +60048,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             }
         ],
@@ -60214,8 +60141,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "x86-alex-release-pgo-generate": {
@@ -60323,8 +60249,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "x86-alex-release-pgo-use": {
@@ -60432,8 +60357,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "x86-alex-tot-chrome-pfq-informational": {
@@ -62741,8 +62665,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "x86-mario-firmware": {
@@ -63328,8 +63251,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "x86-mario-tot-chrome-pfq-informational": {
@@ -64486,8 +64408,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "x86-zgb-release-group": {
@@ -64609,8 +64530,7 @@
                 "vm_test_runs": 1,
                 "vm_tests": [
                     "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
+                    "dev_mode_test"
                 ]
             },
             {
@@ -64800,8 +64720,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "x86-zgb-tot-chrome-pfq-informational": {
@@ -66441,8 +66360,7 @@
         "vm_test_runs": 1,
         "vm_tests": [
             "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
+            "dev_mode_test"
         ]
     },
     "zako-tot-chrome-pfq-informational": {
