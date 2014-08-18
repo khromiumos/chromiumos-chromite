@@ -2026,6 +2026,7 @@ _x86_firmware_boards = (
   'bayleybay',
   'beltino',
   'butterfly',
+  'candy',
   'clapper',
   'cranky',
   'enguarde',
@@ -2057,6 +2058,7 @@ _x86_firmware_boards = (
 
 _x86_depthcharge_firmware_boards = (
   'bayleybay',
+  'candy',
   'cranky',
   'clapper',
   'enguarde',
