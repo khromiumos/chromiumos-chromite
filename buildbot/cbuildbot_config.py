@@ -2258,6 +2258,16 @@ _factory_release.add_config('kip-factory',
   boards=['kip'],
 )
 
+_factory_release.add_config('candy-factory',
+  vm_tests=None,
+  boards=['candy'],
+)
+
+_factory_release.add_config('cranky-factory',
+  vm_tests=None,
+  boards=['cranky'],
+)
+
 # This is an example factory branch configuration for arm.
 # Modify it to match your factory branch.
 _factory_release.add_config('daisy-factory',
