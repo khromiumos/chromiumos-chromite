@@ -25,7 +25,6 @@ sys.path.insert(0, constants.SOURCE_ROOT)
 from chromite.cbuildbot import failures_lib
 from chromite.cbuildbot import results_lib
 from chromite.cbuildbot import metadata_lib
-from chromite.cbuildbot import repository
 from chromite.cbuildbot import tree_status
 from chromite.cbuildbot import validation_pool
 from chromite.lib import cros_build_lib
@@ -1040,38 +1039,6 @@ class TestPickling(cros_test_lib.TempDirTestCase):
   def testSelfCompatibility(self):
     """Verify compatibility of current git HEAD against itself."""
     self._CheckTestData(self._GetTestData())
-
-  def testToTCompatibility(self):
-    """Validate that ToT can use our pickles, and that we can use ToT's data."""
-    repo = os.path.join(self.tempdir, 'chromite')
-    reference = os.path.abspath(__file__)
-    reference = os.path.normpath(os.path.join(reference, '../../'))
-
-    repository.CloneGitRepo(
-        repo,
-        '%s/chromiumos/chromite' % constants.EXTERNAL_GOB_URL,
-        reference=reference)
-
-    code = """
-import sys
-from chromite.cbuildbot import validation_pool_unittest
-if not hasattr(validation_pool_unittest, 'TestPickling'):
-  sys.exit(0)
-sys.stdout.write(validation_pool_unittest.TestPickling.%s)
-"""
-
-    # Verify ToT can take our pickle.
-    cros_build_lib.RunCommand(
-        ['python', '-c', code % '_CheckTestData(sys.stdin.read())'],
-        cwd=self.tempdir, print_cmd=False, capture_output=True,
-        input=self._GetTestData())
-
-    # Verify we can handle ToT's pickle.
-    ret = cros_build_lib.RunCommand(
-        ['python', '-c', code % '_GetTestData()'],
-        cwd=self.tempdir, print_cmd=False, capture_output=True)
-
-    self._CheckTestData(ret.output)
 
   @staticmethod
   def _GetCrosInternalPatch(patch_info):
