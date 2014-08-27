@@ -1684,6 +1684,12 @@ internal_incremental = internal.derive(
   description='Incremental Builds (internal)',
 )
 
+internal_pfq_branch.add_config('samus-pre-flight-branch',
+  master=True,
+  push_overlays=constants.BOTH_OVERLAYS,
+  boards=['samus'],
+)
+
 internal_pfq_branch.add_config('lumpy-pre-flight-branch',
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
@@ -2705,10 +2711,10 @@ def _AddFirmwareConfigs():
 _AddFirmwareConfigs()
 
 
-# This is an example factory branch configuration for x86.
+# This is the example factory branch configuration for samus.
 # Modify it to match your factory branch.
-_factory_release.add_config('x86-mario-factory',
-  boards=['x86-mario'],
+_factory_release.add_config('samus-factory',
+  boards=['samus'],
 )
 
 # This is an example factory branch configuration for arm.
