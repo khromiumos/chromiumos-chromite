@@ -1677,13 +1677,10 @@ internal_incremental = internal.derive(
   description='Incremental Builds (internal)',
 )
 
-internal_pfq_branch.add_config('lumpy-pre-flight-branch',
+internal_pfq_branch.add_config('ryu-pre-flight-branch',
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['lumpy'],
-  afdo_generate=True,
-  afdo_update_ebuild=True,
-  hw_tests=[AFDORecordTest()],
+  boards=['ryu'],
 )
 
 # A test-ap image is just a test image with a special profile enabled.
@@ -2706,9 +2703,9 @@ _factory_release.add_config('x86-mario-factory',
 
 # This is an example factory branch configuration for arm.
 # Modify it to match your factory branch.
-_factory_release.add_config('daisy-factory',
+_factory_release.add_config('ryu-factory',
   non_testable_builder,
-  boards=['daisy'],
+  boards=['ryu'],
 )
 
 _payloads = internal.derive(
