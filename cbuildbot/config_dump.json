@@ -69749,7 +69749,7 @@
         "binhost_key": "RELEASE_BINHOST",
         "board_replace": false,
         "boards": [
-            "ryu"
+            "rush_ryu"
         ],
         "branch": false,
         "build_before_patching": false,
@@ -69850,7 +69850,7 @@
         "binhost_key": null,
         "board_replace": false,
         "boards": [
-            "ryu"
+            "rush_ryu"
         ],
         "branch": true,
         "build_before_patching": false,

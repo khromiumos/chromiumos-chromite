@@ -1680,7 +1680,7 @@ internal_incremental = internal.derive(
 internal_pfq_branch.add_config('ryu-pre-flight-branch',
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['ryu'],
+  boards=['rush_ryu'],
 )
 
 # A test-ap image is just a test image with a special profile enabled.
@@ -2705,7 +2705,7 @@ _factory_release.add_config('x86-mario-factory',
 # Modify it to match your factory branch.
 _factory_release.add_config('ryu-factory',
   non_testable_builder,
-  boards=['ryu'],
+  boards=['rush_ryu'],
 )
 
 _payloads = internal.derive(
