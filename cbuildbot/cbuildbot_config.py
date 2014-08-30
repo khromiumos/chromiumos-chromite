@@ -1681,6 +1681,7 @@ internal_pfq_branch.add_config('ryu-pre-flight-branch',
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
   boards=['rush_ryu'],
+  usepkg_setup_board=False,
 )
 
 # A test-ap image is just a test image with a special profile enabled.
@@ -2706,6 +2707,7 @@ _factory_release.add_config('x86-mario-factory',
 _factory_release.add_config('ryu-factory',
   non_testable_builder,
   boards=['rush_ryu'],
+  usepkg_setup_board=False,
 )
 
 _payloads = internal.derive(
