@@ -2374,6 +2374,11 @@ _factory_release.add_config('nyan_blaze-factory',
   boards=['nyan_blaze'],
 )
 
+_factory_release.add_config('nyan_kitty-factory',
+  arm,
+  boards=['nyan_kitty'],
+)
+
 _payloads = internal.derive(
   build_type=constants.PAYLOADS_TYPE,
   description='Regenerate release payloads.',
