@@ -2316,6 +2316,7 @@ _arm_firmware_boards = (
   'nyan',
   'nyan_big',
   'nyan_blaze',
+  'nyan_kitty',
   'peach_pit',
   'peach_pi',
 )
