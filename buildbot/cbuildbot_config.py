@@ -2354,6 +2354,13 @@ internal_pfq_branch.add_config('nyan-pre-flight-branch',
   boards=['nyan'],
 )
 
+internal_pfq_branch.add_config('nyan-kitty-pre-flight-branch',
+  _firmware,
+  master=True,
+  push_overlays=constants.BOTH_OVERLAYS,
+  boards=['nyan_kitty'],
+)
+
 # This is an example factory branch configuration for x86.
 # Modify it to match your factory branch.
 _factory_release.add_config('x86-mario-factory',
