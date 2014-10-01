@@ -2347,7 +2347,7 @@ def _AddFirmwareConfigs():
 
 _AddFirmwareConfigs()
 
-internal_pfq_branch.add_config('nyan-kitty-pre-flight-branch',
+internal_pfq_branch.add_config('nyan_kitty-pre-flight-branch',
   _firmware,
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
