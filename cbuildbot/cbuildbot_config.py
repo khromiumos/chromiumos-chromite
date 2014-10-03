@@ -2643,7 +2643,6 @@ _AddGroupConfig('peach', 'peach_pit', (
 _AddGroupConfig('nyan', 'nyan', (
     'nyan_big',
     'nyan_blaze',
-    'nyan_kitty',
 ))
 
 # Factory and Firmware releases much inherit from these classes.  Modifications
