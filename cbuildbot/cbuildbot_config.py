@@ -1739,15 +1739,6 @@ internal_incremental = internal.derive(
   description='Incremental Builds (internal)',
 )
 
-internal_pfq_branch.add_config('lumpy-pre-flight-branch',
-  master=True,
-  push_overlays=constants.BOTH_OVERLAYS,
-  boards=['lumpy'],
-  afdo_generate=True,
-  afdo_update_ebuild=True,
-  hw_tests=[AFDORecordTest()],
-)
-
 # A test-ap image is just a test image with a special profile enabled.
 # Note that each board enabled for test-ap use has to have the testbed-ap
 # profile linked to from its private overlay.
@@ -2788,6 +2779,12 @@ def _AddFirmwareConfigs():
 
 _AddFirmwareConfigs()
 
+internal_pfq_branch.add_config('storm-pre-flight-branch',
+  _firmware,
+  master=True,
+  push_overlays=constants.BOTH_OVERLAYS,
+  boards=['storm'],
+)
 
 # This is an example factory branch configuration for x86.
 # Modify it to match your factory branch.
