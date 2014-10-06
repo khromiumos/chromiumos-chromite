@@ -2759,6 +2759,7 @@ _arm_firmware_boards = (
   'daisy_spring',
   'peach_pit',
   'peach_pi',
+  'storm',
 )
 
 def _AddFirmwareConfigs():
