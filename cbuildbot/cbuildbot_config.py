@@ -1448,6 +1448,8 @@ _arm_full_boards = _arm_release_boards | frozenset([
 
 _x86_release_boards = frozenset([
   'auron',
+  'auron_yuna',
+  'auron_paine',
   'bayleybay',
   'beltino',
   'butterfly',
@@ -2621,6 +2623,13 @@ _AddGroupConfig('nyan', 'nyan', (
     'nyan_blaze',
     'nyan_kitty',
 ))
+
+# auron-based boards
+_AddGroupConfig('auron', 'auron', (
+    'auron_yuna',
+    'auron_paine'),
+    important=False,
+)
 
 # Factory and Firmware releases much inherit from these classes.  Modifications
 # for these release builders should go here.
