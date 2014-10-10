@@ -2685,6 +2685,8 @@ _depthcharge_full_internal = full.derive(
 
 _x86_firmware_boards = (
   'auron',
+  'auron_paine',
+  'auron_yuna',
   'bayleybay',
   'beltino',
   'butterfly',
