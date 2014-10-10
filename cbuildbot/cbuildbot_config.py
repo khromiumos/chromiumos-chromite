@@ -2719,6 +2719,8 @@ _x86_firmware_boards = (
 
 _x86_depthcharge_firmware_boards = (
   'auron',
+  'auron_paine',
+  'auron_yuna',
   'bayleybay',
   'candy',
   'clapper',
