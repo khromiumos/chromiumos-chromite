@@ -1744,13 +1744,10 @@ internal_incremental = internal.derive(
   description='Incremental Builds (internal)',
 )
 
-internal_pfq_branch.add_config('lumpy-pre-flight-branch',
+internal_pfq_branch.add_config('samus-pre-flight-branch',
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['lumpy'],
-  afdo_generate=True,
-  afdo_update_ebuild=True,
-  hw_tests=[AFDORecordTest()],
+  boards=['samus'],
 )
 
 # A test-ap image is just a test image with a special profile enabled.
