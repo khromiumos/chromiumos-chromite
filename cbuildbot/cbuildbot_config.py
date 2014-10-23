@@ -2894,8 +2894,8 @@ _AddFirmwareConfigs()
 
 # This is an example factory branch configuration for x86.
 # Modify it to match your factory branch.
-_factory_release.add_config('x86-mario-factory',
-  boards=['x86-mario'],
+_factory_release.add_config('samus-factory',
+  boards=['samus'],
 )
 
 # This is an example factory branch configuration for arm.
