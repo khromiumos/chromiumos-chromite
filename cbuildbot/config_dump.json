@@ -5190,6 +5190,45 @@
         ],
         "vm_tests": []
     },
+    "candy-factory": {
+        "archive_build_debug": true,
+        "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
+        "binhost_bucket": "gs://chromeos-dev-installer",
+        "binhost_key": "RELEASE_BINHOST",
+        "boards": [
+            "candy"
+        ],
+        "build_type": "canary",
+        "chromeos_official": true,
+        "chroot_replace": true,
+        "description": "Factory Builds",
+        "dev_installer_prebuilts": true,
+        "hwqual": true,
+        "image_test": true,
+        "images": [
+            "base",
+            "test",
+            "factory_install"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "manifest_version": true,
+        "name": "candy-factory",
+        "overlays": "both",
+        "push_image": true,
+        "signer_tests": true,
+        "trybot_list": true,
+        "upload_hw_test_artifacts": false,
+        "useflags": [
+            "chrome_internal",
+            "-cros-debug",
+            "-highdpi"
+        ],
+        "usepkg_build_packages": false,
+        "usepkg_toolchain": false,
+        "vm_tests": null
+    },
     "candy-firmware": {
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -5754,6 +5793,45 @@
         ],
         "vm_tests": []
     },
+    "clapper-factory": {
+        "archive_build_debug": true,
+        "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
+        "binhost_bucket": "gs://chromeos-dev-installer",
+        "binhost_key": "RELEASE_BINHOST",
+        "boards": [
+            "clapper"
+        ],
+        "build_type": "canary",
+        "chromeos_official": true,
+        "chroot_replace": true,
+        "description": "Factory Builds",
+        "dev_installer_prebuilts": true,
+        "hwqual": true,
+        "image_test": true,
+        "images": [
+            "base",
+            "test",
+            "factory_install"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "manifest_version": true,
+        "name": "clapper-factory",
+        "overlays": "both",
+        "push_image": true,
+        "signer_tests": true,
+        "trybot_list": true,
+        "upload_hw_test_artifacts": false,
+        "useflags": [
+            "chrome_internal",
+            "-cros-debug",
+            "-highdpi"
+        ],
+        "usepkg_build_packages": false,
+        "usepkg_toolchain": false,
+        "vm_tests": null
+    },
     "clapper-firmware": {
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -6232,6 +6310,45 @@
         "overlays": "both",
         "prebuilts": "public",
         "uprev": false
+    },
+    "cranky-factory": {
+        "archive_build_debug": true,
+        "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
+        "binhost_bucket": "gs://chromeos-dev-installer",
+        "binhost_key": "RELEASE_BINHOST",
+        "boards": [
+            "cranky"
+        ],
+        "build_type": "canary",
+        "chromeos_official": true,
+        "chroot_replace": true,
+        "description": "Factory Builds",
+        "dev_installer_prebuilts": true,
+        "hwqual": true,
+        "image_test": true,
+        "images": [
+            "base",
+            "test",
+            "factory_install"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "manifest_version": true,
+        "name": "cranky-factory",
+        "overlays": "both",
+        "push_image": true,
+        "signer_tests": true,
+        "trybot_list": true,
+        "upload_hw_test_artifacts": false,
+        "useflags": [
+            "chrome_internal",
+            "-cros-debug",
+            "-highdpi"
+        ],
+        "usepkg_build_packages": false,
+        "usepkg_toolchain": false,
+        "vm_tests": null
     },
     "cranky-full": {
         "archive_build_debug": true,
@@ -9175,6 +9292,45 @@
         ],
         "vm_tests": []
     },
+    "enguarde-factory": {
+        "archive_build_debug": true,
+        "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
+        "binhost_bucket": "gs://chromeos-dev-installer",
+        "binhost_key": "RELEASE_BINHOST",
+        "boards": [
+            "enguarde"
+        ],
+        "build_type": "canary",
+        "chromeos_official": true,
+        "chroot_replace": true,
+        "description": "Factory Builds",
+        "dev_installer_prebuilts": true,
+        "hwqual": true,
+        "image_test": true,
+        "images": [
+            "base",
+            "test",
+            "factory_install"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "manifest_version": true,
+        "name": "enguarde-factory",
+        "overlays": "both",
+        "push_image": true,
+        "signer_tests": true,
+        "trybot_list": true,
+        "upload_hw_test_artifacts": false,
+        "useflags": [
+            "chrome_internal",
+            "-cros-debug",
+            "-highdpi"
+        ],
+        "usepkg_build_packages": false,
+        "usepkg_toolchain": false,
+        "vm_tests": null
+    },
     "enguarde-firmware": {
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -9713,6 +9869,45 @@
             "depthcharge"
         ],
         "vm_tests": []
+    },
+    "expresso-factory": {
+        "archive_build_debug": true,
+        "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
+        "binhost_bucket": "gs://chromeos-dev-installer",
+        "binhost_key": "RELEASE_BINHOST",
+        "boards": [
+            "expresso"
+        ],
+        "build_type": "canary",
+        "chromeos_official": true,
+        "chroot_replace": true,
+        "description": "Factory Builds",
+        "dev_installer_prebuilts": true,
+        "hwqual": true,
+        "image_test": true,
+        "images": [
+            "base",
+            "test",
+            "factory_install"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "manifest_version": true,
+        "name": "expresso-factory",
+        "overlays": "both",
+        "push_image": true,
+        "signer_tests": true,
+        "trybot_list": true,
+        "upload_hw_test_artifacts": false,
+        "useflags": [
+            "chrome_internal",
+            "-cros-debug",
+            "-highdpi"
+        ],
+        "usepkg_build_packages": false,
+        "usepkg_toolchain": false,
+        "vm_tests": null
     },
     "expresso-firmware": {
         "archive_build_debug": true,
@@ -11359,6 +11554,45 @@
         ],
         "vm_tests": []
     },
+    "glimmer-factory": {
+        "archive_build_debug": true,
+        "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
+        "binhost_bucket": "gs://chromeos-dev-installer",
+        "binhost_key": "RELEASE_BINHOST",
+        "boards": [
+            "glimmer"
+        ],
+        "build_type": "canary",
+        "chromeos_official": true,
+        "chroot_replace": true,
+        "description": "Factory Builds",
+        "dev_installer_prebuilts": true,
+        "hwqual": true,
+        "image_test": true,
+        "images": [
+            "base",
+            "test",
+            "factory_install"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "manifest_version": true,
+        "name": "glimmer-factory",
+        "overlays": "both",
+        "push_image": true,
+        "signer_tests": true,
+        "trybot_list": true,
+        "upload_hw_test_artifacts": false,
+        "useflags": [
+            "chrome_internal",
+            "-cros-debug",
+            "-highdpi"
+        ],
+        "usepkg_build_packages": false,
+        "usepkg_toolchain": false,
+        "vm_tests": null
+    },
     "glimmer-firmware": {
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -11897,6 +12131,45 @@
             "depthcharge"
         ],
         "vm_tests": []
+    },
+    "gnawty-factory": {
+        "archive_build_debug": true,
+        "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
+        "binhost_bucket": "gs://chromeos-dev-installer",
+        "binhost_key": "RELEASE_BINHOST",
+        "boards": [
+            "gnawty"
+        ],
+        "build_type": "canary",
+        "chromeos_official": true,
+        "chroot_replace": true,
+        "description": "Factory Builds",
+        "dev_installer_prebuilts": true,
+        "hwqual": true,
+        "image_test": true,
+        "images": [
+            "base",
+            "test",
+            "factory_install"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "manifest_version": true,
+        "name": "gnawty-factory",
+        "overlays": "both",
+        "push_image": true,
+        "signer_tests": true,
+        "trybot_list": true,
+        "upload_hw_test_artifacts": false,
+        "useflags": [
+            "chrome_internal",
+            "-cros-debug",
+            "-highdpi"
+        ],
+        "usepkg_build_packages": false,
+        "usepkg_toolchain": false,
+        "vm_tests": null
     },
     "gnawty-firmware": {
         "archive_build_debug": true,
@@ -12814,6 +13087,45 @@
             "depthcharge"
         ],
         "vm_tests": []
+    },
+    "kip-factory": {
+        "archive_build_debug": true,
+        "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
+        "binhost_bucket": "gs://chromeos-dev-installer",
+        "binhost_key": "RELEASE_BINHOST",
+        "boards": [
+            "kip"
+        ],
+        "build_type": "canary",
+        "chromeos_official": true,
+        "chroot_replace": true,
+        "description": "Factory Builds",
+        "dev_installer_prebuilts": true,
+        "hwqual": true,
+        "image_test": true,
+        "images": [
+            "base",
+            "test",
+            "factory_install"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "manifest_version": true,
+        "name": "kip-factory",
+        "overlays": "both",
+        "push_image": true,
+        "signer_tests": true,
+        "trybot_list": true,
+        "upload_hw_test_artifacts": false,
+        "useflags": [
+            "chrome_internal",
+            "-cros-debug",
+            "-highdpi"
+        ],
+        "usepkg_build_packages": false,
+        "usepkg_toolchain": false,
+        "vm_tests": null
     },
     "kip-firmware": {
         "archive_build_debug": true,
@@ -15446,31 +15758,6 @@
         ],
         "vm_tests": [
             "smoke_suite"
-        ]
-    },
-    "lumpy-pre-flight-branch": {
-        "afdo_generate": true,
-        "afdo_update_ebuild": true,
-        "boards": [
-            "lumpy"
-        ],
-        "branch": true,
-        "chroot_replace": true,
-        "hw_tests": [
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"AFDO_record\",\n    \"timeout\": 5400,\n    \"warn_only\": true\n}"
-        ],
-        "important": true,
-        "internal": true,
-        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
-        "manifest_version": true,
-        "master": true,
-        "name": "lumpy-pre-flight-branch",
-        "overlays": "both",
-        "prebuilts": "private",
-        "push_overlays": "both",
-        "sync_chrome": true,
-        "useflags": [
-            "chrome_internal"
         ]
     },
     "lumpy-release": {
@@ -24978,6 +25265,45 @@
         ],
         "vm_tests": []
     },
+    "quawks-factory": {
+        "archive_build_debug": true,
+        "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
+        "binhost_bucket": "gs://chromeos-dev-installer",
+        "binhost_key": "RELEASE_BINHOST",
+        "boards": [
+            "quawks"
+        ],
+        "build_type": "canary",
+        "chromeos_official": true,
+        "chroot_replace": true,
+        "description": "Factory Builds",
+        "dev_installer_prebuilts": true,
+        "hwqual": true,
+        "image_test": true,
+        "images": [
+            "base",
+            "test",
+            "factory_install"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "manifest_version": true,
+        "name": "quawks-factory",
+        "overlays": "both",
+        "push_image": true,
+        "signer_tests": true,
+        "trybot_list": true,
+        "upload_hw_test_artifacts": false,
+        "useflags": [
+            "chrome_internal",
+            "-cros-debug",
+            "-highdpi"
+        ],
+        "usepkg_build_packages": false,
+        "usepkg_toolchain": false,
+        "vm_tests": null
+    },
     "quawks-firmware": {
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -26929,6 +27255,45 @@
         ],
         "vm_tests": []
     },
+    "rambi-factory": {
+        "archive_build_debug": true,
+        "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
+        "binhost_bucket": "gs://chromeos-dev-installer",
+        "binhost_key": "RELEASE_BINHOST",
+        "boards": [
+            "rambi"
+        ],
+        "build_type": "canary",
+        "chromeos_official": true,
+        "chroot_replace": true,
+        "description": "Factory Builds",
+        "dev_installer_prebuilts": true,
+        "hwqual": true,
+        "image_test": true,
+        "images": [
+            "base",
+            "test",
+            "factory_install"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "manifest_version": true,
+        "name": "rambi-factory",
+        "overlays": "both",
+        "push_image": true,
+        "signer_tests": true,
+        "trybot_list": true,
+        "upload_hw_test_artifacts": false,
+        "useflags": [
+            "chrome_internal",
+            "-cros-debug",
+            "-highdpi"
+        ],
+        "usepkg_build_packages": false,
+        "usepkg_toolchain": false,
+        "vm_tests": null
+    },
     "rambi-firmware": {
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -27053,6 +27418,27 @@
         "vm_tests": [
             "smoke_suite"
         ]
+    },
+    "rambi-pre-flight-branch": {
+        "boards": [
+            "rambi"
+        ],
+        "branch": true,
+        "chroot_replace": true,
+        "important": true,
+        "internal": true,
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "manifest_version": true,
+        "master": true,
+        "name": "rambi-pre-flight-branch",
+        "overlays": "both",
+        "prebuilts": "private",
+        "push_overlays": "both",
+        "sync_chrome": true,
+        "useflags": [
+            "chrome_internal"
+        ],
+        "vm_tests": null
     },
     "rambi-release": {
         "afdo_use": true,
@@ -30259,6 +30645,45 @@
         ],
         "vm_tests": []
     },
+    "squawks-factory": {
+        "archive_build_debug": true,
+        "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
+        "binhost_bucket": "gs://chromeos-dev-installer",
+        "binhost_key": "RELEASE_BINHOST",
+        "boards": [
+            "squawks"
+        ],
+        "build_type": "canary",
+        "chromeos_official": true,
+        "chroot_replace": true,
+        "description": "Factory Builds",
+        "dev_installer_prebuilts": true,
+        "hwqual": true,
+        "image_test": true,
+        "images": [
+            "base",
+            "test",
+            "factory_install"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "manifest_version": true,
+        "name": "squawks-factory",
+        "overlays": "both",
+        "push_image": true,
+        "signer_tests": true,
+        "trybot_list": true,
+        "upload_hw_test_artifacts": false,
+        "useflags": [
+            "chrome_internal",
+            "-cros-debug",
+            "-highdpi"
+        ],
+        "usepkg_build_packages": false,
+        "usepkg_toolchain": false,
+        "vm_tests": null
+    },
     "squawks-firmware": {
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -31993,6 +32418,45 @@
             "depthcharge"
         ],
         "vm_tests": []
+    },
+    "swanky-factory": {
+        "archive_build_debug": true,
+        "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
+        "binhost_bucket": "gs://chromeos-dev-installer",
+        "binhost_key": "RELEASE_BINHOST",
+        "boards": [
+            "swanky"
+        ],
+        "build_type": "canary",
+        "chromeos_official": true,
+        "chroot_replace": true,
+        "description": "Factory Builds",
+        "dev_installer_prebuilts": true,
+        "hwqual": true,
+        "image_test": true,
+        "images": [
+            "base",
+            "test",
+            "factory_install"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "manifest_version": true,
+        "name": "swanky-factory",
+        "overlays": "both",
+        "push_image": true,
+        "signer_tests": true,
+        "trybot_list": true,
+        "upload_hw_test_artifacts": false,
+        "useflags": [
+            "chrome_internal",
+            "-cros-debug",
+            "-highdpi"
+        ],
+        "usepkg_build_packages": false,
+        "usepkg_toolchain": false,
+        "vm_tests": null
     },
     "swanky-firmware": {
         "archive_build_debug": true,
@@ -34318,6 +34782,45 @@
         ],
         "vm_tests": []
     },
+    "winky-factory": {
+        "archive_build_debug": true,
+        "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
+        "binhost_bucket": "gs://chromeos-dev-installer",
+        "binhost_key": "RELEASE_BINHOST",
+        "boards": [
+            "winky"
+        ],
+        "build_type": "canary",
+        "chromeos_official": true,
+        "chroot_replace": true,
+        "description": "Factory Builds",
+        "dev_installer_prebuilts": true,
+        "hwqual": true,
+        "image_test": true,
+        "images": [
+            "base",
+            "test",
+            "factory_install"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "manifest_version": true,
+        "name": "winky-factory",
+        "overlays": "both",
+        "push_image": true,
+        "signer_tests": true,
+        "trybot_list": true,
+        "upload_hw_test_artifacts": false,
+        "useflags": [
+            "chrome_internal",
+            "-cros-debug",
+            "-highdpi"
+        ],
+        "usepkg_build_packages": false,
+        "usepkg_toolchain": false,
+        "vm_tests": null
+    },
     "winky-firmware": {
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -36618,49 +37121,6 @@
         "overlays": "both",
         "prebuilts": "public",
         "uprev": false
-    },
-    "x86-mario-factory": {
-        "archive_build_debug": true,
-        "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
-        "binhost_bucket": "gs://chromeos-dev-installer",
-        "binhost_key": "RELEASE_BINHOST",
-        "boards": [
-            "x86-mario"
-        ],
-        "build_type": "canary",
-        "chromeos_official": true,
-        "chroot_replace": true,
-        "description": "Factory Builds",
-        "dev_installer_prebuilts": true,
-        "hwqual": true,
-        "image_test": true,
-        "images": [
-            "base",
-            "test",
-            "factory_install"
-        ],
-        "internal": true,
-        "manifest": "official.xml",
-        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
-        "manifest_version": true,
-        "name": "x86-mario-factory",
-        "overlays": "both",
-        "push_image": true,
-        "signer_tests": true,
-        "trybot_list": true,
-        "upload_hw_test_artifacts": false,
-        "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
-        ],
-        "usepkg_build_packages": false,
-        "usepkg_toolchain": false,
-        "vm_tests": [
-            "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
-        ]
     },
     "x86-mario-firmware": {
         "archive_build_debug": true,

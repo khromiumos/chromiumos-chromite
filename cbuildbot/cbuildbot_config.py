@@ -1748,13 +1748,11 @@ internal_incremental = internal.derive(
   description='Incremental Builds (internal)',
 )
 
-internal_pfq_branch.add_config('lumpy-pre-flight-branch',
+internal_pfq_branch.add_config('rambi-pre-flight-branch',
   master=True,
+  vm_tests=None,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['lumpy'],
-  afdo_generate=True,
-  afdo_update_ebuild=True,
-  hw_tests=[AFDORecordTest()],
+  boards=['rambi'],
 )
 
 # A test-ap image is just a test image with a special profile enabled.
@@ -2918,8 +2916,69 @@ _AddFirmwareConfigs()
 
 # This is an example factory branch configuration for x86.
 # Modify it to match your factory branch.
-_factory_release.add_config('x86-mario-factory',
-  boards=['x86-mario'],
+_factory_release.add_config('rambi-factory',
+  vm_tests=None,
+  boards=['rambi'],
+)
+
+_factory_release.add_config('squawks-factory',
+  vm_tests=None,
+  boards=['squawks'],
+)
+
+_factory_release.add_config('glimmer-factory',
+  vm_tests=None,
+  boards=['glimmer'],
+)
+
+_factory_release.add_config('clapper-factory',
+  vm_tests=None,
+  boards=['clapper'],
+)
+
+_factory_release.add_config('quawks-factory',
+  vm_tests=None,
+  boards=['quawks'],
+)
+
+_factory_release.add_config('enguarde-factory',
+  vm_tests=None,
+  boards=['enguarde'],
+)
+
+_factory_release.add_config('swanky-factory',
+  vm_tests=None,
+  boards=['swanky'],
+)
+
+_factory_release.add_config('expresso-factory',
+  vm_tests=None,
+  boards=['expresso'],
+)
+
+_factory_release.add_config('winky-factory',
+  vm_tests=None,
+  boards=['winky'],
+)
+
+_factory_release.add_config('gnawty-factory',
+  vm_tests=None,
+  boards=['gnawty'],
+)
+
+_factory_release.add_config('kip-factory',
+  vm_tests=None,
+  boards=['kip'],
+)
+
+_factory_release.add_config('candy-factory',
+  vm_tests=None,
+  boards=['candy'],
+)
+
+_factory_release.add_config('cranky-factory',
+  vm_tests=None,
+  boards=['cranky'],
 )
 
 # This is an example factory branch configuration for arm.
