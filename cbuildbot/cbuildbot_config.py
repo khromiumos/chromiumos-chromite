@@ -3017,9 +3017,10 @@ _factory_release.add_config('x86-mario-factory',
 
 # This is an example factory branch configuration for arm.
 # Modify it to match your factory branch.
-_factory_release.add_config('daisy-factory',
+_factory_release.add_config('ryu-factory',
   non_testable_builder,
-  boards=['daisy'],
+  boards=['rush_ryu'],
+  usepkg_setup_board=False,
 )
 
 _payloads = internal.derive(
