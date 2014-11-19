@@ -1772,13 +1772,11 @@ internal_incremental = internal.derive(
   description='Incremental Builds (internal)',
 )
 
-internal_pfq_branch.add_config('lumpy-pre-flight-branch',
+internal_pfq_branch.add_config('ryu-pre-flight-branch',
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['lumpy'],
-  afdo_generate=True,
-  afdo_update_ebuild=True,
-  hw_tests=[AFDORecordTest()],
+  boards=['rush_ryu'],
+  usepkg_setup_board=False,
 )
 
 # A test-ap image is just a test image with a special profile enabled.
