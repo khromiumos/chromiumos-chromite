@@ -1753,13 +1753,11 @@ internal_incremental = internal.derive(
   description='Incremental Builds (internal)',
 )
 
-internal_pfq_branch.add_config('lumpy-pre-flight-branch',
+internal_pfq_branch.add_config('auron-pre-flight-branch',
   master=True,
+  vm_tests=None,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['lumpy'],
-  afdo_generate=True,
-  afdo_update_ebuild=True,
-  hw_tests=[AFDORecordTest()],
+  boards=['auron'],
 )
 
 # A test-ap image is just a test image with a special profile enabled.
@@ -2993,8 +2991,19 @@ _AddFirmwareConfigs()
 
 # This is an example factory branch configuration for x86.
 # Modify it to match your factory branch.
-_factory_release.add_config('x86-mario-factory',
-  boards=['x86-mario'],
+_factory_release.add_config('auron-factory',
+  vm_tests=None,
+  boards=['auron'],
+)
+
+_factory_release.add_config('auron_paine-factory',
+  vm_tests=None,
+  boards=['auron_paine'],
+)
+
+_factory_release.add_config('auron_yuna-factory',
+  vm_tests=None,
+  boards=['auron_yuna'],
 )
 
 # This is an example factory branch configuration for arm.
