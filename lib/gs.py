@@ -221,8 +221,9 @@ class GSContext(object):
   # (1*sleep) the first time, then (2*sleep), continuing via attempt * sleep.
   DEFAULT_SLEEP_TIME = 60
 
-  GSUTIL_TAR = 'gsutil_4.7pre_retrydns.tar.gz'
-  GSUTIL_URL = PUBLIC_BASE_HTTPS_URL + 'prerelease/%s' % GSUTIL_TAR
+  GSUTIL_VERSION = '4.7'
+  GSUTIL_TAR = 'gsutil_%s.tar.gz' % GSUTIL_VERSION
+  GSUTIL_URL = PUBLIC_BASE_HTTPS_URL + 'pub/%s' % GSUTIL_TAR
   GSUTIL_API_SELECTOR = 'JSON'
 
   RESUMABLE_UPLOAD_ERROR = ('Too many resumable upload attempts failed without '
