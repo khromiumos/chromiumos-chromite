@@ -1217,6 +1217,7 @@ _arm_internal_release_boards = frozenset([
   'veyron_jerry',
   'veyron_mighty',
   'veyron_pinky',
+  'veyron_speedy',
   'whirlwind',
 ])
 
@@ -1874,15 +1875,6 @@ internal_incremental = internal.derive(
   incremental,
   overlays=constants.BOTH_OVERLAYS,
   description='Incremental Builds (internal)',
-)
-
-internal_pfq_branch.add_config('lumpy-pre-flight-branch',
-  master=True,
-  push_overlays=constants.BOTH_OVERLAYS,
-  boards=['lumpy'],
-  afdo_generate=True,
-  afdo_update_ebuild=True,
-  hw_tests=[AFDORecordTest()],
 )
 
 # A test-ap image is just a test image with a special profile enabled.
@@ -2899,6 +2891,10 @@ _firmware_boards = frozenset([
   'stout',
   'stumpy',
   'swanky',
+  'veyron_pinky',
+  'veyron_jerry',
+  'veyron_mighty',
+  'veyron_speedy',
   'winky',
   'wolf',
   'x86-mario',
@@ -2948,6 +2944,13 @@ def _AddFirmwareConfigs():
 
 _AddFirmwareConfigs()
 
+internal_pfq_branch.add_config('veyron_pinky-pre-flight-branch',
+  _firmware,
+  master=True,
+  vm_tests=None,
+  push_overlays=constants.BOTH_OVERLAYS,
+  boards=['veyron_pinky'],
+)
 
 # This is an example factory branch configuration for x86.
 # Modify it to match your factory branch.
