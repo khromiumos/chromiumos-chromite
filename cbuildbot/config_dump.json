@@ -42485,6 +42485,7 @@
         "prebuilts": "private",
         "push_overlays": "both",
         "sync_chrome": true,
+        "unittests": false,
         "useflags": [
             "chrome_internal"
         ],

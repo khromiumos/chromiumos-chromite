@@ -1885,6 +1885,7 @@ internal_incremental = internal.derive(
 internal_pfq_branch.add_config('veyron_pinky-pre-flight-branch',
   master=True,
   vm_tests=None,
+  unittests=False,
   push_overlays=constants.BOTH_OVERLAYS,
   boards=['veyron_pinky'],
 )
