@@ -709,8 +709,9 @@ class HWTestConfig(object):
 
   @classmethod
   def DefaultList(cls, **kwargs):
-    """Returns a default list of HWTestConfig's for a build, with overrides for
-    optional args.
+    """Returns a default list of HWTestConfig's for a build, with overrides.
+
+    Overrides are for optional args.
     """
     # Set the number of machines for the au and qav suites. If we are
     # constrained in the number of duts in the lab, only give 1 dut to each.
@@ -739,8 +740,9 @@ class HWTestConfig(object):
 
   @classmethod
   def DefaultListCanary(cls, **kwargs):
-    """Returns a default list of HWTestConfig's for a canary build, with
-    overrides for optional args.
+    """Returns a default list of HWTestConfig's for a canary build.
+
+    May include overrides for optional args.
     """
     # Set minimum_duts default to 4, which means that lab will check the
     # number of available duts to meet the minimum requirement before creating
@@ -751,8 +753,9 @@ class HWTestConfig(object):
 
   @classmethod
   def AFDOList(cls, **kwargs):
-    """Returns a default list of HWTestConfig's for a AFDO build, with overrides
-    for optional args.
+    """Returns a default list of HWTestConfig's for a AFDO build.
+
+    Main include overrides for optional args.
     """
     afdo_dict = dict(pool=constants.HWTEST_SUITES_POOL,
                      timeout=120 * 60, num=1, async=True, retry=False)
@@ -1218,6 +1221,9 @@ _arm_internal_release_boards = frozenset([
   'veyron_mighty',
   'veyron_pinky',
   'veyron_speedy',
+  'veyron_gus',
+  'veyron_jaq',
+  'veyron_minnie',
   'whirlwind',
 ])
 
@@ -2895,6 +2901,9 @@ _firmware_boards = frozenset([
   'veyron_jerry',
   'veyron_mighty',
   'veyron_speedy',
+  'veyron_gus',
+  'veyron_jaq',
+  'veyron_minnie',
   'winky',
   'wolf',
   'x86-mario',
