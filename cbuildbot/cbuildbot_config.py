@@ -3006,6 +3006,31 @@ _factory_release.add_config('auron_yuna-factory',
   boards=['auron_yuna'],
 )
 
+_factory_release.add_config('cid-factory',
+  vm_tests=None,
+  boards=['cid'],
+)
+
+_factory_release.add_config('lulu-factory',
+  vm_tests=None,
+  boards=['lulu'],
+)
+
+_factory_release.add_config('jecht-factory',
+  vm_tests=None,
+  boards=['jecht'],
+)
+
+_factory_release.add_config('guado-factory',
+  vm_tests=None,
+  boards=['guado'],
+)
+
+_factory_release.add_config('tidus-factory',
+  vm_tests=None,
+  boards=['tidus'],
+)
+
 # This is an example factory branch configuration for arm.
 # Modify it to match your factory branch.
 _factory_release.add_config('daisy-factory',
