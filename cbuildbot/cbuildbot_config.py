@@ -2846,7 +2846,6 @@ _AddGroupConfig('veyron-b', 'veyron_gus', (
 # jecht-based boards
 _AddGroupConfig('jecht', 'jecht', (
     'guado',
-    'tidus',
     ),
     important=False,
 )
