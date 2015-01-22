@@ -2982,6 +2982,21 @@ _factory_release.add_config('veyron_speedy-factory',
   boards=['veyron_speedy'],
 )
 
+_factory_release.add_config('veyron_gus-factory',
+  non_testable_builder,
+  boards=['veyron_gus'],
+)
+
+_factory_release.add_config('veyron_jaq-factory',
+  non_testable_builder,
+  boards=['veyron_jaq'],
+)
+
+_factory_release.add_config('veyron_minnie-factory',
+  non_testable_builder,
+  boards=['veyron_minnie'],
+)
+
 _payloads = internal.derive(
   build_type=constants.PAYLOADS_TYPE,
   description='Regenerate release payloads.',
