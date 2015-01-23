@@ -1458,6 +1458,7 @@ _x86_release_boards = frozenset([
   'peppy_freon',
   'quawks',
   'rambi',
+  'rikku',
   'samus',
   'slippy',
   'squawks',
@@ -2919,6 +2920,7 @@ _x86_firmware_boards = (
   'peppy',
   'quawks',
   'rambi',
+  'rikku',
   'samus',
   'squawks',
   'stout',
@@ -2946,6 +2948,7 @@ _x86_depthcharge_firmware_boards = (
   'parry',
   'quawks',
   'rambi',
+  'rikku',
   'samus',
   'squawks',
   'swanky',
@@ -3011,9 +3014,9 @@ _factory_release.add_config('cid-factory',
   boards=['cid'],
 )
 
-_factory_release.add_config('lulu-factory',
+_factory_release.add_config('guado-factory',
   vm_tests=None,
-  boards=['lulu'],
+  boards=['guado'],
 )
 
 _factory_release.add_config('jecht-factory',
@@ -3021,9 +3024,14 @@ _factory_release.add_config('jecht-factory',
   boards=['jecht'],
 )
 
-_factory_release.add_config('guado-factory',
+_factory_release.add_config('lulu-factory',
   vm_tests=None,
-  boards=['guado'],
+  boards=['lulu'],
+)
+
+_factory_release.add_config('rikku-factory',
+  vm_tests=None,
+  boards=['rikku'],
 )
 
 _factory_release.add_config('tidus-factory',
