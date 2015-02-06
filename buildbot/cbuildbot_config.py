@@ -2023,6 +2023,7 @@ _depthcharge_full_internal = full.derive(
 )
 
 _x86_firmware_boards = (
+  'banjo',
   'bayleybay',
   'beltino',
   'butterfly',
@@ -2058,6 +2059,7 @@ _x86_firmware_boards = (
 )
 
 _x86_depthcharge_firmware_boards = (
+  'banjo',
   'bayleybay',
   'candy',
   'cranky',
