@@ -1447,6 +1447,7 @@ _x86_release_boards = frozenset([
   'auron',
   'auron_yuna',
   'auron_paine',
+  'banjo',
   'bayleybay',
   'beltino',
   'bobcat',
@@ -1841,6 +1842,12 @@ internal_paladin.add_config('beltino-paladin',
 internal_paladin.add_config('auron-paladin',
   boards=['auron'],
   paladin_builder_name='auron paladin',
+)
+
+internal_paladin.add_config('banjo-paladin',
+  boards=['banjo'],
+  paladin_builder_name='banjo paladin',
+  important=False,
 )
 
 internal_paladin.add_config('bobcat-paladin',
@@ -2734,6 +2741,7 @@ _AddGroupConfig('rambi-c', 'squawks', (
 
 _AddGroupConfig('rambi-d', 'cranky', (
     'parry',
+    'banjo',
     ),
     important=False,
 )
@@ -2823,6 +2831,7 @@ _depthcharge_full_internal = full.derive(
 
 _x86_firmware_boards = (
   'auron',
+  'banjo',
   'bayleybay',
   'beltino',
   'butterfly',
@@ -2858,6 +2867,7 @@ _x86_firmware_boards = (
 
 _x86_depthcharge_firmware_boards = (
   'auron',
+  'banjo',
   'bayleybay',
   'candy',
   'clapper',
@@ -2979,6 +2989,11 @@ _factory_release.add_config('candy-factory',
 _factory_release.add_config('cranky-factory',
   vm_tests=None,
   boards=['cranky'],
+)
+
+_factory_release.add_config('banjo-factory',
+  vm_tests=None,
+  boards=['banjo'],
 )
 
 # This is an example factory branch configuration for arm.
