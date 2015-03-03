@@ -2919,7 +2919,6 @@ _AddGroupConfig('rambi-c', 'squawks', (
 ))
 
 _AddGroupConfig('rambi-d', 'cranky', (
-    'parry',
     'banjo',
     ),
     important=False,
