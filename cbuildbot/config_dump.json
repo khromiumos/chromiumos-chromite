@@ -1256,7 +1256,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -1309,7 +1308,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -1428,7 +1426,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -1496,7 +1493,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -1765,7 +1761,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -1814,7 +1809,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -1864,7 +1858,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -1917,7 +1910,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -1966,7 +1958,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -2023,7 +2014,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -2076,7 +2066,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -2129,7 +2118,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -2423,7 +2411,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -2472,7 +2459,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -2522,7 +2508,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -2575,7 +2560,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -2624,7 +2608,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -2917,7 +2900,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -2966,7 +2948,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -3016,7 +2997,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -3069,7 +3049,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -3118,7 +3097,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -3272,7 +3250,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -3340,7 +3317,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -3515,7 +3491,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -3568,7 +3543,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -3618,7 +3592,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -3671,7 +3644,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -3720,7 +3692,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -3878,7 +3849,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -3946,7 +3916,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -4115,7 +4084,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -4164,7 +4132,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -4214,7 +4181,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -4267,7 +4233,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -4316,7 +4281,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -4445,7 +4409,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -4489,7 +4452,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -4532,7 +4494,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -4602,7 +4563,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -4718,7 +4678,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -4771,7 +4730,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -4922,7 +4880,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -4975,7 +4932,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -5028,7 +4984,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -5146,7 +5101,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -5314,7 +5268,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -5363,7 +5316,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -5413,7 +5365,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -5466,7 +5417,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -5515,7 +5465,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -5796,7 +5745,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -5849,7 +5797,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -5899,7 +5846,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -5952,7 +5898,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -6001,7 +5946,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -6185,7 +6129,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -6363,7 +6306,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -6416,7 +6358,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -6466,7 +6407,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -6519,7 +6459,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -6568,7 +6507,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -6865,7 +6803,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -6914,7 +6851,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -6964,7 +6900,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -7017,7 +6952,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -7066,7 +7000,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -7220,7 +7153,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -7288,7 +7220,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -7463,7 +7394,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -7516,7 +7446,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -7566,7 +7495,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -7619,7 +7547,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -7668,7 +7595,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -7965,7 +7891,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -8014,7 +7939,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -8064,7 +7988,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -8117,7 +8040,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -8166,7 +8088,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -8485,7 +8406,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -8534,7 +8454,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -8584,7 +8503,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -8637,7 +8555,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -8686,7 +8603,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -8840,7 +8756,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -8908,7 +8823,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -9083,7 +8997,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -9136,7 +9049,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -9186,7 +9098,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -9239,7 +9150,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -9288,7 +9198,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -9585,7 +9494,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -9634,7 +9542,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -9684,7 +9591,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -9737,7 +9643,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -9786,7 +9691,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -9885,7 +9789,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -10136,7 +10039,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -10189,7 +10091,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -10239,7 +10140,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -10292,7 +10192,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -10341,7 +10240,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -10539,7 +10437,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -10578,7 +10475,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -10883,7 +10779,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -10934,7 +10829,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -10982,7 +10876,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -11033,7 +10926,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -11080,7 +10972,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -11136,7 +11027,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -11190,7 +11080,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -11244,7 +11133,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -11587,7 +11475,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -11638,7 +11525,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -11686,7 +11572,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -11737,7 +11622,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -11784,7 +11668,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -11953,7 +11836,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -12138,7 +12020,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -12189,7 +12070,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -12237,7 +12117,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -12288,7 +12167,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -12335,7 +12213,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -12497,7 +12374,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -12684,7 +12560,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -12735,7 +12610,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -12783,7 +12657,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -12834,7 +12707,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -12881,7 +12753,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -13198,7 +13069,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -13249,7 +13119,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -13297,7 +13166,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -13348,7 +13216,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -13395,7 +13262,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -13551,7 +13417,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -13619,7 +13484,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -13794,7 +13658,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -13847,7 +13710,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -13897,7 +13759,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -13950,7 +13811,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -13999,7 +13859,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -14296,7 +14155,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -14345,7 +14203,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -14395,7 +14252,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -14448,7 +14304,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -14497,7 +14352,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -14651,7 +14505,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -14719,7 +14572,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -14894,7 +14746,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -14947,7 +14798,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -14997,7 +14847,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -15050,7 +14899,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -15099,7 +14947,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -15396,7 +15243,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -15445,7 +15291,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -15495,7 +15340,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -15548,7 +15392,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -15597,7 +15440,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -15815,7 +15657,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -16020,7 +15861,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -16069,7 +15909,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -16119,7 +15958,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -16172,7 +16010,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -16221,7 +16058,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -16514,7 +16350,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -16563,7 +16398,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -16613,7 +16447,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -16666,7 +16499,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -16715,7 +16547,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -16937,7 +16768,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -17067,7 +16897,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -17135,7 +16964,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -17310,7 +17138,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -17363,7 +17190,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -17413,7 +17239,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -17466,7 +17291,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -17515,7 +17339,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -17812,7 +17635,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -17861,7 +17683,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -17911,7 +17732,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -17964,7 +17784,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -18013,7 +17832,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -18167,7 +17985,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -18235,7 +18052,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -18410,7 +18226,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -18463,7 +18278,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -18513,7 +18327,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -18566,7 +18379,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -18615,7 +18427,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -18912,7 +18723,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -18961,7 +18771,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -19011,7 +18820,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -19064,7 +18872,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -19113,7 +18920,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -19406,7 +19212,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -19455,7 +19260,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -19505,7 +19309,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -19558,7 +19361,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -19607,7 +19409,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -19859,7 +19660,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -19912,8 +19712,7 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "chrome_internal",
-                    "highdpi"
+                    "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
                 "vm_tests": []
@@ -19964,7 +19763,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -20082,7 +19880,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -20138,7 +19935,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -20258,7 +20054,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -20326,7 +20121,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -20623,7 +20417,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -20672,7 +20465,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -20722,7 +20514,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -20775,7 +20566,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -20824,7 +20614,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -20881,7 +20670,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -20934,7 +20722,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -20987,7 +20774,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -21040,7 +20826,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -21366,7 +21151,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -21417,7 +21201,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -21465,7 +21248,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -21516,7 +21298,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -21563,7 +21344,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -21731,7 +21511,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -21799,7 +21578,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -21974,7 +21752,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -22027,7 +21804,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -22077,7 +21853,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -22130,7 +21905,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -22179,7 +21953,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -22476,7 +22249,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -22525,7 +22297,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -22575,7 +22346,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -22628,7 +22398,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -22677,7 +22446,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -22949,7 +22717,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -22998,7 +22765,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -23048,7 +22814,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -23101,7 +22866,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -23150,7 +22914,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -23308,7 +23071,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -23376,7 +23138,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -23552,7 +23313,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -23601,7 +23361,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -23651,7 +23410,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -23704,7 +23462,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -23753,7 +23510,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -23909,7 +23665,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -23978,7 +23733,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -24158,15 +23912,10 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "chrome_internal",
-            "highdpi"
+            "chrome_internal"
         ],
         "usepkg_build_packages": false,
-        "vm_tests": [
-            "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
-        ]
+        "vm_tests": []
     },
     "link-release-afdo": {
         "child_configs": [
@@ -24211,7 +23960,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -24261,7 +24009,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -24314,7 +24061,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -24363,7 +24109,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -24679,7 +24424,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -24728,7 +24472,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -24778,7 +24521,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -24831,7 +24573,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -24880,7 +24621,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -25070,7 +24810,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -25304,7 +25043,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -25357,7 +25095,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -25407,7 +25144,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -25460,7 +25196,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -25509,7 +25244,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -25827,7 +25561,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -25876,7 +25609,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -25926,7 +25658,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -25979,7 +25710,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -26028,7 +25758,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -26186,7 +25915,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -26442,7 +26170,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -26491,7 +26218,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -26541,7 +26267,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -26594,7 +26319,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -26643,7 +26367,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -27761,7 +27484,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -28083,7 +27805,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -28259,7 +27980,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -28308,7 +28028,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -28358,7 +28077,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -28411,7 +28129,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -28460,7 +28177,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -28928,8 +28644,7 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "chrome_internal",
-            "highdpi"
+            "chrome_internal"
         ],
         "usepkg_build_packages": false,
         "vm_tests": []
@@ -28979,7 +28694,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -29027,7 +28741,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -29078,7 +28791,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -29125,7 +28837,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -29180,8 +28891,7 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "chrome_internal",
-                    "highdpi"
+                    "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
                 "vm_tests": []
@@ -29234,8 +28944,7 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "chrome_internal",
-                    "highdpi"
+                    "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
                 "vm_tests": []
@@ -29288,8 +28997,7 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "chrome_internal",
-                    "highdpi"
+                    "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
                 "vm_tests": []
@@ -29342,7 +29050,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -29655,8 +29362,7 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "chrome_internal",
-            "highdpi"
+            "chrome_internal"
         ],
         "usepkg_build_packages": false,
         "vm_tests": []
@@ -29706,7 +29412,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -29754,7 +29459,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -29805,7 +29509,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -29852,7 +29555,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -30160,8 +29862,7 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "chrome_internal",
-            "highdpi"
+            "chrome_internal"
         ],
         "usepkg_build_packages": false,
         "vm_tests": []
@@ -30211,7 +29912,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -30259,7 +29959,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -30310,7 +30009,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -30357,7 +30055,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -30667,7 +30364,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -30718,7 +30414,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -30766,7 +30461,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -30817,7 +30511,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -30864,7 +30557,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -31172,7 +30864,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -31223,7 +30914,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -31271,7 +30961,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -31322,7 +31011,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -31369,7 +31057,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -31525,7 +31212,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -31701,7 +31387,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -31750,7 +31435,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -31800,7 +31484,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -31853,7 +31536,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -31902,7 +31584,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -32014,7 +31695,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -32284,7 +31964,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -32333,7 +32012,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -32383,7 +32061,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -32436,7 +32113,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -32485,7 +32161,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -32666,7 +32341,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -32846,7 +32520,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -32899,7 +32572,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -32949,7 +32621,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -33002,7 +32673,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -33051,7 +32721,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -33108,7 +32777,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -33164,7 +32832,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -33460,7 +33127,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -33509,7 +33175,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -33559,7 +33224,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -33612,7 +33276,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -33661,7 +33324,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -34029,7 +33691,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -34078,7 +33739,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -34128,7 +33788,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -34181,7 +33840,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -34230,7 +33888,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -34449,7 +34106,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -34498,7 +34154,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -34548,7 +34203,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -34601,7 +34255,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -34650,7 +34303,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -34808,7 +34460,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -34876,7 +34527,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -35051,7 +34701,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -35104,7 +34753,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -35154,7 +34802,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -35207,7 +34854,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -35256,7 +34902,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -35422,7 +35067,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -35476,8 +35120,7 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "chrome_internal",
-                    "highdpi"
+                    "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
                 "vm_tests": []
@@ -35602,7 +35245,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -35786,8 +35428,7 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "chrome_internal",
-            "highdpi"
+            "chrome_internal"
         ],
         "usepkg_build_packages": false,
         "vm_tests": []
@@ -35837,7 +35478,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -35885,7 +35525,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -35936,7 +35575,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -35983,7 +35621,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -36151,7 +35788,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -36340,7 +35976,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -36391,7 +36026,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -36439,7 +36073,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -36490,7 +36123,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -36537,7 +36169,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -36695,7 +36326,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -36875,7 +36505,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -36924,7 +36553,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -36974,7 +36602,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -37027,7 +36654,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -37076,7 +36702,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -37320,7 +36945,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -37377,7 +37001,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -37430,7 +37053,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -37477,7 +37099,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -37524,7 +37145,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -38030,7 +37650,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -38081,7 +37700,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -38129,7 +37747,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -38180,7 +37797,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -38227,7 +37843,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -38383,7 +37998,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -38451,7 +38065,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -38626,8 +38239,7 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "chrome_internal",
-            "highdpi"
+            "chrome_internal"
         ],
         "usepkg_build_packages": false,
         "vm_tests": [
@@ -38679,7 +38291,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -38729,7 +38340,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -38782,7 +38392,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -38831,7 +38440,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -39128,8 +38736,7 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "chrome_internal",
-            "highdpi"
+            "chrome_internal"
         ],
         "usepkg_build_packages": false,
         "vm_tests": []
@@ -39177,7 +38784,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -39227,7 +38833,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -39280,7 +38885,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -39329,7 +38933,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -39545,7 +39148,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -39602,7 +39204,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -39655,7 +39256,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -39708,7 +39308,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -39888,7 +39487,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -39945,7 +39543,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -39998,7 +39595,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -40051,8 +39647,7 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "chrome_internal",
-                    "highdpi"
+                    "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
                 "vm_tests": []
@@ -40231,7 +39826,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -40288,8 +39882,7 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "chrome_internal",
-                    "highdpi"
+                    "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
                 "vm_tests": []
@@ -40341,7 +39934,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -40394,7 +39986,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -40589,7 +40180,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -40646,7 +40236,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -40688,7 +40277,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -40756,7 +40344,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -40931,7 +40518,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -40984,7 +40570,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -41037,7 +40622,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -41090,7 +40674,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -41270,7 +40853,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -41323,7 +40905,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -41376,7 +40957,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -41429,8 +41009,7 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "chrome_internal",
-                    "highdpi"
+                    "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
                 "vm_tests": []
@@ -41609,7 +41188,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -41662,8 +41240,7 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "chrome_internal",
-                    "highdpi"
+                    "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
                 "vm_tests": []
@@ -41715,7 +41292,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -41768,7 +41344,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -41952,7 +41527,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -42005,7 +41579,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -42055,7 +41628,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -42108,7 +41680,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -42157,7 +41728,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -42454,7 +42024,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -42503,7 +42072,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -42553,7 +42121,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -42606,7 +42173,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -42655,7 +42221,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -42821,7 +42386,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -42889,7 +42453,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -43063,7 +42626,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -43112,7 +42674,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -43162,7 +42723,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -43215,7 +42775,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -43264,7 +42823,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -43548,7 +43106,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -43599,7 +43156,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -43647,7 +43203,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -43698,7 +43253,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -43745,7 +43299,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -44051,8 +43604,7 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "chrome_internal",
-            "highdpi"
+            "chrome_internal"
         ],
         "usepkg_build_packages": false,
         "vm_tests": []
@@ -44102,7 +43654,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -44150,7 +43701,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -44201,7 +43751,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -44248,7 +43797,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -44404,7 +43952,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -44472,7 +44019,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -44650,8 +44196,7 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "chrome_internal",
-            "highdpi"
+            "chrome_internal"
         ],
         "usepkg_build_packages": false,
         "vm_tests": []
@@ -44699,7 +44244,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -44749,7 +44293,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -44802,7 +44345,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -44851,7 +44393,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -45068,7 +44609,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -45121,7 +44661,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -45174,7 +44713,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -45227,7 +44765,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -45407,7 +44944,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -45465,7 +45001,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -45518,7 +45053,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -45571,7 +45105,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -45689,7 +45222,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -45986,7 +45518,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -46039,7 +45570,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -46089,7 +45619,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -46142,7 +45671,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -46191,7 +45719,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -46248,7 +45775,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -46301,7 +45827,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -46354,7 +45879,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -46406,7 +45930,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -46565,7 +46088,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -46633,7 +46155,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -46808,7 +46329,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -46861,7 +46381,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -46911,7 +46430,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -46964,7 +46482,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -47013,7 +46530,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -47310,7 +46826,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -47359,7 +46874,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -47409,7 +46923,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -47462,7 +46975,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -47511,7 +47023,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -47674,7 +47185,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -47855,7 +47365,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -47906,7 +47415,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -47954,7 +47462,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -48005,7 +47512,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -48052,7 +47558,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -48208,7 +47713,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -48387,7 +47891,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -48440,7 +47943,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -48490,7 +47992,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -48543,7 +48044,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -48592,7 +48092,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -48889,7 +48388,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -48938,7 +48436,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -48988,7 +48485,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -49041,7 +48537,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -49090,7 +48585,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -49246,7 +48740,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -49314,7 +48807,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -49489,7 +48981,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -49538,7 +49029,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -49588,7 +49078,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -49641,7 +49130,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -49690,7 +49178,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -49844,7 +49331,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -50024,7 +49510,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -50077,7 +49562,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -50127,7 +49611,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -50180,7 +49663,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -50229,7 +49711,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -50538,7 +50019,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -50587,7 +50067,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -50637,7 +50116,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -50690,7 +50168,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -50739,7 +50216,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -51033,7 +50509,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -51082,7 +50557,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -51132,7 +50606,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -51185,7 +50658,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -51234,7 +50706,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -51388,7 +50859,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -51456,7 +50926,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -51631,8 +51100,7 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "chrome_internal",
-            "highdpi"
+            "chrome_internal"
         ],
         "usepkg_build_packages": false,
         "vm_tests": [
@@ -51684,7 +51152,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -51734,7 +51201,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -51787,7 +51253,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -51836,7 +51301,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -52133,8 +51597,7 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "chrome_internal",
-            "highdpi"
+            "chrome_internal"
         ],
         "usepkg_build_packages": false,
         "vm_tests": []
@@ -52182,7 +51645,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -52232,7 +51694,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -52285,7 +51746,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -52334,7 +51794,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -52658,7 +52117,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -52707,7 +52165,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -52757,7 +52214,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -52810,7 +52266,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -52859,7 +52314,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -53202,7 +52656,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -53251,7 +52704,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -53301,7 +52753,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -53354,7 +52805,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -53403,7 +52853,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -53691,7 +53140,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -53742,7 +53190,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -53790,7 +53237,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -53841,7 +53287,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -53888,7 +53333,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -54114,7 +53558,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -54168,7 +53611,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -54222,7 +53664,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -54276,7 +53717,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -54401,7 +53841,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -54455,7 +53894,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -54642,7 +54080,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -54696,7 +54133,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -54750,7 +54186,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -54804,7 +54239,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -55075,7 +54509,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -55126,7 +54559,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -55174,7 +54606,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -55225,7 +54656,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -55272,7 +54702,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -55580,7 +55009,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -55631,7 +55059,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -55679,7 +55106,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -55730,7 +55156,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -55777,7 +55202,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -56085,7 +55509,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -56136,7 +55559,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -56184,7 +55606,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -56235,7 +55656,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -56282,7 +55702,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -56590,7 +56009,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -56641,7 +56059,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -56689,7 +56106,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -56740,7 +56156,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -56787,7 +56202,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -57095,7 +56509,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -57146,7 +56559,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -57194,7 +56606,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -57245,7 +56656,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -57292,7 +56702,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -57600,7 +57009,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -57651,7 +57059,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -57699,7 +57106,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -57750,7 +57156,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -57797,7 +57202,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -58105,7 +57509,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -58156,7 +57559,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -58204,7 +57606,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -58255,7 +57656,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -58302,7 +57702,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -58614,7 +58013,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -58665,7 +58063,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -58713,7 +58110,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -58764,7 +58160,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -58811,7 +58206,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -59119,7 +58513,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -59170,7 +58563,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -59218,7 +58610,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -59269,7 +58660,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -59316,7 +58706,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -59624,7 +59013,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -59675,7 +59063,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -59723,7 +59110,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -59774,7 +59160,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -59821,7 +59206,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -60128,7 +59512,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -60179,7 +59562,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -60227,7 +59609,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -60278,7 +59659,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -60325,7 +59705,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -60481,7 +59860,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -60549,7 +59927,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -60724,7 +60101,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -60777,7 +60153,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -60827,7 +60202,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -60880,7 +60254,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -60929,7 +60302,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -61225,7 +60597,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -61278,7 +60649,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -61328,7 +60698,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -61381,7 +60750,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -61430,7 +60798,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -61590,7 +60957,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -61769,7 +61135,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -61818,7 +61183,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -61868,7 +61232,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -61921,7 +61284,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -61970,7 +61332,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -62485,7 +61846,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -62538,7 +61898,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -62588,7 +61947,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -62641,7 +61999,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -62690,7 +62047,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -62746,7 +62102,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -62797,7 +62152,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -63089,7 +62443,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -63138,7 +62491,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -63188,7 +62540,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -63241,7 +62592,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -63290,7 +62640,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -63742,7 +63091,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -63784,7 +63132,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -63988,7 +63335,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -64041,7 +63387,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -64091,7 +63436,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -64144,7 +63488,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -64193,7 +63536,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -64665,7 +64007,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -64718,7 +64059,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -64768,7 +64108,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -64821,7 +64160,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -64870,7 +64208,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -64926,7 +64263,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -64977,7 +64313,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -65269,7 +64604,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -65318,7 +64652,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -65368,7 +64701,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -65421,7 +64753,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -65470,7 +64801,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -65630,7 +64960,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal",
             "depthcharge"
         ],
@@ -65698,7 +65027,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "vm_tests": []
@@ -65872,7 +65200,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -65921,7 +65248,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -65971,7 +65297,6 @@
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
-                    "-highdpi",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
@@ -66024,7 +65349,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -66073,7 +65397,6 @@
         "upload_symbols": true,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
