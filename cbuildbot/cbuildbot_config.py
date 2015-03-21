@@ -1469,6 +1469,7 @@ _x86_release_boards = frozenset([
   'lumpy',
   'mccloud',
   'monroe',
+  'ninja',
   'panther',
   'panther_moblab',
   'parrot',
@@ -1482,6 +1483,7 @@ _x86_release_boards = frozenset([
   'squawks',
   'stout',
   'stumpy',
+  'sumo',
   'swanky',
   'tricky',
   'winky',
@@ -2996,6 +2998,15 @@ _factory_release.add_config('banjo-factory',
   boards=['banjo'],
 )
 
+_factory_release.add_config('ninja-factory',
+  vm_tests=None,
+  boards=['ninja'],
+)
+
+_factory_release.add_config('sumo-factory',
+  vm_tests=None,
+  boards=['sumo'],
+)
 # This is an example factory branch configuration for arm.
 # Modify it to match your factory branch.
 _factory_release.add_config('daisy-factory',
