@@ -2115,11 +2115,11 @@ def _AddFirmwareConfigs():
 
 _AddFirmwareConfigs()
 
-internal_pfq_branch.add_config('rambi-pre-flight-branch',
+internal_pfq_branch.add_config('banjo-pre-flight-branch',
   _firmware_pfq,
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['rambi'],
+  boards=['banjo'],
 )
 
 # This is an example factory branch configuration for x86.
