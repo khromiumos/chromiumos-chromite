@@ -2041,8 +2041,13 @@ internal_pfq = internal.derive(official_chrome, pfq,
 # Because branch directories may be shared amongst builders on multiple
 # branches, they must delete the chroot every time they run.
 # They also potentially need to build [new] Chrome.
-internal_pfq_branch = internal_pfq.derive(branch=True, chroot_replace=True,
-                                          trybot_list=False, sync_chrome=True)
+internal_pfq_branch = internal_pfq.derive(
+    branch=True,
+    chroot_replace=True,
+    trybot_list=False,
+    sync_chrome=True,
+    active_waterfall=constants.WATERFALL_RELEASE
+)
 
 internal_paladin = internal.derive(official_chrome, paladin,
   manifest=constants.OFFICIAL_MANIFEST,
@@ -2497,7 +2502,6 @@ internal_paladin.add_config('pre-cq-launcher',
                            'tree'],
   doc='http://www.chromium.org/chromium-os/build/builder-overview#TOC-Pre-CQ',
 )
-
 
 internal_incremental.add_config('mario-incremental',
   boards=['x86-mario'],
@@ -3315,85 +3319,52 @@ def GetDisplayPosition(config_name, type_order=CONFIG_TYPE_DUMP_ORDER):
   return len(type_order)
 
 
+# x86-mario is the release master.
+#
+# TODO(dnj): This should go away once the boardless release master is complete
+# (crbug.com/458675)
+config['x86-mario-release']['master'] = True
+
 # This is a list of configs that should be included on the main waterfall, but
 # aren't included by default (see IsDefaultMainWaterfall). This loosely
 # corresponds to the set of experimental or self-standing configs.
 _waterfall_config_map = {
-    constants.WATERFALL_EXTERNAL: frozenset([
-      # Experimental Paladins
-      'amd64-generic_freon-paladin',
+    constants.WATERFALL_RELEASE: frozenset([
+      # Board builders
+      'samus-release',
+      'storm-release',
+      'whirlwind-release',
+      'x86-mario-release',
 
-      # Incremental
-      'amd64-generic-incremental',
-      'daisy-incremental',
-      'x86-generic-incremental',
-
-      # Full
-      'amd64-generic-full',
-      'arm-generic-full',
-      'daisy-full',
-      'mipsel-o32-generic-full',
-      'x86-generic-full',
-
-      # ASAN
-      'amd64-generic-asan',
-      'x86-generic-asan',
-
-      # Utility
-      'chromiumos-sdk',
-      'refresh-packages',
-    ]),
-
-    constants.WATERFALL_INTERNAL: frozenset([
-      # Experimental Paladins
-      'daisy_freon-paladin',
-      'daisy_skate-paladin',
-      'nyan_freon-paladin',
-      'tricky-paladin',
-      'whirlwind-paladin',
-
-      # Experimental Canaries (Group)
+      # Group Builders
+      'auron-b-release-group',
+      'auron-release-group',
+      'beltino-a-release-group',
+      'beltino-b-release-group',
       'daisy-freon-release-group',
+      'daisy-release-group',
+      'ivybridge-freon-release-group',
       'jecht-release-group',
+      'nyan-release-group',
       'peach-freon-release-group',
+      'peach-release-group',
       'rambi-d-release-group',
+      'rambi-freon-a-release-group',
       'rambi-freon-b-release-group',
+      'rambi-freon-c-release-group',
+      'sandybridge-release-group',
+      'slippy-release-group',
       'veyron-b-release-group',
-
-      # Experimental Canaries
-      'bobcat-release',
-      'cosmos-release',
-      'daisy_winter-release',
-      'kayle-release',
-      'nyan_freon-release',
-      'panther_moblab-release',
-      'rush_ryu-release',
-      'strago-release',
-      'urara-release',
-
-      # Experimental PFQs.
-      'peach_pit-chrome-pfq',
-      'tricky-chrome-pfq',
-
-      # Incremental Builders.
-      'mario-incremental',
-
-      # Firmware Builders.
-      'link-depthcharge-full-firmware',
-
-      # SDK Builders.
-      'panther_embedded-project-sdk',
-      'gizmo-project-sdk',
-
-      # Toolchain Builders.
-      'internal-toolchain-major',
-      'internal-toolchain-minor',
+      'veyron-release-group',
+      'x86-alex-release-group',
+      'x86-zgb-release-group',
     ]),
 }
 
 def _SetupWaterfalls():
   for name, c in config.iteritems():
-    c['active_waterfall'] = GetDefaultWaterfall(c)
+    if not c.get('active_waterfall'):
+      c['active_waterfall'] = GetDefaultWaterfall(c)
 
   # Apply manual configs.
   for waterfall, names in _waterfall_config_map.iteritems():
