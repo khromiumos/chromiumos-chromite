@@ -420,6 +420,10 @@ _settings = dict(
 )
 
 
+# Set to 'True' if this is a release branch.
+IS_RELEASE_BRANCH = True
+
+
 _CONFIG = config_lib.Config(defaults=_settings)
 
 def GetConfig():
@@ -504,19 +508,28 @@ def GetDefaultWaterfall(build_config):
     return None
   if build_config['branch']:
     return None
-
   b_type = build_config['build_type']
-  if (
-      config_lib.IsPFQType(b_type) or
-      config_lib.IsCQType(b_type) or
-      config_lib.IsCanaryType(b_type) or
-      b_type in (
-        constants.PRE_CQ_LAUNCHER_TYPE,
-      )):
-    if build_config['internal']:
-      return constants.WATERFALL_INTERNAL
+
+  if config_lib.IsCanaryType(b_type):
+    # If this is a canary build, it may fall on different waterfalls:
+    # - If we're building for a release branch, it belongs on a release
+    #   waterfall.
+    # - Otherwise, it belongs on the internal waterfall.
+    if IS_RELEASE_BRANCH:
+      return constants.WATERFALL_RELEASE
     else:
-      return constants.WATERFALL_EXTERNAL
+      return constants.WATERFALL_INTERNAL
+  elif config_lib.IsCQType(b_type):
+    # A Paladin can appear on the public or internal waterfall depending on its
+    # 'internal' status.
+    return (constants.WATERFALL_INTERNAL if build_config['internal'] else
+            constants.WATERFALL_EXTERNAL)
+  elif config_lib.IsPFQType(b_type) or b_type == constants.PRE_CQ_LAUNCHER_TYPE:
+    # These builder types belong on the internal waterfall.
+    return constants.WATERFALL_INTERNAL
+  else:
+    # No default active waterfall.
+    return None
 
 
 # pylint: disable=W0102
@@ -1677,8 +1690,12 @@ internal_pfq = internal.derive(official_chrome, pfq,
 # Because branch directories may be shared amongst builders on multiple
 # branches, they must delete the chroot every time they run.
 # They also potentially need to build [new] Chrome.
-internal_pfq_branch = internal_pfq.derive(branch=True, chroot_replace=True,
-                                          trybot_list=False, sync_chrome=True)
+internal_pfq_branch = internal_pfq.derive(
+    branch=True,
+    chroot_replace=True,
+    trybot_list=False,
+    sync_chrome=True,
+    active_waterfall=constants.WATERFALL_RELEASE)
 
 internal_paladin = internal.derive(official_chrome, paladin,
   manifest=constants.OFFICIAL_MANIFEST,
@@ -2219,7 +2236,7 @@ _grouped_variant_release = _release.derive(_grouped_variant_config)
 
 _CONFIG.AddConfig(_release, 'master-release',
   boards=[],
-  master=True,
+  master=False,
   sync_chrome=False,
   chrome_sdk=False,
   health_alert_recipients=['chromeos-infra-eng@grotations.appspotmail.com',
@@ -2340,7 +2357,7 @@ _CONFIG.AddConfig(_release, 'bobcat-release',
 
 _CONFIG.AddConfig(_release, 'gizmo-release',
   _base_configs['gizmo'],
-  important=True,
+  important=False,
   paygen=False,
   signer_tests=False,
 )
@@ -2350,16 +2367,10 @@ _CONFIG.AddConfig(_release, 'samus-release',
   important=True,
 )
 
-# Builder for non-freon 'stout' for test coverage (crbug.com/474713).
-_CONFIG.AddConfig(_release, 'stout-release',
-  _base_configs['stout'],
-  important=True,
-)
-
 # Builder for non-freon 'quawks' for test coverage.
 _CONFIG.AddConfig(_release, 'quawks-release',
   _base_configs['quawks'],
-  important=True,
+  important=False,
 )
 
 ### Arm release configs.
@@ -2397,7 +2408,7 @@ _AddReleaseConfigs()
 _CONFIG.AddConfig(_release, 'panther_embedded-minimal-release',
   _base_configs['panther_embedded'],
   profile='minimal',
-  important=True,
+  important=False,
   paygen=False,
   signer_tests=False,
 )
@@ -2415,7 +2426,7 @@ _CONFIG.AddGroup('beaglebone-release-group',
     boards=['beaglebone_servo'],
     payload_image='base'
   ).derive(_grouped_variant_config),
-  important=True,
+  important=False,
 )
 
 _CONFIG.AddConfig(_release, 'kayle-release',
@@ -2472,7 +2483,7 @@ _CONFIG.AddConfig(_release, 'panther_moblab-release',
   paygen_skip_delta_payloads=True,
   # TODO: re-enable paygen testing when crbug.com/386473 is fixed.
   paygen_skip_testing=True,
-  important=False,
+  important=True,
   afdo_use=False,
   signer_tests=False,
   hw_tests=[config_lib.HWTestConfig(constants.HWTEST_BVT_SUITE, blocking=True,
@@ -2537,8 +2548,7 @@ def _AddGroupConfig(name, base_board, group_boards=None,
                      important=important)
 
 # pineview chipset boards
-_AddGroupConfig('pineview', 'x86-mario', (
-    'x86-alex',
+_AddGroupConfig('pineview', 'x86-alex', (
     'x86-zgb',
 ), (
     'x86-alex_he',
@@ -2552,9 +2562,7 @@ _AddGroupConfig('pineview-freon', 'x86-mario_freon', (
 ), (
     'x86-alex_he-freon',
     'x86-zgb_he-freon',
-),
-    important=False
-)
+))
 
 # sandybridge chipset boards
 _AddGroupConfig('sandybridge', 'parrot', (
@@ -2571,7 +2579,7 @@ _AddGroupConfig('sandybridge-freon', 'parrot_freon', (
 ))
 
 # ivybridge chipset boards
-_AddGroupConfig('ivybridge-freon', 'stout_freon', (
+_AddGroupConfig('ivybridge-freon', 'stout', (
   'link',
 ), (
     'parrot_ivb',
@@ -2614,7 +2622,7 @@ _AddGroupConfig('rambi-a', 'rambi', (
 _AddGroupConfig('rambi-b', 'glimmer', (
     'gnawty',
     'kip',
-    'quawks_freon',
+    'quawks',
 ))
 
 _AddGroupConfig('rambi-c', 'squawks', (
@@ -2624,31 +2632,24 @@ _AddGroupConfig('rambi-c', 'squawks', (
 ))
 
 _AddGroupConfig('rambi-d', 'banjo', (
-    'cranky',
     'ninja',
     'sumo',
-),
-    important=False
-)
-
-_AddGroupConfig('rambi-e', 'orco', (
-),
-    important=False
-)
+    'orco',
+))
 
 # daisy-based boards
 _AddGroupConfig('daisy', 'daisy', (
     'daisy_spring',
     'daisy_skate',
-))
+),
+    important=False
+)
 
 # daisy-based boards (Freon)
 _AddGroupConfig('daisy-freon', 'daisy_freon', (
     'daisy_spring-freon',
     'daisy_skate-freon',
-),
-    important=False
-)
+))
 
 # peach-based boards
 _AddGroupConfig('peach', 'peach_pit', (
@@ -2677,7 +2678,6 @@ _AddGroupConfig('auron', 'auron', (
 ))
 
 _AddGroupConfig('auron-b', 'lulu', (
-    'cid',
     'gandof',
 ))
 
@@ -2689,19 +2689,11 @@ _AddGroupConfig('veyron', 'veyron_pinky', (
     ),
 )
 
-_AddGroupConfig('veyron-b', 'veyron_gus', (
-    'veyron_jaq',
+_AddGroupConfig('veyron-b', 'veyron_jaq', (
     'veyron_minnie',
     'veyron_rialto',
+    'veyron_thea'
     ),
-    important=False,
-)
-
-_AddGroupConfig('veyron-c', 'veyron_brain', (
-    'veyron_danger',
-    'veyron_thea',
-    ),
-    important=False,
 )
 
 # jecht-based boards
@@ -2715,7 +2707,6 @@ _AddGroupConfig('jecht', 'jecht', (
 _AddGroupConfig('strago', 'strago', (
     'cyan',
     ),
-    important=False,
 )
 
 # oak-based boards
@@ -2973,90 +2964,24 @@ def GetDisplayPosition(config_name,
   return len(type_order)
 
 
+# On release branches, x86-mario is the release master.
+#
+# TODO(dnj): This should go away once the boardless release master is complete
+# (crbug.com/458675)
+if IS_RELEASE_BRANCH:
+  _CONFIG['x86-mario-release']['master'] = True
+
+
 # This is a list of configs that should be included on the main waterfall, but
 # aren't included by default (see IsDefaultMainWaterfall). This loosely
 # corresponds to the set of experimental or self-standing configs.
 _waterfall_config_map = {
-    constants.WATERFALL_EXTERNAL: frozenset([
-      # Experimental Paladins
-      'amd64-generic_freon-paladin',
-
-      # Incremental
-      'amd64-generic-incremental',
-      'daisy-incremental',
-      'x86-generic-incremental',
-
-      # Full
-      'amd64-generic-full',
-      'arm-generic-full',
-      'daisy-full',
-      'mipsel-o32-generic-full',
-      'oak-full',
-      'x86-generic-full',
-
-      # ASAN
-      'amd64-generic-asan',
-      'x86-generic-asan',
-
-      # Utility
-      'chromiumos-sdk',
-      'refresh-packages',
-    ]),
-
-    constants.WATERFALL_INTERNAL: frozenset([
-      # Experimental Paladins
-      'daisy_freon-paladin',
-      'nyan_freon-paladin',
-      'tricky-paladin',
-      'whirlwind-paladin',
-      'x86-alex_freon-paladin',
-
-      # Experimental Canaries (Group)
-      'daisy-freon-release-group',
-      'peach-freon-release-group',
-      'pineview-freon-release-group',
-      'rambi-d-release-group',
-      'rambi-e-release-group',
-      'strago-release-group',
-      'veyron-b-release-group',
-      'veyron-c-release-group',
-
-      # Experimental Canaries
-      'bobcat-release',
-      'cosmos-release',
-      'daisy_winter-release',
-      'kayle-release',
-      'nyan_freon-release',
-      'oak-release-group',
-      'panther_moblab-release',
-      'rush_ryu-release',
-      'smaug-release',
-      'lakitu-release',
-
-      # Experimental PFQs.
-      'peach_pit-chrome-pfq',
-      'tricky-chrome-pfq',
-
-      # Incremental Builders.
-      'mario-incremental',
-      'lakitu-incremental',
-
-      # Firmware Builders.
-      'link-depthcharge-full-firmware',
-
-      # SDK Builders.
-      'panther_embedded-project-sdk',
-      'gizmo-project-sdk',
-
-      # Toolchain Builders.
-      'internal-toolchain-major',
-      'internal-toolchain-minor',
-    ]),
 }
 
 def _SetupWaterfalls():
   for name, c in _CONFIG.iteritems():
-    c['active_waterfall'] = GetDefaultWaterfall(c)
+    if not c.get('active_waterfall'):
+      c['active_waterfall'] = GetDefaultWaterfall(c)
 
   # Apply manual configs.
   for waterfall, names in _waterfall_config_map.iteritems():

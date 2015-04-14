@@ -172,7 +172,6 @@
         ]
     },
     "amd64-generic-asan": {
-        "active_waterfall": "chromiumos",
         "boards": [
             "amd64-generic"
         ],
@@ -253,7 +252,6 @@
         "vm_tests": []
     },
     "amd64-generic-full": {
-        "active_waterfall": "chromiumos",
         "archive_build_debug": true,
         "boards": [
             "amd64-generic"
@@ -280,7 +278,6 @@
         "usepkg_build_packages": false
     },
     "amd64-generic-incremental": {
-        "active_waterfall": "chromiumos",
         "boards": [
             "amd64-generic"
         ],
@@ -563,7 +560,6 @@
         "vm_tests": []
     },
     "amd64-generic_freon-paladin": {
-        "active_waterfall": "chromiumos",
         "boards": [
             "amd64-generic_freon"
         ],
@@ -694,7 +690,6 @@
         "vm_tests": []
     },
     "arm-generic-full": {
-        "active_waterfall": "chromiumos",
         "archive_build_debug": true,
         "boards": [
             "arm-generic"
@@ -1206,37 +1201,6 @@
             {
                 "archive_build_debug": true,
                 "boards": [
-                    "cid"
-                ],
-                "build_packages_in_background": true,
-                "build_type": "full",
-                "chrome_sdk": true,
-                "chrome_sdk_build_chrome": false,
-                "chroot_replace": true,
-                "description": "Full Builds",
-                "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
-                "git_sync": true,
-                "grouped": true,
-                "image_test": true,
-                "images": [
-                    "base",
-                    "recovery",
-                    "test",
-                    "factory_install"
-                ],
-                "name": "cid-full",
-                "prebuilts": "public",
-                "trybot_list": true,
-                "unittests": null,
-                "useflags": [
-                    "-chrome_internal"
-                ],
-                "usepkg_build_packages": false,
-                "vm_tests": []
-            },
-            {
-                "archive_build_debug": true,
-                "boards": [
                     "gandof"
                 ],
                 "build_packages_in_background": true,
@@ -1268,7 +1232,7 @@
         ],
         "chrome_sdk": true,
         "chroot_replace": true,
-        "description": "Full Builds; Group config (boards: lulu, cid, gandof)",
+        "description": "Full Builds; Group config (boards: lulu, gandof)",
         "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
         "git_sync": true,
         "image_test": true,
@@ -1287,7 +1251,7 @@
         "usepkg_build_packages": false
     },
     "auron-b-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -1359,59 +1323,6 @@
                 "binhost_bucket": "gs://chromeos-dev-installer",
                 "binhost_key": "RELEASE_BINHOST",
                 "boards": [
-                    "cid"
-                ],
-                "build_packages_in_background": true,
-                "build_type": "canary",
-                "chrome_sdk": true,
-                "chrome_sdk_build_chrome": false,
-                "chromeos_official": true,
-                "chroot_replace": true,
-                "description": "Release Builds (canary) (internal)",
-                "dev_installer_prebuilts": true,
-                "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
-                "grouped": true,
-                "hw_tests": [
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 1,\n    \"num\": 1,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"sanity\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"au\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}"
-                ],
-                "hwqual": true,
-                "image_test": true,
-                "images": [
-                    "base",
-                    "recovery",
-                    "test",
-                    "factory_install"
-                ],
-                "internal": true,
-                "manifest": "official.xml",
-                "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
-                "manifest_version": true,
-                "name": "cid-release",
-                "overlays": "both",
-                "paygen": true,
-                "push_image": true,
-                "signer_tests": true,
-                "trybot_list": true,
-                "unittests": null,
-                "upload_symbols": true,
-                "useflags": [
-                    "-cros-debug",
-                    "chrome_internal"
-                ],
-                "usepkg_build_packages": false,
-                "vm_tests": []
-            },
-            {
-                "afdo_use": true,
-                "archive_build_debug": true,
-                "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
-                "binhost_bucket": "gs://chromeos-dev-installer",
-                "binhost_key": "RELEASE_BINHOST",
-                "boards": [
                     "gandof"
                 ],
                 "build_packages_in_background": true,
@@ -1462,7 +1373,7 @@
         "chrome_sdk": true,
         "chromeos_official": true,
         "chroot_replace": true,
-        "description": "Release Builds (canary) (internal); Group config (boards: lulu, cid, gandof)",
+        "description": "Release Builds (canary) (internal); Group config (boards: lulu, gandof)",
         "dev_installer_prebuilts": true,
         "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
         "hw_tests": [
@@ -2238,7 +2149,7 @@
         ]
     },
     "auron-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -5409,7 +5320,6 @@
         "vm_tests": []
     },
     "beaglebone-release-group": {
-        "active_waterfall": "chromeos",
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
@@ -5513,7 +5423,6 @@
             "base",
             "test"
         ],
-        "important": true,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
@@ -6191,7 +6100,7 @@
         "usepkg_build_packages": false
     },
     "beltino-a-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -6472,7 +6381,7 @@
         "usepkg_build_packages": false
     },
     "beltino-b-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -7492,7 +7401,6 @@
         ]
     },
     "bobcat-release": {
-        "active_waterfall": "chromeos",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -9659,7 +9567,6 @@
         ]
     },
     "chromiumos-sdk": {
-        "active_waterfall": "chromiumos",
         "archive_build_debug": true,
         "boards": [
             "x86-generic",
@@ -11121,7 +11028,6 @@
         "vm_tests": []
     },
     "cosmos-release": {
-        "active_waterfall": "chromeos",
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
@@ -12974,7 +12880,7 @@
         "vm_tests": []
     },
     "daisy-freon-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -13167,6 +13073,7 @@
             "test",
             "factory_install"
         ],
+        "important": true,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
@@ -13188,7 +13095,6 @@
         "vm_tests": []
     },
     "daisy-full": {
-        "active_waterfall": "chromiumos",
         "archive_build_debug": true,
         "boards": [
             "daisy"
@@ -13343,7 +13249,6 @@
         "vm_tests": []
     },
     "daisy-incremental": {
-        "active_waterfall": "chromiumos",
         "boards": [
             "daisy"
         ],
@@ -13765,7 +13670,6 @@
         "vm_tests": []
     },
     "daisy-release-group": {
-        "active_waterfall": "chromeos",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -13960,7 +13864,6 @@
             "test",
             "factory_install"
         ],
-        "important": true,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
@@ -14201,7 +14104,6 @@
         "vm_tests": []
     },
     "daisy_freon-paladin": {
-        "active_waterfall": "chromeos",
         "boards": [
             "daisy_freon"
         ],
@@ -17148,7 +17050,6 @@
         "vm_tests": []
     },
     "daisy_winter-release": {
-        "active_waterfall": "chromeos",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -20756,7 +20657,6 @@
         "vm_tests": []
     },
     "gizmo-project-sdk": {
-        "active_waterfall": "chromeos",
         "boards": [
             "gizmo"
         ],
@@ -20775,7 +20675,6 @@
         "vm_tests": []
     },
     "gizmo-release": {
-        "active_waterfall": "chromeos",
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
@@ -20796,7 +20695,6 @@
             "test",
             "factory_install"
         ],
-        "important": true,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
@@ -22697,7 +22595,6 @@
         ]
     },
     "internal-toolchain-major": {
-        "active_waterfall": "chromeos",
         "archive_build_debug": true,
         "boards": [
             "x86-alex",
@@ -22732,7 +22629,6 @@
         "usepkg_build_packages": false
     },
     "internal-toolchain-minor": {
-        "active_waterfall": "chromeos",
         "archive_build_debug": true,
         "boards": [
             "x86-alex",
@@ -22769,14 +22665,14 @@
     "ivybridge-freon-full-group": {
         "archive_build_debug": true,
         "boards": [
-            "stout_freon"
+            "stout"
         ],
         "build_type": "full",
         "child_configs": [
             {
                 "archive_build_debug": true,
                 "boards": [
-                    "stout_freon"
+                    "stout"
                 ],
                 "build_type": "full",
                 "chrome_sdk": true,
@@ -22792,7 +22688,7 @@
                     "test",
                     "factory_install"
                 ],
-                "name": "stout_freon-full",
+                "name": "stout-full",
                 "prebuilts": "public",
                 "trybot_list": true,
                 "useflags": [
@@ -22864,7 +22760,7 @@
         ],
         "chrome_sdk": true,
         "chroot_replace": true,
-        "description": "Full Builds; Group config (boards: stout_freon, link, parrot_ivb)",
+        "description": "Full Builds; Group config (boards: stout, link, parrot_ivb)",
         "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
         "git_sync": true,
         "image_test": true,
@@ -22883,14 +22779,14 @@
         "usepkg_build_packages": false
     },
     "ivybridge-freon-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
         "boards": [
-            "stout_freon"
+            "stout"
         ],
         "build_type": "canary",
         "child_configs": [
@@ -22901,7 +22797,7 @@
                 "binhost_bucket": "gs://chromeos-dev-installer",
                 "binhost_key": "RELEASE_BINHOST",
                 "boards": [
-                    "stout_freon"
+                    "stout"
                 ],
                 "build_type": "canary",
                 "chrome_sdk": true,
@@ -22930,7 +22826,7 @@
                 "manifest": "official.xml",
                 "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
                 "manifest_version": true,
-                "name": "stout_freon-release",
+                "name": "stout-release",
                 "overlays": "both",
                 "paygen": true,
                 "push_image": true,
@@ -23057,7 +22953,7 @@
         "chrome_sdk": true,
         "chromeos_official": true,
         "chroot_replace": true,
-        "description": "Release Builds (canary) (internal); Group config (boards: stout_freon, link, parrot_ivb)",
+        "description": "Release Builds (canary) (internal); Group config (boards: stout, link, parrot_ivb)",
         "dev_installer_prebuilts": true,
         "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
         "hw_tests": [
@@ -23862,7 +23758,7 @@
         ]
     },
     "jecht-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -24419,7 +24315,6 @@
         "vm_tests": []
     },
     "kayle-release": {
-        "active_waterfall": "chromeos",
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
@@ -25786,7 +25681,6 @@
         "vm_tests": []
     },
     "lakitu-incremental": {
-        "active_waterfall": "chromeos",
         "boards": [
             "lakitu"
         ],
@@ -25919,7 +25813,6 @@
         "vm_tests": []
     },
     "lakitu-release": {
-        "active_waterfall": "chromeos",
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
@@ -27026,7 +26919,6 @@
         "vm_tests": []
     },
     "link-depthcharge-full-firmware": {
-        "active_waterfall": "chromeos",
         "archive_build_debug": true,
         "boards": [
             "link"
@@ -28463,6 +28355,7 @@
         ]
     },
     "lumpy-pre-flight-branch": {
+        "active_waterfall": "chromeos_release",
         "afdo_generate": true,
         "afdo_update_ebuild": true,
         "boards": [
@@ -29410,7 +29303,6 @@
         ]
     },
     "mario-incremental": {
-        "active_waterfall": "chromeos",
         "boards": [
             "x86-mario"
         ],
@@ -29477,7 +29369,6 @@
         "vm_tests": []
     },
     "master-release": {
-        "active_waterfall": "chromeos",
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
@@ -29512,7 +29403,6 @@
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
         "manifest_version": true,
-        "master": true,
         "name": "master-release",
         "overlays": "both",
         "paygen": true,
@@ -31024,7 +30914,6 @@
         "vm_tests": []
     },
     "mipsel-o32-generic-full": {
-        "active_waterfall": "chromiumos",
         "archive_build_debug": true,
         "boards": [
             "mipsel-o32-generic"
@@ -33447,7 +33336,7 @@
         "vm_tests": []
     },
     "nyan-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -35013,7 +34902,6 @@
         "vm_tests": []
     },
     "nyan_freon-paladin": {
-        "active_waterfall": "chromeos",
         "boards": [
             "nyan_freon"
         ],
@@ -35089,7 +34977,6 @@
         "vm_tests": []
     },
     "nyan_freon-release": {
-        "active_waterfall": "chromeos",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -36062,7 +35949,6 @@
         "vm_tests": []
     },
     "oak-full": {
-        "active_waterfall": "chromiumos",
         "archive_build_debug": true,
         "boards": [
             "oak"
@@ -36557,7 +36443,6 @@
         "vm_tests": []
     },
     "oak-release-group": {
-        "active_waterfall": "chromeos",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -38088,7 +37973,6 @@
         "vm_tests": []
     },
     "panther_embedded-minimal-release": {
-        "active_waterfall": "chromeos",
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
@@ -38109,7 +37993,6 @@
             "test",
             "factory_install"
         ],
-        "important": true,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
@@ -38234,7 +38117,6 @@
         "vm_tests": []
     },
     "panther_embedded-project-sdk": {
-        "active_waterfall": "chromeos",
         "boards": [
             "panther_embedded"
         ],
@@ -38794,7 +38676,7 @@
         "vm_tests": []
     },
     "panther_moblab-release": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
@@ -38820,6 +38702,7 @@
             "recovery",
             "test"
         ],
+        "important": true,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
@@ -41605,7 +41488,6 @@
         "vm_tests": []
     },
     "peach-freon-release-group": {
-        "active_waterfall": "chromeos",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -41858,7 +41740,7 @@
         "vm_tests": []
     },
     "peach-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -43166,7 +43048,6 @@
         "vm_tests": []
     },
     "peach_pit-chrome-pfq": {
-        "active_waterfall": "chromeos",
         "boards": [
             "peach_pit"
         ],
@@ -45097,7 +44978,7 @@
         "usepkg_build_packages": false
     },
     "pineview-freon-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -45394,6 +45275,7 @@
             "test",
             "factory_install"
         ],
+        "important": true,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
@@ -45419,46 +45301,17 @@
     "pineview-full-group": {
         "archive_build_debug": true,
         "boards": [
-            "x86-mario"
+            "x86-alex"
         ],
         "build_type": "full",
         "child_configs": [
             {
                 "archive_build_debug": true,
                 "boards": [
-                    "x86-mario"
-                ],
-                "build_type": "full",
-                "chrome_sdk": true,
-                "chroot_replace": true,
-                "description": "Full Builds",
-                "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
-                "git_sync": true,
-                "grouped": true,
-                "image_test": true,
-                "images": [
-                    "base",
-                    "recovery",
-                    "test",
-                    "factory_install"
-                ],
-                "name": "x86-mario-full",
-                "prebuilts": "public",
-                "trybot_list": true,
-                "useflags": [
-                    "-chrome_internal"
-                ],
-                "usepkg_build_packages": false
-            },
-            {
-                "archive_build_debug": true,
-                "boards": [
                     "x86-alex"
                 ],
-                "build_packages_in_background": true,
                 "build_type": "full",
                 "chrome_sdk": true,
-                "chrome_sdk_build_chrome": false,
                 "chroot_replace": true,
                 "description": "Full Builds",
                 "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
@@ -45474,12 +45327,10 @@
                 "name": "x86-alex-full",
                 "prebuilts": "public",
                 "trybot_list": true,
-                "unittests": null,
                 "useflags": [
                     "-chrome_internal"
                 ],
-                "usepkg_build_packages": false,
-                "vm_tests": []
+                "usepkg_build_packages": false
             },
             {
                 "archive_build_debug": true,
@@ -45575,7 +45426,7 @@
         ],
         "chrome_sdk": true,
         "chroot_replace": true,
-        "description": "Full Builds; Group config (boards: x86-mario, x86-alex, x86-zgb, x86-alex_he, x86-zgb_he)",
+        "description": "Full Builds; Group config (boards: x86-alex, x86-zgb, x86-alex_he, x86-zgb_he)",
         "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
         "git_sync": true,
         "image_test": true,
@@ -45594,14 +45445,14 @@
         "usepkg_build_packages": false
     },
     "pineview-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
         "boards": [
-            "x86-mario"
+            "x86-alex"
         ],
         "build_type": "canary",
         "child_configs": [
@@ -45612,66 +45463,10 @@
                 "binhost_bucket": "gs://chromeos-dev-installer",
                 "binhost_key": "RELEASE_BINHOST",
                 "boards": [
-                    "x86-mario"
-                ],
-                "build_type": "canary",
-                "chrome_sdk": true,
-                "chromeos_official": true,
-                "chroot_replace": true,
-                "description": "Release Builds (canary) (internal)",
-                "dev_installer_prebuilts": true,
-                "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
-                "grouped": true,
-                "hw_tests": [
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 1,\n    \"num\": 1,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"sanity\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"au\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}"
-                ],
-                "hwqual": true,
-                "image_test": true,
-                "images": [
-                    "base",
-                    "recovery",
-                    "test",
-                    "factory_install"
-                ],
-                "internal": true,
-                "manifest": "official.xml",
-                "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
-                "manifest_version": true,
-                "name": "x86-mario-release",
-                "overlays": "both",
-                "paygen": true,
-                "push_image": true,
-                "signer_tests": true,
-                "trybot_list": true,
-                "upload_symbols": true,
-                "useflags": [
-                    "-cros-debug",
-                    "chrome_internal"
-                ],
-                "usepkg_build_packages": false,
-                "vm_tests": [
-                    "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
-                ]
-            },
-            {
-                "afdo_use": true,
-                "archive_build_debug": true,
-                "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
-                "binhost_bucket": "gs://chromeos-dev-installer",
-                "binhost_key": "RELEASE_BINHOST",
-                "boards": [
                     "x86-alex"
                 ],
-                "build_packages_in_background": true,
                 "build_type": "canary",
                 "chrome_sdk": true,
-                "chrome_sdk_build_chrome": false,
                 "chromeos_official": true,
                 "chroot_replace": true,
                 "description": "Release Builds (canary) (internal)",
@@ -45703,14 +45498,17 @@
                 "push_image": true,
                 "signer_tests": true,
                 "trybot_list": true,
-                "unittests": null,
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
-                "vm_tests": []
+                "vm_tests": [
+                    "smoke_suite",
+                    "dev_mode_test",
+                    "cros_vm_test"
+                ]
             },
             {
                 "afdo_use": true,
@@ -45863,7 +45661,7 @@
         "chrome_sdk": true,
         "chromeos_official": true,
         "chroot_replace": true,
-        "description": "Release Builds (canary) (internal); Group config (boards: x86-mario, x86-alex, x86-zgb, x86-alex_he, x86-zgb_he)",
+        "description": "Release Builds (canary) (internal); Group config (boards: x86-alex, x86-zgb, x86-alex_he, x86-zgb_he)",
         "dev_installer_prebuilts": true,
         "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
         "hw_tests": [
@@ -47041,7 +46839,6 @@
         ]
     },
     "quawks-release": {
-        "active_waterfall": "chromeos",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -47072,7 +46869,6 @@
             "test",
             "factory_install"
         ],
-        "important": true,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
@@ -48090,7 +47886,7 @@
         "usepkg_build_packages": false
     },
     "rambi-a-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -48458,7 +48254,7 @@
             {
                 "archive_build_debug": true,
                 "boards": [
-                    "quawks_freon"
+                    "quawks"
                 ],
                 "build_packages_in_background": true,
                 "build_type": "full",
@@ -48476,7 +48272,7 @@
                     "test",
                     "factory_install"
                 ],
-                "name": "quawks_freon-full",
+                "name": "quawks-full",
                 "prebuilts": "public",
                 "trybot_list": true,
                 "unittests": null,
@@ -48489,7 +48285,7 @@
         ],
         "chrome_sdk": true,
         "chroot_replace": true,
-        "description": "Full Builds; Group config (boards: glimmer, gnawty, kip, quawks_freon)",
+        "description": "Full Builds; Group config (boards: glimmer, gnawty, kip, quawks)",
         "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
         "git_sync": true,
         "image_test": true,
@@ -48508,7 +48304,7 @@
         "usepkg_build_packages": false
     },
     "rambi-b-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -48686,7 +48482,7 @@
                 "binhost_bucket": "gs://chromeos-dev-installer",
                 "binhost_key": "RELEASE_BINHOST",
                 "boards": [
-                    "quawks_freon"
+                    "quawks"
                 ],
                 "build_packages_in_background": true,
                 "build_type": "canary",
@@ -48717,7 +48513,7 @@
                 "manifest": "official.xml",
                 "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
                 "manifest_version": true,
-                "name": "quawks_freon-release",
+                "name": "quawks-release",
                 "overlays": "both",
                 "paygen": true,
                 "push_image": true,
@@ -48736,7 +48532,7 @@
         "chrome_sdk": true,
         "chromeos_official": true,
         "chroot_replace": true,
-        "description": "Release Builds (canary) (internal); Group config (boards: glimmer, gnawty, kip, quawks_freon)",
+        "description": "Release Builds (canary) (internal); Group config (boards: glimmer, gnawty, kip, quawks)",
         "dev_installer_prebuilts": true,
         "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
         "hw_tests": [
@@ -48926,7 +48722,7 @@
         "usepkg_build_packages": false
     },
     "rambi-c-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -49308,37 +49104,6 @@
             {
                 "archive_build_debug": true,
                 "boards": [
-                    "cranky"
-                ],
-                "build_packages_in_background": true,
-                "build_type": "full",
-                "chrome_sdk": true,
-                "chrome_sdk_build_chrome": false,
-                "chroot_replace": true,
-                "description": "Full Builds",
-                "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
-                "git_sync": true,
-                "grouped": true,
-                "image_test": true,
-                "images": [
-                    "base",
-                    "recovery",
-                    "test",
-                    "factory_install"
-                ],
-                "name": "cranky-full",
-                "prebuilts": "public",
-                "trybot_list": true,
-                "unittests": null,
-                "useflags": [
-                    "-chrome_internal"
-                ],
-                "usepkg_build_packages": false,
-                "vm_tests": []
-            },
-            {
-                "archive_build_debug": true,
-                "boards": [
                     "ninja"
                 ],
                 "build_packages_in_background": true,
@@ -49397,11 +49162,42 @@
                 ],
                 "usepkg_build_packages": false,
                 "vm_tests": []
+            },
+            {
+                "archive_build_debug": true,
+                "boards": [
+                    "orco"
+                ],
+                "build_packages_in_background": true,
+                "build_type": "full",
+                "chrome_sdk": true,
+                "chrome_sdk_build_chrome": false,
+                "chroot_replace": true,
+                "description": "Full Builds",
+                "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
+                "git_sync": true,
+                "grouped": true,
+                "image_test": true,
+                "images": [
+                    "base",
+                    "recovery",
+                    "test",
+                    "factory_install"
+                ],
+                "name": "orco-full",
+                "prebuilts": "public",
+                "trybot_list": true,
+                "unittests": null,
+                "useflags": [
+                    "-chrome_internal"
+                ],
+                "usepkg_build_packages": false,
+                "vm_tests": []
             }
         ],
         "chrome_sdk": true,
         "chroot_replace": true,
-        "description": "Full Builds; Group config (boards: banjo, cranky, ninja, sumo)",
+        "description": "Full Builds; Group config (boards: banjo, ninja, sumo, orco)",
         "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
         "git_sync": true,
         "image_test": true,
@@ -49420,7 +49216,7 @@
         "usepkg_build_packages": false
     },
     "rambi-d-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -49484,59 +49280,6 @@
                     "dev_mode_test",
                     "cros_vm_test"
                 ]
-            },
-            {
-                "afdo_use": true,
-                "archive_build_debug": true,
-                "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
-                "binhost_bucket": "gs://chromeos-dev-installer",
-                "binhost_key": "RELEASE_BINHOST",
-                "boards": [
-                    "cranky"
-                ],
-                "build_packages_in_background": true,
-                "build_type": "canary",
-                "chrome_sdk": true,
-                "chrome_sdk_build_chrome": false,
-                "chromeos_official": true,
-                "chroot_replace": true,
-                "description": "Release Builds (canary) (internal)",
-                "dev_installer_prebuilts": true,
-                "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
-                "grouped": true,
-                "hw_tests": [
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 1,\n    \"num\": 1,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"sanity\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"au\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}"
-                ],
-                "hwqual": true,
-                "image_test": true,
-                "images": [
-                    "base",
-                    "recovery",
-                    "test",
-                    "factory_install"
-                ],
-                "internal": true,
-                "manifest": "official.xml",
-                "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
-                "manifest_version": true,
-                "name": "cranky-release",
-                "overlays": "both",
-                "paygen": true,
-                "push_image": true,
-                "signer_tests": true,
-                "trybot_list": true,
-                "unittests": null,
-                "upload_symbols": true,
-                "useflags": [
-                    "-cros-debug",
-                    "chrome_internal"
-                ],
-                "usepkg_build_packages": false,
-                "vm_tests": []
             },
             {
                 "afdo_use": true,
@@ -49643,12 +49386,65 @@
                 ],
                 "usepkg_build_packages": false,
                 "vm_tests": []
+            },
+            {
+                "afdo_use": true,
+                "archive_build_debug": true,
+                "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
+                "binhost_bucket": "gs://chromeos-dev-installer",
+                "binhost_key": "RELEASE_BINHOST",
+                "boards": [
+                    "orco"
+                ],
+                "build_packages_in_background": true,
+                "build_type": "canary",
+                "chrome_sdk": true,
+                "chrome_sdk_build_chrome": false,
+                "chromeos_official": true,
+                "chroot_replace": true,
+                "description": "Release Builds (canary) (internal)",
+                "dev_installer_prebuilts": true,
+                "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
+                "grouped": true,
+                "hw_tests": [
+                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 1,\n    \"num\": 1,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"sanity\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
+                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
+                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"au\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
+                    "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
+                    "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}"
+                ],
+                "hwqual": true,
+                "image_test": true,
+                "images": [
+                    "base",
+                    "recovery",
+                    "test",
+                    "factory_install"
+                ],
+                "internal": true,
+                "manifest": "official.xml",
+                "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+                "manifest_version": true,
+                "name": "orco-release",
+                "overlays": "both",
+                "paygen": true,
+                "push_image": true,
+                "signer_tests": true,
+                "trybot_list": true,
+                "unittests": null,
+                "upload_symbols": true,
+                "useflags": [
+                    "-cros-debug",
+                    "chrome_internal"
+                ],
+                "usepkg_build_packages": false,
+                "vm_tests": []
             }
         ],
         "chrome_sdk": true,
         "chromeos_official": true,
         "chroot_replace": true,
-        "description": "Release Builds (canary) (internal); Group config (boards: banjo, cranky, ninja, sumo)",
+        "description": "Release Builds (canary) (internal); Group config (boards: banjo, ninja, sumo, orco)",
         "dev_installer_prebuilts": true,
         "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
         "hw_tests": [
@@ -49666,6 +49462,7 @@
             "test",
             "factory_install"
         ],
+        "important": true,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
@@ -49754,171 +49551,6 @@
             "depthcharge"
         ],
         "vm_tests": []
-    },
-    "rambi-e-full-group": {
-        "archive_build_debug": true,
-        "boards": [
-            "orco"
-        ],
-        "build_type": "full",
-        "child_configs": [
-            {
-                "archive_build_debug": true,
-                "boards": [
-                    "orco"
-                ],
-                "build_type": "full",
-                "chrome_sdk": true,
-                "chroot_replace": true,
-                "description": "Full Builds",
-                "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
-                "git_sync": true,
-                "grouped": true,
-                "image_test": true,
-                "images": [
-                    "base",
-                    "recovery",
-                    "test",
-                    "factory_install"
-                ],
-                "name": "orco-full",
-                "prebuilts": "public",
-                "trybot_list": true,
-                "useflags": [
-                    "-chrome_internal"
-                ],
-                "usepkg_build_packages": false
-            }
-        ],
-        "chrome_sdk": true,
-        "chroot_replace": true,
-        "description": "Full Builds; Group config (boards: orco)",
-        "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
-        "git_sync": true,
-        "image_test": true,
-        "images": [
-            "base",
-            "recovery",
-            "test",
-            "factory_install"
-        ],
-        "name": "rambi-e-full-group",
-        "prebuilts": "public",
-        "trybot_list": true,
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "usepkg_build_packages": false
-    },
-    "rambi-e-release-group": {
-        "active_waterfall": "chromeos",
-        "afdo_use": true,
-        "archive_build_debug": true,
-        "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
-        "binhost_bucket": "gs://chromeos-dev-installer",
-        "binhost_key": "RELEASE_BINHOST",
-        "boards": [
-            "orco"
-        ],
-        "build_type": "canary",
-        "child_configs": [
-            {
-                "afdo_use": true,
-                "archive_build_debug": true,
-                "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
-                "binhost_bucket": "gs://chromeos-dev-installer",
-                "binhost_key": "RELEASE_BINHOST",
-                "boards": [
-                    "orco"
-                ],
-                "build_type": "canary",
-                "chrome_sdk": true,
-                "chromeos_official": true,
-                "chroot_replace": true,
-                "description": "Release Builds (canary) (internal)",
-                "dev_installer_prebuilts": true,
-                "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
-                "grouped": true,
-                "hw_tests": [
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 1,\n    \"num\": 1,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"sanity\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"au\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}"
-                ],
-                "hwqual": true,
-                "image_test": true,
-                "images": [
-                    "base",
-                    "recovery",
-                    "test",
-                    "factory_install"
-                ],
-                "internal": true,
-                "manifest": "official.xml",
-                "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
-                "manifest_version": true,
-                "name": "orco-release",
-                "overlays": "both",
-                "paygen": true,
-                "push_image": true,
-                "signer_tests": true,
-                "trybot_list": true,
-                "upload_symbols": true,
-                "useflags": [
-                    "-cros-debug",
-                    "chrome_internal"
-                ],
-                "usepkg_build_packages": false,
-                "vm_tests": [
-                    "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
-                ]
-            }
-        ],
-        "chrome_sdk": true,
-        "chromeos_official": true,
-        "chroot_replace": true,
-        "description": "Release Builds (canary) (internal); Group config (boards: orco)",
-        "dev_installer_prebuilts": true,
-        "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
-        "hw_tests": [
-            "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 1,\n    \"num\": 1,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"sanity\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"au\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}"
-        ],
-        "hwqual": true,
-        "image_test": true,
-        "images": [
-            "base",
-            "recovery",
-            "test",
-            "factory_install"
-        ],
-        "internal": true,
-        "manifest": "official.xml",
-        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
-        "manifest_version": true,
-        "name": "rambi-e-release-group",
-        "overlays": "both",
-        "paygen": true,
-        "push_image": true,
-        "signer_tests": true,
-        "trybot_list": true,
-        "upload_symbols": true,
-        "useflags": [
-            "-cros-debug",
-            "chrome_internal"
-        ],
-        "usepkg_build_packages": false,
-        "vm_tests": [
-            "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
-        ]
     },
     "rambi-firmware": {
         "archive_build_debug": true,
@@ -50438,7 +50070,6 @@
         ]
     },
     "refresh-packages": {
-        "active_waterfall": "chromiumos",
         "boards": [
             "x86-generic",
             "arm-generic"
@@ -51859,7 +51490,6 @@
         "vm_tests": []
     },
     "rush_ryu-release": {
-        "active_waterfall": "chromeos",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -52499,7 +52129,7 @@
         ]
     },
     "samus-release": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -52995,7 +52625,7 @@
         "usepkg_build_packages": false
     },
     "sandybridge-freon-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -53413,7 +53043,7 @@
         "usepkg_build_packages": false
     },
     "sandybridge-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -54412,7 +54042,7 @@
         ]
     },
     "slippy-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -55033,7 +54663,6 @@
         "vm_tests": []
     },
     "smaug-release": {
-        "active_waterfall": "chromeos",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -56287,7 +55916,7 @@
         "vm_tests": []
     },
     "storm-release": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
@@ -56863,7 +56492,6 @@
         ]
     },
     "stout-release": {
-        "active_waterfall": "chromeos",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -56894,7 +56522,6 @@
             "test",
             "factory_install"
         ],
-        "important": true,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
@@ -58465,7 +58092,7 @@
         ]
     },
     "strago-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -58605,6 +58232,7 @@
             "test",
             "factory_install"
         ],
+        "important": true,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
@@ -60041,7 +59669,7 @@
         "vm_tests": []
     },
     "stumpy_moblab-release": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
@@ -62339,7 +61967,6 @@
         "usepkg_build_packages": false
     },
     "tricky-chrome-pfq": {
-        "active_waterfall": "chromeos",
         "boards": [
             "tricky"
         ],
@@ -62479,7 +62106,6 @@
         "vm_tests": []
     },
     "tricky-paladin": {
-        "active_waterfall": "chromeos",
         "boards": [
             "tricky"
         ],
@@ -62918,49 +62544,17 @@
     "veyron-b-full-group": {
         "archive_build_debug": true,
         "boards": [
-            "veyron_gus"
+            "veyron_jaq"
         ],
         "build_type": "full",
         "child_configs": [
             {
                 "archive_build_debug": true,
                 "boards": [
-                    "veyron_gus"
-                ],
-                "build_type": "full",
-                "chrome_sdk": true,
-                "chroot_replace": true,
-                "description": "Full Builds",
-                "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
-                "git_sync": true,
-                "grouped": true,
-                "image_test": true,
-                "images": [
-                    "base",
-                    "recovery",
-                    "test",
-                    "factory_install"
-                ],
-                "name": "veyron_gus-full",
-                "prebuilts": "public",
-                "tests_supported": false,
-                "trybot_list": true,
-                "unittests": false,
-                "useflags": [
-                    "-chrome_internal"
-                ],
-                "usepkg_build_packages": false,
-                "vm_tests": []
-            },
-            {
-                "archive_build_debug": true,
-                "boards": [
                     "veyron_jaq"
                 ],
-                "build_packages_in_background": true,
                 "build_type": "full",
                 "chrome_sdk": true,
-                "chrome_sdk_build_chrome": false,
                 "chroot_replace": true,
                 "description": "Full Builds",
                 "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
@@ -62977,7 +62571,7 @@
                 "prebuilts": "public",
                 "tests_supported": false,
                 "trybot_list": true,
-                "unittests": null,
+                "unittests": false,
                 "useflags": [
                     "-chrome_internal"
                 ],
@@ -63047,11 +62641,43 @@
                 ],
                 "usepkg_build_packages": false,
                 "vm_tests": []
+            },
+            {
+                "archive_build_debug": true,
+                "boards": [
+                    "veyron_thea"
+                ],
+                "build_packages_in_background": true,
+                "build_type": "full",
+                "chrome_sdk": true,
+                "chrome_sdk_build_chrome": false,
+                "chroot_replace": true,
+                "description": "Full Builds",
+                "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
+                "git_sync": true,
+                "grouped": true,
+                "image_test": true,
+                "images": [
+                    "base",
+                    "recovery",
+                    "test",
+                    "factory_install"
+                ],
+                "name": "veyron_thea-full",
+                "prebuilts": "public",
+                "tests_supported": false,
+                "trybot_list": true,
+                "unittests": null,
+                "useflags": [
+                    "-chrome_internal"
+                ],
+                "usepkg_build_packages": false,
+                "vm_tests": []
             }
         ],
         "chrome_sdk": true,
         "chroot_replace": true,
-        "description": "Full Builds; Group config (boards: veyron_gus, veyron_jaq, veyron_minnie, veyron_rialto)",
+        "description": "Full Builds; Group config (boards: veyron_jaq, veyron_minnie, veyron_rialto, veyron_thea)",
         "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
         "git_sync": true,
         "image_test": true,
@@ -63073,14 +62699,14 @@
         "vm_tests": []
     },
     "veyron-b-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
         "boards": [
-            "veyron_gus"
+            "veyron_jaq"
         ],
         "build_type": "canary",
         "child_configs": [
@@ -63091,64 +62717,10 @@
                 "binhost_bucket": "gs://chromeos-dev-installer",
                 "binhost_key": "RELEASE_BINHOST",
                 "boards": [
-                    "veyron_gus"
-                ],
-                "build_type": "canary",
-                "chrome_sdk": true,
-                "chromeos_official": true,
-                "chroot_replace": true,
-                "description": "Release Builds (canary) (internal)",
-                "dev_installer_prebuilts": true,
-                "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
-                "grouped": true,
-                "hw_tests": [
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 1,\n    \"num\": 1,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"sanity\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"au\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}"
-                ],
-                "hwqual": true,
-                "image_test": true,
-                "images": [
-                    "base",
-                    "recovery",
-                    "test",
-                    "factory_install"
-                ],
-                "internal": true,
-                "manifest": "official.xml",
-                "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
-                "manifest_version": true,
-                "name": "veyron_gus-release",
-                "overlays": "both",
-                "paygen": true,
-                "push_image": true,
-                "signer_tests": true,
-                "tests_supported": false,
-                "trybot_list": true,
-                "unittests": false,
-                "upload_symbols": true,
-                "useflags": [
-                    "-cros-debug",
-                    "chrome_internal"
-                ],
-                "usepkg_build_packages": false,
-                "vm_tests": []
-            },
-            {
-                "afdo_use": true,
-                "archive_build_debug": true,
-                "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
-                "binhost_bucket": "gs://chromeos-dev-installer",
-                "binhost_key": "RELEASE_BINHOST",
-                "boards": [
                     "veyron_jaq"
                 ],
-                "build_packages_in_background": true,
                 "build_type": "canary",
                 "chrome_sdk": true,
-                "chrome_sdk_build_chrome": false,
                 "chromeos_official": true,
                 "chroot_replace": true,
                 "description": "Release Builds (canary) (internal)",
@@ -63181,7 +62753,7 @@
                 "signer_tests": true,
                 "tests_supported": false,
                 "trybot_list": true,
-                "unittests": null,
+                "unittests": false,
                 "upload_symbols": true,
                 "useflags": [
                     "-cros-debug",
@@ -63297,291 +62869,6 @@
                 ],
                 "usepkg_build_packages": false,
                 "vm_tests": []
-            }
-        ],
-        "chrome_sdk": true,
-        "chromeos_official": true,
-        "chroot_replace": true,
-        "description": "Release Builds (canary) (internal); Group config (boards: veyron_gus, veyron_jaq, veyron_minnie, veyron_rialto)",
-        "dev_installer_prebuilts": true,
-        "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
-        "hw_tests": [
-            "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 1,\n    \"num\": 1,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"sanity\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"au\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}"
-        ],
-        "hwqual": true,
-        "image_test": true,
-        "images": [
-            "base",
-            "recovery",
-            "test",
-            "factory_install"
-        ],
-        "internal": true,
-        "manifest": "official.xml",
-        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
-        "manifest_version": true,
-        "name": "veyron-b-release-group",
-        "overlays": "both",
-        "paygen": true,
-        "push_image": true,
-        "signer_tests": true,
-        "tests_supported": false,
-        "trybot_list": true,
-        "unittests": false,
-        "upload_symbols": true,
-        "useflags": [
-            "-cros-debug",
-            "chrome_internal"
-        ],
-        "usepkg_build_packages": false,
-        "vm_tests": []
-    },
-    "veyron-c-full-group": {
-        "archive_build_debug": true,
-        "boards": [
-            "veyron_brain"
-        ],
-        "build_type": "full",
-        "child_configs": [
-            {
-                "archive_build_debug": true,
-                "boards": [
-                    "veyron_brain"
-                ],
-                "build_type": "full",
-                "chrome_sdk": true,
-                "chroot_replace": true,
-                "description": "Full Builds",
-                "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
-                "git_sync": true,
-                "grouped": true,
-                "image_test": true,
-                "images": [
-                    "base",
-                    "recovery",
-                    "test",
-                    "factory_install"
-                ],
-                "name": "veyron_brain-full",
-                "prebuilts": "public",
-                "tests_supported": false,
-                "trybot_list": true,
-                "unittests": false,
-                "useflags": [
-                    "-chrome_internal"
-                ],
-                "usepkg_build_packages": false,
-                "vm_tests": []
-            },
-            {
-                "archive_build_debug": true,
-                "boards": [
-                    "veyron_danger"
-                ],
-                "build_packages_in_background": true,
-                "build_type": "full",
-                "chrome_sdk": true,
-                "chrome_sdk_build_chrome": false,
-                "chroot_replace": true,
-                "description": "Full Builds",
-                "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
-                "git_sync": true,
-                "grouped": true,
-                "image_test": true,
-                "images": [
-                    "base",
-                    "recovery",
-                    "test",
-                    "factory_install"
-                ],
-                "name": "veyron_danger-full",
-                "prebuilts": "public",
-                "tests_supported": false,
-                "trybot_list": true,
-                "unittests": null,
-                "useflags": [
-                    "-chrome_internal"
-                ],
-                "usepkg_build_packages": false,
-                "vm_tests": []
-            },
-            {
-                "archive_build_debug": true,
-                "boards": [
-                    "veyron_thea"
-                ],
-                "build_packages_in_background": true,
-                "build_type": "full",
-                "chrome_sdk": true,
-                "chrome_sdk_build_chrome": false,
-                "chroot_replace": true,
-                "description": "Full Builds",
-                "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
-                "git_sync": true,
-                "grouped": true,
-                "image_test": true,
-                "images": [
-                    "base",
-                    "recovery",
-                    "test",
-                    "factory_install"
-                ],
-                "name": "veyron_thea-full",
-                "prebuilts": "public",
-                "tests_supported": false,
-                "trybot_list": true,
-                "unittests": null,
-                "useflags": [
-                    "-chrome_internal"
-                ],
-                "usepkg_build_packages": false,
-                "vm_tests": []
-            }
-        ],
-        "chrome_sdk": true,
-        "chroot_replace": true,
-        "description": "Full Builds; Group config (boards: veyron_brain, veyron_danger, veyron_thea)",
-        "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
-        "git_sync": true,
-        "image_test": true,
-        "images": [
-            "base",
-            "recovery",
-            "test",
-            "factory_install"
-        ],
-        "name": "veyron-c-full-group",
-        "prebuilts": "public",
-        "tests_supported": false,
-        "trybot_list": true,
-        "unittests": false,
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "usepkg_build_packages": false,
-        "vm_tests": []
-    },
-    "veyron-c-release-group": {
-        "active_waterfall": "chromeos",
-        "afdo_use": true,
-        "archive_build_debug": true,
-        "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
-        "binhost_bucket": "gs://chromeos-dev-installer",
-        "binhost_key": "RELEASE_BINHOST",
-        "boards": [
-            "veyron_brain"
-        ],
-        "build_type": "canary",
-        "child_configs": [
-            {
-                "afdo_use": true,
-                "archive_build_debug": true,
-                "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
-                "binhost_bucket": "gs://chromeos-dev-installer",
-                "binhost_key": "RELEASE_BINHOST",
-                "boards": [
-                    "veyron_brain"
-                ],
-                "build_type": "canary",
-                "chrome_sdk": true,
-                "chromeos_official": true,
-                "chroot_replace": true,
-                "description": "Release Builds (canary) (internal)",
-                "dev_installer_prebuilts": true,
-                "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
-                "grouped": true,
-                "hw_tests": [
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 1,\n    \"num\": 1,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"sanity\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"au\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}"
-                ],
-                "hwqual": true,
-                "image_test": true,
-                "images": [
-                    "base",
-                    "recovery",
-                    "test",
-                    "factory_install"
-                ],
-                "internal": true,
-                "manifest": "official.xml",
-                "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
-                "manifest_version": true,
-                "name": "veyron_brain-release",
-                "overlays": "both",
-                "paygen": true,
-                "push_image": true,
-                "signer_tests": true,
-                "tests_supported": false,
-                "trybot_list": true,
-                "unittests": false,
-                "upload_symbols": true,
-                "useflags": [
-                    "-cros-debug",
-                    "chrome_internal"
-                ],
-                "usepkg_build_packages": false,
-                "vm_tests": []
-            },
-            {
-                "afdo_use": true,
-                "archive_build_debug": true,
-                "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
-                "binhost_bucket": "gs://chromeos-dev-installer",
-                "binhost_key": "RELEASE_BINHOST",
-                "boards": [
-                    "veyron_danger"
-                ],
-                "build_packages_in_background": true,
-                "build_type": "canary",
-                "chrome_sdk": true,
-                "chrome_sdk_build_chrome": false,
-                "chromeos_official": true,
-                "chroot_replace": true,
-                "description": "Release Builds (canary) (internal)",
-                "dev_installer_prebuilts": true,
-                "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
-                "grouped": true,
-                "hw_tests": [
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 1,\n    \"num\": 1,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"sanity\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"au\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
-                    "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": null,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}"
-                ],
-                "hwqual": true,
-                "image_test": true,
-                "images": [
-                    "base",
-                    "recovery",
-                    "test",
-                    "factory_install"
-                ],
-                "internal": true,
-                "manifest": "official.xml",
-                "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
-                "manifest_version": true,
-                "name": "veyron_danger-release",
-                "overlays": "both",
-                "paygen": true,
-                "push_image": true,
-                "signer_tests": true,
-                "tests_supported": false,
-                "trybot_list": true,
-                "unittests": null,
-                "upload_symbols": true,
-                "useflags": [
-                    "-cros-debug",
-                    "chrome_internal"
-                ],
-                "usepkg_build_packages": false,
-                "vm_tests": []
             },
             {
                 "afdo_use": true,
@@ -63641,7 +62928,7 @@
         "chrome_sdk": true,
         "chromeos_official": true,
         "chroot_replace": true,
-        "description": "Release Builds (canary) (internal); Group config (boards: veyron_brain, veyron_danger, veyron_thea)",
+        "description": "Release Builds (canary) (internal); Group config (boards: veyron_jaq, veyron_minnie, veyron_rialto, veyron_thea)",
         "dev_installer_prebuilts": true,
         "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
         "hw_tests": [
@@ -63659,11 +62946,12 @@
             "test",
             "factory_install"
         ],
+        "important": true,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
         "manifest_version": true,
-        "name": "veyron-c-release-group",
+        "name": "veyron-b-release-group",
         "overlays": "both",
         "paygen": true,
         "push_image": true,
@@ -63837,7 +63125,7 @@
         "vm_tests": []
     },
     "veyron-release-group": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -70363,7 +69651,6 @@
         "vm_tests": []
     },
     "whirlwind-paladin": {
-        "active_waterfall": "chromeos",
         "boards": [
             "whirlwind"
         ],
@@ -70440,7 +69727,7 @@
         "vm_tests": []
     },
     "whirlwind-release": {
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -73093,7 +72380,6 @@
         "vm_tests": []
     },
     "x86-alex_freon-paladin": {
-        "active_waterfall": "chromeos",
         "boards": [
             "x86-alex_freon"
         ],
@@ -74612,7 +73898,6 @@
         ]
     },
     "x86-generic-asan": {
-        "active_waterfall": "chromiumos",
         "boards": [
             "x86-generic"
         ],
@@ -74700,7 +73985,6 @@
         "vm_tests": []
     },
     "x86-generic-full": {
-        "active_waterfall": "chromiumos",
         "archive_build_debug": true,
         "boards": [
             "x86-generic"
@@ -74727,7 +74011,6 @@
         "usepkg_build_packages": false
     },
     "x86-generic-incremental": {
-        "active_waterfall": "chromiumos",
         "boards": [
             "x86-generic"
         ],
@@ -75225,6 +74508,7 @@
         ]
     },
     "x86-mario-release": {
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -75259,6 +74543,7 @@
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
         "manifest_version": true,
+        "master": true,
         "name": "x86-mario-release",
         "overlays": "both",
         "paygen": true,
