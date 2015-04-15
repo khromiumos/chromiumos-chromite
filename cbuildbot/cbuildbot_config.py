@@ -170,6 +170,7 @@ def IsCanaryType(b_type):
   """Returns True if this build type is a Canary."""
   return b_type == constants.CANARY_TYPE
 
+
 def GetDefaultWaterfall(build_config):
   if not (build_config['important'] or build_config['master']):
     return None
