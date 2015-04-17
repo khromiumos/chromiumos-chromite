@@ -95,7 +95,7 @@ def FetchRemoteTarballs(storage_dir, urls):
     content_length = 0
     print('Attempting download: %s' % url)
     result = retry_util.RunCurl(
-        ['-I', url], redirect_stdout=True, redirect_stderr=True,
+        ['-I', url], fail=False, redirect_stdout=True, redirect_stderr=True,
         print_cmd=False)
     successful = False
     for header in result.output.splitlines():
@@ -122,7 +122,7 @@ def FetchRemoteTarballs(storage_dir, urls):
 
   if current_size < content_length:
     retry_util.RunCurl(
-        ['-f', '-L', '-y', '30', '-C', '-', '--output', tarball_dest, url],
+        ['-L', '-y', '30', '-C', '-', '--output', tarball_dest, url],
         print_cmd=False)
 
   # Cleanup old tarballs now since we've successfull fetched; only cleanup
