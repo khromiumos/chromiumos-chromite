@@ -4847,7 +4847,6 @@
         "vm_tests": []
     },
     "beaglebone-release-group": {
-        "active_waterfall": "chromeos",
         "child_configs": [
             {
                 "archive_build_debug": true,
@@ -4932,7 +4931,6 @@
                 "vm_tests": []
             }
         ],
-        "important": true,
         "name": "beaglebone-release-group"
     },
     "beaglebone-tot-chrome-pfq-informational": {
@@ -11507,7 +11505,6 @@
         "name": "daisy-freon-full-group"
     },
     "daisy-freon-release-group": {
-        "active_waterfall": "chromeos_release",
         "child_configs": [
             {
                 "afdo_use": true,
@@ -18527,7 +18524,6 @@
         "vm_tests": []
     },
     "gizmo-release": {
-        "active_waterfall": "chromeos",
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
@@ -18547,7 +18543,6 @@
             "test",
             "factory_install"
         ],
-        "important": true,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
@@ -21794,7 +21789,6 @@
         ]
     },
     "jecht-release-group": {
-        "active_waterfall": "chromeos_release",
         "child_configs": [
             {
                 "afdo_use": true,
@@ -23882,7 +23876,6 @@
         "vm_tests": []
     },
     "lemmings-release": {
-        "active_waterfall": "chromeos",
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
@@ -23902,7 +23895,6 @@
             "test",
             "factory_install"
         ],
-        "important": true,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
@@ -27117,7 +27109,6 @@
         "vm_tests": []
     },
     "master-release": {
-        "active_waterfall": "chromeos",
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
@@ -27151,7 +27142,6 @@
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
         "manifest_version": true,
-        "master": true,
         "name": "master-release",
         "overlays": "both",
         "paygen": true,
@@ -33691,7 +33681,6 @@
         "vm_tests": []
     },
     "panther_embedded-minimal-release": {
-        "active_waterfall": "chromeos",
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
@@ -33711,7 +33700,6 @@
             "test",
             "factory_install"
         ],
-        "important": true,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
@@ -36861,7 +36849,6 @@
         "name": "peach-freon-full-group"
     },
     "peach-freon-release-group": {
-        "active_waterfall": "chromeos_release",
         "child_configs": [
             {
                 "afdo_use": true,
@@ -39943,7 +39930,6 @@
         "name": "pineview-full-group"
     },
     "pineview-release-group": {
-        "active_waterfall": "chromeos",
         "child_configs": [
             {
                 "afdo_use": true,
@@ -40196,7 +40182,6 @@
             }
         ],
         "description": "Release Builds (canary) (internal); Group config (boards: x86-mario, x86-alex, x86-zgb, x86-alex_he, x86-zgb_he)",
-        "important": true,
         "name": "pineview-release-group"
     },
     "pre-cq-group": {
@@ -42762,7 +42747,6 @@
         "name": "rambi-d-full-group"
     },
     "rambi-d-release-group": {
-        "active_waterfall": "chromeos_release",
         "child_configs": [
             {
                 "afdo_use": true,
@@ -45830,7 +45814,6 @@
         "name": "sandybridge-freon-full-group"
     },
     "sandybridge-freon-release-group": {
-        "active_waterfall": "chromeos",
         "child_configs": [
             {
                 "afdo_use": true,
@@ -46043,7 +46026,6 @@
             }
         ],
         "description": "Release Builds (canary) (internal); Group config (boards: parrot_freon, lumpy_freon, butterfly_freon, stumpy_freon)",
-        "important": true,
         "name": "sandybridge-freon-release-group"
     },
     "sandybridge-full-group": {
@@ -51395,7 +51377,6 @@
         "vm_tests": []
     },
     "stumpy_moblab-release": {
-        "active_waterfall": "chromeos",
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
@@ -51421,7 +51402,6 @@
             "base",
             "test"
         ],
-        "important": true,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
@@ -55059,7 +55039,6 @@
         "name": "veyron-b-full-group"
     },
     "veyron-b-release-group": {
-        "active_waterfall": "chromeos_release",
         "child_configs": [
             {
                 "afdo_use": true,
@@ -55342,7 +55321,6 @@
         "name": "veyron-c-full-group"
     },
     "veyron-c-release-group": {
-        "active_waterfall": "chromeos",
         "child_configs": [
             {
                 "afdo_use": true,
@@ -55450,7 +55428,6 @@
             }
         ],
         "description": "Release Builds (canary) (internal); Group config (boards: veyron_brain, veyron_danger)",
-        "important": true,
         "name": "veyron-c-release-group"
     },
     "veyron-full-group": {
@@ -63177,7 +63154,6 @@
         ]
     },
     "x86-alex-release-group": {
-        "active_waterfall": "chromeos_release",
         "child_configs": [
             {
                 "afdo_use": true,
@@ -65199,7 +65175,6 @@
         ]
     },
     "x86-zgb-release-group": {
-        "active_waterfall": "chromeos_release",
         "child_configs": [
             {
                 "afdo_use": true,

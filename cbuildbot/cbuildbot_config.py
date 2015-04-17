@@ -15,6 +15,9 @@ import constants
 import copy
 import json
 
+# Set to 'True' if this is a release branch.
+IS_RELEASE_BRANCH = True
+
 GS_PATH_DEFAULT = 'default' # Means gs://chromeos-image-archive/ + bot_id
 
 # Contains the valid build config suffixes in the order that they are dumped.
@@ -178,17 +181,27 @@ def GetDefaultWaterfall(build_config):
     return None
 
   b_type = build_config['build_type']
-  if (
-      IsPFQType(b_type) or
-      IsCQType(b_type) or
-      IsCanaryType(b_type) or
-      b_type in (
-        constants.PRE_CQ_LAUNCHER_TYPE,
-      )):
-    if build_config['internal']:
-      return constants.WATERFALL_INTERNAL
-    else:
+
+  if IsCanaryType(b_type):
+    # If this is a canary build, it may fall on different waterfalls:
+    # - If we're building for a release branch, it belongs on a release
+    #   waterfall.
+    # - Otherwise, it belongs on the internal waterfall.
+    if IS_RELEASE_BRANCH:
+      return constants.WATERFALL_RELEASE
+    return constants.WATERFALL_INTERNAL
+  elif IsCQType(b_type):
+    # A Paladin can appear on the public or internal waterfall depending on its
+    # 'internal' status.
+    if not build_config['internal']:
       return constants.WATERFALL_EXTERNAL
+    return constants.WATERFALL_INTERNAL
+  elif (IsPFQType(b_type) or
+        b_type in (
+            constants.PRE_CQ_LAUNCHER_TYPE,
+        )):
+    # These builder types belong on the internal waterfall.
+    return constants.WATERFALL_INTERNAL
 
 
 # List of usable cbuildbot configs; see add_config method.
@@ -2494,12 +2507,13 @@ _grouped_variant_release = _release.derive(_grouped_variant_config)
 
 _release.add_config('master-release',
   boards=[],
-  master=True,
   sync_chrome=False,
   chrome_sdk=False,
   health_alert_recipients=['chromeos-infra-eng@grotations.appspotmail.com',
                            'tree'],
   afdo_use=False,
+  important=False,
+  master=False,
 )
 
 ### Release config groups.
@@ -2611,14 +2625,13 @@ _release.add_config('bobcat-release',
 
 _release.add_config('gizmo-release',
   _base_configs['gizmo'],
-  important=True,
   paygen=False,
   signer_tests=False,
 )
 
 _release.add_config('lemmings-release',
   _base_configs['lemmings'],
-  important=True,
+  important=False,
   paygen=False,
   signer_tests=False,
 )
@@ -2662,7 +2675,7 @@ _AddReleaseConfigs()
 _release.add_config('panther_embedded-minimal-release',
   _base_configs['panther_embedded'],
   profile='minimal',
-  important=True,
+  important=False,
   paygen=False,
   signer_tests=False,
 )
@@ -2679,7 +2692,7 @@ _config.add_group('beaglebone-release-group',
   _beaglebone_release.add_config('beaglebone_servo-release',
     boards=['beaglebone_servo'],
   ).derive(_grouped_variant_config),
-  important=True,
+  important=False,
 )
 
 _release.add_config('kayle-release',
@@ -2725,7 +2738,7 @@ _release.add_config('stumpy_moblab-release',
   paygen_skip_delta_payloads=True,
   # TODO: re-enable paygen testing when crbug.com/386473 is fixed.
   paygen_skip_testing=True,
-  important=True,
+  important=False,
   afdo_use=False,
   signer_tests=False,
   hw_tests=[HWTestConfig(constants.HWTEST_MOBLAB_SUITE, blocking=True, num=1,
@@ -2806,7 +2819,9 @@ _AddGroupConfig('pineview', 'x86-mario', (
 ), (
     'x86-alex_he',
     'x86-zgb_he',
-))
+),
+    important=False,
+)
 
 # sandybridge chipset boards
 _AddGroupConfig('sandybridge', 'parrot', (
@@ -2820,7 +2835,9 @@ _AddGroupConfig('sandybridge-freon', 'parrot_freon', (
     'lumpy_freon',
     'butterfly_freon',
     'stumpy_freon',
-))
+),
+    important=False,
+)
 
 # ivybridge chipset boards
 _AddGroupConfig('ivybridge-freon', 'stout', (
@@ -2947,6 +2964,7 @@ _AddGroupConfig('veyron-b', 'veyron_gus', (
 _AddGroupConfig('veyron-c', 'veyron_brain', (
     'veyron_danger',
     ),
+    important=False,
 )
 
 # jecht-based boards
@@ -3214,43 +3232,12 @@ def GetDisplayPosition(config_name, type_order=CONFIG_TYPE_DUMP_ORDER):
 #
 # TODO(dnj): This should go away once the boardless release master is complete
 # (crbug.com/458675)
-config['x86-mario-release']['master'] = True
+config['x86-mario-release']['master'] = IS_RELEASE_BRANCH
 
 # This is a list of configs that should be included on the main waterfall, but
 # aren't included by default (see IsDefaultMainWaterfall). This loosely
 # corresponds to the set of experimental or self-standing configs.
-_waterfall_config_map = {
-    constants.WATERFALL_RELEASE: frozenset([
-      # Board builders
-      'samus-release',
-      'storm-release',
-      'whirlwind-release',
-      'x86-mario-release',
-
-      # Group Builders
-      'auron-b-release-group',
-      'auron-release-group',
-      'beltino-a-release-group',
-      'beltino-b-release-group',
-      'daisy-freon-release-group',
-      'daisy-release-group',
-      'ivybridge-freon-release-group',
-      'jecht-release-group',
-      'nyan-release-group',
-      'peach-freon-release-group',
-      'peach-release-group',
-      'rambi-a-release-group',
-      'rambi-b-release-group',
-      'rambi-c-release-group',
-      'rambi-d-release-group',
-      'sandybridge-release-group',
-      'slippy-release-group',
-      'veyron-b-release-group',
-      'veyron-release-group',
-      'x86-alex-release-group',
-      'x86-zgb-release-group',
-    ]),
-}
+_waterfall_config_map = {}
 
 def _SetupWaterfalls():
   for name, c in config.iteritems():
