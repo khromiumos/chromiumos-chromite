@@ -3014,6 +3014,11 @@ _factory_release.add_config('cid-factory',
   boards=['cid'],
 )
 
+_factory_release.add_config('gandof-factory',
+  vm_tests=None,
+  boards=['gandof'],
+)
+
 _factory_release.add_config('guado-factory',
   vm_tests=None,
   boards=['guado'],
