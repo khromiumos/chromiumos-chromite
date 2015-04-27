@@ -42974,6 +42974,46 @@
         "usepkg_build_packages": false,
         "vm_tests": []
     },
+    "veyron_thea-factory": {
+        "archive_build_debug": true,
+        "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
+        "binhost_bucket": "gs://chromeos-dev-installer",
+        "binhost_key": "RELEASE_BINHOST",
+        "boards": [
+            "veyron_thea"
+        ],
+        "build_type": "canary",
+        "chromeos_official": true,
+        "chroot_replace": true,
+        "description": "Factory Builds",
+        "dev_installer_prebuilts": true,
+        "hwqual": true,
+        "image_test": true,
+        "images": [
+            "base",
+            "test",
+            "factory_install"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "manifest_version": true,
+        "name": "veyron_thea-factory",
+        "overlays": "both",
+        "push_image": true,
+        "signer_tests": true,
+        "tests_supported": false,
+        "trybot_list": true,
+        "unittests": false,
+        "upload_hw_test_artifacts": false,
+        "useflags": [
+            "chrome_internal",
+            "-cros-debug",
+            "-highdpi"
+        ],
+        "usepkg_build_packages": false,
+        "vm_tests": []
+    },
     "whirlwind-chrome-pfq": {
         "boards": [
             "whirlwind"

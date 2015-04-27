@@ -2997,6 +2997,11 @@ _factory_release.add_config('veyron_minnie-factory',
   boards=['veyron_minnie'],
 )
 
+_factory_release.add_config('veyron_thea-factory',
+  non_testable_builder,
+  boards=['veyron_thea'],
+)
+
 _payloads = internal.derive(
   build_type=constants.PAYLOADS_TYPE,
   description='Regenerate release payloads.',
