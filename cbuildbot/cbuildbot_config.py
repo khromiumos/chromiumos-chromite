@@ -19,6 +19,7 @@ CONFIG_TYPE_PALADIN = 'paladin'
 CONFIG_TYPE_RELEASE = 'release'
 CONFIG_TYPE_FULL = 'full'
 CONFIG_TYPE_FIRMWARE = 'firmware'
+CONFIG_TYPE_FACTORY = 'factory'
 CONFIG_TYPE_RELEASE_AFDO = 'release-afdo'
 
 CONFIG_TYPE_DUMP_ORDER = (
@@ -42,7 +43,7 @@ CONFIG_TYPE_DUMP_ORDER = (
     'chrome-pfq',
     'chrome-pfq-informational',
     'pre-flight-branch',
-    'factory',
+    CONFIG_TYPE_FACTORY,
     CONFIG_TYPE_FIRMWARE,
     'toolchain-major',
     'toolchain-minor',
