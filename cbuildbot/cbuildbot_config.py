@@ -1470,6 +1470,7 @@ _x86_release_boards = frozenset([
   'mccloud',
   'monroe',
   'ninja',
+  'orco',
   'panther',
   'panther_moblab',
   'parrot',
@@ -3007,6 +3008,12 @@ _factory_release.add_config('sumo-factory',
   vm_tests=None,
   boards=['sumo'],
 )
+
+_factory_release.add_config('orco-factory',
+  vm_tests=None,
+  boards=['orco'],
+)
+
 # This is an example factory branch configuration for arm.
 # Modify it to match your factory branch.
 _factory_release.add_config('daisy-factory',
