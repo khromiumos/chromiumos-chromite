@@ -2659,10 +2659,7 @@ _AddGroupConfig('peach', 'peach_pit', (
 # peach-based boards (Freon)
 _AddGroupConfig('peach-freon', 'peach_pit-freon', (
     'peach_pi-freon',
-),
-    important=False
-)
-
+))
 
 # nyan-based boards
 _AddGroupConfig('nyan', 'nyan', (
