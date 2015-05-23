@@ -57629,7 +57629,8 @@
                 "useflags": [
                     "-chrome_internal"
                 ],
-                "usepkg_build_packages": false
+                "usepkg_build_packages": false,
+                "vm_tests": []
             },
             {
                 "archive_build_debug": true,
@@ -57681,7 +57682,8 @@
         "useflags": [
             "-chrome_internal"
         ],
-        "usepkg_build_packages": false
+        "usepkg_build_packages": false,
+        "vm_tests": []
     },
     "strago-no-vmtest-pre-cq": {
         "archive": false,
@@ -58153,11 +58155,7 @@
                     "chrome_internal"
                 ],
                 "usepkg_build_packages": false,
-                "vm_tests": [
-                    "smoke_suite",
-                    "dev_mode_test",
-                    "cros_vm_test"
-                ]
+                "vm_tests": []
             },
             {
                 "afdo_use": true,
@@ -58251,11 +58249,7 @@
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
-        "vm_tests": [
-            "smoke_suite",
-            "dev_mode_test",
-            "cros_vm_test"
-        ]
+        "vm_tests": []
     },
     "strago-tot-chrome-pfq-informational": {
         "boards": [

@@ -2704,6 +2704,7 @@ _AddGroupConfig('jecht', 'jecht', (
 _AddGroupConfig('strago', 'strago', (
     'cyan',
     ),
+    vm_tests=[],
 )
 
 # oak-based boards
