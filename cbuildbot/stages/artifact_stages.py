@@ -759,12 +759,12 @@ class UploadTestArtifactsStage(generic_stages.BoardSpecificBuilderStage,
 
     with osutils.TempDir(prefix='cbuildbot-payloads') as tempdir:
       with self.ArtifactUploader() as queue:
-        if 'test' in self._run.config.images:
-          image_name = 'chromiumos_test_image.bin'
-        elif 'dev' in self._run.config.images:
-          image_name = 'chromiumos_image.bin'
-        else:
-          image_name = 'chromiumos_base_image.bin'
+        payload_type = 'base'
+        for t in ['test', 'dev']:
+          if t in self._run.config.images:
+            payload_type = t
+            break
+        image_name = constants.IMAGE_TYPE_TO_NAME[payload_type]
 
         logging.info('Generating payloads to upload for %s', image_name)
         image_path = os.path.join(self.GetImageDirSymlink(), image_name)
