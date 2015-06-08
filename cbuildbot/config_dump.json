@@ -1258,7 +1258,8 @@
         "name": "auron-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -1286,7 +1287,8 @@
         "name": "auron-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -1318,7 +1320,8 @@
         "name": "auron-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -4055,7 +4058,8 @@
         "name": "bayleybay-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -4083,7 +4087,8 @@
         "name": "bayleybay-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -4115,7 +4120,8 @@
         "name": "bayleybay-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -5432,7 +5438,8 @@
         "name": "beltino-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -6439,7 +6446,8 @@
         "name": "butterfly-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -6964,7 +6972,8 @@
         "name": "candy-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -6992,7 +7001,8 @@
         "name": "candy-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -7024,7 +7034,8 @@
         "name": "candy-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -7571,7 +7582,8 @@
         "name": "clapper-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -7599,7 +7611,8 @@
         "name": "clapper-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -7631,7 +7644,8 @@
         "name": "clapper-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -8772,7 +8786,8 @@
         "name": "daisy-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -10152,7 +10167,8 @@
         "name": "daisy_skate-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -10707,7 +10723,8 @@
         "name": "daisy_spring-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -11450,7 +11467,8 @@
         "name": "enguarde-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -11478,7 +11496,8 @@
         "name": "enguarde-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -11510,7 +11529,8 @@
         "name": "enguarde-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -12033,7 +12053,8 @@
         "name": "expresso-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -12061,7 +12082,8 @@
         "name": "expresso-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -12093,7 +12115,8 @@
         "name": "expresso-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -12621,7 +12644,8 @@
         "name": "falco-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -13933,7 +13957,8 @@
         "name": "glimmer-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -13961,7 +13986,8 @@
         "name": "glimmer-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -13993,7 +14019,8 @@
         "name": "glimmer-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -14516,7 +14543,8 @@
         "name": "gnawty-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -14544,7 +14572,8 @@
         "name": "gnawty-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -14576,7 +14605,8 @@
         "name": "gnawty-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -15888,7 +15918,8 @@
         "name": "kip-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -15916,7 +15947,8 @@
         "name": "kip-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -15948,7 +15980,8 @@
         "name": "kip-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -16931,7 +16964,8 @@
         "name": "leon-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -16959,7 +16993,8 @@
         "name": "leon-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -16991,7 +17026,8 @@
         "name": "leon-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -17515,7 +17551,8 @@
         "name": "link-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -17543,7 +17580,8 @@
         "name": "link-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -17575,7 +17613,8 @@
         "name": "link-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -18677,7 +18716,8 @@
         "name": "lumpy-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -21504,7 +21544,8 @@
         "name": "monroe-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -25354,7 +25395,8 @@
         "name": "panther-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -26931,7 +26973,8 @@
         "name": "parrot-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -28101,7 +28144,8 @@
         "name": "parry-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -28129,7 +28173,8 @@
         "name": "parry-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -28161,7 +28206,8 @@
         "name": "parry-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -28923,7 +28969,8 @@
         "name": "peach_pi-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -29449,7 +29496,8 @@
         "name": "peach_pit-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -29972,7 +30020,8 @@
         "name": "peppy-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -31666,7 +31715,8 @@
         "name": "quawks-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -31694,7 +31744,8 @@
         "name": "quawks-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -31726,7 +31777,8 @@
         "name": "quawks-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -33654,7 +33706,8 @@
         "name": "rambi-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -33682,7 +33735,8 @@
         "name": "rambi-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -33714,7 +33768,8 @@
         "name": "rambi-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -35290,7 +35345,8 @@
         "name": "samus-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -35318,7 +35374,8 @@
         "name": "samus-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -35350,7 +35407,8 @@
         "name": "samus-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -36282,7 +36340,8 @@
         "name": "slippy-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -37262,7 +37321,8 @@
         "name": "squawks-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -37290,7 +37350,8 @@
         "name": "squawks-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -37322,7 +37383,8 @@
         "name": "squawks-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -37807,7 +37869,8 @@
         "name": "storm-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -38024,7 +38087,8 @@
         "name": "stout-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -38550,7 +38614,8 @@
         "name": "stumpy-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -39228,7 +39293,8 @@
         "name": "swanky-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -39256,7 +39322,8 @@
         "name": "swanky-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -39288,7 +39355,8 @@
         "name": "swanky-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -41309,7 +41377,8 @@
         "name": "veyron_brain-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -41834,7 +41903,8 @@
         "name": "veyron_danger-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -42359,7 +42429,8 @@
         "name": "veyron_gus-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -42884,7 +42955,8 @@
         "name": "veyron_jaq-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -43409,7 +43481,8 @@
         "name": "veyron_jerry-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -43934,7 +44007,8 @@
         "name": "veyron_mighty-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -44459,7 +44533,8 @@
         "name": "veyron_minnie-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -44985,7 +45060,8 @@
         "name": "veyron_pinky-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -45139,7 +45215,8 @@
         "name": "veyron_pinky-pre-flight-branch",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "prebuilts": "private",
         "push_overlays": "both",
@@ -45540,7 +45617,8 @@
         "name": "veyron_speedy-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -46065,7 +46143,8 @@
         "name": "veyron_thea-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -47070,7 +47149,8 @@
         "name": "winky-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -47098,7 +47178,8 @@
         "name": "winky-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -47130,7 +47211,8 @@
         "name": "winky-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -47653,7 +47735,8 @@
         "name": "wolf-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -49784,7 +49867,8 @@
         "name": "x86-mario-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -51600,7 +51684,8 @@
         "name": "zako-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -51628,7 +51713,8 @@
         "name": "zako-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -51660,7 +51746,8 @@
         "name": "zako-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
