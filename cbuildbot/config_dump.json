@@ -1244,7 +1244,6 @@
         "boards": [
             "auron"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -1258,7 +1257,8 @@
         "name": "auron-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -1274,7 +1274,6 @@
         "boards": [
             "auron"
         ],
-        "build_tests": false,
         "build_type": "full",
         "chroot_replace": true,
         "description": "Firmware Informational",
@@ -1286,7 +1285,8 @@
         "name": "auron-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -1304,7 +1304,6 @@
         "boards": [
             "auron"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -1318,16 +1317,15 @@
         "name": "auron-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -4041,7 +4039,6 @@
         "boards": [
             "bayleybay"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -4055,7 +4052,8 @@
         "name": "bayleybay-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -4071,7 +4069,6 @@
         "boards": [
             "bayleybay"
         ],
-        "build_tests": false,
         "build_type": "full",
         "chroot_replace": true,
         "description": "Firmware Informational",
@@ -4083,7 +4080,8 @@
         "name": "bayleybay-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -4101,7 +4099,6 @@
         "boards": [
             "bayleybay"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -4115,16 +4112,15 @@
         "name": "bayleybay-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -5418,7 +5414,6 @@
         "boards": [
             "beltino"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -5432,16 +5427,15 @@
         "name": "beltino-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -6425,7 +6419,6 @@
         "boards": [
             "butterfly"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -6439,16 +6432,15 @@
         "name": "butterfly-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -6950,7 +6942,6 @@
         "boards": [
             "candy"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -6964,7 +6955,8 @@
         "name": "candy-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -6980,7 +6972,6 @@
         "boards": [
             "candy"
         ],
-        "build_tests": false,
         "build_type": "full",
         "chroot_replace": true,
         "description": "Firmware Informational",
@@ -6992,7 +6983,8 @@
         "name": "candy-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -7010,7 +7002,6 @@
         "boards": [
             "candy"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -7024,16 +7015,15 @@
         "name": "candy-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -7557,7 +7547,6 @@
         "boards": [
             "clapper"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -7571,7 +7560,8 @@
         "name": "clapper-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -7587,7 +7577,6 @@
         "boards": [
             "clapper"
         ],
-        "build_tests": false,
         "build_type": "full",
         "chroot_replace": true,
         "description": "Firmware Informational",
@@ -7599,7 +7588,8 @@
         "name": "clapper-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -7617,7 +7607,6 @@
         "boards": [
             "clapper"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -7631,16 +7620,15 @@
         "name": "clapper-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -8758,7 +8746,6 @@
         "boards": [
             "daisy"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -8772,7 +8759,8 @@
         "name": "daisy-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -8780,9 +8768,7 @@
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -10138,7 +10124,6 @@
         "boards": [
             "daisy_skate"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -10152,7 +10137,8 @@
         "name": "daisy_skate-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -10160,9 +10146,7 @@
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -10693,7 +10677,6 @@
         "boards": [
             "daisy_spring"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -10707,7 +10690,8 @@
         "name": "daisy_spring-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -10715,9 +10699,7 @@
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -11436,7 +11418,6 @@
         "boards": [
             "enguarde"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -11450,7 +11431,8 @@
         "name": "enguarde-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -11466,7 +11448,6 @@
         "boards": [
             "enguarde"
         ],
-        "build_tests": false,
         "build_type": "full",
         "chroot_replace": true,
         "description": "Firmware Informational",
@@ -11478,7 +11459,8 @@
         "name": "enguarde-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -11496,7 +11478,6 @@
         "boards": [
             "enguarde"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -11510,16 +11491,15 @@
         "name": "enguarde-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -12019,7 +11999,6 @@
         "boards": [
             "expresso"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -12033,7 +12012,8 @@
         "name": "expresso-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -12049,7 +12029,6 @@
         "boards": [
             "expresso"
         ],
-        "build_tests": false,
         "build_type": "full",
         "chroot_replace": true,
         "description": "Firmware Informational",
@@ -12061,7 +12040,8 @@
         "name": "expresso-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -12079,7 +12059,6 @@
         "boards": [
             "expresso"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -12093,16 +12072,15 @@
         "name": "expresso-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -12607,7 +12585,6 @@
         "boards": [
             "falco"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -12621,16 +12598,15 @@
         "name": "falco-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -13919,7 +13895,6 @@
         "boards": [
             "glimmer"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -13933,7 +13908,8 @@
         "name": "glimmer-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -13949,7 +13925,6 @@
         "boards": [
             "glimmer"
         ],
-        "build_tests": false,
         "build_type": "full",
         "chroot_replace": true,
         "description": "Firmware Informational",
@@ -13961,7 +13936,8 @@
         "name": "glimmer-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -13979,7 +13955,6 @@
         "boards": [
             "glimmer"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -13993,16 +13968,15 @@
         "name": "glimmer-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -14502,7 +14476,6 @@
         "boards": [
             "gnawty"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -14516,7 +14489,8 @@
         "name": "gnawty-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -14532,7 +14506,6 @@
         "boards": [
             "gnawty"
         ],
-        "build_tests": false,
         "build_type": "full",
         "chroot_replace": true,
         "description": "Firmware Informational",
@@ -14544,7 +14517,8 @@
         "name": "gnawty-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -14562,7 +14536,6 @@
         "boards": [
             "gnawty"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -14576,16 +14549,15 @@
         "name": "gnawty-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -15874,7 +15846,6 @@
         "boards": [
             "kip"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -15888,7 +15859,8 @@
         "name": "kip-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -15904,7 +15876,6 @@
         "boards": [
             "kip"
         ],
-        "build_tests": false,
         "build_type": "full",
         "chroot_replace": true,
         "description": "Firmware Informational",
@@ -15916,7 +15887,8 @@
         "name": "kip-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -15934,7 +15906,6 @@
         "boards": [
             "kip"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -15948,16 +15919,15 @@
         "name": "kip-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -16917,7 +16887,6 @@
         "boards": [
             "leon"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -16931,7 +16900,8 @@
         "name": "leon-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -16947,7 +16917,6 @@
         "boards": [
             "leon"
         ],
-        "build_tests": false,
         "build_type": "full",
         "chroot_replace": true,
         "description": "Firmware Informational",
@@ -16959,7 +16928,8 @@
         "name": "leon-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -16977,7 +16947,6 @@
         "boards": [
             "leon"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -16991,16 +16960,15 @@
         "name": "leon-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -17501,7 +17469,6 @@
         "boards": [
             "link"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -17515,7 +17482,8 @@
         "name": "link-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -17531,7 +17499,6 @@
         "boards": [
             "link"
         ],
-        "build_tests": false,
         "build_type": "full",
         "chroot_replace": true,
         "description": "Firmware Informational",
@@ -17543,7 +17510,8 @@
         "name": "link-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -17561,7 +17529,6 @@
         "boards": [
             "link"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -17575,16 +17542,15 @@
         "name": "link-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -18663,7 +18629,6 @@
         "boards": [
             "lumpy"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -18677,16 +18642,15 @@
         "name": "lumpy-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -21490,7 +21454,6 @@
         "boards": [
             "monroe"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -21504,16 +21467,15 @@
         "name": "monroe-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -25340,7 +25302,6 @@
         "boards": [
             "panther"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -25354,16 +25315,15 @@
         "name": "panther-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -26917,7 +26877,6 @@
         "boards": [
             "parrot"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -26931,16 +26890,15 @@
         "name": "parrot-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -28087,7 +28045,6 @@
         "boards": [
             "parry"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -28101,7 +28058,8 @@
         "name": "parry-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -28117,7 +28075,6 @@
         "boards": [
             "parry"
         ],
-        "build_tests": false,
         "build_type": "full",
         "chroot_replace": true,
         "description": "Firmware Informational",
@@ -28129,7 +28086,8 @@
         "name": "parry-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -28147,7 +28105,6 @@
         "boards": [
             "parry"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -28161,16 +28118,15 @@
         "name": "parry-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -28909,7 +28865,6 @@
         "boards": [
             "peach_pi"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -28923,7 +28878,8 @@
         "name": "peach_pi-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -28931,9 +28887,7 @@
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -29435,7 +29389,6 @@
         "boards": [
             "peach_pit"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -29449,7 +29402,8 @@
         "name": "peach_pit-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -29457,9 +29411,7 @@
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -29958,7 +29910,6 @@
         "boards": [
             "peppy"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -29972,16 +29923,15 @@
         "name": "peppy-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -31652,7 +31602,6 @@
         "boards": [
             "quawks"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -31666,7 +31615,8 @@
         "name": "quawks-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -31682,7 +31632,6 @@
         "boards": [
             "quawks"
         ],
-        "build_tests": false,
         "build_type": "full",
         "chroot_replace": true,
         "description": "Firmware Informational",
@@ -31694,7 +31643,8 @@
         "name": "quawks-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -31712,7 +31662,6 @@
         "boards": [
             "quawks"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -31726,16 +31675,15 @@
         "name": "quawks-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -33640,7 +33588,6 @@
         "boards": [
             "rambi"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -33654,7 +33601,8 @@
         "name": "rambi-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -33670,7 +33618,6 @@
         "boards": [
             "rambi"
         ],
-        "build_tests": false,
         "build_type": "full",
         "chroot_replace": true,
         "description": "Firmware Informational",
@@ -33682,7 +33629,8 @@
         "name": "rambi-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -33700,7 +33648,6 @@
         "boards": [
             "rambi"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -33714,16 +33661,15 @@
         "name": "rambi-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -35276,7 +35222,6 @@
         "boards": [
             "samus"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -35290,7 +35235,8 @@
         "name": "samus-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -35306,7 +35252,6 @@
         "boards": [
             "samus"
         ],
-        "build_tests": false,
         "build_type": "full",
         "chroot_replace": true,
         "description": "Firmware Informational",
@@ -35318,7 +35263,8 @@
         "name": "samus-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -35336,7 +35282,6 @@
         "boards": [
             "samus"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -35350,16 +35295,15 @@
         "name": "samus-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -36268,7 +36212,6 @@
         "boards": [
             "slippy"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -36282,16 +36225,15 @@
         "name": "slippy-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -37248,7 +37190,6 @@
         "boards": [
             "squawks"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -37262,7 +37203,8 @@
         "name": "squawks-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -37278,7 +37220,6 @@
         "boards": [
             "squawks"
         ],
-        "build_tests": false,
         "build_type": "full",
         "chroot_replace": true,
         "description": "Firmware Informational",
@@ -37290,7 +37231,8 @@
         "name": "squawks-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -37308,7 +37250,6 @@
         "boards": [
             "squawks"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -37322,16 +37263,15 @@
         "name": "squawks-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -37793,7 +37733,6 @@
         "boards": [
             "storm"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -37807,7 +37746,8 @@
         "name": "storm-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -37815,9 +37755,7 @@
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -38010,7 +37948,6 @@
         "boards": [
             "stout"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -38024,16 +37961,15 @@
         "name": "stout-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -38536,7 +38472,6 @@
         "boards": [
             "stumpy"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -38550,16 +38485,15 @@
         "name": "stumpy-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -39214,7 +39148,6 @@
         "boards": [
             "swanky"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -39228,7 +39161,8 @@
         "name": "swanky-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -39244,7 +39178,6 @@
         "boards": [
             "swanky"
         ],
-        "build_tests": false,
         "build_type": "full",
         "chroot_replace": true,
         "description": "Firmware Informational",
@@ -39256,7 +39189,8 @@
         "name": "swanky-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -39274,7 +39208,6 @@
         "boards": [
             "swanky"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -39288,16 +39221,15 @@
         "name": "swanky-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -41295,7 +41227,6 @@
         "boards": [
             "veyron_brain"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -41309,7 +41240,8 @@
         "name": "veyron_brain-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -41317,9 +41249,7 @@
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -41820,7 +41750,6 @@
         "boards": [
             "veyron_danger"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -41834,7 +41763,8 @@
         "name": "veyron_danger-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -41842,9 +41772,7 @@
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -42345,7 +42273,6 @@
         "boards": [
             "veyron_gus"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -42359,7 +42286,8 @@
         "name": "veyron_gus-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -42367,9 +42295,7 @@
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -42870,7 +42796,6 @@
         "boards": [
             "veyron_jaq"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -42884,7 +42809,8 @@
         "name": "veyron_jaq-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -42892,9 +42818,7 @@
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -43395,7 +43319,6 @@
         "boards": [
             "veyron_jerry"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -43409,7 +43332,8 @@
         "name": "veyron_jerry-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -43417,9 +43341,7 @@
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -43920,7 +43842,6 @@
         "boards": [
             "veyron_mighty"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -43934,7 +43855,8 @@
         "name": "veyron_mighty-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -43942,9 +43864,7 @@
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -44445,7 +44365,6 @@
         "boards": [
             "veyron_minnie"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -44459,7 +44378,8 @@
         "name": "veyron_minnie-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -44467,9 +44387,7 @@
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -44971,7 +44889,6 @@
         "boards": [
             "veyron_pinky"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -44985,7 +44902,8 @@
         "name": "veyron_pinky-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -44993,9 +44911,7 @@
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -45127,7 +45043,6 @@
             "veyron_pinky"
         ],
         "branch": true,
-        "build_tests": false,
         "chroot_replace": true,
         "factory_toolkit": false,
         "images": [],
@@ -45139,7 +45054,8 @@
         "name": "veyron_pinky-pre-flight-branch",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "prebuilts": "private",
         "push_overlays": "both",
@@ -45147,7 +45063,7 @@
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal"
+            "-chromeless_tty"
         ],
         "vm_tests": null
     },
@@ -45526,7 +45442,6 @@
         "boards": [
             "veyron_speedy"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -45540,7 +45455,8 @@
         "name": "veyron_speedy-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -45548,9 +45464,7 @@
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -46051,7 +45965,6 @@
         "boards": [
             "veyron_thea"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -46065,7 +45978,8 @@
         "name": "veyron_thea-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -46073,9 +45987,7 @@
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -47056,7 +46968,6 @@
         "boards": [
             "winky"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -47070,7 +46981,8 @@
         "name": "winky-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -47086,7 +46998,6 @@
         "boards": [
             "winky"
         ],
-        "build_tests": false,
         "build_type": "full",
         "chroot_replace": true,
         "description": "Firmware Informational",
@@ -47098,7 +47009,8 @@
         "name": "winky-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -47116,7 +47028,6 @@
         "boards": [
             "winky"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -47130,16 +47041,15 @@
         "name": "winky-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -47639,7 +47549,6 @@
         "boards": [
             "wolf"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -47653,16 +47562,15 @@
         "name": "wolf-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -49770,7 +49678,6 @@
         "boards": [
             "x86-mario"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -49784,16 +49691,15 @@
         "name": "x86-mario-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
@@ -51586,7 +51492,6 @@
         "boards": [
             "zako"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -51600,7 +51505,8 @@
         "name": "zako-depthcharge-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
@@ -51616,7 +51522,6 @@
         "boards": [
             "zako"
         ],
-        "build_tests": false,
         "build_type": "full",
         "chroot_replace": true,
         "description": "Firmware Informational",
@@ -51628,7 +51533,8 @@
         "name": "zako-depthcharge-full-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "sync_chrome": false,
         "unittests": false,
@@ -51646,7 +51552,6 @@
         "boards": [
             "zako"
         ],
-        "build_tests": false,
         "build_type": "canary",
         "chromeos_official": true,
         "chroot_replace": true,
@@ -51660,16 +51565,15 @@
         "name": "zako-firmware",
         "overlays": "both",
         "packages": [
-            "virtual/chromeos-firmware"
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
         ],
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
-            "-cros-debug",
-            "-highdpi"
+            "-chromeless_tty"
         ],
         "vm_tests": []
     },
