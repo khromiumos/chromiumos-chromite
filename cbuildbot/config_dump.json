@@ -1263,7 +1263,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -1290,7 +1289,6 @@
         ],
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -1323,7 +1321,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -4058,7 +4055,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -4085,7 +4081,6 @@
         ],
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -4118,7 +4113,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -5433,7 +5427,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -6438,7 +6431,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -6961,7 +6953,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -6988,7 +6979,6 @@
         ],
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -7021,7 +7011,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -7566,7 +7555,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -7593,7 +7581,6 @@
         ],
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -7626,7 +7613,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -8766,7 +8752,6 @@
         "sync_chrome": false,
         "tests_supported": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -10144,7 +10129,6 @@
         "sync_chrome": false,
         "tests_supported": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -10697,7 +10681,6 @@
         "sync_chrome": false,
         "tests_supported": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -11437,7 +11420,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -11464,7 +11446,6 @@
         ],
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -11497,7 +11478,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -12018,7 +11998,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -12045,7 +12024,6 @@
         ],
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -12078,7 +12056,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -12604,7 +12581,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -13914,7 +13890,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -13941,7 +13916,6 @@
         ],
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -13974,7 +13948,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -14495,7 +14468,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -14522,7 +14494,6 @@
         ],
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -14555,7 +14526,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -15865,7 +15835,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -15892,7 +15861,6 @@
         ],
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -15925,7 +15893,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -16906,7 +16873,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -16933,7 +16899,6 @@
         ],
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -16966,7 +16931,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -17488,7 +17452,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -17515,7 +17478,6 @@
         ],
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -17548,7 +17510,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -18648,7 +18609,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -21473,7 +21433,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -25321,7 +25280,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -26896,7 +26854,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -28064,7 +28021,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -28091,7 +28047,6 @@
         ],
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -28124,7 +28079,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -28885,7 +28839,6 @@
         "sync_chrome": false,
         "tests_supported": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -29409,7 +29362,6 @@
         "sync_chrome": false,
         "tests_supported": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -29929,7 +29881,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -31621,7 +31572,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -31648,7 +31598,6 @@
         ],
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -31681,7 +31630,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -33607,7 +33555,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -33634,7 +33581,6 @@
         ],
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -33667,7 +33613,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -35241,7 +35186,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -35268,7 +35212,6 @@
         ],
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -35301,7 +35244,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -36231,7 +36173,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -37209,7 +37150,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -37236,7 +37176,6 @@
         ],
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -37269,7 +37208,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -37753,7 +37691,6 @@
         "sync_chrome": false,
         "tests_supported": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -37967,7 +37904,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -38491,7 +38427,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -39167,7 +39102,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -39194,7 +39128,6 @@
         ],
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -39227,7 +39160,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -41247,7 +41179,6 @@
         "sync_chrome": false,
         "tests_supported": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -41770,7 +41701,6 @@
         "sync_chrome": false,
         "tests_supported": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -42293,7 +42223,6 @@
         "sync_chrome": false,
         "tests_supported": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -42816,7 +42745,6 @@
         "sync_chrome": false,
         "tests_supported": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -43339,7 +43267,6 @@
         "sync_chrome": false,
         "tests_supported": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -43862,7 +43789,6 @@
         "sync_chrome": false,
         "tests_supported": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -44385,7 +44311,6 @@
         "sync_chrome": false,
         "tests_supported": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -44909,7 +44834,6 @@
         "sync_chrome": false,
         "tests_supported": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -45061,7 +44985,6 @@
         "push_overlays": "both",
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -45462,7 +45385,6 @@
         "sync_chrome": false,
         "tests_supported": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -45985,7 +45907,6 @@
         "sync_chrome": false,
         "tests_supported": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -46987,7 +46908,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -47014,7 +46934,6 @@
         ],
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -47047,7 +46966,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -47568,7 +47486,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -49697,7 +49614,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
@@ -51511,7 +51427,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -51538,7 +51453,6 @@
         ],
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "depthcharge"
         ],
@@ -51571,7 +51485,6 @@
         "push_image": true,
         "sync_chrome": false,
         "unittests": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
             "chromeless_tty"
         ],
