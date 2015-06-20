@@ -1461,6 +1461,7 @@ _x86_release_boards = frozenset([
   'falco_li',
   'glimmer',
   'gnawty',
+  'heli',
   'kip',
   'lemmings',
   'leon',
@@ -3012,6 +3013,11 @@ _factory_release.add_config('sumo-factory',
 _factory_release.add_config('orco-factory',
   vm_tests=None,
   boards=['orco'],
+)
+
+_factory_release.add_config('heli-factory',
+  vm_tests=None,
+  boards=['heli'],
 )
 
 # This is an example factory branch configuration for arm.
