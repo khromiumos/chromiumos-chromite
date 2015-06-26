@@ -3009,6 +3009,11 @@ _factory_release.add_config('auron_yuna-factory',
   boards=['auron_yuna'],
 )
 
+_factory_release.add_config('buddy-factory',
+  vm_tests=None,
+  boards=['buddy'],
+)
+
 _factory_release.add_config('cid-factory',
   vm_tests=None,
   boards=['cid'],
