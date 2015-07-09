@@ -2635,9 +2635,7 @@ _AddGroupConfig('rambi-d', 'banjo', (
 _AddGroupConfig('daisy', 'daisy', (
     'daisy_spring',
     'daisy_skate',
-),
-    important=False
-)
+))
 
 # peach-based boards
 _AddGroupConfig('peach', 'peach_pit', (

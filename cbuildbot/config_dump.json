@@ -13330,6 +13330,7 @@
         "vm_tests": []
     },
     "daisy-release-group": {
+        "active_waterfall": "chromeos_release",
         "afdo_use": true,
         "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
@@ -13524,6 +13525,7 @@
             "test",
             "factory_install"
         ],
+        "important": true,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
