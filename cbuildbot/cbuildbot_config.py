@@ -2993,6 +2993,11 @@ _factory_release.add_config('veyron_jaq-factory',
   boards=['veyron_jaq'],
 )
 
+_factory_release.add_config('veyron_mickey-factory',
+  non_testable_builder,
+  boards=['veyron_mickey'],
+)
+
 _factory_release.add_config('veyron_minnie-factory',
   non_testable_builder,
   boards=['veyron_minnie'],
