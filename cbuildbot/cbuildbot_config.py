@@ -2793,11 +2793,11 @@ def _AddFirmwareConfigs():
 
 _AddFirmwareConfigs()
 
-internal_pfq_branch.add_config('auron-pre-flight-branch',
+internal_pfq_branch.add_config('gandof-pre-flight-branch',
   _firmware,
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['auron'],
+  boards=['gandof'],
 )
 
 # This is an example factory branch configuration for x86.
