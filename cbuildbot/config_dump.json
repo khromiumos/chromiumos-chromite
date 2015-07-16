@@ -10247,23 +10247,6 @@
             "chrome_internal"
         ]
     },
-    "lumpy-pre-flight-branch": {
-        "_template": "pre-flight-branch",
-        "afdo_generate": true,
-        "afdo_update_ebuild": true,
-        "boards": [
-            "lumpy"
-        ],
-        "hw_tests": [
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"AFDO_record\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 5400,\n    \"warn_only\": true\n}"
-        ],
-        "hw_tests_override": [
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 10,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"DEFAULT\",\n    \"retry\": true,\n    \"suite\": \"AFDO_record\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 5400,\n    \"warn_only\": true\n}"
-        ],
-        "master": true,
-        "name": "lumpy-pre-flight-branch",
-        "push_overlays": "both"
-    },
     "lumpy-release": {
         "_template": "release",
         "boards": [
@@ -18049,6 +18032,14 @@
             "chrome_internal"
         ]
     },
+    "smaug-factory": {
+        "_template": "factory",
+        "boards": [
+            "smaug"
+        ],
+        "name": "smaug-factory",
+        "vm_tests": null
+    },
     "smaug-firmware": {
         "_template": "firmware",
         "boards": [
@@ -18142,6 +18133,21 @@
             "chrome_internal"
         ],
         "vm_tests": []
+    },
+    "smaug-pre-flight-branch": {
+        "_template": "pre-flight-branch",
+        "boards": [
+            "smaug"
+        ],
+        "hw_tests_override": [
+            "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 10,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": null,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": null,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": false,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 13200,\n    \"warn_only\": false\n}"
+        ],
+        "master": true,
+        "name": "smaug-pre-flight-branch",
+        "push_overlays": "both",
+        "vm_tests": null
     },
     "smaug-release": {
         "_template": "release",
@@ -25127,13 +25133,6 @@
         "useflags": [
             "chrome_internal"
         ]
-    },
-    "x86-mario-factory": {
-        "_template": "factory",
-        "boards": [
-            "x86-mario"
-        ],
-        "name": "x86-mario-factory"
     },
     "x86-mario-firmware": {
         "_template": "firmware",
