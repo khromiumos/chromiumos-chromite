@@ -1422,7 +1422,7 @@ def GetConfig():
   site_config.AddConfig(
       internal_pfq_branch, 'smaug-pre-flight-branch',
       master=True,
-      vm_tests=None,
+      vm_tests=[],
       push_overlays=constants.BOTH_OVERLAYS,
       boards=['smaug'],
   )
@@ -2695,7 +2695,7 @@ def GetConfig():
   # Modify it to match your factory branch.
   site_config.AddConfig(
       _factory_release, 'smaug-factory',
-      vm_tests=None,
+      vm_tests=[],
       boards=['smaug'],
   )
 
