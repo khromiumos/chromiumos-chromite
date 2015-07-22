@@ -1423,6 +1423,7 @@ def GetConfig():
       internal_pfq_branch, 'smaug-pre-flight-branch',
       master=True,
       vm_tests=[],
+      sync_chrome=False,
       push_overlays=constants.BOTH_OVERLAYS,
       boards=['smaug'],
   )
@@ -2697,6 +2698,7 @@ def GetConfig():
       _factory_release, 'smaug-factory',
       vm_tests=[],
       boards=['smaug'],
+      sync_chrome=False,
   )
 
   _payloads = site_config.AddTemplate(

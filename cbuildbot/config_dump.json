@@ -18042,6 +18042,7 @@
             "smaug"
         ],
         "name": "smaug-factory",
+        "sync_chrome": false,
         "vm_tests": []
     },
     "smaug-firmware": {
@@ -18151,6 +18152,7 @@
         "master": true,
         "name": "smaug-pre-flight-branch",
         "push_overlays": "both",
+        "sync_chrome": false,
         "vm_tests": []
     },
     "smaug-release": {
