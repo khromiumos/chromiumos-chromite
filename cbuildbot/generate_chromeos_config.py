@@ -1101,6 +1101,7 @@ chrome_perf = chrome_info.derive(
 # Every board must appear in exactly 1 of the following sets.
 
 _arm_internal_release_boards = frozenset([
+  'arkham',
   'beaglebone',
   'beaglebone_servo',
   'cosmos',
@@ -1300,6 +1301,7 @@ _internal_boards = _all_release_boards
 
 # Board can appear in 1 or more of the following sets.
 _brillo_boards = frozenset([
+  'arkham',
   'cosmos',
   'gizmo',
   'kayle',
@@ -2442,7 +2444,6 @@ _CONFIG.AddConfig(_release, 'storm-release',
 
   # Hw Lab can't test storm, yet.
   paygen_skip_testing=True,
-  important=True,
   signer_tests=False
 )
 
@@ -2501,8 +2502,6 @@ _CONFIG.AddConfig(_release, 'rush_ryu-release',
 
 _CONFIG.AddConfig(_release, 'whirlwind-release',
   _base_configs['whirlwind'],
-  important=True,
-  afdo_use=True,
   dev_installer_prebuilts=True,
 )
 
@@ -2692,6 +2691,14 @@ _AddGroupConfig('strago', 'strago', (
 _AddGroupConfig('oak', 'oak', (
     ),
     important=False,
+)
+
+# storm-based boards
+_AddGroupConfig(
+    'storm', 'storm', (
+        'arkham',
+        'whirlwind',
+    ),
 )
 
 # Factory and Firmware releases much inherit from these classes.  Modifications
