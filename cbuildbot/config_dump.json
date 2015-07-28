@@ -18426,6 +18426,24 @@
             {
                 "_template": "full",
                 "boards": [
+                    "arkham"
+                ],
+                "build_packages_in_background": true,
+                "chrome_sdk": false,
+                "chrome_sdk_build_chrome": false,
+                "grouped": true,
+                "name": "arkham-full",
+                "prebuilts": "public",
+                "sync_chrome": false,
+                "unittests": null,
+                "useflags": [
+                    "-chrome_internal"
+                ],
+                "vm_tests": []
+            },
+            {
+                "_template": "full",
+                "boards": [
                     "whirlwind"
                 ],
                 "build_packages_in_background": true,
@@ -18443,7 +18461,7 @@
             }
         ],
         "chrome_sdk": false,
-        "description": "Full Builds; Group config (boards: storm, whirlwind)",
+        "description": "Full Builds; Group config (boards: storm, arkham, whirlwind)",
         "name": "storm-full-group",
         "prebuilts": "public",
         "sync_chrome": false,
@@ -18554,6 +18572,23 @@
                 "_template": "release",
                 "afdo_use": false,
                 "boards": [
+                    "arkham"
+                ],
+                "build_packages_in_background": true,
+                "chrome_sdk": false,
+                "chrome_sdk_build_chrome": false,
+                "dev_installer_prebuilts": false,
+                "grouped": true,
+                "hw_tests": [],
+                "name": "arkham-release",
+                "sync_chrome": false,
+                "unittests": null,
+                "vm_tests": []
+            },
+            {
+                "_template": "release",
+                "afdo_use": false,
+                "boards": [
                     "whirlwind"
                 ],
                 "build_packages_in_background": true,
@@ -18568,7 +18603,7 @@
             }
         ],
         "chrome_sdk": false,
-        "description": "Release Builds (canary) (internal); Group config (boards: storm, whirlwind)",
+        "description": "Release Builds (canary) (internal); Group config (boards: storm, arkham, whirlwind)",
         "dev_installer_prebuilts": false,
         "hw_tests": [],
         "important": true,

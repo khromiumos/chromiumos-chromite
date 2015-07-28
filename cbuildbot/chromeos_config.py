@@ -2457,6 +2457,7 @@ def GetConfig():
   # storm-based boards
   _AddGroupConfig(
       'storm', 'storm', (
+          'arkham',
           'whirlwind',
       ),
   )
