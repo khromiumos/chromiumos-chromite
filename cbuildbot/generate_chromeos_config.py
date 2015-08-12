@@ -1796,13 +1796,11 @@ internal_incremental = internal.derive(
   description='Incremental Builds (internal)',
 )
 
-_CONFIG.AddConfig(internal_pfq_branch, 'lumpy-pre-flight-branch',
+_CONFIG.AddConfig(internal_pfq_branch, 'arkham-pre-flight-branch',
   master=True,
+  vm_tests=None,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['lumpy'],
-  afdo_generate=True,
-  afdo_update_ebuild=True,
-  hw_tests=[HWTestAFDORecordTest()],
+  boards=['arkham'],
 )
 
 # A test-ap image is just a test image with a special profile enabled.
@@ -2858,8 +2856,9 @@ _AddFirmwareConfigs()
 
 # This is an example factory branch configuration for x86.
 # Modify it to match your factory branch.
-_CONFIG.AddConfig(_factory_release, 'x86-mario-factory',
-  boards=['x86-mario'],
+_CONFIG.AddConfig(_factory_release, 'arkham-factory',
+  boards=['arkham'],
+  vm_tests=None,
 )
 
 # This is an example factory branch configuration for arm.
