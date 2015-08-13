@@ -2654,9 +2654,16 @@ def GetConfig():
       'zako',
   ])
 
+  _private_prebuilts_firmware_boards = frozenset([
+      'cyan',
+  ])
+
 
   def _AddFirmwareConfigs():
     """Add x86 and arm firmware configs."""
+    for board in _private_prebuilts_firmware_boards:
+      _base_configs[board].update(prebuilts=constants.PRIVATE)
+
     for board in _firmware_boards:
       site_config.AddConfig(
           _firmware_release,

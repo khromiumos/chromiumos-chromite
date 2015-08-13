@@ -5264,6 +5264,7 @@
         ],
         "manifest": "official.xml",
         "name": "cyan-depthcharge-firmware",
+        "prebuilts": "private",
         "useflags": [
             "chrome_internal",
             "chromeless_tty",
@@ -5277,6 +5278,7 @@
         ],
         "manifest": "official.xml",
         "name": "cyan-depthcharge-full-firmware",
+        "prebuilts": "private",
         "useflags": [
             "chrome_internal",
             "chromeless_tty",
@@ -5290,6 +5292,7 @@
         ],
         "manifest": "official.xml",
         "name": "cyan-firmware",
+        "prebuilts": "private",
         "useflags": [
             "chrome_internal",
             "chromeless_tty"
