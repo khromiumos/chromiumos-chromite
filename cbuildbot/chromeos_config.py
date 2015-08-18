@@ -384,7 +384,6 @@ _x86_internal_release_boards = frozenset([
     'beltino',
     'bobcat',
     'butterfly',
-    'butterfly_freon',
     'candy',
     'cid',
     'clapper',
@@ -408,7 +407,6 @@ _x86_internal_release_boards = frozenset([
     'link',
     'lulu',
     'lumpy',
-    'lumpy_freon',
     'mccloud',
     'monroe',
     'ninja',
@@ -417,7 +415,6 @@ _x86_internal_release_boards = frozenset([
     'panther_embedded',
     'panther_moblab',
     'parrot',
-    'parrot_freon',
     'parrot_ivb',
     'parry',
     'peppy',
@@ -430,7 +427,6 @@ _x86_internal_release_boards = frozenset([
     'stout',
     'strago',
     'stumpy',
-    'stumpy_freon',
     'stumpy_moblab',
     'sumo',
     'swanky',
@@ -439,15 +435,10 @@ _x86_internal_release_boards = frozenset([
     'winky',
     'wolf',
     'x86-alex',
-    'x86-alex_freon',
     'x86-alex_he',
-    'x86-alex_he-freon',
     'x86-mario',
-    'x86-mario_freon',
     'x86-zgb',
-    'x86-zgb_freon',
     'x86-zgb_he',
-    'x86-zgb_he-freon',
     'zako',
 ])
 
@@ -1042,7 +1033,6 @@ def GetConfig():
       'peppy',
       'rush_ryu',
       'veyron_pinky',
-      'x86-alex_freon',
       'nyan',
   ])
 
@@ -1492,7 +1482,6 @@ def GetConfig():
       'whirlwind',
       'wolf',
       'x86-alex',
-      'x86-alex_freon',
       'x86-generic',
       'x86-mario',
       'x86-zgb',
@@ -2254,32 +2243,12 @@ def GetConfig():
       )
   )
 
-  # pineview chipset boards (freon variant)
-  _AddGroupConfig(
-      'pineview-freon', 'x86-mario_freon', (
-          'x86-alex_freon',
-          'x86-zgb_freon',
-      ), (
-          'x86-alex_he-freon',
-          'x86-zgb_he-freon',
-      ),
-  )
-
   # sandybridge chipset boards
   _AddGroupConfig(
       'sandybridge', 'parrot', (
           'lumpy',
           'butterfly',
           'stumpy',
-      )
-  )
-
-  # sandybridge chipset boards (freon variant)
-  _AddGroupConfig(
-      'sandybridge-freon', 'parrot_freon', (
-          'lumpy_freon',
-          'butterfly_freon',
-          'stumpy_freon',
       )
   )
 
