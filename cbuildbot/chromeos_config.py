@@ -436,6 +436,7 @@ _x86_internal_release_boards = frozenset([
     'swanky',
     'tidus',
     'tricky',
+    'ultima',
     'winky',
     'wolf',
     'x86-alex',
@@ -2615,6 +2616,7 @@ def GetConfig():
       'stumpy',
       'sumo',
       'swanky',
+      'ultima',
       'winky',
       'wolf',
       'x86-mario',
@@ -2650,6 +2652,7 @@ def GetConfig():
       'strago',
       'sumo',
       'swanky',
+      'ultima',
       'winky',
       'zako',
   ])
