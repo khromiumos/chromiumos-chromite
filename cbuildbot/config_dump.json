@@ -738,6 +738,7 @@
         "image_test": true,
         "images": [
             "base",
+            "recovery",
             "test",
             "factory_install"
         ],
@@ -753,7 +754,6 @@
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
-            "-highdpi",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
@@ -900,6 +900,7 @@
         "vm_tests": []
     },
     "arkham-pre-flight-branch": {
+        "active_waterfall": "chromeos_release",
         "boards": [
             "arkham"
         ],
