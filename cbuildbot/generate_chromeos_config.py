@@ -1797,8 +1797,8 @@ internal_incremental = internal.derive(
 )
 
 _CONFIG.AddConfig(internal_pfq_branch, 'arkham-pre-flight-branch',
+  non_testable_builder,
   master=True,
-  vm_tests=None,
   push_overlays=constants.BOTH_OVERLAYS,
   boards=['arkham'],
 )
@@ -2857,8 +2857,8 @@ _AddFirmwareConfigs()
 # This is an example factory branch configuration for x86.
 # Modify it to match your factory branch.
 _CONFIG.AddConfig(_factory_release, 'arkham-factory',
+  non_testable_builder,
   boards=['arkham'],
-  vm_tests=None,
 )
 
 # This is an example factory branch configuration for arm.

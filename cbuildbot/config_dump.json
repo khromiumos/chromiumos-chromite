@@ -750,14 +750,16 @@
         "overlays": "both",
         "push_image": true,
         "signer_tests": true,
+        "tests_supported": false,
         "trybot_list": true,
+        "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
             "chrome_internal"
         ],
         "usepkg_build_packages": false,
-        "vm_tests": null
+        "vm_tests": []
     },
     "arkham-full": {
         "archive_build_debug": true,
@@ -917,10 +919,12 @@
         "prebuilts": "private",
         "push_overlays": "both",
         "sync_chrome": true,
+        "tests_supported": false,
+        "unittests": false,
         "useflags": [
             "chrome_internal"
         ],
-        "vm_tests": null
+        "vm_tests": []
     },
     "arkham-release": {
         "archive_build_debug": true,
