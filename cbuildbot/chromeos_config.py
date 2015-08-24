@@ -15,7 +15,7 @@ from chromite.lib import factory
 
 # Set to 'True' if this is a release branch. This updates the '-release' builder
 # configuration to the shape used by the release waterfall.
-IS_RELEASE_BRANCH = False
+IS_RELEASE_BRANCH = True
 
 
 def OverrideConfigForTrybot(build_config, options):
@@ -612,38 +612,6 @@ _waterfall_config_map = {
     ]),
 
     constants.WATERFALL_INTERNAL: frozenset([
-        # Experimental Canaries (Group)
-        'auron-b-release-group',
-        'glados-release-group',
-        'kunimitsu-release-group',
-        'rambi-d-release-group',
-        'rambi-e-release-group',
-        'storm-release-group',
-        'strago-release-group',
-        'veyron-b-release-group',
-        'veyron-c-release-group',
-        'veyron-d-release-group',
-
-        # Experimental Canaries
-        'bobcat-release',
-        'daisy_winter-release',
-        'kayle-release',
-        'nyan_freon-release',
-        'panther_moblab-release',
-        'rush_ryu-release',
-        'smaug-release',
-        'guado_moblab-release',
-
-        # Incremental Builders.
-        'mario-incremental',
-        'lakitu-incremental',
-
-        # Firmware Builders.
-        'link-depthcharge-full-firmware',
-
-        # Toolchain Builders.
-        'internal-toolchain-major',
-        'internal-toolchain-minor',
     ]),
 
     constants.WATERFALL_RELEASE: frozenset([
@@ -2162,7 +2130,6 @@ def GetConfig():
   site_config.AddConfig(
       _release, 'gizmo-release',
       _base_configs['gizmo'],
-      important=True,
       paygen=False,
       signer_tests=False,
   )
@@ -2208,7 +2175,6 @@ def GetConfig():
       _release, 'panther_embedded-minimal-release',
       _base_configs['panther_embedded'],
       profile='minimal',
-      important=True,
       paygen=False,
       signer_tests=False,
   )
@@ -2230,7 +2196,6 @@ def GetConfig():
           boards=['beaglebone_servo'],
           payload_image='base'
       ).derive(_grouped_variant_config),
-      important=True,
   )
 
   site_config.AddConfig(
@@ -2264,7 +2229,6 @@ def GetConfig():
       paygen_skip_delta_payloads=True,
       # TODO: re-enable paygen testing when crbug.com/386473 is fixed.
       paygen_skip_testing=True,
-      important=True,
       afdo_use=False,
       signer_tests=False,
       hw_tests=[
@@ -2372,7 +2336,6 @@ def GetConfig():
       _base_configs['lakitu_mobbuild'],
       vm_tests=[constants.SMOKE_SUITE_TEST_TYPE],
       signer_tests=False,
-      important=True,
   )
 
   site_config.AddConfig(
@@ -2441,7 +2404,7 @@ def GetConfig():
 
   # ivybridge chipset boards
   _AddGroupConfig(
-      'ivybridge-freon', 'stout', (
+      'ivybridge', 'stout', (
           'link',
       ), (
           'parrot_ivb',
@@ -2508,19 +2471,15 @@ def GetConfig():
 
   _AddGroupConfig(
       'rambi-d', 'banjo', (
-          'cranky',
           'ninja',
           'sumo',
       ),
-      important=False,
   )
 
   _AddGroupConfig(
       'rambi-e', 'orco', (
           'heli',
-          'wizpig',
       ),
-      important=False,
   )
 
   # daisy-based boards
@@ -2557,11 +2516,8 @@ def GetConfig():
 
   _AddGroupConfig(
       'auron-b', 'lulu', (
-          'cid',
           'gandof',
-          'buddy',
       ),
-      important=False,
   )
 
   # veyron-based boards
@@ -2574,28 +2530,16 @@ def GetConfig():
   )
 
   _AddGroupConfig(
-      'veyron-b', 'veyron_gus', (
-          'veyron_jaq',
+      'veyron-b', 'veyron_jaq', (
           'veyron_minnie',
           'veyron_rialto',
       ),
-      important=False,
   )
 
   _AddGroupConfig(
-      'veyron-c', 'veyron_brain', (
-          'veyron_danger',
+      'veyron-c', 'veyron_mickey', (
           'veyron_thea',
-          'veyron_shark',
       ),
-      important=False,
-  )
-
-  _AddGroupConfig(
-      'veyron-d', 'veyron_mickey', (
-          'veyron_romy',
-      ),
-      important=False,
   )
 
   # jecht-based boards
@@ -2612,15 +2556,14 @@ def GetConfig():
       'strago', 'strago', (
           'cyan',
           'celes',
-          'ultima',
       ),
-      important=False,
   )
 
   # oak-based boards
   _AddGroupConfig(
       'oak', 'oak', (
-      )
+      ),
+      important=False,
   )
 
   # glados-based boards
@@ -2636,7 +2579,6 @@ def GetConfig():
           'arkham',
           'whirlwind',
       ),
-      important=False,
   )
 
   # kunimitsu-based boards
