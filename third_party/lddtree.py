@@ -122,7 +122,6 @@ def GenerateLdsoWrapper(root, path, interp, libpaths=()):
                            interp_name),
     'libpaths': ':'.join(['${basedir}/' + os.path.relpath(p, basedir)
                           for p in libpaths]),
-    'elf_path': '${basedir}/%s/%s' % ('.elf', os.path.basename(path))
   }
   wrapper = """#!/bin/sh
 if ! base=$(realpath "$0" 2>/dev/null); then
@@ -136,16 +135,11 @@ exec \
   "${basedir}/%(interp)s" \
   --library-path "%(libpaths)s" \
   --inhibit-rpath '' \
-  "%(elf_path)s" \
+  "${base}.elf" \
   "$@"
 """
   wrappath = root + path
-  elf_wrap_dir = os.path.join(os.path.dirname(wrappath), '.elf')
-  elf_wrappath = os.path.join(elf_wrap_dir, os.path.basename(wrappath))
-
-  if not os.path.isdir(elf_wrap_dir):
-    os.mkdir(elf_wrap_dir)
-  os.rename(wrappath, elf_wrappath)
+  os.rename(wrappath, wrappath + '.elf')
   with open(wrappath, 'w') as f:
     f.write(wrapper % replacements)
   os.chmod(wrappath, 0o0755)
