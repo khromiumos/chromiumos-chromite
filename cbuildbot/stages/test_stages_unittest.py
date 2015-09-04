@@ -14,12 +14,15 @@ from chromite.cbuildbot import commands
 from chromite.cbuildbot import config_lib
 from chromite.cbuildbot import constants
 from chromite.cbuildbot import failures_lib
+from chromite.cbuildbot import swarming_lib
+from chromite.cbuildbot import topology
 from chromite.cbuildbot.stages import artifact_stages
 from chromite.cbuildbot.stages import generic_stages
 from chromite.cbuildbot.stages import generic_stages_unittest
 from chromite.cbuildbot.stages import test_stages
 from chromite.lib import cgroups
 from chromite.lib import cros_build_lib_unittest
+from chromite.lib import cros_test_lib
 from chromite.lib import cros_logging as logging
 from chromite.lib import gs
 from chromite.lib import osutils
@@ -360,7 +363,8 @@ class HWTestStageTest(generic_stages_unittest.AbstractStageTestCase,
 
 class AUTestStageTest(generic_stages_unittest.AbstractStageTestCase,
                       cros_build_lib_unittest.RunCommandTestCase,
-                      cbuildbot_unittest.SimpleBuilderTestCase):
+                      cbuildbot_unittest.SimpleBuilderTestCase,
+                      cros_test_lib.MockTempDirTestCase):
   """Test only custom methods in AUTestStageTest."""
 
   BOT_ID = 'x86-mario-release'
@@ -393,8 +397,32 @@ class AUTestStageTest(generic_stages_unittest.AbstractStageTestCase,
     return test_stages.AUTestStage(
         self._run, self._current_board, self.suite_config)
 
+  def _PatchJson(self):
+    """Mock out the code that loads from swarming task summary."""
+    # pylint: disable=protected-access
+    temp_json_path = os.path.join(self.tempdir, 'temp_summary.json')
+    orig_func = commands._CreateSwarmingArgs
+
+    def replacement(*args, **kargs):
+      swarming_args = orig_func(*args, **kargs)
+      swarming_args['temp_json_path'] = temp_json_path
+      return swarming_args
+
+    self.PatchObject(commands, '_CreateSwarmingArgs', side_effect=replacement)
+
+    j = {'shards':[{'name': 'fake_name', 'bot_id': 'chromeos-server990',
+                    'created_ts': '2015-06-12 12:00:00',
+                    'internal_failure': False,
+                    'outputs': ['some fake output']}]}
+    self.PatchObject(swarming_lib.SwarmingCommandResult, 'LoadJsonSummary',
+                     return_value=j)
+
   def testPerformStage(self):
     """Tests that we correctly generate a tarball and archive it."""
+    # pylint: disable=protected-access
+
+    topology.FetchTopologyFromCIDB(None)
+    self._PatchJson()
     stage = self.ConstructStage()
     stage.PerformStage()
     cmd = ['site_utils/autoupdate/full_release_test.py', '--npo', '--dump',
@@ -402,7 +430,8 @@ class AUTestStageTest(generic_stages_unittest.AbstractStageTestCase,
            self.archive_stage.release_tag, self._current_board]
     self.assertCommandContains(cmd)
     # pylint: disable=W0212
-    self.assertCommandContains([commands._AUTOTEST_RPC_CLIENT, self.suite])
+    self.assertCommandContains([swarming_lib._SWARMING_PROXY_CLIENT,
+                                commands._RUN_SUITE_PATH, self.suite])
 
   def testPayloadsNotGenerated(self):
     """Test that we exit early if payloads are not generated."""
