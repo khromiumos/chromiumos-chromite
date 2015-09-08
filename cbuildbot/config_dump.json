@@ -18041,6 +18041,11 @@
         "boards": [
             "smaug"
         ],
+        "images": [
+            "base",
+            "recovery",
+            "test"
+        ],
         "name": "smaug-factory",
         "sync_chrome": false,
         "vm_tests": []

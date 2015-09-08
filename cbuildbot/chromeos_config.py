@@ -2696,6 +2696,7 @@ def GetConfig():
   # Modify it to match your factory branch.
   site_config.AddConfig(
       _factory_release, 'smaug-factory',
+      images=['base', 'recovery', 'test'],
       vm_tests=[],
       boards=['smaug'],
       sync_chrome=False,
