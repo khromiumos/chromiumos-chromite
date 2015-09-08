@@ -283,6 +283,7 @@ def PushImage(src_path, board, versionrev=None, profile=None, priority=50,
     factory_base = _ImageNameBase('factory')
     firmware_base = _ImageNameBase('firmware')
     test_base = _ImageNameBase('test')
+    kern_base = _ImageNameBase('kernel')
     hwqual_tarball = 'chromeos-hwqual-%s-%s.tar.bz2' % (board, versionrev)
 
     # Upload all the files first before flagging them for signing.
@@ -299,6 +300,7 @@ def PushImage(src_path, board, versionrev=None, profile=None, priority=50,
         ('firmware_from_source.tar.bz2', firmware_base,          'tar.bz2',
          'firmware'),
 
+        ('stripped-packages.tar',        kern_base,              'tar.bz2', ''),
         ('image.zip',                    _ImageNameBase(),       'zip', ''),
         ('chromiumos_test_image.tar.xz', test_base,              'tar.xz', ''),
         ('debug.tgz',                    'debug-%s' % boardpath, 'tgz', ''),
