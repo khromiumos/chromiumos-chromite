@@ -6192,6 +6192,7 @@
         "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
+        "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
         "hwqual": true,
         "image_test": true,
         "images": [
@@ -6210,12 +6211,11 @@
         "trybot_list": true,
         "upload_hw_test_artifacts": false,
         "useflags": [
-            "chrome_internal",
             "-cros-debug",
-            "-highdpi"
+            "-highdpi",
+            "chrome_internal"
         ],
         "usepkg_build_packages": false,
-        "usepkg_toolchain": false,
         "vm_tests": null
     },
     "butterfly-chrome-pfq": {
