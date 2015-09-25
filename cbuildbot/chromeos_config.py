@@ -2693,6 +2693,14 @@ def GetConfig():
       boards=['cyan'],
   )
 
+  site_config.AddConfig(
+      internal_pfq_branch, 'strago-pre-flight-branch',
+      _firmware,
+      master=True,
+      push_overlays=constants.BOTH_OVERLAYS,
+      boards=['strago'],
+  )
+
   # This is an example factory branch configuration.
   # Modify it to match your factory branch.
   site_config.AddConfig(
