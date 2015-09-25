@@ -2686,14 +2686,6 @@ def GetConfig():
   _AddFirmwareConfigs()
 
   site_config.AddConfig(
-      internal_pfq_branch, 'cyan-pre-flight-branch',
-      _firmware,
-      master=True,
-      push_overlays=constants.BOTH_OVERLAYS,
-      boards=['cyan'],
-  )
-
-  site_config.AddConfig(
       internal_pfq_branch, 'strago-pre-flight-branch',
       _firmware,
       master=True,
