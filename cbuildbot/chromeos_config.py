@@ -2511,7 +2511,6 @@ def GetConfig():
   _AddGroupConfig(
       'auron-b', 'lulu', (
           'gandof',
-          'buddy',
       ),
   )
 
