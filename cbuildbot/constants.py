@@ -421,7 +421,7 @@ HWTEST_WIFICELL_PRE_CQ_POOL = 'wificell-pre-cq'
 MASTER_BUILD_TIMEOUT_SECONDS = {
     PFQ_TYPE: 20 * 60,
     # Canaries are scheduled to run every 8 hours. Leave some gap.
-    CANARY_TYPE: (7 * 60 + 50) * 60,
+    CANARY_TYPE: 10 * 60 * 60,
 }
 MASTER_BUILD_TIMEOUT_DEFAULT_SECONDS = 4 * 60 * 60
 
