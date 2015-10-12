@@ -1532,6 +1532,7 @@ def GetConfig():
   site_config.AddConfig(
       internal_pfq_branch, 'veyron_mickey-pre-flight-branch',
       master=True,
+      vm_tests=[],
       push_overlays=constants.BOTH_OVERLAYS,
       boards=['veyron_mickey'],
   )
@@ -2808,6 +2809,7 @@ def GetConfig():
   site_config.AddConfig(
       _factory_release, 'veyron_mickey-factory',
       boards=['veyron_mickey'],
+      vm_tests=[],
   )
 
   _payloads = site_config.AddTemplate(
