@@ -1532,7 +1532,6 @@ def GetConfig():
   site_config.AddConfig(
       internal_pfq_branch, 'veyron_mickey-pre-flight-branch',
       master=True,
-      vm_tests=None,
       push_overlays=constants.BOTH_OVERLAYS,
       boards=['veyron_mickey'],
   )
@@ -2808,7 +2807,6 @@ def GetConfig():
   # Modify it to match your factory branch.
   site_config.AddConfig(
       _factory_release, 'veyron_mickey-factory',
-      vm_tests=None,
       boards=['veyron_mickey'],
   )
 
