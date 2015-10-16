@@ -423,6 +423,7 @@ _x86_internal_release_boards = frozenset([
     'peppy',
     'quawks',
     'rambi',
+    'reks',
     'rikku',
     'samus',
     'slippy',
@@ -2792,6 +2793,11 @@ def GetConfig():
   site_config.AddConfig(
       _factory_release, 'ultima-factory',
       boards=['ultima'],
+  )
+
+  site_config.AddConfig(
+      _factory_release, 'reks-factory',
+      boards=['reks'],
   )
 
   _payloads = site_config.AddTemplate(
