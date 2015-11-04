@@ -349,7 +349,7 @@ class ArchiveStage(generic_stages.BoardSpecificBuilderStage,
       # needs to be used with PushImages
       sign_types = []
       if config['name'].endswith('-%s' % cbuildbot_config.CONFIG_TYPE_FIRMWARE):
-        sign_types += ['firmware']
+        sign_types += ['firmware', 'accessory_usbpd']
       urls = commands.PushImages(
           board=board,
           archive_url=upload_url,
