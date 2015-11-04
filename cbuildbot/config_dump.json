@@ -6375,6 +6375,185 @@
         ],
         "vm_tests": []
     },
+    "edgar-chrome-pfq": {
+        "_template": "chrome-pfq",
+        "boards": [
+            "edgar"
+        ],
+        "important": false,
+        "manifest": "official.xml",
+        "name": "edgar-chrome-pfq"
+    },
+    "edgar-chromium-pfq": {
+        "_template": "chromium-pfq",
+        "boards": [
+            "edgar"
+        ],
+        "description": "Preflight Chromium Uprev & Build (internal)",
+        "important": false,
+        "internal": true,
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "name": "edgar-chromium-pfq",
+        "overlays": "both",
+        "prebuilts": "public",
+        "useflags": [
+            "-chrome_internal"
+        ]
+    },
+    "edgar-compile-only-pre-cq": {
+        "_template": "compile-only-pre-cq",
+        "boards": [
+            "edgar"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "name": "edgar-compile-only-pre-cq",
+        "overlays": "both",
+        "useflags": [
+            "chrome_internal"
+        ]
+    },
+    "edgar-firmware": {
+        "_template": "firmware",
+        "boards": [
+            "edgar"
+        ],
+        "manifest": "official.xml",
+        "name": "edgar-firmware",
+        "useflags": [
+            "chrome_internal",
+            "chromeless_tty"
+        ]
+    },
+    "edgar-full": {
+        "_template": "full",
+        "boards": [
+            "edgar"
+        ],
+        "name": "edgar-full",
+        "prebuilts": "public",
+        "useflags": [
+            "-chrome_internal"
+        ]
+    },
+    "edgar-no-vmtest-pre-cq": {
+        "_template": "no-vmtest-pre-cq",
+        "boards": [
+            "edgar"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "name": "edgar-no-vmtest-pre-cq",
+        "overlays": "both",
+        "useflags": [
+            "chrome_internal"
+        ]
+    },
+    "edgar-paladin": {
+        "_template": "paladin",
+        "boards": [
+            "edgar"
+        ],
+        "description": "Commit Queue (internal)",
+        "important": false,
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "name": "edgar-paladin",
+        "overlays": "both",
+        "prebuilts": "private",
+        "useflags": [
+            "chrome_internal"
+        ],
+        "vm_tests": []
+    },
+    "edgar-payloads": {
+        "_template": "payloads",
+        "boards": [
+            "edgar"
+        ],
+        "name": "edgar-payloads"
+    },
+    "edgar-pre-cq": {
+        "_template": "pre-cq",
+        "boards": [
+            "edgar"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "name": "edgar-pre-cq",
+        "overlays": "both",
+        "useflags": [
+            "chrome_internal"
+        ]
+    },
+    "edgar-release": {
+        "_template": "release",
+        "boards": [
+            "edgar"
+        ],
+        "name": "edgar-release"
+    },
+    "edgar-release-afdo": {
+        "_template": "release-afdo-generate",
+        "boards": [
+            "edgar"
+        ],
+        "child_configs": [
+            {
+                "_template": "release-afdo-generate",
+                "boards": [
+                    "edgar"
+                ],
+                "grouped": true,
+                "name": "edgar-release-afdo-generate"
+            },
+            {
+                "_template": "release-afdo-use",
+                "boards": [
+                    "edgar"
+                ],
+                "grouped": true,
+                "name": "edgar-release-afdo-use"
+            }
+        ],
+        "name": "edgar-release-afdo"
+    },
+    "edgar-release-afdo-generate": {
+        "_template": "release-afdo-generate",
+        "boards": [
+            "edgar"
+        ],
+        "name": "edgar-release-afdo-generate"
+    },
+    "edgar-release-afdo-use": {
+        "_template": "release-afdo-use",
+        "boards": [
+            "edgar"
+        ],
+        "name": "edgar-release-afdo-use"
+    },
+    "edgar-tot-chrome-pfq-informational": {
+        "_template": "chrome-pfq-informational",
+        "boards": [
+            "edgar"
+        ],
+        "manifest": "official.xml",
+        "name": "edgar-tot-chrome-pfq-informational"
+    },
+    "edgar-tot-chromium-pfq-informational": {
+        "_template": "chromium-pfq-informational",
+        "boards": [
+            "edgar"
+        ],
+        "name": "edgar-tot-chromium-pfq-informational",
+        "useflags": [
+            "-chrome_internal"
+        ]
+    },
     "enguarde-chrome-pfq": {
         "_template": "chrome-pfq",
         "boards": [
@@ -20878,6 +21057,185 @@
         "hw_tests_override": [],
         "name": "sync-test-cbuildbot"
     },
+    "terra-chrome-pfq": {
+        "_template": "chrome-pfq",
+        "boards": [
+            "terra"
+        ],
+        "important": false,
+        "manifest": "official.xml",
+        "name": "terra-chrome-pfq"
+    },
+    "terra-chromium-pfq": {
+        "_template": "chromium-pfq",
+        "boards": [
+            "terra"
+        ],
+        "description": "Preflight Chromium Uprev & Build (internal)",
+        "important": false,
+        "internal": true,
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "name": "terra-chromium-pfq",
+        "overlays": "both",
+        "prebuilts": "public",
+        "useflags": [
+            "-chrome_internal"
+        ]
+    },
+    "terra-compile-only-pre-cq": {
+        "_template": "compile-only-pre-cq",
+        "boards": [
+            "terra"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "name": "terra-compile-only-pre-cq",
+        "overlays": "both",
+        "useflags": [
+            "chrome_internal"
+        ]
+    },
+    "terra-firmware": {
+        "_template": "firmware",
+        "boards": [
+            "terra"
+        ],
+        "manifest": "official.xml",
+        "name": "terra-firmware",
+        "useflags": [
+            "chrome_internal",
+            "chromeless_tty"
+        ]
+    },
+    "terra-full": {
+        "_template": "full",
+        "boards": [
+            "terra"
+        ],
+        "name": "terra-full",
+        "prebuilts": "public",
+        "useflags": [
+            "-chrome_internal"
+        ]
+    },
+    "terra-no-vmtest-pre-cq": {
+        "_template": "no-vmtest-pre-cq",
+        "boards": [
+            "terra"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "name": "terra-no-vmtest-pre-cq",
+        "overlays": "both",
+        "useflags": [
+            "chrome_internal"
+        ]
+    },
+    "terra-paladin": {
+        "_template": "paladin",
+        "boards": [
+            "terra"
+        ],
+        "description": "Commit Queue (internal)",
+        "important": false,
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "name": "terra-paladin",
+        "overlays": "both",
+        "prebuilts": "private",
+        "useflags": [
+            "chrome_internal"
+        ],
+        "vm_tests": []
+    },
+    "terra-payloads": {
+        "_template": "payloads",
+        "boards": [
+            "terra"
+        ],
+        "name": "terra-payloads"
+    },
+    "terra-pre-cq": {
+        "_template": "pre-cq",
+        "boards": [
+            "terra"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "name": "terra-pre-cq",
+        "overlays": "both",
+        "useflags": [
+            "chrome_internal"
+        ]
+    },
+    "terra-release": {
+        "_template": "release",
+        "boards": [
+            "terra"
+        ],
+        "name": "terra-release"
+    },
+    "terra-release-afdo": {
+        "_template": "release-afdo-generate",
+        "boards": [
+            "terra"
+        ],
+        "child_configs": [
+            {
+                "_template": "release-afdo-generate",
+                "boards": [
+                    "terra"
+                ],
+                "grouped": true,
+                "name": "terra-release-afdo-generate"
+            },
+            {
+                "_template": "release-afdo-use",
+                "boards": [
+                    "terra"
+                ],
+                "grouped": true,
+                "name": "terra-release-afdo-use"
+            }
+        ],
+        "name": "terra-release-afdo"
+    },
+    "terra-release-afdo-generate": {
+        "_template": "release-afdo-generate",
+        "boards": [
+            "terra"
+        ],
+        "name": "terra-release-afdo-generate"
+    },
+    "terra-release-afdo-use": {
+        "_template": "release-afdo-use",
+        "boards": [
+            "terra"
+        ],
+        "name": "terra-release-afdo-use"
+    },
+    "terra-tot-chrome-pfq-informational": {
+        "_template": "chrome-pfq-informational",
+        "boards": [
+            "terra"
+        ],
+        "manifest": "official.xml",
+        "name": "terra-tot-chrome-pfq-informational"
+    },
+    "terra-tot-chromium-pfq-informational": {
+        "_template": "chromium-pfq-informational",
+        "boards": [
+            "terra"
+        ],
+        "name": "terra-tot-chromium-pfq-informational",
+        "useflags": [
+            "-chrome_internal"
+        ]
+    },
     "test-ap-group": {
         "_template": "test-ap",
         "boards": [
@@ -24877,6 +25235,185 @@
             "winky"
         ],
         "name": "winky-tot-chromium-pfq-informational",
+        "useflags": [
+            "-chrome_internal"
+        ]
+    },
+    "wizpig-chrome-pfq": {
+        "_template": "chrome-pfq",
+        "boards": [
+            "wizpig"
+        ],
+        "important": false,
+        "manifest": "official.xml",
+        "name": "wizpig-chrome-pfq"
+    },
+    "wizpig-chromium-pfq": {
+        "_template": "chromium-pfq",
+        "boards": [
+            "wizpig"
+        ],
+        "description": "Preflight Chromium Uprev & Build (internal)",
+        "important": false,
+        "internal": true,
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "name": "wizpig-chromium-pfq",
+        "overlays": "both",
+        "prebuilts": "public",
+        "useflags": [
+            "-chrome_internal"
+        ]
+    },
+    "wizpig-compile-only-pre-cq": {
+        "_template": "compile-only-pre-cq",
+        "boards": [
+            "wizpig"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "name": "wizpig-compile-only-pre-cq",
+        "overlays": "both",
+        "useflags": [
+            "chrome_internal"
+        ]
+    },
+    "wizpig-firmware": {
+        "_template": "firmware",
+        "boards": [
+            "wizpig"
+        ],
+        "manifest": "official.xml",
+        "name": "wizpig-firmware",
+        "useflags": [
+            "chrome_internal",
+            "chromeless_tty"
+        ]
+    },
+    "wizpig-full": {
+        "_template": "full",
+        "boards": [
+            "wizpig"
+        ],
+        "name": "wizpig-full",
+        "prebuilts": "public",
+        "useflags": [
+            "-chrome_internal"
+        ]
+    },
+    "wizpig-no-vmtest-pre-cq": {
+        "_template": "no-vmtest-pre-cq",
+        "boards": [
+            "wizpig"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "name": "wizpig-no-vmtest-pre-cq",
+        "overlays": "both",
+        "useflags": [
+            "chrome_internal"
+        ]
+    },
+    "wizpig-paladin": {
+        "_template": "paladin",
+        "boards": [
+            "wizpig"
+        ],
+        "description": "Commit Queue (internal)",
+        "important": false,
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "name": "wizpig-paladin",
+        "overlays": "both",
+        "prebuilts": "private",
+        "useflags": [
+            "chrome_internal"
+        ],
+        "vm_tests": []
+    },
+    "wizpig-payloads": {
+        "_template": "payloads",
+        "boards": [
+            "wizpig"
+        ],
+        "name": "wizpig-payloads"
+    },
+    "wizpig-pre-cq": {
+        "_template": "pre-cq",
+        "boards": [
+            "wizpig"
+        ],
+        "internal": true,
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "name": "wizpig-pre-cq",
+        "overlays": "both",
+        "useflags": [
+            "chrome_internal"
+        ]
+    },
+    "wizpig-release": {
+        "_template": "release",
+        "boards": [
+            "wizpig"
+        ],
+        "name": "wizpig-release"
+    },
+    "wizpig-release-afdo": {
+        "_template": "release-afdo-generate",
+        "boards": [
+            "wizpig"
+        ],
+        "child_configs": [
+            {
+                "_template": "release-afdo-generate",
+                "boards": [
+                    "wizpig"
+                ],
+                "grouped": true,
+                "name": "wizpig-release-afdo-generate"
+            },
+            {
+                "_template": "release-afdo-use",
+                "boards": [
+                    "wizpig"
+                ],
+                "grouped": true,
+                "name": "wizpig-release-afdo-use"
+            }
+        ],
+        "name": "wizpig-release-afdo"
+    },
+    "wizpig-release-afdo-generate": {
+        "_template": "release-afdo-generate",
+        "boards": [
+            "wizpig"
+        ],
+        "name": "wizpig-release-afdo-generate"
+    },
+    "wizpig-release-afdo-use": {
+        "_template": "release-afdo-use",
+        "boards": [
+            "wizpig"
+        ],
+        "name": "wizpig-release-afdo-use"
+    },
+    "wizpig-tot-chrome-pfq-informational": {
+        "_template": "chrome-pfq-informational",
+        "boards": [
+            "wizpig"
+        ],
+        "manifest": "official.xml",
+        "name": "wizpig-tot-chrome-pfq-informational"
+    },
+    "wizpig-tot-chromium-pfq-informational": {
+        "_template": "chromium-pfq-informational",
+        "boards": [
+            "wizpig"
+        ],
+        "name": "wizpig-tot-chromium-pfq-informational",
         "useflags": [
             "-chrome_internal"
         ]
