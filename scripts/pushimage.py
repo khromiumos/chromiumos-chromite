@@ -279,6 +279,7 @@ def PushImage(src_path, board, versionrev=None, profile=None, priority=50,
     dst_path = '%s/%s' % (gs_base, sub_path)
     logging.info('Copying images to %s', dst_path)
 
+    accessory_rwsig_base = _ImageNameBase('accessory_rwsig')
     recovery_base = _ImageNameBase('recovery')
     factory_base = _ImageNameBase('factory')
     firmware_base = _ImageNameBase('firmware')
@@ -298,6 +299,9 @@ def PushImage(src_path, board, versionrev=None, profile=None, priority=50,
 
         ('firmware_from_source.tar.bz2', firmware_base,          'tar.bz2',
          'firmware'),
+
+        ('firmware_from_source.tar.bz2', accessory_rwsig_base,   'tar.bz2',
+         'accessory_rwsig'),
 
         ('image.zip',                    _ImageNameBase(),       'zip', ''),
         ('chromiumos_test_image.tar.xz', test_base,              'tar.xz', ''),
@@ -422,7 +426,7 @@ def main(argv):
   parser.add_argument('--priority', type=int, default=50,
                       help='set signing priority (lower == higher prio)')
   parser.add_argument('--sign-types', default=None, nargs='+',
-                      choices=('recovery', 'factory', 'firmware'),
+                      choices=('recovery', 'factory', 'firmware', 'accessory_rwsig'),
                       help='only sign specified image types')
   parser.add_argument('--yes', action='store_true', default=False,
                       help='answer yes to all prompts')
