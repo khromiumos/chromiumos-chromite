@@ -354,7 +354,7 @@ class ArchiveStage(generic_stages.BoardSpecificBuilderStage,
       # needs to be used with PushImages
       sign_types = []
       if config['name'].endswith('-%s' % config_lib.CONFIG_TYPE_FIRMWARE):
-        sign_types += ['firmware']
+        sign_types += ['firmware', 'accessory_rwsig']
       if config['name'].endswith('-%s' % config_lib.CONFIG_TYPE_FACTORY):
         sign_types += ['factory']
       urls = commands.PushImages(
