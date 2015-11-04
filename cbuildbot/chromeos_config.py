@@ -390,6 +390,7 @@ _x86_internal_release_boards = frozenset([
     'clapper',
     'cranky',
     'cyan',
+    'edgar',
     'enguarde',
     'expresso',
     'falco',
@@ -434,6 +435,7 @@ _x86_internal_release_boards = frozenset([
     'stumpy_moblab',
     'sumo',
     'swanky',
+    'terra',
     'tidus',
     'tricky',
     'ultima',
@@ -2799,6 +2801,22 @@ def GetConfig():
       _factory_release, 'reks-factory',
       boards=['reks'],
   )
+
+  site_config.AddConfig(
+      _factory_release, 'edgar-factory',
+      boards=['edgar'],
+  )
+
+  site_config.AddConfig(
+      _factory_release, 'terra-factory',
+      boards=['terra'],
+  )
+
+  site_config.AddConfig(
+      _factory_release, 'wizpig-factory',
+      boards=['wizpig'],
+  )
+
 
   _payloads = site_config.AddTemplate(
       'payloads',
