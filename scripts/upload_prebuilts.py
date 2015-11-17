@@ -178,7 +178,7 @@ def _GsUpload(local_file, remote_file, acl):
     # For private uploads we assume that the overlay board is set up properly
     # and a googlestore_acl.xml is present. Otherwise, this script errors.
     cmd = [constants.GSUTIL_BIN, 'cp', '-a', 'private', local_file, remote_file]
-    acl_cmd = [constants.GSUTIL_BIN, 'setacl', acl, remote_file]
+    acl_cmd = [constants.GSUTIL_BIN, 'acl', 'set', acl, remote_file]
 
   cros_build_lib.RunCommandWithRetries(_RETRIES, cmd, print_cmd=True,
                                        sleep=_SLEEP_TIME,

@@ -856,7 +856,7 @@ def UploadArchivedFile(archive_path, upload_url, filename, debug):
     full_url = '%s/%s' % (upload_url, filename)
     cmds = (
         [_GSUTIL_PATH, 'cp', full_filename, full_url],
-        [_GSUTIL_PATH, 'setacl', _GS_ACL, full_url]
+        [_GSUTIL_PATH, 'acl', 'set', _GS_ACL, full_url]
     )
 
     for cmd in cmds:
