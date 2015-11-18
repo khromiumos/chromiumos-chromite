@@ -34,7 +34,6 @@ _FULL_BINHOST = 'FULL_BINHOST'
 _PRIVATE_BINHOST_CONF_DIR = ('src/private-overlays/chromeos-partner-overlay/'
                              'chromeos/binhost')
 _GSUTIL_PATH = '/b/build/scripts/slave/gsutil'
-_GS_ACL = '/home/%(user)s/slave_archive_acl' % {'user' : getpass.getuser()}
 _BINHOST_PACKAGE_FILE = '/etc/portage/make.profile/package.installable'
 _AUTOTEST_RPC_CLIENT = ('/b/build_internal/scripts/slave-internal/autotest_rpc/'
                         'autotest_rpc_client.py')
@@ -856,7 +855,6 @@ def UploadArchivedFile(archive_path, upload_url, filename, debug):
     full_url = '%s/%s' % (upload_url, filename)
     cmds = (
         [_GSUTIL_PATH, 'cp', full_filename, full_url],
-        [_GSUTIL_PATH, 'acl', 'set', _GS_ACL, full_url]
     )
 
     for cmd in cmds:
