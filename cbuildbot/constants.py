@@ -420,8 +420,8 @@ HWTEST_WIFICELL_PRE_CQ_POOL = 'wificell-pre-cq'
 # master for the lock-step master-slave builds.
 MASTER_BUILD_TIMEOUT_SECONDS = {
     PFQ_TYPE: 20 * 60,
-    # Canaries are scheduled to run every 8 hours. Leave some gap.
-    CANARY_TYPE: (7 * 60 + 50) * 60,
+    # Release builders have a 12 hour timeout.
+    CANARY_TYPE: 12 * 60 * 60,
 }
 MASTER_BUILD_TIMEOUT_DEFAULT_SECONDS = 4 * 60 * 60
 
