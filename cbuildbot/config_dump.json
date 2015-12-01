@@ -2700,7 +2700,6 @@
         "boards": [
             "bayleybay"
         ],
-        "hw_tests": [],
         "unittests": false,
         "vm_tests": []
     },
@@ -3471,7 +3470,6 @@
         "boards": [
             "beltino"
         ],
-        "hw_tests": [],
         "vm_tests": []
     },
     "beltino-release-afdo": {
@@ -3638,7 +3636,6 @@
         "boards": [
             "bobcat"
         ],
-        "hw_tests": [],
         "paygen": false,
         "profile": "minimal",
         "signer_tests": false
@@ -16729,7 +16726,6 @@
         "boards": [
             "rush"
         ],
-        "hw_tests": [],
         "paygen": false,
         "signer_tests": false,
         "vm_tests": []
@@ -16894,7 +16890,6 @@
             "rush_ryu"
         ],
         "dev_installer_prebuilts": false,
-        "hw_tests": [],
         "images": [
             "base",
             "test",
@@ -20406,7 +20401,6 @@
                 "build_packages_in_background": true,
                 "chrome_sdk_build_chrome": false,
                 "grouped": true,
-                "hw_tests": [],
                 "name": "veyron_mickey-release",
                 "unittests": null,
                 "vm_tests": []
@@ -21517,7 +21511,6 @@
         "boards": [
             "veyron_mickey"
         ],
-        "hw_tests": [],
         "vm_tests": []
     },
     "veyron_mickey-release-afdo": {
@@ -22525,7 +22518,6 @@
         "boards": [
             "veyron_romy"
         ],
-        "hw_tests": [],
         "vm_tests": []
     },
     "veyron_romy-release-afdo": {
