@@ -1517,13 +1517,10 @@ def GetConfig():
   )
 
   site_config.AddConfig(
-      internal_pfq_branch, 'lumpy-pre-flight-branch',
+      internal_pfq_branch, 'glados-pre-flight-branch',
       master=True,
       push_overlays=constants.BOTH_OVERLAYS,
-      boards=['lumpy'],
-      afdo_generate=True,
-      afdo_update_ebuild=True,
-      hw_tests=[HWTestList.AFDORecordTest()],
+      boards=['glados'],
   )
 
   # A test-ap image is just a test image with a special profile enabled.
@@ -2820,8 +2817,13 @@ def GetConfig():
   # This is an example factory branch configuration.
   # Modify it to match your factory branch.
   site_config.AddConfig(
-      _factory_release, 'x86-mario-factory',
-      boards=['x86-mario'],
+      _factory_release, 'glados-factory',
+      boards=['glados'],
+  )
+
+  site_config.AddConfig(
+      _factory_release, 'chell-factory',
+      boards=['chell'],
   )
 
   _payloads = site_config.AddTemplate(
