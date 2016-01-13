@@ -2701,6 +2701,7 @@ def GetConfig():
       'enguarde',
       'expresso',
       'falco',
+      'glados',
       'glimmer',
       'gnawty',
       'jecht',

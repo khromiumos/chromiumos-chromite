@@ -6805,6 +6805,17 @@
             "depthcharge"
         ]
     },
+    "glados-firmware": {
+        "_template": "firmware",
+        "boards": [
+            "glados"
+        ],
+        "manifest": "official.xml",
+        "useflags": [
+            "chrome_internal",
+            "chromeless_tty"
+        ]
+    },
     "glados-full": {
         "_template": "full",
         "boards": [
