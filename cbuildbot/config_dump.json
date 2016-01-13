@@ -8932,6 +8932,17 @@
             "depthcharge"
         ]
     },
+    "kunimitsu-firmware": {
+        "_template": "firmware",
+        "boards": [
+            "kunimitsu"
+        ],
+        "manifest": "official.xml",
+        "useflags": [
+            "chrome_internal",
+            "chromeless_tty"
+        ]
+    },
     "kunimitsu-full": {
         "_template": "full",
         "boards": [

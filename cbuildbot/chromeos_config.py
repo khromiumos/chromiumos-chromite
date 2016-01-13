@@ -2706,6 +2706,7 @@ def GetConfig():
       'gnawty',
       'jecht',
       'kip',
+      'kunimitsu',
       'lars',
       'leon',
       'link',
