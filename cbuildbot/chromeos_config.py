@@ -15,7 +15,7 @@ from chromite.lib import factory
 
 # Set to 'True' if this is a release branch. This updates the '-release' builder
 # configuration to the shape used by the release waterfall.
-IS_RELEASE_BRANCH = False
+IS_RELEASE_BRANCH = True
 
 
 def OverrideConfigForTrybot(build_config, options):
@@ -581,32 +581,6 @@ _waterfall_config_map = {
     ]),
 
     constants.WATERFALL_INTERNAL: frozenset([
-        # Experimental Paladins.
-        'lakitu_next-paladin',
-
-        # Experimental Canaries (Group)
-        'storm-release-group',
-
-        # Experimental Canaries
-        'kayle-release',
-        'kunimitsu-release-group',
-        'lakitu_next-release',
-        'nyan_freon-release',
-        'rush_ryu-release',
-        'smaug-release',
-        'strago-c-release-group',
-        'guado_moblab-release',
-
-        # Incremental Builders.
-        'mario-incremental',
-        'lakitu-incremental',
-        'lakitu_next-incremental',
-
-        # Firmware Builders.
-        'link-depthcharge-full-firmware',
-
-        # Toolchain Builders.
-        'internal-toolchain-minor',
     ]),
 
     constants.WATERFALL_RELEASE: frozenset([
@@ -2119,7 +2093,6 @@ def GetConfig():
   site_config.Add(
       'gizmo-release', _release,
       _base_configs['gizmo'],
-      important=True,
       paygen=False,
       signer_tests=False,
   )
@@ -2185,7 +2158,6 @@ def GetConfig():
       'panther_embedded-minimal-release', _release,
       _base_configs['panther_embedded'],
       profile='minimal',
-      important=True,
       paygen=False,
       signer_tests=False,
   )
@@ -2207,7 +2179,6 @@ def GetConfig():
           boards=['beaglebone_servo'],
           payload_image='base'
       ).derive(_grouped_variant_config),
-      important=True,
   )
 
   site_config.Add(
@@ -2265,6 +2236,7 @@ def GetConfig():
       'cheets-release',
       _release,
       description='Cheets release builders',
+      important=False,
       hw_tests=[
           config_lib.HWTestConfig(constants.HWTEST_ARC_SUITE,
                                   blocking=True, num=1, timeout=120*60),
@@ -2325,7 +2297,6 @@ def GetConfig():
       vm_tests=[constants.SMOKE_SUITE_TEST_TYPE],
       run_gce_tests=True,
       signer_tests=False,
-      important=True,
   )
 
   site_config.Add(
@@ -2539,7 +2510,6 @@ def GetConfig():
   _AddGroupConfig(
       'auron-b', 'lulu', (
           'gandof',
-          'buddy',
       ),
   )
 
@@ -2553,26 +2523,13 @@ def GetConfig():
   )
 
   _AddGroupConfig(
-      'veyron-b', 'veyron_gus', (
-          'veyron_jaq',
+      'veyron-b', 'veyron_jaq', (
           'veyron_minnie',
           'veyron_rialto',
-      ),
-  )
-
-  _AddGroupConfig(
-      'veyron-c', 'veyron_brain', (
-          'veyron_danger',
           'veyron_mickey',
       ),
   )
 
-  _AddGroupConfig(
-      'veyron-d', 'veyron_shark', (
-          'veyron_romy',
-          'veyron_minnie-cheets',
-      ),
-  )
 
   # jecht-based boards
   _AddGroupConfig(
@@ -2594,23 +2551,16 @@ def GetConfig():
 
   _AddGroupConfig(
       'strago-b', 'reks', (
-          'cyan-cheets',
-          'wizpig',
+          'edgar',
           'terra',
       ),
-  )
-
-  _AddGroupConfig(
-      'strago-c', 'edgar', (
-          'setzer',
-      ),
-      important=False,
   )
 
   # oak-based boards
   _AddGroupConfig(
       'oak', 'oak', (
-      )
+      ),
+      important=False,
   )
 
   # glados-based boards
@@ -2626,16 +2576,13 @@ def GetConfig():
           'arkham',
           'whirlwind',
       ),
-      important=False,
   )
 
   # kunimitsu-based boards
   _AddGroupConfig(
       'kunimitsu', 'kunimitsu', (
           'lars',
-          'sentry',
       ),
-      important=False,
   )
 
   # Factory and Firmware releases much inherit from these classes.
