@@ -427,6 +427,7 @@ _x86_internal_release_boards = frozenset([
     'reks',
     'rikku',
     'samus',
+    'setzer',
     'slippy',
     'squawks',
     'stout',
@@ -2815,6 +2816,11 @@ def GetConfig():
   site_config.AddConfig(
       _factory_release, 'wizpig-factory',
       boards=['wizpig'],
+  )
+
+  site_config.AddConfig(
+      _factory_release, 'setzer-factory',
+      boards=['setzer'],
   )
 
 
