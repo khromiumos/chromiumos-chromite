@@ -2816,6 +2816,11 @@ def GetConfig():
   )
 
   site_config.Add(
+      'kunimitsu-factory', _factory_release,
+      boards=['kunimitsu'],
+  )
+
+  site_config.Add(
       'chell-factory', _factory_release,
       boards=['chell'],
   )

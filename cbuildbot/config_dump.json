@@ -8917,6 +8917,12 @@
             "depthcharge"
         ]
     },
+    "kunimitsu-factory": {
+        "_template": "factory",
+        "boards": [
+            "kunimitsu"
+        ]
+    },
     "kunimitsu-full": {
         "_template": "full",
         "boards": [
