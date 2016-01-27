@@ -1695,9 +1695,25 @@
                     "-chrome_internal"
                 ],
                 "vm_tests": []
+            },
+            {
+                "_template": "full",
+                "boards": [
+                    "buddy"
+                ],
+                "build_packages_in_background": true,
+                "chrome_sdk_build_chrome": false,
+                "grouped": true,
+                "name": "buddy-full",
+                "prebuilts": "public",
+                "unittests": null,
+                "useflags": [
+                    "-chrome_internal"
+                ],
+                "vm_tests": []
             }
         ],
-        "description": "Full Builds; Group config (boards: lulu, gandof)",
+        "description": "Full Builds; Group config (boards: lulu, gandof, buddy)",
         "prebuilts": "public",
         "useflags": [
             "-chrome_internal"
@@ -1729,9 +1745,21 @@
                 "name": "gandof-release",
                 "unittests": null,
                 "vm_tests": []
+            },
+            {
+                "_template": "release",
+                "boards": [
+                    "buddy"
+                ],
+                "build_packages_in_background": true,
+                "chrome_sdk_build_chrome": false,
+                "grouped": true,
+                "name": "buddy-release",
+                "unittests": null,
+                "vm_tests": []
             }
         ],
-        "description": "Release Builds (canary) (internal); Group config (boards: lulu, gandof)",
+        "description": "Release Builds (canary) (internal); Group config (boards: lulu, gandof, buddy)",
         "important": true
     },
     "auron-chrome-pfq": {
