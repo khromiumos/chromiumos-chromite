@@ -440,6 +440,7 @@ _x86_internal_release_boards = frozenset([
     'tidus',
     'tricky',
     'ultima',
+    'umaro',
     'winky',
     'wizpig',
     'wolf',
@@ -2796,6 +2797,11 @@ def GetConfig():
   site_config.AddConfig(
       _factory_release, 'ultima-factory',
       boards=['ultima'],
+  )
+
+  site_config.AddConfig(
+      _factory_release, 'umaro-factory',
+      boards=['umaro'],
   )
 
   site_config.AddConfig(
