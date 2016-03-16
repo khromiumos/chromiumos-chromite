@@ -2336,6 +2336,7 @@ def GetConfig():
   site_config.Add(
       'guado_moblab-release', moblab_release,
       _base_configs['guado_moblab'],
+      important=True,
   )
 
   site_config.Add(

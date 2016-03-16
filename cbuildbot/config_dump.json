@@ -8060,10 +8060,12 @@
     },
     "guado_moblab-release": {
         "_template": "moblab-release",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "guado_moblab"
         ],
         "image_test": false,
+        "important": true,
         "vm_tests": []
     },
     "guado_moblab-release-afdo": {
