@@ -391,6 +391,7 @@ _x86_internal_release_boards = frozenset([
     'buddy',
     'butterfly',
     'candy',
+    'cave',
     'celes',
     'chell',
     'cid',
@@ -2818,6 +2819,11 @@ def GetConfig():
   site_config.Add(
       'kunimitsu-factory', _factory_release,
       boards=['kunimitsu'],
+  )
+
+  site_config.Add(
+      'cave-factory', _factory_release,
+      boards=['cave'],
   )
 
   site_config.Add(
