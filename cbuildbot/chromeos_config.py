@@ -380,6 +380,7 @@ _x86_internal_release_boards = frozenset([
     'auron_yuna',
     'bayleybay',
     'banjo',
+    'banon',
     'beltino',
     'bobcat',
     'buddy',
@@ -2785,6 +2786,11 @@ def GetConfig():
   )
 
   site_config.AddConfig(
+      _factory_release, 'banon-factory',
+      boards=['banon'],
+  )
+
+  site_config.AddConfig(
       _factory_release, 'cyan-factory',
       boards=['cyan'],
   )
@@ -2828,6 +2834,7 @@ def GetConfig():
       _factory_release, 'setzer-factory',
       boards=['setzer'],
   )
+
 
 
   _payloads = site_config.AddTemplate(
