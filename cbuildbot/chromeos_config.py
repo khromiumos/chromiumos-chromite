@@ -380,6 +380,7 @@ _x86_internal_release_boards = frozenset([
     'auron_yuna',
     'bayleybay',
     'banjo',
+    'banon',
     'beltino',
     'bobcat',
     'butterfly',
@@ -2580,6 +2581,7 @@ def GetConfig():
   _firmware_boards = frozenset([
       'auron',
       'banjo',
+      'banon',
       'bayleybay',
       'beltino',
       'butterfly',
