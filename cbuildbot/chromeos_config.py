@@ -15,7 +15,7 @@ from chromite.lib import factory
 
 # Set to 'True' if this is a release branch. This updates the '-release' builder
 # configuration to the shape used by the release waterfall.
-IS_RELEASE_BRANCH = False
+IS_RELEASE_BRANCH = True
 
 
 def GetDefaultWaterfall(build_config):
@@ -2302,7 +2302,6 @@ def GetConfig():
   site_config.Add(
       'gizmo-release', _release,
       _base_configs['gizmo'],
-      important=True,
       paygen=False,
       signer_tests=False,
   )
@@ -2373,7 +2372,6 @@ def GetConfig():
       'panther_embedded-minimal-release', _release,
       _base_configs['panther_embedded'],
       profile='minimal',
-      important=True,
       paygen=False,
       signer_tests=False,
   )
@@ -2395,7 +2393,6 @@ def GetConfig():
           boards=['beaglebone_servo'],
           payload_image='base'
       ).derive(_grouped_variant_config),
-      important=True,
   )
 
   site_config.Add(
@@ -2441,6 +2438,7 @@ def GetConfig():
   site_config.Add(
       'guado_moblab-release', moblab_release,
       _base_configs['guado_moblab'],
+      important=True,
   )
 
   site_config.Add(
@@ -2507,7 +2505,6 @@ def GetConfig():
       _base_configs['lakitu'],
       lakitu_test_customizations,
       sign_types=['base'],
-      important=True,
   )
 
   site_config.Add(
@@ -2791,33 +2788,21 @@ def GetConfig():
 
   # veyron-based boards
   _AddGroupConfig(
-      'veyron', 'veyron_pinky', (
-          'veyron_jerry',
+      'veyron', 'veyron_jerry', (
           'veyron_mighty',
           'veyron_speedy',
       ),
   )
 
   _AddGroupConfig(
-      'veyron-b', 'veyron_gus', (
-          'veyron_jaq',
+      'veyron-b', 'veyron_jaq', (
           'veyron_minnie',
           'veyron_rialto',
       ),
   )
 
   _AddGroupConfig(
-      'veyron-c', 'veyron_brain', (
-          'veyron_danger',
-          'veyron_mickey',
-          'veyron_tiger',
-      ),
-      important=False,
-  )
-
-  _AddGroupConfig(
-      'veyron-d', 'veyron_shark', (
-          'veyron_romy',
+      'veyron-c', 'veyron_mickey', (
           'veyron_minnie-cheets',
       ),
   )
@@ -2854,15 +2839,6 @@ def GetConfig():
           'umaro',
           'banon',
       ),
-      important=False,
-  )
-
-  # oak-based boards
-  _AddGroupConfig(
-      'oak', 'oak', (
-          'elm',
-      ),
-      important=False,
   )
 
   # glados-based boards
@@ -2871,12 +2847,6 @@ def GetConfig():
           'chell',
           'glados-cheets',
       ),
-      important=False,
-  )
-
-  _AddGroupConfig(
-      'glados-b', 'cave',
-      important=False,
   )
 
   # storm-based boards
@@ -2885,7 +2855,6 @@ def GetConfig():
           'arkham',
           'whirlwind',
       ),
-      important=False,
   )
 
   # kunimitsu-based boards

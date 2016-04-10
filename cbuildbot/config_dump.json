@@ -225,7 +225,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk": true,
             "chromeos_official": true,
@@ -455,7 +455,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk": false,
             "chromeos_official": true,
@@ -555,7 +555,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk": false,
             "chromeos_official": true,
@@ -610,7 +610,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk": false,
             "chromeos_official": true,
@@ -703,7 +703,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "toolchain",
             "chrome_sdk": true,
             "chromeos_official": true,
@@ -753,7 +753,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk": true,
             "chromeos_official": true,
@@ -965,7 +965,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk": true,
             "chromeos_official": true,
@@ -1027,7 +1027,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk": true,
             "chromeos_official": true,
@@ -1080,7 +1080,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk": true,
             "chromeos_official": true,
@@ -1172,7 +1172,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "toolchain",
             "chrome_sdk": true,
             "chromeos_official": true,
@@ -1292,7 +1292,6 @@
     },
     "amd64-generic-asan": {
         "_template": "asan",
-        "active_waterfall": "chromiumos",
         "boards": [
             "amd64-generic"
         ],
@@ -1343,7 +1342,6 @@
     },
     "amd64-generic-full": {
         "_template": "full",
-        "active_waterfall": "chromiumos",
         "boards": [
             "amd64-generic"
         ],
@@ -1450,7 +1448,6 @@
     },
     "amd64-generic-goofy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "amd64-generic-goofy"
         ]
@@ -1509,7 +1506,6 @@
     },
     "amd64-generic-incremental": {
         "_template": "incremental",
-        "active_waterfall": "chromiumos",
         "boards": [
             "amd64-generic"
         ],
@@ -1751,7 +1747,6 @@
     },
     "arm-generic-full": {
         "_template": "full",
-        "active_waterfall": "chromiumos",
         "boards": [
             "arm-generic"
         ],
@@ -1991,7 +1986,7 @@
     },
     "auron-b-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "lulu"
         ],
@@ -2280,7 +2275,7 @@
     },
     "auron-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "auron"
         ],
@@ -3182,7 +3177,6 @@
     },
     "beaglebone-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "beaglebone"
@@ -3242,7 +3236,6 @@
             "base",
             "test"
         ],
-        "important": true,
         "paygen": false,
         "rootfs_verification": false,
         "signer_tests": false,
@@ -3487,7 +3480,7 @@
     },
     "beltino-a-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "panther"
         ],
@@ -3575,7 +3568,7 @@
     },
     "beltino-b-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "monroe"
         ],
@@ -4651,7 +4644,6 @@
         ]
     },
     "chromiumos-sdk": {
-        "active_waterfall": "chromiumos",
         "archive_build_debug": true,
         "boards": [
             "x86-generic",
@@ -4964,7 +4956,7 @@
     },
     "clapper-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "clapper"
         ],
@@ -5197,7 +5189,6 @@
     },
     "cyan-cheets-chrome-pfq": {
         "_template": "chrome-pfq",
-        "active_waterfall": "chromeos",
         "boards": [
             "cyan-cheets"
         ],
@@ -5266,7 +5257,6 @@
     },
     "cyan-cheets-paladin": {
         "_template": "paladin",
-        "active_waterfall": "chromeos",
         "boards": [
             "cyan-cheets"
         ],
@@ -5622,7 +5612,6 @@
     },
     "daisy-full": {
         "_template": "full",
-        "active_waterfall": "chromiumos",
         "boards": [
             "daisy"
         ],
@@ -5693,7 +5682,6 @@
     },
     "daisy-incremental": {
         "_template": "incremental",
-        "active_waterfall": "chromiumos",
         "boards": [
             "daisy"
         ],
@@ -5804,7 +5792,7 @@
     },
     "daisy-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "daisy"
         ],
@@ -6721,7 +6709,7 @@
     },
     "enguarde-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "enguarde"
         ],
@@ -6915,7 +6903,7 @@
     },
     "expresso-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "expresso"
         ],
@@ -7473,7 +7461,6 @@
     },
     "gale-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "gale"
@@ -7724,14 +7711,12 @@
     },
     "gizmo-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "gizmo"
         ],
         "chrome_sdk": false,
         "dev_installer_prebuilts": false,
-        "important": true,
         "paygen": false,
         "signer_tests": false,
         "sync_chrome": false,
@@ -7747,49 +7732,6 @@
             "-chrome_internal"
         ],
         "vm_tests": []
-    },
-    "glados-b-full-group": {
-        "_template": "full",
-        "boards": [
-            "cave"
-        ],
-        "child_configs": [
-            {
-                "_template": "full",
-                "boards": [
-                    "cave"
-                ],
-                "grouped": true,
-                "name": "cave-full",
-                "prebuilts": "public",
-                "useflags": [
-                    "-chrome_internal"
-                ]
-            }
-        ],
-        "description": "Full Builds; Group config (boards: cave)",
-        "prebuilts": "public",
-        "useflags": [
-            "-chrome_internal"
-        ]
-    },
-    "glados-b-release-group": {
-        "_template": "release",
-        "active_waterfall": "chromeos",
-        "boards": [
-            "cave"
-        ],
-        "child_configs": [
-            {
-                "_template": "release",
-                "boards": [
-                    "cave"
-                ],
-                "grouped": true,
-                "name": "cave-release"
-            }
-        ],
-        "description": "Release Builds (canary) (internal); Group config (boards: cave)"
     },
     "glados-cheets-android-pfq": {
         "_template": "android-pfq",
@@ -8193,7 +8135,7 @@
     },
     "glados-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "glados"
         ],
@@ -8231,7 +8173,8 @@
                 "vm_tests": []
             }
         ],
-        "description": "Release Builds (canary) (internal); Group config (boards: glados, chell, glados-cheets)"
+        "description": "Release Builds (canary) (internal); Group config (boards: glados, chell, glados-cheets)",
+        "important": true
     },
     "glados-tot-chrome-pfq-informational": {
         "_template": "chrome-pfq-informational",
@@ -8730,7 +8673,6 @@
     },
     "gru-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "gru"
         ],
@@ -9059,11 +9001,12 @@
     },
     "guado_moblab-release": {
         "_template": "moblab-release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "guado_moblab"
         ],
         "image_test": false,
+        "important": true,
         "vm_tests": []
     },
     "guado_moblab-release-afdo": {
@@ -9309,14 +9252,13 @@
         ]
     },
     "internal-toolchain-minor": {
-        "active_waterfall": "chromeos",
         "boards": [
             "x86-alex",
             "stumpy",
             "daisy",
             "lakitu"
         ],
-        "build_timeout": 28200,
+        "build_timeout": 43200,
         "build_type": "toolchain",
         "chromeos_official": true,
         "description": "Test next minor toolchain revision (internal)",
@@ -9394,7 +9336,7 @@
     },
     "ivybridge-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "stout"
         ],
@@ -9684,7 +9626,7 @@
     },
     "jecht-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "jecht"
         ],
@@ -10249,7 +10191,7 @@
     },
     "kunimitsu-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "kunimitsu"
         ],
@@ -10371,7 +10313,6 @@
     },
     "lakitu-incremental": {
         "_template": "incremental",
-        "active_waterfall": "chromeos",
         "boards": [
             "lakitu"
         ],
@@ -10453,7 +10394,6 @@
     },
     "lakitu-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "lakitu"
@@ -10464,7 +10404,6 @@
         "hw_tests": [],
         "hwqual": false,
         "image_test": false,
-        "important": true,
         "run_gce_tests": true,
         "sign_types": [
             "base"
@@ -10722,7 +10661,6 @@
     },
     "lakitu_next-incremental": {
         "_template": "incremental",
-        "active_waterfall": "chromeos",
         "boards": [
             "lakitu_next"
         ],
@@ -10759,7 +10697,6 @@
     },
     "lakitu_next-paladin": {
         "_template": "paladin",
-        "active_waterfall": "chromeos",
         "boards": [
             "lakitu_next"
         ],
@@ -10805,7 +10742,6 @@
     },
     "lakitu_next-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "lakitu_next"
@@ -11250,7 +11186,6 @@
     },
     "link-depthcharge-full-firmware": {
         "_template": "depthcharge-full-firmware",
-        "active_waterfall": "chromeos",
         "boards": [
             "link"
         ],
@@ -11395,7 +11330,6 @@
     },
     "llvm-toolchain-group": {
         "_template": "llvm",
-        "active_waterfall": "chromeos",
         "boards": [
             "peppy"
         ],
@@ -11810,7 +11744,6 @@
     },
     "mario-incremental": {
         "_template": "incremental",
-        "active_waterfall": "chromeos",
         "boards": [
             "x86-mario"
         ],
@@ -11879,7 +11812,7 @@
     },
     "master-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [],
         "branch_util_test": true,
@@ -12851,7 +12784,7 @@
     },
     "nyan-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "nyan"
         ],
@@ -13361,7 +13294,6 @@
     },
     "nyan_freon-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "nyan_freon"
         ],
@@ -13634,53 +13566,9 @@
     },
     "oak-full": {
         "_template": "full",
-        "active_waterfall": "chromiumos",
         "boards": [
             "oak"
         ],
-        "prebuilts": "public",
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "oak-full-group": {
-        "_template": "full",
-        "boards": [
-            "oak"
-        ],
-        "child_configs": [
-            {
-                "_template": "full",
-                "boards": [
-                    "oak"
-                ],
-                "grouped": true,
-                "name": "oak-full",
-                "prebuilts": "public",
-                "useflags": [
-                    "-chrome_internal"
-                ],
-                "vm_tests": []
-            },
-            {
-                "_template": "full",
-                "boards": [
-                    "elm"
-                ],
-                "build_packages_in_background": true,
-                "chrome_sdk_build_chrome": false,
-                "grouped": true,
-                "name": "elm-full",
-                "prebuilts": "public",
-                "unittests": null,
-                "useflags": [
-                    "-chrome_internal"
-                ],
-                "vm_tests": []
-            }
-        ],
-        "description": "Full Builds; Group config (boards: oak, elm)",
         "prebuilts": "public",
         "useflags": [
             "-chrome_internal"
@@ -13784,38 +13672,6 @@
         "boards": [
             "oak"
         ],
-        "vm_tests": []
-    },
-    "oak-release-group": {
-        "_template": "release",
-        "active_waterfall": "chromeos",
-        "boards": [
-            "oak"
-        ],
-        "child_configs": [
-            {
-                "_template": "release",
-                "boards": [
-                    "oak"
-                ],
-                "grouped": true,
-                "name": "oak-release",
-                "vm_tests": []
-            },
-            {
-                "_template": "release",
-                "boards": [
-                    "elm"
-                ],
-                "build_packages_in_background": true,
-                "chrome_sdk_build_chrome": false,
-                "grouped": true,
-                "name": "elm-release",
-                "unittests": null,
-                "vm_tests": []
-            }
-        ],
-        "description": "Release Builds (canary) (internal); Group config (boards: oak, elm)",
         "vm_tests": []
     },
     "oak-tot-chrome-pfq-informational": {
@@ -14266,14 +14122,12 @@
     },
     "panther_embedded-minimal-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "panther_embedded"
         ],
         "chrome_sdk": false,
         "dev_installer_prebuilts": false,
-        "important": true,
         "paygen": false,
         "profile": "minimal",
         "signer_tests": false,
@@ -15113,7 +14967,7 @@
     },
     "peach-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "peach_pit"
         ],
@@ -15779,7 +15633,7 @@
     },
     "pineview-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "x86-mario"
         ],
@@ -16292,7 +16146,7 @@
     },
     "rambi-b-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "glimmer"
         ],
@@ -16420,7 +16274,7 @@
     },
     "rambi-c-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "squawks"
         ],
@@ -16569,7 +16423,7 @@
     },
     "rambi-d-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "banjo"
         ],
@@ -16677,7 +16531,7 @@
     },
     "rambi-e-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "orco"
         ],
@@ -16780,7 +16634,7 @@
     },
     "rambi-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "rambi"
         ],
@@ -17509,7 +17363,7 @@
     },
     "samus-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "samus"
         ],
@@ -17642,7 +17496,7 @@
     },
     "sandybridge-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "parrot"
         ],
@@ -18269,7 +18123,7 @@
     },
     "slippy-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "peppy"
         ],
@@ -18454,7 +18308,6 @@
     },
     "smaug-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
         "boards": [
             "smaug-cheets"
         ],
@@ -18661,7 +18514,6 @@
     },
     "smaug-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "smaug"
         ],
@@ -19152,7 +19004,7 @@
     },
     "storm-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "storm"
@@ -19208,6 +19060,7 @@
         "chrome_sdk": false,
         "description": "Release Builds (canary) (internal); Group config (boards: storm, arkham, whirlwind)",
         "dev_installer_prebuilts": false,
+        "important": true,
         "paygen_skip_testing": true,
         "signer_tests": false,
         "sync_chrome": false,
@@ -19475,7 +19328,7 @@
     },
     "strago-b-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "reks"
         ],
@@ -19603,7 +19456,7 @@
     },
     "strago-c-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "edgar"
         ],
@@ -19653,7 +19506,8 @@
                 "vm_tests": []
             }
         ],
-        "description": "Release Builds (canary) (internal); Group config (boards: edgar, setzer, umaro, banon)"
+        "description": "Release Builds (canary) (internal); Group config (boards: edgar, setzer, umaro, banon)",
+        "important": true
     },
     "strago-chrome-pfq": {
         "_template": "chrome-pfq",
@@ -19903,7 +19757,7 @@
     },
     "strago-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "strago"
         ],
@@ -21064,7 +20918,7 @@
             "arm-generic",
             "amd64-generic"
         ],
-        "build_timeout": 28200,
+        "build_timeout": 43200,
         "build_type": "toolchain",
         "description": "Test next minor toolchain revision",
         "gcc_githash": "svn-mirror/google/gcc-4_9",
@@ -21549,33 +21403,17 @@
     "veyron-b-full-group": {
         "_template": "full",
         "boards": [
-            "veyron_gus"
+            "veyron_jaq"
         ],
         "child_configs": [
             {
                 "_template": "full",
                 "boards": [
-                    "veyron_gus"
-                ],
-                "grouped": true,
-                "name": "veyron_gus-full",
-                "prebuilts": "public",
-                "useflags": [
-                    "-chrome_internal"
-                ],
-                "vm_tests": []
-            },
-            {
-                "_template": "full",
-                "boards": [
                     "veyron_jaq"
                 ],
-                "build_packages_in_background": true,
-                "chrome_sdk_build_chrome": false,
                 "grouped": true,
                 "name": "veyron_jaq-full",
                 "prebuilts": "public",
-                "unittests": null,
                 "useflags": [
                     "-chrome_internal"
                 ],
@@ -21614,7 +21452,7 @@
                 "vm_tests": []
             }
         ],
-        "description": "Full Builds; Group config (boards: veyron_gus, veyron_jaq, veyron_minnie, veyron_rialto)",
+        "description": "Full Builds; Group config (boards: veyron_jaq, veyron_minnie, veyron_rialto)",
         "prebuilts": "public",
         "useflags": [
             "-chrome_internal"
@@ -21623,30 +21461,18 @@
     },
     "veyron-b-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
-            "veyron_gus"
+            "veyron_jaq"
         ],
         "child_configs": [
             {
                 "_template": "release",
                 "boards": [
-                    "veyron_gus"
-                ],
-                "grouped": true,
-                "name": "veyron_gus-release",
-                "vm_tests": []
-            },
-            {
-                "_template": "release",
-                "boards": [
                     "veyron_jaq"
                 ],
-                "build_packages_in_background": true,
-                "chrome_sdk_build_chrome": false,
                 "grouped": true,
                 "name": "veyron_jaq-release",
-                "unittests": null,
                 "vm_tests": []
             },
             {
@@ -21676,171 +21502,24 @@
                 "vm_tests": []
             }
         ],
-        "description": "Release Builds (canary) (internal); Group config (boards: veyron_gus, veyron_jaq, veyron_minnie, veyron_rialto)",
+        "description": "Release Builds (canary) (internal); Group config (boards: veyron_jaq, veyron_minnie, veyron_rialto)",
         "important": true,
         "vm_tests": []
     },
     "veyron-c-full-group": {
         "_template": "full",
         "boards": [
-            "veyron_brain"
+            "veyron_mickey"
         ],
         "child_configs": [
             {
                 "_template": "full",
                 "boards": [
-                    "veyron_brain"
-                ],
-                "grouped": true,
-                "name": "veyron_brain-full",
-                "prebuilts": "public",
-                "useflags": [
-                    "-chrome_internal"
-                ],
-                "vm_tests": []
-            },
-            {
-                "_template": "full",
-                "boards": [
-                    "veyron_danger"
-                ],
-                "build_packages_in_background": true,
-                "chrome_sdk_build_chrome": false,
-                "grouped": true,
-                "name": "veyron_danger-full",
-                "prebuilts": "public",
-                "unittests": null,
-                "useflags": [
-                    "-chrome_internal"
-                ],
-                "vm_tests": []
-            },
-            {
-                "_template": "full",
-                "boards": [
                     "veyron_mickey"
                 ],
-                "build_packages_in_background": true,
-                "chrome_sdk_build_chrome": false,
                 "grouped": true,
                 "name": "veyron_mickey-full",
                 "prebuilts": "public",
-                "unittests": null,
-                "useflags": [
-                    "-chrome_internal"
-                ],
-                "vm_tests": []
-            },
-            {
-                "_template": "full",
-                "boards": [
-                    "veyron_tiger"
-                ],
-                "build_packages_in_background": true,
-                "chrome_sdk_build_chrome": false,
-                "grouped": true,
-                "name": "veyron_tiger-full",
-                "prebuilts": "public",
-                "unittests": null,
-                "useflags": [
-                    "-chrome_internal"
-                ],
-                "vm_tests": []
-            }
-        ],
-        "description": "Full Builds; Group config (boards: veyron_brain, veyron_danger, veyron_mickey, veyron_tiger)",
-        "prebuilts": "public",
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "veyron-c-release-group": {
-        "_template": "release",
-        "active_waterfall": "chromeos",
-        "boards": [
-            "veyron_brain"
-        ],
-        "child_configs": [
-            {
-                "_template": "release",
-                "boards": [
-                    "veyron_brain"
-                ],
-                "grouped": true,
-                "name": "veyron_brain-release",
-                "vm_tests": []
-            },
-            {
-                "_template": "release",
-                "boards": [
-                    "veyron_danger"
-                ],
-                "build_packages_in_background": true,
-                "chrome_sdk_build_chrome": false,
-                "grouped": true,
-                "name": "veyron_danger-release",
-                "unittests": null,
-                "vm_tests": []
-            },
-            {
-                "_template": "release",
-                "boards": [
-                    "veyron_mickey"
-                ],
-                "build_packages_in_background": true,
-                "chrome_sdk_build_chrome": false,
-                "grouped": true,
-                "name": "veyron_mickey-release",
-                "unittests": null,
-                "vm_tests": []
-            },
-            {
-                "_template": "release",
-                "boards": [
-                    "veyron_tiger"
-                ],
-                "build_packages_in_background": true,
-                "chrome_sdk_build_chrome": false,
-                "grouped": true,
-                "name": "veyron_tiger-release",
-                "unittests": null,
-                "vm_tests": []
-            }
-        ],
-        "description": "Release Builds (canary) (internal); Group config (boards: veyron_brain, veyron_danger, veyron_mickey, veyron_tiger)",
-        "vm_tests": []
-    },
-    "veyron-d-full-group": {
-        "_template": "full",
-        "boards": [
-            "veyron_shark"
-        ],
-        "child_configs": [
-            {
-                "_template": "full",
-                "boards": [
-                    "veyron_shark"
-                ],
-                "grouped": true,
-                "name": "veyron_shark-full",
-                "prebuilts": "public",
-                "useflags": [
-                    "-chrome_internal"
-                ],
-                "vm_tests": []
-            },
-            {
-                "_template": "full",
-                "boards": [
-                    "veyron_romy"
-                ],
-                "build_packages_in_background": true,
-                "chrome_sdk_build_chrome": false,
-                "grouped": true,
-                "name": "veyron_romy-full",
-                "prebuilts": "public",
-                "unittests": null,
                 "useflags": [
                     "-chrome_internal"
                 ],
@@ -21863,39 +21542,27 @@
                 "vm_tests": []
             }
         ],
-        "description": "Full Builds; Group config (boards: veyron_shark, veyron_romy, veyron_minnie-cheets)",
+        "description": "Full Builds; Group config (boards: veyron_mickey, veyron_minnie-cheets)",
         "prebuilts": "public",
         "useflags": [
             "-chrome_internal"
         ],
         "vm_tests": []
     },
-    "veyron-d-release-group": {
+    "veyron-c-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
-            "veyron_shark"
+            "veyron_mickey"
         ],
         "child_configs": [
             {
                 "_template": "release",
                 "boards": [
-                    "veyron_shark"
+                    "veyron_mickey"
                 ],
                 "grouped": true,
-                "name": "veyron_shark-release",
-                "vm_tests": []
-            },
-            {
-                "_template": "release",
-                "boards": [
-                    "veyron_romy"
-                ],
-                "build_packages_in_background": true,
-                "chrome_sdk_build_chrome": false,
-                "grouped": true,
-                "name": "veyron_romy-release",
-                "unittests": null,
+                "name": "veyron_mickey-release",
                 "vm_tests": []
             },
             {
@@ -21911,40 +21578,24 @@
                 "vm_tests": []
             }
         ],
-        "description": "Release Builds (canary) (internal); Group config (boards: veyron_shark, veyron_romy, veyron_minnie-cheets)",
+        "description": "Release Builds (canary) (internal); Group config (boards: veyron_mickey, veyron_minnie-cheets)",
         "important": true,
         "vm_tests": []
     },
     "veyron-full-group": {
         "_template": "full",
         "boards": [
-            "veyron_pinky"
+            "veyron_jerry"
         ],
         "child_configs": [
             {
                 "_template": "full",
                 "boards": [
-                    "veyron_pinky"
-                ],
-                "grouped": true,
-                "name": "veyron_pinky-full",
-                "prebuilts": "public",
-                "useflags": [
-                    "-chrome_internal"
-                ],
-                "vm_tests": []
-            },
-            {
-                "_template": "full",
-                "boards": [
                     "veyron_jerry"
                 ],
-                "build_packages_in_background": true,
-                "chrome_sdk_build_chrome": false,
                 "grouped": true,
                 "name": "veyron_jerry-full",
                 "prebuilts": "public",
-                "unittests": null,
                 "useflags": [
                     "-chrome_internal"
                 ],
@@ -21983,7 +21634,7 @@
                 "vm_tests": []
             }
         ],
-        "description": "Full Builds; Group config (boards: veyron_pinky, veyron_jerry, veyron_mighty, veyron_speedy)",
+        "description": "Full Builds; Group config (boards: veyron_jerry, veyron_mighty, veyron_speedy)",
         "prebuilts": "public",
         "useflags": [
             "-chrome_internal"
@@ -21992,30 +21643,18 @@
     },
     "veyron-release-group": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
-            "veyron_pinky"
+            "veyron_jerry"
         ],
         "child_configs": [
             {
                 "_template": "release",
                 "boards": [
-                    "veyron_pinky"
-                ],
-                "grouped": true,
-                "name": "veyron_pinky-release",
-                "vm_tests": []
-            },
-            {
-                "_template": "release",
-                "boards": [
                     "veyron_jerry"
                 ],
-                "build_packages_in_background": true,
-                "chrome_sdk_build_chrome": false,
                 "grouped": true,
                 "name": "veyron_jerry-release",
-                "unittests": null,
                 "vm_tests": []
             },
             {
@@ -22043,7 +21682,7 @@
                 "vm_tests": []
             }
         ],
-        "description": "Release Builds (canary) (internal); Group config (boards: veyron_pinky, veyron_jerry, veyron_mighty, veyron_speedy)",
+        "description": "Release Builds (canary) (internal); Group config (boards: veyron_jerry, veyron_mighty, veyron_speedy)",
         "important": true,
         "vm_tests": []
     },
@@ -23254,7 +22893,6 @@
     },
     "veyron_minnie-cheets-chrome-pfq": {
         "_template": "chrome-pfq",
-        "active_waterfall": "chromeos",
         "boards": [
             "veyron_minnie-cheets"
         ],
@@ -23323,7 +22961,6 @@
     },
     "veyron_minnie-cheets-paladin": {
         "_template": "paladin",
-        "active_waterfall": "chromeos",
         "boards": [
             "veyron_minnie-cheets"
         ],
@@ -23829,7 +23466,6 @@
     },
     "veyron_rialto-paladin": {
         "_template": "paladin",
-        "active_waterfall": "chromeos",
         "boards": [
             "veyron_rialto"
         ],
@@ -25755,7 +25391,6 @@
     },
     "x86-generic-asan": {
         "_template": "asan",
-        "active_waterfall": "chromiumos",
         "boards": [
             "x86-generic"
         ],
@@ -25813,7 +25448,6 @@
     },
     "x86-generic-full": {
         "_template": "full",
-        "active_waterfall": "chromiumos",
         "boards": [
             "x86-generic"
         ],
@@ -25824,7 +25458,6 @@
     },
     "x86-generic-incremental": {
         "_template": "incremental",
-        "active_waterfall": "chromiumos",
         "boards": [
             "x86-generic"
         ]
