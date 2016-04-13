@@ -83,13 +83,10 @@ x86-zgb-paladin
   monroe-release
   tricky-release
   zako-release
-clapper-release
 [daisy-release-group]
   daisy-release
   daisy_skate-release
   daisy_spring-release
-enguarde-release
-expresso-release
 [glados-release-group]
   chell-release
   glados-cheets-release
@@ -124,6 +121,11 @@ master-release
   x86-mario-release
   x86-zgb-release
   x86-zgb_he-release
+[rambi-a-release-group]
+  clapper-release
+  enguarde-release
+  expresso-release
+  rambi-release
 [rambi-b-release-group]
   glimmer-release
   gnawty-release
@@ -141,7 +143,6 @@ master-release
 [rambi-e-release-group]
   heli-release
   orco-release
-rambi-release
 samus-release
 [sandybridge-release-group]
   butterfly-release

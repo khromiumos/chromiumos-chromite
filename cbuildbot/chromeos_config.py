@@ -2712,9 +2712,12 @@ def GetConfig():
   )
 
   # rambi-based boards
-  _AdjustLeaderFollowerReleaseConfigs(
-      'clapper',
-      ('rambi', 'expresso', 'enguarde'),
+  _AddGroupConfig(
+      'rambi-a', 'clapper', (
+          'rambi',
+          'expresso',
+          'enguarde',
+      )
   )
 
   _AddGroupConfig(
