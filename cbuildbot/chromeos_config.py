@@ -3097,6 +3097,11 @@ def GetConfig():
       boards=['x86-mario'],
   )
 
+  site_config.Add(
+      'elm-factory', _factory_release,
+      boards=['elm'],
+  )
+
   _payloads = site_config.AddTemplate(
       'payloads',
       internal,

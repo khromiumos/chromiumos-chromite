@@ -6460,6 +6460,12 @@
             "chrome_internal"
         ]
     },
+    "elm-factory": {
+        "_template": "factory",
+        "boards": [
+            "elm"
+        ],
+    },
     "elm-full": {
         "_template": "full",
         "boards": [
