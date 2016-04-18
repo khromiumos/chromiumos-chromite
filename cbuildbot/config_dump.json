@@ -6464,7 +6464,7 @@
         "_template": "factory",
         "boards": [
             "elm"
-        ],
+        ]
     },
     "elm-full": {
         "_template": "full",
