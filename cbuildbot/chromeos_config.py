@@ -3100,6 +3100,7 @@ def GetConfig():
   site_config.Add(
       'elm-factory', _factory_release,
       boards=['elm'],
+      vmtest=[],
   )
 
   _payloads = site_config.AddTemplate(

@@ -6464,7 +6464,8 @@
         "_template": "factory",
         "boards": [
             "elm"
-        ]
+        ],
+        "vmtest": []
     },
     "elm-full": {
         "_template": "full",
