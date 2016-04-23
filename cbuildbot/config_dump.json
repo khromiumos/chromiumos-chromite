@@ -10292,6 +10292,7 @@
         "chrome_sdk": false,
         "disk_layout": "base",
         "image_test": false,
+        "important": true,
         "prebuilts": "public",
         "sync_chrome": false,
         "useflags": [
@@ -10306,6 +10307,7 @@
         ],
         "description": "Incremental Builds (internal)",
         "disk_layout": "base",
+        "important": true,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
@@ -10382,6 +10384,7 @@
     },
     "lakitu-release": {
         "_template": "release",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "lakitu"
@@ -10392,6 +10395,7 @@
         "hw_tests": [],
         "hwqual": false,
         "image_test": false,
+        "important": true,
         "run_gce_tests": true,
         "sign_types": [
             "base"
@@ -10479,6 +10483,7 @@
         "chrome_sdk": false,
         "disk_layout": "base",
         "image_test": false,
+        "important": true,
         "prebuilts": "public",
         "sync_chrome": false,
         "useflags": [
@@ -10504,6 +10509,7 @@
     },
     "lakitu_mobbuild-paladin": {
         "_template": "paladin",
+        "active_waterfall": "chromeos",
         "boards": [
             "lakitu_mobbuild"
         ],
@@ -10511,7 +10517,6 @@
         "description": "Commit Queue (internal)",
         "disk_layout": "base",
         "image_test": false,
-        "important": false,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
@@ -10549,6 +10554,7 @@
     },
     "lakitu_mobbuild-release": {
         "_template": "release",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "lakitu_mobbuild"
@@ -10559,6 +10565,7 @@
         "hw_tests": [],
         "hwqual": false,
         "image_test": false,
+        "important": true,
         "sync_chrome": false,
         "vm_tests": []
     },
@@ -10640,6 +10647,7 @@
         "chrome_sdk": false,
         "disk_layout": "base",
         "image_test": false,
+        "important": true,
         "prebuilts": "public",
         "sync_chrome": false,
         "useflags": [
@@ -10654,6 +10662,7 @@
         ],
         "description": "Incremental Builds (internal)",
         "disk_layout": "base",
+        "important": true,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
@@ -10685,6 +10694,7 @@
     },
     "lakitu_next-paladin": {
         "_template": "paladin",
+        "active_waterfall": "chromeos",
         "boards": [
             "lakitu_next"
         ],
@@ -10692,7 +10702,6 @@
         "description": "Commit Queue (internal)",
         "disk_layout": "base",
         "image_test": false,
-        "important": false,
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
@@ -10730,6 +10739,7 @@
     },
     "lakitu_next-release": {
         "_template": "release",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "lakitu_next"
@@ -10740,6 +10750,7 @@
         "hw_tests": [],
         "hwqual": false,
         "image_test": false,
+        "important": true,
         "run_gce_tests": true,
         "signer_tests": false,
         "sync_chrome": false,

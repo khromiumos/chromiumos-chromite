@@ -922,6 +922,7 @@ def GetConfig():
       vm_tests=[],
       vm_tests_override=None,
       hw_tests=[],
+      important=True,
   )
 
   # An anchor of Laktiu' test customizations.

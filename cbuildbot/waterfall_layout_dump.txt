@@ -18,6 +18,8 @@ glados-cheets-android-pfq
 glados-paladin
 guado_moblab-paladin
 lakitu-paladin
+lakitu_mobbuild-paladin
+lakitu_next-paladin
 leon-paladin
 link-paladin
 lumpy-chrome-pfq
@@ -105,6 +107,9 @@ guado_moblab-release
   kunimitsu-release
   lars-release
   sentry-release
+lakitu-release
+lakitu_mobbuild-release
+lakitu_next-release
 lumpy-pre-flight-branch
 master-release
 [nyan-release-group]
