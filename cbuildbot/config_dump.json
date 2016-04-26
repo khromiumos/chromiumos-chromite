@@ -20263,6 +20263,13 @@
         ],
         "vm_tests": []
     },
+    "veyron_fievel-factory": {
+        "_template": "factory",
+        "boards": [
+            "veyron_fievel"
+        ],
+        "vm_tests": []
+    },
     "veyron_gus-chrome-pfq": {
         "_template": "chrome-pfq",
         "boards": [
@@ -22317,6 +22324,13 @@
         ],
         "useflags": [
             "-chrome_internal"
+        ],
+        "vm_tests": []
+    },
+    "veyron_tiger-factory": {
+        "_template": "factory",
+        "boards": [
+            "veyron_tiger"
         ],
         "vm_tests": []
     },

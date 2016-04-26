@@ -2807,8 +2807,20 @@ def GetConfig():
   # This is an example factory branch configuration.
   # Modify it to match your factory branch.
   site_config.AddConfig(
+      _factory_release, 'veyron_fievel-factory',
+      boards=['veyron_fievel'],
+      vm_tests=[],
+  )
+
+  site_config.AddConfig(
       _factory_release, 'veyron_mickey-factory',
       boards=['veyron_mickey'],
+      vm_tests=[],
+  )
+
+  site_config.AddConfig(
+      _factory_release, 'veyron_tiger-factory',
+      boards=['veyron_tiger'],
       vm_tests=[],
   )
 
