@@ -6465,7 +6465,7 @@
         "boards": [
             "elm"
         ],
-        "vmtest": []
+        "vm_tests": []
     },
     "elm-full": {
         "_template": "full",
