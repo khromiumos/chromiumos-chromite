@@ -115,6 +115,8 @@ master-release
   nyan_big-release
   nyan_blaze-release
   nyan_kitty-release
+[oak-release-group]
+  oak-release
 [peach-release-group]
   peach_pi-release
   peach_pit-release

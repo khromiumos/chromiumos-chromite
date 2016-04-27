@@ -13410,6 +13410,33 @@
         ],
         "vm_tests": []
     },
+    "oak-full-group": {
+        "_template": "full",
+        "boards": [
+            "oak"
+        ],
+        "child_configs": [
+            {
+                "_template": "full",
+                "boards": [
+                    "oak"
+                ],
+                "grouped": true,
+                "name": "oak-full",
+                "prebuilts": "public",
+                "useflags": [
+                    "-chrome_internal"
+                ],
+                "vm_tests": []
+            }
+        ],
+        "description": "Full Builds; Group config (boards: oak)",
+        "prebuilts": "public",
+        "useflags": [
+            "-chrome_internal"
+        ],
+        "vm_tests": []
+    },
     "oak-no-vmtest-pre-cq": {
         "_template": "no-vmtest-pre-cq",
         "boards": [
@@ -13507,6 +13534,27 @@
         "boards": [
             "oak"
         ],
+        "vm_tests": []
+    },
+    "oak-release-group": {
+        "_template": "release",
+        "active_waterfall": "chromeos_release",
+        "boards": [
+            "oak"
+        ],
+        "child_configs": [
+            {
+                "_template": "release",
+                "boards": [
+                    "oak"
+                ],
+                "grouped": true,
+                "name": "oak-release",
+                "vm_tests": []
+            }
+        ],
+        "description": "Release Builds (canary) (internal); Group config (boards: oak)",
+        "important": true,
         "vm_tests": []
     },
     "oak-tot-chrome-pfq-informational": {

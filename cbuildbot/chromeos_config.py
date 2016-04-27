@@ -2843,6 +2843,12 @@ def GetConfig():
       ),
   )
 
+  # oak-based boards
+  _AddGroupConfig(
+      'oak', 'oak', (
+      ),
+  )
+
   # glados-based boards
   _AddGroupConfig(
       'glados', 'glados', (
