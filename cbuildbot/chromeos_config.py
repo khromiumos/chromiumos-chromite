@@ -404,6 +404,7 @@ _x86_internal_release_boards = frozenset([
     'guado_moblab',
     'heli',
     'jecht',
+    'kefka',
     'kip',
     'kunimitsu',
     'lakitu',
@@ -426,6 +427,7 @@ _x86_internal_release_boards = frozenset([
     'quawks',
     'rambi',
     'reks',
+    'relm',
     'rikku',
     'samus',
     'setzer',
@@ -2835,7 +2837,15 @@ def GetConfig():
       boards=['setzer'],
   )
 
+  site_config.AddConfig(
+      _factory_release, 'kefka-factory',
+      boards=['kefka'],
+  )
 
+  site_config.AddConfig(
+      _factory_release, 'relm-factory',
+      boards=['relm'],
+  )
 
   _payloads = site_config.AddTemplate(
       'payloads',
