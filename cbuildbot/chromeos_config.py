@@ -384,6 +384,7 @@ _arm_external_boards = frozenset([
 ])
 
 _x86_internal_release_boards = frozenset([
+    'asuka',
     'auron',
     'auron_paine',
     'auron_yuna',
@@ -2839,6 +2840,11 @@ def GetConfig():
   site_config.Add(
       'sentry-factory', _factory_release,
       boards=['sentry'],
+  )
+
+  site_config.Add(
+      'asuka-factory', _factory_release,
+      boards=['asuka'],
   )
 
   _payloads = site_config.AddTemplate(
