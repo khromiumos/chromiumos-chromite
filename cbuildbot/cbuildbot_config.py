@@ -1229,6 +1229,7 @@ _arm_internal_release_boards = frozenset([
   'veyron_minnie',
   'veyron_rialto',
   'veyron_thea',
+  'veyron_tiger',
   'whirlwind',
 ])
 
@@ -2915,6 +2916,7 @@ _firmware_boards = frozenset([
   'veyron_minnie',
   'veyron_rialto',
   'veyron_thea',
+  'veyron_tiger',
   'winky',
   'wolf',
   'x86-mario',
