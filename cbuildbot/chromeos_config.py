@@ -384,6 +384,7 @@ _arm_external_boards = frozenset([
 ])
 
 _x86_internal_release_boards = frozenset([
+    'asuka',
     'auron',
     'auron_paine',
     'auron_yuna',
@@ -2688,6 +2689,7 @@ def GetConfig():
   )
 
   _firmware_boards = frozenset([
+      'asuka',
       'auron',
       'banjo',
       'butterfly',
