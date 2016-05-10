@@ -780,17 +780,17 @@ full = _config(
   # Full builds are test builds to show that we can build from scratch,
   # so use settings to build from scratch, and archive the results.
 
-  usepkg_setup_board=False,
-  usepkg_build_packages=False,
-  chrome_sdk=True,
-  chroot_replace=True,
+#  usepkg_setup_board=False,
+#  usepkg_build_packages=False,
+#  chrome_sdk=True,
+#  chroot_replace=True,
 
-  build_type=constants.BUILD_FROM_SOURCE_TYPE,
-  archive_build_debug=True,
-  images=['base', 'test', 'factory_test', 'factory_install'],
-  git_sync=True,
-  trybot_list=True,
-  description='Full Builds',
+#  build_type=constants.BUILD_FROM_SOURCE_TYPE,
+#  archive_build_debug=True,
+#  images=['base', 'test', 'factory_test', 'factory_install'],
+#  git_sync=True,
+#  trybot_list=True,
+#  description='Full Builds',
 )
 
 # Full builders with prebuilts.
@@ -1694,31 +1694,31 @@ _toolchain_minor.add_config('internal-toolchain-minor', internal, official,
 )
 
 _release = full.derive(official, internal,
-  build_type=constants.CANARY_TYPE,
-  useflags=official['useflags'] + ['-cros-debug', '-highdpi'],
-  build_tests=True,
-  manifest=constants.OFFICIAL_MANIFEST,
-  manifest_version=True,
-  images=['base', 'test', 'factory_test', 'factory_install'],
-  push_image=True,
-  upload_symbols=True,
+#  build_type=constants.CANARY_TYPE,
+#  useflags=official['useflags'] + ['-cros-debug', '-highdpi'],
+#  build_tests=True,
+#  manifest=constants.OFFICIAL_MANIFEST,
+#  manifest_version=True,
+#  images=['base', 'test', 'factory_test', 'factory_install'],
+#  push_image=True,
+#  upload_symbols=True,
   binhost_bucket='gs://chromeos-dev-installer',
   binhost_key='RELEASE_BINHOST',
   binhost_base_url=
     'https://commondatastorage.googleapis.com/chromeos-dev-installer',
   dev_installer_prebuilts=True,
   git_sync=False,
-  vm_tests=constants.SMOKE_SUITE_TEST_TYPE,
-  disk_vm_layout='usb',
-  hw_tests=HWTestConfig.DefaultList(file_bugs=True),
-  upload_hw_test_artifacts=True,
+#  vm_tests=constants.SMOKE_SUITE_TEST_TYPE,
+#  disk_vm_layout='usb',
+#  hw_tests=HWTestConfig.DefaultList(file_bugs=True),
+#  upload_hw_test_artifacts=True,
   paygen=True,
   signer_results=True,
   signer_tests=True,
-  trybot_list=True,
-  hwqual=True,
-  description="Release Builds (canary) (internal)",
-  chrome_sdk=True,
+#  trybot_list=True,
+#  hwqual=True,
+#  description="Release Builds (canary) (internal)",
+#  chrome_sdk=True,
 )
 
 _grouped_variant_release = _release.derive(
@@ -2076,6 +2076,12 @@ _release.add_config('stumpy_moblab-release',
 # end in -factory or -firmware suffixes.
 
 _factory_release = _release.derive(
+  usepkg_setup_board=True,
+  usepkg_build_packages=True,
+  sync_chrome=False,
+  chrome_binhost_only=True,
+  archive_build_debug=False,
+
   upload_hw_test_artifacts=False,
   upload_symbols=False,
   hw_tests=[],

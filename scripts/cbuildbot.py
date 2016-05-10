@@ -458,7 +458,7 @@ class SimpleBuilder(Builder):
         [stages.UnitTestStage, board],
         [stages.UploadPrebuiltsStage, board, archive_stage],
         [stages.DevInstallerPrebuiltsStage, board, archive_stage],
-        [stages.DebugSymbolsStage, board, archive_stage],
+#        [stages.DebugSymbolsStage, board, archive_stage],
     ]
 
     # We can not run hw tests without archiving the payloads.
@@ -486,8 +486,8 @@ class SimpleBuilder(Builder):
     self._RunStage(stages.UprevStage, boards=[], enter_chroot=False)
     self._RunStage(stages.InitSDKStage)
     self._RunStage(stages.SetupBoardStage, [constants.CHROOT_BUILDER_BOARD])
-    self._RunStage(stages.SyncChromeStage)
-    self._RunStage(stages.PatchChromeStage)
+#    self._RunStage(stages.SyncChromeStage)
+#    self._RunStage(stages.PatchChromeStage)
     self._RunStage(stages.SDKPackageStage)
     self._RunStage(stages.SDKTestStage)
     self._RunStage(stages.UploadPrebuiltsStage,
@@ -510,8 +510,8 @@ class SimpleBuilder(Builder):
     self._RunStage(stages.InitSDKStage)
     self._RunStage(stages.UprevStage)
     self._RunStage(stages.SetupBoardStage)
-    self._RunStage(stages.SyncChromeStage)
-    self._RunStage(stages.PatchChromeStage)
+#    self._RunStage(stages.SyncChromeStage)
+#    self._RunStage(stages.PatchChromeStage)
 
     # Prepare stages to run in background.  If child_configs exist then
     # run each of those here, otherwise use default config.
