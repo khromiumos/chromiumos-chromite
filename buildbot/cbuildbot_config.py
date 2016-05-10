@@ -787,7 +787,7 @@ full = _config(
 
 #  build_type=constants.BUILD_FROM_SOURCE_TYPE,
 #  archive_build_debug=True,
-#  images=['base', 'test', 'factory_test', 'factory_install'],
+  images=['base', 'test', 'factory_test', 'factory_install'],
 #  git_sync=True,
 #  trybot_list=True,
 #  description='Full Builds',
