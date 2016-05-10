@@ -787,7 +787,7 @@ full = _config(
 
 #  build_type=constants.BUILD_FROM_SOURCE_TYPE,
 #  archive_build_debug=True,
-  images=['base', 'test', 'factory_test', 'factory_install'],
+#  images=['base', 'test', 'factory_test', 'factory_install'],
 #  git_sync=True,
 #  trybot_list=True,
 #  description='Full Builds',
@@ -1694,12 +1694,12 @@ _toolchain_minor.add_config('internal-toolchain-minor', internal, official,
 )
 
 _release = full.derive(official, internal,
-#  build_type=constants.CANARY_TYPE,
+  build_type=constants.CANARY_TYPE,
 #  useflags=official['useflags'] + ['-cros-debug', '-highdpi'],
 #  build_tests=True,
 #  manifest=constants.OFFICIAL_MANIFEST,
 #  manifest_version=True,
-#  images=['base', 'test', 'factory_test', 'factory_install'],
+  images=['base', 'test', 'factory_test', 'factory_install'],
   push_image=True,
 #  upload_symbols=True,
   binhost_bucket='gs://chromeos-dev-installer',
