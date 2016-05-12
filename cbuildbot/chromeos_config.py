@@ -2847,6 +2847,11 @@ def GetConfig():
       boards=['relm'],
   )
 
+  site_config.AddConfig(
+      _factory_release, 'kip-factory',
+      boards=['kip'],
+  )
+
   _payloads = site_config.AddTemplate(
       'payloads',
       internal,

@@ -9458,6 +9458,12 @@
             "depthcharge"
         ]
     },
+    "kip-factory": {
+        "_template": "factory",
+        "boards": [
+            "kip"
+        ]
+    },
     "kip-firmware": {
         "_template": "firmware",
         "boards": [
