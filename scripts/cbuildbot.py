@@ -561,7 +561,7 @@ class SimpleBuilder(Builder):
         [test_stages.UnitTestStage, board],
         [artifact_stages.UploadPrebuiltsStage, board],
         [artifact_stages.DevInstallerPrebuiltsStage, board],
-        [artifact_stages.DebugSymbolsStage, board],
+#        [artifact_stages.DebugSymbolsStage, board],
         [artifact_stages.CPEExportStage, board],
         [artifact_stages.UploadTestArtifactsStage, board],
     ]
@@ -586,8 +586,8 @@ class SimpleBuilder(Builder):
     self._RunStage(build_stages.UprevStage, boards=[], enter_chroot=False)
     self._RunStage(build_stages.InitSDKStage)
     self._RunStage(build_stages.SetupBoardStage, constants.CHROOT_BUILDER_BOARD)
-    self._RunStage(chrome_stages.SyncChromeStage)
-    self._RunStage(chrome_stages.PatchChromeStage)
+#    self._RunStage(chrome_stages.SyncChromeStage)
+#    self._RunStage(chrome_stages.PatchChromeStage)
     self._RunStage(sdk_stages.SDKPackageStage)
     self._RunStage(sdk_stages.SDKTestStage)
     self._RunStage(artifact_stages.UploadPrebuiltsStage,
@@ -605,8 +605,8 @@ class SimpleBuilder(Builder):
     self._RunStage(build_stages.UprevStage)
     # The CQ/Chrome PFQ master will not actually run the SyncChrome stage, but
     # we want the logic that gets triggered when SyncChrome stage is skipped.
-    self._RunStage(chrome_stages.SyncChromeStage)
-    self._RunStage(artifact_stages.MasterUploadPrebuiltsStage)
+#    self._RunStage(chrome_stages.SyncChromeStage)
+#    self._RunStage(artifact_stages.MasterUploadPrebuiltsStage)
 
   def _RunPayloadsBuild(self):
     """Run the PaygenStage once for each board."""
@@ -623,8 +623,8 @@ class SimpleBuilder(Builder):
     self._RunStage(build_stages.InitSDKStage)
     self._RunStage(build_stages.UprevStage)
     self._RunSetupBoard()
-    self._RunStage(chrome_stages.SyncChromeStage)
-    self._RunStage(chrome_stages.PatchChromeStage)
+#    self._RunStage(chrome_stages.SyncChromeStage)
+#    self._RunStage(chrome_stages.PatchChromeStage)
 
     # Prepare stages to run in background.  If child_configs exist then
     # run each of those here, otherwise use default config.
