@@ -2083,7 +2083,6 @@ _factory_release = _release.derive(
   build_tests=False,
   unittests=False,
   vm_tests=None,
-  hw_tests=[],
   archive_build_debug=False,
 
   upload_hw_test_artifacts=False,
