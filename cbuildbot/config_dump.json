@@ -1759,6 +1759,7 @@
         "build_type": "canary",
         "chrome_binhost_only": true,
         "chromeos_official": true,
+        "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
         "images": [
@@ -3951,6 +3952,7 @@
         "build_type": "canary",
         "chrome_binhost_only": true,
         "chromeos_official": true,
+        "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
         "images": [
@@ -4369,6 +4371,7 @@
         "build_type": "canary",
         "chrome_binhost_only": true,
         "chromeos_official": true,
+        "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
         "images": [
@@ -4722,6 +4725,7 @@
         "build_type": "canary",
         "chrome_binhost_only": true,
         "chromeos_official": true,
+        "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
         "images": [
@@ -5080,6 +5084,7 @@
         "build_type": "canary",
         "chrome_binhost_only": true,
         "chromeos_official": true,
+        "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
         "images": [
@@ -6840,6 +6845,7 @@
         "build_type": "canary",
         "chrome_binhost_only": true,
         "chromeos_official": true,
+        "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
         "images": [
@@ -7245,6 +7251,7 @@
         "build_type": "canary",
         "chrome_binhost_only": true,
         "chromeos_official": true,
+        "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
         "images": [
@@ -8392,6 +8399,7 @@
         "build_type": "canary",
         "chrome_binhost_only": true,
         "chromeos_official": true,
+        "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
         "images": [
@@ -8797,6 +8805,7 @@
         "build_type": "canary",
         "chrome_binhost_only": true,
         "chromeos_official": true,
+        "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
         "images": [
@@ -9150,6 +9159,7 @@
         "build_type": "canary",
         "chrome_binhost_only": true,
         "chromeos_official": true,
+        "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
         "images": [
@@ -9725,6 +9735,7 @@
         "build_type": "canary",
         "chrome_binhost_only": true,
         "chromeos_official": true,
+        "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
         "images": [
@@ -12929,6 +12940,7 @@
         "build_type": "canary",
         "chrome_binhost_only": true,
         "chromeos_official": true,
+        "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
         "images": [
@@ -14978,6 +14990,7 @@
         "build_type": "canary",
         "chrome_binhost_only": true,
         "chromeos_official": true,
+        "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
         "images": [
@@ -18726,6 +18739,7 @@
         "build_type": "canary",
         "chrome_binhost_only": true,
         "chromeos_official": true,
+        "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
         "images": [
@@ -19868,6 +19882,7 @@
         "build_type": "canary",
         "chrome_binhost_only": true,
         "chromeos_official": true,
+        "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
         "images": [
@@ -22112,6 +22127,7 @@
         "build_type": "canary",
         "chrome_binhost_only": true,
         "chromeos_official": true,
+        "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
         "images": [
@@ -23279,6 +23295,7 @@
         "build_type": "canary",
         "chrome_binhost_only": true,
         "chromeos_official": true,
+        "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
         "images": [
@@ -23632,6 +23649,7 @@
         "build_type": "canary",
         "chrome_binhost_only": true,
         "chromeos_official": true,
+        "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
         "images": [
@@ -25246,6 +25264,7 @@
         "build_type": "canary",
         "chrome_binhost_only": true,
         "chromeos_official": true,
+        "chroot_replace": true,
         "description": "Factory Builds",
         "dev_installer_prebuilts": true,
         "images": [

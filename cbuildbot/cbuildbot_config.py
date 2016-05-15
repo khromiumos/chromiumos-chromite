@@ -2788,6 +2788,7 @@ _AddGroupConfig('veyron', 'veyron_pinky', (
 # end in -factory or -firmware suffixes.
 
 _factory_release = _release.derive(
+  chroot_replace=True,
   usepkg_setup_board=True,
   usepkg_build_packages=True,
   sync_chrome=False,
