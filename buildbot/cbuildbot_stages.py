@@ -3611,7 +3611,7 @@ class ArchiveStage(ArchivingStage):
       if not config['internal']:
         return
 
-#      self.WaitForDebugTarball()
+      self.WaitForDebugTarball()
 
       # Now that all data has been generated, we can upload the final result to
       # the image server.
