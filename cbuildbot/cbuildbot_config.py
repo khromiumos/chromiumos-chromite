@@ -2795,8 +2795,9 @@ _factory_release = _release.derive(
   build_tests=False,
   unittests=False,
   vm_tests=None,
-  archive_build_debug=False,
-  
+  archive_build_debug=True,
+  debug_symbols=True,
+
   upload_hw_test_artifacts=False,
   upload_symbols=False,
   hw_tests=[],

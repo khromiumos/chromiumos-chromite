@@ -1748,6 +1748,7 @@
         "vm_tests": []
     },
     "banjo-factory": {
+        "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
@@ -3939,6 +3940,7 @@
         "vm_tests": []
     },
     "candy-factory": {
+        "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
@@ -4356,6 +4358,7 @@
         "vm_tests": []
     },
     "clapper-factory": {
+        "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
@@ -4708,6 +4711,7 @@
         "uprev": false
     },
     "cranky-factory": {
+        "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
@@ -5065,6 +5069,7 @@
         "vm_tests": []
     },
     "daisy-factory": {
+        "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
@@ -6824,6 +6829,7 @@
         "vm_tests": []
     },
     "enguarde-factory": {
+        "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
@@ -7228,6 +7234,7 @@
         "vm_tests": []
     },
     "expresso-factory": {
+        "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
@@ -8374,6 +8381,7 @@
         "vm_tests": []
     },
     "glimmer-factory": {
+        "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
@@ -8778,6 +8786,7 @@
         "vm_tests": []
     },
     "gnawty-factory": {
+        "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
@@ -9130,6 +9139,7 @@
         "uprev": false
     },
     "heli-factory": {
+        "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
@@ -9704,6 +9714,7 @@
         "vm_tests": []
     },
     "kip-factory": {
+        "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
@@ -12907,6 +12918,7 @@
         "uprev": false
     },
     "ninja-factory": {
+        "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
@@ -14955,6 +14967,7 @@
         "uprev": false
     },
     "orco-factory": {
+        "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
@@ -18702,6 +18715,7 @@
         "vm_tests": []
     },
     "quawks-factory": {
+        "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
@@ -19843,6 +19857,7 @@
         "vm_tests": []
     },
     "rambi-factory": {
+        "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
@@ -22086,6 +22101,7 @@
         "vm_tests": []
     },
     "squawks-factory": {
+        "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
@@ -23252,6 +23268,7 @@
         "uprev": false
     },
     "sumo-factory": {
+        "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
@@ -23604,6 +23621,7 @@
         "vm_tests": []
     },
     "swanky-factory": {
+        "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",
@@ -25217,6 +25235,7 @@
         "vm_tests": []
     },
     "winky-factory": {
+        "archive_build_debug": true,
         "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
         "binhost_bucket": "gs://chromeos-dev-installer",
         "binhost_key": "RELEASE_BINHOST",

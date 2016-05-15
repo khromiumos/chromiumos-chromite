@@ -561,7 +561,7 @@ class SimpleBuilder(Builder):
         [test_stages.UnitTestStage, board],
         [artifact_stages.UploadPrebuiltsStage, board],
         [artifact_stages.DevInstallerPrebuiltsStage, board],
-#        [artifact_stages.DebugSymbolsStage, board],
+        [artifact_stages.DebugSymbolsStage, board],
         [artifact_stages.CPEExportStage, board],
         [artifact_stages.UploadTestArtifactsStage, board],
     ]
