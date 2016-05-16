@@ -341,7 +341,7 @@ class ArchiveStage(generic_stages.BoardSpecificBuilderStage,
       if not config['internal']:
         return
 
-#      self.GetParallel('debug_tarball_generated', pretty_name='debug tarball')
+      self.GetParallel('debug_tarball_generated', pretty_name='debug tarball')
 
       # Now that all data has been generated, we can upload the final result to
       # the image server.
