@@ -351,6 +351,7 @@ _arm_internal_release_boards = frozenset([
     'rush_ryu',
     'veyron_brain',
     'veyron_danger',
+    'veyron_fievel',
     'veyron_gus',
     'veyron_jaq',
     'veyron_jerry',
@@ -363,6 +364,7 @@ _arm_internal_release_boards = frozenset([
     'veyron_shark',
     'veyron_speedy',
     'veyron_thea',
+    'veyron_tiger',
     'whirlwind',
 ])
 
