@@ -15,7 +15,7 @@ from chromite.lib import factory
 
 # Set to 'True' if this is a release branch. This updates the '-release' builder
 # configuration to the shape used by the release waterfall.
-IS_RELEASE_BRANCH = False
+IS_RELEASE_BRANCH = True
 
 
 def GetDefaultWaterfall(build_config):
@@ -2897,7 +2897,7 @@ def GetConfig():
           'buddy',
           'lulu-cheets',
       ),
-      important=False,
+      important=True,
   )
 
   # veyron-based boards
@@ -2906,7 +2906,6 @@ def GetConfig():
           'veyron_jerry',
           'veyron_mighty',
           'veyron_speedy',
-          'veyron_gus',
           'veyron_jaq',
           'veyron_minnie',
           'veyron_rialto',
@@ -2917,12 +2916,9 @@ def GetConfig():
   _AdjustLeaderFollowerReleaseConfigs(
       [], (
           'veyron_mickey',
-          'veyron_tiger',
-          'veyron_shark',
           'veyron_minnie-cheets',
-          'veyron_fievel',
       ),
-      important=False,
+      important=True,
   )
 
   # jecht-based boards
@@ -2955,10 +2951,8 @@ def GetConfig():
   _AdjustLeaderFollowerReleaseConfigs(
       [], (
           'celes-cheets',
-          'kefka',
-          'relm',
       ),
-      important=False,
+      important=True,
   )
 
   # oak-based boards
@@ -2977,9 +2971,8 @@ def GetConfig():
           'glados-cheets',
           'cave',
           'chell-cheets',
-          'asuka',
       ),
-      important=False,
+      important=True,
   )
 
   # storm-based boards
