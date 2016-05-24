@@ -15,7 +15,7 @@ from chromite.lib import factory
 
 # Set to 'True' if this is a release branch. This updates the '-release' builder
 # configuration to the shape used by the release waterfall.
-IS_RELEASE_BRANCH = False
+IS_RELEASE_BRANCH = True
 
 
 def GetDefaultWaterfall(build_config):
@@ -2536,6 +2536,7 @@ def GetConfig():
   site_config.Add(
       'guado_moblab-release', moblab_release,
       _base_configs['guado_moblab'],
+      important=True,
   )
 
   site_config.Add(
@@ -2895,9 +2896,7 @@ def GetConfig():
           'lulu',
           'gandof',
           'buddy',
-          'lulu-cheets',
       ),
-      important=False,
   )
 
   # veyron-based boards
@@ -2906,7 +2905,6 @@ def GetConfig():
           'veyron_jerry',
           'veyron_mighty',
           'veyron_speedy',
-          'veyron_gus',
           'veyron_jaq',
           'veyron_minnie',
           'veyron_rialto',
@@ -2917,12 +2915,8 @@ def GetConfig():
   _AdjustLeaderFollowerReleaseConfigs(
       [], (
           'veyron_mickey',
-          'veyron_tiger',
-          'veyron_shark',
           'veyron_minnie-cheets',
-          'veyron_fievel',
       ),
-      important=False,
   )
 
   # jecht-based boards
@@ -2974,12 +2968,8 @@ def GetConfig():
   _AdjustLeaderFollowerReleaseConfigs(
       'glados', (
           'chell',
-          'glados-cheets',
-          'cave',
-          'chell-cheets',
-          'asuka',
       ),
-      important=False,
+      important=True,
   )
 
   # storm-based boards
@@ -2988,7 +2978,7 @@ def GetConfig():
           'arkham',
           'whirlwind',
       ),
-      important=False,
+      important=True,
   )
 
   # kunimitsu-based boards

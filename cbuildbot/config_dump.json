@@ -226,7 +226,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk": true,
             "chromeos_official": true,
@@ -485,7 +485,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk": false,
             "chromeos_official": true,
@@ -585,7 +585,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk": false,
             "chromeos_official": true,
@@ -640,7 +640,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk": false,
             "chromeos_official": true,
@@ -718,7 +718,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "toolchain",
             "chrome_sdk": true,
             "chromeos_official": true,
@@ -813,7 +813,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "toolchain",
             "chrome_sdk": true,
             "chromeos_official": true,
@@ -867,7 +867,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk": true,
             "chromeos_official": true,
@@ -1080,7 +1080,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk": true,
             "chromeos_official": true,
@@ -1142,7 +1142,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk": true,
             "chromeos_official": true,
@@ -1195,7 +1195,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk": true,
             "chromeos_official": true,
@@ -1287,7 +1287,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "toolchain",
             "chrome_sdk": true,
             "chromeos_official": true,
@@ -1408,7 +1408,6 @@
     },
     "amd64-generic-asan": {
         "_template": "asan",
-        "active_waterfall": "chromiumos",
         "boards": [
             "amd64-generic"
         ],
@@ -1459,7 +1458,6 @@
     },
     "amd64-generic-full": {
         "_template": "full",
-        "active_waterfall": "chromiumos",
         "boards": [
             "amd64-generic"
         ],
@@ -1566,7 +1564,6 @@
     },
     "amd64-generic-goofy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "amd64-generic-goofy"
         ]
@@ -1625,7 +1622,6 @@
     },
     "amd64-generic-incremental": {
         "_template": "incremental",
-        "active_waterfall": "chromiumos",
         "boards": [
             "amd64-generic"
         ],
@@ -1807,7 +1803,6 @@
     },
     "amenia-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "amenia"
         ],
@@ -1981,7 +1976,7 @@
     },
     "arkham-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "arkham"
@@ -1990,6 +1985,7 @@
         "chrome_sdk": false,
         "chrome_sdk_build_chrome": false,
         "dev_installer_prebuilts": false,
+        "important": true,
         "sync_chrome": false,
         "vm_tests": []
     },
@@ -2038,7 +2034,6 @@
     },
     "arm-generic-full": {
         "_template": "full",
-        "active_waterfall": "chromiumos",
         "boards": [
             "arm-generic"
         ],
@@ -2394,13 +2389,9 @@
     },
     "asuka-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "asuka"
-        ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
-        "vm_tests": []
+        ]
     },
     "asuka-release-afdo": {
         "_template": "release-afdo-generate",
@@ -2587,7 +2578,7 @@
     },
     "auron-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "auron"
         ],
@@ -2743,7 +2734,7 @@
     },
     "auron_paine-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "auron_paine"
         ],
@@ -2902,7 +2893,7 @@
     },
     "auron_yuna-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "auron_yuna"
         ],
@@ -3096,7 +3087,7 @@
     },
     "banjo-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "banjo"
         ],
@@ -3266,7 +3257,7 @@
     },
     "banon-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "banon"
         ],
@@ -3438,7 +3429,7 @@
     },
     "beaglebone-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "beaglebone"
@@ -3617,7 +3608,7 @@
     },
     "beaglebone_servo-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "beaglebone_servo"
@@ -3836,12 +3827,13 @@
     },
     "buddy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "buddy"
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
+        "important": true,
         "vm_tests": []
     },
     "buddy-release-afdo": {
@@ -4006,7 +3998,7 @@
     },
     "butterfly-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "butterfly"
         ],
@@ -4200,7 +4192,7 @@
     },
     "candy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "candy"
         ],
@@ -4370,13 +4362,9 @@
     },
     "cave-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "cave"
-        ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
-        "vm_tests": []
+        ]
     },
     "cave-release-afdo": {
         "_template": "release-afdo-generate",
@@ -4533,7 +4521,6 @@
     },
     "celes-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
         "boards": [
             "celes-cheets"
         ],
@@ -4698,7 +4685,7 @@
     },
     "celes-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "celes"
         ],
@@ -4862,12 +4849,9 @@
     },
     "chell-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
         "boards": [
             "chell-cheets"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "vm_tests": []
     },
     "chell-cheets-release-afdo": {
@@ -5038,12 +5022,13 @@
     },
     "chell-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "chell"
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
+        "important": true,
         "vm_tests": []
     },
     "chell-release-afdo": {
@@ -5099,7 +5084,6 @@
         ]
     },
     "chromiumos-sdk": {
-        "active_waterfall": "chromiumos",
         "archive_build_debug": true,
         "boards": [
             "x86-generic",
@@ -5412,7 +5396,7 @@
     },
     "clapper-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "clapper"
         ],
@@ -5752,7 +5736,7 @@
     },
     "cyan-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "cyan-cheets"
         ],
@@ -5953,7 +5937,7 @@
     },
     "cyan-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "cyan"
         ],
@@ -6074,7 +6058,6 @@
     },
     "daisy-full": {
         "_template": "full",
-        "active_waterfall": "chromiumos",
         "boards": [
             "daisy"
         ],
@@ -6086,7 +6069,6 @@
     },
     "daisy-incremental": {
         "_template": "incremental",
-        "active_waterfall": "chromiumos",
         "boards": [
             "daisy"
         ],
@@ -6148,7 +6130,7 @@
     },
     "daisy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "daisy"
         ],
@@ -6369,7 +6351,7 @@
     },
     "daisy_skate-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "daisy_skate"
         ],
@@ -6552,7 +6534,7 @@
     },
     "daisy_spring-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "daisy_spring"
         ],
@@ -6729,7 +6711,7 @@
     },
     "edgar-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "edgar"
         ],
@@ -6893,7 +6875,7 @@
     },
     "elm-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "elm-cheets"
         ],
@@ -7064,7 +7046,7 @@
     },
     "elm-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "elm"
         ],
@@ -7265,7 +7247,7 @@
     },
     "enguarde-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "enguarde"
         ],
@@ -7459,7 +7441,7 @@
     },
     "expresso-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "expresso"
         ],
@@ -7682,7 +7664,7 @@
     },
     "falco-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "falco"
         ],
@@ -7841,7 +7823,7 @@
     },
     "falco_li-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "falco_li"
         ],
@@ -8028,7 +8010,6 @@
     },
     "gale-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "gale"
@@ -8156,12 +8137,13 @@
     },
     "gandof-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "gandof"
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
+        "important": true,
         "vm_tests": []
     },
     "gandof-release-afdo": {
@@ -8218,7 +8200,6 @@
     },
     "gcc-toolchain-group": {
         "_template": "gcc",
-        "active_waterfall": "chromeos",
         "boards": [
             "peppy"
         ],
@@ -8372,12 +8353,9 @@
     },
     "glados-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
         "boards": [
             "glados-cheets"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "vm_tests": []
     },
     "glados-cheets-release-afdo": {
@@ -8561,10 +8539,11 @@
     },
     "glados-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "glados"
-        ]
+        ],
+        "important": true
     },
     "glados-release-afdo": {
         "_template": "release-afdo-generate",
@@ -8751,7 +8730,7 @@
     },
     "glimmer-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "glimmer"
         ],
@@ -8945,7 +8924,7 @@
     },
     "gnawty-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "gnawty"
         ],
@@ -9109,7 +9088,6 @@
     },
     "gru-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "gru"
         ],
@@ -9272,7 +9250,7 @@
     },
     "guado-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "guado"
         ],
@@ -9425,7 +9403,6 @@
     },
     "guado_labstation-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "guado_labstation"
         ],
@@ -9602,11 +9579,12 @@
     },
     "guado_moblab-release": {
         "_template": "moblab-release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "guado_moblab"
         ],
         "image_test": false,
+        "important": true,
         "vm_tests": []
     },
     "guado_moblab-release-afdo": {
@@ -9795,7 +9773,7 @@
     },
     "heli-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "heli"
         ],
@@ -9989,7 +9967,7 @@
     },
     "jecht-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "jecht"
         ],
@@ -10156,7 +10134,6 @@
     },
     "kefka-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "kefka"
         ],
@@ -10405,7 +10382,6 @@
     },
     "kevin-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "kevin"
         ],
@@ -10605,7 +10581,7 @@
     },
     "kip-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "kip"
         ],
@@ -10788,7 +10764,7 @@
     },
     "kunimitsu-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "kunimitsu"
         ],
@@ -10911,7 +10887,6 @@
     },
     "lakitu-incremental": {
         "_template": "incremental",
-        "active_waterfall": "chromeos",
         "boards": [
             "lakitu"
         ],
@@ -10993,7 +10968,7 @@
     },
     "lakitu-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "lakitu"
@@ -11101,7 +11076,6 @@
     },
     "lakitu_next-incremental": {
         "_template": "incremental",
-        "active_waterfall": "chromeos",
         "boards": [
             "lakitu_next"
         ],
@@ -11138,7 +11112,6 @@
     },
     "lakitu_next-paladin": {
         "_template": "paladin",
-        "active_waterfall": "chromeos",
         "boards": [
             "lakitu_next"
         ],
@@ -11184,7 +11157,6 @@
     },
     "lakitu_next-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "lakitu_next"
@@ -11333,7 +11305,7 @@
     },
     "lars-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "lars"
         ],
@@ -11527,7 +11499,7 @@
     },
     "leon-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "leon"
         ],
@@ -11639,7 +11611,6 @@
     },
     "link-depthcharge-full-firmware": {
         "_template": "depthcharge-full-firmware",
-        "active_waterfall": "chromeos",
         "boards": [
             "link"
         ],
@@ -11726,7 +11697,7 @@
     },
     "link-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "link"
         ],
@@ -11789,7 +11760,6 @@
     },
     "llvm-toolchain-group": {
         "_template": "llvm",
-        "active_waterfall": "chromeos",
         "boards": [
             "peppy"
         ],
@@ -11929,12 +11899,9 @@
     },
     "lulu-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
         "boards": [
             "lulu-cheets"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "vm_tests": []
     },
     "lulu-cheets-release-afdo": {
@@ -12094,12 +12061,13 @@
     },
     "lulu-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "lulu"
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
+        "important": true,
         "vm_tests": []
     },
     "lulu-release-afdo": {
@@ -12317,7 +12285,7 @@
     },
     "lumpy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "lumpy"
         ],
@@ -12381,7 +12349,6 @@
     },
     "mario-incremental": {
         "_template": "incremental",
-        "active_waterfall": "chromeos",
         "boards": [
             "x86-mario"
         ],
@@ -12451,7 +12418,7 @@
     },
     "master-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [],
         "branch_util_test": true,
@@ -12577,7 +12544,7 @@
     },
     "mccloud-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "mccloud"
         ],
@@ -12932,7 +12899,7 @@
     },
     "monroe-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "monroe"
         ],
@@ -13126,7 +13093,7 @@
     },
     "ninja-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "ninja"
         ],
@@ -13315,7 +13282,7 @@
     },
     "nyan-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "nyan"
         ],
@@ -13486,7 +13453,7 @@
     },
     "nyan_big-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "nyan_big"
         ],
@@ -13655,7 +13622,7 @@
     },
     "nyan_blaze-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "nyan_blaze"
         ],
@@ -13826,7 +13793,6 @@
     },
     "nyan_freon-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "nyan_freon"
         ],
@@ -13994,7 +13960,7 @@
     },
     "nyan_kitty-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "nyan_kitty"
         ],
@@ -14165,7 +14131,7 @@
     },
     "oak-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "oak-cheets"
         ],
@@ -14274,7 +14240,6 @@
     },
     "oak-full": {
         "_template": "full",
-        "active_waterfall": "chromiumos",
         "boards": [
             "oak"
         ],
@@ -14337,7 +14302,7 @@
     },
     "oak-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "oak"
         ],
@@ -14536,7 +14501,7 @@
     },
     "orco-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "orco"
         ],
@@ -14706,7 +14671,7 @@
     },
     "panther-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "panther"
         ],
@@ -14843,7 +14808,7 @@
     },
     "panther_embedded-minimal-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "panther_embedded"
@@ -15245,7 +15210,7 @@
     },
     "parrot-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "parrot"
         ],
@@ -15402,7 +15367,7 @@
     },
     "parrot_ivb-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "parrot_ivb"
         ],
@@ -15767,7 +15732,7 @@
     },
     "peach_pi-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "peach_pi"
         ],
@@ -15957,7 +15922,7 @@
     },
     "peach_pit-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "peach_pit"
         ],
@@ -16139,7 +16104,7 @@
     },
     "peppy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "peppy"
         ],
@@ -16518,7 +16483,7 @@
     },
     "quawks-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "quawks"
         ],
@@ -16714,7 +16679,7 @@
     },
     "rambi-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "rambi"
         ],
@@ -16873,7 +16838,6 @@
     },
     "reef-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "reef"
         ]
@@ -17039,7 +17003,7 @@
     },
     "reks-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "reks"
         ],
@@ -17209,7 +17173,6 @@
     },
     "relm-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "relm"
         ],
@@ -17402,7 +17365,7 @@
     },
     "rikku-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "rikku"
         ],
@@ -17580,7 +17543,7 @@
     },
     "samus-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "samus-cheets"
         ],
@@ -17781,7 +17744,7 @@
     },
     "samus-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "samus"
         ],
@@ -17948,7 +17911,7 @@
     },
     "sentry-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "sentry"
         ],
@@ -18118,7 +18081,7 @@
     },
     "setzer-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "setzer"
         ],
@@ -18447,7 +18410,6 @@
     },
     "smaug-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
         "boards": [
             "smaug-cheets"
         ],
@@ -18644,7 +18606,6 @@
     },
     "smaug-kasan-kernel-3_18": {
         "_template": "kernel-3_18",
-        "active_waterfall": "chromeos",
         "boards": [
             "smaug-kasan"
         ],
@@ -18840,7 +18801,6 @@
     },
     "smaug-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "smaug"
         ],
@@ -19070,7 +19030,7 @@
     },
     "squawks-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "squawks"
         ],
@@ -19256,13 +19216,14 @@
     },
     "storm-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "storm"
         ],
         "chrome_sdk": false,
         "dev_installer_prebuilts": false,
+        "important": true,
         "paygen_skip_testing": true,
         "signer_tests": false,
         "sync_chrome": false,
@@ -19399,7 +19360,7 @@
     },
     "stout-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "stout"
         ],
@@ -19590,7 +19551,7 @@
     },
     "strago-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "strago"
         ],
@@ -19760,7 +19721,7 @@
     },
     "stumpy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "stumpy"
         ],
@@ -20137,7 +20098,7 @@
     },
     "sumo-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "sumo"
         ],
@@ -20331,7 +20292,7 @@
     },
     "swanky-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "swanky"
         ],
@@ -20507,7 +20468,7 @@
     },
     "terra-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "terra"
         ],
@@ -20698,7 +20659,7 @@
     },
     "tidus-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "tidus"
         ],
@@ -20862,7 +20823,7 @@
     },
     "tricky-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "tricky"
         ],
@@ -21025,7 +20986,7 @@
     },
     "ultima-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "ultima"
         ],
@@ -21184,7 +21145,7 @@
     },
     "umaro-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "umaro"
         ],
@@ -21348,12 +21309,9 @@
     },
     "veyron_fievel-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "veyron_fievel"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "vm_tests": []
     },
     "veyron_fievel-release-afdo": {
@@ -21518,13 +21476,9 @@
     },
     "veyron_gus-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "veyron_gus"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "veyron_gus-release-afdo": {
@@ -21689,7 +21643,7 @@
     },
     "veyron_jaq-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_jaq"
         ],
@@ -21860,7 +21814,7 @@
     },
     "veyron_jerry-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_jerry"
         ],
@@ -22045,12 +21999,13 @@
     },
     "veyron_mickey-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_mickey"
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
+        "important": true,
         "vm_tests": []
     },
     "veyron_mickey-release-afdo": {
@@ -22218,7 +22173,7 @@
     },
     "veyron_mighty-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_mighty"
         ],
@@ -22414,12 +22369,13 @@
     },
     "veyron_minnie-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_minnie-cheets"
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
+        "important": true,
         "vm_tests": []
     },
     "veyron_minnie-cheets-release-afdo": {
@@ -22584,7 +22540,7 @@
     },
     "veyron_minnie-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_minnie"
         ],
@@ -22755,7 +22711,7 @@
     },
     "veyron_pinky-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_pinky"
         ],
@@ -22823,7 +22779,6 @@
     },
     "veyron_rialto-chrome-pfq": {
         "_template": "chrome-pfq",
-        "active_waterfall": "chromeos",
         "boards": [
             "veyron_rialto"
         ],
@@ -22887,7 +22842,6 @@
     },
     "veyron_rialto-paladin": {
         "_template": "paladin",
-        "active_waterfall": "chromeos",
         "boards": [
             "veyron_rialto"
         ],
@@ -22926,7 +22880,7 @@
     },
     "veyron_rialto-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_rialto"
         ],
@@ -23097,12 +23051,9 @@
     },
     "veyron_shark-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "veyron_shark"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "vm_tests": []
     },
     "veyron_shark-release-afdo": {
@@ -23270,7 +23221,7 @@
     },
     "veyron_speedy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_speedy"
         ],
@@ -23455,12 +23406,9 @@
     },
     "veyron_tiger-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "veyron_tiger"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "vm_tests": []
     },
     "veyron_tiger-release-afdo": {
@@ -23639,7 +23587,7 @@
     },
     "whirlwind-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "whirlwind"
@@ -23647,6 +23595,7 @@
         "buildslave_type": "gce_beefy",
         "chrome_sdk": false,
         "chrome_sdk_build_chrome": false,
+        "important": true,
         "sync_chrome": false,
         "vm_tests": []
     },
@@ -23809,7 +23758,7 @@
     },
     "winky-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "winky"
         ],
@@ -23981,7 +23930,7 @@
     },
     "wizpig-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "wizpig"
         ],
@@ -24154,7 +24103,7 @@
     },
     "wolf-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "wolf"
         ],
@@ -24414,7 +24363,7 @@
     },
     "x86-alex-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "x86-alex"
         ],
@@ -24623,7 +24572,7 @@
     },
     "x86-alex_he-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "x86-alex_he"
         ],
@@ -24692,7 +24641,6 @@
     },
     "x86-generic-asan": {
         "_template": "asan",
-        "active_waterfall": "chromiumos",
         "boards": [
             "x86-generic"
         ],
@@ -24752,7 +24700,6 @@
     },
     "x86-generic-full": {
         "_template": "full",
-        "active_waterfall": "chromiumos",
         "boards": [
             "x86-generic"
         ],
@@ -24763,7 +24710,6 @@
     },
     "x86-generic-incremental": {
         "_template": "incremental",
-        "active_waterfall": "chromiumos",
         "boards": [
             "x86-generic"
         ]
@@ -24971,7 +24917,7 @@
     },
     "x86-mario-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "x86-mario"
         ],
@@ -25130,7 +25076,7 @@
     },
     "x86-zgb-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "x86-zgb"
         ],
@@ -25321,7 +25267,7 @@
     },
     "x86-zgb_he-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "x86-zgb_he"
         ],
@@ -25521,7 +25467,7 @@
     },
     "zako-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "zako"
         ],
