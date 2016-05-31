@@ -135,6 +135,7 @@ peppy-release
 quawks-release
 rambi-release
 reks-release
+relm-release
 rikku-release
 samus-cheets-release
 samus-release
