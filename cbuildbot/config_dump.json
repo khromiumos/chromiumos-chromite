@@ -21681,6 +21681,14 @@
             "chrome_internal"
         ]
     },
+    "veyron_rialto-factory": {
+        "_template": "factory",
+        "boards": [
+            "veyron_rialto"
+        ],
+        "sync_chrome": false,
+        "vm_tests": []
+    },
     "veyron_rialto-full": {
         "_template": "full",
         "boards": [

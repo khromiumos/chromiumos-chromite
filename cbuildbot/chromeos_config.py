@@ -2821,6 +2821,14 @@ def GetConfig():
   )
 
   site_config.AddConfig(
+      _factory_release, 'veyron_rialto-factory',
+      boards=['veyron_rialto'],
+      vm_tests=[],
+      sync_chrome=False,
+      chrome_sdk=False,
+  )
+
+  site_config.AddConfig(
       _factory_release, 'veyron_tiger-factory',
       boards=['veyron_tiger'],
       vm_tests=[],
