@@ -3429,7 +3429,6 @@
     },
     "beaglebone-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "beaglebone"
@@ -3442,7 +3441,6 @@
             "base",
             "test"
         ],
-        "important": true,
         "paygen": false,
         "rootfs_verification": false,
         "signer_tests": false,
@@ -3608,7 +3606,6 @@
     },
     "beaglebone_servo-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "beaglebone_servo"
@@ -3621,7 +3618,6 @@
             "base",
             "test"
         ],
-        "important": true,
         "paygen": false,
         "payload_image": "base",
         "rootfs_verification": false,
@@ -14808,14 +14804,12 @@
     },
     "panther_embedded-minimal-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "panther_embedded"
         ],
         "chrome_sdk": false,
         "dev_installer_prebuilts": false,
-        "important": true,
         "paygen": false,
         "profile": "minimal",
         "signer_tests": false,

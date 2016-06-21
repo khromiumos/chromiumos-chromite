@@ -77,8 +77,6 @@ auron_paine-release
 auron_yuna-release
 banjo-release
 banon-release
-beaglebone-release
-beaglebone_servo-release
 buddy-release
 butterfly-release
 candy-release
@@ -126,7 +124,6 @@ oak-cheets-release
 oak-release
 orco-release
 panther-release
-panther_embedded-minimal-release
 parrot-release
 parrot_ivb-release
 peach_pi-release

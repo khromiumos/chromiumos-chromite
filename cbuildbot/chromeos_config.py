@@ -2470,7 +2470,7 @@ def GetConfig():
       'panther_embedded-minimal-release', _release,
       _base_configs['panther_embedded'],
       profile='minimal',
-      important=True,
+      important=False,
       paygen=False,
       signer_tests=False,
   )
@@ -2481,7 +2481,7 @@ def GetConfig():
                                         paygen=False,
                                         signer_tests=False,
                                         images=['base', 'test'],
-                                        important=True)
+                                        important=False)
 
   site_config.Add(
       'beaglebone-release', _beaglebone_release,
