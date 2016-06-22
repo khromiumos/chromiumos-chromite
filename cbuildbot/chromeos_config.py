@@ -3059,6 +3059,7 @@ def GetConfig():
       'daisy_skate',
       'daisy_spring',
       'edgar',
+      'elm',
       'enguarde',
       'expresso',
       'falco',

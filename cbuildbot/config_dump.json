@@ -7131,6 +7131,17 @@
             "chrome_internal"
         ]
     },
+    "elm-firmware": {
+        "_template": "firmware",
+        "boards": [
+            "elm"
+        ],
+        "manifest": "official.xml",
+        "useflags": [
+            "chrome_internal",
+            "chromeless_tty"
+        ]
+    },
     "elm-full": {
         "_template": "full",
         "boards": [
