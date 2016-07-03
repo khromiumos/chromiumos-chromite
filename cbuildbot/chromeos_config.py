@@ -15,7 +15,7 @@ from chromite.lib import factory
 
 # Set to 'True' if this is a release branch. This updates the '-release' builder
 # configuration to the shape used by the release waterfall.
-IS_RELEASE_BRANCH = False
+IS_RELEASE_BRANCH = True
 
 
 def GetDefaultWaterfall(build_config):
@@ -2498,7 +2498,7 @@ def GetConfig():
                                         paygen=False,
                                         signer_tests=False,
                                         images=['base', 'test'],
-                                        important=True)
+                                        important=False)
 
   site_config.Add(
       'beaglebone-release', _beaglebone_release,
@@ -2553,6 +2553,7 @@ def GetConfig():
   site_config.Add(
       'guado_moblab-release', moblab_release,
       _base_configs['guado_moblab'],
+      important=True,
   )
 
   cheets_release = site_config.AddTemplate(
@@ -2919,13 +2920,8 @@ def GetConfig():
           'veyron_jaq',
           'veyron_minnie',
           'veyron_rialto',
-      ),
-      unimportant_boards=(
           'veyron_mickey',
-          'veyron_tiger',
-          'veyron_shark',
           'veyron_minnie-cheets',
-          'veyron_fievel',
       ),
   )
 
@@ -2952,11 +2948,11 @@ def GetConfig():
           'setzer',
           'umaro',
           'banon',
+          'relm',
       ),
       unimportant_boards=(
           'celes-cheets',
           'kefka',
-          'relm',
       ),
   )
 
@@ -2971,21 +2967,15 @@ def GetConfig():
 
   # glados-based boards
   _AdjustLeaderFollowerReleaseConfigs(
-      'glados', None,
-      unimportant_boards=(
+      'glados', (
           'glados',
           'chell',
-          'glados-cheets',
-          'cave',
-          'chell-cheets',
-          'asuka',
       ),
   )
 
   # storm-based boards
   _AdjustLeaderFollowerReleaseConfigs(
-      'storm', None,
-      unimportant_boards=(
+      'storm', (
           'storm',
           'arkham',
           'whirlwind',
