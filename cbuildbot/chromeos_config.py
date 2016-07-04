@@ -2970,6 +2970,7 @@ def GetConfig():
       'glados', (
           'glados',
           'chell',
+          'cave',
       ),
   )
 

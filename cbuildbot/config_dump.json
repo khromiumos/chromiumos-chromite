@@ -4769,9 +4769,14 @@
     },
     "cave-release": {
         "_template": "release",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "cave"
-        ]
+        ],
+        "buildslave_type": "gce_beefy",
+        "chrome_sdk_build_chrome": false,
+        "important": true,
+        "vm_tests": []
     },
     "cave-release-afdo": {
         "_template": "release-afdo-generate",
