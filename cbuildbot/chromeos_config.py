@@ -2867,9 +2867,7 @@ def GetConfig():
           'orco',
           'heli',
       ),
-      unimportant_boards=(
-          'glimmer-cheets',
-      ),
+
   )
 
   # daisy-based boards
@@ -2906,9 +2904,7 @@ def GetConfig():
           'lulu',
           'samus-cheets',
       ),
-      unimportant_boards=(
-          'lulu-cheets',
-      ),
+
   )
 
   # veyron-based boards
@@ -2950,10 +2946,7 @@ def GetConfig():
           'banon',
           'relm',
       ),
-      unimportant_boards=(
-          'celes-cheets',
-          'kefka',
-      ),
+
   )
 
   # oak-based boards
@@ -3006,10 +2999,7 @@ def GetConfig():
   # reef-based boards
   _AdjustLeaderFollowerReleaseConfigs(
       'reef', None,
-      unimportant_boards=(
-          'reef',
-          'amenia',
-      ),
+
   )
 
   # Factory and Firmware releases much inherit from these classes.

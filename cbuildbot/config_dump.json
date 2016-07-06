@@ -1932,10 +1932,7 @@
         "_template": "release",
         "boards": [
             "amenia"
-        ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
-        "vm_tests": []
+        ]
     },
     "amenia-release-afdo": {
         "_template": "release-afdo-generate",
@@ -4953,8 +4950,6 @@
         "boards": [
             "celes-cheets"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -9597,8 +9592,6 @@
         "boards": [
             "glimmer-cheets"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -11364,10 +11357,7 @@
         "_template": "release",
         "boards": [
             "kefka"
-        ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
-        "vm_tests": []
+        ]
     },
     "kefka-release-afdo": {
         "_template": "release-afdo-generate",
@@ -13490,8 +13480,6 @@
         "boards": [
             "lulu-cheets"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -18600,9 +18588,11 @@
     },
     "reef-release": {
         "_template": "release",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "reef"
-        ]
+        ],
+        "important": true
     },
     "reef-release-afdo": {
         "_template": "release-afdo-generate",
