@@ -3095,6 +3095,12 @@ def GetConfig():
       boards=['x86-mario'],
   )
 
+  site_config.Add(
+      'kevin-factory', _factory_release,
+      boards=['kevin'],
+      vm_tests=[],
+  )
+
     # Add special builders to help with cbuidlbot development/testing.
   site_config.Add(
       'sync-test-cbuildbot',
