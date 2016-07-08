@@ -217,6 +217,7 @@ x86-zgb_he-release (gce_beefy)
 zako-release (gce_beefy)
 
 == chromeos_release ==
+kevin-pre-flight-branch (baremetal)
 lumpy-pre-flight-branch (baremetal)
 
 == chromiumos ==
