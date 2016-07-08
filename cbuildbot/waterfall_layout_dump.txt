@@ -218,7 +218,6 @@ zako-release (gce_beefy)
 
 == chromeos_release ==
 kevin-pre-flight-branch (baremetal)
-lumpy-pre-flight-branch (baremetal)
 
 == chromiumos ==
 amd64-generic-asan (baremetal)

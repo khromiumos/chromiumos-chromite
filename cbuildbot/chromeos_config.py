@@ -1664,16 +1664,6 @@ def GetConfig():
   )
 
   site_config.Add(
-      'lumpy-pre-flight-branch', internal_pfq_branch,
-      master=True,
-      push_overlays=constants.BOTH_OVERLAYS,
-      boards=['lumpy'],
-      afdo_generate=True,
-      afdo_update_ebuild=True,
-      hw_tests=[HWTestList.AFDORecordTest()],
-  )
-
-  site_config.Add(
       'kevin-pre-flight-branch', internal_pfq_branch,
       master=True,
       push_overlays=constants.BOTH_OVERLAYS,
