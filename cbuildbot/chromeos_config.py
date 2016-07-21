@@ -2906,7 +2906,6 @@ def GetConfig():
           'buddy',
           'gandof',
           'lulu',
-          'samus-cheets',
       ),
 
   )
@@ -2941,7 +2940,6 @@ def GetConfig():
           'celes',
           'ultima',
           'reks',
-          'cyan-cheets',
           'wizpig',
           'terra',
           'edgar',
