@@ -20514,11 +20514,9 @@
                     "veyron_rialto"
                 ],
                 "build_packages_in_background": true,
-                "chrome_sdk": false,
                 "chrome_sdk_build_chrome": false,
                 "grouped": true,
                 "name": "veyron_rialto-release",
-                "sync_chrome": false,
                 "unittests": null,
                 "vm_tests": []
             },
@@ -22482,8 +22480,6 @@
         "boards": [
             "veyron_rialto"
         ],
-        "chrome_sdk": false,
-        "sync_chrome": false,
         "vm_tests": []
     },
     "veyron_rialto-release-afdo": {
