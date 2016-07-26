@@ -3102,6 +3102,12 @@ def GetConfig():
       vm_tests=[],
   )
 
+  site_config.Add(
+      'gru-factory', _factory_release,
+      boards=['gru'],
+      vm_tests=[],
+  )
+
     # Add special builders to help with cbuidlbot development/testing.
   site_config.Add(
       'sync-test-cbuildbot',

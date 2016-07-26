@@ -10182,6 +10182,13 @@
             "chrome_internal"
         ]
     },
+    "gru-factory": {
+        "_template": "factory",
+        "boards": [
+            "gru"
+        ],
+        "vm_tests": []
+    },
     "gru-full": {
         "_template": "full",
         "boards": [
