@@ -224,7 +224,7 @@ x86-mario-paladin
 x86-zgb-paladin
 
 == chromeos_release ==
-lumpy-pre-flight-branch
+elm-pre-flight-branch
 
 == chromiumos ==
 amd64-generic-asan
