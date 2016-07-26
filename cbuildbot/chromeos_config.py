@@ -1642,13 +1642,14 @@ def GetConfig():
   )
 
   site_config.Add(
-      'lumpy-pre-flight-branch', internal_pfq_branch,
+      'elm-pre-flight-branch', internal_pfq_branch,
       master=True,
       push_overlays=constants.BOTH_OVERLAYS,
-      boards=['lumpy'],
+      boards=['elm'],
       afdo_generate=True,
       afdo_update_ebuild=True,
-      hw_tests=[HWTestList.AFDORecordTest()],
+      hw_tests=[],
+      vm_tests=[],
   )
 
   # A test-ap image is just a test image with a special profile enabled.
