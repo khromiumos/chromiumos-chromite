@@ -34,6 +34,8 @@ def remove_old_tarballs():
 
 
 def collect_logs():
+  if not os.path.exists(TMPDIR):
+    os.mkdir(TMPDIR)
   remove_old_tarballs()
   tempdir = tempfile.mkdtemp(prefix=TMPDIR_PREFIX, dir=TMPDIR)
   os.chmod(tempdir, 0o777)
