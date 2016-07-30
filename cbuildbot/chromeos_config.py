@@ -1668,15 +1668,14 @@ def GetConfig():
   )
 
   site_config.Add(
-      'samus-pre-flight-branch', internal_pfq_branch,
+      'kevin-pre-flight-branch', internal_pfq_branch,
       master=True,
       push_overlays=constants.BOTH_OVERLAYS,
-      boards=['samus'],
-      android_rev=constants.ANDROID_REV_LATEST,
+      boards=['kevin'],
       afdo_generate=True,
       afdo_update_ebuild=True,
+      hw_tests=[],
       vm_tests=[],
-      hw_tests=[HWTestList.AFDORecordTest()],
   )
 
   # A test-ap image is just a test image with a special profile enabled.
@@ -2803,6 +2802,18 @@ def GetConfig():
   site_config.Add(
       'x86-mario-factory', _factory_release,
       boards=['x86-mario'],
+  )
+
+  site_config.Add(
+      'kevin-factory', _factory_release,
+      boards=['kevin'],
+      vm_tests=[],
+  )
+
+  site_config.Add(
+      'gru-factory', _factory_release,
+      boards=['gru'],
+      vm_tests=[],
   )
 
     # Add special builders to help with cbuidlbot development/testing.
