@@ -53,7 +53,7 @@ CHROME_EBUILD_AFDO_EXP = r'^(?P<bef>AFDO_FILE\["%s"\]=")(?P<name>.*)(?P<aft>")'
 CHROME_EBUILD_AFDO_REPL = r'\g<bef>%s\g<aft>'
 
 # How old can the AFDO data be? (in days).
-AFDO_ALLOWED_STALE = 7
+AFDO_ALLOWED_STALE = 35
 
 # TODO(llozano): Currently using sandybridge boards. We should move to
 # a more modern platform.
