@@ -2,66 +2,11 @@
   "metadata_version": "1.0",
   "boards": [
     {
-      "name": "amd64-generic-goofy",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": true,
-          "leader_board": false,
-          "board_group": ""
-        }
-      ]
-    },
-    {
-      "name": "amenia",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": true,
-          "leader_board": false,
-          "board_group": "reef"
-        }
-      ]
-    },
-    {
-      "name": "arkham",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": true,
-          "leader_board": false,
-          "board_group": "arkham"
-        }
-      ]
-    },
-    {
-      "name": "asuka",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": true,
-          "leader_board": false,
-          "board_group": "glados"
-        }
-      ]
-    },
-    {
-      "name": "auron",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "auron"
-        }
-      ]
-    },
-    {
       "name": "auron_paine",
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": true,
           "board_group": "auron"
         }
@@ -72,7 +17,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "auron"
         }
@@ -83,7 +28,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "rambi"
         }
@@ -94,31 +39,9 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "strago"
-        }
-      ]
-    },
-    {
-      "name": "beaglebone",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": ""
-        }
-      ]
-    },
-    {
-      "name": "beaglebone_servo",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": ""
         }
       ]
     },
@@ -127,7 +50,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "auron"
         }
@@ -138,7 +61,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "sandybridge"
         }
@@ -149,7 +72,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "rambi"
         }
@@ -160,7 +83,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "glados"
         }
@@ -168,17 +91,6 @@
     },
     {
       "name": "celes",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "strago"
-        }
-      ]
-    },
-    {
-      "name": "celes-cheets",
       "configs": [
         {
           "builder": "RELEASE",
@@ -200,22 +112,11 @@
       ]
     },
     {
-      "name": "chell-cheets",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": true,
-          "leader_board": false,
-          "board_group": "glados"
-        }
-      ]
-    },
-    {
       "name": "clapper",
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": true,
           "board_group": "rambi"
         }
@@ -226,7 +127,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "strago"
         }
@@ -237,7 +138,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": true,
           "board_group": "daisy"
         }
@@ -248,7 +149,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "daisy"
         }
@@ -259,7 +160,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "daisy"
         }
@@ -270,7 +171,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "strago"
         }
@@ -281,18 +182,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "oak"
-        }
-      ]
-    },
-    {
-      "name": "elm-cheets",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "oak"
         }
@@ -303,7 +193,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "rambi"
         }
@@ -314,7 +204,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "rambi"
         }
@@ -325,7 +215,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "slippy"
         }
@@ -336,20 +226,9 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "slippy"
-        }
-      ]
-    },
-    {
-      "name": "gale",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": true,
-          "board_group": "gale"
         }
       ]
     },
@@ -358,47 +237,14 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "auron"
         }
       ]
     },
     {
-      "name": "glados",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": true,
-          "leader_board": true,
-          "board_group": "glados"
-        }
-      ]
-    },
-    {
-      "name": "glados-cheets",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": true,
-          "leader_board": false,
-          "board_group": "glados"
-        }
-      ]
-    },
-    {
       "name": "glimmer",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "rambi"
-        }
-      ]
-    },
-    {
-      "name": "glimmer-cheets",
       "configs": [
         {
           "builder": "RELEASE",
@@ -413,20 +259,9 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "rambi"
-        }
-      ]
-    },
-    {
-      "name": "gru",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": true,
-          "board_group": "gru"
         }
       ]
     },
@@ -435,20 +270,9 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "jecht"
-        }
-      ]
-    },
-    {
-      "name": "guado_labstation",
-      "configs": [
-        {
-          "builder": "RELEASE",
           "experimental": true,
           "leader_board": false,
-          "board_group": ""
+          "board_group": "jecht"
         }
       ]
     },
@@ -468,20 +292,9 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "rambi"
-        }
-      ]
-    },
-    {
-      "name": "jecht",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": true,
-          "board_group": "jecht"
         }
       ]
     },
@@ -501,17 +314,6 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "gru"
-        }
-      ]
-    },
-    {
-      "name": "kevin-tpm2",
-      "configs": [
-        {
-          "builder": "RELEASE",
           "experimental": true,
           "leader_board": false,
           "board_group": "gru"
@@ -523,36 +325,14 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "rambi"
         }
       ]
     },
     {
-      "name": "kunimitsu",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": true,
-          "board_group": "kunimitsu"
-        }
-      ]
-    },
-    {
       "name": "lakitu",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": ""
-        }
-      ]
-    },
-    {
-      "name": "lakitu_next",
       "configs": [
         {
           "builder": "RELEASE",
@@ -567,7 +347,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "kunimitsu"
         }
@@ -578,7 +358,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "slippy"
         }
@@ -589,7 +369,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "ivybridge"
         }
@@ -597,17 +377,6 @@
     },
     {
       "name": "lulu",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "auron"
-        }
-      ]
-    },
-    {
-      "name": "lulu-cheets",
       "configs": [
         {
           "builder": "RELEASE",
@@ -622,7 +391,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "sandybridge"
         }
@@ -633,7 +402,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "slippy"
         }
@@ -644,7 +413,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "slippy"
         }
@@ -655,20 +424,9 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "rambi"
-        }
-      ]
-    },
-    {
-      "name": "nyan",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "nyan"
         }
       ]
     },
@@ -677,7 +435,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": true,
           "board_group": "nyan"
         }
@@ -688,20 +446,9 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "nyan"
-        }
-      ]
-    },
-    {
-      "name": "nyan_freon",
-      "configs": [
-        {
-          "builder": "RELEASE",
           "experimental": true,
           "leader_board": false,
-          "board_group": ""
+          "board_group": "nyan"
         }
       ]
     },
@@ -710,31 +457,9 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "nyan"
-        }
-      ]
-    },
-    {
-      "name": "oak",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": true,
-          "board_group": "oak"
-        }
-      ]
-    },
-    {
-      "name": "oak-cheets",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "oak"
         }
       ]
     },
@@ -743,7 +468,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "rambi"
         }
@@ -754,7 +479,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "slippy"
         }
@@ -765,7 +490,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": true,
           "board_group": "sandybridge"
         }
@@ -776,7 +501,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "ivybridge"
         }
@@ -787,7 +512,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "peach"
         }
@@ -798,7 +523,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": true,
           "board_group": "peach"
         }
@@ -809,7 +534,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": true,
           "board_group": "slippy"
         }
@@ -820,31 +545,9 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "rambi"
-        }
-      ]
-    },
-    {
-      "name": "rambi",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "rambi"
-        }
-      ]
-    },
-    {
-      "name": "reef",
-      "configs": [
-        {
-          "builder": "RELEASE",
           "experimental": true,
-          "leader_board": true,
-          "board_group": "reef"
+          "leader_board": false,
+          "board_group": "rambi"
         }
       ]
     },
@@ -853,7 +556,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "strago"
         }
@@ -864,7 +567,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "strago"
         }
@@ -875,7 +578,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "jecht"
         }
@@ -886,7 +589,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": ""
         }
@@ -897,7 +600,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "kunimitsu"
         }
@@ -908,31 +611,9 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "strago"
-        }
-      ]
-    },
-    {
-      "name": "smaug",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": true,
-          "leader_board": false,
-          "board_group": ""
-        }
-      ]
-    },
-    {
-      "name": "smaug-cheets",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": true,
-          "leader_board": false,
-          "board_group": ""
         }
       ]
     },
@@ -941,7 +622,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "rambi"
         }
@@ -963,20 +644,9 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": true,
           "board_group": "ivybridge"
-        }
-      ]
-    },
-    {
-      "name": "strago",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": true,
-          "board_group": "strago"
         }
       ]
     },
@@ -985,7 +655,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "sandybridge"
         }
@@ -996,7 +666,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "rambi"
         }
@@ -1007,7 +677,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "rambi"
         }
@@ -1018,7 +688,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "strago"
         }
@@ -1029,7 +699,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "jecht"
         }
@@ -1040,7 +710,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "slippy"
         }
@@ -1051,7 +721,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "strago"
         }
@@ -1062,7 +732,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "strago"
         }
@@ -1084,7 +754,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "veyron"
         }
@@ -1095,7 +765,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "veyron"
         }
@@ -1117,7 +787,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "veyron"
         }
@@ -1128,17 +798,6 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "veyron"
-        }
-      ]
-    },
-    {
-      "name": "veyron_minnie-cheets",
-      "configs": [
-        {
-          "builder": "RELEASE",
           "experimental": true,
           "leader_board": false,
           "board_group": "veyron"
@@ -1146,29 +805,7 @@
       ]
     },
     {
-      "name": "veyron_pinky",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": true,
-          "board_group": "veyron"
-        }
-      ]
-    },
-    {
       "name": "veyron_rialto",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "veyron"
-        }
-      ]
-    },
-    {
-      "name": "veyron_shark",
       "configs": [
         {
           "builder": "RELEASE",
@@ -1183,7 +820,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "veyron"
         }
@@ -1216,7 +853,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "rambi"
         }
@@ -1227,7 +864,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "strago"
         }
@@ -1238,7 +875,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "slippy"
         }
@@ -1249,7 +886,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "pineview"
         }
@@ -1260,7 +897,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "pineview"
         }
@@ -1271,7 +908,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": true,
           "board_group": "pineview"
         }
@@ -1282,7 +919,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "pineview"
         }
@@ -1293,7 +930,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "pineview"
         }
@@ -1304,7 +941,7 @@
       "configs": [
         {
           "builder": "RELEASE",
-          "experimental": false,
+          "experimental": true,
           "leader_board": false,
           "board_group": "slippy"
         }

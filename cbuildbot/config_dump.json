@@ -1645,7 +1645,6 @@
     },
     "amd64-generic-goofy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "amd64-generic-goofy"
         ]
@@ -1922,13 +1921,9 @@
     },
     "amenia-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "amenia"
-        ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
-        "vm_tests": []
+        ]
     },
     "amenia-release-afdo": {
         "_template": "release-afdo-generate",
@@ -2126,14 +2121,11 @@
     },
     "arkham-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "arkham"
         ],
-        "buildslave_type": "gce_beefy",
         "chrome_sdk": false,
-        "chrome_sdk_build_chrome": false,
         "dev_installer_prebuilts": false,
         "sync_chrome": false,
         "vm_tests": [],
@@ -2643,13 +2635,9 @@
     },
     "asuka-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "asuka"
-        ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
-        "vm_tests": []
+        ]
     },
     "asuka-release-afdo": {
         "_template": "release-afdo-generate",
@@ -2866,14 +2854,9 @@
     },
     "auron-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "auron"
-        ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
-        "important": true,
-        "vm_tests": []
+        ]
     },
     "auron-release-afdo": {
         "_template": "release-afdo-generate",
@@ -3058,8 +3041,7 @@
         "active_waterfall": "chromeos",
         "boards": [
             "auron_paine"
-        ],
-        "important": true
+        ]
     },
     "auron_paine-release-afdo": {
         "_template": "release-afdo-generate",
@@ -3247,7 +3229,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "auron_yuna-release-afdo": {
@@ -3471,7 +3452,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "banjo-release-afdo": {
@@ -3671,7 +3651,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "banon-release-afdo": {
@@ -3867,7 +3846,6 @@
     },
     "beaglebone-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "beaglebone"
@@ -3880,7 +3858,6 @@
             "base",
             "test"
         ],
-        "important": true,
         "paygen": false,
         "rootfs_verification": false,
         "signer_tests": false,
@@ -4084,7 +4061,6 @@
     },
     "beaglebone_servo-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "beaglebone_servo"
@@ -4097,7 +4073,6 @@
             "base",
             "test"
         ],
-        "important": true,
         "paygen": false,
         "payload_image": "base",
         "rootfs_verification": false,
@@ -4347,7 +4322,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "buddy-release-afdo": {
@@ -4548,7 +4522,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "butterfly-release-afdo": {
@@ -4772,7 +4745,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "candy-release-afdo": {
@@ -4977,7 +4949,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -5180,12 +5151,9 @@
     },
     "celes-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
         "boards": [
             "celes-cheets"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -5381,7 +5349,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "celes-release-afdo": {
@@ -5569,12 +5536,9 @@
     },
     "chell-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
         "boards": [
             "chell-cheets"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -6212,8 +6176,7 @@
         "active_waterfall": "chromeos",
         "boards": [
             "clapper"
-        ],
-        "important": true
+        ]
     },
     "clapper-release-afdo": {
         "_template": "release-afdo-generate",
@@ -6661,7 +6624,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -6965,7 +6927,6 @@
             "daisy"
         ],
         "critical_for_chrome": true,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -7225,7 +7186,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -7446,7 +7406,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -7661,7 +7620,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "edgar-release-afdo": {
@@ -7850,13 +7808,9 @@
     },
     "elm-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
         "boards": [
             "elm-cheets"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -8060,7 +8014,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -8299,7 +8252,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "enguarde-release-afdo": {
@@ -8523,7 +8475,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "expresso-release-afdo": {
@@ -8776,7 +8727,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "falco-release-afdo": {
@@ -8965,7 +8915,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "falco_li-release-afdo": {
@@ -9176,14 +9125,12 @@
     },
     "gale-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "gale"
         ],
         "chrome_sdk": false,
         "dev_installer_prebuilts": false,
-        "important": true,
         "sync_chrome": false,
         "vm_tests": [],
         "vm_tests_override": null
@@ -9347,7 +9294,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "gandof-release-afdo": {
@@ -9599,12 +9545,9 @@
     },
     "glados-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
         "boards": [
             "glados-cheets"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -9818,7 +9761,6 @@
     },
     "glados-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "glados"
         ]
@@ -10008,12 +9950,9 @@
     },
     "glimmer-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
         "boards": [
             "glimmer-cheets"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -10244,7 +10183,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "glimmer-release-afdo": {
@@ -10468,7 +10406,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "gnawty-release-afdo": {
@@ -10657,11 +10594,9 @@
     },
     "gru-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "gru"
         ],
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -10865,7 +10800,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "guado-release-afdo": {
@@ -11042,7 +10976,6 @@
     },
     "guado_labstation-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "guado_labstation"
         ],
@@ -11480,7 +11413,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "heli-release-afdo": {
@@ -11698,11 +11630,9 @@
     },
     "jecht-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "jecht"
-        ],
-        "important": true
+        ]
     },
     "jecht-release-afdo": {
         "_template": "release-afdo-generate",
@@ -12180,7 +12110,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -12370,12 +12299,9 @@
     },
     "kevin-tpm2-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "kevin-tpm2"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -12627,7 +12553,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "kip-release-afdo": {
@@ -12834,11 +12759,9 @@
     },
     "kunimitsu-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "kunimitsu"
-        ],
-        "important": true
+        ]
     },
     "kunimitsu-release-afdo": {
         "_template": "release-afdo-generate",
@@ -13122,7 +13045,6 @@
             "recovery",
             "test"
         ],
-        "important": true,
         "run_gce_tests": true,
         "sign_types": [
             "base"
@@ -13391,7 +13313,6 @@
     },
     "lakitu_next-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "lakitu_next"
@@ -13609,7 +13530,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "lars-release-afdo": {
@@ -13833,7 +13753,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "leon-release-afdo": {
@@ -14062,7 +13981,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "link-release-afdo": {
@@ -14380,12 +14298,9 @@
     },
     "lulu-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
         "boards": [
             "lulu-cheets"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -14586,7 +14501,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -14840,7 +14754,6 @@
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
         "critical_for_chrome": true,
-        "important": true,
         "vm_tests": []
     },
     "lumpy-release-afdo": {
@@ -15128,7 +15041,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "mccloud-release-afdo": {
@@ -15513,7 +15425,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "monroe-release-afdo": {
@@ -15737,7 +15648,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "ninja-release-afdo": {
@@ -15950,13 +15860,9 @@
     },
     "nyan-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "nyan"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -16163,7 +16069,6 @@
         "boards": [
             "nyan_big"
         ],
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -16372,7 +16277,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -16575,7 +16479,6 @@
     },
     "nyan_freon-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "nyan_freon"
         ],
@@ -16787,7 +16690,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -16990,13 +16892,9 @@
     },
     "oak-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
         "boards": [
             "oak-cheets"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -17257,11 +17155,9 @@
     },
     "oak-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "oak"
         ],
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -17518,7 +17414,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "orco-release-afdo": {
@@ -17718,7 +17613,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "panther-release-afdo": {
@@ -17938,8 +17832,7 @@
         "boards": [
             "parrot"
         ],
-        "critical_for_chrome": true,
-        "important": true
+        "critical_for_chrome": true
     },
     "parrot-release-afdo": {
         "_template": "release-afdo-generate",
@@ -18127,7 +18020,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "parrot_ivb-release-afdo": {
@@ -18551,7 +18443,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -18777,7 +18668,6 @@
         "boards": [
             "peach_pit"
         ],
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -19058,8 +18948,7 @@
         "active_waterfall": "chromeos",
         "boards": [
             "peppy"
-        ],
-        "important": true
+        ]
     },
     "peppy-release-afdo": {
         "_template": "release-afdo-generate",
@@ -19506,7 +19395,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "quawks-release-afdo": {
@@ -19726,14 +19614,9 @@
     },
     "rambi-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "rambi"
-        ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
-        "important": true,
-        "vm_tests": []
+        ]
     },
     "rambi-release-afdo": {
         "_template": "release-afdo-generate",
@@ -19920,7 +19803,6 @@
     },
     "reef-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "reef"
         ],
@@ -20138,7 +20020,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "reks-release-afdo": {
@@ -20338,7 +20219,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "relm-release-afdo": {
@@ -20562,7 +20442,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "rikku-release-afdo": {
@@ -20825,7 +20704,6 @@
         "boards": [
             "samus"
         ],
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -21040,7 +20918,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "sentry-release-afdo": {
@@ -21240,7 +21117,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "setzer-release-afdo": {
@@ -21623,7 +21499,6 @@
     },
     "smaug-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
         "boards": [
             "smaug-cheets"
         ],
@@ -22084,7 +21959,6 @@
     },
     "smaug-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "smaug"
         ],
@@ -22367,7 +22241,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "squawks-release-afdo": {
@@ -22759,8 +22632,7 @@
         "active_waterfall": "chromeos",
         "boards": [
             "stout"
-        ],
-        "important": true
+        ]
     },
     "stout-release-afdo": {
         "_template": "release-afdo-generate",
@@ -22977,11 +22849,9 @@
     },
     "strago-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "strago"
-        ],
-        "important": true
+        ]
     },
     "strago-release-afdo": {
         "_template": "release-afdo-generate",
@@ -23183,7 +23053,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "stumpy-release-afdo": {
@@ -23413,7 +23282,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "sumo-release-afdo": {
@@ -23637,7 +23505,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "swanky-release-afdo": {
@@ -23843,7 +23710,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "terra-release-afdo": {
@@ -24064,7 +23930,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "tidus-release-afdo": {
@@ -24258,7 +24123,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "tricky-release-afdo": {
@@ -24451,7 +24315,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "ultima-release-afdo": {
@@ -24640,7 +24503,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "umaro-release-afdo": {
@@ -25042,7 +24904,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -25251,7 +25112,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -25685,7 +25545,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -25906,12 +25765,9 @@
     },
     "veyron_minnie-cheets-release": {
         "_template": "cheets-release",
-        "active_waterfall": "chromeos",
         "boards": [
             "veyron_minnie-cheets"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -26119,7 +25975,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -26322,11 +26177,9 @@
     },
     "veyron_pinky-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "veyron_pinky"
         ],
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -26535,7 +26388,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "paygen_skip_testing": true,
         "vm_tests": [],
         "vm_tests_override": null
@@ -26739,12 +26591,9 @@
     },
     "veyron_shark-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "veyron_shark"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -26956,7 +26805,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -27607,7 +27455,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "winky-release-afdo": {
@@ -27809,7 +27656,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "wizpig-release-afdo": {
@@ -28012,7 +27858,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "wolf-release-afdo": {
@@ -28385,7 +28230,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "x86-alex-release-afdo": {
@@ -28592,7 +28436,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "x86-alex_he-release-afdo": {
@@ -28977,8 +28820,7 @@
         "active_waterfall": "chromeos",
         "boards": [
             "x86-mario"
-        ],
-        "important": true
+        ]
     },
     "x86-mario-release-afdo": {
         "_template": "release-afdo-generate",
@@ -29169,7 +29011,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "x86-zgb-release-afdo": {
@@ -29358,7 +29199,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "x86-zgb_he-release-afdo": {
@@ -29582,7 +29422,6 @@
         ],
         "buildslave_type": "gce_beefy",
         "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": []
     },
     "zako-release-afdo": {
