@@ -15,7 +15,7 @@ from chromite.lib import factory
 
 # Set to 'True' if this is a release branch. This updates the '-release' builder
 # configuration to the shape used by the release waterfall.
-IS_RELEASE_BRANCH = False
+IS_RELEASE_BRANCH = True
 
 
 def GetDefaultWaterfall(build_config):
