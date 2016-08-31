@@ -2118,11 +2118,14 @@
     },
     "arkham-release": {
         "_template": "release",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "arkham"
         ],
+        "buildslave_type": "gce_beefy",
         "chrome_sdk": false,
+        "chrome_sdk_build_chrome": false,
         "dev_installer_prebuilts": false,
         "sync_chrome": false,
         "vm_tests": [],
@@ -9112,6 +9115,7 @@
     },
     "gale-release": {
         "_template": "release",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "gale"
