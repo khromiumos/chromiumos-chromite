@@ -354,17 +354,6 @@
       ]
     },
     {
-      "name": "lakitu",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": ""
-        }
-      ]
-    },
-    {
       "name": "lars",
       "configs": [
         {
