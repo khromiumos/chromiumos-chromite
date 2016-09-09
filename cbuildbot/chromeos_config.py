@@ -2623,6 +2623,8 @@ def GetConfig():
       'gnawty',
       'jecht',
       'kefka',
+      'kevin',
+      'kevin-tpm2',
       'kip',
       'lars',
       'leon',

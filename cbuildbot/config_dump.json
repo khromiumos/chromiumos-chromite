@@ -11906,6 +11906,17 @@
             "chrome_internal"
         ]
     },
+    "kevin-firmware": {
+        "_template": "firmware",
+        "boards": [
+            "kevin"
+        ],
+        "manifest": "official.xml",
+        "useflags": [
+            "chrome_internal",
+            "chromeless_tty"
+        ]
+    },
     "kevin-full": {
         "_template": "full",
         "boards": [
@@ -12100,6 +12111,17 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "kevin-tpm2-firmware": {
+        "_template": "firmware",
+        "boards": [
+            "kevin-tpm2"
+        ],
+        "manifest": "official.xml",
+        "useflags": [
+            "chrome_internal",
+            "chromeless_tty"
         ]
     },
     "kevin-tpm2-full": {
