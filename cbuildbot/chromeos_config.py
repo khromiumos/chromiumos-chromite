@@ -1640,18 +1640,6 @@ def GetConfig():
       description='Incremental Builds (internal)',
   )
 
-  site_config.Add(
-      'kevin-pre-flight-branch', internal_pfq_branch,
-      master=True,
-      push_overlays=constants.BOTH_OVERLAYS,
-      boards=['kevin'],
-      android_rev=constants.ANDROID_REV_LATEST,
-      afdo_generate=True,
-      afdo_update_ebuild=True,
-      vm_tests=[],
-      hw_tests=[],
-  )
-
   # A test-ap image is just a test image with a special profile enabled.
   # Note that each board enabled for test-ap use has to have the testbed-ap
   # profile linked to from its private overlay.
@@ -2723,6 +2711,18 @@ def GetConfig():
 
   _AddFirmwareConfigs()
 
+  site_config.Add(
+      'kevin-pre-flight-branch', internal_pfq_branch,
+      _firmware,
+      master=True,
+      push_overlays=constants.BOTH_OVERLAYS,
+      boards=['kevin'],
+      android_rev=constants.ANDROID_REV_LATEST,
+      afdo_generate=True,
+      afdo_update_ebuild=True,
+      vm_tests=[],
+      hw_tests=[],
+  )
 
   def _AddKernelTemplate(version):
     build_config = config_lib.BuildConfig(
