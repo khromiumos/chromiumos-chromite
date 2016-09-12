@@ -1643,15 +1643,14 @@ def GetConfig():
   )
 
   site_config.Add(
-      'samus-pre-flight-branch', internal_pfq_branch,
+      'gale-pre-flight-branch', internal_pfq_branch,
       master=True,
       push_overlays=constants.BOTH_OVERLAYS,
-      boards=['samus'],
-      android_rev=constants.ANDROID_REV_LATEST,
+      boards=['gale'],
       afdo_generate=True,
       afdo_update_ebuild=True,
       vm_tests=[],
-      hw_tests=[HWTestList.AFDORecordTest()],
+      hw_tests=[],
   )
 
   # A test-ap image is just a test image with a special profile enabled.
@@ -2878,8 +2877,9 @@ def GetConfig():
   # This is an example factory branch configuration.
   # Modify it to match your factory branch.
   site_config.Add(
-      'x86-mario-factory', _factory_release,
-      boards=['x86-mario'],
+      'gale-factory', _factory_release,
+      boards=['gale'],
+      vm_tests=[],
   )
 
   # Add special builders to help with cbuidlbot development/testing.
