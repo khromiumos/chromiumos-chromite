@@ -7180,9 +7180,25 @@
                     "-chrome_internal"
                 ],
                 "vm_tests": []
+            },
+            {
+                "_template": "full",
+                "boards": [
+                    "pbody"
+                ],
+                "build_packages_in_background": true,
+                "chrome_sdk_build_chrome": false,
+                "grouped": true,
+                "name": "pbody-full",
+                "prebuilts": "public",
+                "unittests": null,
+                "useflags": [
+                    "-chrome_internal"
+                ],
+                "vm_tests": []
             }
         ],
-        "description": "Full Builds; Group config (boards: glados, chell)",
+        "description": "Full Builds; Group config (boards: glados, chell, pbody)",
         "prebuilts": "public",
         "useflags": [
             "-chrome_internal"
@@ -7318,9 +7334,21 @@
                 "name": "chell-release",
                 "unittests": null,
                 "vm_tests": []
+            },
+            {
+                "_template": "release",
+                "boards": [
+                    "pbody"
+                ],
+                "build_packages_in_background": true,
+                "chrome_sdk_build_chrome": false,
+                "grouped": true,
+                "name": "pbody-release",
+                "unittests": null,
+                "vm_tests": []
             }
         ],
-        "description": "Release Builds (canary) (internal); Group config (boards: glados, chell)",
+        "description": "Release Builds (canary) (internal); Group config (boards: glados, chell, pbody)",
         "important": true
     },
     "glados-tot-chrome-pfq-informational": {
@@ -14171,6 +14199,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "pbody-factory": {
+        "_template": "factory",
+        "boards": [
+            "pbody"
         ]
     },
     "pbody-firmware": {

@@ -2612,6 +2612,7 @@ def GetConfig():
   _AddGroupConfig(
       'glados', 'glados', (
           'chell',
+          'pbody',
       ),
   )
 
@@ -2832,6 +2833,11 @@ def GetConfig():
   site_config.Add(
       'chell-factory', _factory_release,
       boards=['chell'],
+  )
+
+  site_config.Add(
+      'pbody-factory', _factory_release,
+      boards=['pbody'],
   )
 
   site_config.Add(
