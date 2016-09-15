@@ -19,6 +19,7 @@ import socket
 import StringIO
 import sys
 import time
+import unittest
 import __builtin__
 
 from chromite.cbuildbot import constants
@@ -1256,6 +1257,7 @@ class TestManifestCheckout(cros_test_lib.TempDirTestCase):
     self.active_manifest = os.path.realpath(
         os.path.join(self.tempdir, '.repo', 'manifest.xml'))
 
+  @unittest.skip('Relies on ToT repo code https://crbug.com/647414')
   def testManifestInheritance(self):
     osutils.WriteFile(self.active_manifest, """
         <manifest>
@@ -1288,6 +1290,7 @@ class TestManifestCheckout(cros_test_lib.TempDirTestCase):
     self.assertEqual(list(manifest.remotes), ['foon'])
 
   # pylint: disable=E1101
+  @unittest.skip('Relies on ToT repo code https://crbug.com/647414')
   def testGetManifestsBranch(self):
     func = git.ManifestCheckout._GetManifestsBranch
     manifest = self.manifest_dir
@@ -1338,6 +1341,7 @@ class TestManifestCheckout(cros_test_lib.TempDirTestCase):
     git.RunGit(manifest, ['branch', '-d', 'default'])
     assertExcept("It should be checked out to 'default'")
 
+  @unittest.skip('Relies on ToT repo code https://crbug.com/647414')
   def testGitMatchBranchName(self):
     git_repo = os.path.join(self.tempdir, '.repo', 'manifests')
 
