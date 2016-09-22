@@ -2931,6 +2931,13 @@ def _GetConfig(site_config, ge_build_config):
       boards=['x86-mario'],
   )
 
+  site_config.Add(
+      'reef-factory',
+      site_config.templates.factory,
+      boards=['reef'],
+      hw_tests=[],
+  )
+
   # Add special builders to help with cbuidlbot development/testing.
   site_config.Add(
       'sync-test-cbuildbot',

@@ -19750,6 +19750,12 @@
             "chrome_internal"
         ]
     },
+    "reef-factory": {
+        "_template": "factory",
+        "boards": [
+            "reef"
+        ]
+    },
     "reef-full": {
         "_template": "full",
         "boards": [
