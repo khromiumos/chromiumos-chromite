@@ -11842,14 +11842,9 @@
     },
     "kefka-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "boards": [
             "kefka"
-        ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
-        "important": true,
-        "vm_tests": []
+        ]
     },
     "kefka-release-afdo": {
         "_template": "release-afdo-generate",
