@@ -2609,6 +2609,7 @@ def GetConfig():
       'gale',
       'glimmer',
       'gnawty',
+      'gru',
       'jecht',
       'kefka',
       'kevin',
