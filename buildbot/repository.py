@@ -289,6 +289,17 @@ class RepoRepository(object):
     cros_build_lib.RunCommand(['repo', '--time', 'sync', '-d'],
                               cwd=self.directory)
 
+  def _ForceSyncSupported(self):
+    """Detect whether --force-sync is supported
+
+    When repo changes its internal object layout, it'll refuse to sync unless
+    this option is specified.
+    """
+    result = cros_build_lib.RunCommand(['repo', 'sync', '--help'],
+                                       redirect_stdout=True, redirect_stderr=True,
+                                       cwd=self.directory)
+    return '--force-sync' in result.output
+
   def Sync(self, local_manifest=None, jobs=None, all_branches=False,
            network_only=False):
     """Sync/update the source.  Changes manifest if specified.
@@ -314,6 +325,8 @@ class RepoRepository(object):
       self._EnsureMirroring()
 
       cmd = ['repo', '--time', 'sync']
+      if self._ForceSyncSupported():
+        cmd += ['--force-sync']
       if jobs:
         cmd += ['--jobs', str(jobs)]
       if not all_branches:
