@@ -1732,16 +1732,16 @@ def _GetConfig(site_config, ge_build_config):
   )
 
   site_config.Add(
-      'samus-pre-flight-branch',
+      'reef-pre-flight-branch',
       site_config.templates.pre_flight_branch,
       master=True,
       push_overlays=constants.BOTH_OVERLAYS,
-      boards=['samus'],
+      boards=['reef'],
       android_rev=constants.ANDROID_REV_LATEST,
       afdo_generate=True,
       afdo_update_ebuild=True,
       vm_tests=[],
-      hw_tests=[HWTestList.AFDORecordTest()],
+      hw_tests=[],
   )
 
   # A test-ap image is just a test image with a special profile enabled.
