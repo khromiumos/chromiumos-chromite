@@ -138,6 +138,10 @@ class RepoSyncTests(cros_test_lib.TempDirTestCase, cros_test_lib.MockTestCase):
 
   def testSyncWithOneException(self):
     """Test Sync retry on repo network sync failure"""
+    # Return value here isn't super important.
+    self.PatchObject(repository.RepoRepository, '_ForceSyncSupported',
+                     return_value=False)
+
     ex = cros_build_lib.RunCommandError('foo', cros_build_lib.CommandResult())
     self.PatchObject(cros_build_lib, 'RunCommand', side_effect=ex)
     clean_up_run_command_mock = self.PatchObject(repository.RepoRepository,
@@ -152,6 +156,10 @@ class RepoSyncTests(cros_test_lib.TempDirTestCase, cros_test_lib.MockTestCase):
 
   def testSyncWithoutException(self):
     """Test successful repo sync without exception and retry"""
+    # Return value here isn't super important.
+    self.PatchObject(repository.RepoRepository, '_ForceSyncSupported',
+                     return_value=True)
+
     self.PatchObject(cros_build_lib, 'RunCommand')
     clean_up_run_command_mock = self.PatchObject(repository.RepoRepository,
                                                  '_CleanUpAndRunCommand')
@@ -159,3 +167,21 @@ class RepoSyncTests(cros_test_lib.TempDirTestCase, cros_test_lib.MockTestCase):
 
     # _CleanUpAndRunCommand should not be called if repo sync succeeded
     self.assertFalse(clean_up_run_command_mock.called)
+
+  def testForceSyncWorks(self):
+    """Test the --force-sync probe logic"""
+    # pylint: disable=protected-access
+
+    m = self.PatchObject(cros_build_lib, 'RunCommand')
+
+    m.return_value = cros_build_lib.CommandResult(output='Nope!')
+    self.assertFalse(self.repo._ForceSyncSupported())
+
+    help_fragment = """
+  -f, --force-broken    continue sync even if a project fails to sync
+  --force-sync          overwrite an existing git directory if it needs to
+                        point to a different object directory. WARNING: this
+                        may cause loss of data
+"""
+    m.return_value = cros_build_lib.CommandResult(output=help_fragment)
+    self.assertTrue(self.repo._ForceSyncSupported())
