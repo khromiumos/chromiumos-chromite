@@ -2935,6 +2935,7 @@ def _GetConfig(site_config, ge_build_config):
       'reef-factory',
       site_config.templates.factory,
       boards=['reef'],
+      vm_tests=[],
       hw_tests=[],
   )
 

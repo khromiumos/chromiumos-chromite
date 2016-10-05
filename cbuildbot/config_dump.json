@@ -19754,7 +19754,8 @@
         "_template": "factory",
         "boards": [
             "reef"
-        ]
+        ],
+        "vm_tests": []
     },
     "reef-full": {
         "_template": "full",
