@@ -392,6 +392,7 @@ _x86_internal_release_boards = frozenset([
     'buddy',
     'butterfly',
     'candy',
+    'caroline',
     'cave',
     'celes',
     'chell',
@@ -2611,6 +2612,9 @@ def GetConfig():
   # glados-based boards
   _AddGroupConfig(
       'glados', 'glados', (
+          'asuka'
+          'caroline',
+          'cave',
           'chell',
           'pbody',
       ),
@@ -2702,7 +2706,6 @@ def GetConfig():
       'banjo',
       'butterfly',
       'candy',
-      'chell',
       'clapper',
       'cyan',
       'daisy',
@@ -2726,7 +2729,6 @@ def GetConfig():
       'panther',
       'parrot',
       'parry',
-      'pbody',
       'peach_pi',
       'peach_pit',
       'peppy',
@@ -2838,6 +2840,11 @@ def GetConfig():
   site_config.Add(
       'pbody-factory', _factory_release,
       boards=['pbody'],
+  )
+
+  site_config.Add(
+      'caroline-factory', _factory_release,
+      boards=['caroline'],
   )
 
   site_config.Add(
