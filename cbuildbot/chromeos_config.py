@@ -517,6 +517,7 @@ _x86_internal_release_boards = frozenset([
     'parry',
     'pbody',
     'peppy',
+    'pyro',
     'quawks',
     'rambi',
     'reef',
@@ -527,6 +528,7 @@ _x86_internal_release_boards = frozenset([
     'sentry',
     'setzer',
     'slippy',
+    'snappy',
     'squawks',
     'stout',
     'strago',
@@ -643,8 +645,10 @@ _no_vmtest_boards = _arm_boards | _brillo_boards | _cheets_boards | frozenset((
     'cave',
     'cyan',
     'lulu',
+    'pyro',
     'reef',
     'samus',
+    'snappy',
 ))
 
 # This is a list of configs that should be included on the main waterfall, but
@@ -2932,9 +2936,25 @@ def _GetConfig(site_config, ge_build_config):
   )
 
   site_config.Add(
+      'pyro-factory',
+      site_config.templates.factory,
+      boards=['pyro'],
+      vm_tests=[],
+      hw_tests=[],
+  )
+
+  site_config.Add(
       'reef-factory',
       site_config.templates.factory,
       boards=['reef'],
+      vm_tests=[],
+      hw_tests=[],
+  )
+
+  site_config.Add(
+      'snappy-factory',
+      site_config.templates.factory,
+      boards=['snappy'],
       vm_tests=[],
       hw_tests=[],
   )
