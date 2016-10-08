@@ -6531,8 +6531,6 @@
     },
     "elm-pre-flight-branch": {
         "_template": "pre-flight-branch",
-        "afdo_generate": true,
-        "afdo_update_ebuild": true,
         "boards": [
             "elm"
         ],

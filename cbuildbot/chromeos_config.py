@@ -1575,8 +1575,6 @@ def GetConfig():
       master=True,
       push_overlays=constants.BOTH_OVERLAYS,
       boards=['elm'],
-      afdo_generate=True,
-      afdo_update_ebuild=True,
       hw_tests=[],
       vm_tests=[],
   )
