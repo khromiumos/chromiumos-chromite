@@ -644,10 +644,6 @@ class GSContext(object):
 
     error = e.result.error
     if error:
-      # TODO: Do not log warning for GSContextPreconditionFailed and
-      # GSNoSuchKey after crbug.com/642986 is resolved.
-      logging.warning('GS_ERROR: %s (Temp log for crbug.com/642986)', error)
-
       # gsutil usually prints PreconditionException when a precondition fails.
       # It may also print "ResumableUploadAbortException: 412 Precondition
       # Failed", so the logic needs to be a little more general.
