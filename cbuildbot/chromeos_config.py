@@ -352,6 +352,7 @@ _arm_internal_release_boards = frozenset([
     'elm',
     'gale',
     'gru',
+    'hana',
     'nyan',
     'nyan_big',
     'nyan_blaze',
@@ -3099,6 +3100,12 @@ def GetConfig():
   site_config.Add(
       'elm-factory', _factory_release,
       boards=['elm'],
+      vm_tests=[],
+  )
+
+  site_config.Add(
+      'hana-factory', _factory_release,
+      boards=['hana'],
       vm_tests=[],
   )
 
