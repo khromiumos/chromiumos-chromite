@@ -2659,14 +2659,21 @@ def GetConfig():
   _factory_release = site_config.AddTemplate(
       'factory',
       _release,
+      no_hwtest_builder,
+      no_vmtest_builder,
+      afdo_use=False,
+      chrome_sdk=False,
+      chrome_sdk_build_chrome=False,
+      description='Factory Builds',
+      factory_toolkit=True,
+      hwqual=False,
+      images=['test', 'factory_install'],
+      image_test=False,
+      paygen=False,
+      signer_tests=False,
+      sign_types=['factory'],
       upload_hw_test_artifacts=False,
       upload_symbols=False,
-      hw_tests=[],
-      chrome_sdk=False,
-      description='Factory Builds',
-      paygen=False,
-      afdo_use=False,
-      sign_types=['factory'],
   )
 
   _firmware = config_lib.BuildConfig(
