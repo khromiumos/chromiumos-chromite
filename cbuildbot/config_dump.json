@@ -501,9 +501,6 @@
             "overlays": "both",
             "paygen": false,
             "push_image": true,
-            "sign_types": [
-                "factory"
-            ],
             "signer_tests": false,
             "trybot_list": true,
             "upload_hw_test_artifacts": false,

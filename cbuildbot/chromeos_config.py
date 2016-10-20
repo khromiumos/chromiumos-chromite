@@ -2627,7 +2627,6 @@ def GetConfig():
       image_test=False,
       paygen=False,
       signer_tests=False,
-      sign_types=['factory'],
       upload_hw_test_artifacts=False,
       upload_symbols=False,
   )
