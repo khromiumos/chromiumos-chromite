@@ -296,7 +296,8 @@ class RepoRepository(object):
     this option is specified.
     """
     result = cros_build_lib.RunCommand(['repo', 'sync', '--help'],
-                                       capture_output=True, cwd=self.directory)
+                                       redirect_stdout=True, redirect_stderr=True,
+                                       cwd=self.directory)
     return '--force-sync' in result.output
 
   def Sync(self, local_manifest=None, jobs=None, all_branches=False,
