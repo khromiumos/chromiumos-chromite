@@ -38,6 +38,15 @@ def GetParser():
   return parser
 
 
+def SyncChrome(gclient_path, options):
+  """Sync new Chrome."""
+  gclient.WriteConfigFile(gclient_path, options.chrome_root,
+                          options.internal, options.version,
+                          options.gclient_template)
+  return functools.partial(
+      gclient.Sync, gclient_path, options.chrome_root, reset=options.reset)
+
+
 def main(argv):
   parser = GetParser()
   options = parser.parse_args(argv)
@@ -48,20 +57,17 @@ def main(argv):
   if not gclient_path:
     gclient_path = os.path.join(constants.DEPOT_TOOLS_DIR, 'gclient')
 
-  # Revert any lingering local changes.
-  if not osutils.SafeMakedirs(options.chrome_root) and options.reset:
-    try:
+  try:
+    if options.reset:
+      # Revert any lingering local changes.
       gclient.Revert(gclient_path, options.chrome_root)
-    except cros_build_lib.RunCommandError:
-      osutils.RmDir(options.chrome_root)
-      osutils.SafeMakedirs(options.chrome_root)
 
-  # Sync new Chrome.
-  gclient.WriteConfigFile(gclient_path, options.chrome_root,
-                          options.internal, options.version,
-                          options.gclient_template)
-  sync_fn = functools.partial(
-      gclient.Sync, gclient_path, options.chrome_root, reset=options.reset)
+    sync_fn = SyncChrome(gclient_path, options)
+  except cros_build_lib.RunCommandError:
+    # If we have an error resetting, or syncing, we clobber, and fresh sync.
+    osutils.RmDir(options.chrome_root, ignore_missing=True, sudo=True)
+    osutils.SafeMakedirs(options.chrome_root)
+    sync_fn = SyncChrome(gclient_path, options)
 
   # Sync twice when run with --reset, which implies 'gclient sync -D'.
   #
