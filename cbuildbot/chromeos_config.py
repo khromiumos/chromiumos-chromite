@@ -2713,11 +2713,11 @@ def GetConfig():
   _AddFirmwareConfigs()
 
   site_config.Add(
-      'kevin-pre-flight-branch', internal_pfq_branch,
+      'gru-pre-flight-branch', internal_pfq_branch,
       _firmware,
       master=True,
       push_overlays=constants.BOTH_OVERLAYS,
-      boards=['kevin'],
+      boards=['gru'],
       android_rev=constants.ANDROID_REV_LATEST,
       afdo_generate=True,
       afdo_update_ebuild=True,
