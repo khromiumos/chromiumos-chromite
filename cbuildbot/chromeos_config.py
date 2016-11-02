@@ -3067,6 +3067,7 @@ def GetConfig():
       'lumpy',
       'monroe',
       'ninja',
+      'oak',
       'orco',
       'panther',
       'parrot',
@@ -3159,11 +3160,11 @@ def GetConfig():
   _AddFirmwareConfigs()
 
   site_config.Add(
-      'elm-pre-flight-branch', internal_pfq_branch,
+      'oak-pre-flight-branch', internal_pfq_branch,
       _firmware,
       master=True,
       push_overlays=constants.BOTH_OVERLAYS,
-      boards=['elm'],
+      boards=['oak'],
       afdo_generate=True,
       afdo_update_ebuild=True,
       hw_tests=[],

@@ -212,7 +212,7 @@ x86-zgb_he-release (gce_beefy)
 zako-release (gce_beefy)
 
 == chromeos_release ==
-elm-pre-flight-branch (baremetal)
+oak-pre-flight-branch (baremetal)
 
 == chromiumos ==
 amd64-generic-asan (baremetal)

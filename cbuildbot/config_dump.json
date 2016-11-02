@@ -7204,37 +7204,6 @@
         ],
         "vm_tests": []
     },
-    "elm-pre-flight-branch": {
-        "_template": "pre-flight-branch",
-        "afdo_generate": true,
-        "afdo_update_ebuild": true,
-        "boards": [
-            "elm"
-        ],
-        "factory_toolkit": false,
-        "hw_tests_override": [
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 10,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 7200,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 10,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 10,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
-        ],
-        "images": [],
-        "master": true,
-        "packages": [
-            "virtual/chromeos-firmware",
-            "chromeos-base/autotest-all"
-        ],
-        "push_overlays": "both",
-        "sign_types": [
-            "firmware"
-        ],
-        "sync_chrome": false,
-        "unittests": false,
-        "useflags": [
-            "chromeless_tty"
-        ],
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
     "elm-release": {
         "_template": "release",
         "active_waterfall": "chromeos",
@@ -14828,6 +14797,17 @@
             "chrome_internal"
         ]
     },
+    "oak-firmware": {
+        "_template": "firmware",
+        "boards": [
+            "oak"
+        ],
+        "manifest": "official.xml",
+        "useflags": [
+            "chrome_internal",
+            "chromeless_tty"
+        ]
+    },
     "oak-full": {
         "_template": "full",
         "active_waterfall": "chromiumos",
@@ -14890,6 +14870,37 @@
             "chrome_internal"
         ],
         "vm_tests": []
+    },
+    "oak-pre-flight-branch": {
+        "_template": "pre-flight-branch",
+        "afdo_generate": true,
+        "afdo_update_ebuild": true,
+        "boards": [
+            "oak"
+        ],
+        "factory_toolkit": false,
+        "hw_tests_override": [
+            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 10,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 7200,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 10,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 10,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
+        ],
+        "images": [],
+        "master": true,
+        "packages": [
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
+        ],
+        "push_overlays": "both",
+        "sign_types": [
+            "firmware"
+        ],
+        "sync_chrome": false,
+        "unittests": false,
+        "useflags": [
+            "chromeless_tty"
+        ],
+        "vm_tests": [],
+        "vm_tests_override": null
     },
     "oak-release": {
         "_template": "release",
