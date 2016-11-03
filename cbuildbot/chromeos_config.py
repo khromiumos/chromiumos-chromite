@@ -2612,11 +2612,6 @@ def GetConfig():
   # glados-based boards
   _AddGroupConfig(
       'glados', 'glados', (
-          'asuka',
-          'caroline',
-          'cave',
-          'chell',
-          'pbody',
       ),
   )
 
