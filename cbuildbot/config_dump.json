@@ -24529,14 +24529,9 @@
     },
     "umaro-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "boards": [
             "umaro"
-        ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
-        "important": true,
-        "vm_tests": []
+        ]
     },
     "umaro-release-afdo": {
         "_template": "release-afdo-generate",
