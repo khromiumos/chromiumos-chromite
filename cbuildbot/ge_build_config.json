@@ -794,18 +794,6 @@
       ]
     },
     {
-      "name": "veyron_fievel",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "veyron",
-          "arch": "ARM_INTERNAL"
-        }
-      ]
-    },
-    {
       "name": "veyron_jaq",
       "configs": [
         {
@@ -879,18 +867,6 @@
     },
     {
       "name": "veyron_speedy",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "veyron",
-          "arch": "ARM_INTERNAL"
-        }
-      ]
-    },
-    {
-      "name": "veyron_tiger",
       "configs": [
         {
           "builder": "RELEASE",
