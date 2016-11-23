@@ -5510,8 +5510,6 @@
         "boards": [
             "chell"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "important": true,
         "vm_tests": [],
         "vm_tests_override": null
@@ -6025,8 +6023,6 @@
         "boards": [
             "cyan"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "important": true,
         "vm_tests": [],
         "vm_tests_override": null
@@ -12789,8 +12785,6 @@
         "boards": [
             "lars"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "important": true,
         "vm_tests": [],
         "vm_tests_override": null
@@ -24625,8 +24619,6 @@
         "boards": [
             "veyron_minnie"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "important": true,
         "vm_tests": [],
         "vm_tests_override": null
