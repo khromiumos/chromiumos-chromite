@@ -127,7 +127,7 @@
         {
           "builder": "RELEASE",
           "experimental": false,
-          "leader_board": false,
+          "leader_board": true,
           "board_group": "glados",
           "arch": "X86_INTERNAL"
         }
@@ -151,7 +151,7 @@
         {
           "builder": "RELEASE",
           "experimental": false,
-          "leader_board": false,
+          "leader_board": true,
           "board_group": "strago",
           "arch": "X86_INTERNAL"
         }
@@ -379,7 +379,7 @@
         {
           "builder": "RELEASE",
           "experimental": false,
-          "leader_board": false,
+          "leader_board": true,
           "board_group": "kunimitsu",
           "arch": "X86_INTERNAL"
         }
@@ -847,7 +847,7 @@
         {
           "builder": "RELEASE",
           "experimental": false,
-          "leader_board": false,
+          "leader_board": true,
           "board_group": "veyron",
           "arch": "ARM_INTERNAL"
         }

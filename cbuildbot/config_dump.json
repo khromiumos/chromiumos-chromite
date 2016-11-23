@@ -5752,10 +5752,7 @@
         "boards": [
             "chell"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
-        "important": true,
-        "vm_tests": []
+        "important": true
     },
     "chell-release-afdo": {
         "_template": "release-afdo-generate",
@@ -6631,8 +6628,6 @@
         "boards": [
             "cyan"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "important": true,
         "vm_tests": [],
         "vm_tests_override": null
@@ -13537,10 +13532,7 @@
         "boards": [
             "lars"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
-        "important": true,
-        "vm_tests": []
+        "important": true
     },
     "lars-release-afdo": {
         "_template": "release-afdo-generate",
@@ -26002,8 +25994,6 @@
         "boards": [
             "veyron_minnie"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
         "important": true,
         "vm_tests": [],
         "vm_tests_override": null
