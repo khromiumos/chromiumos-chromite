@@ -23554,13 +23554,9 @@
     },
     "veyron_fievel-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_fievel"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -25633,13 +25629,9 @@
     },
     "veyron_tiger-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_tiger"
         ],
-        "buildslave_type": "gce_beefy",
-        "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
