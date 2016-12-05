@@ -2224,16 +2224,16 @@ def _GetConfig(site_config, board_configs, hw_test_list):
   )
 
   site_config.Add(
-      'samus-pre-flight-branch',
+      'gru-pre-flight-branch',
       site_config.templates.pre_flight_branch,
       master=True,
       push_overlays=constants.BOTH_OVERLAYS,
-      boards=['samus'],
+      boards=['gru'],
       android_rev=constants.ANDROID_REV_LATEST,
       afdo_generate=True,
       afdo_update_ebuild=True,
       vm_tests=[],
-      hw_tests=[hw_test_list.AFDORecordTest()],
+      hw_tests=[],
   )
 
   # Create our unittest stress build configs (used for tryjobs only)
@@ -2811,11 +2811,11 @@ def _GetConfig(site_config, board_configs, hw_test_list):
   # This is an example factory branch configuration.
   # Modify it to match your factory branch.
   site_config.Add(
-      'x86-mario-factory',
+      'gru-factory',
       site_config.templates.factory,
-      boards=['x86-mario'],
+      boards=['gru'],
+      vm_tests=[],
   )
-
 
 def ReleaseBuilders(site_config, board_configs, ge_build_config,
                     is_release_branch):
