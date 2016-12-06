@@ -2229,6 +2229,7 @@ def _GetConfig(site_config, board_configs, hw_test_list):
   site_config.Add(
       'reef-pre-flight-branch',
       site_config.templates.pre_flight_branch,
+      site_config.templates.firmware_base,
       master=True,
       push_overlays=constants.BOTH_OVERLAYS,
       boards=['reef'],
