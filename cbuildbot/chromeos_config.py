@@ -2223,6 +2223,7 @@ def _GetConfig(site_config, board_configs, hw_test_list):
       afdo_update_ebuild=True,
       vm_tests=[],
       hw_tests=[hw_test_list.AFDORecordTest()],
+      useflags=append_useflags(['-transparent_hugepage']),
   )
 
   # Create our unittest stress build configs (used for tryjobs only)
