@@ -650,18 +650,6 @@
       ]
     },
     {
-      "name": "pyro",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "reef",
-          "arch": "X86_INTERNAL"
-        }
-      ]
-    },
-    {
       "name": "quawks",
       "configs": [
         {
@@ -753,18 +741,6 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "strago",
-          "arch": "X86_INTERNAL"
-        }
-      ]
-    },
-    {
-      "name": "snappy",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "reef",
           "arch": "X86_INTERNAL"
         }
       ]
