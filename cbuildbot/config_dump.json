@@ -18488,11 +18488,9 @@
     },
     "reef-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "boards": [
             "reef"
         ],
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
