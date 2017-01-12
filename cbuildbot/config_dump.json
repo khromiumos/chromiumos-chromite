@@ -3948,6 +3948,12 @@
             "chrome_internal"
         ]
     },
+    "bob-factory": {
+        "_template": "factory",
+        "boards": [
+            "bob"
+        ]
+    },
     "bob-firmware": {
         "_template": "firmware",
         "boards": [

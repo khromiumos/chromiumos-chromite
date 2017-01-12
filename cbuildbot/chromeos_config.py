@@ -2817,6 +2817,13 @@ def _GetConfig(site_config, board_configs, hw_test_list):
       vm_tests=[],
   )
 
+  site_config.Add(
+      'bob-factory',
+      site_config.templates.factory,
+      boards=['bob'],
+      vm_tests=[],
+  )
+
 def ReleaseBuilders(site_config, board_configs, ge_build_config,
                     is_release_branch):
   """Create all release builders.
