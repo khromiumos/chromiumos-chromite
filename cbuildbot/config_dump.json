@@ -10758,7 +10758,6 @@
         "boards": [
             "guado_labstation"
         ],
-        "buildslave_type": "baremetal",
         "hw_tests": [
             "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": null,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": false,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 7200,\n    \"warn_only\": true\n}"
         ],
@@ -12813,6 +12812,7 @@
         "boards": [
             "lakitu"
         ],
+        "buildslave_type": "baremetal",
         "disk_layout": "base",
         "factory": false,
         "factory_install_netboot": false,
@@ -12839,6 +12839,7 @@
         "boards": [
             "lakitu"
         ],
+        "buildslave_type": "baremetal",
         "chrome_sdk": false,
         "dev_installer_prebuilts": false,
         "disk_layout": "base",
@@ -13104,6 +13105,7 @@
         "boards": [
             "lakitu_next"
         ],
+        "buildslave_type": "baremetal",
         "disk_layout": "base",
         "factory": false,
         "factory_install_netboot": false,
@@ -13129,6 +13131,7 @@
         "boards": [
             "lakitu_next"
         ],
+        "buildslave_type": "baremetal",
         "chrome_sdk": false,
         "dev_installer_prebuilts": false,
         "disk_layout": "base",

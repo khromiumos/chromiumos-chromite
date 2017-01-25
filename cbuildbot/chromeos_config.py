@@ -3383,7 +3383,7 @@ def EnsureVmTestsOnBaremetal(site_config, _gs_build_config):
   """
   for c in site_config.itervalues():
     # We can only run vmtests on baremetal, so ensure we have it.
-    if c.vm_tests:
+    if c.vm_tests or c.run_gce_tests:
       c['buildslave_type'] = constants.BAREMETAL_BUILD_SLAVE_TYPE
 
 
@@ -3439,8 +3439,8 @@ def GetConfig():
   # Assign waterfalls to builders that don't have them yet.
   InsertWaterfallDefaults(site_config, ge_build_config)
 
-  EnsureVmTestsOnBaremetal(site_config, ge_build_config)
-
   ApplyCustomOverrides(site_config, ge_build_config)
+
+  EnsureVmTestsOnBaremetal(site_config, ge_build_config)
 
   return site_config
