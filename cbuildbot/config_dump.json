@@ -21316,14 +21316,12 @@
     },
     "storm-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "storm"
         ],
         "chrome_sdk": false,
         "dev_installer_prebuilts": false,
-        "important": true,
         "paygen_skip_testing": true,
         "signer_tests": false,
         "sync_chrome": false,
@@ -26059,9 +26057,7 @@
         "boards": [
             "whirlwind"
         ],
-        "buildslave_type": "gce_beefy",
         "chrome_sdk": false,
-        "chrome_sdk_build_chrome": false,
         "important": true,
         "sync_chrome": false,
         "vm_tests": [],
