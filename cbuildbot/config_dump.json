@@ -17445,13 +17445,10 @@
     },
     "pbody-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "boards": [
             "pbody"
         ],
-        "chrome_sdk_build_chrome": false,
-        "important": true,
-        "vm_tests": []
+        "buildslave_type": "baremetal"
     },
     "pbody-release-afdo": {
         "_template": "release_afdo_generate",
