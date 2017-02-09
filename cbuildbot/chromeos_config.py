@@ -525,6 +525,7 @@ _x86_internal_release_boards = frozenset([
     'relm',
     'rikku',
     'samus',
+    'sand',
     'sentry',
     'setzer',
     'slippy',
@@ -648,6 +649,7 @@ _no_vmtest_boards = _arm_boards | _brillo_boards | _cheets_boards | frozenset((
     'pyro',
     'reef',
     'samus',
+    'sand',
     'snappy',
 ))
 
@@ -2945,6 +2947,14 @@ def _GetConfig(site_config, ge_build_config):
       'reef-factory',
       site_config.templates.factory,
       boards=['reef'],
+      vm_tests=[],
+      hw_tests=[],
+  )
+
+  site_config.Add(
+      'sand-factory',
+      site_config.templates.factory,
+      boards=['sand'],
       vm_tests=[],
       hw_tests=[],
   )
