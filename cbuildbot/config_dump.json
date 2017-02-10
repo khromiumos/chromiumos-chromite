@@ -20034,8 +20034,6 @@
     },
     "reef-pre-flight-branch": {
         "_template": "pre_flight_branch",
-        "afdo_generate": true,
-        "afdo_update_ebuild": true,
         "android_rev": "latest_release",
         "boards": [
             "reef"

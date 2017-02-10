@@ -1742,8 +1742,6 @@ def _GetConfig(site_config, ge_build_config):
       push_overlays=constants.BOTH_OVERLAYS,
       boards=['reef'],
       android_rev=constants.ANDROID_REV_LATEST,
-      afdo_generate=True,
-      afdo_update_ebuild=True,
       vm_tests=[],
       hw_tests=[],
   )
