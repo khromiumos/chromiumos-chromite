@@ -20147,6 +20147,32 @@
             "chrome_internal"
         ]
     },
+    "reef-depthcharge-firmware": {
+        "_template": "depthcharge_firmware",
+        "boards": [
+            "reef"
+        ],
+        "manifest": "official.xml"
+    },
+    "reef-depthcharge-full-firmware": {
+        "_template": "depthcharge_full_firmware",
+        "boards": [
+            "reef"
+        ],
+        "manifest": "official.xml",
+        "useflags": [
+            "chrome_internal",
+            "chromeless_tty",
+            "depthcharge"
+        ]
+    },
+    "reef-firmware": {
+        "_template": "firmware",
+        "boards": [
+            "reef"
+        ],
+        "manifest": "official.xml"
+    },
     "reef-full": {
         "_template": "full",
         "boards": [
