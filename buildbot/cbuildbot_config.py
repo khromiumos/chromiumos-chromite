@@ -1782,15 +1782,6 @@ def _AddFirmwareConfigs():
 _AddFirmwareConfigs()
 
 
-# Pre-flight defnition for this branch.
-internal_pfq_branch.add_config('monroe-pre-flight-branch',
-  _firmware,
-  master=True,
-  push_overlays=constants.BOTH_OVERLAYS,
-  boards=['monroe'],
-)
-
-
 # This is an example factory branch configuration for x86.
 # Modify it to match your factory branch.
 _factory_release.add_config('x86-mario-factory',
