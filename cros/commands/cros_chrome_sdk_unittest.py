@@ -19,8 +19,6 @@ from chromite.cros.commands import init_unittest
 from chromite.lib import cache
 from chromite.lib import cros_build_lib_unittest
 from chromite.lib import cros_test_lib
-from chromite.lib import gclient
-from chromite.lib import git
 from chromite.lib import gs
 from chromite.lib import gs_unittest
 from chromite.lib import osutils
@@ -233,6 +231,25 @@ class RunThroughTest(cros_test_lib.MockTempDirTestCase,
     with self.cache.Lookup(self.VERSION_KEY) as r:
       self.assertTrue(r.Exists())
 
+  def testErrorCodePassthrough(self):
+    """Test that error codes are passed through."""
+    self.SetupCommandMock()
+    with cros_test_lib.LoggingCapturer():
+      self.rc_mock.AddCmdResult(partial_mock.ListRegex('-- true'),
+                                returncode=5)
+      returncode = self.cmd_mock.inst.Run()
+      self.assertEquals(returncode, 5)
+
+  def testLocalSDKPath(self):
+    """Fetch components from a local --sdk-path."""
+    sdk_dir = os.path.join(self.tempdir, 'sdk_dir')
+    osutils.SafeMakedirs(sdk_dir)
+    osutils.WriteFile(os.path.join(sdk_dir, constants.METADATA_JSON),
+                      SDKFetcherMock.FAKE_METADATA)
+    self.SetupCommandMock(extra_args=['--sdk-path', sdk_dir])
+    with cros_test_lib.LoggingCapturer():
+      self.cmd_mock.inst.Run()
+
   def testGomaError(self):
     """We print an error message when GomaError is raised."""
     self.SetupCommandMock()
@@ -342,15 +359,11 @@ class VersionTest(cros_test_lib.MockTempDirTestCase):
   FULL_VERSION = 'R55-%s' % VERSION
   BOARD = 'lumpy'
 
-  VERSION_BASE = ("gs://chromeos-image-archive/%s-release/%s"
-                  % (BOARD, FULL_VERSION))
-  FAKE_LS = """\
-%(base)s/UPLOADED
-%(base)s/au-generator.zip
-%(base)s/autotest.tar
-%(base)s/bootloader.tar.xz
-""" % {'base': VERSION_BASE}
+  VERSION_BASE = ('gs://chromeos-image-archive/%s-release/LATEST-%s'
+                  % (BOARD, VERSION))
 
+  CAT_ERROR = ('InvalidUriError: Attempt to get key for '
+               '%s failed.' % VERSION_BASE)
   LS_ERROR = 'CommandException: One or more URIs matched no objects.'
 
   def setUp(self):
@@ -396,10 +409,12 @@ class VersionTest(cros_test_lib.MockTempDirTestCase):
 
   def testUpdateDefaultChromeVersion(self):
     """We pick up the right LKGM version from the Chrome tree."""
+    dir_struct = [
+        'gclient_root/.gclient'
+    ]
+    cros_test_lib.CreateOnDiskHierarchy(self.tempdir, dir_struct)
     gclient_root = os.path.join(self.tempdir, 'gclient_root')
-    self.PatchObject(git, 'FindRepoCheckoutRoot', return_value=None)
-    self.PatchObject(gclient, 'FindGclientCheckoutRoot',
-                     return_value=gclient_root)
+    self.PatchObject(os, 'getcwd', return_value=gclient_root)
 
     lkgm_file = os.path.join(gclient_root, 'src', constants.PATH_TO_CHROME_LKGM)
     osutils.Touch(lkgm_file, makedirs=True)
@@ -408,8 +423,6 @@ class VersionTest(cros_test_lib.MockTempDirTestCase):
     self.sdk.UpdateDefaultVersion()
     self.assertEquals(self.sdk.GetDefaultVersion(),
                       self.VERSION)
-    # pylint: disable=E1101
-    self.assertTrue(gclient.FindGclientCheckoutRoot.called)
 
   def testFullVersion(self):
     """Test full version calculation."""
@@ -418,36 +431,29 @@ class VersionTest(cros_test_lib.MockTempDirTestCase):
 
     self.sdk_mock.UnMockAttr('GetFullVersion')
     self.gs_mock.AddCmdResult(
-        partial_mock.ListRegex('ls .*/%s' % self.VERSION),
-        error=self.LS_ERROR, returncode=1)
-    self.gs_mock.AddCmdResult(
-        partial_mock.ListRegex('ls .*-%s' % self.VERSION),
-        output=self.FAKE_LS)
+        partial_mock.ListRegex('cat .*/LATEST-%s' % self.VERSION),
+        output=self.FULL_VERSION)
     self.assertEquals(
         self.FULL_VERSION,
         self.sdk.GetFullVersion(self.VERSION))
     # Test that we access the cache on the next call, rather than checking GS.
     self.gs_mock.AddCmdResult(
-        partial_mock.ListRegex('ls .*/%s' % self.VERSION),
+        partial_mock.ListRegex('cat .*/LATEST-%s' % self.VERSION),
         side_effect=RaiseException)
     self.assertEquals(
         self.FULL_VERSION,
         self.sdk.GetFullVersion(self.VERSION))
 
-  def testBareVersion(self):
-    """Codepath where crbug.com/230190 has been fixed."""
-    self.sdk_mock.UnMockAttr('GetFullVersion')
-    self.gs_mock.AddCmdResult(partial_mock.ListRegex('ls .*/%s' % self.VERSION),
-                              output='results')
-    self.assertEquals(self.VERSION, self.sdk.GetFullVersion(self.VERSION))
-
   def testBadVersion(self):
     """We raise an exception for a bad version."""
     self.sdk_mock.UnMockAttr('GetFullVersion')
     self.gs_mock.AddCmdResult(
-        partial_mock.ListRegex('ls .*'),
+        partial_mock.ListRegex('cat .*/LATEST-%s' % self.VERSION),
+        output='', error=self.CAT_ERROR, returncode=1)
+    self.gs_mock.AddCmdResult(
+        partial_mock.ListRegex('ls .*%s' % self.VERSION),
         output='', error=self.LS_ERROR, returncode=1)
-    self.assertRaises(cros_chrome_sdk.SDKError, self.sdk.GetFullVersion,
+    self.assertRaises(cros_chrome_sdk.MissingSDK, self.sdk.GetFullVersion,
                       self.VERSION)
 
   def testDefaultEnvBadBoard(self):
@@ -484,7 +490,7 @@ class PathVerifyTest(cros_test_lib.MockTempDirTestCase,
     )
     abs_paths = [os.path.join(self.tempdir, relpath) for relpath in file_list]
     for p in abs_paths:
-      osutils.Touch(p, makedirs=True, mode=0755)
+      osutils.Touch(p, makedirs=True, mode=0o755)
 
     with cros_test_lib.LoggingCapturer() as logs:
       cros_chrome_sdk.ChromeSDKCommand._VerifyGoma(None)

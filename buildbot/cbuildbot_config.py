@@ -13,7 +13,7 @@ import optparse
 import sys
 import urllib
 
-GS_PATH_DEFAULT = 'default' # Means gs://chromeos-archive/ + bot_id
+GS_PATH_DEFAULT = 'default' # Means gs://chromeos-image-archive/ + bot_id
 
 # Contains the valid build config suffixes in the order that they are dumped.
 CONFIG_TYPE_RELEASE = 'release'
@@ -26,6 +26,7 @@ CONFIG_TYPE_DUMP_ORDER = (
     'pre-cq',
     'pre-cq-launcher',
     'incremental',
+    'telemetry',
     CONFIG_TYPE_FULL,
     CONFIG_TYPE_RELEASE,
     'release-group',
@@ -48,6 +49,8 @@ CONFIG_TYPE_DUMP_ORDER = (
     'asan-informational',
     'refresh-packages',
     'platform2',
+    'test-ap',
+    constants.BRANCH_UTIL_CONFIG,
 )
 
 def OverrideConfigForTrybot(build_config, options):
@@ -118,13 +121,11 @@ def GetManifestVersionsRepoUrl(internal_build, read_only=False, test=False):
     test: Whether we should use the corresponding test repositories. These
       should be used when staging experimental features.
   """
+  # pylint: disable=W0613
   if internal_build:
-    url = (constants.GERRIT_INT_SSH_URL +
-            constants.MANIFEST_VERSIONS_INT_SUFFIX)
-  elif read_only:
-    url = constants.GIT_HTTP_URL + constants.MANIFEST_VERSIONS_SUFFIX
+    url = constants.INTERNAL_GOB_URL + constants.MANIFEST_VERSIONS_INT_SUFFIX
   else:
-    url = constants.GERRIT_SSH_URL + constants.MANIFEST_VERSIONS_SUFFIX
+    url = constants.PUBLIC_GOB_URL + constants.MANIFEST_VERSIONS_SUFFIX
 
   if test:
     url += '-test'
@@ -140,7 +141,7 @@ def IsPFQType(b_type):
 
 def IsCQType(b_type):
   """Returns True if this build type is a Commit Queue."""
-  return b_type in (constants.COMMIT_QUEUE_TYPE, constants.PALADIN_TYPE)
+  return b_type == constants.PALADIN_TYPE
 
 
 # List of usable cbuildbot configs; see add_config method.
@@ -159,18 +160,21 @@ def GetCanariesForChromeLKGM(configs=config):
   return builders
 
 
-def FindFullConfigsForBoard(board):
+def FindFullConfigsForBoard(board=None):
   """Returns full builder configs for a board.
+
+  Args:
+    board: The board to match. By default, match all boards.
 
   Returns:
     A tuple containing a list of matching external configs and a list of
-    matching internal configs for a board.
+    matching internal release configs for a board.
   """
   ext_cfgs = []
   int_cfgs = []
 
   for name, c in config.iteritems():
-    if c['boards'] and board in c['boards']:
+    if c['boards'] and (board is None or board in c['boards']):
       if name.endswith('-%s' % CONFIG_TYPE_RELEASE) and c['internal']:
         int_cfgs.append(copy.deepcopy(c))
       elif name.endswith('-%s' % CONFIG_TYPE_FULL) and not c['internal']:
@@ -201,6 +205,8 @@ _settings = dict(
 # boards -- A list of boards to build.
   boards=None,
 
+# TODO(mtennant): The description sounds independent of anything to do with a
+# paladin.  See if this should just be: "builder_waterfall_name".
 # paladin_builder_name -- Used by paladin logic. The name of the builder on the
 #                         buildbot waterfall if it differs from the config name.
 #                         If None is used, defaults to config name.
@@ -212,10 +218,10 @@ _settings = dict(
 # master -- This bot pushes changes to the overlays.
   master=False,
 
-# important -- Master bot uses important bots to determine overall status.
-#              i.e. if master bot succeeds and other important slaves succeed
-#              then the master will uprev packages.  This should align
-#              with info vs. closer except for the master and options.tests.
+# important -- If False, this flag indicates that the CQ should not check
+#              whether this bot passed or failed. Set this to False if you are
+#              setting up a new bot. Once the bot is on the waterfall and is
+#              consistently green, mark the builder as important=True.
   important=False,
 
 # internal -- Whether this is an internal build config.
@@ -248,13 +254,12 @@ _settings = dict(
 # usepkg_build_packages -- Use binary packages for build_packages.
   usepkg_build_packages=True,
 
+# chrome_binhost_only -- Only use binaries in build_packages for Chrome itself.
+  chrome_binhost_only=False,
+
 # sync_chrome -- Does this profile need to sync chrome?  If None, we guess based
 #                on other factors.  If True/False, we always do that.
   sync_chrome=None,
-
-# nowithdebug -- Pass the --nowithdebug flag to build_packages (sets the
-#                -DNDEBUG compiler flag).
-  nowithdebug=False,
 
 # latest_toolchain -- Use the newest ebuilds for all the toolchain packages.
   latest_toolchain=False,
@@ -263,6 +268,9 @@ _settings = dict(
 # If you set this to a commit-ish, the gcc ebuild will use it to build the
 # toolchain compiler.
   gcc_githash=None,
+
+# board_replace -- wipe and replace the board inside the chroot.
+  board_replace=False,
 
 # chroot_replace -- wipe and replace chroot, but not source.
   chroot_replace=False,
@@ -293,6 +301,7 @@ _settings = dict(
   chrome_rev=None,
 
 # compilecheck -- Exit the builder right after checking compilation.
+# TODO(mtennant): Should be something like "compile_check_only".
   compilecheck=False,
 
 # pre_cq -- Test CLs to verify they're ready for the commit queue.
@@ -365,8 +374,8 @@ _settings = dict(
   hwqual=False,
 
 # manifest_repo_url -- git repository URL for our manifests.
-#   External: https://git.chromium.org/git/chromiumos/manifest
-#   Internal: ssh://gerrit-int.chromium.org:29419/chromeos/manifest-internal
+#  External: https://chromium.googlesource.com/chromiumos/manifest
+#  Internal: https://chrome-internal.googlesource.com/chromeos/manifest-internal
   manifest_repo_url=constants.MANIFEST_URL,
 
 # manifest_version -- Whether we are using the manifest_version repo that stores
@@ -423,6 +432,17 @@ _settings = dict(
 #                   disk_layout for more info.
   disk_vm_layout='2gb-rootfs-updatable',
 
+# postsync_patch -- If enabled, run the PatchChanges stage.  Enabled by default.
+#                   Can be overridden by the --nopatch flag.
+  postsync_patch=True,
+
+# postsync_rexec -- Reexec into the buildroot after syncing.  Enabled by
+#                   default.
+  postsync_reexec=True,
+
+# create_delta_sysroot -- Create delta sysroot during ArchiveStage. Disabled by
+#                          default.
+  create_delta_sysroot=False,
 
 # TODO(sosa): Collapse to one option.
 # ====================== Dev installer prebuilts options =======================
@@ -445,6 +465,13 @@ _settings = dict(
 # Enable rootfs verification on the image.
   rootfs_verification=True,
 
+# Runs through the chrome-sdk workflow.
+  chrome_sdk=False,
+
+# If chrome_sdk is set to True, this determines whether we use goma to build
+# chrome.
+  chrome_sdk_goma=False,
+
 # =============================================================================
 )
 
@@ -457,13 +484,13 @@ class _JSONEncoder(json.JSONEncoder):
 
 
 class HWTestConfig(object):
-  """Config object for test suites.
+  """Config object for hardware tests suites.
 
   Members:
     copy_perf_results: If set to True, copy test results back from GS and send
                        them to the perf dashboard.
-    timeout: How long to wait before timing out waiting for results. Usually,
-             2 hours and ten minutes. This must be less than
+    timeout: Number of seconds to wait before timing out waiting for results.
+             Defaults to 2 hours and ten minutes. This must be less than
              lib.parallel._BackgroundTask.MINIMUM_SILENT_TIMEOUT.
     pool: Pool to use for hw testing.
     async: Fire-and-forget suite.
@@ -476,28 +503,49 @@ class HWTestConfig(object):
   DEFAULT_HW_TEST_TIMEOUT = 60 * 130
   # Number of tests running in parallel in the AU suite.
   AU_TESTS_NUM = 2
+  # Number of tests running in parallel in the QAV suite
+  QAV_TEST_NUM = 2
 
   @classmethod
   def DefaultList(cls, **dargs):
-    """Returns the default list of tests with overrides for optional args."""
-    # Set the number of machines for the au suite. If we are confined with the
-    # number of duts in the lab, only give 1 dut to the AU suite.
+    """Returns a default list of HWTestConfig's for a canary build, with
+    overrides for optional args."""
+    # Set the number of machines for the au and qav suites. If we are
+    # constrained in the number of duts in the lab, only give 1 dut to each.
     if (dargs.get('num', constants.HWTEST_DEFAULT_NUM) >=
         constants.HWTEST_DEFAULT_NUM):
       au_dict = dict(num=cls.AU_TESTS_NUM)
+      qav_dict = dict(num=cls.QAV_TEST_NUM)
     else:
       au_dict = dict(num=1)
+      qav_dict = dict(num=1)
 
     au_dargs = dargs.copy()
     au_dargs.update(au_dict)
+
+    qav_dargs = dargs.copy()
+    qav_dargs.update(qav_dict)
+
     # BVT + AU suite.
     return [cls(cls.DEFAULT_HW_TEST, **dargs),
-            cls(constants.HWTEST_AU_SUITE, **au_dargs)]
+            cls(constants.HWTEST_AU_SUITE, **au_dargs),
+            cls(constants.HWTEST_QAV_SUITE, **qav_dargs)]
+
+  @classmethod
+  def PGOList(cls, **dargs):
+    """Returns a default list of HWTestConfig's for a PGO build, with overrides
+    for optional args."""
+    pgo_dict = dict(pool=constants.HWTEST_CHROME_PERF_POOL,
+                    timeout=90 * 60, num=1, async=True)
+    pgo_dict.update(dargs)
+    return [cls('pyauto_perf', **pgo_dict),
+            cls('perf_v2', **pgo_dict)]
 
   @classmethod
   def DefaultListCQ(cls, **dargs):
-    """Returns the default list for cq tests with overrides."""
-    default_dict = dict(pool=constants.HWTEST_PALADIN_POOL, timeout=50 * 60,
+    """Returns a default list of HWTestConfig's for a CQ build,
+    with overrides for optional args."""
+    default_dict = dict(pool=constants.HWTEST_PALADIN_POOL, timeout=120 * 60,
                         fatal_timeouts=True, file_bugs=False)
     # Allows dargs overrides to default_dict for cq.
     default_dict.update(dargs)
@@ -642,6 +690,7 @@ full = _config(
 
   usepkg_setup_board=False,
   usepkg_build_packages=False,
+  chrome_sdk=True,
   chroot_replace=True,
 
   quick_unit=False,
@@ -676,7 +725,12 @@ paladin = _config(
   manifest_version=True,
   trybot_list=True,
   description='Commit Queue',
-  upload_standalone_images=False,
+)
+
+# Used for paladin builders that build from source.
+full_paladin = _config(
+  board_replace=True,
+  chrome_binhost_only=True,
 )
 
 # Incremental builders are intended to test the developer workflow.
@@ -754,20 +808,42 @@ incremental.add_config('x32-generic-incremental',
 
 paladin.add_config('x86-generic-paladin',
   boards=['x86-generic'],
-  paladin_builder_name='x86 generic paladin',
+  paladin_builder_name='x86-generic paladin',
 )
 
 paladin.add_config('amd64-generic-paladin',
   amd64,
   boards=['amd64-generic'],
-  paladin_builder_name='amd64 generic paladin',
+  paladin_builder_name='amd64-generic paladin',
 )
 
 paladin.add_config('x32-generic-paladin',
   amd64,
   boards=['x32-generic'],
-  paladin_builder_name='x32 generic paladin',
+  paladin_builder_name='x32-generic paladin',
   important=False,
+)
+
+telemetry = _config(
+  build_type=constants.INCREMENTAL_TYPE,
+  uprev=False,
+  overlays=constants.PUBLIC_OVERLAYS,
+  vm_tests=constants.TELEMETRY_SUITE_TEST_TYPE,
+  description='Telemetry Builds',
+)
+
+telemetry.add_config('amd64-generic-telemetry',
+  amd64,
+  boards=['amd64-generic'],
+)
+
+telemetry.add_config('arm-generic-telemetry',
+  arm,
+  boards=['arm-generic'],
+)
+
+telemetry.add_config('x86-generic-telemetry',
+  boards=['x86-generic'],
 )
 
 chromium_pfq = _config(
@@ -852,14 +928,9 @@ chrome_perf = chrome_info.derive(
   hw_tests=[HWTestConfig('perf_v2', pool=constants.HWTEST_CHROME_PERF_POOL,
                          timeout=90 * 60, critical=True, num=1,
                          copy_perf_results=True)],
-  nowithdebug=True,
   use_chrome_lkgm=True,
   use_lkgm=False,
-
-
-  # TODO(sosa): Really shouldn't be necessary in addition with
-  # nowithdebug. One should imply the other.
-  useflags=official['useflags'] + ['-chrome_debug'],
+  useflags=official['useflags'] + ['-cros-debug'],
 )
 
 chrome_perf.add_config('daisy-chrome-perf',
@@ -1059,6 +1130,26 @@ internal_paladin = internal.derive(official_chrome, paladin,
   description=paladin['description'] + ' (internal)',
 )
 
+# Used for paladin builders with nowithdebug flag (a.k.a -cros-debug)
+internal_nowithdebug_paladin = internal_paladin.derive(
+  useflags=official['useflags'] + ['-cros-debug'],
+  description=paladin['description'] + ' (internal, nowithdebug)',
+)
+
+internal_nowithdebug_paladin.add_config('x86-generic-nowithdebug-paladin',
+  boards=['x86-generic'],
+  paladin_builder_name='x86-generic nowithdebug-paladin',
+  prebuilts=False,
+  important=False,
+)
+
+internal_nowithdebug_paladin.add_config('amd64-generic-nowithdebug-paladin',
+  boards=['amd64-generic'],
+  paladin_builder_name='amd64-generic nowithdebug-paladin',
+  prebuilts=False,
+  important=False,
+)
+
 internal_pre_cq = internal_paladin.derive(
   build_type=constants.INCREMENTAL_TYPE,
   compilecheck=True,
@@ -1067,13 +1158,7 @@ internal_pre_cq = internal_paladin.derive(
 )
 
 internal_pre_cq.add_group(constants.PRE_CQ_BUILDER_NAME,
-  internal_pre_cq.add_config(
-    'parrot-pre-cq',
-    boards=['parrot'],
-    # update_engine tests are disabled temporarily since they don't pass when
-    # run in parallel. TODO(sosa): Re-enable when crbug.com/236465 is fixed.
-    unittest_blacklist=['chromeos-base/update_engine'],
-  ),
+  internal_pre_cq.add_config('parrot-pre-cq', boards=['parrot']),
   internal_pre_cq.add_config('lumpy-pre-cq', boards=['lumpy']),
   internal_pre_cq.add_config('daisy_spring-pre-cq',
                              arm, boards=['daisy_spring']),
@@ -1085,6 +1170,18 @@ internal_paladin.add_config('pre-cq-launcher',
   boards=[],
   build_type=constants.PRE_CQ_LAUNCHER_TYPE,
   description='Launcher for Pre-CQ builders.',
+)
+
+internal_paladin.add_config(constants.BRANCH_UTIL_CONFIG,
+  boards=[],
+  # Disable postsync_patch to prevent conflicting patches from being applied -
+  # e.g., patches from 'master' branch being applied to a branch.
+  postsync_patch=False,
+  # Disable postsync_reexec to continue running the 'master' branch chromite
+  # for all stages, rather than the chromite in the branch buildroot.
+  postsync_reexec=False,
+  build_type=constants.CREATE_BRANCH_TYPE,
+  description='Used for creating/deleting branches.',
 )
 
 # Internal incremental builders don't use official chrome because we want
@@ -1108,40 +1205,75 @@ sonic = _config(
   hw_tests=[],
 )
 
+internal.add_config('test-ap',
+  vm_tests=None,
+  description='stumpy image used for WiFi testing',
+  boards=['stumpy'],
+  images=['test'],  # We need Python and utilities found only in test.
+  profile='testbed-ap',
+)
+
 ### Master paladin (CQ builder).
 
-internal_paladin.add_config('mario-paladin',
+internal_paladin.add_config('x86-mario-paladin',
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
   boards=['x86-mario'],
-  gs_path='gs://chromeos-x86-mario/pre-flight-master',
-  paladin_builder_name='mario paladin',
+  paladin_builder_name='x86-mario paladin',
   vm_tests=constants.SIMPLE_AU_TEST_TYPE,
 )
 
 ### Other paladins (CQ builders).
+# These are slaves of the master paladin by virtue of matching
+# in a few config values (e.g. 'build_type', 'branch', etc).  If
+# they are not 'important' then they are ignored slaves.
+# TODO(mtennant): This master-slave relationship should be specified
+# here in the configuration, rather than BuilderStage._GetSlavesForMaster.
+# Something like the following:
+# master_paladin = internal_paladin.add_config(...)
+# master_paladin.AddSlave(internal_paladin.add_config(...))
 
-internal_paladin.add_config('alex-paladin',
+internal_paladin.add_config('x86-alex-paladin',
   boards=['x86-alex'],
-  paladin_builder_name='alex paladin',
+  paladin_builder_name='x86-alex paladin',
   hw_tests=HWTestConfig.DefaultListCQ(),
   upload_hw_test_artifacts=True,
 )
 
+internal_paladin.add_config('bayleybay-paladin',
+  boards=['bayleybay'],
+  paladin_builder_name='bayleybay paladin',
+  important=False,
+)
+
+internal_paladin.add_config('beltino-paladin',
+  boards=['beltino'],
+  paladin_builder_name='beltino paladin',
+)
+
+# x86 full compile
 internal_paladin.add_config('butterfly-paladin',
+  full_paladin,
   boards=['butterfly'],
   paladin_builder_name='butterfly paladin',
 )
 
+# amd64 full compile
 internal_paladin.add_config('falco-paladin',
+  full_paladin,
   boards=['falco'],
   paladin_builder_name='falco paladin',
 )
 
-internal_paladin.add_config('fox-wtm2-paladin',
+internal_paladin.add_config('fox_wtm2-paladin',
   boards=['fox_wtm2'],
-  paladin_builder_name='fox paladin',
+  paladin_builder_name='fox_wtm2 paladin',
   vm_tests=None,
+)
+
+internal_paladin.add_config('leon-paladin',
+  boards=['leon'],
+  paladin_builder_name='leon paladin',
 )
 
 internal_paladin.add_config('link-paladin',
@@ -1160,9 +1292,23 @@ internal_paladin.add_config('lumpy-paladin',
 internal_paladin.add_config('parrot-paladin',
   boards=['parrot'],
   paladin_builder_name='parrot paladin',
-  quick_unit=False,
+  hw_tests=HWTestConfig.DefaultListCQ(),
+  upload_hw_test_artifacts=True,
 )
 
+internal_paladin.add_config('rambi-paladin',
+  boards=['rambi'],
+  paladin_builder_name='rambi paladin',
+)
+
+internal_paladin.add_config('samus-paladin',
+  boards=['samus'],
+  paladin_builder_name='samus paladin',
+  vm_tests=None,
+  important=False,
+)
+
+# x86 full unit tests
 internal_paladin.add_config('peppy-paladin',
   boards=['peppy'],
   paladin_builder_name='peppy paladin',
@@ -1179,6 +1325,25 @@ internal_paladin.add_config('sonic-paladin',
   important=False,
 )
 
+# amd64 full unit tests
+internal_paladin.add_config('monroe-paladin',
+  boards=['monroe'],
+  hw_tests=[],
+  important=False,
+  quick_unit=False,
+  vm_tests=None,
+  paladin_builder_name='monroe paladin',
+)
+
+internal_paladin.add_config('panther-paladin',
+  boards=['panther'],
+  hw_tests=[],
+  important=False,
+  quick_unit=False,
+  vm_tests=None,
+  paladin_builder_name='panther paladin',
+)
+
 internal_paladin.add_config('stout-paladin',
   boards=['stout'],
   quick_unit=False,
@@ -1188,19 +1353,24 @@ internal_paladin.add_config('stout-paladin',
 internal_paladin.add_config('stout32-paladin',
   boards=['stout32'],
   paladin_builder_name='stout32 paladin',
-  important=False,
 )
 
 internal_paladin.add_config('stumpy-paladin',
   boards=['stumpy'],
   paladin_builder_name='stumpy paladin',
+  hw_tests=HWTestConfig.DefaultListCQ(),
   upload_hw_test_artifacts=True,
 )
 
-internal_paladin.add_config('zgb-paladin',
+internal_paladin.add_config('wolf-paladin',
+  boards=['wolf'],
+  paladin_builder_name='wolf paladin',
+)
+
+internal_paladin.add_config('x86-zgb-paladin',
   boards=['x86-zgb'],
   important=False,
-  paladin_builder_name='zgb paladin',
+  paladin_builder_name='x86-zgb paladin',
 )
 
 ### Arm paladins (CQ builders).
@@ -1210,10 +1380,22 @@ internal_arm_paladin = internal_paladin.derive(arm)
 internal_arm_paladin.add_config('daisy-paladin',
   boards=['daisy'],
   paladin_builder_name='daisy paladin',
+  hw_tests=HWTestConfig.DefaultListCQ(),
   upload_hw_test_artifacts=True,
 )
 
+# arm full compile
+internal_arm_paladin.add_config('beaglebone-paladin',
+  boards=['beaglebone'],
+  packages=['chromeos-base/chromeos'],
+  images=['base'],
+  rootfs_verification=False,
+  important=False,
+  paladin_builder_name='beaglebone paladin',
+)
+
 internal_arm_paladin.add_config('daisy_spring-paladin',
+  full_paladin,
   boards=['daisy_spring'],
   paladin_builder_name='daisy_spring paladin',
 )
@@ -1246,13 +1428,12 @@ _toolchain_minor.add_config('internal-toolchain-minor', internal, official,
 
 _release = full.derive(official, internal,
   build_type=constants.CANARY_TYPE,
-  useflags=official['useflags'] + ['-highdpi'],
+  useflags=official['useflags'] + ['-cros-debug', '-highdpi'],
   build_tests=True,
   manifest_version=True,
   images=['base', 'test', 'factory_test', 'factory_install'],
   push_image=True,
   upload_symbols=True,
-  nowithdebug=True,
   binhost_bucket='gs://chromeos-dev-installer',
   binhost_key='RELEASE_BINHOST',
   binhost_base_url=
@@ -1267,6 +1448,7 @@ _release = full.derive(official, internal,
   trybot_list=True,
   hwqual=True,
   description="Release Builds (canary) (internal)",
+  chrome_sdk=True,
 )
 
 ### Master release config.
@@ -1309,7 +1491,8 @@ _config.add_group('x86-zgb-release-group',
 
 release_pgo = _release.derive(
   hw_tests=HWTestConfig.DefaultList(pool=constants.HWTEST_CHROME_PERF_POOL,
-                                    num=4),
+                                    num=4) +
+           HWTestConfig.PGOList(),
   push_image=False,
   dev_installer_prebuilts=False,
 )
@@ -1336,7 +1519,44 @@ release_pgo.add_group('lumpy-release-pgo',
   ),
 )
 
+release_pgo.add_group('parrot-release-pgo',
+  release_pgo.add_config('parrot-release-pgo-generate',
+    boards=['parrot'],
+    pgo_generate=True,
+  ),
+  release_pgo.add_config('parrot-release-pgo-use',
+    boards=['parrot'],
+    pgo_use=True,
+  ),
+)
+
+release_pgo.add_group('daisy-release-pgo',
+  release_pgo.add_config('daisy-release-pgo-generate',
+    boards=['daisy'],
+    pgo_generate=True,
+  ),
+  release_pgo.add_config('daisy-release-pgo-use',
+    boards=['daisy'],
+    pgo_use=True,
+  ),
+)
+
 ### Release configs.
+
+# bayleybay-release does not enable vm_tests or unittests due to the compiler
+# flags enabled for baytrail.
+_release.add_config('bayleybay-release',
+  boards=['bayleybay'],
+  hw_tests=[],
+  vm_tests=None,
+  unittests=False,
+)
+
+_release.add_config('beltino-release',
+  boards=['beltino'],
+  hw_tests=[],
+  vm_tests=None,
+)
 
 _release.add_config('butterfly-release',
   boards=['butterfly'],
@@ -1344,18 +1564,20 @@ _release.add_config('butterfly-release',
 
 _release.add_config('falco-release',
   boards=['falco'],
-  hw_tests = [],
-  # TODO(sosa): Restore temp removal of vm testing once devserver bug
-  # crbug.com/251309 is fixed.
-  vm_tests=None,
 )
 
-_release.add_config('fox-wtm2-release',
+_release.add_config('fox_wtm2-release',
   boards=['fox_wtm2'],
   # Until these are configured and ready, disable them.
   signer_tests=False,
   vm_tests=None,
   hw_tests=[],
+)
+
+_release.add_config('leon-release',
+  boards=['leon'],
+  hw_tests=[],
+  vm_tests=None,
 )
 
 _release.add_config('link-release',
@@ -1368,24 +1590,43 @@ _release.add_config('lumpy-release',
   critical_for_chrome=True,
 )
 
+_release.add_config('monroe-release',
+  boards=['monroe'],
+  hw_tests=[],
+  vm_tests=None,
+)
+
+_release.add_config('panther-release',
+  boards=['panther'],
+  hw_tests=[],
+  vm_tests=None,
+)
+
 _release.add_config('parrot-release',
   boards=['parrot'],
 )
 
 _release.add_config('peppy-release',
   boards=['peppy'],
+)
+
+# rambi-release does not enable vm_tests or unittests due to the compiler
+# flags enabled for baytrail.
+_release.add_config('rambi-release',
+  boards=['rambi'],
   hw_tests=[],
-  # TODO(sosa): Restore temp removal of vm testing once devserver bug
-  # crbug.com/251309 is fixed.
   vm_tests=None,
+  unittests=False,
+)
+
+_release.add_config('samus-release',
+  boards=['samus'],
+  hw_tests=[],
 )
 
 _release.add_config('slippy-release',
   boards=['slippy'],
   hw_tests=[],
-  # TODO(sosa): Restore temp removal of vm testing once devserver bug
-  # crbug.com/251309 is fixed.
-  vm_tests=None,
 )
 
 _release.add_config('sonic-release',
@@ -1394,7 +1635,6 @@ _release.add_config('sonic-release',
 
 _release.add_config('stout-release',
   boards=['stout'],
-  hw_tests=HWTestConfig.DefaultList(num=3),
 )
 
 _release.add_config('stout32-release',
@@ -1405,9 +1645,23 @@ _release.add_config('stumpy-release',
   boards=['stumpy'],
 )
 
+_release.add_config('wolf-release',
+  boards=['wolf'],
+)
+
 ### Arm release configs.
 
 _arm_release = _release.derive(arm)
+
+_arm_release.add_config('beaglebone-release',
+  boards=['beaglebone'],
+  build_tests=False,
+  packages=['chromeos-base/chromeos'],
+  hw_tests=[],
+  images=['base'],
+  rootfs_verification=False,
+  upload_hw_test_artifacts=False,
+)
 
 _arm_release.add_config('daisy-release',
   boards=['daisy'],
@@ -1420,7 +1674,6 @@ _arm_release.add_config('daisy_spring-release',
 
 _arm_release.add_config('peach_pit-release',
   boards=['peach_pit'],
-  hw_tests=[],
 )
 
 # Factory and Firmware releases much inherit from these classes.  Modifications
@@ -1443,6 +1696,7 @@ _firmware = _config(
   usepkg_build_packages=True,
   sync_chrome=False,
   build_tests=False,
+  chrome_sdk=False,
   unittests=False,
   vm_tests=None,
   hw_tests=[],
@@ -1467,21 +1721,33 @@ _depthcharge_full_internal = full.derive(
 )
 
 _x86_firmware_boards = (
+  'bayleybay',
+  'beltino',
   'butterfly',
   'falco',
+  'leon',
   'link',
   'lumpy',
+  'monroe',
+  'panther',
   'parrot',
   'peppy',
+  'rambi',
+  'samus',
   'stout',
   'stout32',
   'slippy',
   'stumpy',
+  'wolf',
   'x86-mario',
 )
 
 _x86_depthcharge_firmware_boards = (
+  'bayleybay',
+  'leon',
   'link',
+  'rambi',
+  'samus',
 )
 
 _arm_firmware_boards = (
@@ -1514,6 +1780,15 @@ def _AddFirmwareConfigs():
     )
 
 _AddFirmwareConfigs()
+
+
+# Pre-flight defnition for this branch.
+internal_pfq_branch.add_config('monroe-pre-flight-branch',
+  _firmware,
+  master=True,
+  push_overlays=constants.BOTH_OVERLAYS,
+  boards=['monroe'],
+)
 
 
 # This is an example factory branch configuration for x86.

@@ -32,10 +32,10 @@ def PatchGS(*args, **kwargs):
 class GSContextMock(partial_mock.PartialCmdMock):
   """Used to mock out the GSContext class."""
   TARGET = 'chromite.lib.gs.GSContext'
-  ATTRS = ('__init__', '_DoCommand', 'DEFAULT_SLEEP_TIME',
+  ATTRS = ('__init__', 'DoCommand', 'DEFAULT_SLEEP_TIME',
            'DEFAULT_RETRIES', 'DEFAULT_BOTO_FILE', 'DEFAULT_GSUTIL_BIN',
            'DEFAULT_GSUTIL_BUILDER_BIN', 'GSUTIL_URL')
-  DEFAULT_ATTR = '_DoCommand'
+  DEFAULT_ATTR = 'DoCommand'
 
   GSResponsePreconditionFailed = """
 [Setting Content-Type=text/x-python]
@@ -71,8 +71,8 @@ class GSContextMock(partial_mock.PartialCmdMock):
     with PatchGS('_CheckFile', return_value=True):
       self.backup['__init__'](*args, **kwargs)
 
-  def _DoCommand(self, inst, gsutil_cmd, **kwargs):
-    result = self._results['_DoCommand'].LookupResult(
+  def DoCommand(self, inst, gsutil_cmd, **kwargs):
+    result = self._results['DoCommand'].LookupResult(
         (gsutil_cmd,), hook_args=(inst, gsutil_cmd,), hook_kwargs=kwargs)
 
     rc_mock = cros_build_lib_unittest.RunCommandMock()
@@ -81,7 +81,7 @@ class GSContextMock(partial_mock.PartialCmdMock):
         result.error)
 
     with rc_mock:
-      return self.backup['_DoCommand'](inst, gsutil_cmd, **kwargs)
+      return self.backup['DoCommand'](inst, gsutil_cmd, **kwargs)
 
 
 class AbstractGSContextTest(cros_test_lib.MockTempDirTestCase):
@@ -98,8 +98,7 @@ class CopyTest(AbstractGSContextTest):
 
   LOCAL_PATH = '/tmp/file'
   GIVEN_REMOTE = EXPECTED_REMOTE = 'gs://test/path/file'
-  ACL_FILE = '/my/file/acl'
-  ACL_FILE2 = '/my/file/other'
+  ACL = 'public-read'
 
   def _Copy(self, ctx, src, dst, **kwargs):
     return ctx.Copy(src, dst, **kwargs)
@@ -115,22 +114,22 @@ class CopyTest(AbstractGSContextTest):
     self.gs_mock.assertCommandContains(
         ['cp', '--', self.LOCAL_PATH, self.EXPECTED_REMOTE])
 
-  def testWithACLFile(self):
+  def testWithACL(self):
     """ACL specified during init."""
-    ctx = gs.GSContext(acl_file=self.ACL_FILE)
+    ctx = gs.GSContext(acl=self.ACL)
     self.Copy(ctx=ctx)
-    self.gs_mock.assertCommandContains(['cp', '-a', self.ACL_FILE])
+    self.gs_mock.assertCommandContains(['cp', '-a', self.ACL])
 
-  def testWithACLFile2(self):
+  def testWithACL2(self):
     """ACL specified during invocation."""
-    self.Copy(acl=self.ACL_FILE)
-    self.gs_mock.assertCommandContains(['cp', '-a', self.ACL_FILE])
+    self.Copy(acl=self.ACL)
+    self.gs_mock.assertCommandContains(['cp', '-a', self.ACL])
 
-  def testWithACLFile3(self):
+  def testWithACL3(self):
     """ACL specified during invocation that overrides init."""
-    ctx = gs.GSContext(acl_file=self.ACL_FILE)
-    self.Copy(ctx=ctx, acl=self.ACL_FILE2)
-    self.gs_mock.assertCommandContains(['cp', '-a', self.ACL_FILE2])
+    ctx = gs.GSContext(acl=self.ACL)
+    self.Copy(ctx=ctx, acl=self.ACL)
+    self.gs_mock.assertCommandContains(['cp', '-a', self.ACL])
 
   def testVersion(self):
     """Test version field."""
@@ -212,22 +211,35 @@ class GSContextInitTest(cros_test_lib.MockTempDirTestCase):
 
   def testInitAclFile(self):
     """Test ACL selection logic in __init__."""
-    self.assertEqual(gs.GSContext().acl_file, None)
-    self.assertEqual(gs.GSContext(acl_file=self.acl_file).acl_file,
+    self.assertEqual(gs.GSContext().acl, None)
+    self.assertEqual(gs.GSContext(acl=self.acl_file).acl,
                      self.acl_file)
-    self.assertRaises(gs.GSContextException, gs.GSContext,
-                      acl_file=self.bad_path)
 
 
-class GSContextTest(AbstractGSContextTest):
-  """Tests for GSContext()"""
+class GSDoCommandTest(cros_test_lib.TestCase):
+  """Tests of gs.DoCommand behavior.
+
+  This test class inherits from cros_test_lib.TestCase instead of from
+  AbstractGSContextTest, because the latter unnecessarily mocks out
+  cros_build_lib.RunCommand, in a way that breaks _testDoCommand (changing
+  cros_build_lib.RunCommand to refer to a mock instance after the
+  GenericRetry mock has already been set up to expect a reference to the
+  original RunCommand).
+  """
+
+  def setUp(self):
+    self.ctx = gs.GSContext()
 
   def _testDoCommand(self, ctx, retries, sleep):
-    with mock.patch.object(cros_build_lib, 'RetryCommand', autospec=True):
+    with mock.patch.object(cros_build_lib, 'GenericRetry', autospec=True):
       ctx.Copy('/blah', 'gs://foon')
       cmd = [self.ctx.gsutil_bin, 'cp', '--', '/blah', 'gs://foon']
-      cros_build_lib.RetryCommand.assert_called_once_with(
-          mock.ANY, retries, cmd, sleep=sleep,
+
+      cros_build_lib.GenericRetry.assert_called_once_with(
+          ctx._RetryFilter, retries,
+          cros_build_lib.RunCommand,
+          cmd, sleep=sleep,
+          redirect_stderr=True,
           extra_env={'BOTO_CONFIG': mock.ANY})
 
   def testDoCommandDefault(self):
@@ -240,6 +252,10 @@ class GSContextTest(AbstractGSContextTest):
     ctx = gs.GSContext(retries=4, sleep=1)
     self._testDoCommand(ctx, retries=4, sleep=1)
 
+
+class GSContextTest(AbstractGSContextTest):
+  """Tests for GSContext()"""
+
   def testSetAclError(self):
     """Ensure SetACL blows up if the acl isn't specified."""
     self.assertRaises(gs.GSContextException, self.ctx.SetACL, 'gs://abc/3')
@@ -251,21 +267,46 @@ class GSContextTest(AbstractGSContextTest):
 
   def testSetAcl(self):
     """Base ACL setting functionality."""
-    ctx = gs.GSContext(acl_file='/my/file/acl')
+    ctx = gs.GSContext(acl='/my/file/acl')
     ctx.SetACL('gs://abc/1')
     self.gs_mock.assertCommandContains(['setacl', '/my/file/acl',
                                         'gs://abc/1'])
 
+  def testIncrement(self):
+    """Test ability to atomically increment a counter."""
+    ctx = gs.GSContext()
+    ctx.Counter('gs://abc/1').Increment()
+    self.gs_mock.assertCommandContains(['cp', '-', 'gs://abc/1'])
+
+  def testGetGeneration(self):
+    """Test ability to get the generation of a file."""
+    ctx = gs.GSContext()
+    ctx.GetGeneration('gs://abc/1')
+    self.gs_mock.assertCommandContains(['getacl', 'gs://abc/1'])
 
   def testCreateCached(self):
     """Test that the function runs through."""
-    gs.GSContext.Cached(self.tempdir)
+    gs.GSContext(cache_dir=self.tempdir)
 
   def testReuseCached(self):
     """Test that second fetch is a cache hit."""
-    gs.GSContext.Cached(self.tempdir)
+    gs.GSContext(cache_dir=self.tempdir)
     gs.GSUTIL_URL = None
-    gs.GSContext.Cached(self.tempdir)
+    gs.GSContext(cache_dir=self.tempdir)
+
+
+class NetworkGSContextTest(cros_test_lib.TempDirTestCase):
+  """Tests for GSContext that go over the network."""
+
+  @cros_test_lib.NetworkTest()
+  def testIncrement(self):
+    ctx = gs.GSContext()
+    with gs.TemporaryURL('testIncrement') as url:
+      counter = ctx.Counter(url)
+      self.assertEqual(0, counter.Get())
+      for i in xrange(1, 4):
+        self.assertEqual(i, counter.Increment())
+        self.assertEqual(i, counter.Get())
 
 
 class InitBotoTest(AbstractGSContextTest):

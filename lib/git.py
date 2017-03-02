@@ -28,7 +28,57 @@ from chromite.lib import osutils
 sys.path.pop(0)
 del _path
 
-EXTERNAL_GERRIT_SSH_REMOTE = 'gerrit'
+# Retry a git operation if git returns a error response with any of these
+# messages. It's all observed 'bad' GoB responses so far.
+GIT_TRANSIENT_ERRORS = (
+    # crbug.com/285832
+    r'! \[remote rejected\].* -> .* \(error in hook\)',
+
+    # crbug.com/289932
+    r'! \[remote rejected\].* -> .* \(failed to lock\)',
+
+    # crbug.com/307156
+    r'! \[remote rejected\].* -> .* \(error in Gerrit backend\)',
+
+    # crbug.com/285832
+    r'remote error: Internal Server Error',
+
+    # crbug.com/294449
+    r'fatal: Couldn\'t find remote ref ',
+
+    # crbug.com/220543
+    r'git fetch_pack: expected ACK/NAK, got',
+
+    # crbug.com/189455
+    r'protocol error: bad pack header',
+
+    # crbug.com/202807
+    r'The remote end hung up unexpectedly',
+
+    # crbug.com/298189
+    r'error: gnutls_handshake\(\) failed: A TLS packet with unexpected length '
+    r'was received. while accessing',
+
+    # crbug.com/187444
+    r'RPC failed; result=\d+, HTTP code = \d+',
+)
+
+GIT_TRANSIENT_ERRORS_RE = re.compile('|'.join(GIT_TRANSIENT_ERRORS))
+
+DEFAULT_RETRY_INTERVAL = 3
+DEFAULT_RETRIES = 5
+
+
+class RemoteRef(object):
+  """Object representing a remote ref.
+
+  A remote ref encapsulates both a remote (e.g., 'origin',
+  'https://chromium.googlesource.com/chromiumos/chromite.git', etc.) and a ref
+  name (e.g., 'refs/heads/master').
+  """
+  def __init__(self, remote, ref):
+    self.remote = remote
+    self.ref = ref
 
 
 def FindRepoDir(path):
@@ -50,30 +100,22 @@ def FindRepoCheckoutRoot(path):
     return None
 
 
-def FindGitSubmoduleCheckoutRoot(path, remote, url):
-  """Get the root of your git submodule checkout, looking up from |path|.
+def IsSubmoduleCheckoutRoot(path, remote, url):
+  """Tests to see if a directory is the root of a git submodule checkout.
 
-  This function goes up the tree starting from |path| and looks for a .git/ dir
-  configured with a |remote| pointing at |url|.
-
-  Arguments:
-    path: The path to start searching from.
+  Args:
+    path: The directory to test.
     remote: The remote to compare the |url| with.
     url: The exact URL the |remote| needs to be pointed at.
   """
-  def test_config(path):
-    if os.path.isdir(path):
-      remote_url = cros_build_lib.RunCommand(
-          ['git', '--git-dir', path, 'config', 'remote.%s.url' % remote],
-          redirect_stdout=True, debug_level=logging.DEBUG).output.strip()
-      if remote_url == url:
-        return True
-    return False
-
-  root_dir = osutils.FindInPathParents('.git', path, test_func=test_config)
-  if root_dir:
-    return os.path.dirname(root_dir)
-  return None
+  if os.path.isdir(path):
+    remote_url = cros_build_lib.RunCommand(
+        ['git', '--git-dir', path, 'config', 'remote.%s.url' % remote],
+        redirect_stdout=True, debug_level=logging.DEBUG,
+        error_code_ok=True).output.strip()
+    if remote_url == url:
+      return True
+  return False
 
 
 def ReinterpretPathForChroot(path):
@@ -110,6 +152,24 @@ def GetProjectDir(cwd, project):
 def IsGitRepo(cwd):
   """Checks if there's a git repo rooted at a directory."""
   return os.path.isdir(os.path.join(cwd, '.git'))
+
+
+def IsGitRepositoryCorrupted(cwd):
+  """Verify that the specified git repository is not corrupted.
+
+  Args:
+    cwd: The git repository to verify.
+
+  Returns:
+    True if the repository is corrupted.
+  """
+  cmd = ['fsck', '--no-progress', '--no-dangling']
+  try:
+    RunGit(cwd, cmd)
+    return False
+  except cros_build_lib.RunCommandError as ex:
+    logging.warn(str(ex))
+    return True
 
 
 _HEX_CHARS = frozenset(string.hexdigits)
@@ -169,7 +229,7 @@ def GetCurrentBranch(cwd):
   try:
     ret = RunGit(cwd, ['symbolic-ref', '-q', 'HEAD'])
     return StripRefsHeads(ret.output.strip(), False)
-  except cros_build_lib.RunCommandError, e:
+  except cros_build_lib.RunCommandError as e:
     if e.result.returncode != 1:
       raise
     return None
@@ -192,6 +252,13 @@ def StripRefs(ref):
   ref = StripRefsHeads(ref, False)
   if ref.startswith("refs/remotes/"):
     return ref.split("/", 3)[-1]
+  return ref
+
+
+def NormalizeRef(ref):
+  """Convert git branch refs into fully qualified form."""
+  if ref and not ref.startswith('refs/'):
+    ref = 'refs/heads/%s' % ref
   return ref
 
 
@@ -272,37 +339,36 @@ class Manifest(object):
     return self.projects[os.path.normpath(project)]['path']
 
   def _FinalizeProjectData(self, attrs):
+    """Sets up useful properties for a project.
+
+    Args:
+      attrs: The attribute dictionary of a project tag.
+    """
     for key in ('remote', 'revision'):
       attrs.setdefault(key, self.default.get(key))
 
     remote = attrs['remote']
     assert remote in self.remotes
-    remote_name = self.remotes[remote]['alias']
+    remote_name = attrs['remote_alias'] = self.remotes[remote]['alias']
 
     # 'repo manifest -r' adds an 'upstream' attribute to the project tag for the
     # manifests it generates.  We can use the attribute to get a valid branch
     # instead of a sha1 for these types of manifests.
-    local_rev = rev = attrs.get('upstream', attrs['revision'])
-    if rev.startswith('refs/heads/'):
+    pre_rev = attrs.get('upstream', attrs['revision'])
+    # In cases where the revision is a branch name, make sure it is in refs/*
+    # form.
+    if not IsSHA1(pre_rev):
+      pre_rev = NormalizeRef(pre_rev)
+    local_rev = rev = pre_rev
+    if rev.startswith('refs/'):
       local_rev = 'refs/remotes/%s/%s' % (remote_name, StripRefsHeads(rev))
     attrs['local_revision'] = local_rev
 
-    attrs['pushable'] = remote in constants.CROS_REMOTES
+    attrs['pushable'] = remote in constants.GIT_REMOTES
     if attrs['pushable']:
-      if remote == constants.EXTERNAL_REMOTE:
-        attrs['push_remote'] = EXTERNAL_GERRIT_SSH_REMOTE
-        if rev.startswith('refs/heads/'):
-          attrs['push_remote_local'] = 'refs/remotes/%s/%s' % (
-              EXTERNAL_GERRIT_SSH_REMOTE, StripRefsHeads(rev))
-        else:
-          attrs['push_remote_local'] = rev
-      elif remote == constants.INTERNAL_REMOTE:
-        # For cros-internal, it's already accessing gerrit directly; thus
-        # just use that.
-        attrs['push_remote'] = attrs['remote']
-        attrs['push_remote_local'] = attrs['local_revision']
-
-      attrs['push_remote_url'] = constants.CROS_REMOTES[remote]
+      attrs['push_remote'] = remote
+      attrs['push_remote_local'] = attrs['local_revision']
+      attrs['push_remote_url'] = constants.GIT_REMOTES[remote]
       attrs['push_url'] = '%s/%s' % (attrs['push_remote_url'], attrs['name'])
     groups = set(attrs.get('groups', 'default').replace(',', ' ').split())
     groups.add('default')
@@ -343,7 +409,7 @@ class Manifest(object):
         with open(source, 'rb') as f:
           # pylint: disable=E1101
           return hashlib.md5(f.read()).hexdigest()
-      except EnvironmentError, e:
+      except EnvironmentError as e:
         if e.errno != errno.ENOENT or not ignore_missing:
           raise
     source.seek(0)
@@ -496,7 +562,7 @@ class ManifestCheckout(Manifest):
     path = os.path.join(root, '.repo', 'manifests.git')
     try:
       result = RunGit(path, ['config', '--get', 'manifest.groups'])
-    except cros_build_lib.RunCommandError, e:
+    except cros_build_lib.RunCommandError as e:
       if e.result.returncode == 1:
         # Value wasn't found, which is fine.
         return frozenset(['default'])
@@ -616,7 +682,7 @@ def _GitRepoIsContentMerging(git_repo, remote):
     result = RunGit(git_repo, ['config', '-f', '/dev/stdin', '--get',
                                'submit.mergeContent'], input=content.output)
     return result.output.strip().lower() == 'true'
-  except cros_build_lib.RunCommandError, e:
+  except cros_build_lib.RunCommandError as e:
     # If the field isn't set at all, exit code is 1.
     # Anything else is a bad invocation or an indecipherable state.
     if e.result.returncode != 1:
@@ -625,7 +691,7 @@ def _GitRepoIsContentMerging(git_repo, remote):
   return False
 
 
-def RunGit(git_repo, cmd, **kwds):
+def RunGit(git_repo, cmd, retry=True, **kwds):
   """RunCommandCaptureOutput wrapper for git commands.
 
   This suppresses print_cmd, and suppresses output by default.  Git
@@ -638,13 +704,28 @@ def RunGit(git_repo, cmd, **kwds):
     cmd: A sequence of the git subcommand to run.  The 'git' prefix is
       added automatically.  If you wished to run 'git remote update',
       this would be ['remote', 'update'] for example.
-    kwds: Any RunCommand options/overrides to use.
+    retry: If set, retry on transient errors. Defaults to True.
+    kwds: Any RunCommand or GenericRetry options/overrides to use.
   Returns:
     A CommandResult object."""
+
+  def _ShouldRetry(exc):
+    """Returns True if push operation failed with a transient error."""
+    if (isinstance(exc, cros_build_lib.RunCommandError)
+        and exc.result and exc.result.error and
+        GIT_TRANSIENT_ERRORS_RE.search(exc.result.error)):
+      cros_build_lib.Warning('git reported transient error (cmd=%s); retrying',
+                             ' '.join(map(repr, cmd)), exc_info=True)
+      return True
+    return False
+
+  max_retry = kwds.pop('max_retry', DEFAULT_RETRIES if retry else 0)
   kwds.setdefault('print_cmd', False)
-  cros_build_lib.Debug("RunGit(%r, %r, **%r)", git_repo, cmd, kwds)
-  return cros_build_lib.RunCommandCaptureOutput(['git'] + cmd, cwd=git_repo,
-                                                **kwds)
+  kwds.setdefault('sleep', DEFAULT_RETRY_INTERVAL)
+  kwds.setdefault('cwd', git_repo)
+  return cros_build_lib.GenericRetry(
+      _ShouldRetry, max_retry, cros_build_lib.RunCommandCaptureOutput,
+      ['git'] + cmd, **kwds)
 
 
 def GetProjectUserEmail(git_repo):
@@ -815,7 +896,7 @@ def GetTrackingBranchViaManifest(git_repo, for_checkout=True, for_push=False,
         return None
 
     return remote, revision
-  except EnvironmentError, e:
+  except EnvironmentError as e:
     if e.errno != errno.ENOENT:
       raise
   return None
@@ -872,6 +953,42 @@ def GetTrackingBranch(git_repo, branch=None, for_checkout=True, fallback=True,
   return 'origin', 'master'
 
 
+def CreateBranch(git_repo, branch, branch_point='HEAD', track=False):
+  """Create a branch.
+
+  Args:
+    git_repo: Git repository to act on.
+    branch: Name of the branch to create.
+    branch_point: The ref to branch from.  Defaults to 'HEAD'.
+    track: Whether to setup the branch to track its starting ref.
+  """
+  cmd = ['checkout', '-B', branch, branch_point]
+  if track:
+    cmd.append('--track')
+  RunGit(git_repo, cmd)
+
+
+def GitPush(git_repo, refspec, push_to, dryrun=False, force=False, retry=True):
+  """Wrapper for pushing to a branch.
+
+  Arguments:
+    git_repo: Git repository to act on.
+    refspec: The local ref to push to the remote.
+    push_to: A RemoteRef object representing the remote ref to push to.
+    force: Whether to bypass non-fastforward checks.
+    retry: Retry a push in case of transient errors.
+  """
+  cmd = ['push', push_to.remote, '%s:%s' % (refspec, push_to.ref)]
+
+  if dryrun:
+    cmd.append('--dry-run')
+  if force:
+    cmd.append('--force')
+
+  RunGit(git_repo, cmd, retry=retry)
+
+
+# TODO(build): Switch callers of this function to use CreateBranch instead.
 def CreatePushBranch(branch, git_repo, sync=True, remote_push_branch=None):
   """Create a local branch for pushing changes inside a repo repository.
 
@@ -891,8 +1008,7 @@ def CreatePushBranch(branch, git_repo, sync=True, remote_push_branch=None):
 
   if sync:
     cmd = ['remote', 'update', remote]
-    cros_build_lib.RetryCommand(RunGit, 3, git_repo, cmd, sleep=10,
-                                retry_on=(1,))
+    RunGit(git_repo, cmd)
 
   RunGit(git_repo, ['checkout', '-B', branch, '-t', push_branch])
 
@@ -914,8 +1030,7 @@ def SyncPushBranch(git_repo, remote, rebase_target):
         % (remote, rebase_target))
 
   cmd = ['remote', 'update', remote]
-  cros_build_lib.RetryCommand(RunGit, 3, git_repo, cmd, sleep=10,
-                              retry_on=(1,))
+  RunGit(git_repo, cmd)
 
   try:
     RunGit(git_repo, ['rebase', rebase_target])
@@ -926,6 +1041,7 @@ def SyncPushBranch(git_repo, remote, rebase_target):
     raise
 
 
+# TODO(build): Switch this to use the GitPush function.
 def PushWithRetry(branch, git_repo, dryrun=False, retries=5):
   """General method to push local git changes.
 
@@ -987,9 +1103,7 @@ def CleanAndCheckoutUpstream(git_repo, refresh_upstream=True):
   RunGit(git_repo, ['am', '--abort'], error_code_ok=True)
   RunGit(git_repo, ['rebase', '--abort'], error_code_ok=True)
   if refresh_upstream:
-    cmd = ['remote', 'update', remote]
-    cros_build_lib.RetryCommand(RunGit, 3, git_repo, cmd, sleep=10,
-                                retry_on=(1,))
+    RunGit(git_repo, ['remote', 'update', remote])
   RunGit(git_repo, ['clean', '-dfx'])
   RunGit(git_repo, ['reset', '--hard', 'HEAD'])
   RunGit(git_repo, ['checkout', local_upstream])
@@ -1013,7 +1127,7 @@ def GetChromiteTrackingBranch():
     # Ensure the manifest knows of this checkout.
     if manifest.FindProjectFromPath(cwd):
       return manifest.manifest_branch
-  except EnvironmentError, e:
+  except EnvironmentError as e:
     if e.errno != errno.ENOENT:
       raise
 

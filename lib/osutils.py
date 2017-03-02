@@ -7,7 +7,9 @@
 import errno
 import logging
 import os
+import pwd
 import shutil
+import signal
 import cStringIO
 import tempfile
 from chromite.lib import cros_build_lib
@@ -16,6 +18,26 @@ from chromite.lib import cros_build_lib
 # needs to match python's tempfile module and match normal
 # unix standards.
 _TEMPDIR_ENV_VARS = ('TMPDIR', 'TEMP', 'TMP')
+
+
+def GetNonRootUser():
+  """Returns a non-root user. Defaults to the current user.
+
+  If the current user is root, returns the username of the person who
+  ran the emerge command. If running using sudo, returns the username
+  of the person who ran the sudo command. If no non-root user is
+  found, returns None.
+"""
+  uid = os.getuid()
+  if uid == 0:
+    user = os.environ.get('PORTAGE_USERNAME', os.environ.get('SUDO_USER'))
+  else:
+    user = pwd.getpwuid(os.getuid()).pw_name
+
+  if user == 'root':
+    return None
+  else:
+    return user
 
 
 def ExpandPath(path):
@@ -99,13 +121,13 @@ def SafeUnlink(path, sudo=False):
   try:
     os.unlink(path)
     return True
-  except EnvironmentError, e:
+  except EnvironmentError as e:
     if e.errno != errno.ENOENT:
       raise
   return False
 
 
-def SafeMakedirs(path, mode=0775, sudo=False):
+def SafeMakedirs(path, mode=0o775, sudo=False, user='root'):
   """Make parent directories if needed.  Ignore if existing.
 
   Arguments:
@@ -113,6 +135,7 @@ def SafeMakedirs(path, mode=0775, sudo=False):
           needed.
     mode: The access permissions in the style of chmod.
     sudo: If True, create it via sudo, thus root owned.
+    user: If |sudo| is True, run sudo as |user|.
   Raises:
     EnvironmentError: if the makedir failed and it was non sudo.
     RunCommandError: If sudo mode, and the command failed for any reason.
@@ -124,18 +147,46 @@ def SafeMakedirs(path, mode=0775, sudo=False):
     if os.path.isdir(path):
       return False
     cros_build_lib.SudoRunCommand(
-        ['mkdir', '-p', '--mode', oct(mode), path], print_cmd=False,
+        ['mkdir', '-p', '--mode', oct(mode), path], user=user, print_cmd=False,
         redirect_stderr=True, redirect_stdout=True)
     return True
 
   try:
     os.makedirs(path, mode)
     return True
-  except EnvironmentError, e:
+  except EnvironmentError as e:
     if e.errno != errno.EEXIST or not os.path.isdir(path):
       raise
 
   return False
+
+
+class MakingDirsAsRoot(Exception):
+  """Raised when creating directories as root."""
+
+
+def SafeMakedirsNonRoot(path, mode=0o775, user=None):
+  """Create directories and make sure they are not owned by root.
+
+  See SafeMakedirs for the arguments and returns.
+  """
+  if user is None:
+    user = GetNonRootUser()
+
+  if user is None or user == 'root':
+    raise MakingDirsAsRoot('Refusing to create %s as root!' % path)
+
+  created = SafeMakedirs(path, mode=mode, user=user)
+  # Temporary fix: if the directory already exists and is owned by
+  # root, chown it. This corrects existing root-owned directories.
+  if not created:
+    stat_info = os.stat(path)
+    if stat_info.st_uid == 0:
+      cros_build_lib.SudoRunCommand(['chown', user, path],
+                                    print_cmd=False,
+                                    redirect_stderr=True,
+                                    redirect_stdout=True)
+  return created
 
 
 def RmDir(path, ignore_missing=False, sudo=False):
@@ -151,7 +202,7 @@ def RmDir(path, ignore_missing=False, sudo=False):
           ['rm', '-r%s' % ('f' if ignore_missing else '',), '--', path],
           debug_level=logging.DEBUG,
           redirect_stdout=True, redirect_stderr=True)
-    except cros_build_lib.RunCommandError, e:
+    except cros_build_lib.RunCommandError as e:
       if not ignore_missing or os.path.exists(path):
         # If we're not ignoring the rm ENOENT equivalent, throw it;
         # if the pathway still exists, something failed, thus throw it.
@@ -159,7 +210,7 @@ def RmDir(path, ignore_missing=False, sudo=False):
   else:
     try:
       shutil.rmtree(path)
-    except EnvironmentError, e:
+    except EnvironmentError as e:
       if not ignore_missing or e.errno != errno.ENOENT:
         raise
 
@@ -177,7 +228,7 @@ def Which(binary, path=None):
     path = os.environ.get('PATH', '')
   for p in path.split(':'):
     p = os.path.join(p, binary)
-    if os.access(p, os.X_OK):
+    if os.path.isfile(p) and os.access(p, os.X_OK):
       return p
   return None
 
@@ -271,7 +322,7 @@ def _TempDirSetup(self, prefix='tmp', set_global=False, base_dir=None):
   # Stash the old tempdir that was used so we can
   # switch it back on the way out.
   self.tempdir = tempfile.mkdtemp(prefix=prefix, dir=base_dir)
-  os.chmod(self.tempdir, 0700)
+  os.chmod(self.tempdir, 0o700)
 
   if set_global:
     with tempfile._once_lock:
@@ -297,7 +348,7 @@ def _TempDirTearDown(self, force_sudo):
   try:
     if tempdir is not None:
       RmDir(tempdir, ignore_missing=True, sudo=force_sudo)
-  except EnvironmentError, e:
+  except EnvironmentError as e:
     # Suppress ENOENT since we may be invoked
     # in a context where parallel wipes of the tempdir
     # may be occuring; primarily during hard shutdowns.
@@ -383,6 +434,87 @@ def TempFileDecorator(func):
   return TempDirDecorator(f)
 
 
+def MountDir(src_path, dst_path, fs_type=None, sudo=True, makedirs=True,
+             mount_opts=('nodev', 'noexec', 'nosuid'), **kwargs):
+  """Mount |src_path| at |dst_path|
+
+  Args:
+    src_path: Directory to mount the tmpfs.
+    dst_path: Directory to mount the tmpfs.
+    fs_type: Specify the filesystem type to use.  Defaults to autodetect.
+    sudo: Run through sudo.
+    makedirs: Create |dst_path| if it doesn't exist.
+    mount_opts: List of options to pass to `mount`.
+    kwargs: Pass all other args to RunCommand.
+  """
+  if sudo:
+    runcmd = cros_build_lib.SudoRunCommand
+  else:
+    runcmd = cros_build_lib.RunCommand
+
+  if makedirs:
+    SafeMakedirs(dst_path, sudo=sudo)
+
+  cmd = ['mount', src_path, dst_path]
+  if fs_type:
+    cmd += ['-t', fs_type]
+  runcmd(cmd + ['-o', ','.join(mount_opts)], **kwargs)
+
+
+def MountTmpfsDir(path, name='osutils.tmpfs', size='5G',
+                  mount_opts=('nodev', 'noexec', 'nosuid'), **kwargs):
+  """Mount a tmpfs at |path|
+
+  Args:
+    path: Directory to mount the tmpfs.
+    name: Friendly name to include in mount output.
+    size: Size of the temp fs.
+    mount_opts: List of options to pass to `mount`.
+    kwargs: Pass all other args to MountDir.
+  """
+  mount_opts = list(mount_opts) + ['size=%s' % size]
+  MountDir(name, path, fs_type='tmpfs', mount_opts=mount_opts, **kwargs)
+
+
+def UmountDir(path, lazy=True, sudo=True, cleanup=True):
+  """Unmount a previously mounted temp fs mount.
+
+  Args:
+    path: Directory to unmount.
+    lazy: Whether to do a lazy unmount.
+    sudo: Run through sudo.
+    cleanup: Whether to delete the |path| after unmounting.
+             Note: Does not work when |lazy| is set.
+  """
+  if sudo:
+    runcmd = cros_build_lib.SudoRunCommand
+  else:
+    runcmd = cros_build_lib.RunCommand
+
+  cmd = ['umount', '-d', path]
+  if lazy:
+    cmd += ['-l']
+  runcmd(cmd)
+
+  if cleanup:
+    # We will randomly get EBUSY here even when the umount worked.  Suspect
+    # this is due to the host distro doing stupid crap on us like autoscanning
+    # directories when they get mounted.
+    def _retry(e):
+      # When we're using `rm` (which is required for sudo), we can't cleanly
+      # detect the aforementioned failure.  This is because `rm` will see the
+      # errno, handle itself, and then do exit(1).  Which means all we see is
+      # that rm failed.  Assume it's this issue as -rf will ignore most things.
+      if isinstance(e, cros_build_lib.RunCommandError):
+        return True
+      else:
+        # When we aren't using sudo, we do the unlink ourselves, so the exact
+        # errno is bubbled up to us and we can detect it specifically without
+        # potentially ignoring all other possible failures.
+        return e.errno == errno.EBUSY
+    cros_build_lib.GenericRetry(_retry, 5, RmDir, path, sudo=sudo, sleep=1)
+
+
 def SetEnvironment(env):
   """Restore the environment variables to that of passed in dictionary."""
   os.environ.clear()
@@ -423,3 +555,25 @@ def SourceEnvironment(script, whitelist, ifs=',', env=None):
                                      redirect_stderr=True, print_cmd=False,
                                      input='\n'.join(dump_script)).output
   return cros_build_lib.LoadKeyValueFile(cStringIO.StringIO(output))
+
+
+def StrSignal(sig_num):
+  """Convert a signal number to the symbolic name
+
+  Note: Some signal number have multiple names, so you might get
+  back a confusing result like "SIGIOT|SIGABRT".  Since they have
+  the same signal number, it's impossible to say which one is right.
+
+  Args:
+    sig_num: The numeric signal you wish to convert
+  Returns:
+    A string of the signal name(s)
+  """
+  sig_names = []
+  for name, num in signal.__dict__.iteritems():
+    if name.startswith('SIG') and num == sig_num:
+      sig_names.append(name)
+  if sig_names:
+    return '|'.join(sig_names)
+  else:
+    return 'SIG_%i' % sig_num

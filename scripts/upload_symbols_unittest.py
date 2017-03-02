@@ -7,10 +7,10 @@ import ctypes
 import logging
 import os
 import sys
+import urllib2
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)),
                                 '..', '..'))
-from chromite.lib import cros_build_lib
 from chromite.lib import cros_test_lib
 from chromite.lib import osutils
 from chromite.lib import parallel
@@ -23,6 +23,7 @@ import mock
 
 
 class UploadSymbolsTest(cros_test_lib.MockTempDirTestCase):
+  """Tests for UploadSymbols()"""
 
   def setUp(self):
     for d in ('foo', 'bar', 'some/dir/here'):
@@ -75,17 +76,15 @@ class UploadSymbolsTest(cros_test_lib.MockTempDirTestCase):
 
 
 class UploadSymbolTest(cros_test_lib.MockTempDirTestCase):
+  """Tests for UploadSymbol()"""
 
   def setUp(self):
-    self.good_result = cros_build_lib.CommandResult(returncode=0)
-    self.bad_result = cros_build_lib.CommandResult(returncode=1)
-    self.excp_result = cros_build_lib.RunCommandError('failed', self.bad_result)
     self.sym_file = os.path.join(self.tempdir, 'foo.sym')
     self.url = 'http://eatit'
 
   def testUploadSymbolNormal(self):
     """Verify we try to upload on a normal file"""
-    m = upload_symbols.SymUpload = mock.Mock(return_value=self.good_result)
+    m = upload_symbols.SymUpload = mock.Mock()
     osutils.Touch(self.sym_file)
     ret = upload_symbols.UploadSymbol(self.sym_file, self.url)
     self.assertEqual(ret, 0)
@@ -99,21 +98,27 @@ class UploadSymbolTest(cros_test_lib.MockTempDirTestCase):
     ret = upload_symbols.UploadSymbol(None, None, sleep=None, num_errors=errors)
     self.assertEqual(ret, 0)
 
-  def testUploadRetryErrors(self):
+  def testUploadRetryErrors(self, side_effect=None):
     """Verify that we retry errors (and eventually give up)"""
-    m = upload_symbols.SymUpload = mock.Mock(side_effect=self.excp_result)
+    if not side_effect:
+      side_effect = urllib2.HTTPError('http://', 400, 'fail', {}, None)
+    m = upload_symbols.SymUpload = mock.Mock(side_effect=side_effect)
     errors = ctypes.c_int()
     ret = upload_symbols.UploadSymbol('/dev/null', self.url, num_errors=errors)
     self.assertEqual(ret, 1)
     m.assert_called_with('/dev/null', self.url)
     self.assertTrue(m.call_count >= upload_symbols.MAX_RETRIES)
 
+  def testConnectRetryErrors(self):
+    """Verify that we retry errors (and eventually give up) w/connect errors"""
+    side_effect = urllib2.URLError('foo')
+    self.testUploadRetryErrors(side_effect=side_effect)
+
   def testTruncateTooBigFiles(self):
     """Verify we shrink big files"""
     def SymUpload(sym_file, _url):
       content = osutils.ReadFile(sym_file)
       self.assertEqual(content, 'some junk\n')
-      return self.good_result
     m = upload_symbols.SymUpload = mock.Mock(side_effect=SymUpload)
     content = (
         'STACK CFI 1234',
@@ -128,7 +133,7 @@ class UploadSymbolTest(cros_test_lib.MockTempDirTestCase):
 
   def testTruncateReallyLargeFiles(self):
     """Verify we try to shrink really big files"""
-    m = upload_symbols.SymUpload = mock.Mock(return_value=self.good_result)
+    m = upload_symbols.SymUpload = mock.Mock()
     with open(self.sym_file, 'w+b') as f:
       f.truncate(upload_symbols.CRASH_SERVER_FILE_LIMIT + 100)
       f.seek(0)
@@ -139,13 +144,42 @@ class UploadSymbolTest(cros_test_lib.MockTempDirTestCase):
     self.assertEqual(m.call_count, 1)
 
 
-class FindBreakpadDirTest(cros_test_lib.TestCase):
+class SymUploadTest(cros_test_lib.MockTempDirTestCase):
+  """Tests for SymUpload()"""
 
-  def testBasic(self):
-    """Make sure board->breakpad path expansion works"""
-    expected = '/build/blah/usr/lib/debug/breakpad'
-    result = upload_symbols.FindBreakpadDir('blah')
-    self.assertEquals(expected, result)
+  SYM_URL = 'http://localhost/post/it/here'
+  SYM_CONTENTS = """MODULE Linux arm 123-456 blkid
+PUBLIC 1471 0 main"""
+
+  def setUp(self):
+    self.sym_file = os.path.join(self.tempdir, 'test.sym')
+    osutils.WriteFile(self.sym_file, self.SYM_CONTENTS)
+
+  def testPostUpload(self):
+    """Verify HTTP POST has all the fields we need"""
+    m = self.PatchObject(urllib2, 'urlopen', autospec=True)
+    upload_symbols.SymUpload(self.sym_file, self.SYM_URL)
+    self.assertEquals(m.call_count, 1)
+    req = m.call_args[0][0]
+    self.assertEquals(req.get_full_url(), self.SYM_URL)
+    data = ''.join([x for x in req.get_data()])
+
+    fields = {
+        'code_file': 'blkid',
+        'debug_file': 'blkid',
+        'debug_identifier': '123456',
+        'os': 'Linux',
+        'cpu': 'arm',
+    }
+    for key, val in fields.iteritems():
+      line = 'Content-Disposition: form-data; name="%s"\r\n' % key
+      self.assertTrue(line in data)
+      line = '%s\r\n' % val
+      self.assertTrue(line in data)
+    line = ('Content-Disposition: form-data; name="symbol_file"; '
+            'filename="test.sym"\r\n')
+    self.assertTrue(line in data)
+    self.assertTrue(self.SYM_CONTENTS in data)
 
 
 if __name__ == '__main__':

@@ -124,7 +124,7 @@ def _GetProjects(repo_root):
   try:
     if long(os.stat(cache_path).st_mtime) == manifest_time:
       return osutils.ReadFile(cache_path).split()
-  except EnvironmentError, e:
+  except EnvironmentError as e:
     if e.errno != errno.ENOENT:
       raise
 
@@ -166,7 +166,7 @@ def _RebuildRepoCheckout(target_root, reference_map,
   projects = _FilterNonExistentProjects(proj_root, projects)
   projects = list(sorted(projects))
 
-  if not osutils.SafeMakedirs(alternates_dir, 0775):
+  if not osutils.SafeMakedirs(alternates_dir, 0o775):
     # We know the directory exists; thus cleanse out
     # dead alternates.
     _CleanAlternates(projects, alternates_dir)

@@ -136,7 +136,7 @@ class CBuildBotTest(cros_test_lib.MoxTestCase):
 
     for build_name, config in cbuildbot_config.config.iteritems():
       self.assertTrue(
-          config['vm_tests'] in constants.VALID_AU_TEST_TYPES + [None],
+          config['vm_tests'] in constants.VALID_VM_TEST_TYPES + [None],
           'Config %s: has unexpected vm test type value.' % build_name)
 
   def testBuildType(self):
@@ -347,12 +347,23 @@ class CBuildBotTest(cros_test_lib.MoxTestCase):
       self.assertFalse(config['use_lkgm'] and config['use_chrome_lkgm'])
 
   def testQuickPaladin(self):
-    """Test that no paladin builder has both quick_unit=False and vm_tests."""
-    for build_name, config in cbuildbot_config.config.iteritems():
-      self.assertFalse(config['build_type'] == constants.PALADIN_TYPE and
-                       config['important'] and not config['quick_unit'] and
-                       config['vm_tests'], '%s has both quick_unit=False and '
-                       'vm_tests' % build_name)
+    """Test that no paladin builder has quick_unit=False and {vm,hw}_tests."""
+    for build_name, cfg in cbuildbot_config.config.iteritems():
+      if cfg['build_type'] == constants.PALADIN_TYPE and not cfg['quick_unit']:
+        msg = '%s has both quick_unit=False and %s'
+        self.assertFalse(cfg['vm_tests'], msg % (build_name, 'vm_tests'))
+        self.assertFalse(cfg['hw_tests'], msg % (build_name, 'hw_tests'))
+
+  def testChromeBinhostOnly(self):
+    """Test that no paladin builder has quick_unit=False and {vm,hw}_tests."""
+    for build_name, cfg in cbuildbot_config.config.iteritems():
+      if (cfg['build_type'] == constants.PALADIN_TYPE and
+          cfg['chrome_binhost_only']):
+        msg = '%s has both chrome_binhost_only=True and %s'
+        self.assertFalse(cfg['vm_tests'], msg % (build_name, 'vm_tests'))
+        self.assertFalse(cfg['hw_tests'], msg % (build_name, 'hw_tests'))
+        self.assertTrue(cfg['quick_unit'],
+                        msg % (build_name, 'quick_unit=False'))
 
   def testCantBeBothTypesOfPGO(self):
     """Using pgo_generate and pgo_use together doesn't work."""
@@ -472,7 +483,7 @@ class OverrideForTrybotTest(cros_test_lib.TestCase):
     mock_options = mock.Mock()
     mock_options.remote_trybot = False
     mock_options.hw_test = False
-    old = cbuildbot_config.config['mario-paladin']
+    old = cbuildbot_config.config['x86-mario-paladin']
     new = cbuildbot_config.OverrideConfigForTrybot(old, mock_options)
     self.assertTrue(constants.USE_CHROME_INTERNAL in old['useflags'])
     self.assertTrue(constants.USE_CHROME_PDF in old['useflags'])

@@ -23,7 +23,6 @@ import tempfile
 # lib shouldn't have to import from buildbot like this.
 from chromite.buildbot import constants
 from chromite.lib import git
-from chromite.lib import gclient
 from chromite.lib import gs
 from chromite.lib import osutils
 
@@ -48,25 +47,25 @@ def DetermineCheckout(cwd):
       chrome_src_dir: If the checkout is a Chrome checkout, the path to the
         Chrome src/ directory.
   """
-  debug_msg = 'Looking for %s checkout root.'
-  logging.debug(debug_msg, 'repo')
-
-  # Determine checkout checkout_type and root.
   checkout_type = CHECKOUT_TYPE_UNKNOWN
-  root = git.FindRepoCheckoutRoot(cwd)
-  checkout_type = CHECKOUT_TYPE_REPO if root else checkout_type
-  if root is None:
-    logging.debug(debug_msg, 'gclient')
-    root = gclient.FindGclientCheckoutRoot(cwd)
-    checkout_type = CHECKOUT_TYPE_GCLIENT if root else checkout_type
-  if root is None:
-    logging.debug(debug_msg, 'git submodule')
-    chrome_url = '%s/%s.git' % (
-        constants.PUBLIC_GOB_URL, constants.CHROMIUM_SRC_PROJECT)
-    root = git.FindGitSubmoduleCheckoutRoot(os.getcwd(), 'origin', chrome_url)
-    checkout_type = CHECKOUT_TYPE_SUBMODULE if root else checkout_type
-  if root is None:
-    checkout_type = CHECKOUT_TYPE_UNKNOWN
+  root, path = None, None
+  for path in osutils.IteratePathParents(cwd):
+    repo_dir = os.path.join(path, '.repo')
+    if os.path.isdir(repo_dir):
+      checkout_type = CHECKOUT_TYPE_REPO
+      break
+    gclient_file = os.path.join(path, '.gclient')
+    if os.path.exists(gclient_file):
+      checkout_type = CHECKOUT_TYPE_GCLIENT
+      break
+    submodule_git = os.path.join(path, '.git')
+    if (os.path.isdir(submodule_git) and
+        git.IsSubmoduleCheckoutRoot(cwd, 'origin', constants.CHROMIUM_GOB_URL)):
+      checkout_type = CHECKOUT_TYPE_SUBMODULE
+      break
+
+  if checkout_type != CHECKOUT_TYPE_UNKNOWN:
+    root = path
 
   # Determine the chrome src directory.
   chrome_src_dir = None
@@ -76,6 +75,21 @@ def DetermineCheckout(cwd):
     chrome_src_dir = root
 
   return CheckoutInfo(checkout_type, root, chrome_src_dir)
+
+
+def GetCacheDir():
+  """Calculate the current cache dir.
+
+  Users can configure the cache dir using the --cache-dir argument and it is
+  shared between cbuildbot and all child processes. If no cache dir is
+  specified, FindCacheDir finds an alternative location to store the cache.
+
+  Returns:
+    The path to the cache dir.
+  """
+  return os.environ.get(
+      constants.SHARED_CACHE_ENVVAR,
+      BaseParser.FindCacheDir(None, None))
 
 
 def AbsolutePath(_option, _opt, value):
@@ -130,8 +144,9 @@ class FilteringOption(Option):
 
 class BaseParser(object):
   """Base parser class that includes the logic to add logging controls."""
-  DEFAULT_LOG_LEVELS = ("critical", "debug", "error", "fatal", "info",
-                        "warning")
+  DEFAULT_LOG_LEVELS = ('fatal', 'critical', 'error', 'warning', 'info',
+                        'debug')
+
   DEFAULT_LOG_LEVEL = "info"
   ALLOW_LOGGING = True
   SUPPORTS_CACHING = False
@@ -459,16 +474,16 @@ def ScriptWrapperMain(find_target_func, argv=None,
   ret = 1
   try:
     ret = target(argv[1:])
-  except _ShutDownException, e:
+  except _ShutDownException as e:
     sys.stdout.flush()
     print >> sys.stderr, ("%s: Signaled to shutdown: caught %i signal." %
                           (name, e.signal,))
     sys.stderr.flush()
-  except SystemExit, e:
+  except SystemExit as e:
     # Right now, let this crash through- longer term, we'll update the scripts
     # in question to not use sys.exit, and make this into a flagged error.
     raise
-  except Exception, e:
+  except Exception as e:
     sys.stdout.flush()
     print >> sys.stderr, ("%s: Unhandled exception:" % (name,))
     sys.stderr.flush()

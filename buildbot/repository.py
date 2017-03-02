@@ -12,7 +12,6 @@ import os
 import re
 import shutil
 
-from chromite.buildbot import configure_repo
 from chromite.lib import cros_build_lib
 from chromite.lib import git
 from chromite.lib import osutils
@@ -42,25 +41,22 @@ def IsInternalRepoCheckout(root):
 
 
 def CloneGitRepo(working_dir, repo_url, reference=None, bare=False,
-                 mirror=False, retries=constants.SYNC_RETRIES, depth=None):
+                 mirror=False, depth=None):
   """Clone given git repo
   Args:
+    working_dir: location where it should be cloned to
     repo_url: git repo to clone
-    repo_dir: location where it should be cloned to
     reference: If given, pathway to a git repository to access git objects
       from.  Note that the reference must exist as long as the newly created
       repo is to be usable.
     bare: Clone a bare checkout.
     mirror: Clone a mirror checkout.
-    retries: If error code 128 is encountered, how many times to retry.  When
-      128 is returned from git, it's essentially a server error- specifically
-      common to manifest-versions and gerrit.
     depth: If given, do a shallow clone limiting the objects pulled to just
       that # of revs of history.  This option is mutually exclusive to
       reference.
   """
   osutils.SafeMakedirs(working_dir)
-  cmd = ['git', 'clone', repo_url, working_dir]
+  cmd = ['clone', repo_url, working_dir]
   if reference:
     if depth:
       raise ValueError("reference and depth are mutually exclusive "
@@ -72,9 +68,29 @@ def CloneGitRepo(working_dir, repo_url, reference=None, bare=False,
     cmd += ['--mirror']
   if depth:
     cmd += ['--depth', str(int(depth))]
-  cros_build_lib.RunCommandWithRetries(
-      retries, cmd, cwd=working_dir, redirect_stdout=True, redirect_stderr=True,
-      retry_on=[128])
+  git.RunGit(working_dir, cmd)
+
+
+def UpdateGitRepo(working_dir, repo_url, **kwargs):
+  """Update the given git repo, blowing away any local changes.
+
+  If the repo does not exist, clone it from scratch.
+
+  Args:
+    working_dir: location where it should be cloned to
+    repo_url: git repo to clone
+    **kwargs: See CloneGitRepo.
+  """
+  assert not kwargs.get('bare'), 'Bare checkouts are not supported'
+  if git.IsGitRepo(working_dir):
+    try:
+      git.CleanAndCheckoutUpstream(working_dir)
+    except cros_build_lib.RunCommandError:
+      cros_build_lib.Warning('Could not update %s', working_dir, exc_info=True)
+      shutil.rmtree(working_dir)
+      CloneGitRepo(working_dir, repo_url, **kwargs)
+  else:
+    CloneGitRepo(working_dir, repo_url, **kwargs)
 
 
 def GetTrybotMarkerPath(buildroot):
@@ -264,17 +280,28 @@ class RepoRepository(object):
     # that it was invoked w/out the reference arg.  Note this must be
     # an absolute path to the source repo- enter_chroot uses that to know
     # what to bind mount into the chroot.
-    cros_build_lib.RunCommand(
-        ['git', 'config', '--file', self._ManifestConfig, 'repo.reference',
-         self._referenced_repo])
+    cmd = ['config', '--file', self._ManifestConfig, 'repo.reference',
+           self._referenced_repo]
+    git.RunGit('.', cmd)
 
   def Detach(self):
     """Detach projects back to manifest versions.  Effectively a 'reset'."""
     cros_build_lib.RunCommand(['repo', '--time', 'sync', '-d'],
                               cwd=self.directory)
 
-  def Sync(self, local_manifest=None, jobs=None, cleanup=True,
-           all_branches=False, network_only=False):
+  def _ForceSyncSupported(self):
+    """Detect whether --force-sync is supported
+
+    When repo changes its internal object layout, it'll refuse to sync unless
+    this option is specified.
+    """
+    result = cros_build_lib.RunCommand(['repo', 'sync', '--help'],
+                                       redirect_stdout=True, redirect_stderr=True,
+                                       cwd=self.directory)
+    return '--force-sync' in result.output
+
+  def Sync(self, local_manifest=None, jobs=None, all_branches=False,
+           network_only=False):
     """Sync/update the source.  Changes manifest if specified.
 
     Args:
@@ -282,9 +309,6 @@ class RepoRepository(object):
         may be used to set it back to the default manifest.
       jobs: May be set to override the default sync parallelism defined by
         the manifest.
-      cleanup: If true, repo referencing is rebuilt, insteadOf configuration is
-        wiped, and appropriate remotes are setup.  Should only be turned off
-        by code that knows the repo is clean.
       all_branches: If False (the default), a repo sync -c is performed; this
         saves on sync'ing via grabbing only what is needed for the manifest
         specified branch.
@@ -300,10 +324,9 @@ class RepoRepository(object):
       # Fix existing broken mirroring configurations.
       self._EnsureMirroring()
 
-      if cleanup:
-        configure_repo.FixBrokenExistingRepos(self.directory)
-
       cmd = ['repo', '--time', 'sync']
+      if self._ForceSyncSupported():
+        cmd += ['--force-sync']
       if jobs:
         cmd += ['--jobs', str(jobs)]
       if not all_branches:
@@ -334,16 +357,13 @@ class RepoRepository(object):
         # Retry the sync now; if it fails, let the exception propagate.
         cros_build_lib.RunCommand(cmd + ['-l'], cwd=self.directory)
 
-      # Setup gerrit remote for any new repositories.
-      configure_repo.SetupGerritRemote(self.directory)
-
       # We do a second run to fix any new repositories created by repo to
       # use relative object pathways.  Note that cros_sdk also triggers the
       # same cleanup- we however kick it erring on the side of caution.
       self._EnsureMirroring(True)
       self._DoCleanup()
 
-    except cros_build_lib.RunCommandError, e:
+    except cros_build_lib.RunCommandError as e:
       err_msg = e.Stringify(error=False, output=False)
       logging.error(err_msg)
       raise SrcCheckOutException(err_msg)

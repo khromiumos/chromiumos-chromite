@@ -48,7 +48,7 @@ class _Lock(cros_build_lib.MasterPidContextManager):
     try:
       fcntl.lockf(self.fd, flags|fcntl.LOCK_NB)
       return
-    except EnvironmentError, e:
+    except EnvironmentError as e:
       if e.errno == errno.EDEADLOCK:
         self.unlock()
       elif e.errno != errno.EAGAIN:
@@ -59,7 +59,7 @@ class _Lock(cros_build_lib.MasterPidContextManager):
       cros_build_lib.Info(message)
     try:
       fcntl.lockf(self.fd, flags)
-    except EnvironmentError, e:
+    except EnvironmentError as e:
       if e.errno != errno.EDEADLOCK:
         raise
       self.unlock()
@@ -156,7 +156,15 @@ class FileLock(_Lock):
     # the threading race between open and fcntl setting; this is
     # extremely paranoid code, but might as well.
     cloexec = getattr(os, 'O_CLOEXEC', 0)
-    return os.open(self.path, os.W_OK|os.O_CREAT|cloexec, 0664)
+    # There exist race conditions where the lock may be created by
+    # root, thus denying subsequent accesses from others. To prevent
+    # this, we create the lock with mode 0o666.
+    try:
+      value = os.umask(000)
+      fd = os.open(self.path, os.W_OK|os.O_CREAT|cloexec, 0o666)
+    finally:
+      os.umask(value)
+    return fd
 
 
 class ProcessLock(_Lock):

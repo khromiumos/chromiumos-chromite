@@ -10,7 +10,7 @@ CHROOT_CHROMITE=../../chromite
 
 set -eu
 
-LOGFILE="$(mktemp)"
+LOGFILE="$(mktemp -t buildbot.run_tests.XXXXXX)"
 
 # Helper function to add failed logs/tests to be printed out later.
 # $1 test that failed.
@@ -18,35 +18,30 @@ LOGFILE="$(mktemp)"
 append_failed_test() {
   echo "ERROR: Unittest $1 failed.  Log will be output at end of run!!!"
 
-  cat << EOF >> "${LOGFILE}.$$"
+  cat - "$2" <<EOF >>"${LOGFILE}.err.${BASHPID}"
 
 FAIL: Unittest $1 failed output:
 
-$(<"$2")
 EOF
-  rm -f "$2"
 }
 
 # Wrapper to run unittest.  Hides output unless test fails.
 # $1 test to run.  Must be in chromite/buildbot.
 # $2 If set, run inside the chroot.
 run_test() {
-  local log_file="$(mktemp)"
+  local log_file="${LOGFILE}.tmp.${BASHPID}"
   local special="${special_tests[$1]:-}"
   local starttime="$(date +%s%N)"
 
   if [[ "${special}" == "skip" ]]; then
     echo "Skipping unittest $1"
-    rm "${log_file}"
     return
   elif [[ "${special}" == "outside" && -f /etc/debian_chroot ]]; then
     echo "Skipping unittest $1 because it must run outside the chroot."
-    rm "${log_file}"
     return
   elif [[ "${special}" == "inside" && ! -f /etc/debian_chroot ]]; then
     if ${SKIP_CHROOT_TESTS}; then
       echo "Skipping unittest $1 because it must run inside the chroot"
-      rm "${log_file}"
       return
     else
       echo "Starting unittest $1 inside the chroot"
@@ -88,10 +83,6 @@ special_tests=(
   # Tests that need to run outside the chroot.
   ['lib/cgroups_unittest.py']=outside
 
-  # gerrit_unittest is bound to be a little flaky because it depends on gerrit
-  # itself. Do not run it on the bots.
-  ['lib/gerrit_unittest.py']=outside
-
   # Tests that are presently broken.
   ['lib/gdata_lib_unittest.py']=skip
   ['scripts/chrome_set_ver_unittest.py']=skip
@@ -99,8 +90,9 @@ special_tests=(
   ['scripts/merge_package_status_unittest.py']=skip
   ['scripts/upload_package_status_unittest.py']=skip
 
-  # Tests that take >2 minutes to run.
-  ['scripts/cros_portage_upgrade_unittest.py']=skip
+  # Tests that take >2 minutes to run.  All the slow tests are
+  # disabled atm though ...
+  #['scripts/cros_portage_upgrade_unittest.py']=skip
 )
 
 if [[ $# -ne 0 && $1 == "--quick" ]]; then
@@ -147,6 +139,24 @@ cleanup() {
   # Set of a hard kill timer after a while.
   delayed_kill &
   wait ${children[*]}
+  show_logs
+}
+
+show_logs() {
+  cat "${LOGFILE}".err.* > "${LOGFILE}" 2>/dev/null || :
+
+  rm -f "${LOGFILE}".*
+  if [[ -s ${LOGFILE} ]]; then
+    cat "${LOGFILE}"
+    echo
+    echo
+    echo "FAIL: The following tests failed:"
+    sed -nre '/^FAIL:/s/^FAIL: Unittest (.*) failed output:/\1/p' "${LOGFILE}"
+    rm -f "${LOGFILE}"
+    exit 1
+  fi
+
+  rm -f "${LOGFILE}"
 }
 
 trap cleanup INT TERM
@@ -159,17 +169,5 @@ done
 wait ${children[*]}
 trap - INT TERM
 
-cat "${LOGFILE}".* > "${LOGFILE}" 2>/dev/null || :
-rm -f "${LOGFILE}".*
-if [[ $(wc -c "${LOGFILE}" |cut -f1 -d' ') -gt 0 ]]; then
-  cat "${LOGFILE}"
-  echo
-  echo
-  echo "FAIL: The following tests failed:"
-  sed -nre '/^FAIL:/s/^FAIL: Unittest (.*) failed output:/\1/p' "${LOGFILE}"
-  rm -f "${LOGFILE}"
-  exit 1
-fi
-
-rm -f "${LOGFILE}"
+show_logs
 echo "All tests succeeded!"

@@ -190,7 +190,7 @@ def _KillChildProcess(proc, kill_timeout, cmd, original_handler, signum, frame):
       if proc.poll() is None:
         # Still doesn't want to die.  Too bad, so sad, time to die.
         proc.kill()
-    except EnvironmentError, e:
+    except EnvironmentError as e:
       Warning('Ignoring unhandled exception in _KillChildProcess: %s', e)
 
     # Ensure our child process has been reaped.
@@ -228,7 +228,7 @@ class _Popen(subprocess.Popen):
 
     try:
       os.kill(self.pid, signum)
-    except EnvironmentError, e:
+    except EnvironmentError as e:
       if e.errno == errno.EPERM:
         # Kill returns either 0 (signal delivered), or 1 (signal wasn't
         # delivered).  This isn't particularly informative, but we still
@@ -252,13 +252,13 @@ class _Popen(subprocess.Popen):
 
 
 #pylint: disable=W0622
-def RunCommand(cmd, print_cmd=True, error_ok=False, error_message=None,
-               redirect_stdout=False, redirect_stderr=False,
-               cwd=None, input=None, enter_chroot=False, shell=False,
-               env=None, extra_env=None, ignore_sigint=False,
+def RunCommand(cmd, print_cmd=True, error_message=None, redirect_stdout=False,
+               redirect_stderr=False, cwd=None, input=None, enter_chroot=False,
+               shell=False, env=None, extra_env=None, ignore_sigint=False,
                combine_stdout_stderr=False, log_stdout_to_file=None,
                chroot_args=None, debug_level=logging.INFO,
-               error_code_ok=False, kill_timeout=1, log_output=False):
+               error_code_ok=False, kill_timeout=1, log_output=False,
+               stdout_to_pipe=False):
   """Runs a command.
 
   Args:
@@ -266,8 +266,6 @@ def RunCommand(cmd, print_cmd=True, error_ok=False, error_message=None,
       must be true. Otherwise the command must be an array of arguments, and
       shell must be false.
     print_cmd: prints the command before running it.
-    error_ok: ***DEPRECATED, use error_code_ok instead***
-              Does not raise an exception on any errors.
     error_message: prints out this message when an error occurs.
     redirect_stdout: returns the stdout.
     redirect_stderr: holds stderr output until input is communicated.
@@ -297,11 +295,13 @@ def RunCommand(cmd, print_cmd=True, error_ok=False, error_message=None,
                  coming from subprocess as well.
     error_code_ok: Does not raise an exception when command returns a non-zero
                    exit code.  Instead, returns the CommandResult object
-                   containing the exit code.
+                   containing the exit code. Note: will still raise an
+                   exception if the cmd file does not exist.
     kill_timeout: If we're interrupted, how long should we give the invoked
                   process to shutdown from a SIGTERM before we SIGKILL it.
                   Specified in seconds.
     log_output: Log the command and its output automatically.
+    stdout_to_pipe: Redirect stdout to pipe.
   Returns:
     A CommandResult object.
 
@@ -323,7 +323,7 @@ def RunCommand(cmd, print_cmd=True, error_ok=False, error_message=None,
   def _get_tempfile():
     try:
       return tempfile.TemporaryFile(bufsize=0)
-    except EnvironmentError, e:
+    except EnvironmentError as e:
       if e.errno != errno.ENOENT:
         raise
       # This can occur if we were pointed at a specific location for our
@@ -338,6 +338,8 @@ def RunCommand(cmd, print_cmd=True, error_ok=False, error_message=None,
   # view of the file.
   if log_stdout_to_file:
     stdout = open(log_stdout_to_file, 'w+')
+  elif stdout_to_pipe:
+    stdout = subprocess.PIPE
   elif redirect_stdout or mute_output or log_output:
     stdout = _get_tempfile()
 
@@ -427,7 +429,7 @@ def RunCommand(cmd, print_cmd=True, error_ok=False, error_message=None,
         signal.signal(signal.SIGINT, old_sigint)
         signal.signal(signal.SIGTERM, old_sigterm)
 
-      if stdout and not log_stdout_to_file:
+      if stdout and not log_stdout_to_file and not stdout_to_pipe:
         stdout.seek(0)
         cmd_result.output = stdout.read()
         stdout.close()
@@ -445,32 +447,17 @@ def RunCommand(cmd, print_cmd=True, error_ok=False, error_message=None,
       if cmd_result.error:
         logger.log(debug_level, '(stderr):\n%s' % cmd_result.error)
 
-    if error_ok:
-      logger.warning("error_ok is deprecated; use error_code_ok instead."
-                     "error_ok will be removed in Q1 2013.  Was invoked "
-                     "with args=%r", cmd)
-
-    if not error_ok and not error_code_ok and proc.returncode:
+    if not error_code_ok and proc.returncode:
       msg = ('Failed command "%s", cwd=%s, extra env=%r'
              % (' '.join(map(repr, cmd)), cwd, extra_env))
       if error_message:
         msg += '\n%s' % error_message
       raise RunCommandError(msg, cmd_result)
-  # TODO(sosa): is it possible not to use the catch-all Exception here?
-  except OSError, e:
+  except OSError as e:
     estr = str(e)
     if e.errno == errno.EACCES:
       estr += '; does the program need `chmod a+x`?'
-    if not error_ok:
-      raise RunCommandError(estr, CommandResult(cmd=cmd),
-                            exception=e)
-    else:
-      Warning(estr)
-  except Exception, e:
-    if not error_ok:
-      raise
-    else:
-      Warning(str(e))
+    raise RunCommandError(estr, CommandResult(cmd=cmd), exception=e)
   finally:
     if proc is not None:
       # Ensure the process is dead.
@@ -674,6 +661,24 @@ def GenericRetry(handler, max_retry, functor, *args, **kwds):
   raise exc_info[0], exc_info[1], exc_info[2]
 
 
+def RetryException(exc_retry, max_retry, functor, *args, **kwds):
+  """Convience wrapper for RetryInvocation based on exceptions.
+
+  Args:
+    exc_retry: A class (or tuple of classes).  If the raised exception
+      is the given class(es), a retry will be attempted.  Otherwise,
+      the exception is raised.
+    *: See GenericRetry.
+  """
+  if not isinstance(exc_retry, (tuple, type)):
+    raise TypeError('exc_retry should be an exception (or tuple), not %r' %
+                    exc_retry)
+  #pylint: disable=E0102
+  def exc_retry(exc, values=exc_retry):
+    return isinstance(exc, values)
+  return GenericRetry(exc_retry, max_retry, functor, *args, **kwds)
+
+
 def RetryCommand(functor, max_retry, *args, **kwds):
   """Wrapper for RunCommand that will retry a command
 
@@ -699,7 +704,7 @@ def RetryCommand(functor, max_retry, *args, **kwds):
   values = kwds.pop('retry_on', None)
   def ShouldRetry(exc):
     """Return whether we should retry on a given exception."""
-    if not isinstance(exc, RunCommandError):
+    if not ShouldRetryCommandCommon(exc):
       return False
     if values is None and exc.result.returncode < 0:
       logging.info('Child process received signal %d; not retrying.',
@@ -707,6 +712,16 @@ def RetryCommand(functor, max_retry, *args, **kwds):
       return False
     return values is None or exc.result.returncode in values
   return GenericRetry(ShouldRetry, max_retry, functor, *args, **kwds)
+
+
+def ShouldRetryCommandCommon(exc):
+  """Returns whether any RunCommand should retry on a given exception."""
+  if not isinstance(exc, RunCommandError):
+    return False
+  if exc.result.returncode is None:
+    logging.info('Child process failed to launch; not retrying.')
+    return False
+  return True
 
 
 def RunCommandWithRetries(max_retry, *args, **kwds):
@@ -734,6 +749,18 @@ def RunCommandCaptureOutput(cmd, **kwds):
   """
   return RunCommand(cmd, redirect_stdout=kwds.pop('redirect_stdout', True),
                     redirect_stderr=kwds.pop('redirect_stderr', True), **kwds)
+
+
+def RunCommandQuietly(*args, **kwargs):
+  """Wrapper for RunCommand that runs silently.
+
+  The wrapper does not echo the command.  stdout and stderr are captured but
+  not echoed.
+  """
+  kwargs.setdefault('print_cmd', False)
+  kwargs.setdefault('stdout_to_pipe', True)
+  kwargs.setdefault('combine_stdout_stderr', True)
+  return RunCommand(*args, **kwargs)
 
 
 def TimedCommand(functor, *args, **kwargs):
@@ -1143,18 +1170,18 @@ class ContextManagerStack(object):
     finally:
       if obj is not None:
         obj.__enter__()
-      self._stack.append(obj)
+        self._stack.append(obj)
 
   def __enter__(self):
-    # Nothing to do in this case, since we've already done
-    # our entrances.
+    # Nothing to do in this case.  The individual __enter__'s are done
+    # when the context managers are added, which will likely be after
+    # the __enter__ method of this stack is called.
     return self
 
   def __exit__(self, exc_type, exc, traceback):
-    # Run it in reverse order, tracking the results
-    # so we know whether or not to suppress the exception raised
-    # (or to switch that exception to a new one triggered by a handlers
-    # __exit__).
+    # Exit each context manager in stack in reverse order, tracking the results
+    # to know whether or not to suppress the exception raised (or to switch that
+    # exception to a new one triggered by an individual handler's __exit__).
     for handler in reversed(self._stack):
       # pylint: disable=W0702
       try:
@@ -1162,11 +1189,17 @@ class ContextManagerStack(object):
           exc_type = exc = traceback = None
       except:
         exc_type, exc, traceback = sys.exc_info()
-    if all(x is None for x in (exc_type, exc, traceback)):
-      return True
 
     self._stack = []
 
+    # Return True if any exception was handled.
+    if all(x is None for x in (exc_type, exc, traceback)):
+      return True
+
+    # Raise any exception that is left over from exiting all context managers.
+    # Normally a single context manager would return False to allow caller to
+    # re-raise the exception itself, but here the exception might have been
+    # raised during the exiting of one of the individual context managers.
     raise exc_type, exc, traceback
 
 
@@ -1210,7 +1243,7 @@ def RunCurl(args, **kwargs):
   try:
     return RunCommandWithRetries(5, cmd, sleep=3, retry_on=retriable_exits,
                                  **kwargs)
-  except RunCommandError, e:
+  except RunCommandError as e:
     code = e.result.returncode
     if code in (51, 58, 60):
       # These are the return codes of failing certs as per 'man curl'.
@@ -1219,7 +1252,7 @@ def RunCurl(args, **kwargs):
       try:
         return RunCommandWithRetries(5, cmd, sleep=60, retry_on=retriable_exits,
                                      **kwargs)
-      except RunCommandError, e:
+      except RunCommandError as e:
         Die("Curl failed w/ exit code %i", code)
 
 
@@ -1233,7 +1266,10 @@ def SetupBasicLogging(level=logging.DEBUG):
 
 class ApiMismatchError(Exception):
   """Raised by GetTargetChromiteApiVersion."""
-  pass
+
+
+class NoChromiteError(Exception):
+  """Raised when an expected chromite installation was missing."""
 
 
 def GetTargetChromiteApiVersion(buildroot, validate_version=True):
@@ -1250,9 +1286,19 @@ def GetTargetChromiteApiVersion(buildroot, validate_version=True):
 
   Returns the version number in (major, minor) tuple.
   """
-  api = RunCommandCaptureOutput(
-      [constants.PATH_TO_CBUILDBOT, '--reexec-api-version'],
-      cwd=buildroot, error_code_ok=True)
+  try:
+    api = RunCommandCaptureOutput(
+        [constants.PATH_TO_CBUILDBOT, '--reexec-api-version'],
+        cwd=buildroot, error_code_ok=True)
+  except RunCommandError:
+    # Although error_code_ok=True was used, this exception will still be raised
+    # if the executible did not exist.
+    full_cbuildbot_path = os.path.join(buildroot, constants.PATH_TO_CBUILDBOT)
+    if not os.path.exists(full_cbuildbot_path):
+      raise NoChromiteError('No cbuildbot found in buildroot %s, expected to '
+                            'find %s. ' % (buildroot, full_cbuildbot_path))
+    raise
+
   # If the command failed, then we're targeting a cbuildbot that lacks the
   # option; assume 0:0 (ie, initial state).
   major = minor = 0
@@ -1442,7 +1488,7 @@ def LoadKeyValueFile(input, ignore_missing=False):
           # Only strip quotes if the first & last one match.
           val = val[1:-1]
         d[chunks[0].strip()] = val
-  except EnvironmentError, e:
+  except EnvironmentError as e:
     if not (ignore_missing and e.errno == errno.ENOENT):
       raise
 
@@ -1531,3 +1577,38 @@ def UserDateTimeFormat(timeval=None):
     timeval = time.mktime(timeval.timetuple())
   return '%s (%s)' % (formatdate(timeval=timeval, localtime=True),
                       time.tzname[0])
+
+
+def GetDefaultBoard():
+  """Gets the default board.
+
+  Returns:
+    The default board (as a string), or None if either the default board
+    file was missing or malformed.
+  """
+  default_board_file_name = os.path.join(constants.SOURCE_ROOT, 'src',
+                                         'scripts', '.default_board')
+  try:
+    with open(default_board_file_name) as default_board_file:
+      default_board = default_board_file.read().strip()
+      # Check for user typos like whitespace
+      if not re.match('[a-zA-Z0-9-_]*$', default_board):
+        logging.warning('Noticed invalid default board: |%s|. '
+                        'Ignoring this default.',
+                        default_board)
+        default_board = None
+  except IOError:
+    return None
+
+  return default_board
+
+
+# TODO(szager): Merge this with similar functionality in osutils.Which().
+def FindDepotTools():
+  """Discovers the location of a depot_tools checkout in PATH."""
+  for p in os.environ['PATH'].split(os.pathsep):
+    if p.split(os.sep)[-1] == 'depot_tools':
+      f1 = os.path.join(p, 'gclient.py')
+      f2 = os.path.join(p, 'git_cl.py')
+      if os.access(f1, os.R_OK) and os.access(f2, os.R_OK):
+        return p
