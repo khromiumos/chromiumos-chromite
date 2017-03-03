@@ -59,14 +59,14 @@ For an incremental build (faster), run with -i
 To get faster clean builds, install ccache, and create ~/.crosfwrc with
 this line:
 
- USE_CCACHE = True
+ use_ccache = True
 
 (make sure ~/.ccache is not on NFS, or set CCACHE_DIR)
 
 Other options are the default board to build, and verbosity (0-4), e.g.:
 
- DEFAULT_BOARD = 'daisy'
- VERBOSE = 1
+ default_board = 'daisy'
+ verbose = 1
 
 It is possible to use multiple servo boards, each on its own port. Add
 these lines to your ~/.crosfwrc to set the servo port to use for each
@@ -76,14 +76,9 @@ board:
  SERVO_PORT['daisy'] = 9999
  SERVO_PORT['peach_pit'] = 7777
 
-All builds appear in the <outdir>/<board> subdirectory and images are written
-to <outdir>/<uboard>/out, where <uboard> is the U-Boot name for the board (in
-the U-Boot boards.cfg file)
-
-The value for <outdir> defaults to /tmp/crosfw but can be configured in your
-~/.crosfwrc file, e.g.:"
-
- OUT_DIR = '/tmp/u-boot'
+All builds appear in the b/<board> subdirectory and images are written
+to b/<uboard>/out, where <uboard> is the U-Boot name for the board (in the
+U-Boot boards.cfg file)
 
 For the -a option here are some useful options:
 
@@ -170,8 +165,6 @@ DEFAULT_DTS = {
     'peach_pit': 'peach-pit',
 }
 
-OUT_DIR = '/tmp/crosfw'
-
 rc_file = os.path.expanduser('~/.crosfwrc')
 if os.path.exists(rc_file):
   execfile(rc_file)
@@ -240,9 +233,7 @@ def ParseCmdline(argv):
                     action='store_false', default=True,
                     help="Don't select default filenames for those not given")
   parser.add_option('-F', '--flash', action='store_true', default=False,
-                    help='Create magic flasher for SPI flash')
-  parser.add_option('-M', '--mmc', action='store_true', default=False,
-                    help='Create magic flasher for eMMC')
+                    help='Create magic flasher')
   parser.add_option('-i', '--incremental', action='store_true', default=False,
                     help="Don't reconfigure and clean")
   parser.add_option('-k', '--kernel', action='store_true', default=False,
@@ -298,13 +289,9 @@ def SetupBuild(options):
 
   Log('Building for %s' % options.board)
 
-  # Separate out board_variant string: "peach_pit" becomes "peach", "pit".
-  # But don't mess up upstream boards which use _ in their name.
+  # Separate out board_variant string: "peach_pit" becomes "peach", "pit"
   parts = options.board.split('_')
-  if parts[0] in ['daisy', 'peach']:
-    board = parts[0]
-  else:
-    board = options.board
+  board = parts[0]
 
   # To allow this to be run from 'cros_sdk'
   if in_chroot:
@@ -367,7 +354,7 @@ def SetupBuild(options):
 
   cpus = multiprocessing.cpu_count()
 
-  outdir = os.path.join(OUT_DIR, uboard)
+  outdir = 'b/%s' % uboard
   base = [
       'make',
       '-j%d' % cpus,
@@ -404,7 +391,8 @@ def SetupBuild(options):
         'QUIET=1',
         'CFLAGS_EXTRA_VBOOT=-DUNROLL_LOOPS',
         'VBOOT_SOURCE=%s/platform/vboot_reference' % src_root]
-    base.append('VBOOT_DEBUG=1')
+    if not options.small:
+      base.append('VBOOT_DEBUG=1')
 
   # Handle the Chrome OS USE_STDINT workaround. Vboot needs <stdint.h> due
   # to a recent change, the need for which I didn't fully understand. But
@@ -485,8 +473,7 @@ def RunBuild(options, base, target, queue):
   if spl:
     files += spl
   if options.size:
-    result = cros_build_lib.RunCommand([CompilerTool('size')] + files,
-                                       **kwargs)
+    cros_build_lib.RunCommand([CompilerTool('size')] + files, **kwargs)
     if result.returncode:
       sys.exit()
 
@@ -520,7 +507,6 @@ def WriteFirmware(options):
   servo = []
   silent = []
   verbose_arg = []
-  ro_uboot = []
 
   bl2 = ['--bl2', '%s/spl/%s-spl.bin' % (outdir, smdk)]
 
@@ -558,16 +544,6 @@ def WriteFirmware(options):
 
   if options.flash:
     flash = ['-F', 'spi']
-
-    # The small builds don't have the command line interpreter so cannot
-    # run the magic flasher script. So use the standard U-Boot in this
-    # case.
-    if options.small:
-      cros_build_lib.Warning('Using standard U-Boot as flasher')
-      flash += ['-U', '##/build/%s/firmware/u-boot.bin' % options.board]
-
-  if options.mmc:
-    flash = ['-F', 'sdmmc']
 
   if options.verbose:
     verbose_arg = ['-v', '%s' % options.verbose]
@@ -617,14 +593,6 @@ def WriteFirmware(options):
   else:
     uboot_fname = '%s/u-boot.bin' % outdir
 
-  if options.ro:
-    # RO U-Boot is passed through as blob 'ro-boot'. We use the standard
-    # ebuild one as RW.
-    # TODO(sjg@chromium.org): Option to build U-Boot a second time to get
-    # a fresh RW U-Boot.
-    cros_build_lib.Warning('Using standard U-Boot for RW')
-    ro_uboot = ['--add-blob', 'ro-boot', uboot_fname]
-    uboot_fname = '##/build/%s/firmware/u-boot.bin' % options.board
   cbf = ['%s/platform/dev/host/cros_bundle_firmware' % src_root,
          '-b', options.board,
          '-d', dts_file,
@@ -634,7 +602,7 @@ def WriteFirmware(options):
          '-M', family]
 
   for other in [bl1, bl2, bmpblk, defaults, dest, ecro, ecrw, flash, kernel,
-                run, seabios, secure, servo, silent, verbose_arg, ro_uboot]:
+                run, seabios, secure, servo, silent, verbose_arg]:
     if other:
       cbf += other
   if options.cbfargs:

@@ -26,7 +26,8 @@ class RepositoryTests(cros_test_lib.MoxTestCase):
     """Test we detect external checkouts properly."""
     self.mox.StubOutWithMock(cros_build_lib, 'RunCommand')
     tests = [
-        'https://chromium.googlesource.com/chromiumos/manifest.git',
+        'http//git.chromium.org/chromiumos/manifest.git',
+        'ssh://gerrit-int.chromium.org:29419/chromeos/manifest.git',
         'test@abcdef.bla.com:39291/bla/manifest.git',
         'test@abcdef.bla.com:39291/bla/manifest',
         'test@abcdef.bla.com:39291/bla/Manifest-internal',
@@ -40,7 +41,9 @@ class RepositoryTests(cros_test_lib.MoxTestCase):
     """Test we detect internal checkouts properly."""
     self.mox.StubOutWithMock(cros_build_lib, 'RunCommand')
     tests = [
-        'https://chrome-internal.googlesource.com/chromeos/manifest-internal',
+        'ssh://gerrit-int.chromium.org:29419/chromeos/manifest-internal.git',
+        'ssh://gerrit-int.chromium.org:29419/chromeos/manifest-internal',
+        'ssh://gerrit.chromium.org:29418/chromeos/manifest-internal',
         'test@abcdef.bla.com:39291/bla/manifest-internal.git',
     ]
 

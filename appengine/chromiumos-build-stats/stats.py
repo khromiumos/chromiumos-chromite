@@ -116,7 +116,7 @@ class MainPage(webapp.RequestHandler):
     error_msg = None
     try:
       stat_entries = model.Statistics.gql(query, DATASTORE_KEY)
-    except datastore_errors.BadQueryError as ex:
+    except datastore_errors.BadQueryError, ex:
       error_msg = '<p>%s.</p><p>Actual GCL query used: "%s"</p>' % (ex, query)
 
     results_html_table = self._PrepareResultsTable(stat_entries, columns,
@@ -226,12 +226,6 @@ class PostPage(webapp.RequestHandler):
       value = self.request.get(prop, self.NO_VALUE)
 
       if value is not self.NO_VALUE:
-        # String properties must be 500 characters or less (GQL requirement).
-        if isinstance(model_prop, db.StringProperty) and len(value) > 500:
-          logging.debug('  String property %r too long.  Cutting off at 500'
-                        ' characters.', prop)
-          value = value[:500]
-
         # Integer properties require casting
         if isinstance(model_prop, db.IntegerProperty):
           value = int(value)

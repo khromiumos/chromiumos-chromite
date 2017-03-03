@@ -51,6 +51,13 @@ class HelperMethodsTest(cros_test_lib.TempDirTestCase):
     self.assertTrue(os.path.lexists(destfile),
                     'Unable to create symlink to %s' % destfile)
 
+  def testRemoveDirs(self):
+    """Tests if _RemoveDirs works with a recursive directory structure."""
+    otherdir = os.path.join(self.tempdir, "foo")
+    osutils.SafeMakedirs(os.path.join(otherdir, "bar"))
+    manifest_version._RemoveDirs(otherdir)
+    self.assertFalse(os.path.exists(otherdir), 'Failed to rmdirs.')
+
 
 class VersionInfoTest(cros_test_lib.MoxTempDirTestCase):
   """Test methods testing methods in VersionInfo class."""
@@ -96,24 +103,22 @@ class VersionInfoTest(cros_test_lib.MoxTempDirTestCase):
   def CommonTestIncrementVersion(self, incr_type, version, chrome_branch=None):
     """Common test increment.  Returns path to new incremented file."""
     message = 'Incrementing cuz I sed so'
-    self.mox.StubOutWithMock(git, 'CreateBranch')
+    self.mox.StubOutWithMock(git, 'CreatePushBranch')
     self.mox.StubOutWithMock(manifest_version, '_PushGitChanges')
     self.mox.StubOutWithMock(git, 'CleanAndCheckoutUpstream')
 
-    git.CreateBranch(self.tempdir, manifest_version.PUSH_BRANCH)
+    git.CreatePushBranch(manifest_version.PUSH_BRANCH, self.tempdir)
 
     version_file = self.CreateFakeVersionFile(
         self.tempdir, version=version, chrome_branch=chrome_branch)
 
-    manifest_version._PushGitChanges(self.tempdir, message, dry_run=False,
-                                     push_to=None)
+    manifest_version._PushGitChanges(self.tempdir, message, dry_run=False)
 
     git.CleanAndCheckoutUpstream(self.tempdir)
     self.mox.ReplayAll()
     info = manifest_version.VersionInfo(version_file=version_file,
                                         incr_type=incr_type)
-    info.IncrementVersion()
-    info.UpdateVersionFile(message, dry_run=False)
+    info.IncrementVersion(message, dry_run=False)
     self.mox.VerifyAll()
     return version_file
 
@@ -198,6 +203,7 @@ class BuildSpecsManagerTest(cros_test_lib.MoxTempDirTestCase):
 
   def testLatestSpecFromDir(self):
     """Tests whether we can get sorted specs correctly from a directory."""
+    self.mox.StubOutWithMock(manifest_version, '_RemoveDirs')
     self.mox.StubOutWithMock(repository, 'CloneGitRepo')
     info = manifest_version.VersionInfo(
         '99.1.2', CHROME_BRANCH, incr_type='branch')
@@ -234,13 +240,14 @@ class BuildSpecsManagerTest(cros_test_lib.MoxTempDirTestCase):
 
   def testGetNextVersionIncrement(self):
     """Tests that we create a new version if a previous one exists."""
-    self.mox.StubOutWithMock(manifest_version.VersionInfo, 'UpdateVersionFile')
+    self.mox.StubOutWithMock(manifest_version.VersionInfo, 'IncrementVersion')
     version_file = VersionInfoTest.CreateFakeVersionFile(self.tempdir)
     info = manifest_version.VersionInfo(version_file=version_file,
                                         incr_type='branch')
-    info.UpdateVersionFile(
+    info.IncrementVersion(
         'Automatic: %s - Updating to a new version number from %s' % (
-            self.build_name, FAKE_VERSION_STRING), dry_run=True)
+            self.build_name, FAKE_VERSION_STRING),
+        dry_run=True).AndReturn(FAKE_VERSION_STRING_NEXT)
 
     self.manager.latest = FAKE_VERSION_STRING
     self.mox.ReplayAll()

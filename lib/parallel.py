@@ -11,13 +11,7 @@ import functools
 import logging
 import multiprocessing
 import os
-try:
-  import Queue
-except ImportError:
-  # Python-3 renamed to "queue".  We still use Queue to avoid collisions
-  # with naming variables as "queue".  Maybe we'll transition at some point.
-  # pylint: disable=F0401
-  import queue as Queue
+import Queue
 import signal
 import sys
 import tempfile
@@ -155,14 +149,12 @@ class _BackgroundTask(multiprocessing.Process):
       with open(self._output.name, 'r') as output:
         pos = 0
         running, exited_cleanly, msg, error = (True, False, None, None)
-        possibly_flaky = False
         while running:
           # Check whether the process is still alive.
           running = self.is_alive()
 
           try:
-            error, results, possibly_flaky = \
-                self._queue.get(True, self.PRINT_INTERVAL)
+            error, results = self._queue.get(True, self.PRINT_INTERVAL)
             running = False
             exited_cleanly = True
           except Queue.Empty:
@@ -176,12 +168,8 @@ class _BackgroundTask(multiprocessing.Process):
               msg = '%r hung for %r seconds' % (self, self.EXIT_TIMEOUT)
               self._KillChildren([self])
             elif not exited_cleanly:
-              # Treat SIGKILL signals as potentially flaky.
-              if self.exitcode == -signal.SIGKILL:
-                possibly_flaky = True
               msg = ('%r exited unexpectedly with code %s' %
-                     (self, self.exitcode))
-
+                     (self, self.EXIT_TIMEOUT))
           # Read output from process.
           output.seek(pos)
           buf = output.read(_BUFSIZE)
@@ -192,9 +180,6 @@ class _BackgroundTask(multiprocessing.Process):
             msg = ('No output from %r for %r seconds' %
                    (self, self.SILENT_TIMEOUT))
             self._KillChildren([self])
-
-            # Timeouts are possibly flaky.
-            possibly_flaky = True
 
             # Read remaining output from the process.
             output.seek(pos)
@@ -227,7 +212,7 @@ class _BackgroundTask(multiprocessing.Process):
       self.Cleanup(silent=True)
 
     # If a traceback occurred, return it.
-    return error, possibly_flaky
+    return error
 
   def start(self):
     """Invoke multiprocessing.Process.start after flushing output/err."""
@@ -247,14 +232,13 @@ class _BackgroundTask(multiprocessing.Process):
       self._semaphore.acquire()
 
     error = 'Unexpected exception in %r' % self
-    possibly_flaky = False
     pid = os.getpid()
     try:
-      error, possibly_flaky = self._Run()
+      error = self._Run()
     finally:
       if not self._killing.is_set() and os.getpid() == pid:
         results = results_lib.Results.Get()
-        self._queue.put((error, results, possibly_flaky))
+        self._queue.put((error, results))
         if self._semaphore is not None:
           self._semaphore.release()
 
@@ -270,7 +254,6 @@ class _BackgroundTask(multiprocessing.Process):
 
     sys.stdout.flush()
     sys.stderr.flush()
-    possibly_flaky = False
     # Send all output to a named temporary file.
     with open(self._output.name, 'w', 0) as output:
       # Back up sys.std{err,out}. These aren't used, but we keep a copy so
@@ -298,7 +281,6 @@ class _BackgroundTask(multiprocessing.Process):
         self._task(*self._task_args, **self._task_kwargs)
       except results_lib.StepFailure as ex:
         error = str(ex)
-        possibly_flaky = ex.possibly_flaky
       except BaseException as ex:
         error = traceback.format_exc()
         if self._killing.is_set():
@@ -307,7 +289,7 @@ class _BackgroundTask(multiprocessing.Process):
         sys.stdout.flush()
         sys.stderr.flush()
 
-    return error, possibly_flaky
+    return error
 
   @classmethod
   def _KillChildren(cls, bg_tasks, log_level=logging.WARNING):
@@ -373,7 +355,6 @@ class _BackgroundTask(multiprocessing.Process):
     """
 
     semaphore = None
-    possibly_flaky = False
     if max_parallel is not None:
       semaphore = multiprocessing.Semaphore(max_parallel)
 
@@ -389,12 +370,10 @@ class _BackgroundTask(multiprocessing.Process):
     finally:
       # Wait for each step to complete.
       tracebacks = []
-      flaky_tasks = []
       while bg_tasks:
         task = bg_tasks.popleft()
-        error, possibly_flaky = task.Wait()
+        error = task.Wait()
         if error is not None:
-          flaky_tasks.append(possibly_flaky)
           tracebacks.append(error)
           if halt_on_error:
             break
@@ -405,8 +384,7 @@ class _BackgroundTask(multiprocessing.Process):
 
       # Propagate any exceptions.
       if tracebacks:
-        possibly_flaky = flaky_tasks and all(flaky_tasks)
-        raise BackgroundFailure('\n' + ''.join(tracebacks), possibly_flaky)
+        raise BackgroundFailure('\n' + ''.join(tracebacks))
 
   @staticmethod
   def TaskRunner(queue, task, onexit=None, task_args=None, task_kwargs=None):
@@ -548,16 +526,16 @@ def BackgroundTaskRunner(task, *args, **kwargs):
   BackgroundFailure is raised with full stack traces of all exceptions.
 
   Example:
-    # This will run somefunc(1, 'small', 'cow', foo='bar') in the background
-    # as soon as data is added to the queue (i.e. queue.put() is called).
+    # This will run somefunc(1, 'small', 'cow', foo='bar' in the background
+    # while "more random stuff" is being executed.
 
     def somefunc(arg1, arg2, arg3, foo=None):
       ...
-
+    ...
     with BackgroundTaskRunner(somefunc, 1, foo='bar') as queue:
       ... do random stuff ...
       queue.put(['small', 'cow'])
-      ... do more random stuff while somefunc() runs ...
+      ... do more random stuff ...
     # Exiting the with statement will block until all calls have completed.
 
   Args:

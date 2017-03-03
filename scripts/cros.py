@@ -28,7 +28,7 @@ def GetOptions(my_commands):
 
 def _RunSubCommand(subcommand):
   """Helper function for testing purposes."""
-  return subcommand.Run()
+  subcommand.Run()
 
 
 def main(argv):
@@ -50,8 +50,6 @@ def main(argv):
                    subcommand.upload_stats_timeout])
     # TODO: to make command completion faster, send an interrupt signal to the
     # stats uploader task after the subcommand completes.
-    code = _RunSubCommand(subcommand)
-    if code is not None:
-      return code
+    _RunSubCommand(subcommand)
 
   return 0

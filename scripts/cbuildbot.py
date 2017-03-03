@@ -49,8 +49,9 @@ _DEFAULT_LOG_DIR = 'cbuildbot_logs'
 _BUILDBOT_LOG_FILE = 'cbuildbot.log'
 _DEFAULT_EXT_BUILDROOT = 'trybot'
 _DEFAULT_INT_BUILDROOT = 'trybot-internal'
-_DISTRIBUTED_TYPES = [constants.PFQ_TYPE, constants.CANARY_TYPE,
-                      constants.CHROME_PFQ_TYPE, constants.PALADIN_TYPE]
+_DISTRIBUTED_TYPES = [constants.COMMIT_QUEUE_TYPE, constants.PFQ_TYPE,
+                      constants.CANARY_TYPE, constants.CHROME_PFQ_TYPE,
+                      constants.PALADIN_TYPE]
 _BUILDBOT_REQUIRED_BINARIES = ('pbzip2',)
 _API_VERSION_ATTR = 'api_version'
 
@@ -131,8 +132,8 @@ def AcquirePoolFromOptions(options):
 class Builder(object):
   """Parent class for all builder types.
 
-  This class functions as an abstract parent class for various build types.
-  Its intended use is builder_instance.Run().
+  This class functions as a parent class for various build types.  It's intended
+  use is builder_instance.Run().
 
   Vars:
     build_config: The configuration dictionary from cbuildbot_config.
@@ -162,13 +163,10 @@ class Builder(object):
     self._RunStage(stages.CleanUpStage)
 
   def _GetStageInstance(self, stage, *args, **kwargs):
-    """Helper function to get a stage instance given the args.
+    """Helper function to get an instance given the args.
 
     Useful as almost all stages just take in options and build_config.
     """
-    # Normally the current build config is used, but that config can be
-    # overridden with a config kwarg.  For example, when getting a stage
-    # for a "child" config.
     config = kwargs.pop('config', self.build_config)
     return stage(self.options, config, *args, **kwargs)
 
@@ -183,16 +181,7 @@ class Builder(object):
       self.release_tag = manifest_manager.current_version
 
   def _RunStage(self, stage, *args, **kwargs):
-    """Wrapper to run a stage.
-
-    Args:
-      stage: A BuilderStage class.
-      args: args to pass to stage constructor.
-      kwargs: kwargs to pass to stage constructor.
-    Returns:
-
-      Whatever the stage's Run method returns.
-    """
+    """Wrapper to run a stage."""
     stage_instance = self._GetStageInstance(stage, *args, **kwargs)
     return stage_instance.Run()
 
@@ -203,26 +192,12 @@ class Builder(object):
     """
     raise NotImplementedError()
 
-  def GetCompletionInstance(self):
-    """Returns the LKGMCandidateSyncCompletionStage for this build.
-
-    Subclasses may override this method.
-
-    Returns: None
-    """
-    return None
-
   def RunStages(self):
     """Subclasses must override this method.  Runs the appropriate code."""
     raise NotImplementedError()
 
   def _ShouldReExecuteInBuildRoot(self):
     """Returns True if this build should be re-executed in the buildroot."""
-    # The commandline --noreexec flag can override the config.
-    if not (self.options.postsync_reexec and
-            self.build_config['postsync_reexec']):
-      return False
-
     abs_buildroot = os.path.abspath(self.options.buildroot)
     return not os.path.abspath(__file__).startswith(abs_buildroot)
 
@@ -317,26 +292,23 @@ class Builder(object):
     print_report = True
     exception_thrown = False
     success = True
-    sync_instance = None
     try:
       self.Initialize()
       sync_instance = self.GetSyncInstance()
       sync_instance.Run()
       self._SetReleaseTag()
 
-      if self.options.postsync_patch and self.build_config['postsync_patch']:
-        # Filter out patches to manifest, since PatchChangesStage can't handle
-        # them.  Manifest patches are patched in the BootstrapStage.
-        non_manifest_patches = self.patch_pool.FilterManifest(negate=True)
-        if non_manifest_patches:
-          self._RunStage(stages.PatchChangesStage, non_manifest_patches)
+      # Filter out patches to manifest, since PatchChangesStage can't handle
+      # them.  Manifest patches are patched in the BootstrapStage.
+      non_manifest_patches = self.patch_pool.FilterManifest(negate=True)
+      if non_manifest_patches:
+        self._RunStage(stages.PatchChangesStage, non_manifest_patches)
 
       if self._ShouldReExecuteInBuildRoot():
         print_report = False
         success = self._ReExecuteInBuildroot(sync_instance)
       else:
         self.RunStages()
-
     except Exception as ex:
       # If the build is marked as successful, but threw exceptions, that's a
       # problem.
@@ -344,16 +316,13 @@ class Builder(object):
       if results_lib.Results.BuildSucceededSoFar():
         traceback.print_exc(file=sys.stdout)
         raise
-
       if not (print_report and isinstance(ex, results_lib.StepFailure)):
         raise
-
     finally:
       if print_report:
         results_lib.WriteCheckpoint(self.options.buildroot)
-        completion_instance = self.GetCompletionInstance()
         self._RunStage(stages.ReportStage, self.archive_stages,
-                       self.release_tag, sync_instance, completion_instance)
+                       self.release_tag)
         success = results_lib.Results.BuildSucceededSoFar()
         if exception_thrown and success:
           success = False
@@ -374,11 +343,9 @@ class SimpleBuilder(Builder):
   def GetSyncInstance(self):
     """Sync to lkgm or TOT as necessary.
 
-    Returns: the instance of the sync stage to run.
+    Returns: the instance of the sync stage that was run.
     """
-    if self.options.force_version:
-      sync_stage = self._GetStageInstance(stages.ManifestVersionedSyncStage)
-    elif self.build_config['use_lkgm']:
+    if self.build_config['use_lkgm']:
       sync_stage = self._GetStageInstance(stages.LKGMSyncStage)
     elif self.build_config['use_chrome_lkgm']:
       sync_stage = self._GetStageInstance(stages.ChromeLKGMSyncStage)
@@ -389,11 +356,7 @@ class SimpleBuilder(Builder):
 
   @staticmethod
   def _RunParallelStages(stage_objs):
-    """Run the specified stages in parallel.
-
-    Args:
-      stage_objs: BuilderStage objects.
-    """
+    """Run the specified stages in parallel."""
     steps = [stage.Run for stage in stage_objs]
     try:
       parallel.RunParallelSteps(steps)
@@ -403,41 +366,25 @@ class SimpleBuilder(Builder):
       # results.) In this case, attribute the exception to any stages that
       # didn't report back correctly (if any).
       for stage in stage_objs:
-        for name in stage.GetStageNames():
-          if not results_lib.Results.StageHasResults(name):
-            results_lib.Results.Record(name, ex, str(ex))
-
+        if not results_lib.Results.StageHasResults(stage.name):
+          results_lib.Results.Record(stage.name, ex, str(ex))
       raise
 
   def _RunBackgroundStagesForBoard(self, config, board, compilecheck):
-    """Run background board-specific stages for the specified board.
-
-    Args:
-      config: Build config dict.
-      board: Board name.
-      compilecheck: Boolean.  If True, run only the compile steps.
-    """
+    """Run background board-specific stages for the specified board."""
     archive_stage = self.archive_stages[BoardConfig(board, config['name'])]
     if config['pgo_generate']:
-      self._RunParallelStages([archive_stage])
       return
-
     if compilecheck:
       self._RunStage(stages.BuildPackagesStage, board, archive_stage,
                      config=config)
       self._RunStage(stages.UnitTestStage, board, config=config)
       return
-
-    stage_list = []
-    if self.options.chrome_sdk and self.build_config['chrome_sdk']:
-      stage_list.append([stages.ChromeSDKStage, board, archive_stage])
-    stage_list += [
-        [stages.RetryStage, 1, stages.VMTestStage, board, archive_stage],
-        [stages.SignerTestStage, board, archive_stage],
-        [stages.UnitTestStage, board],
-        [stages.UploadPrebuiltsStage, board, archive_stage],
-        [stages.DevInstallerPrebuiltsStage, board, archive_stage]
-    ]
+    stage_list = [[stages.VMTestStage, board, archive_stage],
+                  [stages.SignerTestStage, board, archive_stage],
+                  [stages.UnitTestStage, board],
+                  [stages.UploadPrebuiltsStage, board, archive_stage],
+                  [stages.DevInstallerPrebuiltsStage, board, archive_stage]]
 
     # We can not run hw tests without archiving the payloads.
     if self.options.archive:
@@ -448,9 +395,6 @@ class SimpleBuilder(Builder):
         elif suite_config.suite == constants.HWTEST_AU_SUITE:
           stage_list.append([stages.AUTestStage, board, archive_stage,
                              suite_config])
-        elif suite_config.suite == constants.HWTEST_QAV_SUITE:
-          stage_list.append([stages.QATestStage, board,
-                             archive_stage, suite_config])
         else:
           stage_list.append([stages.HWTestStage, board, archive_stage,
                              suite_config])
@@ -458,89 +402,69 @@ class SimpleBuilder(Builder):
     stage_objs = [self._GetStageInstance(*x, config=config) for x in stage_list]
     self._RunParallelStages(stage_objs + [archive_stage])
 
-  def _RunChrootBuilderTypeBuild(self):
-    """Runs through stages of a CHROOT_BUILDER_TYPE build."""
-    self._RunStage(stages.UprevStage, boards=[], enter_chroot=False)
-    self._RunStage(stages.InitSDKStage)
-    self._RunStage(stages.SetupBoardStage, [constants.CHROOT_BUILDER_BOARD])
-    self._RunStage(stages.SyncChromeStage)
-    self._RunStage(stages.PatchChromeStage)
-    self._RunStage(stages.SDKPackageStage)
-    self._RunStage(stages.SDKTestStage)
-    self._RunStage(stages.UploadPrebuiltsStage,
-                   constants.CHROOT_BUILDER_BOARD, None)
-
-  def _RunRefreshPackagesTypeBuild(self):
-    """Runs through the stages of a REFRESH_PACKAGES_TYPE build."""
-    self._RunStage(stages.InitSDKStage)
-    self._RunStage(stages.SetupBoardStage)
-    self._RunStage(stages.RefreshPackageStatusStage)
-
-  def _RunDefaultTypeBuild(self):
-    """Runs through the stages of a non-special-type build."""
-    self._RunStage(stages.InitSDKStage)
-    self._RunStage(stages.UprevStage)
-    self._RunStage(stages.SetupBoardStage)
-
-    # We need a handle to this stage to extract info from it.
-    # TODO(mtennant): Just have _RunStage return the stage object, since
-    # nothing uses the return value of _RunStage now, and the Run method
-    # of stage objects does not appear to return anything, either.
-    sync_chrome_stage = self._GetStageInstance(stages.SyncChromeStage)
-    sync_chrome_stage.Run()
-    self._RunStage(stages.PatchChromeStage)
-
-    # Prepare stages to run in background.
-    configs = self.build_config['child_configs'] or [self.build_config]
-    tasks = []
-    for config in configs:
-      for board in config['boards']:
-        archive_stage = self._GetStageInstance(
-            stages.ArchiveStage, board, self.release_tag, config=config,
-            chrome_version=sync_chrome_stage.chrome_version)
-        board_config = BoardConfig(board, config['name'])
-        self.archive_stages[board_config] = archive_stage
-        tasks.append((config, board, archive_stage))
-
-    # Set up a process pool to run test/archive stages in the background.
-    # This process runs task(board) for each board added to the queue.
-    task_runner = self._RunBackgroundStagesForBoard
-    with parallel.BackgroundTaskRunner(task_runner) as queue:
-      for config, board, archive_stage in tasks:
-        compilecheck = config['compilecheck'] or self.options.compilecheck
-        if not compilecheck:
-          # Run BuildPackages and BuildImage in the foreground, generating
-          # or using PGO data if requested.
-          kwargs = {'archive_stage': archive_stage, 'config': config}
-          if config['pgo_generate']:
-            kwargs['pgo_generate'] = True
-          elif config['pgo_use']:
-            kwargs['pgo_use'] = True
-
-          self._RunStage(stages.BuildPackagesStage, board, **kwargs)
-          self._RunStage(stages.BuildImageStage, board, **kwargs)
-
-          if config['pgo_generate']:
-            suite = cbuildbot_config.PGORecordTest()
-            self._RunStage(stages.HWTestStage, board, archive_stage, suite,
-                           config=config)
-
-        # Kick off our background stages.
-        queue.put([config, board, compilecheck])
-
   def RunStages(self):
     """Runs through build process."""
     # TODO(sosa): Split these out into classes.
     if self.build_config['build_type'] == constants.PRE_CQ_LAUNCHER_TYPE:
       self._RunStage(stages.PreCQLauncherStage)
-    elif self.build_config['build_type'] == constants.CREATE_BRANCH_TYPE:
-      self._RunStage(stages.BranchUtilStage)
     elif self.build_config['build_type'] == constants.CHROOT_BUILDER_TYPE:
-      self._RunChrootBuilderTypeBuild()
+      self._RunStage(stages.UprevStage, boards=[], enter_chroot=False)
+      self._RunStage(stages.InitSDKStage)
+      self._RunStage(stages.SetupBoardStage, [constants.CHROOT_BUILDER_BOARD])
+      self._RunStage(stages.SyncChromeStage)
+      self._RunStage(stages.PatchChromeStage)
+      self._RunStage(stages.SDKPackageStage)
+      self._RunStage(stages.SDKTestStage)
+      self._RunStage(stages.UploadPrebuiltsStage,
+                     constants.CHROOT_BUILDER_BOARD, None)
     elif self.build_config['build_type'] == constants.REFRESH_PACKAGES_TYPE:
-      self._RunRefreshPackagesTypeBuild()
+      self._RunStage(stages.InitSDKStage)
+      self._RunStage(stages.SetupBoardStage)
+      self._RunStage(stages.RefreshPackageStatusStage)
     else:
-      self._RunDefaultTypeBuild()
+      self._RunStage(stages.InitSDKStage)
+      self._RunStage(stages.UprevStage)
+      self._RunStage(stages.SetupBoardStage)
+      # We need a handle to this stage to extract info from it.
+      sync_chrome_stage = self._GetStageInstance(stages.SyncChromeStage)
+      sync_chrome_stage.Run()
+      self._RunStage(stages.PatchChromeStage)
+
+      configs = self.build_config['child_configs'] or [self.build_config]
+      tasks = []
+      for config in configs:
+        for board in config['boards']:
+          archive_stage = self._GetStageInstance(
+              stages.ArchiveStage, board, self.release_tag, config=config,
+              chrome_version=sync_chrome_stage.chrome_version)
+          board_config = BoardConfig(board, config['name'])
+          self.archive_stages[board_config] = archive_stage
+          tasks.append((config, board, archive_stage))
+
+      # Set up a process pool to run test/archive stages in the background.
+      # This process runs task(board) for each board added to the queue.
+      task = self._RunBackgroundStagesForBoard
+      with parallel.BackgroundTaskRunner(task) as queue:
+        for config, board, archive_stage in tasks:
+          compilecheck = config['compilecheck'] or self.options.compilecheck
+          if not compilecheck:
+            # Run BuildPackages and BuildImage in the foreground, generating
+            # or using PGO data if requested.
+            kwargs = {'archive_stage': archive_stage, 'config': config}
+            if config['pgo_generate']:
+              kwargs['pgo_generate'] = True
+            elif config['pgo_use']:
+              kwargs['pgo_use'] = True
+            self._RunStage(stages.BuildPackagesStage, board, **kwargs)
+            self._RunStage(stages.BuildImageStage, board, **kwargs)
+
+            if config['pgo_generate']:
+              suite = cbuildbot_config.PGORecordTest()
+              self._RunStage(stages.HWTestStage, board, archive_stage, suite,
+                             config=config)
+
+          # Kick off our background stages.
+          queue.put([config, board, compilecheck])
 
 
 class DistributedBuilder(SimpleBuilder):
@@ -559,12 +483,11 @@ class DistributedBuilder(SimpleBuilder):
     super(DistributedBuilder, self).__init__(*args, **kwargs)
     self.completion_stage_class = None
     self.sync_stage = None
-    self._completion_stage = None
 
   def GetSyncInstance(self):
     """Syncs the tree using one of the distributed sync logic paths.
 
-    Returns: the instance of the sync stage to run.
+    Returns: the instance of the sync stage that was run.
     """
     # Determine sync class to use.  CQ overrides PFQ bits so should check it
     # first.
@@ -586,29 +509,22 @@ class DistributedBuilder(SimpleBuilder):
     self.sync_stage = sync_stage
     return self.sync_stage
 
-  def GetCompletionInstance(self):
-    """Returns the completion_stage_class instance that was used for this build.
-
-    Returns None if the completion_stage instance was not yet created (this
-    occurs during Publish).
-    """
-    return self._completion_stage
-
   def Publish(self, was_build_successful):
     """Completes build by publishing any required information."""
     completion_stage = self._GetStageInstance(self.completion_stage_class,
                                               self.sync_stage,
                                               was_build_successful)
-    self._completion_stage = completion_stage
-    completion_successful = False
-    try:
-      completion_stage.Run()
-      completion_successful = True
-    finally:
-      if not completion_successful:
-        was_build_successful = False
-      if self.build_config['push_overlays']:
-        self._RunStage(stages.PublishUprevChangesStage, was_build_successful)
+    completion_stage.Run()
+    name = completion_stage.name
+    if (self.build_config['pre_cq'] or self.options.pre_cq or
+        not results_lib.Results.WasStageSuccessful(name)):
+      should_publish_changes = False
+    else:
+      should_publish_changes = (self.build_config['master'] and
+                                was_build_successful)
+
+    if should_publish_changes:
+      self._RunStage(stages.PublishUprevChangesStage)
 
   def RunStages(self):
     """Runs simple builder logic and publishes information to overlays."""
@@ -907,10 +823,9 @@ def _CreateParser():
                     help='List all of the buildbot configs available w/--list')
 
   parser.add_option('--local', default=False, action='store_true',
-                    help='Specifies that this tryjob should be run locally. '
-                         'Implies --debug.')
+                    help='Specifies that this tryjob should be run locally')
   parser.add_option('--remote', default=False, action='store_true',
-                    help='Specifies that this tryjob should be run remotely.')
+                    help='Specifies that this tryjob should be run remotely')
 
   parser.add_remote_option('-b', '--branch',
                            help='The manifest branch to test.  The branch to '
@@ -984,25 +899,6 @@ def _CreateParser():
   parser.add_option_group(group)
 
   #
-  # Branch creation options.
-  #
-
-  group = CustomGroup(
-      parser,
-      'Branch Creation Options (used with branch-util)')
-
-  group.add_remote_option('--branch-name',
-                          help='The branch to create or delete.')
-  group.add_remote_option('--delete-branch', default=False, action='store_true',
-                          help='Delete the branch specified in --branch-name.')
-  group.add_remote_option('--rename-to', type='string',
-                          help='Rename a branch to the specified name.')
-  group.add_remote_option('--force-create', default=False, action='store_true',
-                          help='Overwrites an existing branch.')
-
-  parser.add_option_group(group)
-
-  #
   # Advanced options.
   #
 
@@ -1055,21 +951,9 @@ def _CreateParser():
   group.add_remote_option('--nocgroups', action='store_false', dest='cgroups',
                           default=True,
                           help='Disable cbuildbots usage of cgroups.')
-  group.add_remote_option('--nochromesdk', action='store_false',
-                          dest='chrome_sdk', default=True,
-                          help="Don't run the ChromeSDK stage which builds "
-                               "Chrome outside of the chroot.")
   group.add_remote_option('--noprebuilts', action='store_false',
                           dest='prebuilts', default=True,
                           help="Don't upload prebuilts.")
-  group.add_remote_option('--nopatch', action='store_false',
-                          dest='postsync_patch', default=True,
-                          help=("Don't run PatchChanges stage.  This does not "
-                                "disable patching in of chromite patches "
-                                "during BootstrapStage."))
-  group.add_remote_option('--noreexec', action='store_false',
-                          dest='postsync_reexec', default=True,
-                          help="Don't reexec into the buildroot after syncing.")
   group.add_remote_option('--nosdk', action='store_true',
                           default=False,
                           help='Re-create the SDK from scratch.')
@@ -1100,8 +984,7 @@ def _CreateParser():
                                'timeout.')
   group.add_remote_option('--version', dest='force_version', default=None,
                           help='Used with manifest logic.  Forces use of this '
-                               'version rather than create or get latest. '
-                               'Examples: 4815.0.0-rc1, 4815.1.2')
+                               'version rather than create or get latest.')
 
   parser.add_option_group(group)
 
@@ -1182,8 +1065,7 @@ def _FinishParsing(options, args):
   _PostParseCheck().
 
   Args:
-    options: The options object returned by optparse
-    args: The args object returned by optparse
+    options, args: The options/args object returned by optparse
   """
   # Populate options.pass_through_args.
   accepted, _ = commandline.FilteringParser.FilterArgs(
@@ -1248,7 +1130,7 @@ def _FinishParsing(options, args):
   options.debug_forced = False
   if options.debug:
     options.debug_forced = True
-  if not options.debug:
+  else:
     # We don't set debug by default for
     # 1. --buildbot invocations.
     # 2. --remote invocations, because it needs to push changes to the tryjob
@@ -1257,26 +1139,6 @@ def _FinishParsing(options, args):
 
   # Record the configs targeted.
   options.build_targets = args[:]
-
-  if constants.BRANCH_UTIL_CONFIG in options.build_targets:
-    if options.remote:
-      cros_build_lib.Die(
-          'Running branch-util as a remote tryjob is not yet supported.')
-    if len(options.build_targets) > 1:
-      cros_build_lib.Die(
-          'Cannot run branch-util with any other configs.')
-    if not options.branch_name:
-      cros_build_lib.Die(
-          'Must specify --branch-name with the branch-util config.')
-    if not any([options.force_version, options.delete_branch,
-                options.rename_to]):
-      cros_build_lib.Die(
-          'Must specify --version with the branch-util config, unless '
-          'running with --delete-branch or --rename-to.')
-  elif any([options.delete_branch, options.rename_to, options.branch_name]):
-    cros_build_lib.Die(
-        'Cannot specify --delete-branch, --rename-to or --branch-name when not '
-        'running the %s config', constants.BRANCH_UTIL_CONFIG)
 
 
 # pylint: disable=W0613
@@ -1308,7 +1170,7 @@ def _PostParseCheck(parser, options, args):
     options.cache_dir = os.path.abspath(options.cache_dir)
     parser.ConfigureCacheDir(options.cache_dir)
 
-  osutils.SafeMakedirsNonRoot(options.cache_dir)
+  osutils.SafeMakedirs(options.cache_dir)
 
   if options.local_patches:
     options.local_patches = _CheckLocalPatches(
@@ -1354,13 +1216,12 @@ def _ParseCommandLine(parser, argv):
   return options, args
 
 
-# TODO(build): This function is too damn long.
 def main(argv):
   # Turn on strict sudo checks.
   cros_build_lib.STRICT_SUDO = True
 
   # Set umask to 022 so files created by buildbot are readable.
-  os.umask(0o22)
+  os.umask(022)
 
   parser = _CreateParser()
   (options, args) = _ParseCommandLine(parser, argv)
@@ -1373,15 +1234,18 @@ def main(argv):
     cros_build_lib.logger.setLevel(logging.WARNING)
 
     # Verify configs are valid.
-    # If hwtest flag is enabled, post a warning that HWTest step may fail if the
-    # specified board is not a released platform or it is a generic overlay.
+    # If hwtest flag is enabled, verify that config board is in whitelist.
     for bot in args:
       build_config = _GetConfig(bot)
       if options.hwtest:
-        cros_build_lib.Warning(
-            'If %s is not a released platform or it is a generic overlay, '
-            'the HWTest step will most likely not run; please ask the lab '
-            'team for help if this is unexpected.' % build_config['boards'])
+        if not set(build_config['boards']).issubset(
+               set(constants.HWTEST_BOARD_WHITELIST)):
+          cros_build_lib.Die('The test lab is unable to run hwtest tryjobs '
+                             'with the given board(s). The currently '
+                             'supported boards are %s. If you are root '
+                             'causing a critical bug and need temporary '
+                             'support please contact the lab '
+                             'team.' % constants.HWTEST_BOARD_WHITELIST)
 
     # Verify gerrit patches are valid.
     print 'Verifying patches...'
@@ -1398,10 +1262,8 @@ def main(argv):
     print ('Go to %s to view the status of your job.'
            % tryjob.GetTrybotWaterfallLink())
     sys.exit(0)
-
   elif (not options.buildbot and not options.remote_trybot
         and not options.resume and not options.local):
-    options.local = True
     cros_build_lib.Warning(
         'Running in LOCAL TRYBOT mode!  Use --remote to submit REMOTE '
         'tryjobs.  Use --local to suppress this message.')
@@ -1410,7 +1272,7 @@ def main(argv):
         'trybot.')
     time.sleep(5)
 
-  # Only one config arg is allowed in this mode, which was confirmed earlier.
+  # Only expecting one config
   bot_id = args[-1]
   build_config = _GetConfig(bot_id)
 
@@ -1483,19 +1345,6 @@ def main(argv):
     _BackupPreviousLog(log_file)
 
   with cros_build_lib.ContextManagerStack() as stack:
-    # TODO(ferringb): update this once
-    # https://chromium-review.googlesource.com/25359
-    # is landed- it's sensitive to the manifest-versions cache path.
-    options.preserve_paths = set(['manifest-versions', '.cache',
-                                  'manifest-versions-internal'])
-    if log_file is not None:
-      # We don't want the critical section to try to clean up the tee process,
-      # so we run Tee (forked off) outside of it. This prevents a deadlock
-      # because the Tee process only exits when its pipe is closed, and the
-      # critical section accidentally holds on to that file handle.
-      stack.Add(tee.Tee, log_file)
-      options.preserve_paths.add(_DEFAULT_LOG_DIR)
-
     critical_section = stack.Add(cleanup.EnforcedCleanupSection)
     stack.Add(sudo.SudoKeepAlive)
 
@@ -1505,6 +1354,14 @@ def main(argv):
       stack.Add(osutils.TempDir, prefix='cbuildbot-tmp', set_global=True)
       logging.debug("Cbuildbot tempdir is %r.", os.environ.get('TMP'))
 
+    # TODO(ferringb): update this once https://gerrit.chromium.org/gerrit/25359
+    # is landed- it's sensitive to the manifest-versions cache path.
+    options.preserve_paths = set(['manifest-versions', '.cache',
+                                  'manifest-versions-internal'])
+    if log_file is not None:
+      stack.Add(tee.Tee, log_file)
+      options.preserve_paths.add(_DEFAULT_LOG_DIR)
+
     if options.cgroups:
       stack.Add(cgroups.SimpleContainChildren, 'cbuildbot')
 
@@ -1512,7 +1369,7 @@ def main(argv):
     # be rolled back via the contextmanager cleanup handlers.  This
     # ensures that sudo bits cannot outlive cbuildbot, that anything
     # cgroups would kill gets killed, etc.
-    stack.Add(critical_section.ForkWatchdog)
+    critical_section.ForkWatchdog()
 
     if options.timeout > 0:
       stack.Add(cros_build_lib.Timeout, options.timeout)

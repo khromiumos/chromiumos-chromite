@@ -29,18 +29,17 @@ NUM_RETRIES = 20
 
 class VersionUpdateException(Exception):
   """Exception gets thrown for failing to update the version file"""
+  pass
 
 
 class StatusUpdateException(Exception):
   """Exception gets thrown for failure to update the status"""
+  pass
 
 
 class GenerateBuildSpecException(Exception):
   """Exception gets thrown for failure to Generate a buildspec for the build"""
-
-
-class BuildSpecsValueError(Exception):
-  """Exception gets thrown when a encountering invalid values."""
+  pass
 
 
 def RefreshManifestCheckout(manifest_dir, manifest_repo):
@@ -51,8 +50,9 @@ def RefreshManifestCheckout(manifest_dir, manifest_repo):
   """
   reinitialize = True
   if os.path.exists(manifest_dir):
-    result = git.RunGit(manifest_dir, ['config', 'remote.origin.url'],
-                        error_code_ok=True)
+    result = cros_build_lib.RunCommand(['git', 'config', 'remote.origin.url'],
+                                       cwd=manifest_dir, print_cmd=False,
+                                       redirect_stdout=True, error_code_ok=True)
     if (result.returncode == 0 and
         result.output.rstrip() == manifest_repo):
       logging.info('Updating manifest-versions checkout.')
@@ -68,26 +68,20 @@ def RefreshManifestCheckout(manifest_dir, manifest_repo):
 
   if reinitialize:
     logging.info('Cloning fresh manifest-versions checkout.')
-    osutils.RmDir(manifest_dir, ignore_missing=True)
+    _RemoveDirs(manifest_dir)
     repository.CloneGitRepo(manifest_dir, manifest_repo)
 
 
-def _PushGitChanges(git_repo, message, dry_run=True, push_to=None):
+def _PushGitChanges(git_repo, message, dry_run=True):
   """Push the final commit into the git repo.
 
   Args:
     git_repo: git repo to push
     message: Commit message
     dry_run: If true, don't actually push changes to the server
-    push_to: A git.RemoteRef object specifying the remote branch to push to.
-      Defaults to the tracking branch of the current branch.
   """
-  push_branch = None
-  if push_to is None:
-    remote, push_branch = git.GetTrackingBranch(
-        git_repo, for_checkout=False, for_push=True)
-    push_to = git.RemoteRef(remote, push_branch)
-
+  remote, push_branch = git.GetTrackingBranch(
+      git_repo, for_checkout=False, for_push=True)
   git.RunGit(git_repo, ['add', '-A'])
 
   # It's possible that while we are running on dry_run, someone has already
@@ -99,7 +93,17 @@ def _PushGitChanges(git_repo, message, dry_run=True, push_to=None):
       return
     raise
 
-  git.GitPush(git_repo, PUSH_BRANCH, push_to, dryrun=dry_run, force=dry_run)
+  push_cmd = ['push', remote, '%s:%s' % (PUSH_BRANCH, push_branch)]
+  if dry_run:
+    push_cmd.extend(['--dry-run', '--force'])
+
+  git.RunGit(git_repo, push_cmd)
+
+
+def _RemoveDirs(dir_name):
+  """Remove directories recursively, if they exist"""
+  if os.path.exists(dir_name):
+    shutil.rmtree(dir_name)
 
 
 def CreateSymlink(src_file, dest_file):
@@ -145,8 +149,7 @@ class VersionInfo(object):
   """
   # Pattern for matching build name format.  Includes chrome branch hack.
   VER_PATTERN = r'(\d+).(\d+).(\d+)(?:-R(\d+))*'
-  KEY_VALUE_PATTERN = r'%s=(\d+)\s*$'
-  VALID_INCR_TYPES = ('chrome_branch', 'build', 'branch', 'patch')
+  VALID_INCR_TYPES = ('chrome_branch', 'build', 'branch')
 
   def __init__(self, version_string=None, chrome_branch=None,
                incr_type='build', version_file=None):
@@ -210,18 +213,34 @@ class VersionInfo(object):
       key: key to look for
       line: string to search
     returns:
-      None: on a non match
-      value: for a matching key
+       None: on a non match
+       value: for a matching key
     """
-    match = re.search(self.KEY_VALUE_PATTERN % (key,), line)
-    return match.group(1) if match else None
+    regex = r'.*(%s)\s*=\s*(\d+)$' % key
 
-  def IncrementVersion(self):
+    match = re.match(regex, line)
+    if match:
+      return match.group(2)
+    return None
+
+  def IncrementVersion(self, message, dry_run):
     """Updates the version file by incrementing the patch component.
     Args:
       message:  Commit message to use when incrementing the version.
       dry_run: Git dry_run.
     """
+    def IncrementOldValue(line, key, new_value):
+      """Change key to new_value if found on line.  Returns True if changed."""
+      old_value = self.FindValue(key, line)
+      if old_value:
+        temp_fh.write(line.replace(old_value, new_value, 1))
+        return True
+      else:
+        return False
+
+    if not self.version_file:
+      raise VersionUpdateException('Cannot call IncrementVersion without '
+                                   'an associated version_file')
     if not self.incr_type or self.incr_type not in self.VALID_INCR_TYPES:
       raise VersionUpdateException('Need to specify the part of the version to'
                                    ' increment')
@@ -235,45 +254,47 @@ class VersionInfo(object):
       self.build_number = str(int(self.build_number) + 1)
       self.branch_build_number = '0'
       self.patch_number = '0'
-    elif self.incr_type == 'branch' and self.patch_number == '0':
+    elif self.patch_number == '0':
       self.branch_build_number = str(int(self.branch_build_number) + 1)
     else:
       self.patch_number = str(int(self.patch_number) + 1)
 
-    return self.VersionString()
-
-  def UpdateVersionFile(self, message, dry_run, push_to=None):
-    """Update the version file with our current version."""
-
-    if not self.version_file:
-      raise VersionUpdateException('Cannot call UpdateVersionFile without '
-                                   'an associated version_file')
-
-    components = (('CHROMEOS_BUILD', self.build_number),
-                  ('CHROMEOS_BRANCH', self.branch_build_number),
-                  ('CHROMEOS_PATCH', self.patch_number),
-                  ('CHROME_BRANCH', self.chrome_branch))
-
-    with tempfile.NamedTemporaryFile(prefix='mvp') as temp_fh:
-      with open(self.version_file, 'r') as source_version_fh:
+    temp_file = tempfile.mkstemp(suffix='mvp', prefix='tmp', dir=None,
+                                 text=True)[1]
+    with open(self.version_file, 'r') as source_version_fh:
+      with open(temp_file, 'w') as temp_fh:
         for line in source_version_fh:
-          for key, value in components:
-            line = re.sub(self.KEY_VALUE_PATTERN % (key,),
-                          '%s=%s\n' % (key, value), line)
-          temp_fh.write(line)
+          if IncrementOldValue(line, 'CHROMEOS_BUILD', self.build_number):
+            pass
+          elif IncrementOldValue(line, 'CHROMEOS_BRANCH',
+                                 self.branch_build_number):
+            pass
+          elif IncrementOldValue(line, 'CHROMEOS_PATCH', self.patch_number):
+            pass
+          elif IncrementOldValue(line, 'CHROME_BRANCH', self.chrome_branch):
+            pass
+          else:
+            temp_fh.write(line)
 
-      temp_fh.flush()
+        temp_fh.close()
 
-      repo_dir = os.path.dirname(self.version_file)
+      source_version_fh.close()
 
-      try:
-        git.CreateBranch(repo_dir, PUSH_BRANCH)
-        shutil.copyfile(temp_fh.name, self.version_file)
-        _PushGitChanges(repo_dir, message, dry_run=dry_run, push_to=push_to)
-      finally:
-        # Update to the remote version that contains our changes. This is needed
-        # to ensure that we don't build a release using a local commit.
-        git.CleanAndCheckoutUpstream(repo_dir)
+    repo_dir = os.path.dirname(self.version_file)
+
+    try:
+      git.CreatePushBranch(PUSH_BRANCH, repo_dir)
+
+      shutil.copyfile(temp_file, self.version_file)
+      os.unlink(temp_file)
+
+      _PushGitChanges(repo_dir, message, dry_run=dry_run)
+    finally:
+      # Update to the remote version that contains our changes. This is needed
+      # to ensure that we don't build a release using a local commit.
+      git.CleanAndCheckoutUpstream(repo_dir)
+
+    return self.VersionString()
 
   def VersionString(self):
     """returns the version string"""
@@ -304,7 +325,7 @@ class BuilderStatus(object):
   STATUS_FAILED = 'fail'
   STATUS_PASSED = 'pass'
   STATUS_INFLIGHT = 'inflight'
-  COMPLETED_STATUSES = (STATUS_PASSED, STATUS_FAILED)
+  STATUS_COMPLETED = [STATUS_PASSED, STATUS_FAILED]
 
   def __init__(self, status, message):
     self.status = status
@@ -326,7 +347,7 @@ class BuilderStatus(object):
 
   def Completed(self):
     """Returns True if the Builder has completed."""
-    return self.status in BuilderStatus.COMPLETED_STATUSES
+    return self.status in BuilderStatus.STATUS_COMPLETED
 
   @classmethod
   def GetCompletedStatus(cls, success):
@@ -339,15 +360,6 @@ class BuilderStatus(object):
       return cls.STATUS_PASSED
     else:
       return cls.STATUS_FAILED
-
-  def AsDict(self):
-    """Returns a flat json-able representation of this builder status.
-
-    Returns: A dictionary of the form {'status' : status, 'message' : message}
-             where status and message are guaranteed to be strings.
-    """
-    return {'status' : str(self.status),
-            'message' : str(self.message)}
 
 
 class BuildSpecsManager(object):
@@ -370,7 +382,7 @@ class BuildSpecsManager(object):
     """
     self.cros_source = source_repo
     buildroot = source_repo.directory
-    if manifest_repo.startswith(constants.INTERNAL_GOB_URL):
+    if manifest_repo.startswith(constants.GERRIT_INT_SSH_URL):
       self.manifest_dir = os.path.join(buildroot, 'manifest-versions-internal')
     else:
       self.manifest_dir = os.path.join(buildroot, 'manifest-versions')
@@ -505,8 +517,7 @@ class BuildSpecsManager(object):
     if self.latest == version:
       message = ('Automatic: %s - Updating to a new version number from %s' % (
                  self.build_name, version))
-      version = version_info.IncrementVersion()
-      version_info.UpdateVersionFile(message, dry_run=self.dry_run)
+      version = version_info.IncrementVersion(message, dry_run=self.dry_run)
       assert version != self.latest
       cros_build_lib.Info('Incremented version number to  %s', version)
 
@@ -553,7 +564,6 @@ class BuildSpecsManager(object):
       output = ctx.Cat(url).output
     except gs.GSNoSuchKey:
       return None
-
     return BuilderStatus(**cPickle.loads(output))
 
   def GetLatestPassingSpec(self):
@@ -567,10 +577,6 @@ class BuildSpecsManager(object):
     Returns path of version.  By default if version is not set, returns the path
     of the current version.
     """
-    if not self.all_specs_dir:
-      raise BuildSpecsValueError('GetLocalManifest failed, BuildSpecsManager '
-                                 'instance not yet initialized by call to '
-                                 'InitializeManifestVariables.')
     if version:
       return os.path.join(self.all_specs_dir, version + '.xml')
     elif self.current_version:
@@ -584,11 +590,7 @@ class BuildSpecsManager(object):
     # Only refresh the manifest checkout if needed.
     if not self.InitializeManifestVariables(version=version):
       self.RefreshManifestCheckout()
-      if not self.InitializeManifestVariables(version=version):
-        raise BuildSpecsValueError('Failure in BootstrapFromVersion. '
-                                   'InitializeManifestVariables failed after '
-                                   'RefreshManifestCheckout for version '
-                                   '%s.' % version)
+      self.InitializeManifestVariables(version=version)
 
     # Return the current manifest.
     self.current_version = version
@@ -596,7 +598,7 @@ class BuildSpecsManager(object):
 
   def CheckoutSourceCode(self):
     """Syncs the cros source to the latest git hashes for the branch."""
-    self.cros_source.Sync(self.manifest)
+    self.cros_source.Sync(self.manifest, cleanup=False)
 
   def GetNextBuildSpec(self, retries=NUM_RETRIES):
     """Returns a path to the next manifest to build.

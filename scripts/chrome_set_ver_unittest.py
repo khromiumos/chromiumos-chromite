@@ -148,15 +148,15 @@ class DEPSFileTest(cros_test_lib.MoxTempDirTestCase):
 
   def testParseUrl(self):
     """Test extracting of project name from url."""
-    url = 'https://chromium.googlesource.com/external/libjingle.git'
+    url = 'http://git.chromium.org/external/libjingle.git'
     self.assertEquals('external/libjingle',
                       chrome_set_ver._ExtractProjectFromUrl(url))
 
-    url = 'https://chrome-internal.googlesource.com/chrome/data/page_cycler.git'
+    url = 'ssh://gerrit-int.chromium.org:29419/chrome/data/page_cycler.git'
     self.assertEquals('chrome/data/page_cycler',
                       chrome_set_ver._ExtractProjectFromUrl(url))
 
-    url = 'https://chrome-internal.googlesource.com/chrome/data/page_cycler.git'
+    url = 'git+ssh://gerrit-int.chromium.org:29419/chrome/data/page_cycler.git'
     self.assertEquals('chrome/data/page_cycler',
                       chrome_set_ver._ExtractProjectFromUrl(url))
 

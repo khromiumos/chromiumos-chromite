@@ -14,8 +14,6 @@ import json
 import logging
 import netrc
 import os
-import time
-import urllib
 from cStringIO import StringIO
 
 try:
@@ -23,11 +21,6 @@ try:
 except (IOError, netrc.NetrcParseError):
   NETRC = netrc.netrc(os.devnull)
 LOGGER = logging.getLogger()
-TRY_LIMIT = 5
-
-# Controls the transport protocol used to communicate with gerrit.
-# This is parameterized primarily to enable cros_test_lib.GerritTestCase.
-GERRIT_PROTOCOL = 'https'
 
 
 class GOBError(Exception):
@@ -35,7 +28,6 @@ class GOBError(Exception):
   def __init__(self, http_status, *args, **kwargs):
     super(GOBError, self).__init__(*args, **kwargs)
     self.http_status = http_status
-    self.message = '(%d) %s' % (self.http_status, self.message)
 
 
 def _QueryString(param_dict, first_param=None):
@@ -43,80 +35,35 @@ def _QueryString(param_dict, first_param=None):
 
   https://gerrit-review.googlesource.com/Documentation/rest-api-changes.html#list-changes
   """
-  q = [urllib.quote(first_param)] if first_param else []
+  q = [first_param] if first_param else []
   q.extend(['%s:%s' % (key, val) for key, val in param_dict.iteritems()])
   return '+'.join(q)
 
 
 def CreateHttpConn(host, path, reqtype='GET', headers=None, body=None):
   """Opens an https connection to a gerrit service, and sends a request."""
+  conn = httplib.HTTPSConnection(host)
   headers = headers or {}
-  bare_host = host.partition(':')[0]
-  auth = NETRC.authenticators(bare_host)
+  auth = NETRC.authenticators(host)
   if auth:
     headers.setdefault('Authorization', 'Basic %s' % (
         base64.b64encode('%s:%s' % (auth[0], auth[2]))))
-  else:
-    LOGGER.debug('No authorization found')
   if body:
     body = json.JSONEncoder().encode(body)
     headers.setdefault('Content-Type', 'application/json')
   if LOGGER.isEnabledFor(logging.DEBUG):
-    LOGGER.debug('%s %s://%s/a/%s' % (reqtype, GERRIT_PROTOCOL, host, path))
+    LOGGER.debug('%s https://%s/a/%s' % (reqtype, host, path))
     for key, val in headers.iteritems():
-      if key == 'Authorization':
-        val = 'HIDDEN'
       LOGGER.debug('%s: %s' % (key, val))
     if body:
       LOGGER.debug(body)
-  conn = httplib.HTTPSConnection(host)
-  conn.req_host = host
-  conn.req_params = {
-      'url': '/a/%s' % path,
-      'method': reqtype,
-      'headers': headers,
-      'body': body,
-  }
-  conn.request(**conn.req_params)
+  conn.request(reqtype, '/a/%s' % path, body=body, headers=headers)
   return conn
 
 
 def ReadHttpResponse(conn, ignore_404=True):
-  """Reads an http response from a connection into a string buffer.
-
-  Args:
-    conn: An HTTPSConnection created by CreateHttpConn, above.
-    ignore_404: For many requests, gerrit-on-borg will return 404 if the request
-                doesn't match the database contents.  In most such cases, we
-                want the API to return None rather than raise an Exception.
-  Returns: A string buffer containing the connection's reply.
-  """
-
-  sleep_time = 0.5
-  for idx in range(TRY_LIMIT):
-    response = conn.getresponse()
-    # If response.status < 500 then the result is final; break retry loop.
-    if response.status < 500:
-      break
-    # A status >=500 is assumed to be a possible transient error; retry.
-    http_version = 'HTTP/%s' % ('1.1' if response.version == 11 else '1.0')
-    msg = (
-        'A transient error occured while querying %s:\n'
-        '%s %s %s\n'
-        '%s %d %s' % (
-            conn.host, conn.req_params['method'], conn.req_params['url'],
-            http_version, http_version, response.status, response.reason))
-    if TRY_LIMIT - idx > 1:
-      msg += '\n... will retry %d more times.' % (TRY_LIMIT - idx - 1)
-      time.sleep(sleep_time)
-      sleep_time = sleep_time * 2
-      req_host = conn.req_host
-      req_params = conn.req_params
-      conn = httplib.HTTPSConnection(req_host)
-      conn.req_host = req_host
-      conn.req_params = req_params
-      conn.request(**req_params)
-    LOGGER.warn(msg)
+  """Reads an http response from the argument connection into a string buffer."""
+  response = conn.getresponse()
   if ignore_404 and response.status == 404:
     return StringIO()
   if response.status != 200:
@@ -137,8 +84,7 @@ def ReadHttpJsonResponse(conn, ignore_404=True):
   return json.loads(s)
 
 
-def QueryChanges(host, param_dict, first_param=None, limit=None, o_params=None,
-                 sortkey=None):
+def QueryChanges(host, param_dict, first_param=None, limit=None, o_params=None):
   """
   Queries a gerrit-on-borg server for changes matching query terms.
 
@@ -156,8 +102,6 @@ def QueryChanges(host, param_dict, first_param=None, limit=None, o_params=None,
   if not param_dict and not first_param:
     raise RuntimeError('QueryChanges requires search parameters')
   path = 'changes/?q=%s' % _QueryString(param_dict, first_param)
-  if sortkey:
-    path = '%s&N=%s' % (path, sortkey)
   if limit:
     path = '%s&n=%d' % (path, limit)
   if o_params:
@@ -166,43 +110,21 @@ def QueryChanges(host, param_dict, first_param=None, limit=None, o_params=None,
   return ReadHttpJsonResponse(CreateHttpConn(host, path), ignore_404=False)
 
 
-def MultiQueryChanges(host, param_dict, change_list, limit=None, o_params=None,
-                      sortkey=None):
+def MultiQueryChanges(host, params_list, limit=None):
   """Initiate a query composed of multiple sets of query parameters."""
-  if not change_list:
+  if not params_list:
     raise RuntimeError(
-        "MultiQueryChanges requires a list of change numbers/id's")
-  q = ['q=%s' % '+OR+'.join([urllib.quote(str(x)) for x in change_list])]
-  if param_dict:
-    q.append(_QueryString(param_dict))
+        'MultiQueryChanges requires a list of (param_dict, first_param)')
+  q = '&'.join(['q=%s' % _QueryString(x[0], x[1]) for x in params_list])
+  path = 'changes/?%s' % q
   if limit:
-    q.append('n=%d' % limit)
-  if sortkey:
-    q.append('N=%s' % sortkey)
-  if o_params:
-    q.extend(['o=%s' % p for p in o_params])
-  path = 'changes/?%s' % '&'.join(q)
-  try:
-    result = ReadHttpJsonResponse(CreateHttpConn(host, path), ignore_404=False)
-  except GOBError as e:
-    msg = '%s:\n%s' % (e.message, path)
-    raise GOBError(e.http_status, msg)
-  return result
-
-
-def GetGerritFetchUrl(host):
-  """Given a gerrit host name returns URL of a gerrit instance to fetch from."""
-  return '%s://%s/a/' % (GERRIT_PROTOCOL, host)
-
-
-def GetChangePageUrl(host, change_number):
-  """Given a gerrit host name and change number, return change page url."""
-  return '%s://%s/#/c/%d/' % (GERRIT_PROTOCOL, host, change_number)
+    path = '%s&n%d' % (path, limit)
+  return ReadHttpJsonResponse(CreateHttpConn(host, path), ignore_404=False)
 
 
 def GetChangeUrl(host, change):
   """Given a gerrit host name and change id, return an url for the change."""
-  return '%s://%s/a/changes/%s' % (GERRIT_PROTOCOL, host, change)
+  return 'https://%s/a/changes/%s' % (host, change)
 
 
 def GetChange(host, change):
@@ -211,59 +133,39 @@ def GetChange(host, change):
   return ReadHttpJsonResponse(CreateHttpConn(host, path))
 
 
-def GetChangeReview(host, change, revision='current'):
-  """Get the current review information for a change."""
-  path = 'changes/%s/revisions/%s/review' % (change, revision)
-  return ReadHttpJsonResponse(CreateHttpConn(host, path))
-
-
-def GetChangeCommit(host, change, revision='current'):
-  """Get the current review information for a change."""
-  path = 'changes/%s/revisions/%s/commit' % (change, revision)
+def GetChangeDetail(host, change):
+  """Query a gerrit server for extended information about a single change."""
+  path = 'changes/%s/detail' % change
   return ReadHttpJsonResponse(CreateHttpConn(host, path))
 
 
 def GetChangeCurrentRevision(host, change):
   """Get information about the latest revision for a given change."""
-  jmsg = GetChangeReview(host, change)
-  if jmsg:
-    return jmsg.get('current_revision')
+  return QueryChanges(host, {}, change, o_params=('CURRENT_REVISION'))
 
 
-def GetChangeDetail(host, change, o_params=None):
-  """Query a gerrit server for extended information about a single change."""
-  path = 'changes/%s/detail' % change
-  if o_params:
-    path = '%s?%s' % (path, '&'.join(['o=%s' % p for p in o_params]))
-  return ReadHttpJsonResponse(CreateHttpConn(host, path))
+def GetChangeRevisions(host, change):
+  """Get information about all revisions associated with a change."""
+  return QueryChanges(host, {}, change, o_params=('ALL_REVISIONS'))
 
 
-def GetChangeReviewers(host, change):
-  """Get information about all reviewers attached to a change."""
-  path = 'changes/%s/reviewers' % change
+def GetChangeReview(host, change, revision=None):
+  """Get the current review information for a change."""
+  if not revision:
+    jmsg = GetChangeRevisions(host, change)
+    if not jmsg:
+      return None
+    elif len(jmsg) > 1:
+      raise GOBError(200, 'Multiple changes found for ChangeId %s.' % change)
+    revision = jmsg[0]['current_revision']
+  path = 'changes/%s/revisions/%s/review'
   return ReadHttpJsonResponse(CreateHttpConn(host, path))
 
 
 def AbandonChange(host, change, msg=''):
   """Abandon a gerrit change."""
   path = 'changes/%s/abandon' % change
-  body = {'message': msg} if msg else None
-  conn = CreateHttpConn(host, path, reqtype='POST', body=body)
-  return ReadHttpJsonResponse(conn, ignore_404=False)
-
-
-def RestoreChange(host, change, msg=''):
-  """Restore a previously abandoned change."""
-  path = 'changes/%s/restore' % change
-  body = {'message': msg} if msg else None
-  conn = CreateHttpConn(host, path, reqtype='POST', body=body)
-  return ReadHttpJsonResponse(conn, ignore_404=False)
-
-
-def SubmitChange(host, change, wait_for_merge=True):
-  """Submits a gerrit change via Gerrit."""
-  path = 'changes/%s/submit' % change
-  body = {'wait_for_merge': wait_for_merge}
+  body = {'message': msg}
   conn = CreateHttpConn(host, path, reqtype='POST', body=body)
   return ReadHttpJsonResponse(conn, ignore_404=False)
 
@@ -271,6 +173,12 @@ def SubmitChange(host, change, wait_for_merge=True):
 def GetReviewers(host, change):
   """Get information about all reviewers attached to a change."""
   path = 'changes/%s/reviewers' % change
+  return ReadHttpJsonResponse(CreateHttpConn(host, path))
+
+
+def GetReview(host, change, revision):
+  """Get review information about a specific revision of a change."""
+  path = 'changes/%s/revisions/%s/review' % (change, revision)
   return ReadHttpJsonResponse(CreateHttpConn(host, path))
 
 
@@ -295,81 +203,51 @@ def RemoveReviewers(host, change, remove=None):
   if isinstance(remove, basestring):
     remove = (remove,)
   for r in remove:
-    path = 'changes/%s/reviewers/%s' % (change, r)
+    path = 'change/%s/reviewers/%s' % (change, r)
     conn = CreateHttpConn(host, path, reqtype='DELETE')
-    try:
-      ReadHttpResponse(conn, ignore_404=False)
-    except GOBError as e:
-      # On success, gerrit returns status 204; anything else is an error.
-      if e.http_status != 204:
-        raise
-    else:
+    response = conn.getresponse()
+    if response.status != 204:
       raise GOBError(
-          'Unexpectedly received a 200 http status while deleting reviewer "%s"'
-          ' from change %s' % (r, change))
+          'Unexpectedly received a %d http status while deleting reviewer "%s" '
+          'from change %s' % (response.status, r, change))
 
 
-def SetReview(host, change, revision='current', msg=None, labels=None,
-              notify=None):
-  """Set labels and/or add a message to a code review."""
-  if not msg and not labels:
-    return
-  path = 'changes/%s/revisions/%s/review' % (change, revision)
-  body = {}
-  if msg:
-    body['message'] = msg
-  if labels:
-    body['labels'] = labels
-  if notify:
-    body['notify'] = notify
-  conn = CreateHttpConn(host, path, reqtype='POST', body=body)
-  response = ReadHttpJsonResponse(conn)
-  if labels:
-    for key, val in labels.iteritems():
-      if ('labels' not in response or key not in response['labels'] or
-          int(response['labels'][key] != int(val))):
-        raise GOBError(200, 'Unable to set "%s" label on change %s.' % (
-            key, change))
-
-
-def ResetReviewLabels(host, change, label, value='0', revision='current',
-                      message=None, notify=None):
+def ResetReviewLabels(host, change, label, value='0', message=None):
   """Reset the value of a given label for all reviewers on a change."""
-  # This is tricky when working on the "current" revision, because there's
-  # always the risk that the "current" revision will change in between API
-  # calls.  So, the code dereferences the "current" revision down to a literal
-  # sha1 at the beginning and uses it for all subsequent calls.  As a sanity
-  # check, the "current" revision is dereferenced again at the end, and if it
-  # differs from the previous "current" revision, an exception is raised.
-  current = (revision == 'current')
-  jmsg = GetChangeDetail(
-      host, change, o_params=['CURRENT_REVISION', 'CURRENT_COMMIT'])
-  if current:
-    revision = jmsg['current_revision']
-  value = str(value)
+  # This is tricky, because we want to work on the "current revision", but
+  # there's always the risk that "current revision" will change in between
+  # API calls.  So, we check "current revision" at the beginning and end; if
+  # it has changed, raise an exception.
+  jmsg = GetChangeCurrentRevision(host, change)
+  if not jmsg:
+    raise GOBError(
+        200, 'Could not get review information for change "%s"' % change)
+  revision = jmsg[0]['current_revision']
   path = 'changes/%s/revisions/%s/review' % (change, revision)
   message = message or (
-      '%s label set to %s programmatically by chromite.' % (label, value))
-  for review in jmsg.get('labels', {}).get(label, {}).get('all', []):
-    if str(review.get('value', value)) != value:
+      '% label set to %s programmatically by chromite.' % (label, value))
+  jmsg = GetReview(host, change, revision)
+  if not jmsg:
+    raise GOBError(200, 'Could not get review information for revison %s '
+                   'of change %s' % (revision, change))
+  for review in jmsg.get('labels', {}).get('Commit-Queue', {}).get('all', []):
+    if review.get('value', value) != value:
       body = {
           'message': message,
           'labels': {label: value},
           'on_behalf_of': review['_account_id'],
       }
-      if notify:
-        body['notify'] = notify
-      conn = CreateHttpConn(host, path, reqtype='POST', body=body)
+      conn = CreateHttpConn(
+          host, path, reqtype='POST', body=body)
       response = ReadHttpJsonResponse(conn)
-      if str(response['labels'][label]) != value:
+      if response['labels'][label] != value:
         username = review.get('email', jmsg.get('name', ''))
         raise GOBError(200, 'Unable to set %s label for user "%s"'
                        ' on change %s.' % (label, username, change))
-  if current:
-    new_revision = GetChangeCurrentRevision(host, change)
-    if not new_revision:
-      raise GOBError(
-          200, 'Could not get review information for change "%s"' % change)
-    elif new_revision != revision:
-      raise GOBError(200, 'While resetting labels on change "%s", '
-                     'a new patchset was uploaded.' % change)
+  jmsg = GetChangeCurrentRevision(host, change)
+  if not jmsg:
+    raise GOBError(
+        200, 'Could not get review information for change "%s"' % change)
+  elif jmsg[0]['current_revison'] != revision:
+    raise GOBError(200, 'While resetting labels on change "%s", '
+                   'a new patchset was uploaded.' % change)

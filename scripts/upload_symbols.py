@@ -9,19 +9,19 @@ crashes on non-release builds (in which case try to only upload the symbols
 for those executables involved)."""
 
 import ctypes
+import logging
 import multiprocessing
 import os
-import poster
 import random
 import textwrap
 import tempfile
 import time
-import urllib2
 
+from chromite.buildbot import constants
 from chromite.lib import commandline
 from chromite.lib import cros_build_lib
+from chromite.lib import osutils
 from chromite.lib import parallel
-from chromite.scripts import cros_generate_breakpad_symbols
 
 
 # URLs used for uploading symbols.
@@ -58,45 +58,14 @@ MAX_TOTAL_ERRORS_FOR_RETRY = 3
 
 
 def SymUpload(sym_file, upload_url):
-  """Upload a symbol file to a HTTP server
-
-  The upload is a multipart/form-data POST with the following parameters:
-    code_file: the basename of the module, e.g. "app"
-    code_identifier: the module file's identifier
-    debug_file: the basename of the debugging file, e.g. "app"
-    debug_identifier: the debug file's identifier, usually consisting of
-                      the guid and age embedded in the pdb, e.g.
-                      "11111111BBBB3333DDDD555555555555F"
-    version: the file version of the module, e.g. "1.2.3.4"
-    product: HTTP-friendly product name
-    os: the operating system that the module was built for
-    cpu: the CPU that the module was built for
-    symbol_file: the contents of the breakpad-format symbol file
-
-  Args:
-    sym_file: The symbol file to upload
-    upload_url: The crash URL to POST the |sym_file| to
-  """
-  sym_header = cros_generate_breakpad_symbols.ReadSymsHeader(sym_file)
-
-  fields = (
-      ('code_file', sym_header.name),
-      ('debug_file', sym_header.name),
-      ('debug_identifier', sym_header.id.replace('-', '')),
-      # Should we set these fields?  They aren't critical, but it might be nice?
-      # We'd have to figure out what file this symbol is coming from and what
-      # package provides it ...
-      #('version', None),
-      #('product', 'ChromeOS'),
-      ('os', sym_header.os),
-      ('cpu', sym_header.cpu),
-      poster.encode.MultipartParam.from_file('symbol_file', sym_file),
-  )
-
-  data, headers = poster.encode.multipart_encode(fields)
-  request = urllib2.Request(upload_url, data, headers)
-  request.add_header('User-agent', 'chromite.upload_symbols')
-  urllib2.urlopen(request, timeout=UPLOAD_TIMEOUT)
+  """Run breakpad sym_upload helper"""
+  # TODO(vapier): Rewrite to use native python HTTP libraries.  This tool
+  # reads the sym_file and does a HTTP post to URL with a few fields set.
+  # See the tiny breakpad/tools/linux/symupload/sym_upload.cc for details.
+  cmd = ['sym_upload', sym_file, upload_url]
+  with cros_build_lib.SubCommandTimeout(UPLOAD_TIMEOUT):
+    return cros_build_lib.RunCommandCaptureOutput(
+        cmd, debug_level=logging.DEBUG)
 
 
 def TestingSymUpload(sym_file, upload_url):
@@ -113,7 +82,7 @@ def TestingSymUpload(sym_file, upload_url):
   result = cros_build_lib.CommandResult(cmd=cmd, error=None, output=output,
                                         returncode=returncode)
   if returncode:
-    raise urllib2.HTTPError(upload_url, 400, 'forced test fail', {}, None)
+    raise cros_build_lib.RunCommandError('forced test fail', result)
   else:
     return result
 
@@ -127,9 +96,6 @@ def UploadSymbol(sym_file, upload_url, file_limit=DEFAULT_FILE_LIMIT,
     upload_url: The crash server to upload things to
     file_limit: The max file size of a symbol file before we try to strip it
     sleep: Number of seconds to sleep before running
-    num_errors: An object to update with the error count (needs a .value member)
-  Returns:
-    The number of errors that were encountered.
   """
   if num_errors is None:
     num_errors = ctypes.c_int()
@@ -173,33 +139,23 @@ def UploadSymbol(sym_file, upload_url, file_limit=DEFAULT_FILE_LIMIT,
 
     # Upload the symbol file.
     try:
-      cros_build_lib.TimedCommand(
-          cros_build_lib.RetryException,
-          (urllib2.HTTPError, urllib2.URLError), MAX_RETRIES, SymUpload,
-          upload_file, upload_url, sleep=INITIAL_RETRY_DELAY,
-          timed_log_msg='upload of %10i bytes took %%s: %s' %
-                        (file_size, os.path.basename(sym_file)))
-    except urllib2.HTTPError as e:
-      cros_build_lib.Warning('could not upload: %s: HTTP %s: %s',
-                             os.path.basename(sym_file), e.code, e.reason)
-      num_errors.value += 1
-    except urllib2.URLError as e:
-      cros_build_lib.Warning('could not upload: %s: %s',
-                             os.path.basename(sym_file), e)
+      cros_build_lib.RetryCommand(SymUpload, MAX_RETRIES, upload_file,
+                                  upload_url, sleep=INITIAL_RETRY_DELAY)
+      cros_build_lib.Info('successfully uploaded %10i bytes: %s', file_size,
+                          os.path.basename(sym_file))
+    except cros_build_lib.RunCommandError as e:
+      cros_build_lib.Warning('could not upload: %s:\n{stdout} %s\n{stderr} %s',
+                             os.path.basename(sym_file), e.result.output,
+                             e.result.error)
       num_errors.value += 1
 
   return num_errors.value
 
 
-def UploadSymbols(board=None, official=False, breakpad_dir=None,
+def UploadSymbols(board, official=False, breakpad_dir=None,
                   file_limit=DEFAULT_FILE_LIMIT, sleep=DEFAULT_SLEEP_DELAY,
-                  upload_count=None, sym_files=None, root=None):
+                  upload_count=None):
   """Upload all the generated symbols for |board| to the crash server
-
-  You can use in a few ways:
-    * pass |board| to locate all of its symbols
-    * pass |breakpad_dir| to upload all the symbols in there
-    * pass |sym_files| to upload specific symbols
 
   Args:
     board: The board whose symbols we wish to upload
@@ -208,10 +164,8 @@ def UploadSymbols(board=None, official=False, breakpad_dir=None,
     file_limit: The max file size of a symbol file before we try to strip it
     sleep: How long to sleep in between uploads
     upload_count: If set, only upload this many symbols (meant for testing)
-    sym_files: Specific symbol files to upload, otherwise search |breakpad_dir|
-    root: The tree to prefix to |breakpad_dir| (if |breakpad_dir| is not set)
   Returns:
-    The number of errors that were encountered.
+    False if some errors were encountered, True otherwise.
   """
   num_errors = 0
 
@@ -221,20 +175,12 @@ def UploadSymbols(board=None, official=False, breakpad_dir=None,
     cros_build_lib.Warning('unofficial builds upload to the staging server')
     upload_url = STAGING_UPLOAD_URL
 
-  if sym_files:
-    cros_build_lib.Info('uploading specified symbol files to %s', upload_url)
-    sym_file_sets = [('', '', sym_files)]
-    all_files = True
-  else:
-    if breakpad_dir is None:
-      breakpad_dir = os.path.join(
-          root,
-          cros_generate_breakpad_symbols.FindBreakpadDir(board).lstrip('/'))
-    cros_build_lib.Info('uploading all symbols to %s from %s', upload_url,
-                        breakpad_dir)
-    sym_file_sets = os.walk(breakpad_dir)
-    all_files = False
+  if breakpad_dir is None:
+    breakpad_dir = FindBreakpadDir(board)
+  cros_build_lib.Info('uploading symbols to %s from %s', upload_url,
+                      breakpad_dir)
 
+  cros_build_lib.Info('uploading all breakpad symbol files')
   # We need to limit ourselves to one upload at a time to avoid the server
   # kicking in DoS protection.  See these bugs for more details:
   # http://crbug.com/209442
@@ -243,12 +189,12 @@ def UploadSymbols(board=None, official=False, breakpad_dir=None,
   with parallel.BackgroundTaskRunner(UploadSymbol, file_limit=file_limit,
                                      sleep=sleep, num_errors=bg_errors,
                                      processes=1) as queue:
-    for root, _, files in sym_file_sets:
+    for root, _, files in os.walk(breakpad_dir):
       if upload_count == 0:
         break
 
       for sym_file in files:
-        if all_files or sym_file.endswith('.sym'):
+        if sym_file.endswith('.sym'):
           sym_file = os.path.join(root, sym_file)
           queue.put([sym_file, upload_url])
 
@@ -261,10 +207,45 @@ def UploadSymbols(board=None, official=False, breakpad_dir=None,
   return num_errors
 
 
+def GenerateBreakpadSymbols(board, breakpad_dir=None):
+  """Generate all the symbols for this board
+
+  Note: this should be merged with buildbot_commands.GenerateBreakpadSymbols()
+  once we rewrite cros_generate_breakpad_symbols in python.
+
+  Args:
+    board: The board whose symbols we wish to generate
+    breakpad_dir: The full path to the breakpad directory where symbols live
+  """
+  if breakpad_dir is None:
+    breakpad_dir = FindBreakpadDir(board)
+
+  cros_build_lib.Info('clearing out %s', breakpad_dir)
+  osutils.RmDir(breakpad_dir, ignore_missing=True, sudo=True)
+
+  cros_build_lib.Info('generating all breakpad symbol files')
+  cmd = [os.path.join(constants.CROSUTILS_DIR,
+                      'cros_generate_breakpad_symbols'),
+         '--board', board]
+  if cros_build_lib.logger.getEffectiveLevel() < logging.INFO:
+    cmd += ['--verbose']
+  result = cros_build_lib.RunCommand(cmd, error_code_ok=True)
+  if result.returncode:
+    cros_build_lib.Warning('errors hit while generating symbols; '
+                           'uploading anyways')
+    return 1
+
+  return 0
+
+
+def FindBreakpadDir(board):
+  """Given a |board|, return the path to the breakpad dir for it"""
+  return os.path.join('/build', board, 'usr', 'lib', 'debug', 'breakpad')
+
+
 def main(argv):
   parser = commandline.ArgumentParser(description=__doc__)
 
-  parser.add_argument('sym_files', type='path', nargs='*', default=None)
   parser.add_argument('--board', default=None,
                       help='board to build packages for')
   parser.add_argument('--breakpad_root', type='path', default=None,
@@ -285,12 +266,8 @@ def main(argv):
 
   opts = parser.parse_args(argv)
 
-  if opts.sym_files:
-    if opts.regenerate:
-      cros_build_lib.Die('--regenerate may not be used with specific files')
-  else:
-    if opts.board is None:
-      cros_build_lib.Die('--board is required')
+  if opts.board is None:
+    cros_build_lib.Die('--board is required')
 
   if opts.breakpad_root and opts.regenerate:
     cros_build_lib.Die('--regenerate may not be used with --breakpad_root')
@@ -319,13 +296,12 @@ def main(argv):
 
   ret = 0
   if opts.regenerate:
-    ret += cros_generate_breakpad_symbols.GenerateBreakpadSymbols(
-        opts.board, breakpad_dir=opts.breakpad_root)
+    ret += GenerateBreakpadSymbols(opts.board, breakpad_dir=opts.breakpad_root)
 
   ret += UploadSymbols(opts.board, official=opts.official_build,
                        breakpad_dir=opts.breakpad_root,
                        file_limit=opts.strip_cfi, sleep=DEFAULT_SLEEP_DELAY,
-                       upload_count=opts.upload_count, sym_files=opts.sym_files)
+                       upload_count=opts.upload_count)
   if ret:
     cros_build_lib.Error('encountered %i problem(s)', ret)
     # Since exit(status) gets masked, clamp it to 1 so we don't inadvertently
@@ -333,11 +309,3 @@ def main(argv):
     ret = 1
 
   return ret
-
-
-# We need this to run once per process.  Do it at module import time as that
-# will let us avoid doing it inline at function call time (see SymUpload) as
-# that func might be called by the multiprocessing module which means we'll
-# do the opener logic multiple times overall.  Plus, if you're importing this
-# module, it's a pretty good chance that you're going to need this.
-poster.streaminghttp.register_openers()

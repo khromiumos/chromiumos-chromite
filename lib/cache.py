@@ -7,7 +7,6 @@
 import logging
 import os
 import shutil
-import urlparse
 
 from chromite.lib import cros_build_lib
 from chromite.lib import locking
@@ -187,8 +186,8 @@ class DiskCache(object):
     self._cache_dir = cache_dir
     self.staging_dir = os.path.join(cache_dir, self._STAGING_DIR)
 
-    osutils.SafeMakedirsNonRoot(self._cache_dir)
-    osutils.SafeMakedirsNonRoot(self.staging_dir)
+    osutils.SafeMakedirs(self._cache_dir)
+    osutils.SafeMakedirs(self.staging_dir)
 
   def _KeyExists(self, key):
     return os.path.exists(self._GetKeyPath(key))
@@ -200,7 +199,7 @@ class DiskCache(object):
   def _LockForKey(self, key, suffix='.lock'):
     """Returns an unacquired lock associated with a key."""
     key_path = self._GetKeyPath(key)
-    osutils.SafeMakedirsNonRoot(os.path.dirname(key_path))
+    osutils.SafeMakedirs(os.path.dirname(key_path))
     lock_path = os.path.join(self._cache_dir, os.path.dirname(key_path),
                              os.path.basename(key_path) + suffix)
     return locking.FileLock(lock_path)
@@ -212,7 +211,7 @@ class DiskCache(object):
     """Insert a file or a directory into the cache at a given key."""
     self._Remove(key)
     key_path = self._GetKeyPath(key)
-    osutils.SafeMakedirsNonRoot(os.path.dirname(key_path))
+    osutils.SafeMakedirs(os.path.dirname(key_path))
     shutil.move(path, key_path)
 
   def _InsertText(self, key, text):
@@ -245,25 +244,9 @@ class TarballCache(DiskCache):
   def __init__(self, cache_dir):
     DiskCache.__init__(self, cache_dir)
 
-  def _Fetch(self, url, local_path):
-    """Fetch a remote file."""
-    cros_build_lib.RunCurl([url, '-o', local_path],
-                           debug_level=logging.DEBUG)
-
   def _Insert(self, key, tarball_path):
-    """Insert a tarball and its extracted contents into the cache.
-
-    Download the tarball first if a URL is provided as tarball_path.
-    """
-    with osutils.TempDir(prefix='tarball-cache',
-                         base_dir=self.staging_dir) as tempdir:
-
-      o = urlparse.urlsplit(tarball_path)
-      if o.scheme:
-        url = tarball_path
-        tarball_path = os.path.join(tempdir, os.path.basename(o.path))
-        self._Fetch(url, tarball_path)
-
+    """Insert a tarball and its extracted contents into the cache."""
+    with osutils.TempDir(base_dir=self.staging_dir) as tempdir:
       extract_path = os.path.join(tempdir, 'extract')
       os.mkdir(extract_path)
       Untar(tarball_path, extract_path)

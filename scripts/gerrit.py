@@ -58,9 +58,7 @@ def limits(cls):
   lims = {}
   for cl in cls:
     for k in cl.keys():
-      # Use %s rather than str() to avoid codec issues.
-      # We also do this so we can format integers.
-      lims[k] = max(lims.get(k, 0), len('%s' % cl[k]))
+      lims[k] = max(lims.get(k, 0), len(str(cl[k])))
   return lims
 
 
@@ -160,6 +158,13 @@ def ChangeNumberToCommit(opts, idx):
   return cl['currentPatchSet']['revision']
 
 
+def ReviewCommand(opts, idx, command):
+  """Shortcut to run `gerrit --review |command|` on a specific CL"""
+  rev = ChangeNumberToCommit(opts, idx)
+  cmd = opts.gerrit.GetGerritReviewCommand([rev] + command)
+  cros_build_lib.RunCommand(cmd, print_cmd=opts.debug)
+
+
 def IsApprover(cl, users):
   """See if the approvers in |cl| is listed in |users|"""
   # See if we are listed in the approvals list.  We have to parse
@@ -172,9 +177,7 @@ def IsApprover(cl, users):
     users = (users,)
 
   for approver in cl['currentPatchSet']['approvals']:
-    if (approver['by']['email'] in users and
-        approver['type'] == 'CRVW' and
-        int(approver['value']) != 0):
+    if approver['by']['email'] in users:
       return True
 
   return False
@@ -207,32 +210,32 @@ def UserActInspect(opts, idx):
 
 def UserActReview(opts, idx, num):
   """Mark CL <n> with code review status [-2,-1,0,1,2]"""
-  opts.gerrit.SetReview(idx, labels={'Code-Review': num})
+  ReviewCommand(opts, idx, ['--code-review', str(num)])
 
 
 def UserActVerify(opts, idx, num):
   """Mark CL <n> with verify status [-1,0,1]"""
-  opts.gerrit.SetReview(idx, labels={'Verified': num})
+  ReviewCommand(opts, idx, ['--verified', str(num)])
 
 
 def UserActReady(opts, idx, num):
   """Mark CL <n> with ready status [-1,0,1]"""
-  opts.gerrit.SetReview(idx, labels={'Commit-Queue': num})
+  ReviewCommand(opts, idx, ['--commit-queue', str(num)])
 
 
 def UserActSubmit(opts, idx):
   """Submit CL <n>"""
-  opts.gerrit.SubmitChange(idx)
+  ReviewCommand(opts, idx, ['--submit'])
 
 
 def UserActAbandon(opts, idx):
   """Abandon CL <n>"""
-  opts.gerrit.AbandonChange(idx)
+  ReviewCommand(opts, idx, ['--abandon'])
 
 
 def UserActRestore(opts, idx):
   """Restore CL <n> that was abandoned"""
-  opts.gerrit.RestoreChange(idx)
+  ReviewCommand(opts, idx, ['--submit'])
 
 
 def UserActReviewers(opts, idx, *emails):
@@ -256,11 +259,6 @@ def UserActReviewers(opts, idx, *emails):
 
   if add_list or remove_list:
     opts.gerrit.SetReviewers(idx, add=add_list, remove=remove_list)
-
-
-def UserActMessage(opts, idx, message):
-  """Add a message to CL <n>"""
-  opts.gerrit.SetReview(idx, msg=message)
 
 
 def main(argv):

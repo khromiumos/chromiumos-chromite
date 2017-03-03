@@ -21,7 +21,6 @@ except ImportError:
 from chromite.buildbot import cbuildbot_config
 from chromite.buildbot import cbuildbot_results as results_lib
 from chromite.buildbot import portage_utilities
-from chromite.buildbot import repository
 from chromite.buildbot import validation_pool
 from chromite.lib import cros_build_lib
 
@@ -40,27 +39,11 @@ class BuilderStage(object):
 
   # Class should set this if they have a corresponding no<stage> option that
   # skips their stage.
-  # TODO(mtennant): Rename this something like skip_option_name.
   option_name = None
 
   # Class should set this if they have a corresponding setting in
   # self._build_config that skips their stage.
-  # TODO(mtennant): Rename this something like skip_config_name.
   config_name = None
-
-  @classmethod
-  def GetBotId(cls, bot_name, remote_trybot):
-    """Get the 'bot id' of a particular bot.
-
-    The bot id is used to specify the subdirectory where artifacts are stored
-    in Google Storage. To avoid conflicts between remote trybots and regular
-    bots, we add a 'trybot-' prefix to any remote trybot runs.
-
-    Args:
-      bot_name: The name of the bot.
-      remote_trybot: Whether this run is a remote trybot run.
-    """
-    return 'trybot-%s' % bot_name if remote_trybot else bot_name
 
   @staticmethod
   def SetManifestBranch(branch):
@@ -70,33 +53,16 @@ class BuilderStage(object):
   def StageNamePrefix(cls):
     return cls.name_stage_re.match(cls.__name__).group(1)
 
-  def __init__(self, options, build_config, suffix=None, attempt=None,
-               max_retry=None):
-    """Create a builder stage.
-
-    Args:
-      options: Command-line options, from cbuildbot.py
-      build_config: The configuration dictionary, from cbuildbot_config.py
-      suffix: The suffix to append to the buildbot name. Defaults to None.
-      attempt: If this build is to be retried, the current attempt number
-        (starting from 1). Defaults to None. Is only valid if |max_retry| is
-        also specified.
-      max_retry: The maximum number of retries. Defaults to None. Is only valid
-        if |attempt| is also specified.
-    """
+  def __init__(self, options, build_config, suffix=None):
     self._options = options
-    self._bot_id = self.GetBotId(build_config['name'], options.remote_trybot)
+    self._bot_id = build_config['name']
+    if not self._options.archive_base and self._options.remote_trybot:
+      self._bot_id = 'trybot-' + self._bot_id
 
-    if bool(attempt) != bool(max_retry):
-      raise AssertionError('max_retry and attempt must be specified together.')
-
-    self._attempt = attempt
-    self._max_retry = max_retry
     self._build_config = copy.deepcopy(build_config)
-    self._prefix = self.StageNamePrefix()
-    self.name = self._prefix
+    self.name = self.StageNamePrefix()
     if suffix:
-      self.name = self._prefix + suffix
+      self.name += suffix
     self._boards = self._build_config['boards']
     self._build_root = os.path.abspath(self._options.buildroot)
     self._prebuilt_type = None
@@ -107,10 +73,6 @@ class BuilderStage(object):
     self._chrome_rev = self._build_config['chrome_rev']
     if self._options.chrome_rev:
       self._chrome_rev = self._options.chrome_rev
-
-  def GetStageNames(self):
-    """Get a list of the places where this stage has recorded results."""
-    return [self.name]
 
   def ConstructDashboardURL(self, stage=None):
     """Return the dashboard URL
@@ -124,8 +86,7 @@ class BuilderStage(object):
     """
     return validation_pool.ValidationPool.ConstructDashboardURL(
         self._build_config['overlays'], self._options.remote_trybot,
-        os.environ.get('BUILDBOT_BUILDERNAME', self._build_config['name']),
-        self._options.buildnumber, stage=stage)
+        self._build_config['name'], self._options.buildnumber, stage=stage)
 
   def _ExtractOverlays(self):
     """Extracts list of overlays into class."""
@@ -141,18 +102,6 @@ class BuilderStage(object):
     assert self._build_config['master'] or not push_overlays
 
     return overlays, push_overlays
-
-  def GetRepoRepository(self, **kwds):
-    """Create a new repo repository object."""
-    manifest_url = self._options.manifest_repo_url
-    if manifest_url is None:
-      manifest_url = self._build_config['manifest_repo_url']
-
-    kwds.setdefault('referenced_repo', self._options.reference_repo)
-    kwds.setdefault('branch', self._target_manifest_branch)
-    kwds.setdefault('manifest', self._build_config['manifest'])
-
-    return repository.RepoRepository(manifest_url, self._build_root, **kwds)
 
   def _Print(self, msg):
     """Prints a msg to stderr."""
@@ -202,19 +151,13 @@ class BuilderStage(object):
 
   @staticmethod
   def _GetSlavesForMaster(build_config, configs=None):
-    """Gets the important slave builds corresponding to this master.
+    """Gets the important builds corresponding to this master.
 
-    Args:
-      build_config: A build config for a master builder.
-      configs: Option override of cbuildbot_config.config for the list
-        of build configs to look through for slaves.
     Returns:
-      A list of build configs corresponding to the slaves for the master
-        represented by build_config.
+      A list of the slaves for this builder.
     """
     if configs is None:
       configs = cbuildbot_config.config
-
     builders = []
     assert build_config['manifest_version']
     assert build_config['master']
@@ -225,7 +168,6 @@ class BuilderStage(object):
           config['chrome_rev'] == build_config['chrome_rev'] and
           config['branch'] == build_config['branch']):
         builders.append(config)
-
     return builders
 
   def _Begin(self):
@@ -262,16 +204,15 @@ class BuilderStage(object):
     else:
       return traceback.format_exc()
 
-  def _HandleExceptionAsWarning(self, exception, retrying=False):
+  def _HandleExceptionAsWarning(self, exception):
     """Use instead of HandleStageException to treat an exception as a warning.
 
     This is used by the ForgivingBuilderStage's to treat any exceptions as
     warnings instead of stage failures.
     """
-    description = self._StringifyException(exception)
     cros_build_lib.PrintBuildbotStepWarnings()
-    cros_build_lib.Warning(description)
-    return results_lib.Results.FORGIVEN, description, retrying
+    cros_build_lib.Warning(self._StringifyException(exception))
+    return results_lib.Results.FORGIVEN, None
 
   def _HandleStageException(self, exception):
     """Called when PerformStage throws an exception.  Can be overriden.
@@ -279,15 +220,11 @@ class BuilderStage(object):
     Should return result, description.  Description should be None if result
     is not an exception.
     """
-    if self._attempt and self._max_retry and self._attempt <= self._max_retry:
-      return self._HandleExceptionAsWarning(exception, retrying=True)
-    else:
-      # Tell the user about the exception, and record it
-      retrying = False
-      description = self._StringifyException(exception)
-      cros_build_lib.PrintBuildbotStepFailure()
-      cros_build_lib.Error(description)
-      return exception, description, retrying
+    # Tell the user about the exception, and record it
+    description = self._StringifyException(exception)
+    cros_build_lib.PrintBuildbotStepFailure()
+    cros_build_lib.Error(description)
+    return exception, description
 
   def HandleSkip(self):
     """Run if the stage is skipped."""
@@ -295,13 +232,11 @@ class BuilderStage(object):
 
   def Run(self):
     """Have the builder execute the stage."""
-    # See if this stage should be skipped.
     if (self.option_name and not getattr(self._options, self.option_name) or
         self.config_name and not self._build_config[self.config_name]):
       self._PrintLoudly('Not running Stage %s' % self.name)
       self.HandleSkip()
-      results_lib.Results.Record(self.name, results_lib.Results.SKIPPED,
-                                 prefix=self._prefix)
+      results_lib.Results.Record(self.name, results_lib.Results.SKIPPED)
       return
 
     record = results_lib.Results.PreviouslyCompletedRecord(self.name)
@@ -310,8 +245,8 @@ class BuilderStage(object):
       # successfully in a previous run.
       self._PrintLoudly('Stage %s processed previously' % self.name)
       self.HandleSkip()
-      results_lib.Results.Record(self.name, results_lib.Results.SUCCESS,
-                                 prefix=self._prefix, time=float(record.time))
+      results_lib.Results.Record(self.name, results_lib.Results.SUCCESS, None,
+                                 float(record[2]))
       return
 
     start_time = time.time()
@@ -324,32 +259,26 @@ class BuilderStage(object):
     sys.stderr.flush()
     self._Begin()
     try:
-      # TODO(davidjames): Verify that PerformStage always returns None. See
-      # crbug.com/264781
       self.PerformStage()
     except SystemExit as e:
       if e.code != 0:
-        result, description, retrying = self._HandleStageException(e)
-
+        result, description = self._HandleStageException(e)
       raise
     except Exception as e:
       if mox is not None and isinstance(e, mox.Error):
         raise
-
-      # Tell the build bot this step failed for the waterfall.
-      result, description, retrying = self._HandleStageException(e)
+      # Tell the build bot this step failed for the waterfall
+      result, description = self._HandleStageException(e)
       if result not in (results_lib.Results.FORGIVEN,
                         results_lib.Results.SUCCESS):
         raise results_lib.StepFailure()
-      elif retrying:
-        raise results_lib.RetriableStepFailure()
     except BaseException as e:
-      result, description, retrying = self._HandleStageException(e)
+      result, description = self._HandleStageException(e)
       raise
     finally:
       elapsed_time = time.time() - start_time
       results_lib.Results.Record(self.name, result, description,
-                                 prefix=self._prefix, time=elapsed_time)
+                                 time=elapsed_time)
       self._Finish()
       sys.stdout.flush()
       sys.stderr.flush()

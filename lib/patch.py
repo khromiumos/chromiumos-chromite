@@ -5,7 +5,6 @@
 """Module that handles the processing of patches to the source tree."""
 
 import calendar
-import inspect
 import logging
 import os
 import random
@@ -17,10 +16,7 @@ from chromite.lib import cros_build_lib
 from chromite.lib import git
 from chromite.lib import gob_util
 
-
 _MAXIMUM_GERRIT_NUMBER_LENGTH = 6
-REPO_NAME_RE = re.compile(r'^[a-zA-Z_][a-zA-Z0-9_\-]*(/[a-zA-Z0-9_-]+)*$')
-BRANCH_NAME_RE = re.compile(r'^(refs/heads/)?[a-zA-Z0-9_][a-zA-Z0-9_\-]*$')
 
 
 class PatchException(Exception):
@@ -41,17 +37,8 @@ class PatchException(Exception):
     if message is not None:
       self.args += (message,)
 
-  def ShortExplanation(self):
-    """Print a short explanation of why the patch failed.
-
-    Explanations here should be suitable for inclusion in a sentence
-    starting with the CL number. This is useful for writing nice error
-    messages about dependency errors.
-    """
-    return 'failed: %s' % (self.message,)
-
   def __str__(self):
-    return '%s %s' % (self.patch.PatchLink(), self.ShortExplanation())
+    return "Change %s failed: %s" % (self.patch, self.message)
 
 
 class ApplyPatchException(PatchException):
@@ -67,18 +54,18 @@ class ApplyPatchException(PatchException):
     self.args = (patch, message, inflight, trivial, files)
 
   def _stringify_inflight(self):
-    return 'the current patch series' if self.inflight else 'ToT'
+    return 'current patch series' if self.inflight else 'ToT'
 
-  def ShortExplanation(self):
-    s = 'conflicted with %s' % (self._stringify_inflight(),)
+  def __str__(self):
+    s = 'Failed to cherry-pick patch %s to %s' % (
+        self.patch, self._stringify_inflight())
     if self.trivial:
       s += (' because file content merging is disabled for this '
             'project.')
     else:
       s += '.'
     if self.files:
-      s += '  The conflicting file is amongst: %s\n' % (
-           ', '.join(sorted(self.files)))
+      s += '  The conflicting files were: %s\n' % ', '.join(sorted(self.files))
     if self.message:
       s += '  %s' % (self.message,)
     return s
@@ -86,9 +73,9 @@ class ApplyPatchException(PatchException):
 
 class PatchAlreadyApplied(ApplyPatchException):
 
-  def ShortExplanation(self):
-    return 'conflicted with %s because it\'s already committed.' % (
-        self._stringify_inflight(),)
+  def __str__(self):
+    return "Failed to cherry-pick %s to %s since it's already committed" % (
+        self.patch, self._stringify_inflight())
 
 
 class DependencyError(PatchException):
@@ -105,11 +92,11 @@ class DependencyError(PatchException):
     PatchException.__init__(self, patch)
     self.inflight = error.inflight
     self.error = error
-    self.args = (patch, error,)
+    self.args += (error,)
 
-  def ShortExplanation(self):
-    link = self.error.patch.PatchLink()
-    return ('depends on %s, which %s' % (link, self.error.ShortExplanation()))
+  def __str__(self):
+    return "Patch %s depends on %s which has an error: %s" % (
+        self.patch, self.error.patch.id, self.error)
 
 
 class BrokenCQDepends(PatchException):
@@ -119,10 +106,11 @@ class BrokenCQDepends(PatchException):
     PatchException.__init__(self, patch)
     self.text = text
     self.msg = msg
-    self.args = (patch, text, msg)
+    self.args += (text, msg)
 
-  def ShortExplanation(self):
-    s = 'has a malformed CQ-DEPEND target: %s' % (self.text,)
+  def __str__(self):
+    s = "Change %s has a malformed CQ-DEPEND target: %s" % (
+        self.patch, self.text)
     if self.msg is not None:
       s += '; %s' % (self.msg,)
     return s
@@ -135,10 +123,10 @@ class BrokenChangeID(PatchException):
     PatchException.__init__(self, patch)
     self.message = message
     self.missing = missing
-    self.args = (patch, message, missing)
+    self.args += (message, missing)
 
-  def ShortExplanation(self):
-    return 'has a broken ChangeId: %s' % (self.message,)
+  def __str__(self):
+    return "Change %s has a broken ChangeId: %s" % (self.patch, self.message)
 
 
 def MakeChangeId(unusable=False):
@@ -210,26 +198,6 @@ class PatchCache(object):
     return self.__class__(list(self))
 
 
-def _StripPrefix(text, strict, force_external, force_internal):
-  """Find and/or generate a leading '*' for internal names."""
-  caller_name = inspect.currentframe().f_back.f_code.co_name
-  if force_internal and force_external:
-    raise TypeError("%s: either force_internal or force_external can be set to"
-                    " True, but not both." % caller_name)
-  if not text:
-    raise ValueError("%s invoked w/ an empty value: %r" % (caller_name, text))
-  prefix = '*' if force_internal else ''
-  if text[0] == '*':
-    if strict:
-      raise ValueError(
-          "%s invoked w/ an internally-formatted argument while in strict "
-          "mode: %s" % (caller_name, text))
-    if not force_external:
-      prefix = '*'
-    text = text[1:]
-  return prefix, text
-
-
 def FormatChangeId(text, force_internal=False, force_external=False,
                    strict=False):
   """Format a Change-Id into a standardized form.
@@ -249,8 +217,23 @@ def FormatChangeId(text, force_internal=False, force_external=False,
       a direct git commit message and are trying to ensure the message is
       gerrit compatible.
   """
+  if force_internal and force_external:
+    raise TypeError("FormatChangeId: either force_internal or force_external "
+                    "can be set to True, but not both.")
+
+  if not text:
+    raise ValueError("FormatChangeId invoked w/ an empty value: %r" % (text,))
+
   original_text = text
-  prefix, text = _StripPrefix(text, strict, force_external, force_internal)
+  prefix = '*' if force_internal else ''
+  if text[0].startswith('*'):
+    if strict:
+      raise ValueError("FormatChangeId invoked w/ an internally formatted "
+                       "Change-Id while in strict mode: %r" % (original_text,))
+    if not force_external:
+      prefix = '*'
+    text = text[1:]
+
   if text[0] not in 'iI' or len(text) > 41:
     raise ValueError("FormatChangeId invoked w/ a malformed Change-Id: %r" %
                      (original_text,))
@@ -289,8 +272,24 @@ def FormatSha1(text, force_internal=False, force_external=False, strict=False):
       a direct git commit message and are trying to ensure the message is
       gerrit compatible.
   """
+  if force_internal and force_external:
+    raise TypeError("FormatSha1: either force_internal or force_external "
+                    "can be set to True, but not both.")
+
+  if not text:
+    raise ValueError("FormatSha1 invoked w/ an empty value: %r" % (text,))
+
+
   original_text = text
-  prefix, text = _StripPrefix(text, strict, force_external, force_internal)
+  prefix = '*' if force_internal else ''
+  if text[0].startswith('*'):
+    if strict:
+      raise ValueError("FormatSha1 invoked w/ an internally formatted "
+                       "sha1 while in strict mode: %r" % (original_text,))
+    if not force_external:
+      prefix = '*'
+    text = text[1:]
+
   if not git.IsSHA1(text):
     raise ValueError("FormatSha1 invoked w/ a malformed value: %r "
                      % (original_text,))
@@ -318,8 +317,24 @@ def FormatGerritNumber(text, force_internal=False, force_external=False,
       a direct git commit message and are trying to ensure the message is
       gerrit compatible.
   """
+  if force_internal and force_external:
+    raise TypeError("FormatGerritNumber: either force_internal or "
+                    "force_external can be set to True, but not both.")
+
+  if not text:
+    raise ValueError("FormatGerritNumber invoked w/ an empty value: %r"
+                     % (text,))
+
   original_text = text
-  prefix, text = _StripPrefix(text, strict, force_external, force_internal)
+  prefix = '*' if force_internal else ''
+  if text[0].startswith('*'):
+    if strict:
+      raise ValueError("FormatGerritNumber invoked w/ an internally formatted "
+                       "value while in strict mode: %r" % (original_text,))
+    if not force_external:
+      prefix = '*'
+    text = text[1:]
+
   if not text.isdigit():
     raise ValueError("FormatSha1 invoked w/ a value that isn't a number: %r" %
                      (original_text,))
@@ -332,39 +347,9 @@ def FormatGerritNumber(text, force_internal=False, force_external=False,
   return '%s%s' % (prefix, text)
 
 
-def FormatFullChangeId(text, force_internal=False, force_external=False,
-                       strict=False):
-  """Format a fully-qualified Change-Id into a standardized form.
-
-  A fully-qualified change-id has the form:
-
-    project~branch~Change-Id
-
-  The Change-Id line from the commit message by itself is not guaranteed to
-  uniquely specify a gerrit change, but the fully-qualified change-id *is*
-  guaranteed to be unique.
-
-  Args:
-    text, force_internal, force_external: Refer to FormatChangeId docstring.
-    strict: If True, then it's an error if text starts with '*' to signify an
-    internal change; and the Change-Id portion of text must meet the 'strict'
-    criteria of FormatChangeId.
-  """
-  err_str = "FormatFullChangeId invoked w/ a malformed change-id: %r" % text
-  prefix, text = _StripPrefix(text, strict, force_external, force_internal)
-  fields = text.split('~')
-  if len(fields) != 3:
-    raise ValueError(err_str)
-  project, branch, changeid = fields
-  if not REPO_NAME_RE.match(project) or not BRANCH_NAME_RE.match(branch):
-    raise ValueError(err_str)
-  changeid = FormatChangeId(changeid, strict=strict)
-  return '%s%s~%s~%s' % (prefix, project, branch, changeid)
-
-
 def FormatPatchDep(text, force_internal=False, force_external=False,
                    strict=False, sha1=True, changeId=True,
-                   gerrit_number=True, allow_CL=False, full_changeid=True):
+                   gerrit_number=True, allow_CL=False):
   """Given a patch dependency, ensure it's formatted correctly.
 
   This should be used when the consumer doesn't care what type of dep
@@ -379,8 +364,6 @@ def FormatPatchDep(text, force_internal=False, force_external=False,
     gerrit_number: If False, throw ValueError if the dep is a gerrit number.
     allow_CL: If True, allow CL: prefix; else view it as an error.
       That format is primarily used for -g, and in CQ-DEPEND.
-    full_changeid: If False, throw ValueError if text is a fully-qualified
-      change-id.
   """
   if not text:
     raise ValueError("FormatPatchDep invoked with an empty value: %r"
@@ -400,13 +383,7 @@ def FormatPatchDep(text, force_internal=False, force_external=False,
     target_text = text = text[3:]
 
   text = text.lstrip('*')
-  if len(text.split('~')) == 3:
-    if not full_changeid:
-      raise ValueError(
-          "FormatPatchDep: Fully-qualified change-id is not allowed in this "
-          "context: %r" % (original_text,))
-    target = FormatFullChangeId
-  elif text[0:1] in 'Ii':
+  if text[0:1] in 'Ii':
     if not changeId:
       raise ValueError(
           "FormatPatchDep: ChangeId isn't allowed in this context: %r"
@@ -415,7 +392,7 @@ def FormatPatchDep(text, force_internal=False, force_external=False,
   elif text.isdigit() and len(text) <= _MAXIMUM_GERRIT_NUMBER_LENGTH:
     if not gerrit_number:
       raise ValueError(
-          "FormatPatchDep: Gerrit number isn't allowed in this context: %r"
+          "FormatPatchDep: ChangeId isn't allowed in this context: %r"
           % (original_text,))
     target = FormatGerritNumber
   elif not sha1:
@@ -593,7 +570,7 @@ class GitRepoPatch(object):
     try:
       lines = git.RunGit(git_repo, ['diff', '--no-renames', '--name-status',
                                     '%s^..%s' % (self.sha1, self.sha1)])
-    except cros_build_lib.RunCommandError as e:
+    except cros_build_lib.RunCommandError, e:
       # If we get a 128, that means git couldn't find the the parent of our
       # sha1- meaning we're the first commit in the repository (there is no
       # parent).
@@ -618,9 +595,9 @@ class GitRepoPatch(object):
     """
     # Note the --ff; we do *not* want the sha1 to change unless it
     # has to.
-    cmd = ['cherry-pick', '--strategy', 'resolve', '--ff']
+    cmd = ['cherry-pick', '--ff']
     if trivial:
-      cmd += ['-X', 'trivial']
+      cmd += ['--strategy', 'resolve', '-X', 'trivial']
     cmd.append(self.sha1)
 
     reset_target = None if leave_dirty else 'HEAD'
@@ -628,7 +605,7 @@ class GitRepoPatch(object):
       git.RunGit(git_repo, cmd)
       reset_target = None
       return
-    except cros_build_lib.RunCommandError as error:
+    except cros_build_lib.RunCommandError, error:
       ret = error.result.returncode
       if ret not in (1, 2):
         cros_build_lib.Error(
@@ -696,17 +673,14 @@ class GitRepoPatch(object):
 
     if not git.DoesLocalBranchExist(git_repo, constants.PATCH_BRANCH):
       cmd = ['checkout', '-b', constants.PATCH_BRANCH, '-t', upstream]
+      git.RunGit(git_repo, cmd)
+      inflight = False
     else:
-      cmd = ['checkout', '-f', constants.PATCH_BRANCH]
-    git.RunGit(git_repo, cmd)
-
-    # Figure out if we're inflight.  At this point, we assume that the branch
-    # is checked out and rebased onto upstream.  If HEAD differs from upstream,
-    # then there are already other patches that have been applied.
-    upstream, head = [
-        git.RunGit(git_repo, ['rev-list', '-n1', x]).output.strip()
-        for x in (upstream, 'HEAD')]
-    inflight = (head != upstream)
+      # Figure out if we're inflight.
+      upstream, head = [
+          git.RunGit(git_repo, ['rev-list', '-n1', x]).output.strip()
+          for x in (upstream, 'HEAD')]
+      inflight = (head != upstream)
 
     # Run appropriate sanity checks.
     self._SanityChecks(git_repo, upstream, inflight=inflight)
@@ -874,12 +848,6 @@ class GitRepoPatch(object):
     output = git.RunGit(git_repo, cmd + targets, error_code_ok=True).output
     return unicode(output, 'ascii', 'ignore').split('\0')[:-1]
 
-  def PatchLink(self):
-    """Return a CL link for this patch."""
-    # GitRepoPatch instances don't have a CL link, so just return the string
-    # representation.
-    return str(self)
-
   def __str__(self):
     """Returns custom string to identify this patch."""
     s = '%s:%s' % (self.project, self.ref)
@@ -997,7 +965,7 @@ class LocalPatch(GitRepoPatch):
     for num, line in enumerate(lines):
       # Look for output like:
       # remote: New Changes:
-      # remote:   https://chromium-review.googlesource.com/36756
+      # remote:   https://gerrit.chromium.org/gerrit/36756
       if 'New Changes:' in line:
         urls = []
         for line in lines[num + 1:]:
@@ -1075,11 +1043,7 @@ class GerritPatch(GitRepoPatch):
     self.revision = current_patch_set.get('revision')
     self.patch_number = current_patch_set.get('number')
     self.commit = self.revision
-    self.owner_email = patch_dict['owner']['email']
-    if self.owner_email:
-      self.owner, _, _ = self.owner_email.partition('@')
-    else:
-      self.owner = None
+    self.owner, _, _ = patch_dict['owner']['email'].partition('@')
     self.gerrit_number = FormatGerritNumber(str(patch_dict['number']),
                                             strict=True)
     prefix_str = '*' if self.internal else ''
@@ -1088,46 +1052,42 @@ class GerritPatch(GitRepoPatch):
     # status - Current state of this change.  Can be one of
     # ['NEW', 'SUBMITTED', 'MERGED', 'ABANDONED'].
     self.status = patch_dict['status']
-    self._approvals = []
-    if 'currentPatchSet' in self.patch_dict:
-      self._approvals = self.patch_dict['currentPatchSet'].get('approvals', [])
+    self._approvals = self.patch_dict['currentPatchSet'].get('approvals', [])
     self.approval_timestamp = \
         max(x['grantedOn'] for x in self._approvals) if self._approvals else 0
     self.commit_message = patch_dict.get('commitMessage')
 
-  @staticmethod
-  def ConvertQueryResults(change, host):
-    """Converts HTTP query results to the old SQL format.
+  @classmethod
+  def FromGerritOnBorgQuery(cls, change, remote, host):
+    """
+    Create a GerritPatch instance from the json data returned by a query.
 
     The HTTP interface to gerrit uses a different json schema from the old SQL
-    interface.  This method converts data from the new schema to the old one,
-    typically before passing it to the GerritPatch constructor.
+    interface.  The method essentially converts data from the new schema to the
+    old one before passing it to the GerritPatch constructor.
 
     Old interface:
       http://gerrit-documentation.googlecode.com/svn/Documentation/2.6/json.html
 
     New interface:
-      # pylint: disable=C0301
       https://gerrit-review.googlesource.com/Documentation/rest-api-changes.html#json-entities
     """
-    _convert_tm = lambda tm: calendar.timegm(
-        time.strptime(tm.partition('.')[0], '%Y-%m-%d %H:%M:%S'))
+    _convert_tm = lambda tm: calendar.timegm(time.strptime(tm.partition('.')[0]))
     _convert_user = lambda u: {
-        'name': u.get('name', '??unknown??'),
-        'email': u.get('email'),
-        'username': u.get('name', '??unknown??'),
+        'name': u['name'],
+        'email': u['email'],
+        'username': u['name'],
     }
-    change_id = change['change_id'].split('~')[-1]
     patch_dict = {
        'project': change['project'],
        'branch': change['branch'],
        'createdOn': _convert_tm(change['created']),
        'lastUpdated': _convert_tm(change['updated']),
        'sortKey': change.get('_sortkey'),
-       'id': change_id,
+       'id': change['change_id'],
        'owner': _convert_user(change['owner']),
-       'number': str(change['_number']),
-       'url': gob_util.GetChangePageUrl(host, change['_number']),
+       'number': change['_number'],
+       'url': gob_util.GetChangeUrl(host, change['change_id']),
        'status': change['status'],
        'subject': change.get('subject'),
     }
@@ -1136,33 +1096,23 @@ class GerritPatch(GitRepoPatch):
     if current_revision_info:
       approvals = []
       for label, label_data in change['labels'].iteritems():
-        # Skip unknown labels.
-        if label not in constants.GERRIT_ON_BORG_LABELS:
-          continue
-        for review_data in label_data.get('all', []):
-          granted_on = review_data.get('date', change['created'])
+        for review_data in label_data['all']:
           approvals.append({
               'type': constants.GERRIT_ON_BORG_LABELS[label],
               'description': label,
-              'value': str(review_data.get('value', '0')),
-              'grantedOn': _convert_tm(granted_on),
+              'value': review_data.get('value', 0),
+              'grantedOn': _convert_tm(review_data['date']),
               'by': _convert_user(review_data),
           })
-
       patch_dict['currentPatchSet'] = {
           'approvals': approvals,
+          'parents': [
+              x['commit'] for x in current_revision_info['commit']['parents']],
           'ref': current_revision_info['fetch']['http']['ref'],
           'revision': current_revision,
-          'number': str(current_revision_info['_number']),
+          'number': current_revision_info['_number'],
       }
-
-      current_commit = current_revision_info.get('commit')
-      if current_commit:
-        patch_dict['commitMessage'] = current_commit['message']
-        parents = current_commit.get('parents', [])
-        patch_dict['dependsOn'] = [{'revision': p['commit']} for p in parents]
-
-    return patch_dict
+    return cls(patch_dict, remote, url_prefix)
 
   def __reduce__(self):
     """Used for pickling to re-create patch object."""
@@ -1178,20 +1128,8 @@ class GerritPatch(GitRepoPatch):
 
   def GerritDependencies(self):
     """Returns the list of Gerrit change numbers that this patch depends on."""
-    results = []
-    for d in self.patch_dict.get('dependsOn', []):
-      if 'number' in d:
-        results.append(FormatGerritNumber(d['number'],
-                                          force_internal=self.internal))
-      elif 'id' in d:
-        results.append(FormatChangeId(d['id'], force_internal=self.internal))
-      elif 'revision' in d:
-        results.append(FormatSha1(d['revision'], force_internal=self.internal))
-      else:
-        raise AssertionError(
-            'While processing the dependencies of change %s, no "number", "id",'
-            ' or "revision" key found in: %r' % (self.gerrit_number, d))
-    return results
+    return [FormatGerritNumber(d['number'], force_internal=self.internal)
+            for d in self.patch_dict.get('dependsOn', [])]
 
   def IsAlreadyMerged(self):
     """Returns whether the patch has already been merged in Gerrit."""
@@ -1206,24 +1144,11 @@ class GerritPatch(GitRepoPatch):
         'VRIF': Whether patch was verified.
         'CRVW': Whether patch was approved.
         'COMR': Whether patch was marked ready.
-        'TBVF': Whether patch was verified by trybot.
-      value: The expected value of the specified field (as str).
+      value: The expected value of the specified field.
     """
     # All approvals default to '0', so use that if there's no matches.
     type_approvals = [x['value'] for x in self._approvals if x['type'] == field]
     return value in (type_approvals or ['0'])
-
-  def GetLatestApproval(self, field):
-    """Return most recent value of specific field on the current patchset.
-
-    Args:
-      field: Which field to check ('VRIF', 'CRVW', ...).
-    Returns:
-      Most recent field value (as str) or '0' if no such field.
-    """
-    # All approvals default to '0', so use that if there's no matches.
-    type_approvals = [x['value'] for x in self._approvals if x['type'] == field]
-    return type_approvals[-1] if type_approvals else '0'
 
   def _EnsureId(self, commit_message):
     """Ensure we have a usable Change-Id, validating what we received
@@ -1257,10 +1182,6 @@ class GerritPatch(GitRepoPatch):
           self, self.change_id, self.sha1)
 
     return self.id
-
-  def PatchLink(self):
-    """Return a CL link for this patch."""
-    return 'CL:%s' % (self.gerrit_number_str,)
 
   def __str__(self):
     """Returns custom string to identify this patch."""
@@ -1343,7 +1264,7 @@ def PrepareRemotePatches(patches):
   for patch in patches:
     try:
       project, original_branch, ref, tracking_branch, tag = patch.split(':')
-    except ValueError as e:
+    except ValueError, e:
       raise ValueError(
           "Unexpected tryjob format.  You may be running an "
           "older version of chromite.  Run 'repo sync "
@@ -1356,7 +1277,7 @@ def PrepareRemotePatches(patches):
     if tag == constants.INTERNAL_PATCH_TAG:
       remote = constants.INTERNAL_REMOTE
 
-    push_url = constants.GIT_REMOTES[remote]
+    push_url = constants.CROS_REMOTES[remote]
     patch_info.append(UploadedLocalPatch(os.path.join(push_url, project),
                                          project, ref, tracking_branch,
                                          original_branch,

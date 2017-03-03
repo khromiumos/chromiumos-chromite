@@ -151,7 +151,7 @@ def RevGitFile(filename, data, retries=5, dryrun=False):
     git.RunGit(cwd, ['commit', '-m', description])
     git.PushWithRetry(prebuilt_branch, cwd, dryrun=dryrun, retries=retries)
   finally:
-    git.RunGit(cwd, ['checkout', commit])
+    cros_build_lib.RunCommand(['git', 'checkout', commit], cwd=cwd)
 
 
 def GetVersion():
@@ -172,15 +172,24 @@ def _GsUpload(local_file, remote_file, acl):
   CANNED_ACLS = ['public-read', 'private', 'bucket-owner-read',
                  'authenticated-read', 'bucket-owner-full-control',
                  'public-read-write']
-  gs_context = gs.GSContext(retries=_RETRIES, sleep=_SLEEP_TIME)
   if acl in CANNED_ACLS:
-    gs_context.Copy(local_file, remote_file, acl=acl)
+    cmd = [gs.GSUTIL_BIN, 'cp', '-a', acl, local_file, remote_file]
+    acl_cmd = None
   else:
     # For private uploads we assume that the overlay board is set up properly
     # and a googlestore_acl.xml is present. Otherwise, this script errors.
-    gs_context.Copy(local_file, remote_file, acl='private')
+    cmd = [gs.GSUTIL_BIN, 'cp', '-a', 'private', local_file, remote_file]
+    acl_cmd = [gs.GSUTIL_BIN, 'setacl', acl, remote_file]
+
+  cros_build_lib.RunCommandWithRetries(_RETRIES, cmd, print_cmd=True,
+                                       sleep=_SLEEP_TIME,
+                                       redirect_stdout=True,
+                                       redirect_stderr=True)
+  if acl_cmd:
     # Apply the passed in ACL xml file to the uploaded object.
-    gs_context.SetACL(remote_file, acl=acl)
+    cros_build_lib.RunCommandWithRetries(_RETRIES, acl_cmd, print_cmd=False,
+                                         sleep=_SLEEP_TIME)
+
 
 def RemoteUpload(acl, files, pool=10):
   """Upload to google storage.
@@ -277,9 +286,9 @@ def UpdateBinhostConfFile(path, key, value):
     git.CreatePushBranch(constants.STABLE_EBUILD_BRANCH, cwd, sync=False)
   osutils.WriteFile(path, '', mode='a')
   UpdateLocalFile(path, value, key)
-  git.RunGit(cwd, ['add', filename])
+  cros_build_lib.RunCommand(['git', 'add', filename], cwd=cwd)
   description = '%s: updating %s' % (os.path.basename(filename), key)
-  git.RunGit(cwd, ['commit', '-m', description])
+  cros_build_lib.RunCommand(['git', 'commit', '-m', description], cwd=cwd)
 
 
 def _GrabAllRemotePackageIndexes(binhost_urls):
@@ -714,7 +723,7 @@ def ParseOptions():
 
 def main(_argv):
   # Set umask to a sane value so that files created as root are readable.
-  os.umask(0o22)
+  os.umask(022)
 
   options, target = ParseOptions()
 

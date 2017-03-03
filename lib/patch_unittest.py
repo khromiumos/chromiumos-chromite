@@ -12,7 +12,6 @@ import os
 import shutil
 import sys
 import time
-import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(
     os.path.abspath(__file__)))))
@@ -40,7 +39,7 @@ FAKE_PATCH_JSON = {
   "number":"1112",
   "subject":"chromite commit",
   "owner":{"name":"Chromite Master", "email":"chromite@chromium.org"},
-  "url":"https://chromium-review.googlesource.com/1112",
+  "url":"http://gerrit.chromium.org/gerrit/1112",
   "lastUpdated":1311024529,
   "sortKey":"00166e8700001052",
   "open": True,
@@ -103,7 +102,7 @@ I am the first commit.
     os.chdir(self.default_cwd)
     # Disallow write so as to smoke out any invalid writes to
     # cwd.
-    os.chmod(self.default_cwd, 0o500)
+    os.chmod(self.default_cwd, 0500)
 
   def tearDown(self):
     if hasattr(self, 'original_cwd'):
@@ -520,7 +519,6 @@ class TestGerritPatch(TestGitRepoPatch):
       self._run(['git', 'push', source, '%s:%s' % (sha1, refspec)], source)
     return obj
 
-  @unittest.skipIf(constants.USE_GOB, "Magic constants broken for GoB.")
   def testIsAlreadyMerged(self):
     # Note that these are magic constants- they're known to be
     # merged (and the other abandoned) in public gerrit.
@@ -666,7 +664,7 @@ class TestFormatting(cros_test_lib.TestCase):
   def _assertBad(self, functor, values, fixup=str, allow_CL=False, **kwds):
     values = map(fixup, values)
     pass_allow_CL = kwds.pop('pass_allow', False)
-    for prefix in ([""] + (['CL:'] if allow_CL else [])):
+    for prefix in ([""] + ['CL:'] if allow_CL else []):
       if pass_allow_CL:
         kwds['allow_CL'] = bool(prefix)
       for value in values:
@@ -678,7 +676,7 @@ class TestFormatting(cros_test_lib.TestCase):
   def _assertGood(self, functor, values, fixup=str, allow_CL=False, **kwds):
     pass_allow_CL = kwds.pop('pass_allow', False)
     values = [map(fixup, x) for x in values]
-    for prefix in ([""] + (['CL:'] if allow_CL else [])):
+    for prefix in ([""] + ['CL:'] if allow_CL else []):
       if pass_allow_CL:
         kwds['allow_CL'] = bool(prefix)
       for value, expected in values:
@@ -692,7 +690,7 @@ class TestFormatting(cros_test_lib.TestCase):
   def _ChangeIdFixup(value):
     s = value.lstrip('iI*')
     l = len(value)
-    return '%s%s' % (value[0:l-len(s)], s.ljust(40, "0"))
+    return '%s%s' % (value[0:l-len(s)], s.ljust(40 - len(s), "0"))
 
   def testFormatChangeId(self):
     fixup = self._ChangeIdFixup
@@ -718,7 +716,7 @@ class TestFormatting(cros_test_lib.TestCase):
         ['is', 'i1325', '01234567', '012345a', '**12345', '+123', '/0123'],
         allow_CL=True)
     self._assertGood(
-        cros_patch.FormatGerritNumber,
+        cros_patch.FormatChangeId,
         [('1',) * 2,
          ('123',) * 2,
          ('123456',) * 2,
@@ -745,24 +743,6 @@ class TestFormatting(cros_test_lib.TestCase):
          ('a' * 40,) * 2,
          ('0123456789abcdef',) * 2,
          ('0123456789ABCDEF', '0123456789abcdef')],
-        fixup=fixup)
-
-  @staticmethod
-  def _FullChangeIdFixup(value):
-    pieces = value.split('~')
-    pieces[-1] = TestFormatting._ChangeIdFixup(pieces[-1])
-    return '~'.join(pieces)
-
-  def testFormatFullChangeId(self):
-    fixup = self._FullChangeIdFixup
-    self._assertBad(
-        cros_patch.FormatFullChangeId,
-        ['foo', 'foo~bar', 'foo~bar~baz', 'foo~refs/bar~*I1234'],
-        fixup=fixup, allow_CL=True)
-    self._assertGood(
-        cros_patch.FormatFullChangeId,
-        [('foo~bar~ifade', 'foo~bar~Ifade'),
-         ('foo/bar/baz~refs/heads/_my-branch_~Iface',) * 2],
         fixup=fixup)
 
   def testFormatPatchDeps(self):

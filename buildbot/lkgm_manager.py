@@ -90,16 +90,10 @@ class _LKGMCandidateInfo(manifest_version.VersionInfo):
     return map(int, [lkgm.build_number, lkgm.branch_build_number,
                      lkgm.patch_number, lkgm.revision_number])
 
-  def IncrementVersion(self):
+  def IncrementVersion(self, message=None, dry_run=False):
     """Increments the version by incrementing the revision #."""
     self.revision_number += 1
     return self.VersionString()
-
-  def UpdateVersionFile(self, *args, **kwargs):
-    """Update the version file on disk.
-
-    For LKGMCandidateInfo there is no version file so this function is a no-op.
-    """
 
 
 class LKGMManager(manifest_version.BuildSpecsManager):
@@ -437,7 +431,8 @@ class LKGMManager(manifest_version.BuildSpecsManager):
         git.CreatePushBranch(manifest_version.PUSH_BRANCH,
                                         self.manifest_dir, sync=False)
         manifest_version.CreateSymlink(path_to_candidate, self.lkgm_path)
-        git.RunGit(self.manifest_dir, ['add', self.LKGM_PATH])
+        cros_build_lib.RunCommand(['git', 'add', self.LKGM_PATH],
+                                  cwd=self.manifest_dir)
         self.PushSpecChanges(
             'Automatic: %s promoting %s to LKGM' % (self.build_name,
                                                     self.current_version))
@@ -506,9 +501,11 @@ def GenerateBlameList(source_repo, lkgm_path, only_print_chumps=False):
       continue
 
     revision = handler.projects[project]['revision']
-    cmd = ['log', '--pretty=full', '%s..HEAD' % revision]
     try:
-      result = git.RunGit(src_path, cmd)
+      result = cros_build_lib.RunCommand(['git', 'log', '--pretty=full',
+                                          '%s..HEAD' % revision],
+                                         print_cmd=False, redirect_stdout=True,
+                                         cwd=src_path)
     except cros_build_lib.RunCommandError as ex:
       # Git returns 128 when the revision does not exist.
       if ex.result.returncode != 128:
@@ -536,8 +533,7 @@ def GenerateBlameList(source_repo, lkgm_path, only_print_chumps=False):
             current_author,
             change_number,
         ]
-        if current_committer not in ('chrome-bot', 'chrome-internal-fetch',
-                                     'chromeos-commit-bot'):
+        if current_committer != 'chrome-bot':
           items.insert(0, 'CHUMP')
         elif only_print_chumps:
           continue

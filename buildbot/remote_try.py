@@ -8,7 +8,9 @@ import constants
 import getpass
 import json
 import os
+import shutil
 import sys
+import tempfile
 import time
 
 if __name__ == '__main__':
@@ -17,7 +19,6 @@ if __name__ == '__main__':
 from chromite.buildbot import repository
 from chromite.buildbot import manifest_version
 from chromite.lib import cros_build_lib
-from chromite.lib import cache
 from chromite.lib import git
 
 
@@ -44,10 +45,10 @@ class ValidationError(Exception):
 
 class RemoteTryJob(object):
   """Remote Tryjob that is submitted through a Git repo."""
-  PUBLIC_URL = os.path.join(constants.PUBLIC_GOB_URL,
-                            'chromiumos/tryjobs')
-  INTERNAL_URL = os.path.join(constants.INTERNAL_GOB_URL,
-                              'chromeos/tryjobs')
+  EXT_SSH_URL = os.path.join(constants.GERRIT_SSH_URL,
+                             'chromiumos/tryjobs')
+  INT_SSH_URL = os.path.join(constants.GERRIT_INT_SSH_URL,
+                             'chromeos/tryjobs')
 
   # In version 3, remote patches have an extra field.
   # In version 4, cherry-picking is the norm, thus multiple patches are
@@ -55,23 +56,8 @@ class RemoteTryJob(object):
   TRYJOB_FORMAT_VERSION = 4
   TRYJOB_FORMAT_FILE = '.tryjob_minimal_format_version'
 
-  # Constants for controlling the length of JSON fields sent to buildbot.
-  # - The trybot description is shown when the run starts, and helps users
-  #   distinguish between their various runs. If no trybot description is
-  #   specified, the list of patches is used as the description. The buildbot
-  #   database limits this field to MAX_DESCRIPTION_LENGTH characters.
-  # - When checking the trybot description length, we also add some PADDING
-  #   to give buildbot room to add extra formatting around the fields used in
-  #   the description.
-  # - We limit the number of patches listed in the description to
-  #   MAX_PATCHES_IN_DESCRIPTION. This is for readability only.
-  # - Every individual field that is stored in a buildset is limited to
-  #   MAX_PROPERTY_LENGTH. We use this to ensure that our serialized list of
-  #   arguments fits within that limit.
-  MAX_DESCRIPTION_LENGTH = 256
-  MAX_PATCHES_IN_DESCRIPTION = 10
-  MAX_PROPERTY_LENGTH = 1023
-  PADDING = 50
+  NAME_LENGTH_LIMIT = 256
+  PROPERTY_LENGTH_LIMIT = 1024
 
   def __init__(self, options, bots, local_patches):
     """Construct the object.
@@ -83,7 +69,6 @@ class RemoteTryJob(object):
     """
     self.options = options
     self.user = getpass.getuser()
-    self.repo_cache = cache.DiskCache(self.options.cache_dir)
     cwd = os.path.dirname(os.path.realpath(__file__))
     self.user_email = git.GetProjectUserEmail(cwd)
     cros_build_lib.Info('Using email:%s', self.user_email)
@@ -94,12 +79,7 @@ class RemoteTryJob(object):
       self.name = ''
       if options.branch != 'master':
         self.name = '[%s] ' % options.branch
-
-      self.name += ','.join(patch_list[:self.MAX_PATCHES_IN_DESCRIPTION])
-      if len(patch_list) > self.MAX_PATCHES_IN_DESCRIPTION:
-        remaining_patches = len(patch_list) - self.MAX_PATCHES_IN_DESCRIPTION
-        self.name += '... (%d more CLs)' % (remaining_patches,)
-
+      self.name += ','.join(patch_list)
     self.bots = bots[:]
     self.slaves_request = options.slaves
     self.description = ('name: %s\n patches: %s\nbots: %s' %
@@ -110,15 +90,14 @@ class RemoteTryJob(object):
 
     self.extra_args.append('--remote-version=%s'
                            % (self.TRYJOB_FORMAT_VERSION,))
+    self.tryjob_repo = None
     self.local_patches = local_patches
-    self.repo_url = self.PUBLIC_URL
-    self.cache_key = ('trybot',)
+    self.ssh_url = self.EXT_SSH_URL
     self.manifest = None
     if repository.IsARepoRoot(options.sourceroot):
       self.manifest = git.ManifestCheckout.Cached(options.sourceroot)
       if repository.IsInternalRepoCheckout(options.sourceroot):
-        self.repo_url = self.INTERNAL_URL
-        self.cache_key = ('trybot-internal',)
+        self.ssh_url = self.INT_SSH_URL
 
   @property
   def values(self):
@@ -134,30 +113,30 @@ class RemoteTryJob(object):
 
   def _VerifyForBuildbot(self):
     """Early validation, to ensure the job can be processed by buildbot."""
-
-    # Buildbot stores the trybot description in a property with a 256
-    # character limit. Validate that our description is well under the limit.
-    if (len(self.user) + len(self.name) + self.PADDING >
-        self.MAX_DESCRIPTION_LENGTH):
-      cros_build_lib.Warning(
-          'remote tryjob description is too long, truncating it')
-      self.name = self.name[:self.MAX_DESCRIPTION_LENGTH - self.PADDING] + '...'
+    val = self.values
+    # Validate the name of the buildset that buildbot will try to queue.
+    full_name = '%s:%s' % (val['user'], val['name'])
+    if len(full_name) > self.NAME_LENGTH_LIMIT:
+      raise ValidationError(
+          'The tryjob description is longer than %s characters.  '
+          'Use --remote-description to specify a custom description.'
+          % self.NAME_LENGTH_LIMIT)
 
     # Buildbot will set extra_args as a buildset 'property'.  It will store
     # the property in its database in JSON form.  The limit of the database
     # field is 1023 characters.
-    if len(json.dumps(self.extra_args)) > self.MAX_PROPERTY_LENGTH:
+    if len(json.dumps(val['extra_args'])) > self.PROPERTY_LENGTH_LIMIT:
       raise ValidationError(
           'The number of extra arguments passed to cbuildbot has exceeded the '
           'limit.  If you have a lot of local patches, upload them and use the '
           '-g flag instead.')
 
-  def _Submit(self, workdir, testjob, dryrun):
+  def _Submit(self, testjob, dryrun):
     """Internal submission function.  See Submit() for arg description."""
     # TODO(rcui): convert to shallow clone when that's available.
     current_time = str(int(time.time()))
 
-    ref_base = os.path.join('refs/tryjobs', self.user_email, current_time)
+    ref_base = os.path.join('refs/tryjobs', self.user, current_time)
     for patch in self.local_patches:
       # Isolate the name; if it's a tag or a remote, let through.
       # Else if it's a branch, get the full branch name minus refs/heads.
@@ -179,8 +158,8 @@ class RemoteTryJob(object):
                                 patch.tracking_branch, tag))
 
     self._VerifyForBuildbot()
-    repository.UpdateGitRepo(workdir, self.repo_url)
-    version_path = os.path.join(workdir,
+    repository.CloneGitRepo(self.tryjob_repo, self.ssh_url)
+    version_path = os.path.join(self.tryjob_repo,
                                 self.TRYJOB_FORMAT_FILE)
     with open(version_path, 'r') as f:
       try:
@@ -192,12 +171,12 @@ class RemoteTryJob(object):
     push_branch = manifest_version.PUSH_BRANCH
 
     remote_branch = ('origin', 'refs/remotes/origin/test') if testjob else None
-    git.CreatePushBranch(push_branch, workdir, sync=False,
+    git.CreatePushBranch(push_branch, self.tryjob_repo, sync=False,
                          remote_push_branch=remote_branch)
 
     file_name = '%s.%s' % (self.user,
                            current_time)
-    user_dir = os.path.join(workdir, self.user)
+    user_dir = os.path.join(self.tryjob_repo, self.user)
     if not os.path.isdir(user_dir):
       os.mkdir(user_dir)
 
@@ -205,7 +184,7 @@ class RemoteTryJob(object):
     with open(fullpath, 'w+') as job_desc_file:
       json.dump(self.values, job_desc_file)
 
-    git.RunGit(workdir, ['add', fullpath])
+    cros_build_lib.RunCommand(['git', 'add', fullpath], cwd=self.tryjob_repo)
     extra_env = {
       # The committer field makes sure the creds match what the remote
       # gerrit instance expects while the author field allows lookup
@@ -213,11 +192,12 @@ class RemoteTryJob(object):
       'GIT_COMMITTER_EMAIL' : self.user_email,
       'GIT_AUTHOR_EMAIL'    : self.user_email,
     }
-    git.RunGit(workdir, ['commit', '-m', self.description],
-               extra_env=extra_env)
+    cros_build_lib.RunCommand(['git', 'commit', '-m', self.description],
+                              cwd=self.tryjob_repo, extra_env=extra_env)
 
     try:
-      git.PushWithRetry(push_branch, workdir, retries=3, dryrun=dryrun)
+      git.PushWithRetry(
+          push_branch, self.tryjob_repo, retries=3, dryrun=dryrun)
     except cros_build_lib.RunCommandError:
       cros_build_lib.Error(
           'Failed to submit tryjob.  This could be due to too many '
@@ -235,11 +215,15 @@ class RemoteTryJob(object):
                will be ignored by production master.
       dryrun: Setting to true will run everything except the final submit step.
     """
-    if workdir is None:
-      with self.repo_cache.Lookup(self.cache_key) as ref:
-        self._Submit(ref.path, testjob, dryrun)
-    else:
-      self._Submit(workdir, testjob, dryrun)
+    self.tryjob_repo = workdir
+    if self.tryjob_repo is None:
+      self.tryjob_repo = tempfile.mkdtemp()
+
+    try:
+      self._Submit(testjob, dryrun)
+    finally:
+      if workdir is None:
+        shutil.rmtree(self.tryjob_repo)
 
   def GetTrybotConsoleLink(self):
     """Get link to the console for the user."""

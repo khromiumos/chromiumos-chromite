@@ -127,32 +127,17 @@ class RunTestSuiteTest(cros_build_lib_unittest.RunCommandTempDirTestCase):
 class ChromeSDKTest(cros_build_lib_unittest.RunCommandTempDirTestCase):
   """Basic tests for ChromeSDK commands with RunCommand mocked out."""
   BOARD = 'daisy_foo'
-  EXTRA_ARGS = ('--monkey', 'banana')
-  EXTRA_ARGS2 = ('--donkey', 'kong')
-  CHROME_SRC = 'chrome_src'
   CMD = ['bar', 'baz']
   CWD = 'fooey'
 
-  def setUp(self):
-    self.inst = commands.ChromeSDK(self.CWD, self.BOARD)
-
   def testRunCommand(self):
     """Test that running a command is possible."""
-    self.inst.Run(self.CMD)
+    commands.ChromeSDK.Run(self.CWD, self.BOARD, self.CMD)
     self.assertCommandContains([self.BOARD] + self.CMD, cwd=self.CWD)
-
-  def testRunCommandKwargs(self):
-    """Exercise optional arguments."""
-    custom_inst = commands.ChromeSDK(
-        self.CWD, self.BOARD, extra_args=list(self.EXTRA_ARGS),
-        chrome_src=self.CHROME_SRC, debug_log=True)
-    custom_inst.Run(self.CMD, list(self.EXTRA_ARGS2))
-    self.assertCommandContains(['debug', self.BOARD] + list(self.EXTRA_ARGS) +
-                               list(self.EXTRA_ARGS2) + self.CMD, cwd=self.CWD)
 
   def testNinja(self):
     """Test that running ninja is possible."""
-    self.inst.Ninja(self.BOARD)
+    commands.ChromeSDK.Ninja(self.CWD, self.BOARD)
     self.assertCommandContains([self.BOARD], cwd=self.CWD)
 
 
@@ -272,8 +257,8 @@ ca-t3/pk-g4-4.0.1-r333
     """Base case where Build is called with minimal options."""
     kwds.setdefault('build_autotest', default)
     kwds.setdefault('usepkg', default)
-    kwds.setdefault('chrome_binhost_only', default)
     kwds.setdefault('skip_chroot_upgrade', default)
+    kwds.setdefault('nowithdebug', default)
     commands.Build(buildroot=self._buildroot, board='x86-generic', **kwds)
     self.assertCommandContains(['./build_packages'])
 
@@ -287,31 +272,18 @@ ca-t3/pk-g4-4.0.1-r333
     self.testBuild(extra_env=extra_env)
     self.assertCommandContains(['./build_packages'], extra_env=extra_env)
 
-  def testGenerateSymbols(self):
-    """Test GenerateBreakpadSymbols Command."""
-    commands.GenerateBreakpadSymbols(self.tempdir, self._board, False)
-    self.assertCommandContains(['--board=%s' % self._board])
-
-  @mock.patch('chromite.scripts.upload_symbols.UploadSymbols')
-  def testUploadSymbols(self, sym_mock, official=False, cnt=None):
+  def testUploadSymbols(self, official=False, cnt=None):
     """Test UploadSymbols Command."""
-    sym_mock.side_effect = [0]
     commands.UploadSymbols(self.tempdir, self._board, official, cnt)
-    self.assertEquals(sym_mock.call_count, 1)
-    _, kwargs = sym_mock.call_args
-    self.assertEquals(kwargs['official'], official)
-    self.assertEquals(kwargs['upload_count'], cnt)
+    self.assertCommandContains(['--official_build'], expected=official)
+    self.assertCommandContains(['--upload-count'], expected=bool(cnt))
 
   def testOfficialUploadSymbols(self):
     """Test uploading symbols for official builds"""
-    # Seems pylint can't grasp the @mock.patch decorator.
-    # pylint: disable=E1120
     self.testUploadSymbols(official=True)
 
   def testLimitUploadSymbols(self):
     """Test uploading a limited number of symbols"""
-    # Seems pylint can't grasp the @mock.patch decorator.
-    # pylint: disable=E1120
     self.testUploadSymbols(cnt=10)
 
   def testPushImages(self, profile=None):
@@ -419,7 +391,7 @@ class UnmockedTests(cros_test_lib.TempDirTestCase):
     abs_results_dir = os.path.join(self.tempdir, 'chroot', test_results_dir)
     os.makedirs(abs_results_dir)
     osutils.Touch(os.path.join(abs_results_dir, 'foo.txt'))
-    res = commands.ArchiveTestResults(self.tempdir, test_results_dir, 'foo.tgz')
+    res = commands.ArchiveTestResults(self.tempdir, test_results_dir, '')
     cros_test_lib.VerifyTarball(res, ['./', 'foo.txt'])
 
   def testBuildFirmwareArchive(self):
@@ -513,4 +485,5 @@ class UnmockedTests(cros_test_lib.TempDirTestCase):
 
 
 if __name__ == '__main__':
+  gs.GSUTIL_BIN = '/fake/path/to/gsutil'
   cros_test_lib.main()

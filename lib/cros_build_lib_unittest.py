@@ -87,7 +87,7 @@ class PopenMock(partial_mock.PartialCmdMock):
         script,
         ['#!/bin/bash\n', 'cat %s\n' % stdout, 'cat %s >&2\n' % stderr,
          'exit %s' % result.returncode])
-    os.chmod(script, 0o700)
+    os.chmod(script, 0700)
     kwargs['cwd'] = self.tempdir
     self.backup['__init__'](inst, [script, '--'] + cmd, *args, **kwargs)
 
@@ -304,6 +304,24 @@ class TestRunCommand(cros_test_lib.MoxTestCase):
     """Test RunCommand() properly sets/restores sigint.  Exception case."""
     self.testSubprocessCommunicateExceptionRaisesError(ignore_sigint=True)
 
+  @_ForceLoggingLevel
+  def testSubprocessCommunicateExceptionNotRaisesError(self):
+    """Don't re-raise error from communicate() when --error_ok=True."""
+    cmd = ['test', 'cmd']
+    real_cmd = ['cros_sdk', '--'] + cmd
+    expected_result = cros_build_lib.CommandResult()
+    expected_result.cmd = real_cmd
+
+    with self._SetupPopen(real_cmd) as proc:
+      proc.communicate(None).AndRaise(ValueError)
+
+    self.mox.ReplayAll()
+    actual_result = cros_build_lib.RunCommand(cmd, error_ok=True,
+                                              enter_chroot=True)
+    self.mox.VerifyAll()
+
+    self._AssertCrEqual(expected_result, actual_result)
+
   def testEnvWorks(self):
     """Test RunCommand(..., env=xyz) works."""
     # We'll put this bogus environment together, just to make sure
@@ -469,32 +487,6 @@ class TestRetries(cros_test_lib.MoxTestCase):
     self.assertEqual(4, cros_build_lib.GenericRetry(handler, 1, f))
     self.assertRaises(StopIteration, cros_build_lib.GenericRetry, handler, 3, f)
 
-  def testRetryExceptionBadArgs(self):
-    """Verify we reject non-classes or tuples of classes"""
-    self.assertRaises(TypeError, cros_build_lib.RetryException, '', 3, map)
-    self.assertRaises(TypeError, cros_build_lib.RetryException, 123, 3, map)
-    self.assertRaises(TypeError, cros_build_lib.RetryException, None, 3, map)
-    self.assertRaises(TypeError, cros_build_lib.RetryException, [None], 3, map)
-
-  def testRetryException(self):
-    """Verify we retry only when certain exceptions get thrown"""
-    source, source2 = iter(xrange(6)).next, iter(xrange(6)).next
-    def f():
-      val = source2()
-      self.assertEqual(val, source())
-      if val < 2:
-        raise OSError()
-      if val < 5:
-        raise ValueError()
-      return val
-    self.assertRaises(OSError, cros_build_lib.RetryException,
-                      (OSError, ValueError), 2, f)
-    self.assertRaises(ValueError, cros_build_lib.RetryException,
-                      (OSError, ValueError), 1, f)
-    self.assertEqual(5, cros_build_lib.RetryException(ValueError, 1, f))
-    self.assertRaises(StopIteration, cros_build_lib.RetryException,
-                      ValueError, 3, f)
-
   @osutils.TempDirDecorator
   def testBasicRetry(self):
     # pylint: disable=E1101
@@ -511,7 +503,7 @@ class TestRetries(cros_test_lib.MoxTestCase):
         "print val\n"
         "sys.exit(0 if val == stop_val else 1)\n" % paths)
 
-    os.chmod(path, 0o755)
+    os.chmod(path, 0755)
 
     def _setup_counters(start, stop, sleep, sleep_cnt):
       self.mox.ResetAll()
@@ -596,7 +588,7 @@ class TestListFiles(cros_test_lib.TempDirTestCase):
         if full_path.endswith('/'):
           # we only want to create directories
           return
-      except OSError as err:
+      except OSError, err:
         if err.errno == errno.EEXIST:
           # we don't care if the dir already exists
           pass
@@ -628,7 +620,7 @@ class TestListFiles(cros_test_lib.TempDirTestCase):
   def testNoSuchDir(self):
     try:
       cros_build_lib.ListFiles(os.path.join(self.tempdir, 'missing'))
-    except OSError as err:
+    except OSError, err:
       self.assertEqual(err.errno, errno.ENOENT)
 
 
@@ -874,7 +866,7 @@ class TestManifestCheckout(cros_test_lib.TempDirTestCase):
       try:
         func(repo_root)
         assert "Testing for %s, an exception wasn't thrown." % (message,)
-      except OSError as e:
+      except OSError, e:
         self.assertEqual(e.errno, errno.ENOENT)
         self.assertTrue(message in str(e),
                         msg="Couldn't find string %r in error message %r"

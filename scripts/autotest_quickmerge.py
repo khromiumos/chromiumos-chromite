@@ -11,7 +11,6 @@ emerge-$board autotest-all, by simply rsync'ing changes from trunk to sysroot.
 """
 
 import argparse
-import glob
 import logging
 import os
 import re
@@ -32,7 +31,13 @@ if cros_build_lib.IsInsideChroot():
 INCLUDE_PATTERNS_FILENAME = 'autotest-quickmerge-includepatterns'
 AUTOTEST_PROJECT_NAME = 'chromiumos/third_party/autotest'
 AUTOTEST_EBUILD = 'chromeos-base/autotest'
-DOWNGRADE_EBUILDS = ['chromeos-base/autotest']
+DOWNGRADE_EBUILDS = ['chromeos-base/autotest',
+                     'chromeos-base/autotest-tests',
+                     'chromeos-base/autotest-chrome',
+                     'chromeos-base/autotest-factory',
+                     'chromeos-base/autotest-telemetry',
+                     'chromeos-base/autotest-tests-ltp',
+                     'chromeos-base/autotest-tests-ownershipapi']
 
 IGNORE_SUBDIRS = ['ExternalSource',
                   'logs',
@@ -103,7 +108,7 @@ def GetStalePackageNames(change_list, autotest_sysroot):
     change_list: A list of ItemizedChange objects corresponding to changed
                  or modified files.
     autotest_sysroot: Absolute path of autotest in the sysroot,
-                      e.g. '/build/lumpy/usr/local/build/autotest'
+                      e.g. '/build/lumpy/usr/local/autotest'
 
   Returns:
     A list of test package names, eg ['factory_Leds', 'login_UserPolicyKeys'].
@@ -258,7 +263,7 @@ def RemoveBzipPackages(autotest_sysroot):
 
   Arguments:
     autotest_sysroot: Absolute path of autotest in the sysroot,
-                      e.g. '/build/lumpy/usr/local/build/autotest'
+                      e.g. '/build/lumpy/usr/local/autotest'
   """
   osutils.RmDir(os.path.join(autotest_sysroot, 'packages'),
                              ignore_missing=True)
@@ -319,11 +324,7 @@ def ParseArguments(argv):
                                    'to emerge-$board autotest-all, by '
                                    'rsyncing source tree to sysroot.')
 
-
-  default_board = cros_build_lib.GetDefaultBoard()
-  parser.add_argument('--board', metavar='BOARD', default=default_board,
-                      help='Board to perform quickmerge for. Default: ' +
-                      (default_board or 'Not configured.'))
+  parser.add_argument('--board', metavar='BOARD', default=None, required=True)
   parser.add_argument('--pretend', action='store_true',
                       help='Dry run only, do not modify sysroot autotest.')
   parser.add_argument('--overwrite', action='store_true',
@@ -333,12 +334,6 @@ def ParseArguments(argv):
                       'than source tree, always perform quickmerge.')
   parser.add_argument('--verbose', action='store_true',
                       help='Print detailed change report.')
-
-  # Used only if test_that is calling autotest_quickmerge and has detected that
-  # the sysroot autotest path is still in usr/local/autotest (ie the build
-  # pre-dates https://chromium-review.googlesource.com/#/c/62880/ )
-  parser.add_argument('--legacy_path', action='store_true',
-                      help=argparse.SUPPRESS)
 
   return parser.parse_args(argv)
 
@@ -368,11 +363,8 @@ def main(argv):
 
   # TODO: Determine the following string programatically.
   sysroot_path = os.path.join('/build', args.board, '')
-  sysroot_autotest_path = os.path.join(sysroot_path,
-                                       constants.AUTOTEST_BUILD_PATH, '')
-  if args.legacy_path:
-    sysroot_autotest_path = os.path.join(sysroot_path, 'usr/local/autotest',
-                                         '')
+  sysroot_autotest_path = os.path.join(sysroot_path, 'usr', 'local',
+                                       'autotest', '')
 
   if not args.force:
     newest_dest_time = GetNewestFileTime(sysroot_autotest_path, IGNORE_SUBDIRS)
@@ -396,17 +388,6 @@ def main(argv):
     logging.info('Updating portage database.')
     UpdatePackageContents(change_report, AUTOTEST_EBUILD,
                           sysroot_path)
-    for logfile in glob.glob(os.path.join(sysroot_autotest_path, 'packages',
-                                          '*.log')):
-      try:
-        # Open file in a try-except block, for atomicity, instead of
-        # doing existence check.
-        with open(logfile, 'r') as f:
-          package_cp = f.readline().strip()
-          DOWNGRADE_EBUILDS.append(package_cp)
-      except IOError:
-        pass
-
     for ebuild in DOWNGRADE_EBUILDS:
       if not DowngradePackageVersion(sysroot_path, ebuild):
         logging.warning('Unable to downgrade package %s version number.',
@@ -416,7 +397,6 @@ def main(argv):
     sentinel_filename = os.path.join(sysroot_autotest_path,
                                      '.quickmerge_sentinel')
     cros_build_lib.RunCommand(['touch', sentinel_filename])
-
 
   if args.pretend:
     logging.info('The following message is pretend only. No filesystem '

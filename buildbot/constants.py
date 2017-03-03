@@ -6,29 +6,16 @@
 
 import os
 
-USE_GOB = True
+USE_GOB = False
 
-def _FindSourceRoot():
-  """Try and find the root check out of the chromiumos tree"""
-  source_root = path = os.path.realpath(os.path.join(
-      os.path.abspath(__file__), '..', '..', '..'))
-  while True:
-    if os.path.isdir(os.path.join(path, '.repo')):
-      return path
-    elif path == '/':
-      break
-    path = os.path.dirname(path)
-  return source_root
-
-SOURCE_ROOT = _FindSourceRoot()
-
+SOURCE_ROOT = os.path.dirname(os.path.abspath(__file__))
+SOURCE_ROOT = os.path.realpath(os.path.join(SOURCE_ROOT, '..', '..'))
 CROSUTILS_DIR = os.path.join(SOURCE_ROOT, 'src/scripts')
 CHROMITE_BIN_SUBDIR = 'chromite/bin'
 CHROMITE_BIN_DIR = os.path.join(SOURCE_ROOT, CHROMITE_BIN_SUBDIR)
 PATH_TO_CBUILDBOT = os.path.join(CHROMITE_BIN_SUBDIR, 'cbuildbot')
 DEFAULT_CHROOT_DIR = 'chroot'
 SDK_TOOLCHAINS_OUTPUT = 'tmp/toolchain-pkgs'
-AUTOTEST_BUILD_PATH = 'usr/local/build/autotest'
 
 # Re-execution API constants.
 # Used by --resume and --bootstrap to decipher which options they
@@ -73,8 +60,8 @@ if USE_GOB:
   GERRIT_HOST = PUBLIC_GERRIT_HOST
   GERRIT_INT_HOST = INTERNAL_GERRIT_HOST
   GIT_HOST = PUBLIC_GOB_HOST
-  GERRIT_SSH_URL = PUBLIC_GERRIT_URL
-  GERRIT_INT_SSH_URL = INTERNAL_GERRIT_URL
+  GERRIT_SSH_URL = PUBLIC_GOB_URL
+  GERRIT_INT_SSH_URL = INTERNAL_GOB_URL
   GIT_HTTP_URL = PUBLIC_GOB_URL
 else:
   GERRIT_PORT = '29418'
@@ -92,7 +79,6 @@ REPO_URL = '%s/%s' % (GIT_HTTP_URL, REPO_PROJECT)
 CHROMITE_PROJECT = 'chromiumos/chromite'
 CHROMITE_URL = '%s/%s' % (GIT_HTTP_URL, CHROMITE_PROJECT)
 CHROMIUM_SRC_PROJECT = 'chromium/src'
-CHROMIUM_GOB_URL = '%s/%s.git' % (PUBLIC_GOB_URL, CHROMIUM_SRC_PROJECT)
 
 MANIFEST_PROJECT = 'chromiumos/manifest'
 MANIFEST_INT_PROJECT = 'chromeos/manifest-internal'
@@ -106,21 +92,15 @@ SHARED_CACHE_ENVVAR = 'CROS_CACHEDIR'
 # CrOS remotes specified in the manifests.
 EXTERNAL_REMOTE = 'cros'
 INTERNAL_REMOTE = 'cros-internal'
-CHROMIUM_REMOTE = 'chromium'
-CHROME_REMOTE = 'chrome'
-
-GIT_REMOTES = {
-    EXTERNAL_REMOTE: PUBLIC_GOB_URL,
-    INTERNAL_REMOTE: INTERNAL_GOB_URL,
-    CHROMIUM_REMOTE: PUBLIC_GOB_URL,
-    CHROME_REMOTE: INTERNAL_GOB_URL,
+CROS_REMOTES = {
+    EXTERNAL_REMOTE : GERRIT_SSH_URL,
+    INTERNAL_REMOTE : GERRIT_INT_SSH_URL
 }
 
 # TODO(sosa): Move to manifest-versions-external once its created
 MANIFEST_VERSIONS_SUFFIX = '/chromiumos/manifest-versions'
 MANIFEST_VERSIONS_INT_SUFFIX = '/chromeos/manifest-versions'
 MANIFEST_VERSIONS_GS_URL = 'gs://chromeos-manifest-versions'
-TRASH_BUCKET = 'gs://chromeos-throw-away-bucket'
 
 PATCH_BRANCH = 'patch_branch'
 STABLE_EBUILD_BRANCH = 'stabilizing_branch'
@@ -186,15 +166,16 @@ INCREMENTAL_TYPE = 'binary'
 # These builds serve as PFQ builders.  This is being deprecated.
 PFQ_TYPE = 'pfq'
 
-# Hybrid Commit and PFQ type.  Ultimate protection.  Commonly referred to
-# as simply "commit queue" now.
+# TODO(sosa): Deprecate CQ type.
+# Commit Queue type that is similar to PFQ_TYPE but uses Commit Queue sync
+# logic.
+COMMIT_QUEUE_TYPE = 'commit-queue'
+
+# Hybrid Commit and PFQ type.  Ultimate protection.
 PALADIN_TYPE = 'paladin'
 
 # A builder that kicks off Pre-CQ builders that bless the purest CLs.
 PRE_CQ_LAUNCHER_TYPE = 'priest'
-
-# A builder that cuts and prunes branches.
-CREATE_BRANCH_TYPE = 'gardener'
 
 # Chrome PFQ type.  Incremental build type that builds and validates new
 # versions of Chrome.  Only valid if set with CHROME_REV.  See
@@ -207,8 +188,6 @@ BUILD_FROM_SOURCE_TYPE = 'full'
 
 # Full but with versioned logic.
 CANARY_TYPE = 'canary'
-
-BRANCH_UTIL_CONFIG = 'branch-util'
 
 # Special build type for Chroot builders.  These builds focus on building
 # toolchains and validate that they work.
@@ -229,7 +208,6 @@ VALID_BUILD_TYPES = (
     PFQ_TYPE,
     PRE_CQ_LAUNCHER_TYPE,
     REFRESH_PACKAGES_TYPE,
-    CREATE_BRANCH_TYPE,
 )
 
 # The name of the builder used to launch the pre-CQ.
@@ -246,22 +224,21 @@ HWTEST_PALADIN_POOL = 'cq'
 HWTEST_CHROME_PFQ_POOL = 'chromepfq'
 HWTEST_CHROME_PERF_POOL = 'chromeperf'
 HWTEST_TRYBOT_POOL = 'try-bot'
+# Currently supported hwtest boards.
+HWTEST_BOARD_WHITELIST = ['x86-mario', 'lumpy', 'daisy', 'parrot']
 HWTEST_AU_SUITE = 'au'
-HWTEST_QAV_SUITE = 'qav'
 
 # Defines VM Test types.
-FULL_AU_TEST_TYPE = 'full_suite'
-SIMPLE_AU_TEST_TYPE = 'pfq_suite'
 SMOKE_SUITE_TEST_TYPE = 'smoke_suite'
-TELEMETRY_SUITE_TEST_TYPE = 'telemetry_suite'
+SIMPLE_AU_TEST_TYPE = 'pfq_suite'
+FULL_AU_TEST_TYPE = 'full_suite'
 
-VALID_VM_TEST_TYPES = [FULL_AU_TEST_TYPE, SIMPLE_AU_TEST_TYPE,
-                       SMOKE_SUITE_TEST_TYPE, TELEMETRY_SUITE_TEST_TYPE]
+VALID_AU_TEST_TYPES = [SMOKE_SUITE_TEST_TYPE, SIMPLE_AU_TEST_TYPE,
+                       FULL_AU_TEST_TYPE]
 
-CHROMIUMOS_OVERLAY_DIR = 'src/third_party/chromiumos-overlay'
-VERSION_FILE = os.path.join(CHROMIUMOS_OVERLAY_DIR,
+VERSION_FILE = os.path.join('src/third_party/chromiumos-overlay',
                             'chromeos/config/chromeos_version.sh')
-SDK_VERSION_FILE = os.path.join(CHROMIUMOS_OVERLAY_DIR,
+SDK_VERSION_FILE = os.path.join('src/third_party/chromiumos-overlay',
                                 'chromeos/binhost/host/sdk_version.conf')
 SDK_GS_BUCKET = 'chromiumos-sdk'
 
@@ -283,16 +260,9 @@ EXTERNAL_PATCH_TAG = 'e'
 PATCH_TAGS = (INTERNAL_PATCH_TAG, EXTERNAL_PATCH_TAG)
 
 # Default gerrit query used to find changes for CQ.
-if USE_GOB:
-  DEFAULT_CQ_READY_QUERY = ('status:open AND '
-                            'label:Code-Review=+2 AND '
-                            'label:Verified=+1 AND '
-                            'label:Commit-Queue=+1 AND '
-                            'NOT ( label:CodeReview=-2 OR label:Verified=-1 )')
-else:
-  DEFAULT_CQ_READY_QUERY = ('status:open AND CodeReview=+2 AND Verified=+1 '
-                            'AND CommitQueue=+1 '
-                            'AND NOT ( CodeReview=-2 OR Verified=-1 )')
+DEFAULT_CQ_READY_QUERY = ('status:open AND CodeReview=+2 AND Verified=+1 '
+                          'AND CommitQueue=+1 '
+                          'AND NOT ( CodeReview=-2 OR Verified=-1 )')
 
 # Default filter rules for verifying that Gerrit returned results that matched
 # our query. This used for working around Gerrit bugs.
@@ -307,8 +277,13 @@ GERRIT_ON_BORG_LABELS = {
     'Code-Review': 'CRVW',
     'Commit-Queue': 'COMR',
     'Verified': 'VRIF',
-    'Trybot-Verified': 'TBVF',
 }
+
+
+# Some files need permissions set for several distinct groups. A google storage
+# acl (xml) file will be necessary in those cases. Make available well known
+# locations and standardize.
+KNOWN_ACL_FILES = {'slave': os.path.expanduser('~/slave_archive_acl')}
 
 # Environment variables that should be exposed to all children processes
 # invoked via cros_build_lib.RunCommand.
@@ -362,12 +337,7 @@ BASE_IMAGE_TAR = '%s.tar.xz' % BASE_IMAGE_NAME
 BASE_IMAGE_BIN = '%s.bin' % BASE_IMAGE_NAME
 IMAGE_SCRIPTS_NAME = 'image_scripts'
 IMAGE_SCRIPTS_TAR = '%s.tar.xz' % IMAGE_SCRIPTS_NAME
-VM_TEST_RESULTS = 'vm_test_results_%(attempt)s.tgz'
-
 METADATA_JSON = 'metadata.json'
-METADATA_STAGE_JSON = 'metadata_%(stage)s.json'
-DELTA_SYSROOT_TAR = 'delta_sysroot.tar.xz'
-DELTA_SYSROOT_BATCH = 'batch'
 
 # Global configuration constants.
 CHROMITE_CONFIG_DIR = os.path.expanduser('~/.chromite')

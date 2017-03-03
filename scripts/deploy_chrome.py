@@ -445,7 +445,7 @@ def _FetchChromePackage(cache_dir, tempdir, gs_path):
 
   Returns: Path to the fetched chrome tarball.
   """
-  gs_ctx = gs.GSContext(cache_dir=cache_dir, init_boto=True)
+  gs_ctx = gs.GSContext.Cached(cache_dir, init_boto=True)
   files = gs_ctx.LS(gs_path).output.splitlines()
   files = [found for found in files if
            _UrlBaseName(found).startswith('%s-' % constants.CHROME_PN)]
@@ -497,7 +497,7 @@ def _PrepareStagingDir(options, tempdir, staging_dir):
   staging directory.
   """
   osutils.SafeMakedirs(staging_dir)
-  os.chmod(staging_dir, 0o755)
+  os.chmod(staging_dir, 0755)
   if options.build_dir:
     with _StripBinContext(options) as strip_bin:
       strip_flags = (None if options.strip_flags is None else

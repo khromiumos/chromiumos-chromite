@@ -4,7 +4,6 @@
 
 """Classes for collecting results of our BuildStages as they run."""
 
-import collections
 import datetime
 import math
 import os
@@ -46,24 +45,6 @@ class StepFailure(Exception):
     3) __str__() should be brief enough to include in a Commit Queue
        failure message.
   """
-  def __init__(self, message='', possibly_flaky=False):
-    """Constructor.
-
-    Args:
-      message: An error message.
-      possibly_flaky: Whether this failure might be flaky.
-    """
-    Exception.__init__(self, message)
-    self.possibly_flaky = possibly_flaky
-    self.args = (message, possibly_flaky)
-
-  def __str__(self):
-    """Stringify the message."""
-    return self.message
-
-
-class RetriableStepFailure(StepFailure):
-  """This exception is thrown when a step failed, but should be retried."""
 
 
 class BuildScriptFailure(StepFailure):
@@ -75,19 +56,18 @@ class BuildScriptFailure(StepFailure):
   commands (e.g. build_packages) fail.
   """
 
-  def __init__(self, exception, shortname, possibly_flaky=False):
+  def __init__(self, exception, shortname):
     """Construct a BuildScriptFailure object.
 
     Args:
       exception: A RunCommandError object.
       shortname: Short name for the command we're running.
-      possibly_flaky: Whether this failure might be flaky.
     """
-    StepFailure.__init__(self, possibly_flaky=possibly_flaky)
+    StepFailure.__init__(self)
     assert isinstance(exception, cros_build_lib.RunCommandError)
     self.exception = exception
     self.shortname = shortname
-    self.args = (exception, shortname, possibly_flaky)
+    self.args = (exception, shortname)
 
   def __str__(self):
     """Summarize a build command failure briefly."""
@@ -111,7 +91,7 @@ class PackageBuildFailure(BuildScriptFailure):
     """
     BuildScriptFailure.__init__(self, exception, shortname)
     self.failed_packages = set(failed_packages)
-    self.args = (exception, shortname, failed_packages)
+    self.args += (failed_packages,)
 
   def __str__(self):
     return ('Packages failed in %s: %s'
@@ -121,23 +101,17 @@ class PackageBuildFailure(BuildScriptFailure):
 class RecordedTraceback(object):
   """This class represents a traceback recorded in the list of results."""
 
-  def __init__(self, failed_stage, failed_prefix, exception, traceback):
+  def __init__(self, failed_stage, exception, traceback):
     """Construct a RecordedTraceback object.
 
     Args:
-      failed_stage: The stage that failed during the build. E.g., HWTest [bvt]
-      failed_prefix: The prefix of the stage that failed. E.g., HWTest
+      failed_stage: The stage that failed during the build.
       exception: The raw exception object.
       traceback: The full stack trace for the failure, as a string.
     """
     self.failed_stage = failed_stage
-    self.failed_prefix = failed_prefix
     self.exception = exception
     self.traceback = traceback
-
-
-_result_fields = ['name', 'result', 'description', 'prefix', 'time']
-Result = collections.namedtuple('Result', _result_fields)
 
 
 class _Results(object):
@@ -178,28 +152,33 @@ class _Results(object):
 
     This method returns true if all was successful or forgiven.
     """
-    return all(entry.result in self.NON_FAILURE_TYPES
-               for entry in self._results_log)
+    for entry in self._results_log:
+      _, result, _, _ = entry
+      if result not in self.NON_FAILURE_TYPES:
+        return False
+
+    return True
 
   def WasStageSuccessful(self, name):
     """Return true if stage passed."""
     cros_build_lib.Info('Checking for %s' % name)
     for entry in self._results_log:
-      if entry.name == name:
-        cros_build_lib.Info('Found %s' % entry.result)
-        return entry.result == self.SUCCESS
+      entry, result, _, _ = entry
+      if entry == name:
+        cros_build_lib.Info('Found %s' % result)
+        return result == self.SUCCESS
 
     return False
 
   def StageHasResults(self, name):
     """Return true if stage has posted results."""
-    return name in [entry.name for entry in self._results_log]
+    return name in [entry[0] for entry in self._results_log]
 
-  def Record(self, name, result, description=None, prefix=None, time=0):
+  def Record(self, name, result, description=None, time=0):
     """Store off an additional stage result.
 
        Args:
-         name: The name of the stage (e.g. HWTest [bvt])
+         name: The name of the stage
          result:
            Result should be one of:
              Results.SUCCESS if the stage was successful.
@@ -208,12 +187,23 @@ class _Results(object):
              Otherwise, it should be the exception stage errored with.
          description:
            The textual backtrace of the exception, or None
-         prefix: The prefix of the stage (e.g. HWTest). Defaults to
-           the value of name.
     """
-    if prefix is None:
-      prefix = name
-    self._results_log.append(Result(name, result, description, prefix, time))
+    self._results_log.append((name, result, description, time))
+
+  def UpdateResult(self, name, result, description=None):
+    """Updates a stage result with a different result.
+
+       Args:
+         name: The name of the stage
+         result: See docstring for Record above.
+         description:
+           The textual backtrace of the exception, or None
+    """
+    for index in range(len(self._results_log)):
+      if self._results_log[index][0] == name:
+        _, _, _, run_time = self._results_log[index]
+        self._results_log[index] = name, result, description, run_time
+        break
 
   def Get(self):
     """Fetch stage results.
@@ -233,23 +223,24 @@ class _Results(object):
 
   def SaveCompletedStages(self, out):
     """Save the successfully completed stages to the provided file |out|."""
-    for entry in self._results_log:
-      if entry.result != self.SUCCESS: break
-      out.write(self.SPLIT_TOKEN.join(map(str, entry)) + '\n')
+    for name, result, description, time in self._results_log:
+      if result != self.SUCCESS: break
+      out.write(self.SPLIT_TOKEN.join([name, str(description), str(time)]))
+      out.write('\n')
 
   def RestoreCompletedStages(self, out):
     """Load the successfully completed stages from the provided file |out|."""
     # Read the file, and strip off the newlines.
     for line in out:
       record = line.strip().split(self.SPLIT_TOKEN)
-      if len(record) != len(_result_fields):
+      if len(record) != 3:
         cros_build_lib.Warning(
             'State file does not match expected format, ignoring.')
         # Wipe any partial state.
         self._previous = {}
         break
 
-      self._previous[record[0]] = Result(*record)
+      self._previous[record[0]] = record
 
   def GetTracebacks(self):
     """Get a list of the exceptions that failed the build.
@@ -257,16 +248,12 @@ class _Results(object):
     Returns:
        A list of RecordedTraceback objects.
     """
-    tracebacks = []
-    for entry in self._results_log:
-      # If entry.result is not in NON_FAILURE_TYPES, then the stage failed, and
-      # entry.result is the exception object and entry.description is a string
-      # containing the full traceback.
-      if entry.result not in self.NON_FAILURE_TYPES:
-        traceback = RecordedTraceback(entry.name, entry.prefix, entry.result,
-                                      entry.description)
-        tracebacks.append(traceback)
-    return tracebacks
+    for name, result, description, _ in self._results_log:
+      # If result is not in NON_FAILURE_TYPES, then the stage failed, and
+      # result is the exception object and description is a string containing
+      # the full traceback.
+      if result not in self.NON_FAILURE_TYPES:
+        yield RecordedTraceback(name, result, description)
 
   def Report(self, out, archive_urls=None, current_version=None):
     """Generate a user friendly text display of the results data."""
@@ -284,10 +271,8 @@ class _Results(object):
 
     out.write(line)
     out.write(edge + ' Stage Results\n')
-    warnings = False
 
-    for entry in results:
-      name, result, run_time = (entry.name, entry.result, entry.time)
+    for name, result, _, run_time in results:
       timestr = datetime.timedelta(seconds=math.ceil(run_time))
 
       # Don't print data on skipped stages.
@@ -300,7 +285,6 @@ class _Results(object):
         status = 'PASS'
       elif result == self.FORGIVEN:
         status = 'FAILED BUT FORGIVEN'
-        warnings = True
       else:
         status = 'FAIL'
         if isinstance(result, cros_build_lib.RunCommandError):
@@ -333,9 +317,5 @@ class _Results(object):
         out.write('\nFailed in stage %s:\n\n' % x.failed_stage)
         out.write(x.traceback)
         out.write('\n')
-
-    if warnings:
-      cros_build_lib.PrintBuildbotStepWarnings(out)
-
 
 Results = _Results()

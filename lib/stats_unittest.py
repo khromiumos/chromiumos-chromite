@@ -4,7 +4,6 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-import logging
 import os
 import sys
 import time
@@ -167,13 +166,11 @@ class UploadTest(cros_test_lib.MockLoggingTestCase):
 
   def testEnvironmentErrorIgnore(self):
     """We don't propagate any environment errors during upload."""
-    url = 'http://somedomainhere.com/foo/bar/uploader'
-    env_msg = stats.StatsUploader.ENVIRONMENT_ERROR
-    url_msg = stats.StatsUploader.HTTPURL_ERROR % url
-    self.CheckSuppressException(EnvironmentError(), env_msg)
-    self.CheckSuppressException(urllib2.HTTPError(url, None, None, None, None),
-                                url_msg)
-    self.CheckSuppressException(urllib2.URLError(""), env_msg)
+    msg = stats.StatsUploader.ENVIRONMENT_ERROR
+    self.CheckSuppressException(EnvironmentError(), msg)
+    self.CheckSuppressException(urllib2.HTTPError(None, None, None, None, None),
+                                msg)
+    self.CheckSuppressException(urllib2.URLError(""), msg)
 
   def testKeyboardInterruptError(self):
     """We propagate KeyboardInterrupts."""
@@ -227,4 +224,4 @@ class UploadContextTest(cros_test_lib.MockLoggingTestCase):
 
 
 if __name__ == '__main__':
-  cros_test_lib.main(level=logging.DEBUG)
+  cros_test_lib.main()

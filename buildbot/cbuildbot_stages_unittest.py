@@ -18,7 +18,6 @@ import StringIO
 import sys
 import tempfile
 import time
-import unittest
 
 import constants
 sys.path.insert(0, constants.SOURCE_ROOT)
@@ -40,7 +39,6 @@ from chromite.lib import cros_test_lib
 from chromite.lib import gerrit
 from chromite.lib import git
 from chromite.lib import git_unittest
-from chromite.lib import gob_util
 from chromite.lib import gs_unittest
 from chromite.lib import osutils
 from chromite.lib import parallel
@@ -62,9 +60,8 @@ class StageTest(cros_test_lib.MoxTempDirTestCase,
     self.bot_id = 'x86-generic-paladin'
     self.build_config = copy.deepcopy(config.config[self.bot_id])
     self.build_root = os.path.join(self.tempdir, self.BUILDROOT)
-    osutils.SafeMakedirs(os.path.join(self.build_root, '.repo'))
     self._boards = self.build_config['boards']
-    self._current_board = self._boards[0] if self._boards else None
+    self._current_board = self._boards[0]
 
     self.url = 'fake_url'
     self.build_config['manifest_repo_url'] = self.url
@@ -95,14 +92,6 @@ class StageTest(cros_test_lib.MoxTempDirTestCase,
     """
     for item in to_patch:
       self.PatchObject(*item, autospec=True)
-
-  def GetHWTestSuite(self):
-    """Get the HW test suite for the current bot."""
-    hw_tests = self.build_config['hw_tests']
-    if not hw_tests:
-      # TODO(milleral): Add HWTests back to lumpy-chrome-perf.
-      raise unittest.SkipTest('Missing HWTest for %s' % (self.bot_id,))
-    return hw_tests[0]
 
 
 class AbstractStageTest(StageTest):
@@ -491,7 +480,7 @@ class SDKStageTest(AbstractStageTest):
 
     # Prepare a fake chroot.
     self.fake_chroot = os.path.join(self.build_root, 'chroot/build/amd64-host')
-    osutils.SafeMakedirs(self.fake_chroot)
+    os.makedirs(self.fake_chroot)
     osutils.Touch(os.path.join(self.fake_chroot, 'file'))
     for package, v in self.fake_packages:
       cpv = portage_utilities.SplitCPV('%s-%s' % (package, v))
@@ -584,7 +573,7 @@ class UnitTestStageTest(AbstractStageTest):
     self.mox.StubOutWithMock(os.path, 'exists')
     self.build_config['quick_unit'] = True
     commands.RunUnitTests(self.build_root, self._current_board, full=False,
-                          blacklist=[], extra_env=mox.IgnoreArg())
+                          nowithdebug=mox.IgnoreArg(), blacklist=[])
     image_dir = os.path.join(self.build_root,
                              'src/build/images/x86-generic/latest-cbuildbot')
     os.path.exists(os.path.join(image_dir,
@@ -598,7 +587,7 @@ class UnitTestStageTest(AbstractStageTest):
     self.mox.StubOutWithMock(os.path, 'exists')
     self.build_config['quick_unit'] = True
     commands.RunUnitTests(self.build_root, self._current_board, full=False,
-                          blacklist=[], extra_env=mox.IgnoreArg())
+                          nowithdebug=mox.IgnoreArg(), blacklist=[])
     image_dir = os.path.join(self.build_root,
                              'src/build/images/x86-generic/latest-cbuildbot')
     os.path.exists(os.path.join(image_dir,
@@ -612,7 +601,7 @@ class UnitTestStageTest(AbstractStageTest):
     self.mox.StubOutWithMock(os.path, 'exists')
     self.build_config['quick_unit'] = False
     commands.RunUnitTests(self.build_root, self._current_board, full=True,
-                          blacklist=[], extra_env=mox.IgnoreArg())
+                          nowithdebug=mox.IgnoreArg(), blacklist=[])
     image_dir = os.path.join(self.build_root,
                              'src/build/images/x86-generic/latest-cbuildbot')
     os.path.exists(os.path.join(image_dir,
@@ -630,7 +619,7 @@ class HWTestStageTest(AbstractStageTest):
     self.options.log_dir = '/b/cbuild/mylogdir'
     self.build_config = config.config[self.bot_id].copy()
     self.StartPatcher(ArchiveStageMock())
-    self.suite_config = self.GetHWTestSuite()
+    self.suite_config = self.build_config['hw_tests'][0]
     self.suite = self.suite_config.suite
     self.archive_stage = stages.ArchiveStage(self.options, self.build_config,
                                              self._current_board, '')
@@ -647,15 +636,13 @@ class HWTestStageTest(AbstractStageTest):
                               self._current_board, self.archive_stage,
                               self.suite_config)
 
-  def _RunHWTestSuite(self, debug=False, returncode=0, fails=False,
-                      timeout=False):
+  def _RunHWTestSuite(self, debug=False, returncode=0, fails=False):
     """Pretend to run the HWTest suite to assist with tests.
 
     Args:
       debug: Whether the HWTest suite should be run in debug mode.
       returncode: The return value of the HWTest command.
       fails: Whether the command as a whole should fail.
-      timeout: Whether the the hw tests should time out.
     """
     lab_status.CheckLabStatus(mox.IgnoreArg())
     m = commands.RunHWTestSuite(mox.IgnoreArg(),
@@ -664,11 +651,7 @@ class HWTestStageTest(AbstractStageTest):
                                 mox.IgnoreArg(), mox.IgnoreArg(), True, debug)
 
     # Raise an exception if the user wanted the command to fail.
-    if timeout:
-      m.AndRaise(cros_build_lib.TimeoutError('Timed out'))
-      cros_build_lib.PrintBuildbotStepFailure()
-      cros_build_lib.Error(mox.IgnoreArg())
-    elif returncode != 0:
+    if returncode != 0:
       result = cros_build_lib.CommandResult(cmd='run_hw_tests',
                                             returncode=returncode)
       m.AndRaise(cros_build_lib.RunCommandError('HWTests failed', result))
@@ -684,7 +667,7 @@ class HWTestStageTest(AbstractStageTest):
         cros_build_lib.Warning(mox.IgnoreArg())
 
     self.mox.ReplayAll()
-    if fails or timeout:
+    if fails:
       self.assertRaises(results_lib.StepFailure, self.RunStage)
     else:
       self.RunStage()
@@ -716,13 +699,6 @@ class HWTestStageTest(AbstractStageTest):
     """Test if run correctly with a test suite."""
     self._RunHWTestSuite()
 
-  def testWithTimeout(self):
-    """Test if run correctly with a critical timeout."""
-    self.bot_id = 'x86-alex-paladin'
-    self.build_config = config.config['x86-alex-paladin'].copy()
-    self.suite_config = self.GetHWTestSuite()
-    self._RunHWTestSuite(timeout=True)
-
   def testWithSuiteWithInfrastructureFailure(self):
     """Tests that we warn correctly if we get a returncode of 2."""
     self._RunHWTestSuite(returncode=2)
@@ -736,7 +712,7 @@ class HWTestStageTest(AbstractStageTest):
     self.suite = 'perf_v2'
     self.bot_id = 'lumpy-chrome-perf'
     self.build_config = config.config['lumpy-chrome-perf'].copy()
-    self.suite_config = self.GetHWTestSuite()
+    self.suite_config = self.build_config['hw_tests'][0]
     self.mox.StubOutWithMock(stages.HWTestStage, '_PrintFile')
 
     results_file = 'perf_v2.results'
@@ -773,7 +749,7 @@ class AUTestStageTest(AbstractStageTest,
     self.PatchObject(lab_status, 'CheckLabStatus', autospec=True)
     self.archive_stage = stages.ArchiveStage(self.options, self.build_config,
                                              self._current_board, '0.0.1')
-    self.suite_config = self.GetHWTestSuite()
+    self.suite_config = self.build_config['hw_tests'][0]
     self.suite = self.suite_config.suite
 
   def ConstructStage(self):
@@ -825,8 +801,7 @@ class ArchivingMock(partial_mock.PartialMock):
 
   def UploadArtifact(self, *args, **kwargs):
     with patch(commands, 'ArchiveFile', return_value='foo.txt'):
-      with patch(commands, 'UploadArchivedFile'):
-        self.backup['UploadArtifact'](*args, **kwargs)
+      self.backup['UploadArtifact'](*args, **kwargs)
 
 
 class BuildPackagesStageTest(AbstractStageTest):
@@ -869,6 +844,8 @@ class BuildPackagesStageTest(AbstractStageTest):
       rc.assertCommandContains(['./build_packages', '--skip_chroot_upgrade'])
       rc.assertCommandContains(['./build_packages', '--nousepkg'],
                                expected=not cfg['usepkg_build_packages'])
+      rc.assertCommandContains(['./build_packages', '--nowithdebug'],
+                               expected=cfg['nowithdebug'])
       build_tests = cfg['build_tests'] and self.options.tests
       rc.assertCommandContains(['./build_packages', '--nowithautotest'],
                                expected=not build_tests)
@@ -954,29 +931,59 @@ class ArchiveStageMock(partial_mock.PartialMock):
 
   TARGET = 'chromite.buildbot.cbuildbot_stages.ArchiveStage'
   ATTRS = ('GetVersionInfo', 'WaitForBreakpadSymbols',)
-  VERSION = '3333.1.0'
 
-  def GetVersionInfo(self, _build_root):
+  def GetVersionInfo(self, inst):
     return manifest_version.VersionInfo(
-        version_string=self.VERSION, chrome_branch='27')
+        version_string=inst.release_tag if inst.release_tag else '3333.1.0',
+        chrome_branch='27')
 
   def WaitForBreakpadSymbols(self, _inst):
     return True
 
 
-class ArchivingStageTest(AbstractStageTest):
-  """Excerise ArchivingStage functionality."""
+class ArchiveStageTest(AbstractStageTest):
+
+  def _PatchDependencies(self):
+    """Patch dependencies of ArchiveStage.PerformStage()."""
+    to_patch = [
+        (parallel, 'RunParallelSteps'), (commands, 'PushImages'),
+        (commands, 'RemoveOldArchives'), (commands, 'UploadArchivedFile')]
+    self.AutoPatch(to_patch)
 
   def setUp(self):
     self._build_config = self.build_config.copy()
-    self.StartPatcher(ArchivingMock())
-    self.StartPatcher(ArchiveStageMock())
+    self._build_config['upload_symbols'] = True
+    self._build_config['push_image'] = True
+
+    self.archive_mock = ArchiveStageMock()
+    self.StartPatcher(self.archive_mock)
+    self._PatchDependencies()
 
   def ConstructStage(self):
-    archive_stage = stages.ArchiveStage(self.options, self._build_config,
-                                        self._current_board, '')
-    return stages.ArchivingStage(self.options, self._build_config,
-                                 self._current_board, archive_stage)
+    return stages.ArchiveStage(self.options, self._build_config,
+                               self._current_board, '')
+
+  def testArchive(self):
+    """Simple did-it-run test."""
+    # TODO(davidjames): Test the individual archive steps as well.
+    self.RunStage()
+    # pylint: disable=E1101
+    self.assertEquals(
+        commands.UploadArchivedFile.call_args[0][2:],
+        ('LATEST-%s' % self.TARGET_MANIFEST_BRANCH, False))
+
+  def testNoPushImagesForRemoteTrybot(self):
+    """Test that remote trybot overrides work to disable push images."""
+    argv = ['--remote-trybot', '-r', self.build_root, '--buildnumber=1234',
+            'x86-mario-release']
+    parser = cbuildbot._CreateParser()
+    (self.options, _args) = cbuildbot._ParseCommandLine(parser, argv)
+    test_config = config.config['x86-mario-release']
+    self._build_config = config.OverrideConfigForTrybot(test_config,
+                                                        self.options)
+    self.RunStage()
+    # pylint: disable=E1101
+    self.assertEquals(commands.PushImages.call_count, 0)
 
   def testMetadataJson(self):
     """Test that the json metadata is built correctly"""
@@ -989,12 +996,10 @@ class ArchivingStageTest(AbstractStageTest):
 
     # Now run the code.
     stage = self.ConstructStage()
-    stage.UploadMetadata(stage='tests')
+    stage.RefreshMetadata('tests')
 
     # Now check the results.
-    json_file = os.path.join(
-        stage.archive_path,
-        constants.METADATA_STAGE_JSON % { 'stage': 'tests' } )
+    json_file = os.path.join(stage.archive_path, constants.METADATA_JSON)
     json_data = json.loads(osutils.ReadFile(json_file))
 
     important_keys = (
@@ -1029,85 +1034,29 @@ class ArchivingStageTest(AbstractStageTest):
 
     # The buildtools manifest doesn't have any overlays. In this case, we can't
     # find any toolchains.
-    overlays = portage_utilities.FindOverlays(
-        constants.BOTH_OVERLAYS, board=None, buildroot=self.build_root)
+    overlays = portage_utilities.FindOverlays(constants.BOTH_OVERLAYS, None)
     overlay_tuples = ['i686-pc-linux-gnu', 'arm-none-eabi']
     self.assertEquals(json_data['toolchain-tuple'],
                       overlay_tuples if overlays else [])
 
-
-class ArchiveStageTest(AbstractStageTest):
-  """Exercise ArchiveStage functionality."""
-
-  def _PatchDependencies(self):
-    """Patch dependencies of ArchiveStage.PerformStage()."""
-    to_patch = [
-        (parallel, 'RunParallelSteps'), (commands, 'PushImages'),
-        (commands, 'RemoveOldArchives'), (commands, 'UploadArchivedFile')]
-    self.AutoPatch(to_patch)
-
-  def setUp(self):
-    self._build_config = self.build_config.copy()
-    self._build_config['upload_symbols'] = True
-    self._build_config['push_image'] = True
-
-    self.StartPatcher(ArchiveStageMock())
-    self._PatchDependencies()
-
-  def ConstructStage(self):
-    return stages.ArchiveStage(self.options, self._build_config,
-                               self._current_board, '')
-
-  def testArchive(self):
-    """Simple did-it-run test."""
-    # TODO(davidjames): Test the individual archive steps as well.
-    self.RunStage()
-    filenames = ('LATEST-%s' % self.TARGET_MANIFEST_BRANCH,
-                 'LATEST-%s' % ArchiveStageMock.VERSION)
-    calls = [mock.call(mock.ANY, mock.ANY, filename, False, acl=mock.ANY)
-             for filename in filenames]
-    # pylint: disable=E1101
-    self.assertEquals(calls, commands.UploadArchivedFile.call_args_list)
-
-  def testNoPushImagesForRemoteTrybot(self):
-    """Test that remote trybot overrides work to disable push images."""
-    argv = ['--remote-trybot', '-r', self.build_root, '--buildnumber=1234',
-            'x86-mario-release']
-    parser = cbuildbot._CreateParser()
-    (self.options, _args) = cbuildbot._ParseCommandLine(parser, argv)
-    test_config = config.config['x86-mario-release']
-    self._build_config = config.OverrideConfigForTrybot(test_config,
-                                                        self.options)
-    self.RunStage()
-    # pylint: disable=E1101
-    self.assertEquals(commands.PushImages.call_count, 0)
-
-
-  def ConstructStageForArchiveStep(self):
-    """Stage construction for archive steps."""
+  def testChromeEnvironment(self):
+    """Test that the Chrome environment is built."""
+    # Create the chrome environment compressed file.
     stage = self.ConstructStage()
-    self.PatchObject(stage._upload_queue, 'put', autospec=True)
-    self.PatchObject(git, 'ReinterpretPathForChroot', return_value='',
-                     autospec=True)
-    return stage
+    chrome_env_dir = os.path.join(
+        stage._pkg_dir, constants.CHROME_CP + '-25.3643.0_rc1')
+    env_file = os.path.join(chrome_env_dir, 'environment')
+    osutils.Touch(env_file, makedirs=True)
 
-  def testBuildAndArchiveDeltaSysroot(self):
-    """Test tarball is added to upload queue."""
-    stage = self.ConstructStageForArchiveStep()
-    with cros_build_lib_unittest.RunCommandMock() as rc:
-      rc.SetDefaultCmdResult()
-      stage.BuildAndArchiveDeltaSysroot()
-    stage._upload_queue.put.assert_called_with([constants.DELTA_SYSROOT_TAR])
+    cros_build_lib.RunCommand(['bzip2', env_file])
 
-  def testBuildAndArchiveDeltaSysrootFailure(self):
-    """Test tarball not added to upload queue on command exception."""
-    stage = self.ConstructStageForArchiveStep()
-    with cros_build_lib_unittest.RunCommandMock() as rc:
-      rc.AddCmdResult(partial_mock.In('generate_delta_sysroot'), returncode=1,
-                      error='generate_delta_sysroot: error')
-      self.assertRaises2(cros_build_lib.RunCommandError,
-                        stage.BuildAndArchiveDeltaSysroot)
-    self.assertFalse(stage._upload_queue.put.called)
+    # Run the code.
+    stage.ArchiveChromeEbuildEnv()
+
+    env_tar = stage._upload_queue.get()[0]
+    env_tar = os.path.join(stage.archive_path, env_tar)
+    self.assertTrue(os.path.exists(env_tar))
+    cros_test_lib.VerifyTarball(env_tar, ['./', 'environment'])
 
 
 class UploadPrebuiltsStageTest(AbstractStageTest,
@@ -1177,7 +1126,7 @@ class UploadPrebuiltsStageTest(AbstractStageTest,
   def testPaladinMasterUpload(self):
     board_map = {'amd64-generic': True, 'x86-generic': True,
                  'x86-alex': False, 'lumpy': False, 'daisy_spring': False}
-    self.VerifyBoardMap('x86-mario-paladin', 8, board_map,
+    self.VerifyBoardMap('mario-paladin', 8, board_map,
                         private_args=['--board', 'x86-mario'])
     self.assertCommandContains([self.CMD, '--sync-host'])
 
@@ -1232,20 +1181,14 @@ class PublishUprevChangesStageTest(AbstractStageTest):
                              '_GetPortageEnvVar')
     self.mox.StubOutWithMock(commands, 'UploadPrebuilts')
     self.mox.StubOutWithMock(commands, 'UprevPush')
-    self.mox.StubOutWithMock(stages.PublishUprevChangesStage,
-                             '_ExtractOverlays')
-    stages.PublishUprevChangesStage._ExtractOverlays().AndReturn(
-        [['foo'], ['bar']])
 
   def ConstructStage(self):
-    return stages.PublishUprevChangesStage(
-        self.options, self.build_config, success=True)
+    return stages.PublishUprevChangesStage(self.options, self.build_config)
 
   def testPush(self):
     """Test values for PublishUprevChanges."""
     self.build_config['push_overlays'] = constants.PUBLIC_OVERLAYS
     self.build_config['master'] = True
-    stages.commands.UprevPush(self.build_root, ['bar'], False)
 
     self.mox.ReplayAll()
     self.RunStage()
@@ -1311,7 +1254,6 @@ class BuildStagesResultsTest(cros_test_lib.TestCase):
     self.options.prebuilts = False
     self.options.clobber = False
     self.options.nosdk = False
-    self.options.remote_trybot = False
     self.options.latest_toolchain = False
     self.options.buildnumber = 1234
     self.options.chrome_rev = None
@@ -1333,23 +1275,21 @@ class BuildStagesResultsTest(cros_test_lib.TestCase):
     # Break out the asserts to be per item to make debugging easier
     self.assertEqual(len(expectedResults), len(actualResults))
     for i in xrange(len(expectedResults)):
-      entry = actualResults[i]
+      name, result, description, runtime = actualResults[i]
       xname, xresult = expectedResults[i]
 
-      if entry.result not in results_lib.Results.NON_FAILURE_TYPES:
-        self.assertTrue(isinstance(entry.result, BaseException))
-        if isinstance(entry.result, results_lib.StepFailure):
-          self.assertEqual(str(entry.result), entry.description)
+      if result not in results_lib.Results.NON_FAILURE_TYPES:
+        self.assertTrue(isinstance(result, BaseException))
+        if isinstance(result, results_lib.StepFailure):
+          self.assertEqual(str(result), description)
 
-      self.assertTrue(entry.time >= 0 and entry.time < 2.0)
-      self.assertEqual(xname, entry.name)
-      self.assertEqual(type(xresult), type(entry.result))
-      self.assertEqual(repr(xresult), repr(entry.result))
+      self.assertTrue(runtime >= 0 and runtime < 2.0)
+      self.assertEqual(xname, name)
+      self.assertEqual(type(xresult), type(result))
+      self.assertEqual(repr(xresult), repr(result))
 
   def _PassString(self):
-    record = results_lib.Result('Pass', results_lib.Results.SUCCESS, 'None',
-                                'Pass', '0')
-    return results_lib.Results.SPLIT_TOKEN.join(record) + '\n'
+    return results_lib.Results.SPLIT_TOKEN.join(['Pass', 'None', '0\n'])
 
   def testRunStages(self):
     """Run some stages and verify the captured results"""
@@ -1392,7 +1332,6 @@ class BuildStagesResultsTest(cros_test_lib.TestCase):
       except parallel.BackgroundFailure as ex:
         error = ex
     self.assertTrue(error)
-    self.assertFalse(error.possibly_flaky)
     expectedResults = [
         ('Pass', results_lib.Results.SUCCESS),
         ('Fail', FailStage.FAIL_EXCEPTION),
@@ -1401,26 +1340,6 @@ class BuildStagesResultsTest(cros_test_lib.TestCase):
         ('Suicide', error),
     ]
     self._verifyRunResults(expectedResults)
-
-  def testFlakyParallelStages(self):
-    """Verify that stages that die with kill -9 are treated as flaky."""
-    stage_objs = [stage(self.options, self.build_config) for stage in
-                  (PassStage, SuicideStage)]
-    error = None
-    with cros_test_lib.OutputCapturer():
-      with cros_test_lib.LoggingCapturer(parallel.__name__):
-        with mock.patch.multiple(parallel._BackgroundTask, PRINT_INTERVAL=0.01):
-          try:
-            cbuildbot.SimpleBuilder._RunParallelStages(stage_objs)
-          except parallel.BackgroundFailure as ex:
-            error = ex
-        self.assertTrue(error)
-        self.assertTrue(error.possibly_flaky)
-        expectedResults = [
-            ('Pass', results_lib.Results.SUCCESS),
-            ('Suicide', error),
-        ]
-        self._verifyRunResults(expectedResults)
 
   def testStagesReportSuccess(self):
     """Tests Stage reporting."""
@@ -1595,13 +1514,6 @@ class BuildStagesResultsTest(cros_test_lib.TestCase):
 
     self._verifyRunResults(expectedResults)
 
-  def testFailedButForgiven(self):
-    """Tests that warnings are flagged as such."""
-    results_lib.Results.Record('Warn', results_lib.Results.FORGIVEN, time=1)
-    results = StringIO.StringIO()
-    results_lib.Results.Report(results)
-    self.assertTrue('@@@STEP_WARNINGS@@@' in results.getvalue())
-
 
 class ReportStageTest(AbstractStageTest):
 
@@ -1610,9 +1522,6 @@ class ReportStageTest(AbstractStageTest):
                 (commands, 'UploadArchivedFile'),):
       self.StartPatcher(mock.patch.object(*cmd, autospec=True))
     self.StartPatcher(ArchiveStageMock())
-    self.cq = CLStatusMock()
-    self.StartPatcher(self.cq)
-    self.sync_stage = None
 
   def ConstructStage(self):
     archive_stage = stages.ArchiveStage(self.options, self.build_config,
@@ -1623,21 +1532,10 @@ class ReportStageTest(AbstractStageTest):
         cbuildbot.BoardConfig('mattress-man', 'config2'): archive_stage,
     }
     return stages.ReportStage(self.options, self.build_config,
-                              archive_stages, None, self.sync_stage)
+                              archive_stages, None)
 
   def testCheckResults(self):
     """Basic sanity check for results stage functionality"""
-    self.RunStage()
-
-  def testCommitQueueResults(self):
-    """Check that commit queue patches get serialized"""
-    self.sync_stage = stages.CommitQueueSyncStage(self.options,
-                                                  self.build_config)
-    pool = validation_pool.ValidationPool(constants.BOTH_OVERLAYS,
-        self.build_root, build_number=3, builder_name=self.bot_id,
-        is_master=True, dryrun=True)
-    pool.changes = [MockPatch()]
-    self.sync_stage.pool = pool
     self.RunStage()
 
 
@@ -1667,8 +1565,6 @@ class MockPatch(mock.MagicMock):
   gerrit_number = '1234'
   patch_number = '1'
   project = 'chromiumos/chromite'
-  status = 'NEW'
-  internal = False
 
 
 class BaseCQTest(StageTest):
@@ -1682,7 +1578,8 @@ class BaseCQTest(StageTest):
     self.sync_stage = stages.CommitQueueSyncStage(self.options,
                                                   self.build_config)
     # Mock out methods as needed.
-    self.PatchObject(lkgm_manager, 'GenerateBlameList')
+    self.AutoPatch([[gerrit.GerritHelper, '_SqlQuery'],
+                    [lkgm_manager, 'GenerateBlameList']])
     self.PatchObject(repository.RepoRepository, 'ExportManifest',
                      return_value=self.MANIFEST_CONTENTS, autospec=True)
     self.StartPatcher(git_unittest.ManifestMock())
@@ -1692,32 +1589,21 @@ class BaseCQTest(StageTest):
     rc_mock = self.StartPatcher(cros_build_lib_unittest.RunCommandMock())
     rc_mock.SetDefaultCmdResult()
 
-    # Block the CQ from contacting GoB.
-    self.PatchObject(gerrit.GerritOnBorgHelper, 'RemoveCommitReady')
-    self.PatchObject(gerrit.GerritOnBorgHelper, 'SubmitChange')
-    self.PatchObject(validation_pool.PaladinMessage, 'Send')
-
-    # If a test is still contacting GoB, something is busted.
-    self.PatchObject(gob_util, 'CreateHttpConn',
-                     side_effect=AssertionError('Test should not contact GoB'))
-
     # Create a fake repo / manifest on disk that is used by subclasses.
     for subdir in ('repo', 'manifests'):
       osutils.SafeMakedirs(os.path.join(self.build_root, '.repo', subdir))
     self.manifest_path = os.path.join(self.build_root, '.repo', 'manifest.xml')
     osutils.WriteFile(self.manifest_path, self.MANIFEST_CONTENTS)
-    self.PatchObject(validation_pool.ValidationPool, 'ReloadChanges',
-                     side_effect=lambda x: x)
 
   def PerformSync(self, remote='cros', committed=False, tree_open=True,
                   tracking_branch='master', num_patches=1, runs=0):
     """Helper to perform a basic sync for master commit queue."""
     p = MockPatch(remote=remote, tracking_branch=tracking_branch)
     my_patches = [p] * num_patches
-    self.PatchObject(gerrit.GerritOnBorgHelper, 'IsChangeCommitted',
+    self.PatchObject(gerrit.GerritHelper, 'IsChangeCommitted',
                      return_value=committed, autospec=True)
-    self.PatchObject(gerrit.GerritOnBorgHelper, 'Query',
-                     return_value=my_patches, autospec=True)
+    self.PatchObject(gerrit.GerritHelper, 'Query', return_value=my_patches,
+                     autospec=True)
     self.PatchObject(cros_build_lib, 'TreeOpen', return_value=tree_open,
                      autospec=True)
     exit_it = itertools.chain([False] * runs, itertools.repeat(True))
@@ -1738,7 +1624,7 @@ class BaseCQTest(StageTest):
 
 class SlaveCQSyncTest(BaseCQTest):
   """Tests the CommitQueueSync stage for the paladin slaves."""
-  PALADIN_BOT_ID = 'x86-alex-paladin'
+  PALADIN_BOT_ID = 'alex-paladin'
 
   def testReload(self):
     """Test basic ability to sync and reload the patches from disk."""
@@ -1754,7 +1640,7 @@ class MasterCQSyncTest(BaseCQTest):
   Tests in this class should apply both to the paladin masters and to the
   Pre-CQ Launcher.
   """
-  PALADIN_BOT_ID = 'x86-mario-paladin'
+  PALADIN_BOT_ID = 'mario-paladin'
 
   def setUp(self):
     """Setup patchers for specified bot id."""
@@ -1782,6 +1668,11 @@ class MasterCQSyncTest(BaseCQTest):
     """Test basic ability to sync with standard options."""
     self.PerformSync()
 
+  def testNoGerritHelper(self):
+    """Test that setting a non-standard remote raises an exception."""
+    self.assertRaises(validation_pool.GerritHelperNotAvailable,
+                      self.testCommitNonManifestChange, remote='foo', runs=1)
+
 
 class ExtendedMasterCQSyncTest(MasterCQSyncTest):
   """Additional tests for the CommitQueueSync stage.
@@ -1791,8 +1682,10 @@ class ExtendedMasterCQSyncTest(MasterCQSyncTest):
 
   def testReload(self):
     """Test basic ability to sync and reload the patches from disk."""
-    # Use zero patches because MockPatches can't be pickled.
-    self.PerformSync(num_patches=0, runs=0)
+    # Use zero patches because MockPatches can't be pickled. Also set debug mode
+    # so that the CQ won't wait for more patches.
+    self.options.debug = True
+    self.PerformSync(num_patches=0)
     self.ReloadPool()
 
   def testTreeClosureBlocksCommit(self):
@@ -1801,30 +1694,23 @@ class ExtendedMasterCQSyncTest(MasterCQSyncTest):
                       tree_open=False)
 
 
-class CLStatusMock(partial_mock.PartialMock):
-  """Partial mock for CLStatus methods in ValidationPool."""
+class PreCQStatusMock(partial_mock.PartialMock):
+  """Partial mock for PreCQStatus methods in ValidationPool."""
 
   TARGET = 'chromite.buildbot.validation_pool.ValidationPool'
-  ATTRS = ('GetCLStatus', 'GetCLStatusCount', 'UpdateCLStatus',)
+  ATTRS = ('GetPreCQStatus', 'UpdatePreCQStatus',)
 
   def __init__(self):
     partial_mock.PartialMock.__init__(self)
     self.calls = {}
     self.status = {}
-    self.status_count = {}
 
-  def GetCLStatus(self, _bot, change):
+  def GetPreCQStatus(self, _, change):
     return self.status.get(change)
 
-  def GetCLStatusCount(self, _bot, change, count, latest_patchset_only=True):
-    # pylint: disable=W0613
-    return self.status_count.get(change, 0)
-
-  def UpdateCLStatus(self, _bot, change, status, dry_run):
-    # pylint: disable=W0613
+  def UpdatePreCQStatus(self, _, change, status):
     self.calls[status] = self.calls.get(status, 0) + 1
     self.status[change] = status
-    self.status_count[change] = self.status_count.get(change, 0) + 1
 
 
 class PreCQLauncherStageTest(MasterCQSyncTest):
@@ -1836,7 +1722,7 @@ class PreCQLauncherStageTest(MasterCQSyncTest):
 
   def setUp(self):
     self.PatchObject(time, 'sleep', autospec=True)
-    self.pre_cq = CLStatusMock()
+    self.pre_cq = PreCQStatusMock()
     self.StartPatcher(self.pre_cq)
     self.sync_stage = stages.PreCQLauncherStage(self.options, self.build_config)
 
@@ -1868,260 +1754,6 @@ class PreCQLauncherStageTest(MasterCQSyncTest):
     self.PatchObject(stages.PreCQLauncherStage, '_HasLaunchTimedOut',
                      return_value=True)
     self.runTrybotTest(launching=2, waiting=1, failed=1, runs=3)
-
-
-class ChromeSDKStageTest(AbstractStageTest, cros_test_lib.LoggingTestCase):
-  """Verify stage that creates the chrome-sdk and builds chrome with it."""
-
-  def setUp(self):
-    self.build_config = copy.deepcopy(config.config['link-paladin'])
-    self.StartPatcher(ArchiveStageMock())
-    self.StartPatcher(parallel_unittest.ParallelMock())
-    self.options.chrome_root = '/tmp/non-existent'
-
-  def ConstructStage(self):
-    archive_stage = stages.ArchiveStage(self.options, self.build_config,
-                                        self._current_board, None)
-    return stages.ChromeSDKStage(self.options, self.build_config,
-                                 self._current_board, archive_stage)
-
-  def testIt(self):
-    """A simple run-through test."""
-    rc_mock = self.StartPatcher(cros_build_lib_unittest.RunCommandMock())
-    rc_mock.SetDefaultCmdResult()
-    self.PatchObject(stages.ChromeSDKStage, '_ArchiveChromeEbuildEnv',
-                     autospec=True)
-    self.PatchObject(stages.ChromeSDKStage, '_VerifyChromeDeployed',
-                     autospec=True)
-    self.PatchObject(stages.ChromeSDKStage, '_VerifySDKEnvironment',
-                     autospec=True)
-    self.RunStage()
-
-  def testChromeEnvironment(self):
-    """Test that the Chrome environment is built."""
-    # Create the chrome environment compressed file.
-    stage = self.ConstructStage()
-    chrome_env_dir = os.path.join(
-        stage._pkg_dir, constants.CHROME_CP + '-25.3643.0_rc1')
-    env_file = os.path.join(chrome_env_dir, 'environment')
-    osutils.Touch(env_file, makedirs=True)
-
-    cros_build_lib.RunCommand(['bzip2', env_file])
-
-    # Run the code.
-    stage._ArchiveChromeEbuildEnv()
-
-    env_tar_base = stage._upload_queue.get()[0]
-    env_tar = os.path.join(stage.archive_path, env_tar_base)
-    self.assertTrue(os.path.exists(env_tar))
-    cros_test_lib.VerifyTarball(env_tar, ['./', 'environment'])
-
-
-class BranchUtilStageTest(AbstractStageTest, cros_test_lib.LoggingTestCase):
-  """Tests for branch creation/deletion."""
-
-  VERSIONED_MANIFEST_CONTENTS = """\
-<?xml version="1.0" encoding="UTF-8"?>
-<manifest revision="fe72f0912776fa4596505e236e39286fb217961b">
-  <notice>
-    Your sources have been sync'd successfully.
-  </notice>
-  <remote fetch="https://chrome-internal.googlesource.com" name="chrome"/>
-  <remote fetch="https://chromium.googlesource.com/" name="chromium"/>
-  <remote fetch="https://chromium.googlesource.com" name="cros" \
-review="chromium-review.googlesource.com"/>
-  <remote fetch="https://chrome-internal.googlesource.com" name="cros-internal" \
-review="https://chrome-internal-review.googlesource.com"/>
-  <remote fetch="https://special.googlesource.com/" name="special" \
-review="https://special.googlesource.com/"/>
-
-  <default remote="cros" revision="refs/heads/master" sync-j="8"/>
-
-  <project name="chromeos/manifest-internal" path="manifest-internal" \
-remote="cros-internal" revision="fe72f0912776fa4596505e236e39286fb217961b" \
-upstream="refs/heads/master"/>
-  <project name="chromium/deps/libmtp" path="chromium/src/third_party/libmtp" \
-revision="7bc42f093d644eeaf1c77fab60883881843c3c65" \
-upstream="refs/heads/master"/>
-  <project groups="minilayout,buildtools" name="chromiumos/chromite" \
-path="chromite" revision="fb46d34d7cd4b9c167b74f494f2a99b68df50b18" \
-upstream="refs/heads/master"/>
-  <project name="chromiumos/manifest" path="manifest" \
-revision="f24b69176b16bf9153f53883c0cc752df8e07d8b" \
-upstream="refs/heads/master"/>
-  <project groups="minilayout" name="chromiumos/overlays/chromiumos-overlay" \
-path="src/third_party/chromiumos-overlay" \
-revision="3ac713c65b5d18585e606a0ee740385c8ec83e44" \
-upstream="refs/heads/master"/>
-  <project name="chromiumos/special" path="src/special" remote="special" \
-revision="6270eb3b4f78d9bffec77df50f374f5aae72b370" \
-upstream="special-upstream"/>
-</manifest>"""
-
-  MANIFEST_CONTENTS = """\
-<?xml version="1.0" encoding="UTF-8"?>
-<manifest>
-  <notice>
-    Your sources have been sync'd successfully.
-  </notice>
-  <remote fetch="https://chromium.googlesource.com" name="cros" \
-review="chromium-review.googlesource.com"/>
-
-  <default remote="cros" revision="refs/heads/master" sync-j="8"/>
-
-  <project groups="minilayout,buildtools" name="chromiumos/chromite" \
-path="chromite" revision="refs/heads/special-branch"/>
-  <project name="chromiumos/special" path="src/special" \
-revision="special-branch2"/>
-</manifest>"""
-
-  DEFAULT_VERSION = '111.0.0'
-  RELEASE_BRANCH_NAME = 'release-test-branch'
-
-  def _CreateVersionFile(self, version=None):
-    if version is None:
-      version = self.DEFAULT_VERSION
-    version_file = os.path.join(self.build_root, constants.VERSION_FILE)
-    manifest_version_unittest.VersionInfoTest.WriteFakeVersionFile(
-        version_file, version=version)
-
-  def setUp(self):
-    """Setup patchers for specified bot id."""
-    self.build_config = copy.deepcopy(
-        config.config[constants.BRANCH_UTIL_CONFIG])
-    # Mock out methods as needed.
-    self.StartPatcher(parallel_unittest.ParallelMock())
-    self.StartPatcher(git_unittest.ManifestCheckoutMock())
-    self._CreateVersionFile()
-    self.rc_mock = self.StartPatcher(cros_build_lib_unittest.RunCommandMock())
-    self.rc_mock.SetDefaultCmdResult()
-
-    # We have a versioned manifest (generated by ManifestVersionSyncStage) and
-    # the regular, user-maintained manifests.
-    manifests = {
-        '.repo/manifest.xml': self.VERSIONED_MANIFEST_CONTENTS,
-        'manifest/full.xml': self.MANIFEST_CONTENTS,
-        'manifest-internal/full.xml': self.MANIFEST_CONTENTS,
-    }
-    for m_path, m_content in manifests.iteritems():
-      full_path = os.path.join(self.build_root, m_path)
-      osutils.SafeMakedirs(os.path.dirname(full_path))
-      osutils.WriteFile(full_path, m_content)
-
-    self.norm_name = git.NormalizeRef(self.RELEASE_BRANCH_NAME)
-    self.options.branch_name = self.RELEASE_BRANCH_NAME
-    self.options.force_version = self.DEFAULT_VERSION
-
-  def ConstructStage(self):
-    return stages.BranchUtilStage(self.options, self.build_config)
-
-  def testRelease(self):
-    """Run-through of branch creation."""
-    before = manifest_version.VersionInfo.from_repo(self.build_root)
-    self.RunStage()
-    after = manifest_version.VersionInfo.from_repo(self.build_root)
-    # Verify Chrome version was bumped.
-    self.assertEquals(int(after.chrome_branch) - int(before.chrome_branch), 1)
-    self.assertEquals(int(after.build_number) - int(before.build_number), 1)
-
-    # Verify that manifests were branched properly.
-    for m in ['manifest/full.xml', 'manifest-internal/full.xml']:
-      manifest = git.Manifest(
-          os.path.join(self.build_root, m))
-      for p in manifest.projects.itervalues():
-        self.assertEquals(p['revision'], self.norm_name)
-
-  def testNonRelease(self):
-    """Non-release branch creation."""
-    self.options.branch_name = 'refs/heads/test-branch'
-    before = manifest_version.VersionInfo.from_repo(self.build_root)
-    # Disable the new branch increment so that
-    # IncrementVersionOnDiskForSourceBranch detects we need to bump the version.
-    self.PatchObject(stages.BranchUtilStage,
-                     'IncrementVersionOnDiskForNewBranch', autospec=True)
-    self.RunStage()
-    after = manifest_version.VersionInfo.from_repo(self.build_root)
-    # Verify only branch number is bumped.
-    self.assertEquals(after.chrome_branch, before.chrome_branch)
-    self.assertEquals(int(after.build_number) - int(before.build_number), 1)
-
-  def testDeletion(self):
-    """Branch deletion."""
-    self.options.delete_branch = True
-    self.rc_mock.AddCmdResult(
-        partial_mock.ListRegex('git ls-remote .*'), output='remote')
-    self.RunStage()
-
-  def testRename(self):
-    """Branch rename."""
-    self.options.rename_to = 'refs/heads/release-rename'
-    self.rc_mock.AddCmdResult(
-        partial_mock.ListRegex('git ls-remote .*'), output='remote')
-    self.RunStage()
-    self.rc_mock.assertCommandContains(
-        ['push', '%s:%s' % (self.norm_name, self.options.rename_to)])
-    self.rc_mock.assertCommandContains(
-        ['push', ':%s' % self.norm_name])
-
-  def testDryRun(self):
-    """Verify all pushes are done with --dryrun when --debug is set."""
-    def VerifyDryRun(cmd, *_args, **_kwargs):
-      self.assertTrue('--dry-run' in cmd)
-
-    self.rc_mock.AddCmdResult(partial_mock.In('push'),
-                              side_effect=VerifyDryRun)
-    self.options.debug_forced = True
-    self.RunStage()
-    self.rc_mock.assertCommandContains(['push', '--dry-run'])
-
-  def _DetermineIncrForVersion(self, version):
-    version_info = manifest_version.VersionInfo(version)
-    stage_cls = stages.BranchUtilStage
-    return stage_cls.DetermineBranchIncrParams(version_info)
-
-  def testDetermineIncrBranch(self):
-    """Verify branch increment detection."""
-    incr_type, _ = self._DetermineIncrForVersion(self.DEFAULT_VERSION)
-    self.assertEquals(incr_type, 'branch')
-
-  def testDetermineIncrPatch(self):
-    """Verify patch increment detection."""
-    incr_type, _ = self._DetermineIncrForVersion('111.1.0')
-    self.assertEquals(incr_type, 'patch')
-
-  def testDetermineBranchIncrError(self):
-    """Detect unbranchable version."""
-    self.assertRaises(stages.BranchError, self._DetermineIncrForVersion,
-                      '111.1.1')
-
-  def _SimulateIncrementFailure(self):
-    """Simulates a git push failure during source branch increment."""
-    overlay_dir = os.path.join(
-        self.build_root, constants.CHROMIUMOS_OVERLAY_DIR)
-    self.rc_mock.AddCmdResult(partial_mock.In('push'), returncode=128)
-    stage = self.ConstructStage()
-    args = (overlay_dir, 'gerrit', 'refs/heads/master')
-    stage.IncrementVersionOnDiskForSourceBranch(*args)
-
-  def testSourceIncrementWarning(self):
-    """Test the warning case for incrementing failure."""
-    # Since all git commands are mocked out, the FetchAndCheckoutTo function
-    # does nothing, and leaves the chromeos_version.sh file in the bumped state,
-    # so it looks like TOT version was indeed bumped by another bot.
-    with cros_test_lib.LoggingCapturer() as logger:
-      self._SimulateIncrementFailure()
-      self.AssertLogsContain(logger, 'bumped by another')
-
-  def testSourceIncrementFailure(self):
-    """Test the failure case for incrementing failure."""
-    def FetchAndCheckoutTo(*_args, **_kwargs):
-      self._CreateVersionFile()
-
-    # Simulate a git checkout of TOT.
-    self.PatchObject(stages.BranchUtilStage, 'FetchAndCheckoutTo',
-                     side_effect=FetchAndCheckoutTo, autospec=True)
-    self.assertRaises(cros_build_lib.RunCommandError,
-                      self._SimulateIncrementFailure)
 
 
 if __name__ == '__main__':

@@ -117,8 +117,8 @@ class Copier(object):
 
   DEFAULT_BLACKLIST = (r'(^|.*/)\.svn($|/.*)',)
 
-  def __init__(self, strip_bin=None, strip_flags=None, default_mode=0o644,
-               dir_mode=0o755, exe_mode=0o755, blacklist=None):
+  def __init__(self, strip_bin=None, strip_flags=None, default_mode=0644,
+               dir_mode=0755, exe_mode=0755, blacklist=None):
     """Initialization.
 
     Arguments:
@@ -306,9 +306,10 @@ _COPY_PATHS = (
        cond=C.GypSet(_USE_DRM)),
   Path('chrome',
        exe=True),
-  Path('chrome_sandbox', mode=0o4755,
+  Path('chrome_sandbox', mode=04755,
        dest=_CHROME_SANDBOX_DEST),
   Path('chrome-wrapper'),
+  Path('chrome.pak'),
   Path('chrome_100_percent.pak'),
   Path('chrome_200_percent.pak',
        cond=C.StagingFlagSet(_HIGHDPI_FLAG)),
@@ -317,6 +318,8 @@ _COPY_PATHS = (
        cond=C.StagingFlagSet(_CONTENT_SHELL_FLAG)),
   Path('content_shell.pak',
        cond=C.StagingFlagSet(_CONTENT_SHELL_FLAG)),
+  Path('extensions/',
+       cond=C.StagingFlagSet(_CHROME_INTERNAL_FLAG)),
   Path('keyboard_resources.pak'),
   Path('lib/*.so',
        exe=True,
@@ -356,10 +359,7 @@ _COPY_PATHS = (
   Path('nacl_irt_*.nexe',
        cond=C.GypNotSet(_DISABLE_NACL)),
   Path('nacl_helper',
-       exe=True,
        optional=True,
-       cond=C.GypNotSet(_DISABLE_NACL)),
-  Path('pnacl/',
        cond=C.GypNotSet(_DISABLE_NACL)),
   Path('resources/'),
   Path('resources.pak'),
@@ -399,7 +399,7 @@ def StageChromeFromBuildDir(staging_dir, build_dir, strip_bin, strict=False,
       STAGING_FLAGS.
     strip_flags: A list of flags to pass to the tool used to strip binaries.
   """
-  os.mkdir(os.path.join(staging_dir, 'plugins'), 0o755)
+  os.mkdir(os.path.join(staging_dir, 'plugins'), 0755)
 
   if gyp_defines is None:
     gyp_defines = {}

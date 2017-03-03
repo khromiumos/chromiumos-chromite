@@ -93,47 +93,6 @@ class TestOsutils(cros_test_lib.TempDirTestCase):
     self.assertRaises(cros_build_lib.RunCommandError,
                       osutils.RmDir, subpath, sudo=True)
 
-  def testTouchFile(self):
-    """Test that we can touch files."""
-    path = os.path.join(self.tempdir, 'touchit')
-    self.assertFalse(os.path.exists(path))
-    osutils.Touch(path)
-    self.assertTrue(os.path.exists(path))
-    self.assertEqual(os.path.getsize(path), 0)
-
-  def testTouchFileSubDir(self):
-    """Test that we can touch files in non-existent subdirs."""
-    path = os.path.join(self.tempdir, 'a', 'b', 'c', 'touchit')
-    self.assertFalse(os.path.exists(os.path.dirname(path)))
-    osutils.Touch(path, makedirs=True)
-    self.assertTrue(os.path.exists(path))
-    self.assertEqual(os.path.getsize(path), 0)
-
-
-class MountTests(cros_test_lib.TestCase):
-
-  def testMountTmpfsDir(self):
-    """Verify mounting a tmpfs works"""
-    cleaned = False
-    with osutils.TempDir(prefix='chromite.test.osutils') as tempdir:
-      st_before = os.stat(tempdir)
-      try:
-        # Mount the dir and verify it worked.
-        osutils.MountTmpfsDir(tempdir)
-        st_after = os.stat(tempdir)
-        self.assertNotEqual(st_before.st_dev, st_after.st_dev)
-
-        # Unmount the dir and verify it worked.
-        osutils.UmountDir(tempdir)
-        cleaned = True
-
-        # Finally make sure it's cleaned up.
-        self.assertFalse(os.path.exists(tempdir))
-      finally:
-        if not cleaned:
-          cros_build_lib.SudoRunCommand(['umount', '-lf', tempdir],
-                                        error_code_ok=True)
-
 
 class IteratePathParentsTest(cros_test_lib.TestCase):
   """Test parent directory iteration functionality."""

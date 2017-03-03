@@ -30,12 +30,7 @@ oper = operation.Operation('cros_portage_upgrade')
 NOT_APPLICABLE = 'N/A'
 WORLD_TARGET = 'world'
 UPGRADED = 'Upgraded'
-
-# Arches we care about -- we actively develop/support/ship.
-STANDARD_BOARD_ARCHS = set(('amd64', 'arm', 'x86'))
-# All the rest.  Maybe someday we'll support them.
-NONSTANDARD_BOARD_ARCHS = set(('alpha', 'hppa', 'ia64', 'm68k', 'mips', 'ppc',
-                               'ppc64', 's390', 'sh', 'sparc'))
+STANDARD_BOARD_ARCHS = set(['amd64', 'arm', 'x86'])
 
 # Files we do not include in our upgrades by convention.
 BLACKLISTED_FILES = set(['Manifest', 'ChangeLog*'])
@@ -727,11 +722,8 @@ class Upgrader(object):
       items = os.listdir(pkgdir)
       items = [os.path.join(catpkgsubdir, i) for i in items if i != 'Manifest']
       if items:
-        args = ['rm', '-rf', '--ignore-unmatch'] + items
-        self._RunGit(self._stable_repo, args, redirect_stdout=True)
-        # Now delete any files that git doesn't know about.
-        for item in items:
-          osutils.SafeUnlink(os.path.join(self._stable_repo, item))
+        self._RunGit(self._stable_repo, ['rm', '-rf'] + items,
+                     redirect_stdout=True)
 
     osutils.SafeMakedirs(pkgdir)
 
@@ -765,25 +757,21 @@ class Upgrader(object):
     oper.Notice('Editing %r to mark it stable for %r' %
                 (ebuild_path, self._curr_arch))
 
-    # For unsupported arches, auto-stabilize them all since there's no
-    # reason not to, and it makes it easier to port to them in the future.
-    arches = set((self._curr_arch,)) | NONSTANDARD_BOARD_ARCHS
-
-    # Regexp to search for KEYWORDS="...".
-    keywords_regexp = re.compile(r'^(\s*KEYWORDS="[^"]*")', re.MULTILINE)
-    # Regexp to find ~<arch> and replace with <arch>.
-    arch_regexp = re.compile(r'~((%s)["\s\n])' % ('|'.join(arches)))
+    # Regexp to search for ~<arch> and replace with <arch> in KEYWORDS.
+    regexp = re.compile(r'^(\s*KEYWORDS=.*?)~(%s["\s\n])' % self._curr_arch,
+                        re.MULTILINE | re.DOTALL)
 
     # Read in entire ebuild.
     content = osutils.ReadFile(ebuild_path)
 
     # Replace ~<arch> with <arch> in KEYWORDS.
-    arch_repl = lambda x: x.group(1)
-    keywords_repl = lambda x: re.sub(arch_regexp, arch_repl, x.group(1))
-    content = re.sub(keywords_regexp, keywords_repl, content)
+    def repl(match):
+      return ('%s%s' % (match.group(1), match.group(2)))
+    content = re.sub(regexp, repl, content)
 
     # Write ebuild file back out.
-    osutils.WriteFile(ebuild_path, content)
+    with open(ebuild_path, 'w') as f:
+      f.write(content)
 
   def _CreateManifest(self, upstream_pkgdir, pkgdir, ebuild):
     """Create a trusted Manifest from available Manifests.

@@ -2,7 +2,7 @@
 # ALL MANUAL CHANGES WILL BE OVERWRITTEN.
 vars = {
     'git_url':
-         'https://chromium.googlesource.com',
+         'http://git.chromium.org',
 }
 
 deps = {

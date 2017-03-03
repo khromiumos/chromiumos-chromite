@@ -23,9 +23,11 @@ _GIT_COMMIT_MESSAGE = 'Marking 9999 ebuild for %s as stable.'
 
 # Dictionary of valid commands with usage information.
 COMMAND_DICTIONARY = {
-    'commit': 'Marks given ebuilds as stable locally',
-    'push': 'Pushes previous marking of ebuilds to remote repo',
-}
+                        'commit':
+                          'Marks given ebuilds as stable locally',
+                        'push':
+                          'Pushes previous marking of ebuilds to remote repo',
+                      }
 
 
 # ======================= Global Helper Functions ========================
@@ -33,7 +35,6 @@ COMMAND_DICTIONARY = {
 
 def CleanStalePackages(boards, package_atoms):
   """Cleans up stale package info from a previous build.
-
   Args:
     boards: Boards to clean the packages from.
     package_atoms: A list of package atoms to unmerge.
@@ -128,7 +129,7 @@ def PushChange(stable_branch, tracking_branch, dryrun, cwd):
     dryrun: Use git push --dryrun to emulate a push.
     cwd: The directory to run commands in.
   Raises:
-    OSError: Error occurred while pushing.
+      OSError: Error occurred while pushing.
   """
   if not _DoWeHaveLocalCommits(stable_branch, tracking_branch, cwd):
     cros_build_lib.Info('No work found to push in %s.  Exiting', cwd)
@@ -145,9 +146,9 @@ def PushChange(stable_branch, tracking_branch, dryrun, cwd):
     cros_build_lib.Info('All changes already pushed for %s. Exiting', cwd)
     return
 
-  description = git.RunGit(cwd,
-      ['log', '--format=format:%s%n%n%b', '%s..%s' % (
-       push_branch, stable_branch)]).output
+  description = cros_build_lib.RunCommandCaptureOutput(
+      ['git', 'log', '--format=format:%s%n%n%b', '%s..%s' % (
+       push_branch, stable_branch)], cwd=cwd).output
   description = 'Marking set of ebuilds as stable\n\n%s' % description
   cros_build_lib.Info('For %s, using description %s', cwd, description)
   git.CreatePushBranch(constants.MERGE_BRANCH, cwd)
@@ -161,13 +162,7 @@ class GitBranch(object):
   """Wrapper class for a git branch."""
 
   def __init__(self, branch_name, tracking_branch, cwd):
-    """Sets up variables but does not create the branch.
-
-    Args:
-      branch_name: The name of the branch.
-      tracking_branch: The associated tracking branch.
-      cwd: The git repository to work in.
-    """
+    """Sets up variables but does not create the branch."""
     self.branch_name = branch_name
     self.tracking_branch = tracking_branch
     self.cwd = cwd
@@ -190,7 +185,9 @@ class GitBranch(object):
     """Returns True if the branch exists."""
     if not branch:
       branch = self.branch_name
-    branches = git.RunGit(self.cwd, ['branch']).output
+    branches = cros_build_lib.RunCommandCaptureOutput(['git', 'branch'],
+                                                      print_cmd=False,
+                                                      cwd=self.cwd).output
     return branch in branches.split()
 
 
@@ -272,7 +269,7 @@ def main(_argv):
     for overlay in keys:
       ebuilds = overlays[overlay]
       if not os.path.isdir(overlay):
-        cros_build_lib.Warning('Skipping %s' % overlay)
+        cros_build_lib.Warning("Skipping %s" % overlay)
         continue
 
       # Note we intentionally work from the non push tracking branch;
@@ -297,7 +294,8 @@ def main(_argv):
         # In the case of uprevving overlays that have patches applied to them,
         # include the patched changes in the stabilizing branch.
         if existing_branch:
-          git.RunGit(overlay, ['rebase', existing_branch])
+          cros_build_lib.RunCommand(['git', 'rebase', existing_branch],
+                                    print_cmd=False, cwd=overlay)
 
         messages = []
         for ebuild in ebuilds:
@@ -310,10 +308,9 @@ def main(_argv):
               new_package_atoms.append('=%s' % new_package)
               messages.append(_GIT_COMMIT_MESSAGE % ebuild.package)
           except (OSError, IOError):
-            cros_build_lib.Warning(
-                'Cannot rev %s\n'
-                'Note you will have to go into %s '
-                'and reset the git repo yourself.' % (ebuild.package, overlay))
+            cros_build_lib.Warning('Cannot rev %s\n' % ebuild.package +
+                    'Note you will have to go into %s '
+                    'and reset the git repo yourself.' % overlay)
             raise
 
         if messages:

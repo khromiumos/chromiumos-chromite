@@ -49,9 +49,10 @@ class NonClassTests(cros_test_lib.MoxTestCase):
     cros_mark_as_stable._DoWeHaveLocalCommits(
         self._branch, 'refs/remotes/gerrit/master', '.').AndReturn(True)
     result = cros_build_lib.CommandResult(output=git_log)
-    cmd = ['log', '--format=format:%s%n%n%b',
-           'refs/remotes/gerrit/master..%s' % self._branch]
-    git.RunGit('.', cmd).AndReturn(result)
+    cros_build_lib.RunCommandCaptureOutput(
+        ['git', 'log', '--format=format:%s%n%n%b',
+         'refs/remotes/gerrit/master..%s' % self._branch],
+        cwd='.').AndReturn(result)
     git.CreatePushBranch('merge_branch', '.')
     git.RunGit('.', ['merge', '--squash', self._branch])
     git.RunGit('.', ['commit', '-m', fake_description])
@@ -123,7 +124,8 @@ class GitBranchTest(cros_test_lib.MoxTestCase):
                                            self._target_manifest_branch, '.')
     # Test if branch exists that is created
     result = cros_build_lib.CommandResult(output=self._branch_name + '\n')
-    git.RunGit('.', ['branch']).AndReturn(result)
+    cros_build_lib.RunCommandCaptureOutput(['git', 'branch'], print_cmd=False,
+                                           cwd='.').AndReturn(result)
     self.mox.ReplayAll()
     self.assertTrue(branch.Exists())
     self.mox.VerifyAll()
