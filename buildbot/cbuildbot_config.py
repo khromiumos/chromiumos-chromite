@@ -1783,11 +1783,12 @@ _AddFirmwareConfigs()
 
 
 # Pre-flight defnition for this branch.
-internal_pfq_branch.add_config('monroe-pre-flight-branch',
+internal_pfq_branch.add_config('falco-pre-flight-branch',
   _firmware,
   master=True,
   push_overlays=constants.BOTH_OVERLAYS,
-  boards=['monroe'],
+  boards=['falco'],
+  description='Firmware Branch PFQ',
 )
 
 
