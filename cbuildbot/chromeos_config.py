@@ -3461,6 +3461,17 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
       active_waterfall=constants.WATERFALL_TRYBOT,
   )
 
+  site_config.Add(
+      'reef-pre-flight-branch',
+      site_config.templates.pre_flight_branch,
+      site_config.templates.firmware_base,
+      site_config.templates.no_hwtest_builder,
+      site_config.templates.no_vmtest_builder,
+      master=True,
+      push_overlays=constants.BOTH_OVERLAYS,
+      boards=['reef'],
+  )
+
   # Create our unittest stress build configs (used for tryjobs only)
   site_config.AddForBoards(
       'unittest-stress',

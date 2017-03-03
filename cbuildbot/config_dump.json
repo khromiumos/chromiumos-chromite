@@ -20235,6 +20235,32 @@
         ],
         "vm_tests": []
     },
+    "reef-pre-flight-branch": {
+        "_template": "pre_flight_branch",
+        "boards": [
+            "reef"
+        ],
+        "factory_toolkit": false,
+        "hw_tests_override": [],
+        "images": [],
+        "master": true,
+        "packages": [
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
+        ],
+        "push_overlays": "both",
+        "sign_types": [
+            "firmware"
+        ],
+        "sync_chrome": false,
+        "unittests": false,
+        "useflags": [
+            "chrome_internal",
+            "chromeless_tty"
+        ],
+        "vm_tests": [],
+        "vm_tests_override": null
+    },
     "reef-release": {
         "_template": "release",
         "active_waterfall": "chromeos",
