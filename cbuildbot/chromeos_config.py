@@ -3494,20 +3494,6 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
       description='Create images used to power access points in WiFi lab.',
   )
 
-  site_config.Add(
-      'samus-pre-flight-branch',
-      site_config.templates.pre_flight_branch,
-      master=True,
-      push_overlays=constants.BOTH_OVERLAYS,
-      boards=['samus'],
-      android_rev=constants.ANDROID_REV_LATEST,
-      afdo_generate=True,
-      afdo_update_ebuild=True,
-      vm_tests=[],
-      hw_tests=[hw_test_list.AFDORecordTest()],
-      useflags=append_useflags(['-transparent_hugepage']),
-  )
-
   # This is an example factory branch configuration.
   # Modify it to match your factory branch.
   site_config.Add(
