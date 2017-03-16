@@ -758,6 +758,18 @@
       ]
     },
     {
+      "name": "samus-cheets",
+      "configs": [
+        {
+          "builder": "RELEASE",
+          "experimental": false,
+          "leader_board": false,
+          "board_group": "auron",
+          "arch": "X86_INTERNAL"
+        }
+      ]
+    },
+    {
       "name": "sentry",
       "configs": [
         {
@@ -968,6 +980,18 @@
           "builder": "RELEASE",
           "experimental": false,
           "leader_board": true,
+          "board_group": "veyron",
+          "arch": "ARM_INTERNAL"
+        }
+      ]
+    },
+    {
+      "name": "veyron_minnie-cheets",
+      "configs": [
+        {
+          "builder": "RELEASE",
+          "experimental": false,
+          "leader_board": false,
           "board_group": "veyron",
           "arch": "ARM_INTERNAL"
         }
