@@ -342,7 +342,7 @@ INTERNAL_GOB_URL = 'https://%s' % INTERNAL_GOB_HOST
 INTERNAL_GERRIT_URL = 'https://%s' % INTERNAL_GERRIT_HOST
 
 ANDROID_BUCKET_URL = 'gs://android-build-chromeos/builds'
-ANDROID_BUILD_BRANCH = 'git_mnc-dr-arc-dev'
+ANDROID_BUILD_BRANCH = 'git_mnc-dr-arc-m58'
 ANDROID_BUILD_TARGETS = {
     # TODO(b/29509721): Workaround to roll adb with system image. We want to
     # get rid of this.
