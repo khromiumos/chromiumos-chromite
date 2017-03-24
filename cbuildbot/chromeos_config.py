@@ -509,6 +509,7 @@ _x86_internal_release_boards = frozenset([
     'lumpy',
     'mccloud',
     'monroe',
+    'nasher',
     'ninja',
     'orco',
     'panther',
@@ -646,6 +647,7 @@ _no_vmtest_boards = _arm_boards | _brillo_boards | _cheets_boards | frozenset((
     'cave',
     'cyan',
     'lulu',
+    'nasher',
     'pyro',
     'reef',
     'samus',
@@ -2963,6 +2965,14 @@ def _GetConfig(site_config, ge_build_config):
       'snappy-factory',
       site_config.templates.factory,
       boards=['snappy'],
+      vm_tests=[],
+      hw_tests=[],
+  )
+
+  site_config.Add(
+      'nasher-factory',
+      site_config.templates.factory,
+      boards=['nasher'],
       vm_tests=[],
       hw_tests=[],
   )
