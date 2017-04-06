@@ -3360,6 +3360,7 @@ def SpecialtyBuilders(site_config, ge_build_config):
       android_rev=constants.ANDROID_REV_LATEST,
       afdo_generate=True,
       afdo_update_ebuild=True,
+      chrome_rev=constants.CHROME_REV_STICKY,
       vm_tests=[],
       hw_tests=[hw_test_list.AFDORecordTest()],
       useflags=append_useflags(['-transparent_hugepage']),
