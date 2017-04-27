@@ -3489,7 +3489,7 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
       boards=['samus'],
       android_rev=constants.ANDROID_REV_LATEST,
       android_package='android-container',
-      android_import_branch='git_mnc-dr-arc-dev',
+      android_import_branch='git_mnc-dr-arc-m59',
       afdo_generate=True,
       afdo_update_ebuild=True,
       chrome_rev=constants.CHROME_REV_STICKY,
