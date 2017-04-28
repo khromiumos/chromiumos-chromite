@@ -2230,8 +2230,6 @@ def _GetConfig(site_config, board_configs, hw_test_list):
       push_overlays=constants.BOTH_OVERLAYS,
       boards=['gru'],
       android_rev=constants.ANDROID_REV_LATEST,
-      afdo_generate=True,
-      afdo_update_ebuild=True,
       vm_tests=[],
       hw_tests=[],
   )
