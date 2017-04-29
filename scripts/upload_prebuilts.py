@@ -446,8 +446,6 @@ class PrebuiltUploader(object):
     # skip them if not present.
     # TODO(deymo): Upload dev-only-extras.tbz2 as dev-only-extras.tar.bz2
     # outside packages/ directory. See crbug.com/448178 for details.
-    if os.path.exists(os.path.join(package_path, 'dev-only-extras.tbz2')):
-      uploads.append({'CPV': 'dev-only-extras'})
     upload_files = GenerateUploadDict(package_path, remote_location, uploads)
     remote_file = '%s/Packages' % remote_location.rstrip('/')
     upload_files[tmp_packages_file.name] = remote_file
