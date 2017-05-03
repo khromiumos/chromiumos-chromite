@@ -3004,6 +3004,7 @@ def FirmwareBuilders(site_config, boards_dict, ge_build_config):
       'reks',
       'relm',
       'rikku',
+      'rowan',
       'samus',
       'scarlet',
       'sentry',
@@ -3441,7 +3442,7 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
   """
   board_configs = CreateInternalBoardConfigs(
       site_config, boards_dict, ge_build_config)
-  hw_test_list = HWTestList(ge_build_config)
+  # hw_test_list = HWTestList(ge_build_config)
 
   site_config.AddWithoutTemplate(
       'chromiumos-sdk',
@@ -3532,12 +3533,14 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
   )
 
   site_config.Add(
-      'samus-pre-flight-branch',
+      'rowan-pre-flight-branch',
       site_config.templates.pre_flight_branch,
+      site_config.templates.firmware_base,
+      site_config.templates.no_hwtest_builder,
       master=True,
       slave_configs=[],
       push_overlays=constants.BOTH_OVERLAYS,
-      boards=['samus'],
+      boards=['rowan'],
       android_rev=constants.ANDROID_REV_LATEST,
       android_package='android-container',
       android_import_branch='git_mnc-dr-arc-dev',
@@ -3545,7 +3548,7 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
       afdo_update_ebuild=True,
       chrome_rev=constants.CHROME_REV_STICKY,
       vm_tests=[],
-      hw_tests=[hw_test_list.AFDORecordTest()],
+      hw_tests=[],
       useflags=append_useflags(['-transparent_hugepage', '-debug_fission']),
   )
 
