@@ -3074,6 +3074,7 @@ def FirmwareBuilders(site_config, boards_dict, ge_build_config):
       'clapper',
       'cyan',
       'enguarde',
+      'eve',
       'expresso',
       'glados',
       'glimmer',
@@ -3481,7 +3482,9 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
   """
   board_configs = CreateInternalBoardConfigs(
       site_config, boards_dict, ge_build_config)
-  hw_test_list = HWTestList(ge_build_config)
+
+#  No need to use this variable on firmware branch
+#  hw_test_list = HWTestList(ge_build_config)
 
   site_config.AddWithoutTemplate(
       'chromiumos-sdk',
@@ -3573,33 +3576,14 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
 
   # *-pre-flight-branch builders are in chromeos_release waterfall.
   site_config.Add(
-      'samus-chrome-pre-flight-branch',
+      'eve-pre-flight-branch',
       site_config.templates.pre_flight_branch,
-      boards=['samus'],
-      afdo_generate=True,
-      afdo_update_ebuild=True,
-      sync_chrome=True,
-      chrome_rev=constants.CHROME_REV_STICKY,
-      hw_tests=[hw_test_list.AFDORecordTest()],
-      useflags=append_useflags(['-transparent_hugepage', '-debug_fission']),
-  )
-
-  site_config.Add(
-      'cyan-android-mnc-pre-flight-branch',
-      site_config.templates.pre_flight_branch,
-      boards=['cyan'],
-      android_rev=constants.ANDROID_REV_LATEST,
-      android_package='android-container',
-      android_import_branch='git_mnc-dr-arc-dev',
-  )
-
-  site_config.Add(
-      'reef-android-nyc-pre-flight-branch',
-      site_config.templates.pre_flight_branch,
-      boards=['reef'],
-      android_rev=constants.ANDROID_REV_LATEST,
-      android_package='android-container-nyc',
-      android_import_branch='git_nyc-mr1-arc',
+      site_config.templates.firmware_base,
+      site_config.templates.no_hwtest_builder,
+      master=True,
+      slave_configs=[],
+      push_overlays=constants.BOTH_OVERLAYS,
+      boards=['eve'],
   )
 
   # This is an example factory branch configuration.

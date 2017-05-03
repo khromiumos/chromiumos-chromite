@@ -6320,15 +6320,6 @@
             "coral"
         ]
     },
-    "cyan-android-mnc-pre-flight-branch": {
-        "_template": "pre_flight_branch",
-        "android_import_branch": "git_mnc-dr-arc-dev",
-        "android_package": "android-container",
-        "android_rev": "latest_release",
-        "boards": [
-            "cyan"
-        ]
-    },
     "cyan-android-pfq": {
         "_template": "android_pfq",
         "active_waterfall": "chromeos",
@@ -7843,6 +7834,25 @@
             "chrome_internal"
         ]
     },
+    "eve-depthcharge-firmware": {
+        "_template": "depthcharge_firmware",
+        "boards": [
+            "eve"
+        ],
+        "manifest": "official.xml"
+    },
+    "eve-depthcharge-full-firmware": {
+        "_template": "depthcharge_full_firmware",
+        "boards": [
+            "eve"
+        ],
+        "manifest": "official.xml",
+        "useflags": [
+            "chrome_internal",
+            "chromeless_tty",
+            "depthcharge"
+        ]
+    },
     "eve-firmware": {
         "_template": "firmware",
         "boards": [
@@ -7911,6 +7921,29 @@
             "chrome_internal"
         ],
         "vm_tests": []
+    },
+    "eve-pre-flight-branch": {
+        "_template": "pre_flight_branch",
+        "boards": [
+            "eve"
+        ],
+        "factory_toolkit": false,
+        "images": [],
+        "packages": [
+            "virtual/chromeos-firmware",
+            "chromeos-base/autotest-all"
+        ],
+        "push_overlays": "both",
+        "sign_types": [
+            "firmware"
+        ],
+        "sync_chrome": false,
+        "unittests": false,
+        "useflags": [
+            "chrome_internal",
+            "chromeless_tty"
+        ],
+        "vm_tests_override": null
     },
     "eve-release": {
         "_template": "release",
@@ -19696,15 +19729,6 @@
             "chrome_internal"
         ]
     },
-    "reef-android-nyc-pre-flight-branch": {
-        "_template": "pre_flight_branch",
-        "android_import_branch": "git_nyc-mr1-arc",
-        "android_package": "android-container-nyc",
-        "android_rev": "latest_release",
-        "boards": [
-            "reef"
-        ]
-    },
     "reef-chrome-pfq": {
         "_template": "chrome_pfq",
         "active_waterfall": "chromeos",
@@ -20878,24 +20902,6 @@
         "important": false,
         "manifest": "official.xml",
         "vm_tests": []
-    },
-    "samus-chrome-pre-flight-branch": {
-        "_template": "pre_flight_branch",
-        "afdo_generate": true,
-        "afdo_update_ebuild": true,
-        "boards": [
-            "samus"
-        ],
-        "chrome_rev": "stable_release",
-        "hw_tests": [
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"PFQ\",\n    \"retry\": true,\n    \"suite\": \"AFDO_record\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 6000,\n    \"warn_only\": true\n}"
-        ],
-        "sync_chrome": true,
-        "useflags": [
-            "-debug_fission",
-            "-transparent_hugepage",
-            "chrome_internal"
-        ]
     },
     "samus-chromium-pfq": {
         "_template": "chromium_pfq",
