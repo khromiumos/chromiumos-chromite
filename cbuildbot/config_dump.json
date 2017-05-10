@@ -14624,7 +14624,6 @@
             "rikku-release",
             "samus-cheets-release",
             "samus-release",
-            "sand-release",
             "sentry-release",
             "setzer-release",
             "snappy-release",
@@ -20478,11 +20477,9 @@
     },
     "sand-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "boards": [
             "sand"
         ],
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
