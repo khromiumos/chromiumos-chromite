@@ -12374,7 +12374,6 @@
     },
     "lakitu-gpu-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "lakitu-gpu"
@@ -12402,7 +12401,6 @@
             "recovery",
             "test"
         ],
-        "important": true,
         "sign_types": [
             "base"
         ],
@@ -14593,7 +14591,6 @@
             "kefka-release",
             "kevin-release",
             "kip-release",
-            "lakitu-gpu-release",
             "lakitu-release",
             "lars-release",
             "leon-release",
