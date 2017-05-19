@@ -13163,7 +13163,6 @@
     },
     "lakitu-gpu-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "lakitu-gpu"
@@ -13187,7 +13186,6 @@
             "recovery",
             "test"
         ],
-        "important": true,
         "run_gce_tests": true,
         "sign_types": [
             "base"
