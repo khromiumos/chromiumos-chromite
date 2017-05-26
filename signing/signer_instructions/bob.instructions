@@ -1,2 +1,8 @@
 [insns]
+keyset = bob-premp
 channel = dev, beta, stable
+chromeos_shell = false
+ensure_no_password = true
+firmware_update = true
+security_checks = true
+create_nplusone = false
