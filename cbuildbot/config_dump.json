@@ -426,7 +426,7 @@
                 "firmware"
             ],
             "suite_scheduling": true,
-            "sync_chrome": false,
+            "sync_chrome": true,
             "unittests": false,
             "useflags": [
                 "-cros-debug",
@@ -461,7 +461,7 @@
             "sign_types": [
                 "firmware"
             ],
-            "sync_chrome": false,
+            "sync_chrome": true,
             "unittests": false,
             "useflags": [
                 "chromeless_tty",
@@ -538,7 +538,7 @@
                 "firmware"
             ],
             "suite_scheduling": true,
-            "sync_chrome": false,
+            "sync_chrome": true,
             "unittests": false,
             "useflags": [
                 "-cros-debug",
@@ -7937,7 +7937,7 @@
         "sign_types": [
             "firmware"
         ],
-        "sync_chrome": false,
+        "sync_chrome": true,
         "unittests": false,
         "useflags": [
             "chrome_internal",
@@ -8813,7 +8813,8 @@
         "boards": [
             "gale"
         ],
-        "manifest": "official.xml"
+        "manifest": "official.xml",
+        "sync_chrome": false
     },
     "gale-full": {
         "_template": "full",

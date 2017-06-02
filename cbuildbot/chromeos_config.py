@@ -1538,7 +1538,7 @@ def GeneralTemplates(site_config, ge_build_config):
       factory_toolkit=False,
       packages=['virtual/chromeos-firmware', 'chromeos-base/autotest-all'],
       usepkg_build_packages=True,
-      sync_chrome=False,
+      sync_chrome=True,
       chrome_sdk=False,
       unittests=False,
       hw_tests=[],
