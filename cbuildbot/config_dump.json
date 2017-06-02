@@ -418,16 +418,16 @@
             "manifest_version": true,
             "overlays": "both",
             "packages": [
-                "virtual/chromeos-firmware",
-                "chromeos-base/autotest-all"
+                "virtual/chromeos-firmware"
             ],
             "push_image": true,
             "sign_types": [
                 "firmware"
             ],
             "suite_scheduling": true,
-            "sync_chrome": true,
+            "sync_chrome": false,
             "unittests": false,
+            "upload_hw_test_artifacts": false,
             "useflags": [
                 "-cros-debug",
                 "chrome_internal",
@@ -455,14 +455,14 @@
             "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
             "overlays": "both",
             "packages": [
-                "virtual/chromeos-firmware",
-                "chromeos-base/autotest-all"
+                "virtual/chromeos-firmware"
             ],
             "sign_types": [
                 "firmware"
             ],
-            "sync_chrome": true,
+            "sync_chrome": false,
             "unittests": false,
+            "upload_hw_test_artifacts": false,
             "useflags": [
                 "chromeless_tty",
                 "depthcharge"
@@ -530,16 +530,16 @@
             "manifest_version": true,
             "overlays": "both",
             "packages": [
-                "virtual/chromeos-firmware",
-                "chromeos-base/autotest-all"
+                "virtual/chromeos-firmware"
             ],
             "push_image": true,
             "sign_types": [
                 "firmware"
             ],
             "suite_scheduling": true,
-            "sync_chrome": true,
+            "sync_chrome": false,
             "unittests": false,
+            "upload_hw_test_artifacts": false,
             "useflags": [
                 "-cros-debug",
                 "chrome_internal",
@@ -7930,15 +7930,15 @@
         "factory_toolkit": false,
         "images": [],
         "packages": [
-            "virtual/chromeos-firmware",
-            "chromeos-base/autotest-all"
+            "virtual/chromeos-firmware"
         ],
         "push_overlays": "both",
         "sign_types": [
             "firmware"
         ],
-        "sync_chrome": true,
+        "sync_chrome": false,
         "unittests": false,
+        "upload_hw_test_artifacts": false,
         "useflags": [
             "chrome_internal",
             "chromeless_tty"
@@ -8813,8 +8813,7 @@
         "boards": [
             "gale"
         ],
-        "manifest": "official.xml",
-        "sync_chrome": false
+        "manifest": "official.xml"
     },
     "gale-full": {
         "_template": "full",
