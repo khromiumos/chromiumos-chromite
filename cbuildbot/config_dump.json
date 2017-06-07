@@ -3917,12 +3917,9 @@
     },
     "bob-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "boards": [
             "bob"
         ],
-        "chrome_sdk_build_chrome": false,
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -14841,7 +14838,6 @@
             "auron_yuna-release",
             "banjo-release",
             "banon-release",
-            "bob-release",
             "buddy-release",
             "butterfly-release",
             "candy-release",
