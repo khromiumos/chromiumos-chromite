@@ -1325,7 +1325,6 @@ def GeneralTemplates(site_config, ge_build_config):
       uprev=True,
       overlays=constants.BOTH_OVERLAYS,
       push_overlays=constants.BOTH_OVERLAYS,
-      prebuilts=constants.PRIVATE,
       trybot_list=False,
       doc='http://www.chromium.org/chromium-os/build/builder-overview#'
           'TOC-Chrome-PFQ',
@@ -3581,6 +3580,7 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
       chrome_rev=constants.CHROME_REV_STICKY,
       hw_tests=[hw_test_list.AFDORecordTest()],
       useflags=append_useflags(['-transparent_hugepage', '-debug_fission']),
+      prebuilts=constants.PRIVATE,
   )
 
   site_config.Add(
@@ -3591,6 +3591,7 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
       android_rev=constants.ANDROID_REV_LATEST,
       android_package='android-container',
       android_import_branch=constants.ANDROID_MNC_BUILD_BRANCH,
+      prebuilts=False,
   )
 
   site_config.Add(
@@ -3601,6 +3602,7 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
       android_rev=constants.ANDROID_REV_LATEST,
       android_package='android-container-nyc',
       android_import_branch=constants.ANDROID_NYC_BUILD_BRANCH,
+      prebuilts=False,
   )
 
   # This is an example factory branch configuration.
