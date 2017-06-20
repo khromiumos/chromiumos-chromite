@@ -1262,6 +1262,12 @@
             "{\n    \"test_type\": \"smoke_suite\",\n    \"timeout\": 3600\n}"
         ]
     },
+    "amd64-generic-cheets-factory": {
+        "_template": "factory",
+        "boards": [
+            "amd64-generic-cheets"
+        ]
+    },
     "amd64-generic-cheets-full": {
         "_template": "full",
         "boards": [
@@ -1500,6 +1506,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "amd64-generic-goofy-factory": {
+        "_template": "factory",
+        "boards": [
+            "amd64-generic-goofy"
         ]
     },
     "amd64-generic-goofy-full": {
@@ -1770,6 +1782,14 @@
         "useflags": [
             "chrome_internal"
         ]
+    },
+    "arkham-factory": {
+        "_template": "factory",
+        "boards": [
+            "arkham"
+        ],
+        "dev_installer_prebuilts": false,
+        "sync_chrome": false
     },
     "arkham-full": {
         "_template": "full",
@@ -2175,6 +2195,12 @@
             "chrome_internal"
         ]
     },
+    "asuka-factory": {
+        "_template": "factory",
+        "boards": [
+            "asuka"
+        ]
+    },
     "asuka-firmware": {
         "_template": "firmware",
         "boards": [
@@ -2375,6 +2401,12 @@
             "depthcharge"
         ]
     },
+    "auron-factory": {
+        "_template": "factory",
+        "boards": [
+            "auron"
+        ]
+    },
     "auron-firmware": {
         "_template": "firmware",
         "boards": [
@@ -2551,6 +2583,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "auron_paine-factory": {
+        "_template": "factory",
+        "boards": [
+            "auron_paine"
         ]
     },
     "auron_paine-full": {
@@ -2733,6 +2771,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "auron_yuna-factory": {
+        "_template": "factory",
+        "boards": [
+            "auron_yuna"
         ]
     },
     "auron_yuna-full": {
@@ -2937,6 +2981,12 @@
             "depthcharge"
         ]
     },
+    "banjo-factory": {
+        "_template": "factory",
+        "boards": [
+            "banjo"
+        ]
+    },
     "banjo-firmware": {
         "_template": "firmware",
         "boards": [
@@ -3118,6 +3168,12 @@
             "chrome_internal"
         ]
     },
+    "banon-factory": {
+        "_template": "factory",
+        "boards": [
+            "banon"
+        ]
+    },
     "banon-firmware": {
         "_template": "firmware",
         "boards": [
@@ -3294,6 +3350,16 @@
             "chrome_internal"
         ]
     },
+    "beaglebone-factory": {
+        "_template": "factory",
+        "boards": [
+            "beaglebone"
+        ],
+        "dev_installer_prebuilts": false,
+        "images": [],
+        "rootfs_verification": false,
+        "sync_chrome": false
+    },
     "beaglebone-full": {
         "_template": "full",
         "boards": [
@@ -3444,6 +3510,16 @@
         "useflags": [
             "chrome_internal"
         ]
+    },
+    "beaglebone_servo-factory": {
+        "_template": "factory",
+        "boards": [
+            "beaglebone_servo"
+        ],
+        "dev_installer_prebuilts": false,
+        "images": [],
+        "rootfs_verification": false,
+        "sync_chrome": false
     },
     "beaglebone_servo-full": {
         "_template": "full",
@@ -3606,6 +3682,12 @@
         ],
         "vm_tests": [
             "{\n    \"test_type\": \"smoke_suite\",\n    \"timeout\": 3600\n}"
+        ]
+    },
+    "betty-factory": {
+        "_template": "factory",
+        "boards": [
+            "betty"
         ]
     },
     "betty-full": {
@@ -3833,6 +3915,12 @@
             "chrome_internal"
         ]
     },
+    "bob-factory": {
+        "_template": "factory",
+        "boards": [
+            "bob"
+        ]
+    },
     "bob-firmware": {
         "_template": "firmware",
         "boards": [
@@ -4054,6 +4142,12 @@
             "chrome_internal"
         ]
     },
+    "buddy-factory": {
+        "_template": "factory",
+        "boards": [
+            "buddy"
+        ]
+    },
     "buddy-full": {
         "_template": "full",
         "boards": [
@@ -4235,6 +4329,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "butterfly-factory": {
+        "_template": "factory",
+        "boards": [
+            "butterfly"
         ]
     },
     "butterfly-firmware": {
@@ -4436,6 +4536,12 @@
             "chrome_internal",
             "chromeless_tty",
             "depthcharge"
+        ]
+    },
+    "candy-factory": {
+        "_template": "factory",
+        "boards": [
+            "candy"
         ]
     },
     "candy-firmware": {
@@ -4691,6 +4797,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "caroline-factory": {
+        "_template": "factory",
+        "boards": [
+            "caroline"
         ]
     },
     "caroline-firmware": {
@@ -4990,6 +5102,12 @@
             "chrome_internal"
         ]
     },
+    "cave-factory": {
+        "_template": "factory",
+        "boards": [
+            "cave"
+        ]
+    },
     "cave-firmware": {
         "_template": "firmware",
         "boards": [
@@ -5183,6 +5301,12 @@
             "chrome_internal"
         ]
     },
+    "celes-factory": {
+        "_template": "factory",
+        "boards": [
+            "celes"
+        ]
+    },
     "celes-full": {
         "_template": "full",
         "boards": [
@@ -5373,6 +5497,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "chell-factory": {
+        "_template": "factory",
+        "boards": [
+            "chell"
         ]
     },
     "chell-firmware": {
@@ -5667,6 +5797,12 @@
             "depthcharge"
         ]
     },
+    "clapper-factory": {
+        "_template": "factory",
+        "boards": [
+            "clapper"
+        ]
+    },
     "clapper-firmware": {
         "_template": "firmware",
         "boards": [
@@ -5830,6 +5966,17 @@
             "chrome_internal"
         ]
     },
+    "cobblepot-factory": {
+        "_template": "factory",
+        "boards": [
+            "cobblepot"
+        ],
+        "dev_installer_prebuilts": false,
+        "images": [
+            "test"
+        ],
+        "sync_chrome": false
+    },
     "cobblepot-full": {
         "_template": "full",
         "boards": [
@@ -5984,6 +6131,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "coral-factory": {
+        "_template": "factory",
+        "boards": [
+            "coral"
         ]
     },
     "coral-full": {
@@ -6208,6 +6361,12 @@
             "chrome_internal",
             "chromeless_tty",
             "depthcharge"
+        ]
+    },
+    "cyan-factory": {
+        "_template": "factory",
+        "boards": [
+            "cyan"
         ]
     },
     "cyan-firmware": {
@@ -6467,6 +6626,12 @@
             "chrome_internal"
         ]
     },
+    "daisy-factory": {
+        "_template": "factory",
+        "boards": [
+            "daisy"
+        ]
+    },
     "daisy-firmware": {
         "_template": "firmware",
         "boards": [
@@ -6706,6 +6871,12 @@
             "chrome_internal"
         ]
     },
+    "daisy_skate-factory": {
+        "_template": "factory",
+        "boards": [
+            "daisy_skate"
+        ]
+    },
     "daisy_skate-firmware": {
         "_template": "firmware",
         "boards": [
@@ -6894,6 +7065,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "daisy_spring-factory": {
+        "_template": "factory",
+        "boards": [
+            "daisy_spring"
         ]
     },
     "daisy_spring-firmware": {
@@ -7087,6 +7264,12 @@
             "chrome_internal"
         ]
     },
+    "edgar-factory": {
+        "_template": "factory",
+        "boards": [
+            "edgar"
+        ]
+    },
     "edgar-firmware": {
         "_template": "firmware",
         "boards": [
@@ -7275,6 +7458,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "elm-factory": {
+        "_template": "factory",
+        "boards": [
+            "elm"
         ]
     },
     "elm-full": {
@@ -7482,6 +7671,12 @@
             "depthcharge"
         ]
     },
+    "enguarde-factory": {
+        "_template": "factory",
+        "boards": [
+            "enguarde"
+        ]
+    },
     "enguarde-firmware": {
         "_template": "firmware",
         "boards": [
@@ -7661,6 +7856,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "eve-factory": {
+        "_template": "factory",
+        "boards": [
+            "eve"
         ]
     },
     "eve-firmware": {
@@ -7873,6 +8074,12 @@
             "depthcharge"
         ]
     },
+    "expresso-factory": {
+        "_template": "factory",
+        "boards": [
+            "expresso"
+        ]
+    },
     "expresso-firmware": {
         "_template": "firmware",
         "boards": [
@@ -8052,6 +8259,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "falco-factory": {
+        "_template": "factory",
+        "boards": [
+            "falco"
         ]
     },
     "falco-firmware": {
@@ -8259,6 +8472,12 @@
             "chrome_internal"
         ]
     },
+    "falco_li-factory": {
+        "_template": "factory",
+        "boards": [
+            "falco_li"
+        ]
+    },
     "falco_li-full": {
         "_template": "full",
         "boards": [
@@ -8433,6 +8652,12 @@
             "chrome_internal"
         ]
     },
+    "fizz-factory": {
+        "_template": "factory",
+        "boards": [
+            "fizz"
+        ]
+    },
     "fizz-full": {
         "_template": "full",
         "boards": [
@@ -8595,6 +8820,14 @@
             "chrome_internal"
         ]
     },
+    "gale-factory": {
+        "_template": "factory",
+        "boards": [
+            "gale"
+        ],
+        "dev_installer_prebuilts": false,
+        "sync_chrome": false
+    },
     "gale-firmware": {
         "_template": "firmware",
         "boards": [
@@ -8734,6 +8967,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "gandof-factory": {
+        "_template": "factory",
+        "boards": [
+            "gandof"
         ]
     },
     "gandof-full": {
@@ -8938,6 +9177,12 @@
             "depthcharge"
         ]
     },
+    "glados-factory": {
+        "_template": "factory",
+        "boards": [
+            "glados"
+        ]
+    },
     "glados-full": {
         "_template": "full",
         "boards": [
@@ -9135,6 +9380,12 @@
             "chrome_internal",
             "chromeless_tty",
             "depthcharge"
+        ]
+    },
+    "glimmer-factory": {
+        "_template": "factory",
+        "boards": [
+            "glimmer"
         ]
     },
     "glimmer-firmware": {
@@ -9337,6 +9588,12 @@
             "depthcharge"
         ]
     },
+    "gnawty-factory": {
+        "_template": "factory",
+        "boards": [
+            "gnawty"
+        ]
+    },
     "gnawty-firmware": {
         "_template": "firmware",
         "boards": [
@@ -9501,6 +9758,17 @@
             "chrome_internal"
         ]
     },
+    "gonzo-factory": {
+        "_template": "factory",
+        "boards": [
+            "gonzo"
+        ],
+        "dev_installer_prebuilts": false,
+        "images": [
+            "test"
+        ],
+        "sync_chrome": false
+    },
     "gonzo-full": {
         "_template": "full",
         "boards": [
@@ -9644,6 +9912,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "gru-factory": {
+        "_template": "factory",
+        "boards": [
+            "gru"
         ]
     },
     "gru-firmware": {
@@ -9835,6 +10109,12 @@
             "chrome_internal"
         ]
     },
+    "guado-factory": {
+        "_template": "factory",
+        "boards": [
+            "guado"
+        ]
+    },
     "guado-full": {
         "_template": "full",
         "boards": [
@@ -10007,6 +10287,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "guado_labstation-factory": {
+        "_template": "factory",
+        "boards": [
+            "guado_labstation"
         ]
     },
     "guado_labstation-full": {
@@ -10189,6 +10475,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "guado_moblab-factory": {
+        "_template": "factory",
+        "boards": [
+            "guado_moblab"
         ]
     },
     "guado_moblab-full": {
@@ -10404,6 +10696,12 @@
             "chrome_internal"
         ]
     },
+    "hana-factory": {
+        "_template": "factory",
+        "boards": [
+            "hana"
+        ]
+    },
     "hana-full": {
         "_template": "full",
         "boards": [
@@ -10606,6 +10904,12 @@
             "depthcharge"
         ]
     },
+    "heli-factory": {
+        "_template": "factory",
+        "boards": [
+            "heli"
+        ]
+    },
     "heli-full": {
         "_template": "full",
         "boards": [
@@ -10778,6 +11082,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "jadeite-factory": {
+        "_template": "factory",
+        "boards": [
+            "jadeite"
         ]
     },
     "jadeite-full": {
@@ -10980,6 +11290,12 @@
             "depthcharge"
         ]
     },
+    "jecht-factory": {
+        "_template": "factory",
+        "boards": [
+            "jecht"
+        ]
+    },
     "jecht-firmware": {
         "_template": "firmware",
         "boards": [
@@ -11158,6 +11474,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "kahlee-factory": {
+        "_template": "factory",
+        "boards": [
+            "kahlee"
         ]
     },
     "kahlee-full": {
@@ -11341,6 +11663,12 @@
             "chrome_internal"
         ]
     },
+    "kefka-factory": {
+        "_template": "factory",
+        "boards": [
+            "kefka"
+        ]
+    },
     "kefka-firmware": {
         "_template": "firmware",
         "boards": [
@@ -11520,6 +11848,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "kevin-factory": {
+        "_template": "factory",
+        "boards": [
+            "kevin"
         ]
     },
     "kevin-firmware": {
@@ -11755,6 +12089,12 @@
             "depthcharge"
         ]
     },
+    "kip-factory": {
+        "_template": "factory",
+        "boards": [
+            "kip"
+        ]
+    },
     "kip-firmware": {
         "_template": "firmware",
         "boards": [
@@ -11956,6 +12296,12 @@
             "chrome_internal",
             "chromeless_tty",
             "depthcharge"
+        ]
+    },
+    "kunimitsu-factory": {
+        "_template": "factory",
+        "boards": [
+            "kunimitsu"
         ]
     },
     "kunimitsu-full": {
@@ -12996,6 +13342,12 @@
             "chrome_internal"
         ]
     },
+    "lars-factory": {
+        "_template": "factory",
+        "boards": [
+            "lars"
+        ]
+    },
     "lars-firmware": {
         "_template": "firmware",
         "boards": [
@@ -13168,6 +13520,17 @@
             "chrome_internal"
         ]
     },
+    "lasilla-ground-factory": {
+        "_template": "factory",
+        "boards": [
+            "lasilla-ground"
+        ],
+        "dev_installer_prebuilts": false,
+        "images": [
+            "test"
+        ],
+        "sync_chrome": false
+    },
     "lasilla-ground-full": {
         "_template": "full",
         "boards": [
@@ -13295,6 +13658,17 @@
         "useflags": [
             "chrome_internal"
         ]
+    },
+    "lasilla-sky-factory": {
+        "_template": "factory",
+        "boards": [
+            "lasilla-sky"
+        ],
+        "dev_installer_prebuilts": false,
+        "images": [
+            "test"
+        ],
+        "sync_chrome": false
     },
     "lasilla-sky-full": {
         "_template": "full",
@@ -13458,6 +13832,12 @@
             "chrome_internal",
             "chromeless_tty",
             "depthcharge"
+        ]
+    },
+    "leon-factory": {
+        "_template": "factory",
+        "boards": [
+            "leon"
         ]
     },
     "leon-firmware": {
@@ -13661,6 +14041,12 @@
             "depthcharge"
         ]
     },
+    "link-factory": {
+        "_template": "factory",
+        "boards": [
+            "link"
+        ]
+    },
     "link-firmware": {
         "_template": "firmware",
         "boards": [
@@ -13861,6 +14247,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "lulu-factory": {
+        "_template": "factory",
+        "boards": [
+            "lulu"
         ]
     },
     "lulu-full": {
@@ -14075,6 +14467,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "lumpy-factory": {
+        "_template": "factory",
+        "boards": [
+            "lumpy"
         ]
     },
     "lumpy-firmware": {
@@ -14608,6 +15006,12 @@
             "chrome_internal"
         ]
     },
+    "mccloud-factory": {
+        "_template": "factory",
+        "boards": [
+            "mccloud"
+        ]
+    },
     "mccloud-full": {
         "_template": "full",
         "boards": [
@@ -14861,6 +15265,12 @@
             "chrome_internal"
         ]
     },
+    "monroe-factory": {
+        "_template": "factory",
+        "boards": [
+            "monroe"
+        ]
+    },
     "monroe-firmware": {
         "_template": "firmware",
         "boards": [
@@ -15040,6 +15450,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "nasher-factory": {
+        "_template": "factory",
+        "boards": [
+            "nasher"
         ]
     },
     "nasher-full": {
@@ -15231,6 +15647,12 @@
         ],
         "vm_tests": [
             "{\n    \"test_type\": \"smoke_suite\",\n    \"timeout\": 3600\n}"
+        ]
+    },
+    "newbie-factory": {
+        "_template": "factory",
+        "boards": [
+            "newbie"
         ]
     },
     "newbie-full": {
@@ -15467,6 +15889,12 @@
             "depthcharge"
         ]
     },
+    "ninja-factory": {
+        "_template": "factory",
+        "boards": [
+            "ninja"
+        ]
+    },
     "ninja-firmware": {
         "_template": "firmware",
         "boards": [
@@ -15656,6 +16084,12 @@
         ],
         "vm_tests": [
             "{\n    \"test_type\": \"smoke_suite\",\n    \"timeout\": 3600\n}"
+        ]
+    },
+    "novato-factory": {
+        "_template": "factory",
+        "boards": [
+            "novato"
         ]
     },
     "novato-full": {
@@ -15873,6 +16307,12 @@
             "chrome_internal"
         ]
     },
+    "nyan-factory": {
+        "_template": "factory",
+        "boards": [
+            "nyan"
+        ]
+    },
     "nyan-full": {
         "_template": "full",
         "boards": [
@@ -16078,6 +16518,12 @@
             "chrome_internal"
         ]
     },
+    "nyan_big-factory": {
+        "_template": "factory",
+        "boards": [
+            "nyan_big"
+        ]
+    },
     "nyan_big-full": {
         "_template": "full",
         "boards": [
@@ -16281,6 +16727,12 @@
             "chrome_internal"
         ]
     },
+    "nyan_blaze-factory": {
+        "_template": "factory",
+        "boards": [
+            "nyan_blaze"
+        ]
+    },
     "nyan_blaze-full": {
         "_template": "full",
         "boards": [
@@ -16462,6 +16914,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "nyan_kitty-factory": {
+        "_template": "factory",
+        "boards": [
+            "nyan_kitty"
         ]
     },
     "nyan_kitty-full": {
@@ -16648,6 +17106,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "oak-factory": {
+        "_template": "factory",
+        "boards": [
+            "oak"
         ]
     },
     "oak-full": {
@@ -16852,6 +17316,12 @@
             "depthcharge"
         ]
     },
+    "orco-factory": {
+        "_template": "factory",
+        "boards": [
+            "orco"
+        ]
+    },
     "orco-firmware": {
         "_template": "firmware",
         "boards": [
@@ -17031,6 +17501,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "panther-factory": {
+        "_template": "factory",
+        "boards": [
+            "panther"
         ]
     },
     "panther-firmware": {
@@ -17228,6 +17704,12 @@
             "chrome_internal"
         ]
     },
+    "parrot-factory": {
+        "_template": "factory",
+        "boards": [
+            "parrot"
+        ]
+    },
     "parrot-firmware": {
         "_template": "firmware",
         "boards": [
@@ -17418,6 +17900,12 @@
             "chrome_internal"
         ]
     },
+    "parrot_ivb-factory": {
+        "_template": "factory",
+        "boards": [
+            "parrot_ivb"
+        ]
+    },
     "parrot_ivb-full": {
         "_template": "full",
         "boards": [
@@ -17590,6 +18078,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "peach_pi-factory": {
+        "_template": "factory",
+        "boards": [
+            "peach_pi"
         ]
     },
     "peach_pi-firmware": {
@@ -17785,6 +18279,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "peach_pit-factory": {
+        "_template": "factory",
+        "boards": [
+            "peach_pit"
         ]
     },
     "peach_pit-firmware": {
@@ -18006,6 +18506,12 @@
             "chrome_internal"
         ]
     },
+    "peppy-factory": {
+        "_template": "factory",
+        "boards": [
+            "peppy"
+        ]
+    },
     "peppy-firmware": {
         "_template": "firmware",
         "boards": [
@@ -18207,6 +18713,12 @@
             "chrome_internal"
         ]
     },
+    "plaso-factory": {
+        "_template": "factory",
+        "boards": [
+            "plaso"
+        ]
+    },
     "plaso-full": {
         "_template": "full",
         "boards": [
@@ -18377,6 +18889,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "poppy-factory": {
+        "_template": "factory",
+        "boards": [
+            "poppy"
         ]
     },
     "poppy-full": {
@@ -18594,6 +19112,12 @@
             "chrome_internal"
         ]
     },
+    "pyro-factory": {
+        "_template": "factory",
+        "boards": [
+            "pyro"
+        ]
+    },
     "pyro-full": {
         "_template": "full",
         "boards": [
@@ -18794,6 +19318,12 @@
             "chrome_internal",
             "chromeless_tty",
             "depthcharge"
+        ]
+    },
+    "quawks-factory": {
+        "_template": "factory",
+        "boards": [
+            "quawks"
         ]
     },
     "quawks-firmware": {
@@ -19001,6 +19531,12 @@
             "depthcharge"
         ]
     },
+    "rambi-factory": {
+        "_template": "factory",
+        "boards": [
+            "rambi"
+        ]
+    },
     "rambi-firmware": {
         "_template": "firmware",
         "boards": [
@@ -19194,6 +19730,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "reef-factory": {
+        "_template": "factory",
+        "boards": [
+            "reef"
         ]
     },
     "reef-full": {
@@ -19489,6 +20031,12 @@
             "chrome_internal"
         ]
     },
+    "reks-factory": {
+        "_template": "factory",
+        "boards": [
+            "reks"
+        ]
+    },
     "reks-firmware": {
         "_template": "firmware",
         "boards": [
@@ -19681,6 +20229,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "relm-factory": {
+        "_template": "factory",
+        "boards": [
+            "relm"
         ]
     },
     "relm-firmware": {
@@ -19883,6 +20437,12 @@
             "depthcharge"
         ]
     },
+    "rikku-factory": {
+        "_template": "factory",
+        "boards": [
+            "rikku"
+        ]
+    },
     "rikku-firmware": {
         "_template": "firmware",
         "boards": [
@@ -20062,6 +20622,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "rowan-factory": {
+        "_template": "factory",
+        "boards": [
+            "rowan"
         ]
     },
     "rowan-full": {
@@ -20283,6 +20849,12 @@
             "depthcharge"
         ]
     },
+    "samus-factory": {
+        "_template": "factory",
+        "boards": [
+            "samus"
+        ]
+    },
     "samus-firmware": {
         "_template": "firmware",
         "boards": [
@@ -20490,6 +21062,12 @@
             "chrome_internal"
         ]
     },
+    "sand-factory": {
+        "_template": "factory",
+        "boards": [
+            "sand"
+        ]
+    },
     "sand-full": {
         "_template": "full",
         "boards": [
@@ -20670,6 +21248,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "scarlet-factory": {
+        "_template": "factory",
+        "boards": [
+            "scarlet"
         ]
     },
     "scarlet-firmware": {
@@ -20858,6 +21442,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "sentry-factory": {
+        "_template": "factory",
+        "boards": [
+            "sentry"
         ]
     },
     "sentry-firmware": {
@@ -21068,6 +21658,12 @@
             "chrome_internal"
         ]
     },
+    "setzer-factory": {
+        "_template": "factory",
+        "boards": [
+            "setzer"
+        ]
+    },
     "setzer-firmware": {
         "_template": "firmware",
         "boards": [
@@ -21267,6 +21863,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "slippy-factory": {
+        "_template": "factory",
+        "boards": [
+            "slippy"
         ]
     },
     "slippy-firmware": {
@@ -21724,6 +22326,12 @@
             "chrome_internal"
         ]
     },
+    "snappy-factory": {
+        "_template": "factory",
+        "boards": [
+            "snappy"
+        ]
+    },
     "snappy-full": {
         "_template": "full",
         "boards": [
@@ -21905,6 +22513,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "soraka-factory": {
+        "_template": "factory",
+        "boards": [
+            "soraka"
         ]
     },
     "soraka-full": {
@@ -22107,6 +22721,12 @@
             "depthcharge"
         ]
     },
+    "squawks-factory": {
+        "_template": "factory",
+        "boards": [
+            "squawks"
+        ]
+    },
     "squawks-firmware": {
         "_template": "firmware",
         "boards": [
@@ -22304,6 +22924,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "stout-factory": {
+        "_template": "factory",
+        "boards": [
+            "stout"
         ]
     },
     "stout-firmware": {
@@ -22508,6 +23134,12 @@
             "depthcharge"
         ]
     },
+    "strago-factory": {
+        "_template": "factory",
+        "boards": [
+            "strago"
+        ]
+    },
     "strago-firmware": {
         "_template": "firmware",
         "boards": [
@@ -22693,6 +23325,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "stumpy-factory": {
+        "_template": "factory",
+        "boards": [
+            "stumpy"
         ]
     },
     "stumpy-firmware": {
@@ -22904,6 +23542,12 @@
             "depthcharge"
         ]
     },
+    "sumo-factory": {
+        "_template": "factory",
+        "boards": [
+            "sumo"
+        ]
+    },
     "sumo-firmware": {
         "_template": "firmware",
         "boards": [
@@ -23102,6 +23746,12 @@
             "chrome_internal",
             "chromeless_tty",
             "depthcharge"
+        ]
+    },
+    "swanky-factory": {
+        "_template": "factory",
+        "boards": [
+            "swanky"
         ]
     },
     "swanky-firmware": {
@@ -23583,6 +24233,12 @@
             "chrome_internal"
         ]
     },
+    "terra-factory": {
+        "_template": "factory",
+        "boards": [
+            "terra"
+        ]
+    },
     "terra-firmware": {
         "_template": "firmware",
         "boards": [
@@ -23824,6 +24480,12 @@
             "chrome_internal"
         ]
     },
+    "tidus-factory": {
+        "_template": "factory",
+        "boards": [
+            "tidus"
+        ]
+    },
     "tidus-full": {
         "_template": "full",
         "boards": [
@@ -24003,6 +24665,12 @@
             "chrome_internal"
         ]
     },
+    "tricky-factory": {
+        "_template": "factory",
+        "boards": [
+            "tricky"
+        ]
+    },
     "tricky-full": {
         "_template": "full",
         "boards": [
@@ -24179,6 +24847,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "ultima-factory": {
+        "_template": "factory",
+        "boards": [
+            "ultima"
         ]
     },
     "ultima-full": {
@@ -24364,6 +25038,12 @@
             "chrome_internal"
         ]
     },
+    "umaro-factory": {
+        "_template": "factory",
+        "boards": [
+            "umaro"
+        ]
+    },
     "umaro-full": {
         "_template": "full",
         "boards": [
@@ -24542,6 +25222,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "veyron_fievel-factory": {
+        "_template": "factory",
+        "boards": [
+            "veyron_fievel"
         ]
     },
     "veyron_fievel-full": {
@@ -24725,6 +25411,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "veyron_jaq-factory": {
+        "_template": "factory",
+        "boards": [
+            "veyron_jaq"
         ]
     },
     "veyron_jaq-full": {
@@ -24929,6 +25621,12 @@
             "chrome_internal"
         ]
     },
+    "veyron_jerry-factory": {
+        "_template": "factory",
+        "boards": [
+            "veyron_jerry"
+        ]
+    },
     "veyron_jerry-full": {
         "_template": "full",
         "boards": [
@@ -25126,6 +25824,12 @@
             "chrome_internal"
         ]
     },
+    "veyron_mickey-factory": {
+        "_template": "factory",
+        "boards": [
+            "veyron_mickey"
+        ]
+    },
     "veyron_mickey-full": {
         "_template": "full",
         "boards": [
@@ -25307,6 +26011,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "veyron_mighty-factory": {
+        "_template": "factory",
+        "boards": [
+            "veyron_mighty"
         ]
     },
     "veyron_mighty-full": {
@@ -25497,6 +26207,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "veyron_minnie-factory": {
+        "_template": "factory",
+        "boards": [
+            "veyron_minnie"
         ]
     },
     "veyron_minnie-full": {
@@ -25705,6 +26421,12 @@
             "chrome_internal"
         ]
     },
+    "veyron_pinky-factory": {
+        "_template": "factory",
+        "boards": [
+            "veyron_pinky"
+        ]
+    },
     "veyron_pinky-full": {
         "_template": "full",
         "boards": [
@@ -25883,6 +26605,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "veyron_rialto-factory": {
+        "_template": "factory",
+        "boards": [
+            "veyron_rialto"
         ]
     },
     "veyron_rialto-full": {
@@ -26066,6 +26794,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "veyron_speedy-factory": {
+        "_template": "factory",
+        "boards": [
+            "veyron_speedy"
         ]
     },
     "veyron_speedy-full": {
@@ -26282,6 +27016,12 @@
             "chrome_internal"
         ]
     },
+    "veyron_tiger-factory": {
+        "_template": "factory",
+        "boards": [
+            "veyron_tiger"
+        ]
+    },
     "veyron_tiger-full": {
         "_template": "full",
         "boards": [
@@ -26447,6 +27187,14 @@
             "chrome_internal"
         ]
     },
+    "whirlwind-factory": {
+        "_template": "factory",
+        "boards": [
+            "whirlwind"
+        ],
+        "dev_installer_prebuilts": false,
+        "sync_chrome": false
+    },
     "whirlwind-full": {
         "_template": "full",
         "boards": [
@@ -26604,6 +27352,12 @@
             "chrome_internal",
             "chromeless_tty",
             "depthcharge"
+        ]
+    },
+    "winky-factory": {
+        "_template": "factory",
+        "boards": [
+            "winky"
         ]
     },
     "winky-firmware": {
@@ -26804,6 +27558,12 @@
             "chrome_internal"
         ]
     },
+    "wizpig-factory": {
+        "_template": "factory",
+        "boards": [
+            "wizpig"
+        ]
+    },
     "wizpig-full": {
         "_template": "full",
         "boards": [
@@ -26985,6 +27745,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "wolf-factory": {
+        "_template": "factory",
+        "boards": [
+            "wolf"
         ]
     },
     "wolf-firmware": {
@@ -27176,6 +27942,17 @@
         "useflags": [
             "chrome_internal"
         ]
+    },
+    "wooten-factory": {
+        "_template": "factory",
+        "boards": [
+            "wooten"
+        ],
+        "dev_installer_prebuilts": false,
+        "images": [
+            "test"
+        ],
+        "sync_chrome": false
     },
     "wooten-full": {
         "_template": "full",
@@ -27403,6 +28180,12 @@
             "chrome_internal"
         ]
     },
+    "x86-alex-factory": {
+        "_template": "factory",
+        "boards": [
+            "x86-alex"
+        ]
+    },
     "x86-alex-full": {
         "_template": "full",
         "boards": [
@@ -27572,6 +28355,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "x86-alex_he-factory": {
+        "_template": "factory",
+        "boards": [
+            "x86-alex_he"
         ]
     },
     "x86-alex_he-full": {
@@ -28068,6 +28857,12 @@
             "chrome_internal"
         ]
     },
+    "x86-zgb-factory": {
+        "_template": "factory",
+        "boards": [
+            "x86-zgb"
+        ]
+    },
     "x86-zgb-full": {
         "_template": "full",
         "boards": [
@@ -28237,6 +29032,12 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
+        ]
+    },
+    "x86-zgb_he-factory": {
+        "_template": "factory",
+        "boards": [
+            "x86-zgb_he"
         ]
     },
     "x86-zgb_he-full": {
@@ -28427,6 +29228,12 @@
             "chrome_internal",
             "chromeless_tty",
             "depthcharge"
+        ]
+    },
+    "zako-factory": {
+        "_template": "factory",
+        "boards": [
+            "zako"
         ]
     },
     "zako-firmware": {
