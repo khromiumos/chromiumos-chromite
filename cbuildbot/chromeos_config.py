@@ -3569,7 +3569,10 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
       site_config.templates.no_hwtest_builder,
       boards=['eve'],
       sync_chrome=True,
-      prebuilts=constants.PRIVATE,
+      android_rev=constants.ANDROID_REV_LATEST,
+      android_package='android-container-nyc',
+      android_import_branch=constants.ANDROID_NYC_BUILD_BRANCH,
+      prebuilts=False,
   )
 
 def EnsureVmTestsOnBaremetal(site_config, _gs_build_config):
