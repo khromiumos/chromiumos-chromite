@@ -311,11 +311,9 @@ class TestUploadPrebuilt(cros_test_lib.MockTempDirTestCase):
   def testSuccessfulGsUpload(self):
     uploads = {
         os.path.join(self.tempdir, 'private.tbz2'): 'gs://foo/private.tbz2'}
-    # Temporarily comment out the following two lines for experiments
-    # (factory-glados-7828.B branch).
-    #packages = list(PRIVATE_PACKAGES)
-    #packages.append({'CPV': 'dev-only-extras'})
-    #osutils.Touch(os.path.join(self.tempdir, 'dev-only-extras.tbz2'))
+    packages = list(PRIVATE_PACKAGES)
+    packages.append({'CPV': 'dev-only-extras'})
+    osutils.Touch(os.path.join(self.tempdir, 'dev-only-extras.tbz2'))
     self.PatchObject(prebuilt, 'GenerateUploadDict',
                      return_value=uploads)
     uploads = uploads.copy()
