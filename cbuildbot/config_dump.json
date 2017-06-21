@@ -544,7 +544,7 @@
             "chrome_sdk_build_chrome": false,
             "chromeos_official": true,
             "description": "Factory Builds",
-            "dev_installer_prebuilts": true,
+            "dev_installer_prebuilts": false,
             "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
             "factory_toolkit": true,
             "git_sync": false,
@@ -568,7 +568,7 @@
                 "factory"
             ],
             "signer_tests": false,
-            "trybot_list": true,
+            "trybot_list": false,
             "upload_hw_test_artifacts": false,
             "upload_symbols": false,
             "useflags": [
