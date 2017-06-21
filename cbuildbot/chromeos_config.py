@@ -3467,7 +3467,9 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
   """
   board_configs = CreateInternalBoardConfigs(
       site_config, boards_dict, ge_build_config)
-  hw_test_list = HWTestList(ge_build_config)
+
+  # No need to use this in factory branch
+  # hw_test_list = HWTestList(ge_build_config)
 
   site_config.AddWithoutTemplate(
       'chromiumos-sdk',
@@ -3559,40 +3561,14 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
 
   # *-pre-flight-branch builders are in chromeos_release waterfall.
   site_config.Add(
-      'samus-chrome-pre-flight-branch',
+      'eve-pre-flight-branch',
       site_config.templates.pre_flight_branch,
-      boards=['samus'],
-      afdo_generate=True,
-      afdo_update_ebuild=True,
+      site_config.templates.no_vmtest_builder,
+      site_config.templates.no_hwtest_builder,
+      boards=['eve'],
       sync_chrome=True,
-      chrome_rev=constants.CHROME_REV_STICKY,
-      hw_tests=[hw_test_list.AFDORecordTest()],
-      useflags=append_useflags(['-transparent_hugepage', '-debug_fission']),
       prebuilts=constants.PRIVATE,
   )
-
-  site_config.Add(
-      'cyan-android-mnc-pre-flight-branch',
-      site_config.templates.pre_flight_branch,
-      boards=['cyan'],
-      sync_chrome=True,
-      android_rev=constants.ANDROID_REV_LATEST,
-      android_package='android-container',
-      android_import_branch=constants.ANDROID_MNC_BUILD_BRANCH,
-      prebuilts=False,
-  )
-
-  site_config.Add(
-      'reef-android-nyc-pre-flight-branch',
-      site_config.templates.pre_flight_branch,
-      boards=['reef'],
-      sync_chrome=True,
-      android_rev=constants.ANDROID_REV_LATEST,
-      android_package='android-container-nyc',
-      android_import_branch=constants.ANDROID_NYC_BUILD_BRANCH,
-      prebuilts=False,
-  )
-
 
 def EnsureVmTestsOnBaremetal(site_config, _gs_build_config):
   """Make sure VMTests have a builder than can run them.
