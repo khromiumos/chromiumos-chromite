@@ -8541,11 +8541,9 @@
     },
     "fizz-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "boards": [
             "fizz"
         ],
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -11271,11 +11269,9 @@
     },
     "jadeite-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "boards": [
             "jadeite"
         ],
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -11650,11 +11646,9 @@
     },
     "kahlee-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "boards": [
             "kahlee"
         ],
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -14865,7 +14859,6 @@
             "expresso-release",
             "falco-release",
             "falco_li-release",
-            "fizz-release",
             "gale-release",
             "gandof-release",
             "glimmer-release",
@@ -14874,8 +14867,6 @@
             "guado_moblab-release",
             "hana-release",
             "heli-release",
-            "jadeite-release",
-            "kahlee-release",
             "kefka-release",
             "kevin-release",
             "kip-release",
