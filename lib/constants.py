@@ -692,6 +692,7 @@ HWTEST_TRYBOT_POOL = HWTEST_SUITES_POOL
 HWTEST_WIFICELL_PRE_CQ_POOL = 'wificell-pre-cq'
 HWTEST_CONTINUOUS_POOL = 'continuous'
 HWTEST_CTS_POOL = 'cts'
+HWTEST_GTS_POOL = HWTEST_CTS_POOL
 
 
 
@@ -720,6 +721,7 @@ HWTEST_SANITY_SUITE = 'sanity'
 HWTEST_TOOLCHAIN_SUITE = 'toolchain-tests'
 HWTEST_PROVISION_SUITE = 'bvt-provision'
 HWTEST_CTS_QUAL_SUITE = 'arc-cts-qual'
+HWTEST_GTS_QUAL_SUITE = 'arc-gts-qual'
 
 
 # Additional timeout to wait for autotest to abort a suite if the test takes
