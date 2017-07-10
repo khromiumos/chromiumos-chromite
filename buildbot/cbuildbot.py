@@ -614,7 +614,10 @@ def _CreateParser():
   parser.add_option('--profile', default=None, type='string', action='store',
                     dest='profile',
                     help=('Name of profile to sub-specify board variant.'))
-
+  parser.add_option('--ts-mon-task-num', type='int', default=0,
+                                       help='The task number of this process. Defaults to 0. '
+                                            'This argument is useful for running multiple copies '
+                                            'of cbuildbot without their metrics colliding.')
 
   # Advanced options
   group = optparse.OptionGroup(
