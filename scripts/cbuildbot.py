@@ -950,6 +950,10 @@ def _CreateParser():
   # older chromite instances, we can use it for handling compatibility.
   parser.add_option('--remote-version', default=3, type=int, action='store',
                     help=optparse.SUPPRESS_HELP)
+  parser.add_option('--ts-mon-task-num', type='int', default=0,
+                   help='The task number of this process. Defaults to 0. '
+                        'This argument is useful for running multiple copies '
+                        'of cbuildbot without their metrics colliding.')
 
   #
   # Debug options
