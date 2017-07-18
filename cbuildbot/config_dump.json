@@ -7858,7 +7858,11 @@
         "boards": [
             "eve"
         ],
-        "manifest": "official.xml"
+        "manifest": "official.xml",
+        "sign_types": [
+            "firmware",
+            "accessory_rwsig"
+        ]
     },
     "eve-full": {
         "_template": "full",

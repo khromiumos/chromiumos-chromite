@@ -3020,7 +3020,6 @@ def FirmwareBuilders(site_config, boards_dict, ge_build_config):
       'daisy_spring',
       'edgar',
       'enguarde',
-      'eve',
       'expresso',
       'falco',
       'gale',
@@ -3107,6 +3106,14 @@ def FirmwareBuilders(site_config, boards_dict, ge_build_config):
         board_configs[board],
         site_config.templates.no_vmtest_builder,
     )
+
+  site_config.Add(
+      '%s-%s' % ('eve', config_lib.CONFIG_TYPE_FIRMWARE),
+      site_config.templates.firmware,
+      board_configs['eve'],
+      site_config.templates.no_vmtest_builder,
+      sign_types=['firmware', 'accessory_rwsig'],
+  )
 
   for board in _x86_depthcharge_firmware_boards:
     site_config.Add(
