@@ -3112,6 +3112,8 @@ def FirmwareBuilders(site_config, boards_dict, ge_build_config):
       site_config.templates.firmware,
       board_configs['eve'],
       site_config.templates.no_vmtest_builder,
+      packages=['virtual/chromeos-firmware',
+                'chromeos-base/chromeos-touch-firmware-eve'],
       sign_types=['firmware', 'accessory_rwsig'],
   )
 

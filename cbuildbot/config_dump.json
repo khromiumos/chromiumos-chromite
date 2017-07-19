@@ -7859,6 +7859,10 @@
             "eve"
         ],
         "manifest": "official.xml",
+        "packages": [
+            "virtual/chromeos-firmware",
+            "chromeos-base/chromeos-touch-firmware-eve"
+        ],
         "sign_types": [
             "firmware",
             "accessory_rwsig"
