@@ -1094,7 +1094,7 @@ def _GetRunSuiteArgs(build, suite, board, pool=None, num=None,
     args += ['--file_bugs', str(file_bugs)]
 
   if priority is not None:
-    args += ['--priority', priority]
+    args += ['--priority', str(priority)]
 
   if timeout_mins is not None:
     args += ['--timeout_mins', str(timeout_mins)]
