@@ -1044,38 +1044,7 @@ target_payload_uri = 'None'
 SUITE = 'paygen_au_foo'
 source_payload_uri = 'foo-channel_1.0.0_uri'
 source_archive_uri = 'gs://chromeos-releases/foo-channel/foo-board/1.0.0'
-# Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
-# Use of this source code is governed by a BSD-style license that can be
-# found in the LICENSE file.
-
-import logging
-from autotest_lib.client.bin import sysinfo
-from autotest_lib.client.common_lib import error, utils
-from autotest_lib.client.cros import constants
-from autotest_lib.server import host_attributes
-
-AUTHOR = "Chromium OS"
-NAME = "autoupdate_EndToEndTest_paygen_au_foo_delta_1.0.0"
-TIME = "MEDIUM"
-TEST_CATEGORY = "Functional"
-TEST_CLASS = "platform"
-TEST_TYPE = "server"
-JOB_RETRIES = 1
-BUG_TEMPLATE = {
-    'cc': ['chromeos-installer-alerts@google.com'],
-    'components': ['Internals>Installer'],
-}
-
-# Skip provision special task for AU tests.
-DEPENDENCIES = "skip_provision"
-
-# Disable server-side packaging support for this test.
-# This control file is used as the template for paygen_au_canary suite, which
-# creates the control files during paygen. Therefore, autotest server package
-# does not have these test control files for paygen_au_canary suite.
-REQUIRE_SSP = False
-
-DOC ="""))
+"""))
 
     # We only checking the beginning to avoid the very long doc string.
     self.assertTrue(full_contents.startswith("""name = 'paygen_au_foo'
@@ -1086,35 +1055,4 @@ target_payload_uri = 'None'
 SUITE = 'paygen_au_foo'
 source_payload_uri = 'foo-channel_1.2.3_uri'
 source_archive_uri = 'gs://chromeos-releases/foo-channel/foo-board/1.2.3'
-# Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
-# Use of this source code is governed by a BSD-style license that can be
-# found in the LICENSE file.
-
-import logging
-from autotest_lib.client.bin import sysinfo
-from autotest_lib.client.common_lib import error, utils
-from autotest_lib.client.cros import constants
-from autotest_lib.server import host_attributes
-
-AUTHOR = "Chromium OS"
-NAME = "autoupdate_EndToEndTest_paygen_au_foo_full_1.2.3"
-TIME = "MEDIUM"
-TEST_CATEGORY = "Functional"
-TEST_CLASS = "platform"
-TEST_TYPE = "server"
-JOB_RETRIES = 1
-BUG_TEMPLATE = {
-    'cc': ['chromeos-installer-alerts@google.com'],
-    'components': ['Internals>Installer'],
-}
-
-# Skip provision special task for AU tests.
-DEPENDENCIES = "skip_provision"
-
-# Disable server-side packaging support for this test.
-# This control file is used as the template for paygen_au_canary suite, which
-# creates the control files during paygen. Therefore, autotest server package
-# does not have these test control files for paygen_au_canary suite.
-REQUIRE_SSP = False
-
-DOC ="""))
+"""))
