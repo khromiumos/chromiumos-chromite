@@ -1110,6 +1110,9 @@ def GeneralTemplates(site_config, ge_build_config):
       afdo_use=False,
       dev_installer_prebuilts=False,
       hw_tests=[],
+      # This is needed to rebuild the Go compiler with a backported patch:
+      # https://crrev.com/c/615755
+      usepkg_toolchain=False,
   )
 
   site_config.AddTemplate(

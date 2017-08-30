@@ -12976,7 +12976,8 @@
         "sync_chrome": false,
         "useflags": [
             "chrome_internal"
-        ]
+        ],
+        "usepkg_toolchain": false
     },
     "lakitu-full": {
         "_template": "full",
@@ -12999,7 +13000,8 @@
         "sync_chrome": false,
         "useflags": [
             "-chrome_internal"
-        ]
+        ],
+        "usepkg_toolchain": false
     },
     "lakitu-gpu-compile-only-pre-cq": {
         "_template": "compile_only_pre_cq",
@@ -13018,7 +13020,8 @@
         "sync_chrome": false,
         "useflags": [
             "chrome_internal"
-        ]
+        ],
+        "usepkg_toolchain": false
     },
     "lakitu-gpu-full": {
         "_template": "full",
@@ -13041,7 +13044,8 @@
         "sync_chrome": false,
         "useflags": [
             "-chrome_internal"
-        ]
+        ],
+        "usepkg_toolchain": false
     },
     "lakitu-gpu-incremental": {
         "_template": "incremental",
@@ -13070,7 +13074,8 @@
         "sync_chrome": false,
         "useflags": [
             "chrome_internal"
-        ]
+        ],
+        "usepkg_toolchain": false
     },
     "lakitu-gpu-no-vmtest-pre-cq": {
         "_template": "no_vmtest_pre_cq",
@@ -13089,7 +13094,8 @@
         "sync_chrome": false,
         "useflags": [
             "chrome_internal"
-        ]
+        ],
+        "usepkg_toolchain": false
     },
     "lakitu-gpu-paladin": {
         "_template": "paladin",
@@ -13118,6 +13124,7 @@
         "useflags": [
             "chrome_internal"
         ],
+        "usepkg_toolchain": false,
         "vm_tests": [
             "{\n    \"test_type\": \"smoke_suite\",\n    \"timeout\": 3600\n}",
             "{\n    \"test_type\": \"pfq_suite\",\n    \"timeout\": 3600\n}"
@@ -13153,6 +13160,7 @@
         "useflags": [
             "chrome_internal"
         ],
+        "usepkg_toolchain": false,
         "vm_tests": [
             "{\n    \"test_type\": \"smoke_suite\",\n    \"timeout\": 3600\n}",
             "{\n    \"test_type\": \"pfq_suite\",\n    \"timeout\": 3600\n}"
@@ -13193,6 +13201,7 @@
             "base"
         ],
         "sync_chrome": false,
+        "usepkg_toolchain": false,
         "vm_tests": [
             "{\n    \"test_type\": \"smoke_suite\",\n    \"timeout\": 3600\n}",
             "{\n    \"test_type\": \"pfq_suite\",\n    \"timeout\": 3600\n}"
@@ -13215,7 +13224,8 @@
         "sync_chrome": false,
         "useflags": [
             "chrome_internal"
-        ]
+        ],
+        "usepkg_toolchain": false
     },
     "lakitu-incremental": {
         "_template": "incremental",
@@ -13244,7 +13254,8 @@
         "sync_chrome": false,
         "useflags": [
             "chrome_internal"
-        ]
+        ],
+        "usepkg_toolchain": false
     },
     "lakitu-no-vmtest-pre-cq": {
         "_template": "no_vmtest_pre_cq",
@@ -13263,7 +13274,8 @@
         "sync_chrome": false,
         "useflags": [
             "chrome_internal"
-        ]
+        ],
+        "usepkg_toolchain": false
     },
     "lakitu-paladin": {
         "_template": "paladin",
@@ -13291,6 +13303,7 @@
         "useflags": [
             "chrome_internal"
         ],
+        "usepkg_toolchain": false,
         "vm_tests": [
             "{\n    \"test_type\": \"smoke_suite\",\n    \"timeout\": 3600\n}",
             "{\n    \"test_type\": \"pfq_suite\",\n    \"timeout\": 3600\n}"
@@ -13326,6 +13339,7 @@
         "useflags": [
             "chrome_internal"
         ],
+        "usepkg_toolchain": false,
         "vm_tests": [
             "{\n    \"test_type\": \"smoke_suite\",\n    \"timeout\": 3600\n}",
             "{\n    \"test_type\": \"pfq_suite\",\n    \"timeout\": 3600\n}"
@@ -13366,6 +13380,7 @@
             "base"
         ],
         "sync_chrome": false,
+        "usepkg_toolchain": false,
         "vm_tests": [
             "{\n    \"test_type\": \"smoke_suite\",\n    \"timeout\": 3600\n}",
             "{\n    \"test_type\": \"pfq_suite\",\n    \"timeout\": 3600\n}"
@@ -13388,7 +13403,8 @@
         "sync_chrome": false,
         "useflags": [
             "chrome_internal"
-        ]
+        ],
+        "usepkg_toolchain": false
     },
     "lakitu_next-compile-only-pre-cq": {
         "_template": "compile_only_pre_cq",
@@ -13407,7 +13423,8 @@
         "sync_chrome": false,
         "useflags": [
             "chrome_internal"
-        ]
+        ],
+        "usepkg_toolchain": false
     },
     "lakitu_next-full": {
         "_template": "full",
@@ -13430,7 +13447,8 @@
         "sync_chrome": false,
         "useflags": [
             "-chrome_internal"
-        ]
+        ],
+        "usepkg_toolchain": false
     },
     "lakitu_next-incremental": {
         "_template": "incremental",
@@ -13459,7 +13477,8 @@
         "sync_chrome": false,
         "useflags": [
             "chrome_internal"
-        ]
+        ],
+        "usepkg_toolchain": false
     },
     "lakitu_next-no-vmtest-pre-cq": {
         "_template": "no_vmtest_pre_cq",
@@ -13478,7 +13497,8 @@
         "sync_chrome": false,
         "useflags": [
             "chrome_internal"
-        ]
+        ],
+        "usepkg_toolchain": false
     },
     "lakitu_next-paladin": {
         "_template": "paladin",
@@ -13506,6 +13526,7 @@
         "useflags": [
             "chrome_internal"
         ],
+        "usepkg_toolchain": false,
         "vm_tests": [
             "{\n    \"test_type\": \"smoke_suite\",\n    \"timeout\": 3600\n}",
             "{\n    \"test_type\": \"pfq_suite\",\n    \"timeout\": 3600\n}"
@@ -13541,6 +13562,7 @@
         "useflags": [
             "chrome_internal"
         ],
+        "usepkg_toolchain": false,
         "vm_tests": [
             "{\n    \"test_type\": \"smoke_suite\",\n    \"timeout\": 3600\n}",
             "{\n    \"test_type\": \"pfq_suite\",\n    \"timeout\": 3600\n}"
@@ -13577,6 +13599,7 @@
         ],
         "signer_tests": false,
         "sync_chrome": false,
+        "usepkg_toolchain": false,
         "vm_tests": [
             "{\n    \"test_type\": \"smoke_suite\",\n    \"timeout\": 3600\n}",
             "{\n    \"test_type\": \"pfq_suite\",\n    \"timeout\": 3600\n}"
@@ -13599,7 +13622,8 @@
         "sync_chrome": false,
         "useflags": [
             "chrome_internal"
-        ]
+        ],
+        "usepkg_toolchain": false
     },
     "lars-chrome-pfq": {
         "_template": "chrome_pfq",
