@@ -312,7 +312,7 @@ INTERNAL_GERRIT_URL = 'https://%s' % INTERNAL_GERRIT_HOST
 ANDROID_BUCKET_URL = 'gs://android-build-chromeos/builds'
 ANDROID_MASTER_ARC_DEV_BUILD_BRANCH = 'git_master-arc-dev'
 ANDROID_MNC_BUILD_BRANCH = 'git_mnc-dr-arc-dev'
-ANDROID_NYC_BUILD_BRANCH = 'git_nyc-mr1-arc'
+ANDROID_NYC_BUILD_BRANCH = 'git_nyc-mr1-arc-m62'
 ANDROID_MASTER_ARC_DEV_BUILD_TARGETS = {
     'AOSP_X86_USERDEBUG': ('linux-aosp_bertha_x86-userdebug', r'\.zip$'),
 }
