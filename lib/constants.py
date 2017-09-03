@@ -336,10 +336,7 @@ ANDROID_NYC_BUILD_TARGETS = {
     'SDK_TOOLS': ('linux-static_sdk_tools', r'/(aapt|adb)$'),
     'SDK_GOOGLE_X86_USERDEBUG': ('linux-sdk_google_cheets_x86-userdebug',
                                  r'\.zip$'),
-    'SDK_GOOGLE_X86_64_USERDEBUG': ('linux-sdk_google_cheets_x86_64-userdebug',
-                                    r'\.zip$'),
     'X86_64': ('linux-cheets_x86_64-user', r'\.zip$'),
-    'X86_64_USERDEBUG': ('linux-cheets_x86_64-userdebug', r'\.zip$'),
 }
 ANDROID_GTS_BUILD_TARGETS = {
     # "gts_arm64" is the build maintained by GMS team.
@@ -351,10 +348,8 @@ ARC_BUCKET_ACLS = {
     'X86': 'googlestorage_acl_x86.txt',
     'X86_64': 'googlestorage_acl_x86.txt',
     'X86_USERDEBUG': 'googlestorage_acl_x86.txt',
-    'X86_64_USERDEBUG': 'googlestorage_acl_x86.txt',
     'AOSP_X86_USERDEBUG': 'googlestorage_acl_x86.txt',
     'SDK_GOOGLE_X86_USERDEBUG': 'googlestorage_acl_x86.txt',
-    'SDK_GOOGLE_X86_64_USERDEBUG': 'googlestorage_acl_x86.txt',
     'SDK_TOOLS': 'googlestorage_acl_public.txt',
     'XTS': 'googlestorage_acl_cts.txt',
 }
@@ -376,10 +371,8 @@ ANDROID_SYMBOLS_FILE = 'android-symbols.zip'
 # the Android bucket to the ARC++ bucket (b/33072485).
 ARC_BUILDS_NEED_ARTIFACTS_RENAMED = {
     'X86_USERDEBUG',
-    'X86_64_USERDEBUG',
     'AOSP_X86_USERDEBUG',
     'SDK_GOOGLE_X86_USERDEBUG',
-    'SDK_GOOGLE_X86_64_USERDEBUG',
 }
 
 GOB_COOKIE_PATH = os.path.expanduser('~/.git-credential-cache/cookie')
