@@ -15239,7 +15239,6 @@
             "peach_pit-release",
             "peppy-release",
             "plaso-release",
-            "poppy-release",
             "pyro-release",
             "quawks-release",
             "reef-release",
@@ -19340,11 +19339,9 @@
     },
     "poppy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "boards": [
             "poppy"
         ],
-        "important": true,
         "sign_types": [
             "recovery",
             "accessory_rwsig",
