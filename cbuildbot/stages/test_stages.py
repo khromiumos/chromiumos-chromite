@@ -514,22 +514,6 @@ class HWTestStage(generic_stages.BoardSpecificBuilderStage,
       raise cmd_result.to_raise
 
 
-class AUTestStage(HWTestStage):
-  """Stage for au hw test suites that requires special pre-processing."""
-
-  stage_name = "AUTest"
-
-  def PerformStage(self):
-    """Uploads its au control files."""
-    with osutils.TempDir() as tempdir:
-      tarball = commands.BuildAUTestTarball(
-          self._build_root, self._current_board, tempdir,
-          self.version, self.upload_url)
-      self.UploadArtifact(tarball)
-
-    super(AUTestStage, self).PerformStage()
-
-
 class ASyncHWTestStage(HWTestStage, generic_stages.ForgivingBuilderStage):
   """Stage that fires and forgets hw test suites to the Autotest lab."""
 
