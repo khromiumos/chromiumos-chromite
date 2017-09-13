@@ -15228,6 +15228,8 @@
             "mccloud-release",
             "monroe-release",
             "ninja-release",
+            "novato-arc64-release",
+            "novato-release",
             "nyan_big-release",
             "nyan_blaze-release",
             "nyan_kitty-release",
@@ -16223,10 +16225,12 @@
     },
     "novato-arc64-release": {
         "_template": "release",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "novato-arc64"
         ],
-        "buildslave_type": "baremetal"
+        "buildslave_type": "baremetal",
+        "important": true
     },
     "novato-arc64-release-afdo": {
         "_template": "release_afdo_generate",
@@ -16406,10 +16410,12 @@
     },
     "novato-release": {
         "_template": "release",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "novato"
         ],
-        "buildslave_type": "baremetal"
+        "buildslave_type": "baremetal",
+        "important": true
     },
     "novato-release-afdo": {
         "_template": "release_afdo_generate",
