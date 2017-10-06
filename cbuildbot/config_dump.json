@@ -13139,6 +13139,90 @@
         "sync_chrome": false,
         "usepkg_toolchain": false
     },
+    "lakitu-nc-chromium-pfq": {
+        "_template": "chromium_pfq",
+        "boards": [
+            "lakitu-nc"
+        ],
+        "buildslave_type": "baremetal",
+        "important": false,
+        "useflags": [
+            "-chrome_internal"
+        ]
+    },
+    "lakitu-nc-compile-only-pre-cq": {
+        "_template": "compile_only_pre_cq",
+        "boards": [
+            "lakitu-nc"
+        ]
+    },
+    "lakitu-nc-full": {
+        "_template": "full",
+        "boards": [
+            "lakitu-nc"
+        ],
+        "buildslave_type": "baremetal",
+        "prebuilts": "public",
+        "useflags": [
+            "-chrome_internal"
+        ]
+    },
+    "lakitu-nc-no-vmtest-pre-cq": {
+        "_template": "no_vmtest_pre_cq",
+        "boards": [
+            "lakitu-nc"
+        ]
+    },
+    "lakitu-nc-paladin": {
+        "_template": "paladin",
+        "boards": [
+            "lakitu-nc"
+        ],
+        "important": false,
+        "vm_tests": []
+    },
+    "lakitu-nc-pre-cq": {
+        "_template": "pre_cq",
+        "boards": [
+            "lakitu-nc"
+        ],
+        "buildslave_type": "baremetal"
+    },
+    "lakitu-nc-release": {
+        "_template": "release",
+        "active_waterfall": "chromeos_release",
+        "boards": [
+            "lakitu-nc"
+        ],
+        "buildslave_type": "baremetal",
+        "hw_tests": [
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 6,\n    \"offload_failures_only\": false,\n    \"pool\": \"cts\",\n    \"priority\": 8,\n    \"retry\": true,\n    \"suite\": \"arc-cts-qual\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 172800,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 6,\n    \"offload_failures_only\": false,\n    \"pool\": \"cts\",\n    \"priority\": 9,\n    \"retry\": true,\n    \"suite\": \"arc-gts-qual\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 172800,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 1,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"sanity\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"au\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
+        ],
+        "important": true
+    },
+    "lakitu-nc-tot-chromium-pfq-informational": {
+        "_template": "chromium_pfq_informational",
+        "boards": [
+            "lakitu-nc"
+        ],
+        "buildslave_type": "baremetal",
+        "useflags": [
+            "-chrome_internal"
+        ]
+    },
+    "lakitu-nc-unittest-stress": {
+        "_template": "unittest_stress",
+        "boards": [
+            "lakitu-nc"
+        ]
+    },
     "lakitu-no-vmtest-pre-cq": {
         "_template": "no_vmtest_pre_cq",
         "boards": [
@@ -15508,6 +15592,7 @@
             "kevin-release",
             "kip-release",
             "lakitu-gpu-release",
+            "lakitu-nc-release",
             "lakitu-release",
             "lakitu-st-release",
             "lars-release",
