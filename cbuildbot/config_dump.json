@@ -12891,6 +12891,79 @@
         "image_test": false,
         "sync_chrome": false
     },
+    "lakitu-nc-chromium-pfq": {
+        "_template": "chromium_pfq",
+        "boards": [
+            "lakitu-nc"
+        ],
+        "buildslave_type": "baremetal",
+        "important": false,
+        "useflags": [
+            "-chrome_internal"
+        ]
+    },
+    "lakitu-nc-compile-only-pre-cq": {
+        "_template": "compile_only_pre_cq",
+        "boards": [
+            "lakitu-nc"
+        ]
+    },
+    "lakitu-nc-full": {
+        "_template": "full",
+        "boards": [
+            "lakitu-nc"
+        ],
+        "buildslave_type": "baremetal",
+        "prebuilts": "public",
+        "useflags": [
+            "-chrome_internal"
+        ]
+    },
+    "lakitu-nc-no-vmtest-pre-cq": {
+        "_template": "no_vmtest_pre_cq",
+        "boards": [
+            "lakitu-nc"
+        ]
+    },
+    "lakitu-nc-paladin": {
+        "_template": "paladin",
+        "boards": [
+            "lakitu-nc"
+        ],
+        "important": false,
+        "vm_tests": []
+    },
+    "lakitu-nc-pre-cq": {
+        "_template": "pre_cq",
+        "boards": [
+            "lakitu-nc"
+        ]
+    },
+    "lakitu-nc-release": {
+        "_template": "release",
+        "active_waterfall": "chromeos_release",
+        "boards": [
+            "lakitu-nc"
+        ],
+        "buildslave_type": "baremetal",
+        "important": true
+    },
+    "lakitu-nc-tot-chromium-pfq-informational": {
+        "_template": "chromium_pfq_informational",
+        "boards": [
+            "lakitu-nc"
+        ],
+        "buildslave_type": "baremetal",
+        "useflags": [
+            "-chrome_internal"
+        ]
+    },
+    "lakitu-nc-unittest-stress": {
+        "_template": "unittest_stress",
+        "boards": [
+            "lakitu-nc"
+        ]
+    },
     "lakitu-no-vmtest-pre-cq": {
         "_template": "no_vmtest_pre_cq",
         "boards": [
@@ -15213,6 +15286,7 @@
             "kevin-release",
             "kip-release",
             "lakitu-gpu-release",
+            "lakitu-nc-release",
             "lakitu-release",
             "lakitu-st-release",
             "lars-release",
