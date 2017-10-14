@@ -198,8 +198,8 @@
             "disk_layout": "2gb-rootfs",
             "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-ASAN",
             "hw_tests_override": [
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -220,8 +220,8 @@
                 "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": true,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"chromeperf\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"perf_v2\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 5400,\n    \"warn_only\": false\n}"
             ],
             "hw_tests_override": [
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -248,8 +248,8 @@
             "description": "Preflight Chrome Uprev & Build (internal)",
             "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Chrome-PFQ",
             "hw_tests_override": [
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -277,8 +277,8 @@
             "chromeos_official": true,
             "description": "Informational Chrome Uprev & Build (internal)",
             "hw_tests_override": [
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -304,8 +304,8 @@
             "description": "Preflight Chromium Uprev & Build (internal)",
             "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Chrome-PFQ",
             "hw_tests_override": [
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -329,8 +329,8 @@
             "chrome_rev": "tot",
             "description": "Informational Chromium Uprev & Build (public)",
             "hw_tests_override": [
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -378,15 +378,15 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chromeos_official": true,
             "description": "Firmware Canary",
             "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
             "factory_toolkit": false,
             "hw_tests_override": [
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -424,8 +424,8 @@
             "factory_toolkit": false,
             "git_sync": true,
             "hw_tests_override": [
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -455,7 +455,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk_build_chrome": false,
             "chromeos_official": true,
@@ -490,15 +490,15 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chromeos_official": true,
             "description": "Firmware Canary",
             "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
             "factory_toolkit": false,
             "hw_tests_override": [
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -535,8 +535,8 @@
             "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
             "git_sync": true,
             "hw_tests_override": [
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -609,8 +609,8 @@
             "description": "Incremental Builds",
             "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
             "hw_tests_override": [
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -748,8 +748,8 @@
             "build_type": "android",
             "description": "Preflight Android Uprev & Build (internal)",
             "hw_tests_override": [
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -871,7 +871,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk": true,
             "chromeos_official": true,
@@ -880,8 +880,8 @@
             "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
             "hw_tests": [
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 1,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"sanity\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
@@ -889,8 +889,8 @@
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 6,\n    \"offload_failures_only\": false,\n    \"pool\": \"cts\",\n    \"priority\": 11,\n    \"retry\": true,\n    \"suite\": \"arc-gts-qual\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 172800,\n    \"warn_only\": false\n}"
             ],
             "hw_tests_override": [
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -941,7 +941,7 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk": true,
             "chromeos_official": true,
@@ -994,23 +994,23 @@
             "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
             "binhost_bucket": "gs://chromeos-dev-installer",
             "binhost_key": "RELEASE_BINHOST",
-            "build_timeout": 28200,
+            "build_timeout": 43200,
             "build_type": "canary",
             "chrome_sdk": true,
             "chromeos_official": true,
             "description": "Release Builds (canary) (internal)",
             "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
             "hw_tests": [
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 4,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 4,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": null,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": false,\n    \"suite\": \"perf_v2\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 7200,\n    \"warn_only\": false\n}"
             ],
             "hw_tests_override": [
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -1054,8 +1054,8 @@
             "build_type": "binary",
             "description": "Telemetry Builds",
             "hw_tests_override": [
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -1070,8 +1070,8 @@
             "build_type": "binary",
             "description": "WiFi AP images used in testing",
             "hw_tests_override": [
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -1092,8 +1092,8 @@
             "description": "Toolchain Builds (internal)",
             "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Continuous",
             "hw_tests_override": [
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -1134,8 +1134,8 @@
             "disk_layout": "2gb-rootfs",
             "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-ASAN",
             "hw_tests_override": [
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-                "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+                "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
                 "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -1298,7 +1298,6 @@
     },
     "amd64-generic-cheets-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "amd64-generic-cheets"
         ],
@@ -1398,7 +1397,6 @@
     },
     "amd64-generic-full": {
         "_template": "full",
-        "active_waterfall": "chromiumos",
         "boards": [
             "amd64-generic"
         ],
@@ -1518,7 +1516,6 @@
     },
     "amd64-generic-goofy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "amd64-generic-goofy"
         ],
@@ -1798,7 +1795,7 @@
     },
     "arkham-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "arkham"
@@ -1844,7 +1841,6 @@
     },
     "arm-generic-full": {
         "_template": "full",
-        "active_waterfall": "chromiumos",
         "boards": [
             "arm-generic"
         ],
@@ -2177,7 +2173,7 @@
     },
     "asuka-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "asuka"
         ],
@@ -2571,7 +2567,7 @@
     },
     "auron_paine-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "auron_paine"
         ],
@@ -2769,7 +2765,7 @@
     },
     "auron_yuna-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "auron_yuna"
         ],
@@ -2976,7 +2972,7 @@
     },
     "banjo-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "banjo"
         ],
@@ -3172,7 +3168,7 @@
     },
     "banon-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "banon"
         ],
@@ -3390,7 +3386,6 @@
     },
     "beaglebone-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "beaglebone"
@@ -3402,7 +3397,6 @@
         "images": [
             "base"
         ],
-        "important": true,
         "paygen": false,
         "rootfs_verification": false,
         "signer_tests": false,
@@ -3546,7 +3540,6 @@
     },
     "beaglebone_servo-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "beaglebone_servo"
@@ -3558,7 +3551,6 @@
         "images": [
             "base"
         ],
-        "important": true,
         "paygen": false,
         "rootfs_verification": false,
         "signer_tests": false,
@@ -3708,12 +3700,10 @@
     },
     "betty-arc64-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "betty-arc64"
         ],
-        "buildslave_type": "baremetal",
-        "important": true
+        "buildslave_type": "baremetal"
     },
     "betty-arc64-release-afdo": {
         "_template": "release_afdo_generate",
@@ -3787,7 +3777,6 @@
     },
     "betty-asan": {
         "_template": "asan",
-        "active_waterfall": "chromiumos",
         "boards": [
             "betty"
         ],
@@ -3811,8 +3800,8 @@
         "disk_layout": "4gb-rootfs",
         "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-ASAN",
         "hw_tests_override": [
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
             "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
             "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
             "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -3972,12 +3961,10 @@
     },
     "betty-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "betty"
         ],
-        "buildslave_type": "baremetal",
-        "important": true
+        "buildslave_type": "baremetal"
     },
     "betty-release-afdo": {
         "_template": "release_afdo_generate",
@@ -4269,7 +4256,7 @@
     },
     "bob-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "bob"
         ],
@@ -4497,7 +4484,7 @@
     },
     "buddy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "buddy"
         ],
@@ -4694,7 +4681,7 @@
     },
     "butterfly-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "butterfly"
         ],
@@ -4890,7 +4877,7 @@
     },
     "candy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "candy"
         ],
@@ -4976,158 +4963,6 @@
             "chrome_internal"
         ]
     },
-    "caroline-arc64-chromium-pfq": {
-        "_template": "chromium_pfq",
-        "boards": [
-            "caroline-arc64"
-        ],
-        "important": false,
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "caroline-arc64-compile-only-pre-cq": {
-        "_template": "compile_only_pre_cq",
-        "boards": [
-            "caroline-arc64"
-        ]
-    },
-    "caroline-arc64-full": {
-        "_template": "full",
-        "boards": [
-            "caroline-arc64"
-        ],
-        "prebuilts": "public",
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "caroline-arc64-no-vmtest-pre-cq": {
-        "_template": "no_vmtest_pre_cq",
-        "boards": [
-            "caroline-arc64"
-        ]
-    },
-    "caroline-arc64-paladin": {
-        "_template": "paladin",
-        "boards": [
-            "caroline-arc64"
-        ],
-        "important": false,
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "caroline-arc64-pre-cq": {
-        "_template": "pre_cq",
-        "boards": [
-            "caroline-arc64"
-        ],
-        "vm_tests": []
-    },
-    "caroline-arc64-release": {
-        "_template": "release",
-        "active_waterfall": "chromeos",
-        "boards": [
-            "caroline-arc64"
-        ],
-        "chrome_sdk_build_chrome": false,
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "caroline-arc64-tot-chromium-pfq-informational": {
-        "_template": "chromium_pfq_informational",
-        "boards": [
-            "caroline-arc64"
-        ],
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "caroline-arc64-unittest-stress": {
-        "_template": "unittest_stress",
-        "boards": [
-            "caroline-arc64"
-        ]
-    },
-    "caroline-bertha-chromium-pfq": {
-        "_template": "chromium_pfq",
-        "boards": [
-            "caroline-bertha"
-        ],
-        "important": false,
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "caroline-bertha-compile-only-pre-cq": {
-        "_template": "compile_only_pre_cq",
-        "boards": [
-            "caroline-bertha"
-        ]
-    },
-    "caroline-bertha-full": {
-        "_template": "full",
-        "boards": [
-            "caroline-bertha"
-        ],
-        "prebuilts": "public",
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "caroline-bertha-no-vmtest-pre-cq": {
-        "_template": "no_vmtest_pre_cq",
-        "boards": [
-            "caroline-bertha"
-        ]
-    },
-    "caroline-bertha-paladin": {
-        "_template": "paladin",
-        "boards": [
-            "caroline-bertha"
-        ],
-        "important": false,
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "caroline-bertha-pre-cq": {
-        "_template": "pre_cq",
-        "boards": [
-            "caroline-bertha"
-        ],
-        "vm_tests": []
-    },
-    "caroline-bertha-release": {
-        "_template": "release",
-        "active_waterfall": "chromeos",
-        "boards": [
-            "caroline-bertha"
-        ],
-        "chrome_sdk_build_chrome": false,
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "caroline-bertha-tot-chromium-pfq-informational": {
-        "_template": "chromium_pfq_informational",
-        "boards": [
-            "caroline-bertha"
-        ],
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "caroline-bertha-unittest-stress": {
-        "_template": "unittest_stress",
-        "boards": [
-            "caroline-bertha"
-        ]
-    },
     "caroline-chrome-pfq": {
         "_template": "chrome_pfq",
         "active_waterfall": "chromeos",
@@ -5203,82 +5038,6 @@
             "caroline"
         ]
     },
-    "caroline-ndktranslation-chromium-pfq": {
-        "_template": "chromium_pfq",
-        "boards": [
-            "caroline-ndktranslation"
-        ],
-        "important": false,
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "caroline-ndktranslation-compile-only-pre-cq": {
-        "_template": "compile_only_pre_cq",
-        "boards": [
-            "caroline-ndktranslation"
-        ]
-    },
-    "caroline-ndktranslation-full": {
-        "_template": "full",
-        "boards": [
-            "caroline-ndktranslation"
-        ],
-        "prebuilts": "public",
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "caroline-ndktranslation-no-vmtest-pre-cq": {
-        "_template": "no_vmtest_pre_cq",
-        "boards": [
-            "caroline-ndktranslation"
-        ]
-    },
-    "caroline-ndktranslation-paladin": {
-        "_template": "paladin",
-        "boards": [
-            "caroline-ndktranslation"
-        ],
-        "important": false,
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "caroline-ndktranslation-pre-cq": {
-        "_template": "pre_cq",
-        "boards": [
-            "caroline-ndktranslation"
-        ],
-        "vm_tests": []
-    },
-    "caroline-ndktranslation-release": {
-        "_template": "release",
-        "active_waterfall": "chromeos",
-        "boards": [
-            "caroline-ndktranslation"
-        ],
-        "chrome_sdk_build_chrome": false,
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "caroline-ndktranslation-tot-chromium-pfq-informational": {
-        "_template": "chromium_pfq_informational",
-        "boards": [
-            "caroline-ndktranslation"
-        ],
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "caroline-ndktranslation-unittest-stress": {
-        "_template": "unittest_stress",
-        "boards": [
-            "caroline-ndktranslation"
-        ]
-    },
     "caroline-no-vmtest-pre-cq": {
         "_template": "no_vmtest_pre_cq",
         "boards": [
@@ -5352,7 +5111,7 @@
     },
     "caroline-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "caroline"
         ],
@@ -5442,82 +5201,6 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
-        ]
-    },
-    "caroline-userdebug-chromium-pfq": {
-        "_template": "chromium_pfq",
-        "boards": [
-            "caroline-userdebug"
-        ],
-        "important": false,
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "caroline-userdebug-compile-only-pre-cq": {
-        "_template": "compile_only_pre_cq",
-        "boards": [
-            "caroline-userdebug"
-        ]
-    },
-    "caroline-userdebug-full": {
-        "_template": "full",
-        "boards": [
-            "caroline-userdebug"
-        ],
-        "prebuilts": "public",
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "caroline-userdebug-no-vmtest-pre-cq": {
-        "_template": "no_vmtest_pre_cq",
-        "boards": [
-            "caroline-userdebug"
-        ]
-    },
-    "caroline-userdebug-paladin": {
-        "_template": "paladin",
-        "boards": [
-            "caroline-userdebug"
-        ],
-        "important": false,
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "caroline-userdebug-pre-cq": {
-        "_template": "pre_cq",
-        "boards": [
-            "caroline-userdebug"
-        ],
-        "vm_tests": []
-    },
-    "caroline-userdebug-release": {
-        "_template": "release",
-        "active_waterfall": "chromeos",
-        "boards": [
-            "caroline-userdebug"
-        ],
-        "chrome_sdk_build_chrome": false,
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "caroline-userdebug-tot-chromium-pfq-informational": {
-        "_template": "chromium_pfq_informational",
-        "boards": [
-            "caroline-userdebug"
-        ],
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "caroline-userdebug-unittest-stress": {
-        "_template": "unittest_stress",
-        "boards": [
-            "caroline-userdebug"
         ]
     },
     "cave-chrome-pfq": {
@@ -5633,7 +5316,7 @@
     },
     "cave-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "cave"
         ],
@@ -5829,7 +5512,7 @@
     },
     "celes-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "celes"
         ],
@@ -6064,7 +5747,7 @@
     },
     "chell-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "chell"
         ],
@@ -6311,7 +5994,7 @@
     },
     "clapper-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "clapper"
         ],
@@ -6507,7 +6190,6 @@
     },
     "cobblepot-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "cobblepot"
@@ -6668,33 +6350,8 @@
     },
     "coral-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "coral"
-        ],
-        "hw_tests": [
-            "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 1,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"sanity\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
-        ],
-        "important": true,
-        "models": [
-            "{\n    \"name\": \"astronaut\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"blue\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"bruce\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"coral\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"lava\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"nasher\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"nasher360\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"porbeagle\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"robo\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"robo360\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"santa\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"whitetip1\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"whitetip2\",\n    \"test_suites\": []\n}"
         ],
         "vm_tests": [],
         "vm_tests_override": null
@@ -6910,7 +6567,7 @@
     },
     "cyan-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "cyan"
         ],
@@ -7051,7 +6708,6 @@
     },
     "daisy-full": {
         "_template": "full",
-        "active_waterfall": "chromiumos",
         "boards": [
             "daisy"
         ],
@@ -7143,7 +6799,7 @@
     },
     "daisy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "daisy"
         ],
@@ -7353,7 +7009,7 @@
     },
     "daisy_skate-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "daisy_skate"
         ],
@@ -7550,7 +7206,7 @@
     },
     "daisy_spring-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "daisy_spring"
         ],
@@ -7749,7 +7405,7 @@
     },
     "edgar-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "edgar"
         ],
@@ -7948,7 +7604,7 @@
     },
     "elm-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "elm"
         ],
@@ -8144,7 +7800,7 @@
     },
     "enguarde-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "enguarde"
         ],
@@ -8230,82 +7886,6 @@
             "chrome_internal"
         ]
     },
-    "eve-bertha-chromium-pfq": {
-        "_template": "chromium_pfq",
-        "boards": [
-            "eve-bertha"
-        ],
-        "important": false,
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "eve-bertha-compile-only-pre-cq": {
-        "_template": "compile_only_pre_cq",
-        "boards": [
-            "eve-bertha"
-        ]
-    },
-    "eve-bertha-full": {
-        "_template": "full",
-        "boards": [
-            "eve-bertha"
-        ],
-        "prebuilts": "public",
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "eve-bertha-no-vmtest-pre-cq": {
-        "_template": "no_vmtest_pre_cq",
-        "boards": [
-            "eve-bertha"
-        ]
-    },
-    "eve-bertha-paladin": {
-        "_template": "paladin",
-        "boards": [
-            "eve-bertha"
-        ],
-        "important": false,
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "eve-bertha-pre-cq": {
-        "_template": "pre_cq",
-        "boards": [
-            "eve-bertha"
-        ],
-        "vm_tests": []
-    },
-    "eve-bertha-release": {
-        "_template": "release",
-        "active_waterfall": "chromeos",
-        "boards": [
-            "eve-bertha"
-        ],
-        "chrome_sdk_build_chrome": false,
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "eve-bertha-tot-chromium-pfq-informational": {
-        "_template": "chromium_pfq_informational",
-        "boards": [
-            "eve-bertha"
-        ],
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "eve-bertha-unittest-stress": {
-        "_template": "unittest_stress",
-        "boards": [
-            "eve-bertha"
-        ]
-    },
     "eve-chrome-pfq": {
         "_template": "chrome_pfq",
         "boards": [
@@ -8367,82 +7947,6 @@
         "_template": "gcc_toolchain",
         "boards": [
             "eve"
-        ]
-    },
-    "eve-kvm-chromium-pfq": {
-        "_template": "chromium_pfq",
-        "boards": [
-            "eve-kvm"
-        ],
-        "important": false,
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "eve-kvm-compile-only-pre-cq": {
-        "_template": "compile_only_pre_cq",
-        "boards": [
-            "eve-kvm"
-        ]
-    },
-    "eve-kvm-full": {
-        "_template": "full",
-        "boards": [
-            "eve-kvm"
-        ],
-        "prebuilts": "public",
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "eve-kvm-no-vmtest-pre-cq": {
-        "_template": "no_vmtest_pre_cq",
-        "boards": [
-            "eve-kvm"
-        ]
-    },
-    "eve-kvm-paladin": {
-        "_template": "paladin",
-        "boards": [
-            "eve-kvm"
-        ],
-        "important": false,
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "eve-kvm-pre-cq": {
-        "_template": "pre_cq",
-        "boards": [
-            "eve-kvm"
-        ],
-        "vm_tests": []
-    },
-    "eve-kvm-release": {
-        "_template": "release",
-        "active_waterfall": "chromeos",
-        "boards": [
-            "eve-kvm"
-        ],
-        "chrome_sdk_build_chrome": false,
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "eve-kvm-tot-chromium-pfq-informational": {
-        "_template": "chromium_pfq_informational",
-        "boards": [
-            "eve-kvm"
-        ],
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "eve-kvm-unittest-stress": {
-        "_template": "unittest_stress",
-        "boards": [
-            "eve-kvm"
         ]
     },
     "eve-llvm-next-toolchain": {
@@ -8510,7 +8014,7 @@
     },
     "eve-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "eve"
         ],
@@ -8594,82 +8098,6 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
-        ]
-    },
-    "eve-userdebug-chromium-pfq": {
-        "_template": "chromium_pfq",
-        "boards": [
-            "eve-userdebug"
-        ],
-        "important": false,
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "eve-userdebug-compile-only-pre-cq": {
-        "_template": "compile_only_pre_cq",
-        "boards": [
-            "eve-userdebug"
-        ]
-    },
-    "eve-userdebug-full": {
-        "_template": "full",
-        "boards": [
-            "eve-userdebug"
-        ],
-        "prebuilts": "public",
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "eve-userdebug-no-vmtest-pre-cq": {
-        "_template": "no_vmtest_pre_cq",
-        "boards": [
-            "eve-userdebug"
-        ]
-    },
-    "eve-userdebug-paladin": {
-        "_template": "paladin",
-        "boards": [
-            "eve-userdebug"
-        ],
-        "important": false,
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "eve-userdebug-pre-cq": {
-        "_template": "pre_cq",
-        "boards": [
-            "eve-userdebug"
-        ],
-        "vm_tests": []
-    },
-    "eve-userdebug-release": {
-        "_template": "release",
-        "active_waterfall": "chromeos",
-        "boards": [
-            "eve-userdebug"
-        ],
-        "chrome_sdk_build_chrome": false,
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "eve-userdebug-tot-chromium-pfq-informational": {
-        "_template": "chromium_pfq_informational",
-        "boards": [
-            "eve-userdebug"
-        ],
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "eve-userdebug-unittest-stress": {
-        "_template": "unittest_stress",
-        "boards": [
-            "eve-userdebug"
         ]
     },
     "expresso-chrome-pfq": {
@@ -8782,7 +8210,7 @@
     },
     "expresso-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "expresso"
         ],
@@ -9003,7 +8431,7 @@
     },
     "falco-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "falco"
         ],
@@ -9199,7 +8627,7 @@
     },
     "falco_li-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "falco_li"
         ],
@@ -9395,25 +8823,8 @@
     },
     "fizz-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "fizz"
-        ],
-        "hw_tests": [
-            "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 1,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"sanity\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
-        ],
-        "important": true,
-        "models": [
-            "{\n    \"name\": \"fizz\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"kench\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"sion\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"talon\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"teemo\",\n    \"test_suites\": []\n}"
         ],
         "vm_tests": [],
         "vm_tests_override": null
@@ -9626,7 +9037,7 @@
     },
     "gale-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "gale"
@@ -9761,7 +9172,7 @@
     },
     "gandof-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "gandof"
         ],
@@ -10150,7 +9561,7 @@
     },
     "glimmer-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "glimmer"
         ],
@@ -10346,7 +9757,7 @@
     },
     "gnawty-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "gnawty"
         ],
@@ -10543,7 +9954,6 @@
     },
     "gonzo-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "gonzo"
@@ -10689,11 +10099,9 @@
     },
     "gru-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "gru"
         ],
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -10885,7 +10293,6 @@
     },
     "grunt-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "grunt"
         ],
@@ -11068,12 +10475,10 @@
     },
     "guado-accelerator-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "guado-accelerator"
         ],
         "chrome_sdk": false,
-        "chrome_sdk_build_chrome": false,
         "sync_chrome": false,
         "vm_tests": [],
         "vm_tests_override": null
@@ -11205,81 +10610,6 @@
         ],
         "vm_tests": []
     },
-    "guado-macrophage-chromium-pfq": {
-        "_template": "chromium_pfq",
-        "boards": [
-            "guado-macrophage"
-        ],
-        "important": false,
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "guado-macrophage-compile-only-pre-cq": {
-        "_template": "compile_only_pre_cq",
-        "boards": [
-            "guado-macrophage"
-        ]
-    },
-    "guado-macrophage-full": {
-        "_template": "full",
-        "boards": [
-            "guado-macrophage"
-        ],
-        "prebuilts": "public",
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "guado-macrophage-no-vmtest-pre-cq": {
-        "_template": "no_vmtest_pre_cq",
-        "boards": [
-            "guado-macrophage"
-        ]
-    },
-    "guado-macrophage-paladin": {
-        "_template": "paladin",
-        "boards": [
-            "guado-macrophage"
-        ],
-        "important": false,
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "guado-macrophage-pre-cq": {
-        "_template": "pre_cq",
-        "boards": [
-            "guado-macrophage"
-        ],
-        "vm_tests": []
-    },
-    "guado-macrophage-release": {
-        "_template": "release",
-        "active_waterfall": "chromeos",
-        "boards": [
-            "guado-macrophage"
-        ],
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "guado-macrophage-tot-chromium-pfq-informational": {
-        "_template": "chromium_pfq_informational",
-        "boards": [
-            "guado-macrophage"
-        ],
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "guado-macrophage-unittest-stress": {
-        "_template": "unittest_stress",
-        "boards": [
-            "guado-macrophage"
-        ]
-    },
     "guado-no-vmtest-pre-cq": {
         "_template": "no_vmtest_pre_cq",
         "boards": [
@@ -11333,7 +10663,7 @@
     },
     "guado-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "guado"
         ],
@@ -11529,7 +10859,6 @@
     },
     "guado_labstation-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "guado_labstation"
         ],
@@ -11743,7 +11072,7 @@
     },
     "guado_moblab-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "guado_moblab"
@@ -11975,7 +11304,7 @@
     },
     "hana-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "hana"
         ],
@@ -12171,7 +11500,7 @@
     },
     "heli-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "heli"
         ],
@@ -12367,7 +11696,6 @@
     },
     "jadeite-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "jadeite"
         ],
@@ -12561,11 +11889,9 @@
     },
     "jecht-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "jecht"
         ],
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -12756,21 +12082,8 @@
     },
     "kahlee-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "kahlee"
-        ],
-        "hw_tests": [
-            "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 1,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"sanity\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
-        ],
-        "important": true,
-        "models": [
-            "{\n    \"name\": \"kahlee\",\n    \"test_suites\": []\n}"
         ],
         "vm_tests": [],
         "vm_tests_override": null
@@ -12962,7 +12275,7 @@
     },
     "kefka-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "kefka"
         ],
@@ -13046,82 +12359,6 @@
         "overlays": "both",
         "useflags": [
             "chrome_internal"
-        ]
-    },
-    "kevin-bertha-chromium-pfq": {
-        "_template": "chromium_pfq",
-        "boards": [
-            "kevin-bertha"
-        ],
-        "important": false,
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "kevin-bertha-compile-only-pre-cq": {
-        "_template": "compile_only_pre_cq",
-        "boards": [
-            "kevin-bertha"
-        ]
-    },
-    "kevin-bertha-full": {
-        "_template": "full",
-        "boards": [
-            "kevin-bertha"
-        ],
-        "prebuilts": "public",
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "kevin-bertha-no-vmtest-pre-cq": {
-        "_template": "no_vmtest_pre_cq",
-        "boards": [
-            "kevin-bertha"
-        ]
-    },
-    "kevin-bertha-paladin": {
-        "_template": "paladin",
-        "boards": [
-            "kevin-bertha"
-        ],
-        "important": false,
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "kevin-bertha-pre-cq": {
-        "_template": "pre_cq",
-        "boards": [
-            "kevin-bertha"
-        ],
-        "vm_tests": []
-    },
-    "kevin-bertha-release": {
-        "_template": "release",
-        "active_waterfall": "chromeos",
-        "boards": [
-            "kevin-bertha"
-        ],
-        "chrome_sdk_build_chrome": false,
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "kevin-bertha-tot-chromium-pfq-informational": {
-        "_template": "chromium_pfq_informational",
-        "boards": [
-            "kevin-bertha"
-        ],
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "kevin-bertha-unittest-stress": {
-        "_template": "unittest_stress",
-        "boards": [
-            "kevin-bertha"
         ]
     },
     "kevin-chrome-pfq": {
@@ -13255,7 +12492,7 @@
     },
     "kevin-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "kevin"
         ],
@@ -13454,7 +12691,7 @@
     },
     "kip-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "kip"
         ],
@@ -13782,7 +13019,6 @@
     },
     "lakitu-full": {
         "_template": "full",
-        "active_waterfall": "chromiumos",
         "boards": [
             "lakitu"
         ],
@@ -13993,7 +13229,7 @@
     },
     "lakitu-gpu-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "lakitu-gpu"
@@ -14247,7 +13483,7 @@
     },
     "lakitu-nc-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "lakitu-nc"
@@ -14272,6 +13508,7 @@
             "recovery",
             "test"
         ],
+        "important": true,
         "signer_tests": false,
         "sync_chrome": false,
         "vm_tests": [
@@ -14378,7 +13615,7 @@
     },
     "lakitu-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "lakitu"
@@ -14585,7 +13822,7 @@
     },
     "lakitu-st-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "lakitu-st"
@@ -14828,7 +14065,6 @@
     },
     "lakitu_next-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "lakitu_next"
@@ -14992,7 +14228,7 @@
     },
     "lars-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "lars"
         ],
@@ -15188,7 +14424,6 @@
     },
     "lasilla-ground-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "lasilla-ground"
@@ -15335,7 +14570,6 @@
     },
     "lasilla-sky-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "lasilla-sky"
@@ -15481,7 +14715,7 @@
     },
     "leon-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "leon"
         ],
@@ -15609,7 +14843,6 @@
     },
     "link-depthcharge-full-firmware": {
         "_template": "depthcharge_full_firmware",
-        "active_waterfall": "chromeos",
         "boards": [
             "link"
         ],
@@ -15718,7 +14951,7 @@
     },
     "link-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "link"
         ],
@@ -15914,7 +15147,7 @@
     },
     "lulu-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "lulu"
         ],
@@ -16166,7 +15399,7 @@
     },
     "lumpy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "lumpy"
         ],
@@ -16364,7 +15597,6 @@
     },
     "macchiato-ground-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "macchiato-ground"
@@ -16571,7 +15803,7 @@
     },
     "master-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [],
         "branch_util_test": true,
@@ -16579,33 +15811,21 @@
         "chrome_sdk": false,
         "master": true,
         "slave_configs": [
-            "amd64-generic-cheets-release",
-            "amd64-generic-goofy-release",
             "arkham-release",
             "asuka-release",
             "auron_paine-release",
             "auron_yuna-release",
             "banjo-release",
             "banon-release",
-            "beaglebone-release",
-            "beaglebone_servo-release",
-            "betty-arc64-release",
-            "betty-release",
             "bob-release",
             "buddy-release",
             "butterfly-release",
             "candy-release",
-            "caroline-arc64-release",
-            "caroline-bertha-release",
-            "caroline-ndktranslation-release",
             "caroline-release",
-            "caroline-userdebug-release",
             "cave-release",
             "celes-release",
             "chell-release",
             "clapper-release",
-            "cobblepot-release",
-            "coral-release",
             "cyan-release",
             "daisy-release",
             "daisy_skate-release",
@@ -16613,61 +15833,39 @@
             "edgar-release",
             "elm-release",
             "enguarde-release",
-            "eve-bertha-release",
-            "eve-kvm-release",
             "eve-release",
-            "eve-userdebug-release",
             "expresso-release",
             "falco-release",
             "falco_li-release",
-            "fizz-release",
             "gale-release",
             "gandof-release",
             "glimmer-release",
             "gnawty-release",
-            "gonzo-release",
-            "gru-release",
-            "grunt-release",
-            "guado-accelerator-release",
-            "guado-macrophage-release",
             "guado-release",
-            "guado_labstation-release",
             "guado_moblab-release",
             "hana-release",
             "heli-release",
-            "jadeite-release",
-            "jecht-release",
-            "kahlee-release",
             "kefka-release",
-            "kevin-bertha-release",
             "kevin-release",
             "kip-release",
             "lakitu-gpu-release",
             "lakitu-nc-release",
             "lakitu-release",
             "lakitu-st-release",
-            "lakitu_next-release",
             "lars-release",
-            "lasilla-ground-release",
-            "lasilla-sky-release",
             "leon-release",
             "link-release",
             "lulu-release",
             "lumpy-release",
-            "macchiato-ground-release",
             "mccloud-release",
             "monroe-release",
-            "nautilus-release",
             "nefario-release",
-            "newbie-release",
             "ninja-release",
             "novato-arc64-release",
             "novato-release",
             "nyan_big-release",
             "nyan_blaze-release",
             "nyan_kitty-release",
-            "oak-release",
-            "octavius-release",
             "orco-release",
             "panther-release",
             "parrot-release",
@@ -16680,18 +15878,15 @@
             "pyro-release",
             "quawks-release",
             "reef-release",
-            "reef-uni-release",
             "reks-release",
             "relm-release",
             "rikku-release",
-            "romer-release",
             "samus-release",
             "sand-release",
             "scarlet-release",
             "sentry-release",
             "setzer-release",
             "snappy-release",
-            "soraka-release",
             "squawks-release",
             "stout-release",
             "stumpy-release",
@@ -16714,9 +15909,7 @@
             "winky-release",
             "wizpig-release",
             "wolf-release",
-            "wooten-release",
-            "zako-release",
-            "zoombini-release"
+            "zako-release"
         ],
         "sync_chrome": false
     },
@@ -16849,7 +16042,7 @@
     },
     "mccloud-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "mccloud"
         ],
@@ -17125,7 +16318,7 @@
     },
     "monroe-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "monroe"
         ],
@@ -17211,81 +16404,6 @@
             "chrome_internal"
         ]
     },
-    "nautilus-chromium-pfq": {
-        "_template": "chromium_pfq",
-        "boards": [
-            "nautilus"
-        ],
-        "important": false,
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "nautilus-compile-only-pre-cq": {
-        "_template": "compile_only_pre_cq",
-        "boards": [
-            "nautilus"
-        ]
-    },
-    "nautilus-full": {
-        "_template": "full",
-        "boards": [
-            "nautilus"
-        ],
-        "prebuilts": "public",
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "nautilus-no-vmtest-pre-cq": {
-        "_template": "no_vmtest_pre_cq",
-        "boards": [
-            "nautilus"
-        ]
-    },
-    "nautilus-paladin": {
-        "_template": "paladin",
-        "boards": [
-            "nautilus"
-        ],
-        "important": false,
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "nautilus-pre-cq": {
-        "_template": "pre_cq",
-        "boards": [
-            "nautilus"
-        ],
-        "vm_tests": []
-    },
-    "nautilus-release": {
-        "_template": "release",
-        "active_waterfall": "chromeos",
-        "boards": [
-            "nautilus"
-        ],
-        "vm_tests": [],
-        "vm_tests_override": null
-    },
-    "nautilus-tot-chromium-pfq-informational": {
-        "_template": "chromium_pfq_informational",
-        "boards": [
-            "nautilus"
-        ],
-        "useflags": [
-            "-chrome_internal"
-        ],
-        "vm_tests": []
-    },
-    "nautilus-unittest-stress": {
-        "_template": "unittest_stress",
-        "boards": [
-            "nautilus"
-        ]
-    },
     "nefario-chromium-pfq": {
         "_template": "chromium_pfq",
         "boards": [
@@ -17338,7 +16456,7 @@
     },
     "nefario-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "nefario"
         ],
@@ -17470,12 +16588,10 @@
     },
     "newbie-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "newbie"
         ],
-        "buildslave_type": "baremetal",
-        "important": true
+        "buildslave_type": "baremetal"
     },
     "newbie-release-afdo": {
         "_template": "release_afdo_generate",
@@ -17657,7 +16773,7 @@
     },
     "ninja-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "ninja"
         ],
@@ -17851,7 +16967,7 @@
     },
     "novato-arc64-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "novato-arc64"
         ],
@@ -18036,7 +17152,7 @@
     },
     "novato-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "novato"
         ],
@@ -18463,7 +17579,7 @@
     },
     "nyan_big-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "nyan_big"
         ],
@@ -18658,7 +17774,7 @@
     },
     "nyan_blaze-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "nyan_blaze"
         ],
@@ -18857,7 +17973,7 @@
     },
     "nyan_kitty-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "nyan_kitty"
         ],
@@ -18991,7 +18107,6 @@
     },
     "oak-full": {
         "_template": "full",
-        "active_waterfall": "chromiumos",
         "boards": [
             "oak"
         ],
@@ -19054,11 +18169,9 @@
     },
     "oak-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "oak"
         ],
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -19250,7 +18363,6 @@
     },
     "octavius-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "octavius"
@@ -19396,7 +18508,7 @@
     },
     "orco-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "orco"
         ],
@@ -19592,7 +18704,7 @@
     },
     "panther-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "panther"
         ],
@@ -19802,7 +18914,7 @@
     },
     "parrot-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "parrot"
         ],
@@ -19998,7 +19110,7 @@
     },
     "parrot_ivb-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "parrot_ivb"
         ],
@@ -20194,7 +19306,7 @@
     },
     "peach_pi-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "peach_pi"
         ],
@@ -20417,7 +19529,7 @@
     },
     "peach_pit-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "peach_pit"
         ],
@@ -20645,7 +19757,7 @@
     },
     "peppy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "peppy"
         ],
@@ -20840,10 +19952,11 @@
     },
     "plaso-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "plaso"
         ],
+        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -21034,7 +20147,7 @@
     },
     "poppy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "poppy"
         ],
@@ -21280,7 +20393,7 @@
     },
     "pyro-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "pyro"
         ],
@@ -21479,7 +20592,7 @@
     },
     "quawks-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "quawks"
         ],
@@ -21898,7 +21011,7 @@
     },
     "reef-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "reef"
         ],
@@ -22053,9 +21166,6 @@
         "internal": true,
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
-        "models": [
-            "{\n    \"name\": \"snappy\",\n    \"test_suites\": null\n}"
-        ],
         "overlays": "both",
         "prebuilts": "private",
         "useflags": [
@@ -22086,26 +21196,8 @@
     },
     "reef-uni-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "reef-uni"
-        ],
-        "hw_tests": [
-            "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 1,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"sanity\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 6,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 6,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 4,\n    \"num\": 2,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt-uni\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
-        ],
-        "important": true,
-        "models": [
-            "{\n    \"name\": \"basking\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"electro\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"pyro\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"reef\",\n    \"test_suites\": []\n}",
-            "{\n    \"name\": \"sand\",\n    \"test_suites\": [\n        \"sanity\",\n        \"bvt-inline\",\n        \"bvt-arc\",\n        \"au\",\n        \"bvt-cq\",\n        \"bvt-perbuild\"\n    ]\n}",
-            "{\n    \"name\": \"snappy\",\n    \"test_suites\": []\n}"
         ],
         "vm_tests": [],
         "vm_tests_override": null
@@ -22310,7 +21402,7 @@
     },
     "reks-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "reks"
         ],
@@ -22512,7 +21604,7 @@
     },
     "relm-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "relm"
         ],
@@ -22708,7 +21800,7 @@
     },
     "rikku-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "rikku"
         ],
@@ -22905,7 +21997,6 @@
     },
     "romer-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "romer"
@@ -23280,7 +22371,7 @@
     },
     "samus-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "samus"
         ],
@@ -23475,10 +22566,11 @@
     },
     "sand-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "sand"
         ],
+        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -23670,10 +22762,11 @@
     },
     "scarlet-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "scarlet"
         ],
+        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -23885,7 +22978,7 @@
     },
     "sentry-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "sentry"
         ],
@@ -24081,7 +23174,7 @@
     },
     "setzer-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "setzer"
         ],
@@ -24757,7 +23850,7 @@
     },
     "snappy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "snappy"
         ],
@@ -24966,11 +24059,9 @@
     },
     "soraka-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "soraka"
         ],
-        "important": true,
         "sign_types": [
             "recovery",
             "accessory_rwsig",
@@ -25166,7 +24257,7 @@
     },
     "squawks-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "squawks"
         ],
@@ -25362,7 +24453,7 @@
     },
     "stout-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "stout"
         ],
@@ -25560,7 +24651,7 @@
     },
     "stumpy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "stumpy"
         ],
@@ -25762,7 +24853,7 @@
     },
     "sumo-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "sumo"
         ],
@@ -25976,7 +25067,7 @@
     },
     "swanky-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "swanky"
         ],
@@ -26488,7 +25579,7 @@
     },
     "terra-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "terra"
         ],
@@ -26720,7 +25811,7 @@
     },
     "tidus-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "tidus"
         ],
@@ -26922,7 +26013,7 @@
     },
     "tricky-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "tricky"
         ],
@@ -27124,7 +26215,7 @@
     },
     "ultima-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "ultima"
         ],
@@ -27513,7 +26604,7 @@
     },
     "veyron_fievel-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_fievel"
         ],
@@ -27726,7 +26817,7 @@
     },
     "veyron_jaq-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_jaq"
         ],
@@ -27922,7 +27013,7 @@
     },
     "veyron_jerry-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_jerry"
         ],
@@ -28132,7 +27223,7 @@
     },
     "veyron_mickey-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_mickey"
         ],
@@ -28331,7 +27422,7 @@
     },
     "veyron_mighty-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_mighty"
         ],
@@ -28551,7 +27642,7 @@
     },
     "veyron_minnie-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_minnie"
         ],
@@ -28945,7 +28036,7 @@
     },
     "veyron_rialto-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_rialto"
         ],
@@ -29144,7 +28235,7 @@
     },
     "veyron_speedy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_speedy"
         ],
@@ -29364,7 +28455,7 @@
     },
     "veyron_tiger-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "veyron_tiger"
         ],
@@ -29581,7 +28672,7 @@
     },
     "whirlwind-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "whirlwind"
@@ -29725,7 +28816,7 @@
     },
     "winky-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "winky"
         ],
@@ -29938,7 +29029,7 @@
     },
     "wizpig-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "wizpig"
         ],
@@ -30137,7 +29228,7 @@
     },
     "wolf-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "wolf"
         ],
@@ -30359,7 +29450,6 @@
     },
     "wooten-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "afdo_use": false,
         "boards": [
             "wooten"
@@ -30873,8 +29963,8 @@
         "disk_layout": "2gb-rootfs",
         "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-ASAN",
         "hw_tests_override": [
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"Build\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
             "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"CQ\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
             "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
             "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
@@ -31672,7 +30762,7 @@
     },
     "zako-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "zako"
         ],
@@ -31868,7 +30958,6 @@
     },
     "zoombini-release": {
         "_template": "release",
-        "active_waterfall": "chromeos",
         "boards": [
             "zoombini"
         ],
