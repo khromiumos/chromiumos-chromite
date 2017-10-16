@@ -10475,10 +10475,13 @@
     },
     "guado-accelerator-release": {
         "_template": "release",
+        "active_waterfall": "chromeos_release",
         "boards": [
             "guado-accelerator"
         ],
         "chrome_sdk": false,
+        "chrome_sdk_build_chrome": false,
+        "important": true,
         "sync_chrome": false,
         "vm_tests": [],
         "vm_tests_override": null
@@ -15841,6 +15844,7 @@
             "gandof-release",
             "glimmer-release",
             "gnawty-release",
+            "guado-accelerator-release",
             "guado-release",
             "guado_moblab-release",
             "hana-release",
