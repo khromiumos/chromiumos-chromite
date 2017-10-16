@@ -28337,7 +28337,7 @@
     },
     "veyron_tiger-android-mnc-pre-flight-branch": {
         "_template": "pre_flight_branch",
-        "android_import_branch": "git_mnc-dr-arc-dev",
+        "android_import_branch": "git_mnc-dr-arc-m63",
         "android_package": "android-container",
         "android_rev": "latest_release",
         "boards": [
