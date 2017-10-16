@@ -324,8 +324,8 @@ DEFAULT_CTS_APFE_GSURI = 'gs://chromeos-cts-apfe/'
 
 ANDROID_BUCKET_URL = 'gs://android-build-chromeos/builds'
 ANDROID_MASTER_ARC_DEV_BUILD_BRANCH = 'git_master-arc-dev'
-ANDROID_MNC_BUILD_BRANCH = 'git_mnc-dr-arc-m63'
-ANDROID_NYC_BUILD_BRANCH = 'git_nyc-mr1-arc'
+ANDROID_MNC_BUILD_BRANCH = 'git_mnc-dr-arc-dev'
+ANDROID_NYC_BUILD_BRANCH = 'git_nyc-mr1-arc-m63'
 ANDROID_MASTER_ARC_DEV_BUILD_TARGETS = {
     'AOSP_X86_USERDEBUG': ('linux-aosp_bertha_x86-userdebug', r'\.zip$'),
 }
