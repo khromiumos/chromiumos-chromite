@@ -742,7 +742,7 @@
         "nyc_android_pfq": {
             "_template": "nyc_android_pfq",
             "android_gts_build_branch": "git_nyc-mr2-dev",
-            "android_import_branch": "git_nyc-mr1-arc",
+            "android_import_branch": "git_nyc-mr1-arc-m63",
             "android_package": "android-container-nyc",
             "android_rev": "latest_release",
             "build_type": "android",
@@ -20877,7 +20877,7 @@
     },
     "reef-android-nyc-pre-flight-branch": {
         "_template": "pre_flight_branch",
-        "android_import_branch": "git_nyc-mr1-arc",
+        "android_import_branch": "git_nyc-mr1-arc-m63",
         "android_package": "android-container-nyc",
         "android_rev": "latest_release",
         "boards": [
@@ -28341,7 +28341,7 @@
     },
     "veyron_tiger-android-mnc-pre-flight-branch": {
         "_template": "pre_flight_branch",
-        "android_import_branch": "git_mnc-dr-arc-m63",
+        "android_import_branch": "git_mnc-dr-arc-dev",
         "android_package": "android-container",
         "android_rev": "latest_release",
         "boards": [
