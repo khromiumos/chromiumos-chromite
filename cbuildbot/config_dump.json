@@ -6806,7 +6806,7 @@
         "sign_types": [
             "firmware"
         ],
-        "sync_chrome": true,
+        "sync_chrome": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [

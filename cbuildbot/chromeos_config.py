@@ -3730,7 +3730,7 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
       boards=['coral'],
       afdo_generate=True,
       afdo_update_ebuild=True,
-      sync_chrome=True,
+      sync_chrome=False,
       chrome_rev=constants.CHROME_REV_STICKY,
       hw_tests=[hw_test_list.AFDORecordTest()],
       useflags=append_useflags(['-transparent_hugepage', '-debug_fission']),
