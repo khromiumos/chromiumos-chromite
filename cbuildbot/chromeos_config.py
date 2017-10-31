@@ -3596,7 +3596,9 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
   """
   board_configs = CreateInternalBoardConfigs(
       site_config, boards_dict, ge_build_config)
-  hw_test_list = HWTestList(ge_build_config)
+
+#  No need to use this variable on firmware branch
+#  hw_test_list = HWTestList(ge_build_config)
 
   site_config.AddWithoutTemplate(
       'chromiumos-sdk',
@@ -3728,11 +3730,10 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
       site_config.templates.firmware_base,
       site_config.templates.no_hwtest_builder,
       boards=['coral'],
-      afdo_generate=True,
-      afdo_update_ebuild=True,
+      afdo_generate=False,
+      afdo_update_ebuild=False,
       sync_chrome=False,
       chrome_rev=constants.CHROME_REV_STICKY,
-      hw_tests=[hw_test_list.AFDORecordTest()],
       useflags=append_useflags(['-transparent_hugepage', '-debug_fission']),
       prebuilts=constants.PRIVATE,
   )
