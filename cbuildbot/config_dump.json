@@ -15892,7 +15892,6 @@
             "rikku-release",
             "samus-release",
             "sand-release",
-            "scarlet-release",
             "sentry-release",
             "setzer-release",
             "snappy-release",
@@ -22776,11 +22775,9 @@
     },
     "scarlet-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "boards": [
             "scarlet"
         ],
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
