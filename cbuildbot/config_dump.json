@@ -444,8 +444,7 @@
             "manifest_version": true,
             "overlays": "both",
             "packages": [
-                "virtual/chromeos-firmware",
-                "chromeos-base/autotest-all"
+                "virtual/chromeos-firmware"
             ],
             "push_image": true,
             "sign_types": [
@@ -453,6 +452,7 @@
             ],
             "sync_chrome": false,
             "unittests": false,
+            "upload_hw_test_artifacts": false,
             "useflags": [
                 "-cros-debug",
                 "chrome_internal",
@@ -480,14 +480,14 @@
             "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
             "overlays": "both",
             "packages": [
-                "virtual/chromeos-firmware",
-                "chromeos-base/autotest-all"
+                "virtual/chromeos-firmware"
             ],
             "sign_types": [
                 "firmware"
             ],
             "sync_chrome": false,
             "unittests": false,
+            "upload_hw_test_artifacts": false,
             "useflags": [
                 "chromeless_tty",
                 "depthcharge"
@@ -555,8 +555,7 @@
             "manifest_version": true,
             "overlays": "both",
             "packages": [
-                "virtual/chromeos-firmware",
-                "chromeos-base/autotest-all"
+                "virtual/chromeos-firmware"
             ],
             "push_image": true,
             "sign_types": [
@@ -564,6 +563,7 @@
             ],
             "sync_chrome": false,
             "unittests": false,
+            "upload_hw_test_artifacts": false,
             "useflags": [
                 "-cros-debug",
                 "chrome_internal",
@@ -8373,6 +8373,33 @@
         "useflags": [
             "chrome_internal"
         ]
+    },
+    "falco-pre-flight-branch": {
+        "_template": "pre_flight_branch",
+        "android_rev": "latest_release",
+        "boards": [
+            "falco"
+        ],
+        "factory_toolkit": false,
+        "hw_tests_override": [],
+        "images": [],
+        "master": true,
+        "packages": [
+            "virtual/chromeos-firmware"
+        ],
+        "push_overlays": "both",
+        "sign_types": [
+            "firmware"
+        ],
+        "sync_chrome": false,
+        "unittests": false,
+        "upload_hw_test_artifacts": false,
+        "useflags": [
+            "chrome_internal",
+            "chromeless_tty"
+        ],
+        "vm_tests": [],
+        "vm_tests_override": null
     },
     "falco-release": {
         "_template": "release",
@@ -19618,24 +19645,6 @@
         "useflags": [
             "chrome_internal"
         ],
-        "vm_tests": []
-    },
-    "samus-pre-flight-branch": {
-        "_template": "pre_flight_branch",
-        "afdo_generate": true,
-        "afdo_update_ebuild": true,
-        "android_rev": "latest_release",
-        "boards": [
-            "samus"
-        ],
-        "hw_tests": [
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 10,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"PFQ\",\n    \"retry\": true,\n    \"suite\": \"AFDO_record\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 6000,\n    \"warn_only\": true\n}"
-        ],
-        "hw_tests_override": [
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 10,\n    \"minimum_duts\": 0,\n    \"num\": 3,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"DEFAULT\",\n    \"retry\": true,\n    \"suite\": \"AFDO_record\",\n    \"suite_min_duts\": 0,\n    \"timeout\": 6000,\n    \"warn_only\": true\n}"
-        ],
-        "master": true,
-        "push_overlays": "both",
         "vm_tests": []
     },
     "samus-release": {

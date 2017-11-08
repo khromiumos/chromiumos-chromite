@@ -1424,14 +1424,14 @@ def CreateBuilderTemplates(site_config, hw_test_list, is_release_branch):
       site_config.templates.no_vmtest_builder,
       images=[],
       factory_toolkit=False,
-      packages=['virtual/chromeos-firmware', 'chromeos-base/autotest-all'],
+      packages=['virtual/chromeos-firmware'],
       usepkg_build_packages=True,
       sync_chrome=False,
       chrome_sdk=False,
       unittests=False,
       hw_tests=[],
       dev_installer_prebuilts=False,
-      upload_hw_test_artifacts=True,
+      upload_hw_test_artifacts=False,
       upload_symbols=False,
       useflags=append_useflags(['chromeless_tty']),
       signer_tests=False,
@@ -2227,16 +2227,17 @@ def _GetConfig(site_config, board_configs, hw_test_list):
   )
 
   site_config.Add(
-      'samus-pre-flight-branch',
+      'falco-pre-flight-branch',
       site_config.templates.pre_flight_branch,
+      site_config.templates.firmware_base,
+      site_config.templates.no_hwtest_builder,
       master=True,
       push_overlays=constants.BOTH_OVERLAYS,
-      boards=['samus'],
+      boards=['falco'],
       android_rev=constants.ANDROID_REV_LATEST,
-      afdo_generate=True,
-      afdo_update_ebuild=True,
-      vm_tests=[],
-      hw_tests=[hw_test_list.AFDORecordTest()],
+      afdo_generate=False,
+      afdo_update_ebuild=False,
+      sync_chrome=False,
   )
 
   # Create our unittest stress build configs (used for tryjobs only)

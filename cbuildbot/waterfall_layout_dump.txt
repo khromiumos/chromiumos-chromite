@@ -208,7 +208,7 @@ zako-release (gce_beefy)
 config-updater (gce_wimpy)
 
 == chromeos_release ==
-samus-pre-flight-branch (baremetal)
+falco-pre-flight-branch (baremetal)
 
 == chromiumos ==
 amd64-generic-asan (baremetal)
