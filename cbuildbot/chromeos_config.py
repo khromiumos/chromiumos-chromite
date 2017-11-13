@@ -3636,7 +3636,8 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
   """
   board_configs = CreateInternalBoardConfigs(
       site_config, boards_dict, ge_build_config)
-  hw_test_list = HWTestList(ge_build_config)
+  # No need to use this in factory branch
+  # hw_test_list = HWTestList(ge_build_config)
 
   site_config.AddWithoutTemplate(
       'chromiumos-sdk',
@@ -3768,38 +3769,12 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
 
   # *-pre-flight-branch builders are in chromeos_release waterfall.
   site_config.Add(
-      'samus-chrome-pre-flight-branch',
+      'coral-pre-flight-branch',
       site_config.templates.pre_flight_branch,
+      site_config.templates.no_vmtest_builder,
+      site_config.templates.no_hwtest_builder,
       display_label=config_lib.DISPLAY_LABEL_CHROME_PFQ,
-      boards=['samus'],
-      afdo_generate=True,
-      afdo_update_ebuild=True,
-      sync_chrome=True,
-      chrome_rev=constants.CHROME_REV_STICKY,
-      hw_tests=[hw_test_list.AFDORecordTest()],
-      useflags=append_useflags(['-transparent_hugepage',
-                                '-debug_fission',
-                                '-thinlto']),
-      prebuilts=constants.PRIVATE,
-  )
-
-  site_config.Add(
-      'veyron_tiger-android-mnc-pre-flight-branch',
-      site_config.templates.pre_flight_branch,
-      display_label=config_lib.DISPLAY_LABEL_MNC_ANDROID_PFQ,
-      boards=['veyron_tiger'],
-      sync_chrome=True,
-      android_rev=constants.ANDROID_REV_LATEST,
-      android_package='android-container',
-      android_import_branch=constants.ANDROID_MNC_BUILD_BRANCH,
-      prebuilts=False,
-  )
-
-  site_config.Add(
-      'reef-android-nyc-pre-flight-branch',
-      site_config.templates.pre_flight_branch,
-      display_label=config_lib.DISPLAY_LABEL_NYC_ANDROID_PFQ,
-      boards=['reef'],
+      boards=['coral'],
       sync_chrome=True,
       android_rev=constants.ANDROID_REV_LATEST,
       android_package='android-container-nyc',
