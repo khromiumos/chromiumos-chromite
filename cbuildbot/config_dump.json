@@ -15885,7 +15885,6 @@
             "plaso-release",
             "pyro-release",
             "quawks-release",
-            "reef-release",
             "reks-release",
             "relm-release",
             "rikku-release",
@@ -21021,11 +21020,9 @@
     },
     "reef-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "boards": [
             "reef"
         ],
-        "important": true,
         "vm_tests": [],
         "vm_tests_override": null
     },
