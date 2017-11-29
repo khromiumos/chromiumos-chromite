@@ -407,6 +407,7 @@
             "suite_scheduling": true,
             "sync_chrome": false,
             "unittests": false,
+            "upload_hw_test_artifacts": false,
             "useflags": [
                 "-cros-debug",
                 "chrome_internal",
@@ -436,6 +437,7 @@
             ],
             "sync_chrome": false,
             "unittests": false,
+            "upload_hw_test_artifacts": false,
             "useflags": [
                 "chromeless_tty",
                 "depthcharge"
@@ -506,6 +508,7 @@
             "suite_scheduling": true,
             "sync_chrome": false,
             "unittests": false,
+            "upload_hw_test_artifacts": false,
             "useflags": [
                 "-cros-debug",
                 "chrome_internal",
@@ -12268,8 +12271,7 @@
             "cobblepot"
         ],
         "hw_tests_override": [],
-        "manifest": "official.xml",
-        "upload_hw_test_artifacts": false
+        "manifest": "official.xml"
     },
     "cobblepot-firmware-tryjob": {
         "_template": "firmware",
@@ -12280,8 +12282,7 @@
         "debug": true,
         "display_label": "tryjob",
         "manifest": "official.xml",
-        "push_image": false,
-        "upload_hw_test_artifacts": false
+        "push_image": false
     },
     "cobblepot-full": {
         "_template": "full",
@@ -18594,6 +18595,69 @@
         ],
         "vm_tests": []
     },
+    "fizz-pre-flight-branch": {
+        "_template": "pre_flight_branch",
+        "boards": [
+            "fizz"
+        ],
+        "chrome_rev": "stable_release",
+        "display_label": "firmware",
+        "factory_toolkit": false,
+        "hw_tests": [
+            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"PFQ\",\n    \"retry\": true,\n    \"suite\": \"AFDO_record\",\n    \"suite_args\": null,\n    \"suite_min_duts\": 0,\n    \"timeout\": 6000,\n    \"warn_only\": true\n}"
+        ],
+        "images": [],
+        "packages": [
+            "virtual/chromeos-firmware"
+        ],
+        "prebuilts": "private",
+        "sign_types": [
+            "firmware"
+        ],
+        "sync_chrome": false,
+        "unittests": false,
+        "upload_hw_test_artifacts": false,
+        "useflags": [
+            "-debug_fission",
+            "-thinlto",
+            "-transparent_hugepage",
+            "chrome_internal",
+            "chromeless_tty"
+        ],
+        "vm_tests_override": null
+    },
+    "fizz-pre-flight-branch-tryjob": {
+        "_template": "pre_flight_branch",
+        "active_waterfall": "chromiumos.tryserver",
+        "boards": [
+            "fizz"
+        ],
+        "chrome_rev": "stable_release",
+        "debug": true,
+        "display_label": "tryjob",
+        "factory_toolkit": false,
+        "hw_tests_override": null,
+        "images": [],
+        "packages": [
+            "virtual/chromeos-firmware"
+        ],
+        "prebuilts": "private",
+        "push_overlays": null,
+        "sign_types": [
+            "firmware"
+        ],
+        "sync_chrome": false,
+        "unittests": false,
+        "upload_hw_test_artifacts": false,
+        "useflags": [
+            "-debug_fission",
+            "-thinlto",
+            "-transparent_hugepage",
+            "chrome_internal",
+            "chromeless_tty"
+        ],
+        "vm_tests_override": null
+    },
     "fizz-release": {
         "_template": "release",
         "active_waterfall": "chromeos",
@@ -20759,8 +20823,7 @@
             "gonzo"
         ],
         "hw_tests_override": [],
-        "manifest": "official.xml",
-        "upload_hw_test_artifacts": false
+        "manifest": "official.xml"
     },
     "gonzo-firmware-tryjob": {
         "_template": "firmware",
@@ -20771,8 +20834,7 @@
         "debug": true,
         "display_label": "tryjob",
         "manifest": "official.xml",
-        "push_image": false,
-        "upload_hw_test_artifacts": false
+        "push_image": false
     },
     "gonzo-full": {
         "_template": "full",
@@ -30104,8 +30166,7 @@
             "lasilla-ground"
         ],
         "hw_tests_override": [],
-        "manifest": "official.xml",
-        "upload_hw_test_artifacts": false
+        "manifest": "official.xml"
     },
     "lasilla-ground-firmware-tryjob": {
         "_template": "firmware",
@@ -30116,8 +30177,7 @@
         "debug": true,
         "display_label": "tryjob",
         "manifest": "official.xml",
-        "push_image": false,
-        "upload_hw_test_artifacts": false
+        "push_image": false
     },
     "lasilla-ground-full": {
         "_template": "full",
@@ -30414,8 +30474,7 @@
             "lasilla-sky"
         ],
         "hw_tests_override": [],
-        "manifest": "official.xml",
-        "upload_hw_test_artifacts": false
+        "manifest": "official.xml"
     },
     "lasilla-sky-firmware-tryjob": {
         "_template": "firmware",
@@ -30426,8 +30485,7 @@
         "debug": true,
         "display_label": "tryjob",
         "manifest": "official.xml",
-        "push_image": false,
-        "upload_hw_test_artifacts": false
+        "push_image": false
     },
     "lasilla-sky-full": {
         "_template": "full",
@@ -32672,8 +32730,7 @@
             "macchiato-ground"
         ],
         "hw_tests_override": [],
-        "manifest": "official.xml",
-        "upload_hw_test_artifacts": false
+        "manifest": "official.xml"
     },
     "macchiato-ground-firmware-tryjob": {
         "_template": "firmware",
@@ -32684,8 +32741,7 @@
         "debug": true,
         "display_label": "tryjob",
         "manifest": "official.xml",
-        "push_image": false,
-        "upload_hw_test_artifacts": false
+        "push_image": false
     },
     "macchiato-ground-full": {
         "_template": "full",
@@ -39360,8 +39416,7 @@
             "octavius"
         ],
         "hw_tests_override": [],
-        "manifest": "official.xml",
-        "upload_hw_test_artifacts": false
+        "manifest": "official.xml"
     },
     "octavius-firmware-tryjob": {
         "_template": "firmware",
@@ -39372,8 +39427,7 @@
         "debug": true,
         "display_label": "tryjob",
         "manifest": "official.xml",
-        "push_image": false,
-        "upload_hw_test_artifacts": false
+        "push_image": false
     },
     "octavius-full": {
         "_template": "full",
@@ -47161,8 +47215,7 @@
             "romer"
         ],
         "hw_tests_override": [],
-        "manifest": "official.xml",
-        "upload_hw_test_artifacts": false
+        "manifest": "official.xml"
     },
     "romer-firmware-tryjob": {
         "_template": "firmware",
@@ -47173,8 +47226,7 @@
         "debug": true,
         "display_label": "tryjob",
         "manifest": "official.xml",
-        "push_image": false,
-        "upload_hw_test_artifacts": false
+        "push_image": false
     },
     "romer-full": {
         "_template": "full",
@@ -47839,51 +47891,6 @@
         "manifest": "official.xml",
         "uprev": true,
         "vm_tests": []
-    },
-    "samus-chrome-pre-flight-branch": {
-        "_template": "pre_flight_branch",
-        "afdo_generate": true,
-        "afdo_update_ebuild": true,
-        "boards": [
-            "samus"
-        ],
-        "chrome_rev": "stable_release",
-        "display_label": "chome_pfq",
-        "hw_tests": [
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"PFQ\",\n    \"retry\": true,\n    \"suite\": \"AFDO_record\",\n    \"suite_args\": null,\n    \"suite_min_duts\": 0,\n    \"timeout\": 6000,\n    \"warn_only\": true\n}"
-        ],
-        "prebuilts": "private",
-        "sync_chrome": true,
-        "useflags": [
-            "-debug_fission",
-            "-thinlto",
-            "-transparent_hugepage",
-            "chrome_internal"
-        ],
-        "vm_tests_override": null
-    },
-    "samus-chrome-pre-flight-branch-tryjob": {
-        "_template": "pre_flight_branch",
-        "active_waterfall": "chromiumos.tryserver",
-        "afdo_generate": true,
-        "afdo_update_ebuild": true,
-        "boards": [
-            "samus"
-        ],
-        "chrome_rev": "stable_release",
-        "debug": true,
-        "display_label": "tryjob",
-        "hw_tests_override": null,
-        "prebuilts": "private",
-        "push_overlays": null,
-        "sync_chrome": true,
-        "useflags": [
-            "-debug_fission",
-            "-thinlto",
-            "-transparent_hugepage",
-            "chrome_internal"
-        ],
-        "vm_tests_override": null
     },
     "samus-chromium-pfq": {
         "_template": "chromium_pfq",
@@ -62518,8 +62525,7 @@
             "wooten"
         ],
         "hw_tests_override": [],
-        "manifest": "official.xml",
-        "upload_hw_test_artifacts": false
+        "manifest": "official.xml"
     },
     "wooten-firmware-tryjob": {
         "_template": "firmware",
@@ -62530,8 +62536,7 @@
         "debug": true,
         "display_label": "tryjob",
         "manifest": "official.xml",
-        "push_image": false,
-        "upload_hw_test_artifacts": false
+        "push_image": false
     },
     "wooten-full": {
         "_template": "full",
