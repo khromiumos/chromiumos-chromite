@@ -3785,10 +3785,10 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
 
   # *-pre-flight-branch builders are in chromeos_release waterfall.
   site_config.Add(
-      'samus-chrome-pre-flight-branch',
+      'fizz-pre-flight-branch',
       site_config.templates.pre_flight_branch,
-      display_label=config_lib.DISPLAY_LABEL_CHROME_PFQ,
-      boards=['samus'],
+      display_label=config_lib.DISPLAY_LABEL_FACTORY,
+      boards=['fizz'],
       afdo_generate=True,
       afdo_update_ebuild=True,
       sync_chrome=True,
