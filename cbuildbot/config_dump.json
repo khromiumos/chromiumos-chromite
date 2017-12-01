@@ -18780,7 +18780,7 @@
         "chrome_rev": "stable_release",
         "display_label": "factory",
         "prebuilts": "private",
-        "sync_chrome": true,
+        "sync_chrome": false,
         "useflags": [
             "-debug_fission",
             "-thinlto",
@@ -18803,7 +18803,7 @@
         "hw_tests_override": null,
         "prebuilts": "private",
         "push_overlays": null,
-        "sync_chrome": true,
+        "sync_chrome": false,
         "useflags": [
             "-debug_fission",
             "-thinlto",
