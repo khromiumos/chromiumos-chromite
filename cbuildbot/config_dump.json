@@ -18779,9 +18779,6 @@
         ],
         "chrome_rev": "stable_release",
         "display_label": "factory",
-        "hw_tests": [
-            "{\n    \"async\": false,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": true,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"num\": 1,\n    \"offload_failures_only\": false,\n    \"pool\": \"bvt\",\n    \"priority\": \"PFQ\",\n    \"retry\": true,\n    \"suite\": \"AFDO_record\",\n    \"suite_args\": null,\n    \"suite_min_duts\": 0,\n    \"timeout\": 6000,\n    \"warn_only\": true\n}"
-        ],
         "prebuilts": "private",
         "sync_chrome": true,
         "useflags": [
@@ -18836,6 +18833,10 @@
             "{\n    \"lab_board_name\": \"fizz\",\n    \"name\": \"sion\",\n    \"test_suites\": []\n}",
             "{\n    \"lab_board_name\": \"fizz\",\n    \"name\": \"talon\",\n    \"test_suites\": []\n}",
             "{\n    \"lab_board_name\": \"fizz\",\n    \"name\": \"teemo\",\n    \"test_suites\": []\n}"
+        ],
+        "sign_types": [
+            "recovery",
+            "factory"
         ],
         "vm_tests": [],
         "vm_tests_override": null
@@ -18983,6 +18984,10 @@
         ],
         "paygen": false,
         "push_image": false,
+        "sign_types": [
+            "recovery",
+            "factory"
+        ],
         "vm_tests": [],
         "vm_tests_override": null
     },
