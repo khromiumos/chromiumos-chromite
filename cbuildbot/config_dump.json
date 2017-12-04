@@ -18772,8 +18772,6 @@
     },
     "fizz-pre-flight-branch": {
         "_template": "pre_flight_branch",
-        "afdo_generate": true,
-        "afdo_update_ebuild": true,
         "boards": [
             "fizz"
         ],
@@ -18792,8 +18790,6 @@
     "fizz-pre-flight-branch-tryjob": {
         "_template": "pre_flight_branch",
         "active_waterfall": "chromiumos.tryserver",
-        "afdo_generate": true,
-        "afdo_update_ebuild": true,
         "boards": [
             "fizz"
         ],

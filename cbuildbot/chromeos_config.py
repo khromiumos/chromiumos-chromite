@@ -3796,8 +3796,6 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
       site_config.templates.no_hwtest_builder,
       display_label=config_lib.DISPLAY_LABEL_FACTORY,
       boards=['fizz'],
-      afdo_generate=True,
-      afdo_update_ebuild=True,
       sync_chrome=False,
       chrome_rev=constants.CHROME_REV_STICKY,
       useflags=append_useflags(['-transparent_hugepage',
