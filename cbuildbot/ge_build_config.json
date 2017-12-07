@@ -1239,7 +1239,6 @@
             "bvt-installer",
             "bvt-arc",
             "au",
-            "bvt-cq",
             "bvt-perbuild"
           ],
           "cq_test_enabled": false,
@@ -1336,6 +1335,12 @@
             "bvt-perbuild"
           ],
           "cq_test_enabled": true,
+          "release_builder_test_pool": "bvt"
+        },
+        {
+          "board_name": "reef",
+          "name": "reef",
+          "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
         }
       ]
