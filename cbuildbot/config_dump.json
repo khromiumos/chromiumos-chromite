@@ -421,6 +421,7 @@
                 "chromeless_tty",
                 "depthcharge"
             ],
+            "usepkg_build_packages": false,
             "vm_tests": []
         },
         "depthcharge_full_firmware": {
@@ -456,6 +457,7 @@
                 "chromeless_tty",
                 "depthcharge"
             ],
+            "usepkg_build_packages": false,
             "vm_tests": []
         },
         "factory": {
@@ -535,6 +537,7 @@
                 "chrome_internal",
                 "chromeless_tty"
             ],
+            "usepkg_build_packages": false,
             "vm_tests": []
         },
         "full": {
@@ -18923,6 +18926,7 @@
             "chrome_internal",
             "chromeless_tty"
         ],
+        "usepkg_build_packages": false,
         "vm_tests_override": null
     },
     "fizz-pre-flight-branch-tryjob": {
@@ -18955,6 +18959,7 @@
             "chrome_internal",
             "chromeless_tty"
         ],
+        "usepkg_build_packages": false,
         "vm_tests_override": null
     },
     "fizz-release": {
