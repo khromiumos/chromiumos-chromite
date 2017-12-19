@@ -1205,7 +1205,6 @@
           "board_name": "coral",
           "name": "nasher",
           "test_suites": [
-            "sanity",
             "bvt-inline",
             "bvt-installer",
             "bvt-arc",
@@ -1220,7 +1219,6 @@
           "board_name": "coral",
           "name": "nasher360",
           "test_suites": [
-            "sanity",
             "bvt-inline",
             "bvt-installer",
             "bvt-arc",
@@ -1241,7 +1239,6 @@
           "board_name": "coral",
           "name": "robo",
           "test_suites": [
-            "sanity",
             "bvt-inline",
             "bvt-installer",
             "bvt-arc",
@@ -1256,7 +1253,6 @@
           "board_name": "coral",
           "name": "robo360",
           "test_suites": [
-            "sanity",
             "bvt-inline",
             "bvt-installer",
             "bvt-arc",
