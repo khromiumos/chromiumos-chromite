@@ -20230,7 +20230,7 @@
         "manifest": "official.xml",
         "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
         "models": [
-            "{\n    \"name\": \"electro\",\n    \"test_suites\": null\n}"
+            "{\n    \"name\": \"reef\",\n    \"test_suites\": null\n}"
         ],
         "overlays": "both",
         "prebuilts": "private",
@@ -20277,8 +20277,8 @@
         "important": true,
         "models": [
             "{\n    \"name\": \"basking\",\n    \"test_suites\": null\n}",
-            "{\n    \"name\": \"electro\",\n    \"test_suites\": [\n        \"sanity\",\n        \"bvt-inline\",\n        \"bvt-installer\",\n        \"bvt-arc\",\n        \"au\",\n        \"bvt-cq\",\n        \"bvt-perbuild\"\n    ]\n}",
-            "{\n    \"name\": \"reef\",\n    \"test_suites\": null\n}"
+            "{\n    \"name\": \"electro\",\n    \"test_suites\": null\n}",
+            "{\n    \"name\": \"reef\",\n    \"test_suites\": [\n        \"sanity\",\n        \"bvt-inline\",\n        \"bvt-installer\",\n        \"bvt-arc\",\n        \"au\",\n        \"bvt-cq\",\n        \"bvt-perbuild\"\n    ]\n}"
         ],
         "vm_tests": [],
         "vm_tests_override": null
