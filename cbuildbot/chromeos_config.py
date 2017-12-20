@@ -2651,7 +2651,7 @@ def GetConfig():
       images=[],
       factory_toolkit=False,
       packages=['virtual/chromeos-firmware', 'chromeos-base/autotest-all'],
-      usepkg_build_packages=True,
+      usepkg_build_packages=False,
       sync_chrome=False,
       chrome_sdk=False,
       unittests=False,

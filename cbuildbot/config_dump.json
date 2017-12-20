@@ -482,7 +482,7 @@
                 "chromeless_tty",
                 "depthcharge"
             ],
-            "usepkg_build_packages": true,
+            "usepkg_build_packages": false,
             "vm_tests": [],
             "vm_tests_override": null
         },
@@ -527,7 +527,7 @@
                 "chromeless_tty",
                 "depthcharge"
             ],
-            "usepkg_build_packages": true,
+            "usepkg_build_packages": false,
             "vm_tests": [],
             "vm_tests_override": null
         },
@@ -636,7 +636,7 @@
             "useflags": [
                 "chromeless_tty"
             ],
-            "usepkg_build_packages": true,
+            "usepkg_build_packages": false,
             "vm_tests": [],
             "vm_tests_override": null
         },
@@ -7437,6 +7437,7 @@
         "useflags": [
             "chromeless_tty"
         ],
+        "usepkg_build_packages": false,
         "vm_tests": [],
         "vm_tests_override": null
     },
