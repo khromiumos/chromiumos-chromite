@@ -49604,44 +49604,6 @@
         "uprev": true,
         "vm_tests": []
     },
-    "scarlet-chrome-pre-flight-branch": {
-        "_template": "pre_flight_branch",
-        "boards": [
-            "scarlet"
-        ],
-        "chrome_rev": "stable_release",
-        "display_label": "factory",
-        "prebuilts": "private",
-        "sync_chrome": false,
-        "useflags": [
-            "-debug_fission",
-            "-thinlto",
-            "-transparent_hugepage",
-            "chrome_internal"
-        ],
-        "vm_tests_override": null
-    },
-    "scarlet-chrome-pre-flight-branch-tryjob": {
-        "_template": "pre_flight_branch",
-        "active_waterfall": "chromiumos.tryserver",
-        "boards": [
-            "scarlet"
-        ],
-        "chrome_rev": "stable_release",
-        "debug": true,
-        "display_label": "tryjob",
-        "hw_tests_override": null,
-        "prebuilts": "private",
-        "push_overlays": null,
-        "sync_chrome": false,
-        "useflags": [
-            "-debug_fission",
-            "-thinlto",
-            "-transparent_hugepage",
-            "chrome_internal"
-        ],
-        "vm_tests_override": null
-    },
     "scarlet-chromium-pfq": {
         "_template": "chromium_pfq",
         "boards": [
@@ -49850,6 +49812,44 @@
             "chrome_internal"
         ],
         "vm_tests": []
+    },
+    "scarlet-pre-flight-branch": {
+        "_template": "pre_flight_branch",
+        "boards": [
+            "scarlet"
+        ],
+        "chrome_rev": "stable_release",
+        "display_label": "factory",
+        "prebuilts": "private",
+        "sync_chrome": false,
+        "useflags": [
+            "-debug_fission",
+            "-thinlto",
+            "-transparent_hugepage",
+            "chrome_internal"
+        ],
+        "vm_tests_override": null
+    },
+    "scarlet-pre-flight-branch-tryjob": {
+        "_template": "pre_flight_branch",
+        "active_waterfall": "chromiumos.tryserver",
+        "boards": [
+            "scarlet"
+        ],
+        "chrome_rev": "stable_release",
+        "debug": true,
+        "display_label": "tryjob",
+        "hw_tests_override": null,
+        "prebuilts": "private",
+        "push_overlays": null,
+        "sync_chrome": false,
+        "useflags": [
+            "-debug_fission",
+            "-thinlto",
+            "-transparent_hugepage",
+            "chrome_internal"
+        ],
+        "vm_tests_override": null
     },
     "scarlet-release": {
         "_template": "release",
