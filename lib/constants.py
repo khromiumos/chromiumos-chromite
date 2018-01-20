@@ -328,7 +328,7 @@ DEFAULT_CTS_APFE_GSURI = 'gs://chromeos-cts-apfe/'
 
 ANDROID_BUCKET_URL = 'gs://android-build-chromeos/builds'
 ANDROID_MST_BUILD_BRANCH = 'git_master-arc-dev'
-ANDROID_NYC_BUILD_BRANCH = 'git_nyc-mr1-arc'
+ANDROID_NYC_BUILD_BRANCH = 'git_nyc-mr1-arc-m65'
 ANDROID_MST_BUILD_TARGETS = {
     'ARM_USERDEBUG': ('linux-cheets_arm-userdebug', r'\.zip$'),
     'X86_USERDEBUG': ('linux-cheets_x86-userdebug', r'\.zip$'),
