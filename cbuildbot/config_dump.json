@@ -20596,17 +20596,6 @@
             "chrome_internal"
         ]
     },
-    "scarlet-firmware": {
-        "_template": "firmware",
-        "boards": [
-            "scarlet"
-        ],
-        "manifest": "official.xml",
-        "useflags": [
-            "chrome_internal",
-            "chromeless_tty"
-        ]
-    },
     "scarlet-full": {
         "_template": "full",
         "boards": [

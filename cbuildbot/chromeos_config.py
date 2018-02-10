@@ -2635,7 +2635,6 @@ def GetConfig():
       'relm',
       'rikku',
       'samus',
-      'scarlet',
       'sentry',
       'setzer',
       'slippy',
