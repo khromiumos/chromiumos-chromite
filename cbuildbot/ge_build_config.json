@@ -878,6 +878,18 @@
       ]
     },
     {
+      "name": "scarlet",
+      "configs": [
+        {
+          "builder": "RELEASE",
+          "experimental": false,
+          "leader_board": true,
+          "board_group": "scarlet",
+          "arch": "ARM_INTERNAL"
+        }
+      ]
+    },
+    {
       "name": "sentry",
       "configs": [
         {
