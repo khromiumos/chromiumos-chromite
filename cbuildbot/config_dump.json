@@ -52745,7 +52745,7 @@
         "chrome_rev": "stable_release",
         "display_label": "firmware",
         "prebuilts": "private",
-        "sync_chrome": false,
+        "sync_chrome": true,
         "useflags": [
             "-debug_fission",
             "-thinlto",
@@ -52766,7 +52766,7 @@
         "hw_tests_override": null,
         "prebuilts": "private",
         "push_overlays": null,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "useflags": [
             "-debug_fission",
             "-thinlto",
