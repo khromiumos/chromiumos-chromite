@@ -1686,14 +1686,13 @@ def GeneralTemplates(site_config, ge_build_config):
       hwqual=False,
       factory_toolkit=False,
       packages=['virtual/chromeos-firmware'],
-      usepkg_build_packages=True,
+      usepkg_build_packages=False,
       sync_chrome=False,
       chrome_sdk=False,
       unittests=False,
       hw_tests=[],
-      hw_tests_override=None,
       dev_installer_prebuilts=False,
-      upload_hw_test_artifacts=True,
+      upload_hw_test_artifacts=False,
       upload_symbols=False,
       useflags=append_useflags(['chromeless_tty']),
       signer_tests=False,
@@ -3800,7 +3799,8 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
   """
   board_configs = CreateInternalBoardConfigs(
       site_config, boards_dict, ge_build_config)
-  hw_test_list = HWTestList(ge_build_config)
+  # This is not used in a firmware branch.
+  #hw_test_list = HWTestList(ge_build_config)
 
   site_config.AddWithoutTemplate(
       'success-build',
@@ -3956,20 +3956,20 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
 
   # *-pre-flight-branch builders are in chromeos_release waterfall.
   site_config.Add(
-      'samus-chrome-pre-flight-branch',
+      'poppy-pre-flight-branch',
       site_config.templates.pre_flight_branch,
-      display_label=config_lib.DISPLAY_LABEL_CHROME_PFQ,
-      boards=['samus'],
-      afdo_generate=True,
-      afdo_update_ebuild=True,
-      sync_chrome=True,
+      site_config.templates.firmware_base,
+      site_config.templates.no_hwtest_builder,
+      display_label=config_lib.DISPLAY_LABEL_FIRMWARE,
+      boards=['poppy'],
+      afdo_generate=False,
+      afdo_update_ebuild=False,
+      sync_chrome=False,
       chrome_rev=constants.CHROME_REV_STICKY,
-      hw_tests=[hw_test_list.AFDORecordTest()],
       useflags=append_useflags(['-transparent_hugepage',
                                 '-debug_fission',
                                 '-thinlto']),
       prebuilts=constants.PRIVATE,
-      archive_build_debug=True,
   )
 
   site_config.Add(
