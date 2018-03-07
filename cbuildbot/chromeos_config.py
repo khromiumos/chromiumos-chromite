@@ -3754,25 +3754,20 @@ def ApplyCustomOverrides(site_config, ge_build_config):
           'hw_tests': hw_test_list.SharedPoolPFQ(),
       },
 
-      # Currently factory and firmware branches will be created after DVT stage
-      # therefore we need signed factory shim or accessory_rwsig firmware from
-      # ToT temporarily.
+      # There are partial projects in firmware-poppy-10431.B which would need
+      # to sign firmware of accessory_rwsig therefore we need to explicitly
+      # override them here.
       #
-      # After factory and firmware branches are created, the configuation of
-      # this project should be removed.
-      # --- start from here ---
-      'poppy-release': {
-          'sign_types': ['recovery', 'accessory_rwsig', 'factory'],
+      # Projects with accessory_rwsig:
+      #   - Soraka
+      #   - Poppy (keep in ToT so far)
+      #
+      # Projects without accessory_rwsig:
+      #   - nautilus
+      #   - nami
+      'soraka-firmware': {
+          'sign_types': ['firmware', 'accessory_rwsig'],
       },
-
-      'soraka-release': {
-          'sign_types': ['recovery', 'accessory_rwsig', 'factory'],
-      },
-
-      'nautilus-release': {
-          'sign_types': ['recovery', 'accessory_rwsig', 'factory'],
-      },
-      # --- end from here ---
 
       'betty-release':
           site_config.templates.tast_vm_canary_tests,

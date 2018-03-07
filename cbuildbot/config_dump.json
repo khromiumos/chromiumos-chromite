@@ -39147,11 +39147,6 @@
             "nautilus"
         ],
         "important": true,
-        "sign_types": [
-            "recovery",
-            "accessory_rwsig",
-            "factory"
-        ],
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -39291,11 +39286,6 @@
         "important": true,
         "paygen": false,
         "push_image": false,
-        "sign_types": [
-            "recovery",
-            "accessory_rwsig",
-            "factory"
-        ],
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -47820,11 +47810,6 @@
             "poppy"
         ],
         "important": true,
-        "sign_types": [
-            "recovery",
-            "accessory_rwsig",
-            "factory"
-        ],
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -47964,11 +47949,6 @@
         "important": true,
         "paygen": false,
         "push_image": false,
-        "sign_types": [
-            "recovery",
-            "accessory_rwsig",
-            "factory"
-        ],
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -56147,7 +56127,11 @@
         "boards": [
             "soraka"
         ],
-        "manifest": "official.xml"
+        "manifest": "official.xml",
+        "sign_types": [
+            "firmware",
+            "accessory_rwsig"
+        ]
     },
     "soraka-firmware-tryjob": {
         "_template": "firmware",
@@ -56166,7 +56150,11 @@
         ],
         "hw_tests_override": null,
         "manifest": "official.xml",
-        "push_image": false
+        "push_image": false,
+        "sign_types": [
+            "firmware",
+            "accessory_rwsig"
+        ]
     },
     "soraka-full": {
         "_template": "full",
@@ -56302,11 +56290,6 @@
             "soraka"
         ],
         "important": true,
-        "sign_types": [
-            "recovery",
-            "accessory_rwsig",
-            "factory"
-        ],
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -56446,11 +56429,6 @@
         "important": true,
         "paygen": false,
         "push_image": false,
-        "sign_types": [
-            "recovery",
-            "accessory_rwsig",
-            "factory"
-        ],
         "vm_tests": [],
         "vm_tests_override": null
     },
