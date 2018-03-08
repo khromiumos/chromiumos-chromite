@@ -423,6 +423,7 @@
                 "chromeless_tty",
                 "depthcharge"
             ],
+            "usepkg_build_packages": false,
             "vm_tests": []
         },
         "depthcharge_full_firmware": {
@@ -458,6 +459,7 @@
                 "chromeless_tty",
                 "depthcharge"
             ],
+            "usepkg_build_packages": false,
             "vm_tests": []
         },
         "factory": {
@@ -537,6 +539,7 @@
                 "chrome_internal",
                 "chromeless_tty"
             ],
+            "usepkg_build_packages": false,
             "vm_tests": []
         },
         "full": {
@@ -52744,14 +52747,26 @@
         ],
         "chrome_rev": "stable_release",
         "display_label": "firmware",
+        "factory_toolkit": false,
+        "images": [],
+        "packages": [
+            "virtual/chromeos-firmware"
+        ],
         "prebuilts": "private",
-        "sync_chrome": true,
+        "sign_types": [
+            "firmware"
+        ],
+        "sync_chrome": false,
+        "unittests": false,
+        "upload_hw_test_artifacts": false,
         "useflags": [
             "-debug_fission",
             "-thinlto",
             "-transparent_hugepage",
-            "chrome_internal"
+            "chrome_internal",
+            "chromeless_tty"
         ],
+        "usepkg_build_packages": false,
         "vm_tests_override": null
     },
     "scarlet-pre-flight-branch-tryjob": {
@@ -52763,16 +52778,28 @@
         "chrome_rev": "stable_release",
         "debug": true,
         "display_label": "tryjob",
+        "factory_toolkit": false,
         "hw_tests_override": null,
+        "images": [],
+        "packages": [
+            "virtual/chromeos-firmware"
+        ],
         "prebuilts": "private",
         "push_overlays": null,
-        "sync_chrome": true,
+        "sign_types": [
+            "firmware"
+        ],
+        "sync_chrome": false,
+        "unittests": false,
+        "upload_hw_test_artifacts": false,
         "useflags": [
             "-debug_fission",
             "-thinlto",
             "-transparent_hugepage",
-            "chrome_internal"
+            "chrome_internal",
+            "chromeless_tty"
         ],
+        "usepkg_build_packages": false,
         "vm_tests_override": null
     },
     "scarlet-release": {
