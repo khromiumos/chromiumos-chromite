@@ -422,7 +422,7 @@ The suite job has another 2:39:39.789250 till timeout.
       cmd_result = self.RunHWTestSuite()
     self.assertEqual(cmd_result, (None, None))
     self.assertCommandCalled(self.create_cmd, capture_output=True,
-                             combine_stdout_stderr=True)
+                             combine_stdout_stderr=True, env=mock.ANY)
     self.assertIn(self.JOB_ID_OUTPUT, '\n'.join(output.GetStdoutLines()))
 
   def testRunHWTestSuiteMaximal(self):
@@ -458,9 +458,9 @@ The suite job has another 2:39:39.789250 till timeout.
                                        subsystems=self._subsystems)
     self.assertEqual(cmd_result, (None, None))
     self.assertCommandCalled(self.create_cmd, capture_output=True,
-                             combine_stdout_stderr=True)
+                             combine_stdout_stderr=True, env=mock.ANY)
     self.assertCommandCalled(self.wait_cmd, capture_output=True,
-                             combine_stdout_stderr=True)
+                             combine_stdout_stderr=True, env=mock.ANY)
     self.assertIn(self.WAIT_OUTPUT, '\n'.join(output.GetStdoutLines()))
     self.assertIn(self.JOB_ID_OUTPUT, '\n'.join(output.GetStdoutLines()))
 
@@ -509,7 +509,7 @@ The suite job has another 2:39:39.789250 till timeout.
       cmd_result = self.RunHWTestSuite(wait_for_results=True)
       self.assertIsInstance(cmd_result.to_raise, failures_lib.TestLabFailure)
       self.assertCommandCalled(self.json_dump_cmd, capture_output=True,
-                               combine_stdout_stderr=True)
+                               combine_stdout_stderr=True, env=mock.ANY)
 
   def testRunHWTestBoardNotAvailable(self):
     """Test RunHWTestSuite when BOARD_NOT_AVAILABLE is returned."""
@@ -563,9 +563,9 @@ The suite job has another 2:39:39.789250 till timeout.
     with self.OutputCapturer() as output:
       self.RunHWTestSuite(wait_for_results=self._wait_for_results)
       self.assertCommandCalled(self.create_cmd, capture_output=True,
-                               combine_stdout_stderr=True)
+                               combine_stdout_stderr=True, env=mock.ANY)
       self.assertCommandCalled(self.wait_cmd, capture_output=True,
-                               combine_stdout_stderr=True)
+                               combine_stdout_stderr=True, env=mock.ANY)
       self.assertIn(self.WAIT_RETRY_OUTPUT.strip(),
                     '\n'.join(output.GetStdoutLines()))
       self.assertIn(self.WAIT_OUTPUT, '\n'.join(output.GetStdoutLines()))
@@ -612,9 +612,9 @@ The suite job has another 2:39:39.789250 till timeout.
       with self.OutputCapturer() as output:
         self.RunHWTestSuite(wait_for_results=self._wait_for_results)
         self.assertCommandCalled(self.create_cmd, capture_output=True,
-                                 combine_stdout_stderr=True)
+                                 combine_stdout_stderr=True, env=mock.ANY)
         self.assertCommandCalled(self.json_dump_cmd, capture_output=True,
-                                 combine_stdout_stderr=True)
+                                 combine_stdout_stderr=True, env=mock.ANY)
         self.assertIn(self.JOB_ID_OUTPUT, '\n'.join(output.GetStdoutLines()))
         self.assertIn(self.JSON_OUTPUT, '\n'.join(output.GetStdoutLines()))
 
