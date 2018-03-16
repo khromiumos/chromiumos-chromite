@@ -19065,6 +19065,7 @@
     },
     "fizz-moblab-release": {
         "_template": "release",
+        "active_waterfall": "chromeos_release",
         "afdo_use": false,
         "boards": [
             "fizz-moblab"
@@ -33803,6 +33804,7 @@
             "falco-release",
             "falco_li-release",
             "fizz-accelerator-release",
+            "fizz-moblab-release",
             "fizz-release",
             "gale-release",
             "gandof-release",
@@ -33931,6 +33933,7 @@
             "falco-release",
             "falco_li-release",
             "fizz-accelerator-release",
+            "fizz-moblab-release",
             "fizz-release",
             "gale-release",
             "gandof-release",
