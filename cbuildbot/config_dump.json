@@ -33842,7 +33842,6 @@
             "peach_pit-release",
             "peppy-release",
             "plaso-release",
-            "poppy-release",
             "pyro-release",
             "quawks-release",
             "reef-release",
@@ -33971,7 +33970,6 @@
             "peach_pit-release",
             "peppy-release",
             "plaso-release",
-            "poppy-release",
             "pyro-release",
             "quawks-release",
             "reef-release",
@@ -44367,11 +44365,9 @@
     },
     "poppy-release": {
         "_template": "release",
-        "active_waterfall": "chromeos_release",
         "boards": [
             "poppy"
         ],
-        "important": true,
         "sign_types": [
             "recovery",
             "accessory_rwsig",
@@ -44513,7 +44509,6 @@
             "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"offload_failures_only\": false,\n    \"pool\": \"suites\",\n    \"priority\": \"PostBuild\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_args\": null,\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
         ],
         "hw_tests_override": null,
-        "important": true,
         "paygen": false,
         "push_image": false,
         "sign_types": [
