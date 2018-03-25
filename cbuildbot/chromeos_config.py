@@ -3842,7 +3842,9 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
   site_config.Add(
       'scarlet-pre-flight-branch',
       site_config.templates.pre_flight_branch,
-      site_config.templates.factory,
+      site_config.templates.no_vmtest_builder,
+      site_config.templates.no_hwtest_builder,
+      display_label=config_lib.DISPLAY_LABEL_FACTORY,
       boards=['scarlet'],
       sync_chrome=False,
       chrome_rev=constants.CHROME_REV_STICKY,

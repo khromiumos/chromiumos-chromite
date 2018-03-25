@@ -49815,85 +49815,40 @@
     },
     "scarlet-pre-flight-branch": {
         "_template": "pre_flight_branch",
-        "archive_build_debug": true,
-        "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
-        "binhost_bucket": "gs://chromeos-dev-installer",
-        "binhost_key": "RELEASE_BINHOST",
         "boards": [
             "scarlet"
         ],
-        "build_timeout": 28200,
-        "build_type": "canary",
         "chrome_rev": "stable_release",
-        "chrome_sdk_build_chrome": false,
-        "chromeos_official": true,
-        "description": "Factory Builds",
         "display_label": "factory",
-        "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
-        "images": [
-            "test",
-            "factory_install"
-        ],
-        "manifest": "official.xml",
         "prebuilts": "private",
-        "push_image": true,
-        "sign_types": [
-            "factory"
-        ],
-        "suite_scheduling": true,
         "sync_chrome": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
-            "-cros-debug",
             "-debug_fission",
             "-thinlto",
             "-transparent_hugepage",
             "chrome_internal"
         ],
-        "usepkg_build_packages": false,
         "vm_tests_override": null
     },
     "scarlet-pre-flight-branch-tryjob": {
         "_template": "pre_flight_branch",
         "active_waterfall": "chromiumos.tryserver",
-        "archive_build_debug": true,
-        "binhost_base_url": "https://commondatastorage.googleapis.com/chromeos-dev-installer",
-        "binhost_bucket": "gs://chromeos-dev-installer",
-        "binhost_key": "RELEASE_BINHOST",
         "boards": [
             "scarlet"
         ],
-        "build_timeout": 28200,
-        "build_type": "canary",
         "chrome_rev": "stable_release",
-        "chrome_sdk_build_chrome": false,
-        "chromeos_official": true,
         "debug": true,
-        "description": "Factory Builds",
         "display_label": "tryjob",
-        "doc": "http://www.chromium.org/chromium-os/build/builder-overview#TOC-Canaries",
         "hw_tests_override": null,
-        "images": [
-            "test",
-            "factory_install"
-        ],
-        "manifest": "official.xml",
         "prebuilts": "private",
         "push_overlays": null,
-        "sign_types": [
-            "factory"
-        ],
-        "suite_scheduling": true,
         "sync_chrome": false,
-        "upload_hw_test_artifacts": false,
         "useflags": [
-            "-cros-debug",
             "-debug_fission",
             "-thinlto",
             "-transparent_hugepage",
             "chrome_internal"
         ],
-        "usepkg_build_packages": false,
         "vm_tests_override": null
     },
     "scarlet-release": {
