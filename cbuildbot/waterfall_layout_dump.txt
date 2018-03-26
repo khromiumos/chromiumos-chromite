@@ -288,8 +288,8 @@ zoombini-release (gce_beefy)
 config-updater (gce_wimpy)
 
 == chromeos_release ==
+nautilus-pre-flight-branch (gce_beefy)
 reef-android-nyc-pre-flight-branch (gce_beefy)
-samus-chrome-pre-flight-branch (gce_beefy)
 
 == chromiumos ==
 amd64-generic-asan (baremetal)
@@ -1795,6 +1795,7 @@ nautilus-no-vmtest-pre-cq (gce_beefy)
 nautilus-paladin-tryjob (gce_beefy)
 nautilus-payloads (gce_beefy)
 nautilus-pre-cq (gce_beefy)
+nautilus-pre-flight-branch-tryjob (gce_beefy)
 nautilus-release-afdo-generate-tryjob (gce_beefy)
 [nautilus-release-afdo-tryjob] (gce_beefy)
   nautilus-release-afdo-generate
@@ -2314,7 +2315,6 @@ rowan-release-afdo-use-tryjob (gce_beefy)
 rowan-release-tryjob (gce_beefy)
 rowan-unittest-stress (gce_beefy)
 samus-chrome-pfq-tryjob (gce_beefy)
-samus-chrome-pre-flight-branch-tryjob (gce_beefy)
 samus-chromium-pfq-tryjob (gce_beefy)
 samus-compile-only-pre-cq (gce_beefy)
 samus-factory-tryjob (gce_beefy)
