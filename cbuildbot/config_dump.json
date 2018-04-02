@@ -12706,9 +12706,7 @@
             "{\n    \"lab_board_name\": \"coral\",\n    \"name\": \"robo\",\n    \"test_suites\": [\n        \"bvt-inline\",\n        \"bvt-installer\",\n        \"bvt-arc\",\n        \"bvt-cq\",\n        \"bvt-perbuild\",\n        \"arc-cts-qual\",\n        \"arc-gts-qual\"\n    ]\n}",
             "{\n    \"lab_board_name\": \"coral\",\n    \"name\": \"robo360\",\n    \"test_suites\": [\n        \"bvt-inline\",\n        \"bvt-installer\",\n        \"bvt-arc\",\n        \"bvt-cq\",\n        \"bvt-perbuild\",\n        \"arc-cts-qual\",\n        \"arc-gts-qual\"\n    ]\n}",
             "{\n    \"lab_board_name\": \"coral\",\n    \"name\": \"santa\",\n    \"test_suites\": [\n        \"bvt-inline\",\n        \"bvt-installer\",\n        \"bvt-arc\",\n        \"bvt-cq\",\n        \"bvt-perbuild\",\n        \"arc-cts-qual\",\n        \"arc-gts-qual\"\n    ]\n}",
-            "{\n    \"lab_board_name\": \"coral\",\n    \"name\": \"whitetip\",\n    \"test_suites\": []\n}",
-            "{\n    \"lab_board_name\": \"coral\",\n    \"name\": \"whitetip1\",\n    \"test_suites\": []\n}",
-            "{\n    \"lab_board_name\": \"coral\",\n    \"name\": \"whitetip2\",\n    \"test_suites\": []\n}"
+            "{\n    \"lab_board_name\": \"coral\",\n    \"name\": \"whitetip\",\n    \"test_suites\": []\n}"
         ],
         "vm_tests": [],
         "vm_tests_override": null
@@ -12862,9 +12860,7 @@
             "{\n    \"lab_board_name\": \"coral\",\n    \"name\": \"robo\",\n    \"test_suites\": [\n        \"bvt-inline\",\n        \"bvt-installer\",\n        \"bvt-arc\",\n        \"bvt-cq\",\n        \"bvt-perbuild\",\n        \"arc-cts-qual\",\n        \"arc-gts-qual\"\n    ]\n}",
             "{\n    \"lab_board_name\": \"coral\",\n    \"name\": \"robo360\",\n    \"test_suites\": [\n        \"bvt-inline\",\n        \"bvt-installer\",\n        \"bvt-arc\",\n        \"bvt-cq\",\n        \"bvt-perbuild\",\n        \"arc-cts-qual\",\n        \"arc-gts-qual\"\n    ]\n}",
             "{\n    \"lab_board_name\": \"coral\",\n    \"name\": \"santa\",\n    \"test_suites\": [\n        \"bvt-inline\",\n        \"bvt-installer\",\n        \"bvt-arc\",\n        \"bvt-cq\",\n        \"bvt-perbuild\",\n        \"arc-cts-qual\",\n        \"arc-gts-qual\"\n    ]\n}",
-            "{\n    \"lab_board_name\": \"coral\",\n    \"name\": \"whitetip\",\n    \"test_suites\": []\n}",
-            "{\n    \"lab_board_name\": \"coral\",\n    \"name\": \"whitetip1\",\n    \"test_suites\": []\n}",
-            "{\n    \"lab_board_name\": \"coral\",\n    \"name\": \"whitetip2\",\n    \"test_suites\": []\n}"
+            "{\n    \"lab_board_name\": \"coral\",\n    \"name\": \"whitetip\",\n    \"test_suites\": []\n}"
         ],
         "paygen": false,
         "push_image": false,
