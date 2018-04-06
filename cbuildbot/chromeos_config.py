@@ -2231,13 +2231,13 @@ def _GetConfig(site_config, board_configs, hw_test_list):
       site_config.templates.pre_flight_branch,
       site_config.templates.firmware_base,
       site_config.templates.no_hwtest_builder,
-      master=True,
+      master=False,
       push_overlays=constants.BOTH_OVERLAYS,
       boards=['falco'],
       android_rev=constants.ANDROID_REV_LATEST,
       afdo_generate=False,
       afdo_update_ebuild=False,
-      sync_chrome=False,
+      usepkg_build_packages=False,
   )
 
   # Create our unittest stress build configs (used for tryjobs only)

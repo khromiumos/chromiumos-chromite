@@ -8383,7 +8383,6 @@
         "factory_toolkit": false,
         "hw_tests_override": [],
         "images": [],
-        "master": true,
         "packages": [
             "virtual/chromeos-firmware"
         ],
@@ -8398,6 +8397,7 @@
             "chrome_internal",
             "chromeless_tty"
         ],
+        "usepkg_build_packages": false,
         "vm_tests": [],
         "vm_tests_override": null
     },
