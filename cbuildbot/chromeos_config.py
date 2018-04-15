@@ -3813,14 +3813,6 @@ def ApplyCustomOverrides(site_config, ge_build_config):
           'useflags': append_useflags(['thinlto']),
       },
 
-      'terra-release': {
-          'useflags': append_useflags(['cfi']),
-      },
-
-      'caroline-release': {
-          'useflags': append_useflags(['cfi']),
-      },
-
       'chell-chrome-pfq': {
           'afdo_generate': True,
           'archive_build_debug': True,
