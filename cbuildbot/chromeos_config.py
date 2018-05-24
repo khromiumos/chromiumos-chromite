@@ -2234,7 +2234,6 @@ def _GetConfig(site_config, board_configs, hw_test_list):
       master=True,
       push_overlays=constants.BOTH_OVERLAYS,
       boards=['falco'],
-      android_rev=constants.ANDROID_REV_LATEST,
       afdo_generate=False,
       afdo_update_ebuild=False,
       sync_chrome=False,
