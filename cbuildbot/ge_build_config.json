@@ -458,18 +458,6 @@
       ]
     },
     {
-      "name": "jadeite",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": true,
-          "board_group": "",
-          "arch": "X86_INTERNAL"
-        }
-      ]
-    },
-    {
       "name": "kefka",
       "configs": [
         {
