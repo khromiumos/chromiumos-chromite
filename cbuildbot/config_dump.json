@@ -52792,7 +52792,7 @@
         ],
         "important": true,
         "models": [
-            "{\n    \"lab_board_name\": \"soraka\",\n    \"name\": \"soraka\",\n    \"test_suites\": []\n}"
+            "{\n    \"lab_board_name\": \"soraka\",\n    \"name\": \"soraka\",\n    \"test_suites\": [\n        \"sanity\",\n        \"bvt-inline\",\n        \"bvt-installer\",\n        \"bvt-arc\",\n        \"au\",\n        \"bvt-cq\",\n        \"bvt-perbuild\",\n        \"arc-cts-qual\",\n        \"arc-gts-qual\"\n    ]\n}"
         ],
         "sign_types": [
             "recovery",
@@ -52937,7 +52937,7 @@
         "hw_tests_override": null,
         "important": true,
         "models": [
-            "{\n    \"lab_board_name\": \"soraka\",\n    \"name\": \"soraka\",\n    \"test_suites\": []\n}"
+            "{\n    \"lab_board_name\": \"soraka\",\n    \"name\": \"soraka\",\n    \"test_suites\": [\n        \"sanity\",\n        \"bvt-inline\",\n        \"bvt-installer\",\n        \"bvt-arc\",\n        \"au\",\n        \"bvt-cq\",\n        \"bvt-perbuild\",\n        \"arc-cts-qual\",\n        \"arc-gts-qual\"\n    ]\n}"
         ],
         "paygen": false,
         "push_image": false,
