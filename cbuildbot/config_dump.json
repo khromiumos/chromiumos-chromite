@@ -46650,8 +46650,8 @@
         ],
         "important": true,
         "models": [
-            "{\n    \"lab_board_name\": \"reef\",\n    \"name\": \"basking\",\n    \"test_suites\": []\n}",
-            "{\n    \"lab_board_name\": \"reef\",\n    \"name\": \"electro\",\n    \"test_suites\": []\n}",
+            "{\n    \"lab_board_name\": \"reef\",\n    \"name\": \"basking\",\n    \"test_suites\": [\n        \"sanity\",\n        \"bvt-inline\",\n        \"bvt-installer\",\n        \"bvt-arc\",\n        \"au\",\n        \"bvt-cq\",\n        \"bvt-perbuild\",\n        \"arc-cts-qual\",\n        \"arc-gts-qual\"\n    ]\n}",
+            "{\n    \"lab_board_name\": \"reef\",\n    \"name\": \"electro\",\n    \"test_suites\": [\n        \"sanity\",\n        \"bvt-inline\",\n        \"bvt-installer\",\n        \"bvt-arc\",\n        \"au\",\n        \"bvt-cq\",\n        \"bvt-perbuild\",\n        \"arc-cts-qual\",\n        \"arc-gts-qual\"\n    ]\n}",
             "{\n    \"lab_board_name\": \"reef\",\n    \"name\": \"reef\",\n    \"test_suites\": [\n        \"sanity\",\n        \"bvt-inline\",\n        \"bvt-installer\",\n        \"bvt-arc\",\n        \"au\",\n        \"bvt-cq\",\n        \"bvt-perbuild\",\n        \"arc-cts-qual\",\n        \"arc-gts-qual\"\n    ]\n}"
         ],
         "vm_tests": [],
@@ -46792,8 +46792,8 @@
         "hw_tests_override": null,
         "important": true,
         "models": [
-            "{\n    \"lab_board_name\": \"reef\",\n    \"name\": \"basking\",\n    \"test_suites\": []\n}",
-            "{\n    \"lab_board_name\": \"reef\",\n    \"name\": \"electro\",\n    \"test_suites\": []\n}",
+            "{\n    \"lab_board_name\": \"reef\",\n    \"name\": \"basking\",\n    \"test_suites\": [\n        \"sanity\",\n        \"bvt-inline\",\n        \"bvt-installer\",\n        \"bvt-arc\",\n        \"au\",\n        \"bvt-cq\",\n        \"bvt-perbuild\",\n        \"arc-cts-qual\",\n        \"arc-gts-qual\"\n    ]\n}",
+            "{\n    \"lab_board_name\": \"reef\",\n    \"name\": \"electro\",\n    \"test_suites\": [\n        \"sanity\",\n        \"bvt-inline\",\n        \"bvt-installer\",\n        \"bvt-arc\",\n        \"au\",\n        \"bvt-cq\",\n        \"bvt-perbuild\",\n        \"arc-cts-qual\",\n        \"arc-gts-qual\"\n    ]\n}",
             "{\n    \"lab_board_name\": \"reef\",\n    \"name\": \"reef\",\n    \"test_suites\": [\n        \"sanity\",\n        \"bvt-inline\",\n        \"bvt-installer\",\n        \"bvt-arc\",\n        \"au\",\n        \"bvt-cq\",\n        \"bvt-perbuild\",\n        \"arc-cts-qual\",\n        \"arc-gts-qual\"\n    ]\n}"
         ],
         "paygen": false,
