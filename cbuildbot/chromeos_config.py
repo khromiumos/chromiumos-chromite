@@ -556,6 +556,7 @@ _x86_internal_release_boards = frozenset([
     'falco',
     'falco_li',
     'fizz',
+    'fizz-accelerator',
     'gandof',
     'glados',
     'glimmer',
@@ -695,6 +696,7 @@ _cheets_x86_boards = frozenset([
 ])
 
 _accelerator_boards = frozenset([
+    'fizz-accelerator',
     'guado-accelerator',
 ])
 
