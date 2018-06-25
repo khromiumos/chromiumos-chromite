@@ -696,7 +696,6 @@ _cheets_x86_boards = frozenset([
 ])
 
 _accelerator_boards = frozenset([
-    'fizz-accelerator',
     'guado-accelerator',
 ])
 
