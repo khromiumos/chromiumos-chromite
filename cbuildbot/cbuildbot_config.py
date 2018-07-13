@@ -3126,6 +3126,7 @@ _factory_release.add_config('auron_yuna-factory',
 
 _factory_release.add_config('buddy-factory',
   vm_tests=None,
+  sync_chrome=True,
   boards=['buddy'],
 )
 
