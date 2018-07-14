@@ -7920,9 +7920,6 @@
     },
     "eve-pre-flight-branch": {
         "_template": "pre_flight_branch",
-        "android_import_branch": "git_nyc-mr1-arc",
-        "android_package": "android-container-nyc",
-        "android_rev": "latest_release",
         "boards": [
             "eve"
         ],
