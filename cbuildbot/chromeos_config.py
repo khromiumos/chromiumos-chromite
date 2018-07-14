@@ -3776,9 +3776,6 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
       display_label=config_lib.DISPLAY_LABEL_CHROME_PFQ,
       boards=['coral'],
       sync_chrome=True,
-      android_rev=constants.ANDROID_REV_LATEST,
-      android_package='android-container-nyc',
-      android_import_branch=constants.ANDROID_NYC_BUILD_BRANCH,
       prebuilts=False,
   )
 

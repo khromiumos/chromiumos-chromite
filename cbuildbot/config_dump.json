@@ -12776,9 +12776,6 @@
     },
     "coral-pre-flight-branch": {
         "_template": "pre_flight_branch",
-        "android_import_branch": "git_nyc-mr1-arc",
-        "android_package": "android-container-nyc",
-        "android_rev": "latest_release",
         "boards": [
             "coral"
         ],
@@ -12789,9 +12786,6 @@
     "coral-pre-flight-branch-tryjob": {
         "_template": "pre_flight_branch",
         "active_waterfall": "chromiumos.tryserver",
-        "android_import_branch": "git_nyc-mr1-arc",
-        "android_package": "android-container-nyc",
-        "android_rev": "latest_release",
         "boards": [
             "coral"
         ],
