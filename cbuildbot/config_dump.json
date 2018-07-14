@@ -10680,7 +10680,6 @@
     },
     "gru-pre-flight-branch": {
         "_template": "pre-flight-branch",
-        "android_rev": "latest_release",
         "boards": [
             "gru"
         ],
