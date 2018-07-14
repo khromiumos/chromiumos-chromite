@@ -3492,7 +3492,6 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
       master=True,
       push_overlays=constants.BOTH_OVERLAYS,
       boards=['samus'],
-      android_rev=constants.ANDROID_REV_LATEST,
       afdo_generate=True,
       afdo_update_ebuild=True,
       vm_tests=[],
