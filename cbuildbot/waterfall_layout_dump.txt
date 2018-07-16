@@ -292,7 +292,7 @@ zoombini-paladin (gce_beefy)
 zoombini-release (gce_beefy)
 
 == chromeos_release ==
-nami-chrome-pre-flight-branch (gce_beefy)
+nami-pre-flight-branch (gce_beefy)
 reef-android-nyc-pre-flight-branch (gce_beefy)
 
 == chromiumos ==
@@ -2069,7 +2069,6 @@ monroe-tot-chrome-pfq-informational-tryjob (gce_beefy)
 monroe-tot-chromium-pfq-informational-tryjob (gce_beefy)
 monroe-unittest-stress (gce_beefy)
 nami-chrome-pfq-tryjob (gce_beefy)
-nami-chrome-pre-flight-branch-tryjob (gce_beefy)
 nami-chromium-pfq-tryjob (gce_beefy)
 nami-compile-only-pre-cq (gce_beefy)
 nami-factory-tryjob (gce_beefy)
@@ -2081,6 +2080,7 @@ nami-no-vmtest-pre-cq (gce_beefy)
 nami-paladin-tryjob (gce_beefy)
 nami-payloads (gce_beefy)
 nami-pre-cq (gce_beefy)
+nami-pre-flight-branch-tryjob (gce_beefy)
 nami-release-afdo-generate-tryjob (gce_beefy)
 [nami-release-afdo-tryjob] (gce_beefy)
   nami-release-afdo-generate

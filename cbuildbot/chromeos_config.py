@@ -4085,7 +4085,7 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
 
   # *-pre-flight-branch builders are in chromeos_release waterfall.
   site_config.Add(
-      'nami-chrome-pre-flight-branch',
+      'nami-pre-flight-branch',
       site_config.templates.pre_flight_branch,
       site_config.templates.no_vmtest_builder,
       site_config.templates.no_hwtest_builder,
