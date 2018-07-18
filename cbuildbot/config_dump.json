@@ -1821,7 +1821,7 @@
         "name": "banjo-factory",
         "overlays": "both",
         "push_image": true,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
@@ -4106,7 +4106,7 @@
         "name": "candy-factory",
         "overlays": "both",
         "push_image": true,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
@@ -4541,7 +4541,7 @@
         "name": "clapper-factory",
         "overlays": "both",
         "push_image": true,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
@@ -4910,7 +4910,7 @@
         "name": "cranky-factory",
         "overlays": "both",
         "push_image": true,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
@@ -5283,7 +5283,7 @@
         "name": "daisy-factory",
         "overlays": "both",
         "push_image": true,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "tests_supported": false,
         "unittests": false,
         "upload_hw_test_artifacts": false,
@@ -7108,7 +7108,7 @@
         "name": "enguarde-factory",
         "overlays": "both",
         "push_image": true,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
@@ -7530,7 +7530,7 @@
         "name": "expresso-factory",
         "overlays": "both",
         "push_image": true,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
@@ -8723,7 +8723,7 @@
         "name": "glimmer-factory",
         "overlays": "both",
         "push_image": true,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
@@ -9145,7 +9145,7 @@
         "name": "gnawty-factory",
         "overlays": "both",
         "push_image": true,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
@@ -9514,7 +9514,7 @@
         "name": "heli-factory",
         "overlays": "both",
         "push_image": true,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
@@ -10112,7 +10112,7 @@
         "name": "kip-factory",
         "overlays": "both",
         "push_image": true,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
@@ -13426,7 +13426,7 @@
         "name": "ninja-factory",
         "overlays": "both",
         "push_image": true,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
@@ -15560,7 +15560,7 @@
         "name": "orco-factory",
         "overlays": "both",
         "push_image": true,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
@@ -19453,7 +19453,7 @@
         "name": "quawks-factory",
         "overlays": "both",
         "push_image": true,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
@@ -20650,7 +20650,7 @@
         "name": "rambi-factory",
         "overlays": "both",
         "push_image": true,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
@@ -22984,7 +22984,7 @@
         "name": "squawks-factory",
         "overlays": "both",
         "push_image": true,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
@@ -24198,7 +24198,7 @@
         "name": "sumo-factory",
         "overlays": "both",
         "push_image": true,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
@@ -24567,7 +24567,7 @@
         "name": "swanky-factory",
         "overlays": "both",
         "push_image": true,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
@@ -26244,7 +26244,7 @@
         "name": "winky-factory",
         "overlays": "both",
         "push_image": true,
-        "sync_chrome": false,
+        "sync_chrome": true,
         "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
