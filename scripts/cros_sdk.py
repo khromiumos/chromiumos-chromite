@@ -99,7 +99,7 @@ def FetchRemoteTarballs(storage_dir, urls):
     print('Attempting download: %s' % url)
     result = retry_util.RunCurl(
         ['-I', url], fail=False, capture_output=False, redirect_stdout=True,
-        redirect_stderr=True, print_cmd=False, debug_level=logging.NOTICE)
+        redirect_stderr=True, print_cmd=False, debug_level=logging.INFO)
     successful = False
     for header in result.output.splitlines():
       # We must walk the output to find the 200 code for use cases where
@@ -126,7 +126,7 @@ def FetchRemoteTarballs(storage_dir, urls):
   if current_size < content_length:
     retry_util.RunCurl(
         ['-L', '-y', '30', '-C', '-', '--output', tarball_dest, url],
-        print_cmd=False, capture_output=False, debug_level=logging.NOTICE)
+        print_cmd=False, capture_output=False, debug_level=logging.INFO)
 
   # Cleanup old tarballs now since we've successfull fetched; only cleanup
   # the tarballs for our prefix, or unknown ones.
