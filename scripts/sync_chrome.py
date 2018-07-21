@@ -43,8 +43,7 @@ def SyncChrome(gclient_path, options):
   gclient.WriteConfigFile(gclient_path, options.chrome_root,
                           options.internal, options.version,
                           options.gclient_template)
-  functools.partial(
-      gclient.Sync, gclient_path, options.chrome_root, reset=options.reset)
+  gclient.Sync(gclient_path, options.chrome_root, reset=options.reset)
 
 
 def main(argv):
