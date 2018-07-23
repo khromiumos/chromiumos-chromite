@@ -2976,6 +2976,7 @@ _factory_release = _release.derive(
   description='Factory Builds',
   paygen=False,
   afdo_use=False,
+  unittests=False,
 )
 
 _firmware = _config(

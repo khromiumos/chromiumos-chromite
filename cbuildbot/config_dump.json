@@ -1475,6 +1475,7 @@
         "push_image": true,
         "signer_tests": true,
         "trybot_list": true,
+        "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
@@ -2320,6 +2321,7 @@
         "push_image": true,
         "signer_tests": true,
         "trybot_list": true,
+        "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
@@ -2852,6 +2854,7 @@
         "push_image": true,
         "signer_tests": true,
         "trybot_list": true,
+        "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
@@ -6208,7 +6211,9 @@
         "overlays": "both",
         "push_image": true,
         "signer_tests": true,
+        "sync_chrome": true,
         "trybot_list": true,
+        "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
@@ -8480,6 +8485,7 @@
         "push_image": true,
         "signer_tests": true,
         "trybot_list": true,
+        "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
@@ -19415,6 +19421,7 @@
         "push_image": true,
         "signer_tests": true,
         "trybot_list": true,
+        "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
@@ -20421,6 +20428,7 @@
         "push_image": true,
         "signer_tests": true,
         "trybot_list": true,
+        "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
@@ -24667,6 +24675,7 @@
         "push_image": true,
         "signer_tests": true,
         "trybot_list": true,
+        "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
@@ -43007,6 +43016,7 @@
         "push_image": true,
         "signer_tests": true,
         "trybot_list": true,
+        "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
@@ -52643,6 +52653,7 @@
         "push_image": true,
         "signer_tests": true,
         "trybot_list": true,
+        "unittests": false,
         "upload_hw_test_artifacts": false,
         "useflags": [
             "-cros-debug",
