@@ -2005,6 +2005,7 @@ internal_incremental = internal.derive(
 internal_pfq_branch.add_config('auron-pre-flight-branch',
   master=True,
   vm_tests=None,
+  unittests=False,
   push_overlays=constants.BOTH_OVERLAYS,
   boards=['auron'],
 )
