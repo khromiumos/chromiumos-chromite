@@ -1506,7 +1506,6 @@ grunt-no-vmtest-pre-cq (gce_beefy)
 grunt-paladin-tryjob (gce_beefy)
 grunt-payloads (gce_beefy)
 grunt-pre-cq (gce_beefy)
-grunt-release (gce_beefy)
 grunt-release-afdo-generate-tryjob (gce_beefy)
 [grunt-release-afdo-tryjob] (gce_beefy)
   grunt-release-afdo-generate
