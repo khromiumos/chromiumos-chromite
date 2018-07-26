@@ -2138,7 +2138,6 @@ meowth-no-vmtest-pre-cq (gce_beefy)
 meowth-paladin-tryjob (gce_beefy)
 meowth-payloads (gce_beefy)
 meowth-pre-cq (gce_beefy)
-meowth-release (gce_beefy)
 meowth-release-afdo-generate-tryjob (gce_beefy)
 [meowth-release-afdo-tryjob] (gce_beefy)
   meowth-release-afdo-generate
