@@ -19,14 +19,18 @@ from chromite.lib import path_util
 REFRESH_STATUS_CODES = [401]
 
 
-def _GetAuthUtil(instance_id='latest'):
+# crbug:871831 default to last sha1 version.
+def _GetAuthUtil(
+    instance_id='git_revision:fd059ace316e4dbcaa5afdcec9ed4a855c4f3c65'):
   """Returns a path to the authutil binary.
 
   This will download and install the authutil package if it is not already
   deployed.
 
   Args:
-    instance_id: The instance-id of the package to install. Defaults to 'latest'
+    instance_id: The instance-id of the package to install. Defaults to
+    'git_revision:fd059ace316e4dbcaa5afdcec9ed4a855c4f3c65' which is the last
+    SHA1 version.
 
   Returns:
     the path to the authutil binary.
