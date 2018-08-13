@@ -1126,7 +1126,6 @@ eve-arcnext-payloads (gce_beefy)
 eve-arcnext-pi-android-pfq (gce_beefy)
 eve-arcnext-pi-android-pfq-tryjob (gce_beefy)
 eve-arcnext-pre-cq (gce_beefy)
-eve-arcnext-release (gce_beefy)
 eve-arcnext-release-afdo-generate-tryjob (gce_beefy)
 [eve-arcnext-release-afdo-tryjob] (gce_beefy)
   eve-arcnext-release-afdo-generate
