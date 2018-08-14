@@ -3852,6 +3852,7 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
                                 '-debug_fission',
                                 '-thinlto']),
       prebuilts=constants.PRIVATE,
+      archive_build_debug=True,
   )
 
   site_config.Add(
