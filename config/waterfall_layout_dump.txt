@@ -2711,7 +2711,6 @@ plaso-no-vmtest-pre-cq (gce_beefy)
 plaso-paladin-tryjob (gce_beefy)
 plaso-payloads (gce_beefy)
 plaso-pre-cq (gce_beefy)
-plaso-release (gce_beefy)
 plaso-release-afdo-generate-tryjob (gce_beefy)
 [plaso-release-afdo-tryjob] (gce_beefy)
   plaso-release-afdo-generate
