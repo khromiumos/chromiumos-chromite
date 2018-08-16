@@ -49815,7 +49815,6 @@
     },
     "scarlet-pre-flight-branch": {
         "_template": "pre_flight_branch",
-        "archive_build_debug": true,
         "boards": [
             "scarlet"
         ],
@@ -49834,7 +49833,6 @@
     "scarlet-pre-flight-branch-tryjob": {
         "_template": "pre_flight_branch",
         "active_waterfall": "chromiumos.tryserver",
-        "archive_build_debug": true,
         "boards": [
             "scarlet"
         ],
