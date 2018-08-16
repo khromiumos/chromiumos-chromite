@@ -24,18 +24,14 @@ RETRY_GET_ACCESS_TOKEN = 3
 class AccessTokenError(Exception):
   """Error accessing the token."""
 
-# crbug:871831 default to last sha1 version.
-def GetAuthUtil(
-    instance_id='git_revision:fd059ace316e4dbcaa5afdcec9ed4a855c4f3c65'):
+def GetAuthUtil(instance_id='latest'):
   """Returns a path to the authutil binary.
 
   This will download and install the authutil package if it is not already
   deployed.
 
   Args:
-    instance_id: The instance-id of the package to install. Defaults to
-    'git_revision:fd059ace316e4dbcaa5afdcec9ed4a855c4f3c65' which is the last
-    SHA1 version.
+    instance_id: The instance-id of the package to install. Defaults to 'latest'
 
   Returns:
     the path to the authutil binary.
