@@ -96,9 +96,11 @@ wolf-paladin (gce_beefy)
 wooten-paladin (gce_beefy)
 zoombini-paladin (gce_beefy)
 
+== chromeos.branch ==
+nocturne-pre-flight-branch (gce_beefy)
+
 == chromeos_release ==
 reef-android-nyc-pre-flight-branch (gce_beefy)
-samus-chrome-pre-flight-branch (gce_beefy)
 
 == chromiumos ==
 amd64-generic-incremental (gce_beefy)
@@ -2053,6 +2055,7 @@ nocturne-payloads (gce_beefy)
 nocturne-pi-android-pfq (gce_beefy)
 nocturne-pi-android-pfq-tryjob (gce_beefy)
 nocturne-pre-cq (gce_beefy)
+nocturne-pre-flight-branch-tryjob (gce_beefy)
 nocturne-release (gce_beefy)
 nocturne-release-afdo-generate-tryjob (gce_beefy)
 [nocturne-release-afdo-tryjob] (gce_beefy)
@@ -2586,7 +2589,6 @@ romer-release (gce_beefy)
 romer-release-tryjob (gce_beefy)
 romer-unittest-stress (gce_beefy)
 samus-chrome-pfq-tryjob (gce_beefy)
-samus-chrome-pre-flight-branch-tryjob (gce_beefy)
 samus-chromium-pfq-tryjob (gce_beefy)
 samus-compile-only-pre-cq (gce_beefy)
 samus-factory-tryjob (gce_beefy)
