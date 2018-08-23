@@ -4039,6 +4039,7 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
   site_config.Add(
       'nocturne-pre-flight-branch',
       site_config.templates.pre_flight_branch,
+      site_config.templates.firmware_base,
       site_config.templates.no_hwtest_builder,
       display_label=config_lib.DISPLAY_LABEL_FIRMWARE,
       boards=['nocturne'],
