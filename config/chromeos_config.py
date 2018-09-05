@@ -1492,11 +1492,12 @@ def GeneralTemplates(site_config, ge_build_config):
       hwqual=False,
       factory_toolkit=False,
       packages=['virtual/chromeos-firmware'],
-      usepkg_build_packages=False,
+      usepkg_build_packages=True,
       sync_chrome=False,
       chrome_sdk=False,
       unittests=False,
       hw_tests=[],
+      hw_tests_override=None,
       dev_installer_prebuilts=False,
       upload_hw_test_artifacts=False,
       upload_symbols=False,
@@ -3977,8 +3978,7 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
   """
   board_configs = CreateInternalBoardConfigs(
       site_config, boards_dict, ge_build_config)
-#  No need to use this variable on firmware branch
-#  hw_test_list = HWTestList(ge_build_config)
+  hw_test_list = HWTestList(ge_build_config)
 
   site_config.AddWithoutTemplate(
       'success-build',
@@ -4148,12 +4148,15 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
       afdo_update_ebuild=False,
       sync_chrome=False,
       chrome_rev=constants.CHROME_REV_STICKY,
+      hw_tests=[hw_test_list.AFDORecordTest()],
       useflags=append_useflags(['-transparent_hugepage',
                                 '-debug_fission',
                                 '-thinlto',
                                 '-cfi']),
       prebuilts=constants.PRIVATE,
       archive_build_debug=True,
+      usepkg_build_packages=False,
+      active_waterfall=waterfall.WATERFALL_BRANCH,
   )
 
   site_config.Add(

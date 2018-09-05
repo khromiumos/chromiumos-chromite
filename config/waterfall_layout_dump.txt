@@ -96,8 +96,10 @@ wolf-paladin (gce_beefy)
 wooten-paladin (gce_beefy)
 zoombini-paladin (gce_beefy)
 
-== chromeos_release ==
+== chromeos.branch ==
 grunt-pre-flight-branch (gce_beefy)
+
+== chromeos_release ==
 reef-android-nyc-pre-flight-branch (gce_beefy)
 
 == chromiumos ==
