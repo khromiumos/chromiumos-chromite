@@ -96,9 +96,11 @@ wolf-paladin (gce_beefy)
 wooten-paladin (gce_beefy)
 zoombini-paladin (gce_beefy)
 
+== chromeos.branch ==
+servo-pre-flight-branch (gce_beefy)
+
 == chromeos_release ==
 reef-android-nyc-pre-flight-branch (gce_beefy)
-samus-chrome-pre-flight-branch (gce_beefy)
 
 == chromiumos ==
 amd64-generic-incremental (gce_beefy)
@@ -2593,7 +2595,6 @@ romer-release (gce_beefy)
 romer-release-tryjob (gce_beefy)
 romer-unittest-stress (gce_beefy)
 samus-chrome-pfq-tryjob (gce_beefy)
-samus-chrome-pre-flight-branch-tryjob (gce_beefy)
 samus-chromium-pfq-tryjob (gce_beefy)
 samus-compile-only-pre-cq (gce_beefy)
 samus-factory-tryjob (gce_beefy)
@@ -2696,6 +2697,7 @@ sentry-release-tryjob (gce_beefy)
 sentry-tot-chrome-pfq-informational-tryjob (gce_beefy)
 sentry-tot-chromium-pfq-informational-tryjob (gce_beefy)
 sentry-unittest-stress (gce_beefy)
+servo-pre-flight-branch-tryjob (gce_beefy)
 setzer-chrome-pfq-tryjob (gce_beefy)
 setzer-chromium-pfq-tryjob (gce_beefy)
 setzer-compile-only-pre-cq (gce_beefy)

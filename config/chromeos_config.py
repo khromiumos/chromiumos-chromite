@@ -4098,21 +4098,19 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
 
   # *-pre-flight-branch builders are in chromeos_release waterfall.
   site_config.Add(
-      'samus-chrome-pre-flight-branch',
+      'servo-pre-flight-branch',
       site_config.templates.pre_flight_branch,
-      display_label=config_lib.DISPLAY_LABEL_CHROME_PFQ,
-      boards=['samus'],
-      afdo_generate=True,
-      afdo_update_ebuild=True,
-      sync_chrome=True,
-      chrome_rev=constants.CHROME_REV_STICKY,
-      hw_tests=[hw_test_list.AFDORecordTest()],
-      useflags=append_useflags(['-transparent_hugepage',
-                                '-debug_fission',
-                                '-thinlto',
-                                '-cfi']),
+      site_config.templates.firmware_base,
+      site_config.templates.no_hwtest_builder,
+      display_label=config_lib.DISPLAY_LABEL_FIRMWARE,
+      boards=['oak'],
+      afdo_generate=False,
+      afdo_update_ebuild=False,
+      sync_chrome=False,
       prebuilts=constants.PRIVATE,
       archive_build_debug=True,
+      usepkg_build_packages=False,
+      active_waterfall=waterfall.WATERFALL_BRANCH,
   )
 
   site_config.Add(
