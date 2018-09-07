@@ -4167,6 +4167,18 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
       prebuilts=False,
   )
 
+  site_config.Add(
+      'grunt-android-pi-pre-flight-branch',
+      site_config.templates.pre_flight_branch,
+      display_label=config_lib.DISPLAY_LABEL_PI_ANDROID_PFQ,
+      boards=['grunt'],
+      sync_chrome=True,
+      android_rev=constants.ANDROID_REV_LATEST,
+      android_package='android-container-pi',
+      android_import_branch=constants.ANDROID_PI_BUILD_BRANCH,
+      prebuilts=False,
+  )
+
   site_config.AddWithoutTemplate(
       'chromeos-infra-go',
       site_config.templates.no_hwtest_builder,
@@ -4330,6 +4342,8 @@ def BranchScheduleConfig():
   #
 
   branch_builds = (
+      ('release-R70-11021.B', 'grunt-android-pi-pre-flight-branch',
+       release_label, '0 1,5,9,13,17,21 * * *', None),
       ('release-R69-10895.B', 'master-release',
        release_label, '0 5 * * *', None),
       ('release-R69-10895.B', 'reef-android-nyc-pre-flight-branch',
