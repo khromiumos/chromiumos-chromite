@@ -116,9 +116,8 @@ class Cgroup(object):
       return False
 
     def _EnsureMounted(mnt, args):
-      for mtab in osutils.IterateMountPoints():
-        if mtab.destination == mnt:
-          return True
+      if _FileContains('/proc/mounts', [mnt]):
+        return True
 
       # Grab a lock so in the off chance we have multiple programs (like two
       # cros_sdk launched in parallel) running this init logic, we don't end
@@ -126,9 +125,8 @@ class Cgroup(object):
       lock_path = '/tmp/.chromite.cgroups.lock'
       with locking.FileLock(lock_path, 'cgroup lock') as lock:
         lock.write_lock()
-        for mtab in osutils.IterateMountPoints():
-          if mtab.destination == mnt:
-            return True
+        if _FileContains('/proc/mounts', [mnt]):
+          return True
 
         # Not all distros mount cgroup_root to sysfs.
         osutils.SafeMakedirs(mnt, sudo=True)
