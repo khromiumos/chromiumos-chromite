@@ -1670,6 +1670,12 @@
           ],
           "cq_test_enabled": true,
           "release_builder_test_pool": "bvt"
+        },
+        {
+          "board_name": "scarlet",
+          "name": "overkill",
+          "cq_test_enabled": false,
+          "release_builder_test_pool": "bvt"
         }
       ]
     },
