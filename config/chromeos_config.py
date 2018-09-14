@@ -4098,7 +4098,7 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
 
   # *-pre-flight-branch builders are in chromeos_release waterfall.
   site_config.Add(
-      'servo-pre-flight-branch',
+      'oak-pre-flight-branch',
       site_config.templates.pre_flight_branch,
       site_config.templates.firmware_base,
       site_config.templates.no_hwtest_builder,
