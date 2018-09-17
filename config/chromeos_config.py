@@ -3848,8 +3848,8 @@ def ApplyCustomOverrides(site_config, ge_build_config):
           'sign_types': ['recovery', 'accessory_rwsig', 'factory'],
       },
 
-      'nocturne-release': {
-          'sign_types': ['recovery', 'accessory_rwsig', 'factory'],
+      'nocturne-firmware': {
+          'sign_types': ['firmware', 'accessory_rwsig'],
       },
       # --- end from here ---
 
