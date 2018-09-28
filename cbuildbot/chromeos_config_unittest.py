@@ -595,7 +595,8 @@ class CBuildBotTest(ChromeosConfigTestBase):
           'Config %s: is tryjob safe, but defines hw_tests_override.' % \
           build_name)
 
-  def testHWTestsReleaseBuilderRequirement(self):
+  # Disabled for crbug.com/881376
+  def notestHWTestsReleaseBuilderRequirement(self):
     """Make sure all release configs run hw tests."""
     for build_name, config in self.site_config.iteritems():
       if (config.build_type == 'canary' and 'test' in config.images and

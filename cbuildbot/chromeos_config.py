@@ -4091,4 +4091,9 @@ def GetConfig():
 
   TryjobMirrors(site_config)
 
+  # R65 hack for crbug.com/881376
+  for config in site_config.itervalues():
+    config['hw_tests'] = []
+    config['hw_tests_override'] = None
+
   return site_config
