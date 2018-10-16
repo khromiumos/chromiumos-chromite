@@ -4115,7 +4115,8 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
   """
   board_configs = CreateInternalBoardConfigs(
       site_config, boards_dict, ge_build_config)
-  hw_test_list = HWTestList(ge_build_config)
+  # This is not being used in this branch
+  # hw_test_list = HWTestList(ge_build_config)
 
   site_config.AddWithoutTemplate(
       'success-build',
@@ -4279,21 +4280,21 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
 
   # *-pre-flight-branch builders are in chromeos_release waterfall.
   site_config.Add(
-      'samus-chrome-pre-flight-branch',
+      'grunt-pre-flight-branch',
       site_config.templates.pre_flight_branch,
-      display_label=config_lib.DISPLAY_LABEL_CHROME_PFQ,
-      boards=['samus'],
-      afdo_generate=True,
-      afdo_update_ebuild=True,
+      site_config.templates.no_vmtest_builder,
+      site_config.templates.no_hwtest_builder,
+      display_label=config_lib.DISPLAY_LABEL_FACTORY,
+      boards=['grunt'],
       sync_chrome=True,
       chrome_rev=constants.CHROME_REV_STICKY,
-      hw_tests=[hw_test_list.AFDORecordTest()],
       useflags=append_useflags(['-transparent_hugepage',
                                 '-debug_fission',
                                 '-thinlto',
                                 '-cfi']),
       prebuilts=constants.PRIVATE,
       archive_build_debug=True,
+      active_waterfall=waterfall.WATERFALL_BRANCH,
   )
 
   site_config.Add(
