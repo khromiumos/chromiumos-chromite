@@ -579,6 +579,7 @@ _x86_internal_release_boards = frozenset([
     'jadeite',
     'jecht',
     'kahlee',
+    'kalista',
     'kefka',
     'kip',
     'kunimitsu',
@@ -2578,6 +2579,7 @@ def CqBuilders(site_config, boards_dict, ge_build_config):
       'octopus',
       'tael',
       'atlas',
+      'kalista', # contact:zhuohao@
   ])
 
   # Paladin configs that exist and should stay as experimental until further
