@@ -4095,5 +4095,6 @@ def GetConfig():
   for config in site_config.itervalues():
     config['hw_tests'] = []
     config['hw_tests_override'] = None
+    config['paygen_skip_testing'] = True
 
   return site_config
