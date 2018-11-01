@@ -2234,7 +2234,6 @@ nautilus-no-vmtest-pre-cq (gce_beefy)
 nautilus-paladin-tryjob (gce_beefy)
 nautilus-payloads (gce_beefy)
 nautilus-pre-cq (gce_beefy)
-nautilus-release (gce_beefy)
 nautilus-release-afdo-generate-tryjob (gce_beefy)
 [nautilus-release-afdo-tryjob] (gce_beefy)
   nautilus-release-afdo-generate
