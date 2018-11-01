@@ -1617,6 +1617,45 @@
       ]
     },
     {
+      "name": "nautilus",
+      "reference_board_name": "nautilus",
+      "arch": "X86_INTERNAL",
+      "builder": "RELEASE",
+      "experimental": false,
+      "models": [
+        {
+          "board_name": "nautilus",
+          "name": "nautilus",
+          "test_suites": [
+            "sanity",
+            "bvt-inline",
+            "bvt-installer",
+            "bvt-arc",
+            "au",
+            "bvt-cq",
+            "bvt-perbuild"
+          ],
+          "cq_test_enabled": false,
+          "release_builder_test_pool": "bvt"
+        },
+        {
+          "board_name": "nautilus",
+          "name": "nautiluslte",
+          "test_suites": [
+            "sanity",
+            "bvt-inline",
+            "bvt-installer",
+            "bvt-arc",
+            "au",
+            "bvt-cq",
+            "bvt-perbuild"
+          ],
+          "cq_test_enabled": false,
+          "release_builder_test_pool": "bvt"
+        }
+      ]
+    },
+    {
       "name": "reef",
       "reference_board_name": "reef",
       "arch": "X86_INTERNAL",
