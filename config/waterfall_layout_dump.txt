@@ -1321,7 +1321,6 @@ grunt-payloads (gce_beefy)
 grunt-pi-android-pfq (gce_beefy)
 grunt-pi-android-pfq-tryjob (gce_beefy)
 grunt-pre-cq (gce_beefy)
-grunt-release (gce_beefy)
 grunt-release-afdo-generate-tryjob (gce_beefy)
 [grunt-release-afdo-tryjob] (gce_beefy)
   grunt-release-afdo-generate
