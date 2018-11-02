@@ -398,18 +398,6 @@
       ]
     },
     {
-      "name": "guado-accelerator",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "jecht",
-          "arch": "X86_INTERNAL"
-        }
-      ]
-    },
-    {
       "name": "guado_moblab",
       "configs": [
         {
@@ -1452,21 +1440,6 @@
         {
           "board_name": "fizz",
           "name": "wukong",
-          "cq_test_enabled": false,
-          "release_builder_test_pool": "bvt"
-        }
-      ]
-    },
-    {
-      "name": "fizz-accelerator",
-      "reference_board_name": "fizz-accelerator",
-      "arch": "X86_INTERNAL",
-      "builder": "RELEASE",
-      "experimental": false,
-      "models": [
-        {
-          "board_name": "fizz-accelerator",
-          "name": "jax",
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
         }
