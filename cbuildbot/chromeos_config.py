@@ -1517,6 +1517,7 @@ def GetConfig():
 
   site_config.Add(
       'glados-pre-flight-branch', internal_pfq_branch,
+      no_vmtest_builder,
       master=True,
       push_overlays=constants.BOTH_OVERLAYS,
       boards=['glados'],
