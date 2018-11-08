@@ -1119,9 +1119,11 @@
           "board_name": "coral",
           "name": "astronaut",
           "test_suites": [
+            "sanity",
             "bvt-inline",
             "bvt-installer",
             "bvt-arc",
+            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1132,9 +1134,7 @@
           "board_name": "coral",
           "name": "babymega",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
             "bvt-cq",
             "bvt-perbuild"
@@ -1146,11 +1146,8 @@
           "board_name": "coral",
           "name": "babytiger",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1167,11 +1164,8 @@
           "board_name": "coral",
           "name": "blacktip360",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1182,11 +1176,8 @@
           "board_name": "coral",
           "name": "blacktiplte",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1203,11 +1194,8 @@
           "board_name": "coral",
           "name": "bruce",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1224,11 +1212,8 @@
           "board_name": "coral",
           "name": "epaulette",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1239,11 +1224,8 @@
           "board_name": "coral",
           "name": "lava",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1254,11 +1236,8 @@
           "board_name": "coral",
           "name": "nasher",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1281,11 +1260,8 @@
           "board_name": "coral",
           "name": "rabbid",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1302,11 +1278,8 @@
           "board_name": "coral",
           "name": "robo360",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1323,9 +1296,7 @@
           "board_name": "coral",
           "name": "whitetip",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
             "bvt-cq",
             "bvt-perbuild"
@@ -1421,9 +1392,7 @@
           "board_name": "grunt",
           "name": "careena",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
             "bvt-cq",
             "bvt-perbuild"
@@ -1498,11 +1467,8 @@
           "board_name": "nami",
           "name": "akali360",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1513,11 +1479,8 @@
           "board_name": "nami",
           "name": "bard",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1528,11 +1491,8 @@
           "board_name": "nami",
           "name": "ekko",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1543,11 +1503,8 @@
           "board_name": "nami",
           "name": "nami",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1558,11 +1515,8 @@
           "board_name": "nami",
           "name": "pantheon",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1573,11 +1527,8 @@
           "board_name": "nami",
           "name": "sona",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1588,11 +1539,8 @@
           "board_name": "nami",
           "name": "syndra",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1603,11 +1551,8 @@
           "board_name": "nami",
           "name": "vayne",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1642,11 +1587,8 @@
           "board_name": "nautilus",
           "name": "nautiluslte",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1705,11 +1647,8 @@
           "board_name": "octopus",
           "name": "bobba",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1720,11 +1659,8 @@
           "board_name": "octopus",
           "name": "bobba360",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
-            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
@@ -1753,9 +1689,7 @@
           "board_name": "meep",
           "name": "meep",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
             "bvt-cq",
             "bvt-perbuild"
@@ -1767,9 +1701,7 @@
           "board_name": "mimrock",
           "name": "mimrock",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
             "bvt-cq",
             "bvt-perbuild"
@@ -1787,9 +1719,7 @@
           "board_name": "octopus",
           "name": "phaser",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
             "bvt-cq",
             "bvt-perbuild"
@@ -1801,9 +1731,7 @@
           "board_name": "octopus",
           "name": "phaser360",
           "test_suites": [
-            "sanity",
             "bvt-inline",
-            "bvt-installer",
             "bvt-arc",
             "bvt-cq",
             "bvt-perbuild"
@@ -1910,12 +1838,6 @@
         {
           "board_name": "scarlet",
           "name": "dumo",
-          "cq_test_enabled": false,
-          "release_builder_test_pool": "bvt"
-        },
-        {
-          "board_name": "scarlet",
-          "name": "overkill",
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
         }
