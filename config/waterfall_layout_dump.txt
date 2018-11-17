@@ -1964,7 +1964,6 @@ nocturne-payloads (gce_beefy)
 nocturne-pi-android-pfq (gce_beefy)
 nocturne-pi-android-pfq-tryjob (gce_beefy)
 nocturne-pre-cq (gce_beefy)
-nocturne-release (gce_beefy)
 nocturne-release-afdo-generate-tryjob (gce_beefy)
 [nocturne-release-afdo-tryjob] (gce_beefy)
   nocturne-release-afdo-generate
