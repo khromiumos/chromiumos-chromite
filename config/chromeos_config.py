@@ -4094,8 +4094,12 @@ def ApplyCustomOverrides(site_config, ge_build_config):
           'useflags': append_useflags(['new_tcmalloc']),
       },
 
-      # TODO(crbug/896734) Remove this once migration is finished.
+      # TODO(crbug/896734) Remove these once migration is finished.
       'grunt-factory': {
+          'unittests': False,
+      },
+
+      "grunt-pre-flight-branch": {
           'unittests': False,
       },
   }
