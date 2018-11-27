@@ -4093,6 +4093,11 @@ def ApplyCustomOverrides(site_config, ge_build_config):
       'veyron_minnie-release': {
           'useflags': append_useflags(['new_tcmalloc']),
       },
+
+      # TODO(crbug/896734) Remove this once migration is finished.
+      'grunt-factory': {
+          'unittests': False,
+      },
   }
 
   for config_name, overrides  in overwritten_configs.iteritems():
