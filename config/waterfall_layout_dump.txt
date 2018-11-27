@@ -1,7 +1,9 @@
+== chromeos.branch ==
+octopus-pre-flight-branch (gce_beefy)
+
 == chromeos_release ==
 grunt-android-pi-pre-flight-branch (gce_beefy)
 reef-android-nyc-pre-flight-branch (gce_beefy)
-samus-chrome-pre-flight-branch (gce_beefy)
 
 == go/legoland ==
 amd64-generic-asan (baremetal)
@@ -2412,6 +2414,7 @@ octopus-paladin (gce_beefy)
 octopus-paladin-tryjob (gce_beefy)
 octopus-payloads-tryjob (gce_beefy)
 octopus-pre-cq (gce_beefy)
+octopus-pre-flight-branch-tryjob (gce_beefy)
 octopus-release (gce_beefy)
 octopus-release-afdo-generate-tryjob (gce_beefy)
 [octopus-release-afdo-tryjob] (gce_beefy)
@@ -2762,7 +2765,6 @@ romer-release (gce_beefy)
 romer-release-tryjob (gce_beefy)
 romer-unittest-stress (gce_beefy)
 samus-chrome-pfq-tryjob (gce_beefy)
-samus-chrome-pre-flight-branch-tryjob (gce_beefy)
 samus-chromium-pfq-tryjob (gce_beefy)
 samus-compile-only-pre-cq (gce_beefy)
 samus-factory-tryjob (gce_beefy)
