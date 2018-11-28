@@ -1627,6 +1627,18 @@
       "models": [
         {
           "board_name": "octopus",
+          "name": "ampton",
+          "cq_test_enabled": false,
+          "release_builder_test_pool": "bvt"
+        },
+        {
+          "board_name": "octopus",
+          "name": "apel",
+          "cq_test_enabled": false,
+          "release_builder_test_pool": "bvt"
+        },
+        {
+          "board_name": "octopus",
           "name": "bip",
           "test_suites": [
             "sanity",
@@ -1746,6 +1758,12 @@
         {
           "board_name": "octopus",
           "name": "sparky360",
+          "cq_test_enabled": false,
+          "release_builder_test_pool": "bvt"
+        },
+        {
+          "board_name": "octopus",
+          "name": "unprovisioned_ampton",
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
         },
