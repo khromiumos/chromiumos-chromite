@@ -3561,7 +3561,7 @@ def ReleaseBuilders(site_config, boards_dict, ge_build_config):
 
   ### Master release configs.
   master_config = _CreateMasterConfig('master-release')
-  lakitu_master_config = _CreateMasterConfig('lakitu-master-release')
+  lakitu_master_config = _CreateMasterConfig('master-lakitu-release')
 
   def _AssignToMaster(config):
     """Add |config| as a slave config to the appropriate master config."""
@@ -4294,6 +4294,113 @@ def TryjobMirrors(site_config):
 
   for tryjob_name, tryjob_config in tryjob_configs.iteritems():
     site_config[tryjob_name] = tryjob_config
+
+
+def BranchScheduleConfig():
+  """Create a list of configs to schedule for branch builds.
+
+  This function returns a list of build configs with just enough
+  information to correctly schedule builds on branches. This function
+  is only used by scripts/gen_luci_scheduler.
+
+  After making changes to this function, they must be deployed to take
+  effect. See gen_luci_scheduler --help for details.
+
+  Returns:
+    List of config_lib.BuildConfig instances.
+  """
+  #
+  # Define each branched schedule with:
+  #   branch_name: Name of the branch to build as a string.
+  #   config_name: Name of the build config already present on the branch.
+  #   label: Display label for UI use. Usually release, factory, firmware.
+  #   schedule: When to do the build. Can take several formats.
+  #     'triggered' for manual builds.
+  #     Cron style in UTC timezone: '0 15 * * *'
+  #     'with 30d interval' to run X time after previous build.
+  #
+  #     https://github.com/luci/luci-go/blob/master/scheduler/
+  #                        appengine/messages/config.proto
+  #
+  # When updating this be sure to run
+  # `config/chromeos_config_unittest --update`
+  # or the change will fail chromite unittests.
+  branch_builds = [
+      # Add non release branch schedules here, if needed.
+      # <branch>, <build_config>, <display_label>, <schedule>, <triggers>
+  ]
+
+  # The three active release branches.
+  # (<branch>, [<android PFQs>], <chrome PFQ>)
+  RELEASES = [
+      ('release-R71-11151.B',
+       ['reef-android-nyc-pre-flight-branch',
+        'grunt-android-pi-pre-flight-branch'],
+       'samus-chrome-pre-flight-branch'),
+
+      ('release-R70-11021.B',
+       ['reef-android-nyc-pre-flight-branch',
+        'grunt-android-pi-pre-flight-branch'],
+       'samus-chrome-pre-flight-branch'),
+
+      # ATTENTION: R69 is a Long Term Support milestone for lakitu and they'd
+      # like to keep it a little longer. Please let lakitu-dev@google.com know
+      # before deleting this.
+      ('release-R69-10895.B',
+       ['reef-android-nyc-pre-flight-branch'],
+       'samus-chrome-pre-flight-branch'),
+  ]
+
+  RELEASE_SCHEDULES = [
+      '0 6 * * *',
+      '0 5 * * *',
+      # Normally this should be "triggered" but lakitu needs R69 for a little
+      # longer. Please let lakitu-dev@google.com know before updating this.
+      # TODO(b/111954990): create a master-lakitu-release builder and remove
+      # this.
+      '0 4 * * 0',
+  ]
+
+  PFQ_SCHEDULE = [
+      '0 3,7,11,15,19,23 * * *',
+      '0 2,6,10,14,18,22 * * *',
+      '0 2,6,10,14,18,22 * * *',
+  ]
+
+  for (branch, android_pfq, chrome_pfq), schedule, android_schedule in zip(
+      RELEASES, RELEASE_SCHEDULES, PFQ_SCHEDULE):
+    branch_builds.append([branch, 'master-release',
+                          config_lib.DISPLAY_LABEL_RELEASE,
+                          schedule, None])
+    branch_builds.extend([[branch, pfq,
+                           config_lib.DISPLAY_LABEL_RELEASE,
+                           android_schedule, None]
+                          for pfq in android_pfq])
+
+    # We extract the release number from the branch, and use it to
+    # watch for new chrome tags to trigger Chrome PFQ builds.
+    # release-R71-11151.B -> 71 -> regexp:refs/tags/71\\..*
+    release_num = re.search(r'release-R(\d+)-.*', branch).group(1)
+    branch_builds.append(
+        [branch, chrome_pfq, config_lib.DISPLAY_LABEL_RELEASE, 'triggered',
+         [['https://chromium.googlesource.com/chromium/src',
+           [r'regexp:refs/tags/%s\\..*' % release_num]]]])
+
+  # Convert all branch builds into scheduler config entries.
+  default_config = config_lib.GetConfig().GetDefault()
+
+  result = []
+  for branch, config_name, label, schedule, trigger in branch_builds:
+    result.append(default_config.derive(
+        name=config_name,
+        display_label=label,
+        luci_builder=config_lib.LUCI_BUILDER_PROD,
+        schedule_branch=branch,
+        schedule=schedule,
+        triggered_gitiles=trigger,
+    ))
+
+  return result
 
 
 @factory.CachedFunctionCall
