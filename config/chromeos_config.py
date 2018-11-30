@@ -3536,7 +3536,7 @@ def ReleaseBuilders(site_config, boards_dict, ge_build_config):
 
   ### Master release configs.
   master_config = _CreateMasterConfig('master-release')
-  lakitu_master_config = _CreateMasterConfig('lakitu-master-release')
+  lakitu_master_config = _CreateMasterConfig('master-lakitu-release')
 
   def _AssignToMaster(config):
     """Add |config| as a slave config to the appropriate master config."""
