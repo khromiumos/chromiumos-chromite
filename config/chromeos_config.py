@@ -1700,6 +1700,7 @@ def CqBuilders(site_config, boards_dict, ge_build_config):
       'grunt',
       'guado_moblab',
       'hana',
+      'kalista',
       'kevin',
       'kevin-arcnext',
       'kip',
@@ -1767,7 +1768,6 @@ def CqBuilders(site_config, boards_dict, ge_build_config):
       'dragonegg', # contact:yueherngl@
       'eve-campfire', # contact:yueherngl@
       'hatch', # contact:yueherngl@
-      'kalista', # contact:zhuohao@
   ])
 
   # Paladin configs that exist and should stay as experimental until further
