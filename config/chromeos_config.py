@@ -3067,11 +3067,13 @@ def ReleaseBuilders(site_config, boards_dict, ge_build_config):
   ])
 
   _release_experimental_boards = frozenset([
+      'coral',
       'nyan_blaze',
   ])
 
   _release_enable_skylab_hwtest = frozenset([
       'asuka',
+      'coral',
       'nyan_blaze',
       'reef',
   ])
