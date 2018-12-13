@@ -1300,6 +1300,12 @@
       "models": [
         {
           "board_name": "fizz",
+          "name": "jax",
+          "cq_test_enabled": false,
+          "release_builder_test_pool": "bvt"
+        },
+        {
+          "board_name": "fizz",
           "name": "kench",
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
