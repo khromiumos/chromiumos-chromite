@@ -2215,7 +2215,6 @@ octopus-no-vmtest-pre-cq (gce_beefy)
 octopus-paladin-tryjob (gce_beefy)
 octopus-payloads (gce_beefy)
 octopus-pre-cq (gce_beefy)
-octopus-release (gce_beefy)
 octopus-release-afdo-generate-tryjob (gce_beefy)
 [octopus-release-afdo-tryjob] (gce_beefy)
   octopus-release-afdo-generate
