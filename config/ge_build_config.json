@@ -1749,9 +1749,18 @@
           "release_builder_test_pool": "bvt"
         },
         {
-          "board_name": "octopus",
+          "board_name": "orbatrix",
           "name": "orbatrix",
-          "cq_test_enabled": false,
+          "test_suites": [
+            "sanity",
+            "bvt-inline",
+            "bvt-installer",
+            "bvt-arc",
+            "au",
+            "bvt-cq",
+            "bvt-perbuild"
+          ],
+          "cq_test_enabled": true,
           "release_builder_test_pool": "bvt"
         },
         {
