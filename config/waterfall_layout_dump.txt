@@ -3226,6 +3226,7 @@
   octopus-payloads-tryjob
   octopus-postsubmit-tryjob
   octopus-pre-cq
+  octopus-pre-flight-branch-tryjob
   octopus-release-afdo-generate-tryjob
   octopus-release-afdo-tryjob
   octopus-release-afdo-use-tryjob
@@ -3549,7 +3550,6 @@
   romer-release-tryjob
   romer-unittest-stress
   samus-chrome-pfq-tryjob
-  samus-chrome-pre-flight-branch-tryjob
   samus-chromium-pfq-tryjob
   samus-compile-only-pre-cq
   samus-factory-tryjob
