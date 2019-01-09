@@ -1701,7 +1701,7 @@
           "release_builder_test_pool": "bvt"
         },
         {
-          "board_name": "fleex",
+          "board_name": "octopus",
           "name": "fleex",
           "test_suites": [
             "sanity",
@@ -1716,7 +1716,7 @@
           "release_builder_test_pool": "bvt"
         },
         {
-          "board_name": "grabbiter",
+          "board_name": "octopus",
           "name": "grabbiter",
           "test_suites": [
             "sanity",
@@ -1743,7 +1743,7 @@
           "release_builder_test_pool": "bvt"
         },
         {
-          "board_name": "meep",
+          "board_name": "octopus",
           "name": "meep",
           "test_suites": [
             "sanity",
@@ -1758,7 +1758,7 @@
           "release_builder_test_pool": "bvt"
         },
         {
-          "board_name": "mimrock",
+          "board_name": "octopus",
           "name": "mimrock",
           "test_suites": [
             "sanity",
@@ -1773,7 +1773,7 @@
           "release_builder_test_pool": "bvt"
         },
         {
-          "board_name": "orbatrix",
+          "board_name": "octopus",
           "name": "orbatrix",
           "test_suites": [
             "sanity",
