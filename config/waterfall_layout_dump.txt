@@ -2426,7 +2426,6 @@ poppy-paladin (gce_beefy)
 poppy-paladin-tryjob (gce_beefy)
 poppy-payloads-tryjob (gce_beefy)
 poppy-pre-cq (gce_beefy)
-poppy-release (gce_beefy)
 poppy-release-afdo-generate-tryjob (gce_beefy)
 [poppy-release-afdo-tryjob] (gce_beefy)
   poppy-release-afdo-generate
