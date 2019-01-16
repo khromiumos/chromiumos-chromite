@@ -471,7 +471,7 @@ class PaygenStageTest(generic_stages_unittest.AbstractStageTestCase,
           'foo-archive-build',
           False,
           True,
-          constants.ENV_SKYLAB,
+          constants.ENV_AUTOTEST,
           job_keyvals=mock.ANY)
 
   def testRunPaygenInProcessComplex(self):
@@ -548,7 +548,7 @@ class PaygenStageTest(generic_stages_unittest.AbstractStageTestCase,
           'foo-archive-build',
           False,
           True,
-          constants.ENV_SKYLAB,
+          constants.ENV_AUTOTEST,
           job_keyvals=mock.ANY)
 
   def testRunPaygenInParallelWithUnifiedBuild(self):
