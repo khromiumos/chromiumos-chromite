@@ -1018,7 +1018,6 @@ eve-campfire-no-vmtest-pre-cq (gce_beefy)
 eve-campfire-paladin-tryjob (gce_beefy)
 eve-campfire-payloads (gce_beefy)
 eve-campfire-pre-cq (gce_beefy)
-eve-campfire-release (gce_beefy)
 eve-campfire-release-afdo-generate-tryjob (gce_beefy)
 [eve-campfire-release-afdo-tryjob] (gce_beefy)
   eve-campfire-release-afdo-generate
