@@ -432,6 +432,7 @@ class PaygenStageTest(generic_stages_unittest.AbstractStageTestCase,
           'foo-archive-build',
           False,
           True,
+          [],
           constants.ENV_AUTOTEST,
           job_keyvals=mock.ANY)
 
@@ -474,6 +475,7 @@ class PaygenStageTest(generic_stages_unittest.AbstractStageTestCase,
           'foo-archive-build',
           False,
           True,
+          [],
           constants.ENV_AUTOTEST,
           job_keyvals=mock.ANY)
 
@@ -521,6 +523,7 @@ class PaygenStageTest(generic_stages_unittest.AbstractStageTestCase,
           'foo-archive-build',
           False,
           True,
+          [],
           constants.ENV_AUTOTEST,
           job_keyvals=mock.ANY)
 
@@ -554,6 +557,7 @@ class PaygenStageTest(generic_stages_unittest.AbstractStageTestCase,
           'foo-archive-build',
           False,
           True,
+          [],
           constants.ENV_AUTOTEST,
           job_keyvals=mock.ANY)
 
@@ -671,6 +675,7 @@ class PaygenTestStageTest(generic_stages_unittest.AbstractStageTestCase,
         build='foo-version',
         skip_duts_check=False,
         debug=True,
+        payload_test_configs=[],
         test_env=constants.ENV_AUTOTEST)
 
   def testStageName(self):

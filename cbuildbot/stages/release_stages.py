@@ -472,7 +472,8 @@ class PaygenBuildStage(generic_stages.BoardSpecificBuilderStage):
 
         # Now, schedule the payload tests if desired.
         if not self.skip_testing:
-          suite_name, archive_board, archive_build, _ = testdata
+          (suite_name, archive_board, archive_build,
+           payload_test_configs) = testdata
 
           # For unified builds, only test against the specified models.
           if self._run.config.models:
@@ -488,6 +489,7 @@ class PaygenBuildStage(generic_stages.BoardSpecificBuilderStage):
                       self._run, suite_name, archive_board,
                       model.name, model.lab_board_name, self.channel,
                       archive_build, self.skip_duts_check, self.debug,
+                      payload_test_configs,
                       config_lib.GetHWTestEnv(self._run.config,
                                               model_config=model))
                   for model in models
@@ -500,6 +502,7 @@ class PaygenBuildStage(generic_stages.BoardSpecificBuilderStage):
                   self._run, suite_name, archive_board,
                   model.name, model.lab_board_name, self.channel,
                   archive_build, self.skip_duts_check, self.debug,
+                  payload_test_configs,
                   config_lib.GetHWTestEnv(self._run.config,
                                           model_config=model)).Run()
           else:
@@ -507,6 +510,7 @@ class PaygenBuildStage(generic_stages.BoardSpecificBuilderStage):
                             archive_board, None, archive_board, self.channel,
                             archive_build, self.skip_duts_check,
                             self.debug,
+                            payload_test_configs,
                             config_lib.GetHWTestEnv(self._run.config)).Run()
 
 
@@ -525,7 +529,7 @@ class PaygenTestStage(generic_stages.BoardSpecificBuilderStage):
 
   def __init__(self, builder_run, suite_name, board, model,
                lab_board_name, channel, build, skip_duts_check, debug,
-               test_env, **kwargs):
+               payload_test_configs, test_env, **kwargs):
     """Init that accepts the channels argument, if present.
 
     Args:
@@ -538,6 +542,8 @@ class PaygenTestStage(generic_stages.BoardSpecificBuilderStage):
       build: Version of payloads to generate.
       skip_duts_check: Do not check minimum available DUTs before tests.
       debug: Boolean indicating if this is a test run or a real run.
+      payload_test_configs: A list of test_params.TestConfig objects. Only used
+                            for scheduling HWTest with skylab tool.
       test_env: A string to indicate the env that the test should run in. The
                 value could be constants.ENV_SKYLAB or constants.ENV_AUTOTEST.
     """
@@ -549,6 +555,7 @@ class PaygenTestStage(generic_stages.BoardSpecificBuilderStage):
     self.build = build
     self.skip_duts_check = skip_duts_check
     self.debug = debug
+    self.payload_test_configs = payload_test_configs
     assert test_env in [constants.ENV_SKYLAB, constants.ENV_AUTOTEST]
     # TODO (xixuan): A temporary hack before crbug.com/920393 is fixed.
     self.test_env = constants.ENV_AUTOTEST
@@ -571,6 +578,7 @@ class PaygenTestStage(generic_stages.BoardSpecificBuilderStage):
                                            self.build,
                                            self.skip_duts_check,
                                            self.debug,
+                                           self.payload_test_configs,
                                            self.test_env,
                                            job_keyvals=self.GetJobKeyvals())
 
