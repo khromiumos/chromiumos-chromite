@@ -316,6 +316,7 @@ class PaygenStageTest(generic_stages_unittest.AbstractStageTestCase,
         'foo-suite-name',
         'foo-archive-board',
         'foo-archive-build',
+        [],
     )])
 
   # pylint: disable=arguments-differ
