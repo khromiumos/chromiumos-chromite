@@ -3121,6 +3121,7 @@ def ReleaseBuilders(site_config, boards_dict, ge_build_config):
   ])
 
   _release_enable_skylab_hwtest = frozenset([
+      'asuka',
       'coral',
       'nyan_blaze',
       'reef',
