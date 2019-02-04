@@ -1621,7 +1621,6 @@ kalista-paladin (gce_beefy)
 kalista-paladin-tryjob (gce_beefy)
 kalista-payloads-tryjob (gce_beefy)
 kalista-pre-cq (gce_beefy)
-kalista-release (gce_beefy)
 kalista-release-afdo-generate-tryjob (gce_beefy)
 [kalista-release-afdo-tryjob] (gce_beefy)
   kalista-release-afdo-generate
