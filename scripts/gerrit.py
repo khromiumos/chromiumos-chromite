@@ -317,7 +317,8 @@ def UserActReview(opts, *args):
   num = args[-1]
   for arg in args[:-1]:
     helper, cl = GetGerrit(opts, arg)
-    helper.SetReview(cl, labels={'Code-Review': num}, dryrun=opts.dryrun)
+    helper.SetReview(cl, labels={'Code-Review': num},
+                     dryrun=opts.dryrun, notify=opts.notify)
 UserActReview.arg_min = 2
 
 
@@ -326,7 +327,8 @@ def UserActVerify(opts, *args):
   num = args[-1]
   for arg in args[:-1]:
     helper, cl = GetGerrit(opts, arg)
-    helper.SetReview(cl, labels={'Verified': num}, dryrun=opts.dryrun)
+    helper.SetReview(cl, labels={'Verified': num},
+                     dryrun=opts.dryrun, notify=opts.notify)
 UserActVerify.arg_min = 2
 
 
@@ -335,7 +337,8 @@ def UserActReady(opts, *args):
   num = args[-1]
   for arg in args[:-1]:
     helper, cl = GetGerrit(opts, arg)
-    helper.SetReview(cl, labels={'Commit-Queue': num}, dryrun=opts.dryrun)
+    helper.SetReview(cl, labels={'Commit-Queue': num},
+                     dryrun=opts.dryrun, notify=opts.notify)
 UserActReady.arg_min = 2
 
 
@@ -344,7 +347,8 @@ def UserActTrybotready(opts, *args):
   num = args[-1]
   for arg in args[:-1]:
     helper, cl = GetGerrit(opts, arg)
-    helper.SetReview(cl, labels={'Trybot-Ready': num}, dryrun=opts.dryrun)
+    helper.SetReview(cl, labels={'Trybot-Ready': num},
+                     dryrun=opts.dryrun, notify=opts.notify)
 UserActTrybotready.arg_min = 2
 
 
@@ -474,6 +478,10 @@ Actions:"""
   parser.add_argument('-n', '--dry-run', default=False, action='store_true',
                       dest='dryrun',
                       help='Show what would be done, but do not make changes')
+  parser.add_argument('--ne', '--no-emails', default=True, action='store_false',
+                      dest='send_email',
+                      help='Do not send email for some operations '
+                           '(e.g. ready/review/trybotready/verify)')
   parser.add_argument('-v', '--verbose', default=False, action='store_true',
                       help='Be more verbose in output')
   parser.add_argument('-b', '--branch',
@@ -489,6 +497,9 @@ Actions:"""
 
   # A cache of gerrit helpers we'll load on demand.
   opts.gerrit = {}
+
+  # Convert user friendly command line option into a gerrit parameter.
+  opts.notify = 'ALL' if opts.send_email else 'NONE'
   opts.Freeze()
 
   # pylint: disable=W0603
