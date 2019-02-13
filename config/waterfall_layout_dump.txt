@@ -147,7 +147,6 @@ atlas-paladin (gce_beefy)
 atlas-paladin-tryjob (gce_beefy)
 atlas-payloads-tryjob (gce_beefy)
 atlas-pre-cq (gce_beefy)
-atlas-release (gce_beefy)
 atlas-release-afdo-generate-tryjob (gce_beefy)
 [atlas-release-afdo-tryjob] (gce_beefy)
   atlas-release-afdo-generate
