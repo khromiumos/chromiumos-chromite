@@ -1157,6 +1157,7 @@
           "test_suites": [
             "bvt-inline",
             "bvt-arc",
+            "au",
             "bvt-cq",
             "bvt-perbuild"
           ],
