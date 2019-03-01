@@ -1472,7 +1472,6 @@ def _CreateSwarmingArgs(build, suite, board, priority,
       'hard_timeout_secs': swarming_timeout,
       'expiration_secs': _SWARMING_EXPIRATION,
       'tags': tags,
-      'service_account_json': constants.CHROMEOS_SERVICE_ACCOUNT,
   }
 
 
