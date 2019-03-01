@@ -27,7 +27,7 @@ def ExtractPartition(filename, partition, out_part):
     out_part: The output partition file.
   """
   parts = cros_build_lib.GetImageDiskPartitionInfo(filename)
-  part_info = [p for p in parts if p.name == partition][0]
+  part_info = parts[partition]
 
   offset = int(part_info.start)
   length = int(part_info.size)

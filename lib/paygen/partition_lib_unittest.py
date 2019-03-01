@@ -65,10 +65,10 @@ class ExtractPartitionTest(cros_test_lib.MockTempDirTestCase):
     osutils.WriteFile(image, image_bin)
     part_a = os.path.join(self.tempdir, 'a.bin')
 
-    fake_partitions = (
-        cros_build_lib.PartitionInfo(1, 0, 4, 4, 'fs', 'PART-A', ''),
-        cros_build_lib.PartitionInfo(2, 4, 8, 4, 'fs', 'PART-B', ''),
-    )
+    fake_partitions = {
+        'PART-A': cros_build_lib.PartitionInfo(1, 0, 4, 4, 'fs', 'PART-A', ''),
+        'PART-B': cros_build_lib.PartitionInfo(2, 4, 8, 4, 'fs', 'PART-B', ''),
+    }
     self.PatchObject(cros_build_lib, 'GetImageDiskPartitionInfo',
                      return_value=fake_partitions)
 
