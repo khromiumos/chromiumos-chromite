@@ -26,7 +26,7 @@ def ExtractPartition(filename, partition, out_part):
     partition: The partition name. e.g. ROOT or KERNEL.
     out_part: The output partition file.
   """
-  parts = cros_build_lib.GetImageDiskPartitionInfo(filename)
+  parts = cros_build_lib.GetImageDiskPartitionInfo(filename, unit='B')
   part_info = parts[partition]
 
   offset = int(part_info.start)
