@@ -275,6 +275,8 @@ FAKE OUTPUT. Will be filled in later.
                  '--tags=luci_project:chromiumos',
                  '--tags=suite:test-suite',
                  '--tags=board:test-board',
+                 '--auth-service-account-json',
+                 constants.CHROMEOS_SERVICE_ACCOUNT,
                  '--', commands.SKYLAB_RUN_SUITE_PATH,
                  '--build', self._build, '--board', self._board]
     args = list(args)
@@ -481,6 +483,8 @@ The suite job has another 2:39:39.789250 till timeout.
                 '--tags=build:test-build',
                 '--tags=task_name:test-build-test-suite',
                 '--tags=board:test-board',
+                '--auth-service-account-json',
+                constants.CHROMEOS_SERVICE_ACCOUNT,
                 '--', commands.RUN_SUITE_PATH,
                 '--build', 'test-build', '--board', 'test-board']
     args = list(args)
