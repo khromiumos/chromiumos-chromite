@@ -1097,11 +1097,13 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": true,
           "release_builder_test_pool": "bvt"
@@ -1111,9 +1113,11 @@
           "name": "babymega",
           "test_suites": [
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1138,9 +1142,11 @@
           "name": "blacktip360",
           "test_suites": [
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1150,9 +1156,11 @@
           "name": "blacktiplte",
           "test_suites": [
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1168,10 +1176,12 @@
           "name": "bruce",
           "test_suites": [
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1181,9 +1191,11 @@
           "name": "epaulette",
           "test_suites": [
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1193,9 +1205,11 @@
           "name": "lava",
           "test_suites": [
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1205,9 +1219,11 @@
           "name": "nasher",
           "test_suites": [
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1229,9 +1245,11 @@
           "name": "rabbid",
           "test_suites": [
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1247,9 +1265,11 @@
           "name": "robo360",
           "test_suites": [
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1265,9 +1285,11 @@
           "name": "whitetip",
           "test_suites": [
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1311,11 +1333,13 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1415,6 +1439,7 @@
           "name": "wukong",
           "test_suites": [
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "au",
             "bvt-cq"
@@ -1436,11 +1461,13 @@
           "name": "aleena",
           "test_suites": [
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1451,11 +1478,13 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": true,
           "release_builder_test_pool": "bvt"
@@ -1465,9 +1494,11 @@
           "name": "careena",
           "test_suites": [
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1490,11 +1521,13 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1505,11 +1538,13 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1520,10 +1555,12 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1543,11 +1580,13 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1557,9 +1596,11 @@
           "name": "akali360",
           "test_suites": [
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1570,11 +1611,13 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1596,9 +1639,11 @@
           "name": "pantheon",
           "test_suites": [
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1608,9 +1653,11 @@
           "name": "sona",
           "test_suites": [
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1621,11 +1668,13 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1635,9 +1684,11 @@
           "name": "vayne",
           "test_suites": [
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1657,11 +1708,13 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1671,9 +1724,11 @@
           "name": "nautiluslte",
           "test_suites": [
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1711,11 +1766,13 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1726,9 +1783,11 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1745,11 +1804,13 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1760,9 +1821,11 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "au",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1785,10 +1848,12 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1799,10 +1864,12 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1819,10 +1886,12 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": true,
           "release_builder_test_pool": "bvt"
@@ -1833,10 +1902,12 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1847,11 +1918,13 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1862,11 +1935,13 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1877,11 +1952,13 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1943,11 +2020,13 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -1973,11 +2052,13 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": true,
           "release_builder_test_pool": "bvt"
@@ -1997,11 +2078,13 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": true,
           "release_builder_test_pool": "bvt"
@@ -2018,11 +2101,13 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
@@ -2042,11 +2127,13 @@
           "test_suites": [
             "sanity",
             "bvt-inline",
+            "bvt-tast-cq",
             "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
-            "bvt-perbuild"
+            "bvt-perbuild",
+            "bvt-tast-informational"
           ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt"
