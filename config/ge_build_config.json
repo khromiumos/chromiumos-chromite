@@ -1124,8 +1124,10 @@
           "board_name": "coral",
           "name": "babymega",
           "test_suites": [
+            "sanity",
             "bvt-inline",
             "bvt-tast-cq",
+            "bvt-installer",
             "bvt-arc",
             "bvt-cq",
             "bvt-perbuild",
