@@ -3042,7 +3042,6 @@ def ReleaseBuilders(site_config, boards_dict, ge_build_config):
         sync_chrome=False,
         chrome_sdk=False,
         afdo_use=False,
-        branch_util_test=True,
         active_waterfall=waterfall.WATERFALL_SWARMING,
         # Because PST is 8 hours from UTC, these times are the same in both. But
         # daylight savings time is NOT adjusted for
