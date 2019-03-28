@@ -432,7 +432,6 @@
   master-release
     arkham-release
     asuka-release
-    atlas-release
     auron_paine-release
     auron_yuna-release
     banjo-release
@@ -2619,7 +2618,6 @@
   master-release-tryjob
     arkham-release-tryjob
     asuka-release-tryjob
-    atlas-release-tryjob
     auron_paine-release-tryjob
     auron_yuna-release-tryjob
     banjo-release-tryjob
