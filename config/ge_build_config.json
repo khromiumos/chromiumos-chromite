@@ -1808,6 +1808,12 @@
         },
         {
           "board_name": "octopus",
+          "name": "bluebird",
+          "cq_test_enabled": false,
+          "release_builder_test_pool": "bvt"
+        },
+        {
+          "board_name": "octopus",
           "name": "bobba",
           "test_suites": [
             "sanity",
