@@ -620,7 +620,7 @@ def GeneralTemplates(site_config):
       suite_scheduling=True,
       # Because release builders never use prebuilts, they need the
       # longer timeout.  See crbug.com/938958.
-      build_timeout=12 * 60 * 60,
+      build_timeout=14 * 60 * 60,
       useflags=config_lib.append_useflags(['-cros-debug']),
       afdo_use=True,
       manifest=constants.OFFICIAL_MANIFEST,
