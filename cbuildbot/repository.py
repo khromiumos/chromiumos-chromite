@@ -632,7 +632,7 @@ class RepoRepository(object):
            os.path.join(constants.CHROMITE_DIR, 'scripts',
                         'detect_fix_missing_remote.sh')]
 
-    cros_build_lib.RunCommand(cmd, cwd=self.directory)
+    cros_build_lib.RunCommand(cmd, cwd=self.directory, error_code_ok=True)
 
   def GetRelativePath(self, path):
     """Returns full path including source directory of path in repo."""
