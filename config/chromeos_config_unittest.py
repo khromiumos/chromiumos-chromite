@@ -1112,7 +1112,7 @@ class CBuildBotTest(ChromeosConfigTestBase):
       if config.build_type != constants.CANARY_TYPE:
         continue
       if self.isReleaseBranch():
-        expected = 12 * 60 * 60
+        expected = 14 * 60 * 60
       else:
         expected = (7 * 60 + 50) * 60
 
