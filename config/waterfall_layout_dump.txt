@@ -603,6 +603,7 @@
     kefka-release
     kevin-release
     kip-release
+    kukui-release
     lars-release
     leon-release
     lulu-release
@@ -2711,6 +2712,7 @@
     kefka-release-tryjob
     kevin-release-tryjob
     kip-release-tryjob
+    kukui-release-tryjob
     lars-release-tryjob
     leon-release-tryjob
     lulu-release-tryjob

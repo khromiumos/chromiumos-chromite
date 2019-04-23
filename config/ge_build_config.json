@@ -1639,6 +1639,27 @@
       ]
     },
     {
+      "name": "kukui",
+      "reference_board_name": "kukui",
+      "arch": "ARM_INTERNAL",
+      "builder": "RELEASE",
+      "experimental": false,
+      "models": [
+        {
+          "board_name": "kukui",
+          "name": "krane",
+          "cq_test_enabled": false,
+          "release_builder_test_pool": "bvt"
+        },
+        {
+          "board_name": "kukui",
+          "name": "kukui",
+          "cq_test_enabled": false,
+          "release_builder_test_pool": "bvt"
+        }
+      ]
+    },
+    {
       "name": "nami",
       "reference_board_name": "nami",
       "arch": "X86_INTERNAL",
