@@ -10,10 +10,10 @@ from __future__ import print_function
 import base64
 import datetime
 import json
+import multiprocessing
 import os
 import shutil
 import tempfile
-import threading
 
 from chromite.lib import chroot_util
 from chromite.lib import cros_build_lib
@@ -31,7 +31,8 @@ from chromite.lib.paygen import urilib
 DESCRIPTION_FILE_VERSION = 2
 
 # Only two parallel paygen for now.
-_semaphore = threading.Semaphore(2)
+_semaphore = multiprocessing.Semaphore(2)
+
 
 class Error(Exception):
   """Base class for payload generation errors."""
@@ -334,9 +335,8 @@ class PaygenPayload(object):
 
     # Do not run the delta_generator in parallel. It already has full
     # parallelism inside.
-    _semaphore.acquire()
-    self._RunGeneratorCmd(cmd)
-    _semaphore.release()
+    with _semaphore:
+      self._RunGeneratorCmd(cmd)
 
   def _GenerateHashes(self):
     """Generate a payload hash and a metadata hash.
