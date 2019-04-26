@@ -24,7 +24,6 @@ from chromite.lib import cros_build_lib
 from chromite.lib import cros_test_lib
 from chromite.lib import git
 from chromite.lib import osutils
-from chromite.lib.const import waterfall
 
 # pylint: disable=protected-access
 
@@ -1158,10 +1157,6 @@ class CBuildBotTest(ChromeosConfigTestBase):
     """LUCI Scheduler entries only work for swarming builds."""
     for config in self.site_config.itervalues():
       if config.schedule is not None:
-        self.assertEqual(config.active_waterfall, waterfall.WATERFALL_SWARMING,
-                         'schedule set for non-swarming config %s' %
-                         config.name)
-        # TODO: validate the scheduler syntax.
         self.assertIsInstance(config.schedule, str)
 
       if config.triggered_gitiles is not None:
