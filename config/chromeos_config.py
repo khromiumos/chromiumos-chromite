@@ -610,7 +610,7 @@ def GeneralTemplates(site_config):
   )
 
   site_config.AddTemplate(
-      'release',
+      'release_common',
       site_config.templates.full,
       site_config.templates.official,
       site_config.templates.internal,
@@ -657,6 +657,18 @@ def GeneralTemplates(site_config):
           'TOC-Canaries',
   )
 
+  site_config.AddTemplate(
+      'release',
+      site_config.templates.release_common,
+      luci_builder=config_lib.LUCI_BUILDER_LEGACY_RELEASE,
+  )
+
+  site_config.AddTemplate(
+      'factory_firmware',
+      site_config.templates.release_common,
+      luci_builder=config_lib.LUCI_BUILDER_FACTORY,
+  )
+
   ### Release AFDO configs.
 
   site_config.AddTemplate(
@@ -699,7 +711,7 @@ def GeneralTemplates(site_config):
 
   site_config.AddTemplate(
       'factory',
-      site_config.templates.release,
+      site_config.templates.factory_firmware,
       display_label=config_lib.DISPLAY_LABEL_FACTORY,
       afdo_use=False,
       chrome_sdk=False,
@@ -1144,6 +1156,7 @@ def PreCqBuilders(site_config, boards_dict, ge_build_config):
       boards=[],
       display_label=config_lib.DISPLAY_LABEL_PRECQ,
       build_type=constants.PRE_CQ_LAUNCHER_TYPE,
+      luci_builder=config_lib.LUCI_BUILDER_PRECQ_LAUNCHER,
       description='Launcher for Pre-CQ builders',
       manifest_version=False,
       doc='https://dev.chromium.org/chromium-os/build/builder-overview#'
