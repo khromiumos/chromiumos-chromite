@@ -553,10 +553,6 @@
 
 == release ==
   master-lakitu-release
-    lakitu-gpu-release
-    lakitu-nc-release
-    lakitu-release
-    lakitu-st-release
   master-release
     arkham-release
     asuka-release
@@ -605,6 +601,11 @@
     kevin-release
     kip-release
     kukui-release
+    lakitu-gpu-release
+    lakitu-nc-release
+    lakitu-release
+    lakitu-st-release
+    lakitu_next-release
     lars-release
     leon-release
     lulu-release
@@ -2402,10 +2403,6 @@
     daisy-incremental-tryjob
     lakitu-incremental-tryjob
   master-lakitu-release-tryjob
-    lakitu-gpu-release-tryjob
-    lakitu-nc-release-tryjob
-    lakitu-release-tryjob
-    lakitu-st-release-tryjob
   master-mst-android-pfq-tryjob
     eve-arcnext-mst-android-pfq-tryjob
   master-nyc-android-pfq-tryjob
@@ -2715,6 +2712,11 @@
     kevin-release-tryjob
     kip-release-tryjob
     kukui-release-tryjob
+    lakitu-gpu-release-tryjob
+    lakitu-nc-release-tryjob
+    lakitu-release-tryjob
+    lakitu-st-release-tryjob
+    lakitu_next-release-tryjob
     lars-release-tryjob
     leon-release-tryjob
     lulu-release-tryjob
