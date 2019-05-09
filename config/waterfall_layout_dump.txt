@@ -347,6 +347,7 @@
     kip-postsubmit
     kukui-postsubmit
     lakitu-gpu-postsubmit
+    lakitu-nc-postsubmit
     lakitu-postsubmit
     lakitu-st-postsubmit
     lars-postsubmit
@@ -474,7 +475,6 @@
     lakitu-nc-release
     lakitu-release
     lakitu-st-release
-    lakitu_next-release
     lars-release
     leon-release
     lulu-release
@@ -2541,6 +2541,7 @@
     kip-postsubmit-tryjob
     kukui-postsubmit-tryjob
     lakitu-gpu-postsubmit-tryjob
+    lakitu-nc-postsubmit-tryjob
     lakitu-postsubmit-tryjob
     lakitu-st-postsubmit-tryjob
     lars-postsubmit-tryjob
@@ -2662,7 +2663,6 @@
     lakitu-nc-release-tryjob
     lakitu-release-tryjob
     lakitu-st-release-tryjob
-    lakitu_next-release-tryjob
     lars-release-tryjob
     leon-release-tryjob
     lulu-release-tryjob
