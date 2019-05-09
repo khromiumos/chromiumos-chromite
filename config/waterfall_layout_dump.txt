@@ -316,6 +316,10 @@
     kefka-postsubmit
     kevin-postsubmit
     kip-postsubmit
+    lakitu-gpu-postsubmit
+    lakitu-nc-postsubmit
+    lakitu-postsubmit
+    lakitu-st-postsubmit
     lars-postsubmit
     leon-postsubmit
     lulu-postsubmit
@@ -426,7 +430,6 @@
     lakitu-nc-release
     lakitu-release
     lakitu-st-release
-    lakitu_next-release
     lars-release
     leon-release
     lulu-release
@@ -2065,6 +2068,7 @@
   lakitu-gpu-no-vmtest-pre-cq
   lakitu-gpu-paladin-tryjob
   lakitu-gpu-payloads-tryjob
+  lakitu-gpu-postsubmit-tryjob
   lakitu-gpu-pre-cq
   lakitu-gpu-release-tryjob
   lakitu-gpu-unittest-stress
@@ -2078,12 +2082,14 @@
   lakitu-nc-no-vmtest-pre-cq
   lakitu-nc-paladin-tryjob
   lakitu-nc-payloads-tryjob
+  lakitu-nc-postsubmit-tryjob
   lakitu-nc-pre-cq
   lakitu-nc-release-tryjob
   lakitu-nc-unittest-stress
   lakitu-no-vmtest-pre-cq
   lakitu-paladin-tryjob
   lakitu-payloads-tryjob
+  lakitu-postsubmit-tryjob
   lakitu-pre-cq
   lakitu-release-tryjob
   lakitu-st-compile-only-pre-cq
@@ -2094,6 +2100,7 @@
   lakitu-st-no-vmtest-pre-cq
   lakitu-st-paladin-tryjob
   lakitu-st-payloads-tryjob
+  lakitu-st-postsubmit-tryjob
   lakitu-st-pre-cq
   lakitu-st-release-tryjob
   lakitu-st-unittest-stress
@@ -2408,6 +2415,10 @@
     kefka-postsubmit
     kevin-postsubmit
     kip-postsubmit
+    lakitu-gpu-postsubmit
+    lakitu-nc-postsubmit
+    lakitu-postsubmit
+    lakitu-st-postsubmit
     lars-postsubmit
     leon-postsubmit
     lulu-postsubmit
@@ -2512,7 +2523,6 @@
     lakitu-nc-release
     lakitu-release
     lakitu-st-release
-    lakitu_next-release
     lars-release
     leon-release
     lulu-release
