@@ -276,6 +276,7 @@ def GeneralTemplates(site_config, ge_build_config):
       chrome_sdk=False,
       afdo_use=False,
       dev_installer_prebuilts=False,
+      paygen_skip_testing=True,
   )
 
   site_config.AddTemplate(
