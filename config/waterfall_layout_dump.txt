@@ -449,6 +449,7 @@
     gonzo-postsubmit
     grunt-postsubmit
     guado-accelerator-postsubmit
+    guado-kernelnext-postsubmit
     guado-postsubmit
     guado_moblab-postsubmit
     hana-postsubmit
@@ -579,6 +580,7 @@
     glimmer-release
     gnawty-release
     grunt-release
+    guado-kernelnext-release
     guado-release
     guado_moblab-release
     hana-release
@@ -1913,6 +1915,18 @@
   guado-compile-only-pre-cq
   guado-factory-auron-6772.B-factorybranch-tryjob
   guado-full-tryjob
+  guado-kernelnext-chromium-pfq-tryjob
+  guado-kernelnext-compile-only-pre-cq
+  guado-kernelnext-full-tryjob
+  guado-kernelnext-llvm-next-toolchain-tryjob
+  guado-kernelnext-llvm-toolchain-tryjob
+  guado-kernelnext-no-vmtest-pre-cq
+  guado-kernelnext-paladin-tryjob
+  guado-kernelnext-postsubmit-tryjob
+  guado-kernelnext-pre-cq
+  guado-kernelnext-release-tryjob
+  guado-kernelnext-tot-chromium-pfq-informational-tryjob
+  guado-kernelnext-unittest-stress
   guado-llvm-next-toolchain-tryjob
   guado-llvm-toolchain-tryjob
   guado-no-vmtest-pre-cq
@@ -2534,6 +2548,7 @@
     gonzo-postsubmit-tryjob
     grunt-postsubmit-tryjob
     guado-accelerator-postsubmit-tryjob
+    guado-kernelnext-postsubmit-tryjob
     guado-postsubmit-tryjob
     guado_moblab-postsubmit-tryjob
     hana-postsubmit-tryjob
@@ -2656,6 +2671,7 @@
     glimmer-release-tryjob
     gnawty-release-tryjob
     grunt-release-tryjob
+    guado-kernelnext-release-tryjob
     guado-release-tryjob
     guado_moblab-release-tryjob
     hana-release-tryjob
