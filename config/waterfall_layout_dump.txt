@@ -388,7 +388,6 @@
     samus-kernelnext-postsubmit
     samus-postsubmit
     sand-postsubmit
-    sarien-postsubmit
     scarlet-postsubmit
     sentry-postsubmit
     setzer-postsubmit
@@ -505,7 +504,6 @@
     rikku-release
     samus-release
     sand-release
-    sarien-release
     scarlet-release
     sentry-release
     setzer-release
@@ -2582,7 +2580,6 @@
     samus-kernelnext-postsubmit-tryjob
     samus-postsubmit-tryjob
     sand-postsubmit-tryjob
-    sarien-postsubmit-tryjob
     scarlet-postsubmit-tryjob
     sentry-postsubmit-tryjob
     setzer-postsubmit-tryjob
@@ -2693,7 +2690,6 @@
     rikku-release-tryjob
     samus-release-tryjob
     sand-release-tryjob
-    sarien-release-tryjob
     scarlet-release-tryjob
     sentry-release-tryjob
     setzer-release-tryjob
