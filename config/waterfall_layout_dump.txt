@@ -439,6 +439,7 @@
     falco-postsubmit
     falco_li-postsubmit
     fizz-accelerator-postsubmit
+    fizz-cfm-postsubmit
     fizz-moblab-postsubmit
     fizz-postsubmit
     flapjack-postsubmit
@@ -574,6 +575,7 @@
     falco-release
     falco_li-release
     fizz-accelerator-release
+    fizz-cfm-release
     fizz-moblab-release
     fizz-release
     gale-release
@@ -1713,6 +1715,18 @@
   fizz-accelerator-release-afdo-use-tryjob
   fizz-accelerator-release-tryjob
   fizz-accelerator-unittest-stress
+  fizz-cfm-chromium-pfq-tryjob
+  fizz-cfm-compile-only-pre-cq
+  fizz-cfm-full-tryjob
+  fizz-cfm-llvm-next-toolchain-tryjob
+  fizz-cfm-llvm-toolchain-tryjob
+  fizz-cfm-no-vmtest-pre-cq
+  fizz-cfm-paladin-tryjob
+  fizz-cfm-postsubmit-tryjob
+  fizz-cfm-pre-cq
+  fizz-cfm-release-tryjob
+  fizz-cfm-tot-chromium-pfq-informational-tryjob
+  fizz-cfm-unittest-stress
   fizz-chrome-pfq-tryjob
   fizz-chromium-pfq-tryjob
   fizz-compile-only-pre-cq
@@ -2551,6 +2565,7 @@
     falco-postsubmit-tryjob
     falco_li-postsubmit-tryjob
     fizz-accelerator-postsubmit-tryjob
+    fizz-cfm-postsubmit-tryjob
     fizz-moblab-postsubmit-tryjob
     fizz-postsubmit-tryjob
     flapjack-postsubmit-tryjob
@@ -2678,6 +2693,7 @@
     falco-release-tryjob
     falco_li-release-tryjob
     fizz-accelerator-release-tryjob
+    fizz-cfm-release-tryjob
     fizz-moblab-release-tryjob
     fizz-release-tryjob
     gale-release-tryjob

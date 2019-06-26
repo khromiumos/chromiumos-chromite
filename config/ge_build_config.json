@@ -1425,6 +1425,45 @@
       ]
     },
     {
+      "name": "fizz-cfm",
+      "reference_board_name": "fizz-cfm",
+      "arch": "X86_INTERNAL",
+      "builder": "RELEASE",
+      "experimental": false,
+      "models": [
+        {
+          "board_name": "fizz-cfm",
+          "name": "jax",
+          "cq_test_enabled": false,
+          "release_builder_test_pool": "bvt"
+        },
+        {
+          "board_name": "fizz-cfm",
+          "name": "kench",
+          "cq_test_enabled": false,
+          "release_builder_test_pool": "bvt"
+        },
+        {
+          "board_name": "fizz-cfm",
+          "name": "sion",
+          "cq_test_enabled": false,
+          "release_builder_test_pool": "bvt"
+        },
+        {
+          "board_name": "fizz-cfm",
+          "name": "teemo",
+          "cq_test_enabled": false,
+          "release_builder_test_pool": "bvt"
+        },
+        {
+          "board_name": "fizz-cfm",
+          "name": "wukong",
+          "cq_test_enabled": false,
+          "release_builder_test_pool": "bvt"
+        }
+      ]
+    },
+    {
       "name": "fizz-moblab",
       "reference_board_name": "fizz-moblab",
       "arch": "X86_INTERNAL",
