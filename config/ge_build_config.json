@@ -1810,9 +1810,12 @@
           "board_name": "nautilus",
           "name": "nautiluslte",
           "test_suites": [
+            "sanity",
             "bvt-inline",
             "bvt-tast-cq",
+            "bvt-installer",
             "bvt-arc",
+            "au",
             "bvt-cq",
             "bvt-perbuild",
             "bvt-tast-informational"
