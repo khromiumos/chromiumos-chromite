@@ -570,7 +570,6 @@
     cave-release
     celes-release
     chell-release
-    cheza-release
     clapper-release
     coral-release
     cyan-release
@@ -2681,7 +2680,6 @@
     cave-release-tryjob
     celes-release-tryjob
     chell-release-tryjob
-    cheza-release-tryjob
     clapper-release-tryjob
     coral-release-tryjob
     cyan-release-tryjob
