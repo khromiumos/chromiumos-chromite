@@ -462,7 +462,6 @@
     gnawty-release
     grunt-release
     guado-release
-    guado_moblab-release
     hana-release
     heli-release
     kalista-release
@@ -2647,7 +2646,6 @@
     gnawty-release-tryjob
     grunt-release-tryjob
     guado-release-tryjob
-    guado_moblab-release-tryjob
     hana-release-tryjob
     heli-release-tryjob
     kalista-release-tryjob
