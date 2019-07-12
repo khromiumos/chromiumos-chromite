@@ -469,7 +469,6 @@
     hana-postsubmit
     hatch-postsubmit
     heli-postsubmit
-    jacuzzi-postsubmit
     kalista-postsubmit
     kefka-postsubmit
     kevin-arcnext-postsubmit
@@ -596,7 +595,6 @@
     guado-release
     hana-release
     heli-release
-    jacuzzi-release
     kalista-release
     kefka-release
     kevin-release
@@ -2055,18 +2053,6 @@
   heli-tot-chromium-pfq-informational-tryjob
   heli-unittest-stress
   incremental-paladin-tryjob
-  jacuzzi-chromium-pfq-tryjob
-  jacuzzi-compile-only-pre-cq
-  jacuzzi-full-tryjob
-  jacuzzi-llvm-next-toolchain-tryjob
-  jacuzzi-llvm-toolchain-tryjob
-  jacuzzi-no-vmtest-pre-cq
-  jacuzzi-paladin-tryjob
-  jacuzzi-postsubmit-tryjob
-  jacuzzi-pre-cq
-  jacuzzi-release-tryjob
-  jacuzzi-tot-chromium-pfq-informational-tryjob
-  jacuzzi-unittest-stress
   jecht-chrome-pfq-tryjob
   jecht-chromium-pfq-tryjob
   jecht-compile-only-pre-cq
@@ -2598,7 +2584,6 @@
     hana-postsubmit-tryjob
     hatch-postsubmit-tryjob
     heli-postsubmit-tryjob
-    jacuzzi-postsubmit-tryjob
     kalista-postsubmit-tryjob
     kefka-postsubmit-tryjob
     kevin-arcnext-postsubmit-tryjob
@@ -2719,7 +2704,6 @@
     guado-release-tryjob
     hana-release-tryjob
     heli-release-tryjob
-    jacuzzi-release-tryjob
     kalista-release-tryjob
     kefka-release-tryjob
     kevin-release-tryjob
