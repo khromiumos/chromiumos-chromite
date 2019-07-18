@@ -414,6 +414,7 @@
     betty-arcnext-postsubmit
     betty-postsubmit
     bob-postsubmit
+    buddy-cfm-postsubmit
     buddy-postsubmit
     candy-postsubmit
     capri-postsubmit
@@ -451,6 +452,7 @@
     gonzo-postsubmit
     grunt-postsubmit
     guado-accelerator-postsubmit
+    guado-cfm-postsubmit
     guado-kernelnext-postsubmit
     guado-postsubmit
     guado_moblab-postsubmit
@@ -555,6 +557,7 @@
     banjo-release
     banon-release
     bob-release
+    buddy-cfm-release
     buddy-release
     candy-release
     caroline-release
@@ -583,6 +586,7 @@
     glimmer-release
     gnawty-release
     grunt-release
+    guado-cfm-release
     guado-kernelnext-release
     guado-release
     hana-release
@@ -1024,6 +1028,18 @@
   bob-tot-chrome-pfq-informational-tryjob
   bob-tot-chromium-pfq-informational-tryjob
   bob-unittest-stress
+  buddy-cfm-chromium-pfq-tryjob
+  buddy-cfm-compile-only-pre-cq
+  buddy-cfm-full-tryjob
+  buddy-cfm-llvm-next-toolchain-tryjob
+  buddy-cfm-llvm-toolchain-tryjob
+  buddy-cfm-no-vmtest-pre-cq
+  buddy-cfm-paladin-tryjob
+  buddy-cfm-postsubmit-tryjob
+  buddy-cfm-pre-cq
+  buddy-cfm-release-tryjob
+  buddy-cfm-tot-chromium-pfq-informational-tryjob
+  buddy-cfm-unittest-stress
   buddy-chrome-pfq-tryjob
   buddy-chromium-pfq-tryjob
   buddy-compile-only-pre-cq
@@ -1938,6 +1954,18 @@
   guado-accelerator-release-afdo-use-tryjob
   guado-accelerator-release-tryjob
   guado-accelerator-unittest-stress
+  guado-cfm-chromium-pfq-tryjob
+  guado-cfm-compile-only-pre-cq
+  guado-cfm-full-tryjob
+  guado-cfm-llvm-next-toolchain-tryjob
+  guado-cfm-llvm-toolchain-tryjob
+  guado-cfm-no-vmtest-pre-cq
+  guado-cfm-paladin-tryjob
+  guado-cfm-postsubmit-tryjob
+  guado-cfm-pre-cq
+  guado-cfm-release-tryjob
+  guado-cfm-tot-chromium-pfq-informational-tryjob
+  guado-cfm-unittest-stress
   guado-chrome-pfq-tryjob
   guado-chromium-pfq-tryjob
   guado-compile-only-pre-cq
@@ -2553,6 +2581,7 @@
     betty-arcnext-postsubmit-tryjob
     betty-postsubmit-tryjob
     bob-postsubmit-tryjob
+    buddy-cfm-postsubmit-tryjob
     buddy-postsubmit-tryjob
     candy-postsubmit-tryjob
     capri-postsubmit-tryjob
@@ -2590,6 +2619,7 @@
     gonzo-postsubmit-tryjob
     grunt-postsubmit-tryjob
     guado-accelerator-postsubmit-tryjob
+    guado-cfm-postsubmit-tryjob
     guado-kernelnext-postsubmit-tryjob
     guado-postsubmit-tryjob
     guado_moblab-postsubmit-tryjob
@@ -2686,6 +2716,7 @@
     banjo-release-tryjob
     banon-release-tryjob
     bob-release-tryjob
+    buddy-cfm-release-tryjob
     buddy-release-tryjob
     candy-release-tryjob
     caroline-release-tryjob
@@ -2714,6 +2745,7 @@
     glimmer-release-tryjob
     gnawty-release-tryjob
     grunt-release-tryjob
+    guado-cfm-release-tryjob
     guado-kernelnext-release-tryjob
     guado-release-tryjob
     hana-release-tryjob

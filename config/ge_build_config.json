@@ -110,6 +110,18 @@
       ]
     },
     {
+      "name": "buddy-cfm",
+      "configs": [
+        {
+          "builder": "RELEASE",
+          "experimental": false,
+          "leader_board": false,
+          "board_group": "",
+          "arch": "X86_INTERNAL"
+        }
+      ]
+    },
+    {
       "name": "candy",
       "configs": [
         {
@@ -369,6 +381,18 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "jecht",
+          "arch": "X86_INTERNAL"
+        }
+      ]
+    },
+    {
+      "name": "guado-cfm",
+      "configs": [
+        {
+          "builder": "RELEASE",
+          "experimental": false,
+          "leader_board": false,
+          "board_group": "",
           "arch": "X86_INTERNAL"
         }
       ]
@@ -1614,6 +1638,7 @@
             "sanity",
             "bvt-inline",
             "bvt-tast-cq",
+            "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
