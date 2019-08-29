@@ -1115,6 +1115,7 @@
   celes-tot-chromium-pfq-informational-tryjob
   celes-unittest-stress
   chell-chrome-pfq-tryjob
+  chell-chrome-pre-flight-branch-tryjob
   chell-chromium-pfq-tryjob
   chell-compile-only-pre-cq
   chell-factory-glados-7657.B-factorybranch-tryjob
