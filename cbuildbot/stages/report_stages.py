@@ -898,12 +898,15 @@ class ReportStage(generic_stages.BuilderStage,
     # or multiple child builder runs.
     for builder_run in self._run.GetUngroupedBuilderRuns():
       if db is not None:
-        timeline = self._UploadBuildStagesTimeline(builder_run, build_id, db)
-        logging.PrintBuildbotLink('Build stages timeline', timeline)
+        try:
+          timeline = self._UploadBuildStagesTimeline(builder_run, build_id, db)
+          logging.PrintBuildbotLink('Build stages timeline', timeline)
 
-        timeline = self._UploadSlavesTimeline(builder_run, build_id, db)
-        if timeline is not None:
-          logging.PrintBuildbotLink('Slaves timeline', timeline)
+          timeline = self._UploadSlavesTimeline(builder_run, build_id, db)
+          if timeline is not None:
+            logging.PrintBuildbotLink('Slaves timeline', timeline)
+        except (AttributeError, TypeError) as e:
+          logging.warning('Failed to upload timeline: %s', e)
 
       if build_id is not None:
         details_link = tree_status.ConstructViceroyBuildDetailsURL(build_id)
