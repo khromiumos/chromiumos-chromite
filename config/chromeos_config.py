@@ -3876,11 +3876,6 @@ def ApplyCustomOverrides(site_config):
           'hw_tests_override': []
       },
 
-      'betty-nyc-arc-release': {
-          'hw_tests': [],
-          'hw_tests_override': []
-      },
-
       'betty-pi-arc-release': {
           'hw_tests': [],
           'hw_tests_override': []
