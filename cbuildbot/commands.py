@@ -1302,14 +1302,15 @@ def _SkylabCreateTestArgs(build,
 
   return args + [test_name]
 
-
+# TODO(crbug.com/1008919): Remove 120 default once config is properly set
+# with default timeouts.
 def RunSkylabHWTest(build,
                     pool,
                     test_name,
                     shown_test_name=None,
                     board=None,
                     model=None,
-                    timeout_mins=None,
+                    timeout_mins=120,
                     tags=None,
                     keyvals=None,
                     test_args=None):
@@ -1377,7 +1378,7 @@ def RunSkylabHWTestSuite(
     pool=None,
     wait_for_results=False,
     priority=None,
-    timeout_mins=None,
+    timeout_mins=120,
     # TODO(akeshet): Delete this ignored argument.
     retry=None,
     max_retries=None,
@@ -1472,7 +1473,7 @@ def RunSkylabHWTestPlan(test_plan=None,
                         pool=None,
                         board=None,
                         model=None,
-                        timeout_mins=None,
+                        timeout_mins=120,
                         tags=None,
                         keyvals=None):
   """Run a skylab test in the Autotest lab using skylab tool.
