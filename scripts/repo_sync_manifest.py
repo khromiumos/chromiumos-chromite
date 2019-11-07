@@ -36,6 +36,8 @@ def GetParser():
   parser.add_argument('--repo-root', type='path', default='.',
                       help='Path to the repo root to sync.')
 
+  parser.add_argument('--groups', help='Groups to sync.')
+
   manifest_group = parser.add_argument_group(
       'Manifest',
       description='What manifest do we sync?')
@@ -197,7 +199,8 @@ def main(argv):
       directory=options.repo_root,
       branch=options.branch,
       git_cache_dir=options.git_cache_dir,
-      repo_url=options.repo_url)
+      repo_url=options.repo_url,
+      groups=options.groups)
 
   if options.copy_repo:
     repo.PreLoad(options.copy_repo)

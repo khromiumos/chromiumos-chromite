@@ -206,6 +206,7 @@ class SyncStage(WorkspaceStageBase):
         '--repo-root', self._build_root,
         '--manifest-versions-int', self.int_manifest_versions_path,
         '--manifest-versions-ext', self.ext_manifest_versions_path,
+        '--groups', 'all',
     ]
 
     if self.external:
