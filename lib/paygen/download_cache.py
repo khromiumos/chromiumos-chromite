@@ -16,6 +16,7 @@ import shutil
 import stat
 import time
 
+from chromite.lib import cros_logging as logging
 from chromite.lib import locking
 from chromite.lib import osutils
 from chromite.lib.paygen import urilib
@@ -193,6 +194,7 @@ class DownloadCache(object):
     cache_size = self._cache_size if cache_size is None else cache_size
 
     try:
+      # Access to the cache is done with a shared lock on _PurgeLock.
       # Prevent other changes while we purge the cache.
       with self._PurgeLock(shared=False, blocking=False):
 
@@ -260,6 +262,7 @@ class DownloadCache(object):
         except:
           # If there was any error with the download, make sure no partial
           # file was left behind.
+          logging.info('Failed to fetch %s to %s', uri, cache_file)
           if os.path.exists(cache_file):
             os.unlink(cache_file)
           raise
@@ -269,8 +272,8 @@ class DownloadCache(object):
       # progress, or there is a shared lock which means it's already present.
       return False
 
-    # Try to cleanup the cache after we just grew it.
-    self.Purge()
+    # Because we have a shared lock on PurgeLock, we cannot cleanup the cache
+    # here.
     return True
 
   # TODO: Instead of hooking in fetch functions in the cache here, we could
@@ -308,6 +311,9 @@ class DownloadCache(object):
     """
     cache_file = self._UriToCacheFile(uri)
 
+    # Try to cleanup the cache before growing it.
+    self.Purge()
+
     # We keep trying until we succeed, or throw an exception.
     for _ in range(FETCH_RETRY_COUNT):
       with self._PurgeLock(shared=True, blocking=True):
@@ -318,26 +324,30 @@ class DownloadCache(object):
         # has a non-shared lock (ie: they are downloading).
         with self._CacheFileLock(cache_file, shared=True, blocking=True):
 
+          # At this point, we know that no one is actively downloading the file,
+          # since we were able to get a shared lock on the file.
           if os.path.exists(cache_file):
             fd = open(cache_file, 'rb')
 
             # Touch the timestamp on cache file to help purging logic.
             os.utime(cache_file, None)
 
+            # This return will release the locks as we exit the with blocks.
             return fd
-          else:
-            # We don't have the file in our cache. There are three ways this
-            # can happen:
-            #
-            # A) Another process was trying to download, blocked our download,
-            #    then got a download error.
-            # B) Another process removed the file(illegally). We will recover as
-            #    soon as all read-only locks are released.
-            # C) Our download failed without throwing an exception. We will
-            #    block forever if this continues to happen.
 
-            # Sleep so we don't spin too quickly, then try again.
-            time.sleep(self._GET_FILE_SPIN_DELAY)
+        # We don't have the file in our cache. There are three ways this
+        # can happen:
+        #
+        # A) Another process was trying to download, blocked our download,
+        #    then got a download error.
+        # B) Another process removed the file(illegally). We will recover as
+        #    soon as all read-only locks are released.
+        # C) Our download failed without throwing an exception. We will
+        #    block forever if this continues to happen.
+
+        # Release the CacheFileLock (exit the with block), and then sleep so we
+        # don't spin too quickly, then try again.
+        time.sleep(self._GET_FILE_SPIN_DELAY)
 
     raise RetriesExhaustedError(uri)
 

@@ -60,8 +60,8 @@ class PayloadVerificationError(Error):
 class PaygenPayload(object):
   """Class to manage the process of generating and signing a payload."""
 
-  # 50 GB of cache.
-  CACHE_SIZE = 50 * 1024 * 1024 * 1024
+  # 250 GB of cache.
+  CACHE_SIZE = 250 * 1024 * 1024 * 1024
 
   # 10 minutes.
   _SEMAPHORE_TIMEOUT = 10 * 60
@@ -436,7 +436,9 @@ class PaygenPayload(object):
       # Rename it into the desired image name.
       shutil.move(os.path.join(self.work_dir, extract_file), image_file)
 
-      # It's safe to delete the archive at this point.
+      # It should be safe to delete the archive at this point.
+      # TODO(crbug/1016555): consider removing the logging once resolved.
+      logging.info('Removing %s', download_file)
       os.remove(download_file)
 
   def _GeneratePostinstConfig(self, run_postinst):
@@ -508,28 +510,7 @@ class PaygenPayload(object):
                     '--old_key', src_image, 'key',
                     default='test' if src_image.build.channel else '')]
 
-    # Run delta_generator for the purpose of generating an unsigned payload with
-    # considerations for available memory. This is an adaption of the previous
-    # version which used a simple semaphore. This was highly limiting because
-    # while delta_generator is parallel there are single threaded portions
-    # of it that were taking a very long time (i.e. long poles).
-    #
-    # Sometimes if a process cannot acquire the lock for a long
-    # period of time, the builder kills the process for not outputting any
-    # logs. So here we try to acquire the lock with a timeout of ten minutes in
-    # a loop and log some output so not to be killed by the builder.
-    while True:
-      acq_result = _mem_semaphore.acquire(timeout=self._SEMAPHORE_TIMEOUT)
-      if acq_result.result:
-        logging.info('Acquired lock (reason: %s)', acq_result.reason)
-        break
-      else:
-        logging.info('Failed to acquire the lock in 10 minutes (reason: %s)'
-                     ', trying again ...', acq_result.reason)
-    try:
-      self._RunGeneratorCmd(cmd)
-    finally:
-      _mem_semaphore.release()
+    self._RunGeneratorCmd(cmd)
 
   def _GenerateHashes(self):
     """Generate a payload hash and a metadata hash.
@@ -813,19 +794,46 @@ class PaygenPayload(object):
     logging.info('Generating %s payload %s',
                  'delta' if self.payload.src_image else 'full', self.payload)
 
-    # Fetch and prepare the tgt image.
-    self._PrepareImage(self.payload.tgt_image, self.tgt_image_file)
+    # TODO(lamontjones): It may make sense to use a different mem_semaphore here
+    # around the calls to self._PrepareImage, rather than wrapping all of it in
+    # the mem_semaphor that was created for delta_generator.  In any case, too
+    # many gsutil cp commands running in parallel seems to result in higher
+    # likelihood of EAGAIN from thread creation.
+    #
+    # Run delta_generator for the purpose of generating an unsigned payload with
+    # considerations for available memory. This is an adaption of the previous
+    # version which used a simple semaphore. This was highly limiting because
+    # while delta_generator is parallel there are single threaded portions
+    # of it that were taking a very long time (i.e. long poles).
+    #
+    # Sometimes if a process cannot acquire the lock for a long
+    # period of time, the builder kills the process for not outputting any
+    # logs. So here we try to acquire the lock with a timeout of ten minutes in
+    # a loop and log some output so not to be killed by the builder.
+    while True:
+      acq_result = _mem_semaphore.acquire(timeout=self._SEMAPHORE_TIMEOUT)
+      if acq_result.result:
+        logging.info('Acquired lock (reason: %s)', acq_result.reason)
+        break
+      else:
+        logging.info('Failed to acquire the lock in 10 minutes (reason: %s)'
+                     ', trying again ...', acq_result.reason)
+    try:
+      # Fetch and prepare the tgt image.
+      self._PrepareImage(self.payload.tgt_image, self.tgt_image_file)
 
-    # Fetch and prepare the src image.
-    if self.payload.src_image:
-      self._PrepareImage(self.payload.src_image, self.src_image_file)
+      # Fetch and prepare the src image.
+      if self.payload.src_image:
+        self._PrepareImage(self.payload.src_image, self.src_image_file)
 
-    # Setup parameters about the payload like whether it is a DLC or not. Or
-    # parameters like the APPID, etc.
-    self._PreparePartitions()
+      # Setup parameters about the payload like whether it is a DLC or not. Or
+      # parameters like the APPID, etc.
+      self._PreparePartitions()
 
-    # Generate the unsigned payload.
-    self._GenerateUnsignedPayload()
+      # Generate the unsigned payload.
+      self._GenerateUnsignedPayload()
+    finally:
+      _mem_semaphore.release()
 
     # Sign the payload, if needed.
     _, metadata_signatures = self._SignPayload()
