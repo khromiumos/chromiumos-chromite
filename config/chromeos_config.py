@@ -3885,6 +3885,17 @@ def ApplyCustomOverrides(site_config):
           'hw_tests_override': []
       },
 
+      # No hw tests for beaglebone, expresso (crbug.com/1011171).
+      'beaglebone-release': {
+          'hw_tests': [],
+          'hw_tests_override': []
+      },
+
+      'expresso-release': {
+          'hw_tests': [],
+          'hw_tests_override': []
+      },
+
       # No hw tests for any betty builders.  See crbug/998427.
       'betty-release': {
           'hw_tests': [],
@@ -4059,6 +4070,9 @@ def ApplyCustomOverrides(site_config):
 
       'jacuzzi-release': {
           'sign_types': ['recovery', 'factory'],
+          # No hw tests for jacuzzi (crbug.com/1011171).
+          'hw_tests': [],
+          'hw_tests_override': [],
       },
 
       'kukui-release': {
@@ -4083,6 +4097,9 @@ def ApplyCustomOverrides(site_config):
 
       'zork-release': {
           'sign_types': ['recovery', 'factory'],
+          # No hw tests for zork (crbug.com/1011171).
+          'hw_tests': [],
+          'hw_tests_override': [],
       },
 
       # --- end from here ---
