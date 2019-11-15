@@ -676,6 +676,11 @@ class CBuildBotTest(ChromeosConfigTestBase):
       if build_name.startswith('novato'):
         continue
 
+      # crbug.com/1011171: expresso, jacuzzi, and zork do not run hwtests in the
+      # release builder.
+      if build_name.startswith(('expresso', 'jacuzzi', 'zork')):
+        continue
+
       # Jetstream boards currently do not run hwtests in the release builder,
       # b/140317527.
       if build_name.startswith(('arkham', 'gale', 'mistral', 'whirlwind')):
