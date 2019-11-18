@@ -1892,7 +1892,7 @@ def GetNonUniBuildLabBoardName(board):
   # We strip those string from the board so that lab can handle it correctly.
   SPECIAL_SUFFIX = [
       '-arcnext$', '-arcvm$', '-kernelnext$', '-kvm$', '-ndktranslation$',
-      '-cfm%', '-campfire$'
+      '-cfm$', '-campfire$'
   ]
   for suffix in SPECIAL_SUFFIX:
     board = re.sub(suffix, '', board)
