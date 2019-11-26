@@ -1470,7 +1470,7 @@
     {
       "name": "grunt",
       "reference_board_name": "grunt",
-      "arch": "X86_INTERNAL",
+      "arch": "UNKNOWN",
       "builder": "RELEASE",
       "experimental": false,
       "models": [
@@ -1625,7 +1625,7 @@
     {
       "name": "hatch",
       "reference_board_name": "hatch",
-      "arch": "X86_INTERNAL",
+      "arch": "UNKNOWN",
       "builder": "RELEASE",
       "experimental": false,
       "models": [
