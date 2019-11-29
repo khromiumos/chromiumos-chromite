@@ -1827,7 +1827,6 @@
             "sanity",
             "bvt-inline",
             "bvt-tast-cq",
-            "bvt-installer",
             "bvt-arc",
             "au",
             "bvt-cq",
