@@ -669,7 +669,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "strago",
-          "arch": "X86_INTERNAL"
+          "arch": "UNKNOWN"
         }
       ]
     },
