@@ -524,8 +524,9 @@ class SyncStage(generic_stages.BuilderStage):
       # Print the blamelist.
       if fresh_sync:
         logging.PrintBuildbotStepText('(From scratch)')
-      elif self._run.options.buildbot:
-        lkgm_manager.GenerateBlameList(self.repo, old_filename)
+      # Disable Blamelist printing: crbug.com/1032340
+      # elif self._run.options.buildbot:
+      #   lkgm_manager.GenerateBlameList(self.repo, old_filename)
 
       # Incremental builds request an additional build before patching changes.
       if self._run.config.build_before_patching:
