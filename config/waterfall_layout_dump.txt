@@ -438,7 +438,6 @@
     elm-release
     enguarde-release
     eve-arcnext-release
-    eve-campfire-release
     eve-kvm-release
     eve-release
     expresso-release
@@ -1313,17 +1312,6 @@
   eve-arcvm-tot-chromium-pfq-informational-tryjob
   eve-arcvm-unittest-stress
   eve-arcvm-vmpi-android-pfq-tryjob
-  eve-campfire-chromium-pfq-tryjob
-  eve-campfire-compile-only-pre-cq
-  eve-campfire-full-tryjob
-  eve-campfire-llvm-next-toolchain-tryjob
-  eve-campfire-llvm-toolchain-tryjob
-  eve-campfire-no-vmtest-pre-cq
-  eve-campfire-paladin-tryjob
-  eve-campfire-pre-cq
-  eve-campfire-release-tryjob
-  eve-campfire-tot-chromium-pfq-informational-tryjob
-  eve-campfire-unittest-stress
   eve-chrome-pfq-tryjob
   eve-chromium-pfq-tryjob
   eve-compile-only-pre-cq
@@ -2461,7 +2449,6 @@
     elm-release-tryjob
     enguarde-release-tryjob
     eve-arcnext-release-tryjob
-    eve-campfire-release-tryjob
     eve-kvm-release-tryjob
     eve-release-tryjob
     expresso-release-tryjob
