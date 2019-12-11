@@ -265,7 +265,6 @@
     elm-release
     enguarde-release
     eve-arcnext-release
-    eve-campfire-release
     eve-kvm-release
     eve-release
     excelsior-release
@@ -806,11 +805,6 @@
   eve-arcvm-release-tryjob
   eve-arcvm-unittest-stress
   eve-arcvm-vmpi-android-pfq-tryjob
-  eve-campfire-full-tryjob
-  eve-campfire-llvm-next-toolchain-tryjob
-  eve-campfire-llvm-toolchain-tryjob
-  eve-campfire-release-tryjob
-  eve-campfire-unittest-stress
   eve-factory-eve-9667.B-factorybranch-tryjob
   eve-full-tryjob
   eve-kvm-full-tryjob
@@ -1482,7 +1476,6 @@
     elm-release-tryjob
     enguarde-release-tryjob
     eve-arcnext-release-tryjob
-    eve-campfire-release-tryjob
     eve-kvm-release-tryjob
     eve-release-tryjob
     excelsior-release-tryjob
