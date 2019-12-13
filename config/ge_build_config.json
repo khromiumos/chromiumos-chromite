@@ -2721,7 +2721,7 @@
     {
       "name": "rammus",
       "reference_board_name": "rammus",
-      "arch": "X86_INTERNAL",
+      "arch": "UNKNOWN",
       "builder": "RELEASE",
       "experimental": false,
       "models": [
