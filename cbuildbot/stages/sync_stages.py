@@ -857,6 +857,7 @@ class MasterSlaveLKGMSyncStage(ManifestVersionedSyncStage):
         logging.error(
             'Could not generate blamelist, '
             'manifest file does not exist: %s', old_filename)
-      else:
-        logging.debug('Generate blamelist against: %s', old_filename)
-        lkgm_manager.GenerateBlameList(self.repo, old_filename)
+      # Disable Blamelist printing: crbug.com/1032340
+      # else:
+      #   logging.debug('Generate blamelist against: %s', old_filename)
+      #   lkgm_manager.GenerateBlameList(self.repo, old_filename)
