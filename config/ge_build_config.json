@@ -1245,7 +1245,7 @@
     {
       "name": "fizz",
       "reference_board_name": "fizz",
-      "arch": "X86_INTERNAL",
+      "arch": "UNKNOWN",
       "builder": "RELEASE",
       "experimental": false,
       "models": [
