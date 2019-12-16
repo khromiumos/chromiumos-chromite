@@ -465,7 +465,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "rambi",
-          "arch": "X86_INTERNAL"
+          "arch": "UNKNOWN"
         }
       ]
     },
@@ -681,7 +681,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "strago",
-          "arch": "X86_INTERNAL"
+          "arch": "UNKNOWN"
         }
       ]
     },
@@ -1747,7 +1747,7 @@
     {
       "name": "jacuzzi",
       "reference_board_name": "jacuzzi",
-      "arch": "ARM_INTERNAL",
+      "arch": "UNKNOWN",
       "builder": "RELEASE",
       "experimental": false,
       "models": [
