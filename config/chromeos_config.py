@@ -3020,23 +3020,19 @@ def SpecialtyBuilders(site_config, boards_dict, ge_build_config):
 
   # *-pre-flight-branch builders are in chromeos_release waterfall.
   site_config.Add(
-      'samus-chrome-pre-flight-branch',
+      'chell-chrome-no-afdo-uprev-pre-flight-branch',
       site_config.templates.pre_flight_branch,
       display_label=config_lib.DISPLAY_LABEL_CHROME_PFQ,
-      boards=['samus'],
-      afdo_generate=True,
-      afdo_update_ebuild=True,
+      boards=['chell'],
+      afdo_use=True,
       sync_chrome=True,
       chrome_rev=constants.CHROME_REV_STICKY,
-      hw_tests=[hw_test_list.AFDORecordTest(warn_only=True)],
-      useflags=config_lib.append_useflags(['-transparent_hugepage',
-                                           '-debug_fission',
-                                           '-thinlto',
-                                           '-cfi']),
       prebuilts=False,
       archive_build_debug=True,
   )
 
+  # Pre-R80 branches still need this builder to generate AFDO profiles.
+  # TODO: Use chell-chrome-no-afdo-uprev-pre-flight-branch for branch after R79
   site_config.Add(
       'chell-chrome-pre-flight-branch',
       site_config.templates.pre_flight_branch,
