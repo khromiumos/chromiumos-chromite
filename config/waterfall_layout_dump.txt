@@ -420,7 +420,6 @@
     guado-kernelnext-release
     guado-release
     hana-release
-    hatch-release
     heli-release
     jacuzzi-release
     kalista-cfm-release
@@ -2357,7 +2356,6 @@
     guado-kernelnext-release-tryjob
     guado-release-tryjob
     hana-release-tryjob
-    hatch-release-tryjob
     heli-release-tryjob
     jacuzzi-release-tryjob
     kalista-cfm-release-tryjob
