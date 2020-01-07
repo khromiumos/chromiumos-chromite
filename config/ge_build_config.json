@@ -33,7 +33,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "",
-          "arch": "UNKNOWN"
+          "arch": "X86_INTERNAL"
         }
       ]
     },
@@ -453,7 +453,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "rambi",
-          "arch": "UNKNOWN"
+          "arch": "X86_INTERNAL"
         }
       ]
     },
@@ -657,7 +657,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "strago",
-          "arch": "UNKNOWN"
+          "arch": "X86_INTERNAL"
         }
       ]
     },
@@ -669,7 +669,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "strago",
-          "arch": "UNKNOWN"
+          "arch": "X86_INTERNAL"
         }
       ]
     },
@@ -765,7 +765,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "reef",
-          "arch": "UNKNOWN"
+          "arch": "X86_INTERNAL"
         }
       ]
     },
@@ -1003,7 +1003,7 @@
     {
       "name": "coral",
       "reference_board_name": "coral",
-      "arch": "UNKNOWN",
+      "arch": "X86_INTERNAL",
       "builder": "RELEASE",
       "experimental": false,
       "models": [
@@ -1250,7 +1250,7 @@
     {
       "name": "fizz",
       "reference_board_name": "fizz",
-      "arch": "UNKNOWN",
+      "arch": "X86_INTERNAL",
       "builder": "RELEASE",
       "experimental": false,
       "models": [
@@ -1484,7 +1484,7 @@
     {
       "name": "grunt",
       "reference_board_name": "grunt",
-      "arch": "UNKNOWN",
+      "arch": "X86_INTERNAL",
       "builder": "RELEASE",
       "experimental": false,
       "models": [
@@ -1639,13 +1639,24 @@
     {
       "name": "hatch",
       "reference_board_name": "hatch",
-      "arch": "UNKNOWN",
+      "arch": "X86_INTERNAL",
       "builder": "RELEASE",
       "experimental": false,
       "models": [
         {
           "board_name": "hatch",
           "name": "akemi",
+          "test_suites": [
+            "sanity",
+            "bvt-inline",
+            "bvt-tast-cq",
+            "bvt-installer",
+            "bvt-arc",
+            "au",
+            "bvt-cq",
+            "bvt-perbuild",
+            "bvt-tast-informational"
+          ],
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt",
           "board_id": 372,
@@ -1858,7 +1869,7 @@
     {
       "name": "kalista",
       "reference_board_name": "kalista",
-      "arch": "UNKNOWN",
+      "arch": "X86_INTERNAL",
       "builder": "RELEASE",
       "experimental": false,
       "models": [
@@ -2243,7 +2254,7 @@
     {
       "name": "octopus",
       "reference_board_name": "octopus",
-      "arch": "UNKNOWN",
+      "arch": "X86_INTERNAL",
       "builder": "RELEASE",
       "experimental": false,
       "models": [
@@ -2809,7 +2820,7 @@
     {
       "name": "rammus",
       "reference_board_name": "rammus",
-      "arch": "UNKNOWN",
+      "arch": "X86_INTERNAL",
       "builder": "RELEASE",
       "experimental": false,
       "models": [
