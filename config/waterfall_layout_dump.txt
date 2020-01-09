@@ -263,6 +263,7 @@
     cyan-release
     edgar-release
     elm-release
+    endeavour-release
     enguarde-release
     eve-arcnext-release
     eve-kvm-release
@@ -1475,6 +1476,7 @@
     cyan-release-tryjob
     edgar-release-tryjob
     elm-release-tryjob
+    endeavour-release-tryjob
     enguarde-release-tryjob
     eve-arcnext-release-tryjob
     eve-kvm-release-tryjob
