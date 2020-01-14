@@ -1876,7 +1876,7 @@
     {
       "name": "kukui",
       "reference_board_name": "kukui",
-      "arch": "ARM_INTERNAL",
+      "arch": "UNKNOWN",
       "builder": "RELEASE",
       "experimental": false,
       "models": [
