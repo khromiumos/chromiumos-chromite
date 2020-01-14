@@ -686,6 +686,10 @@ class CBuildBotTest(ChromeosConfigTestBase):
       if build_name.startswith(('arkham', 'gale', 'mistral', 'whirlwind')):
         continue
 
+      # Veyron_rialto doesn't have DUTs now. See http://b/141387161.
+      if build_name.startswith(('veyron_rialto')):
+        continue
+
       if (config.build_type == 'canary' and 'test' in config.images and
           config.upload_hw_test_artifacts and config.hwqual):
         self.assertTrue(

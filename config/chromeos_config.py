@@ -3912,6 +3912,11 @@ def ApplyCustomOverrides(site_config):
           'hw_tests_override': []
       },
 
+      'veyron_rialto-release': {
+          'hw_tests': [],
+          'hw_tests_override': []
+      },
+
       'arkham-release': {
           'hw_tests': [],
           'hw_tests_override': [],
