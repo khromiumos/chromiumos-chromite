@@ -2667,6 +2667,11 @@ def ApplyCustomOverrides(site_config):
           'hw_tests_override': []
       },
 
+      'veyron_rialto-release': {
+          'hw_tests': [],
+          'hw_tests_override': []
+      },
+
 
       # No hw_tests for arkham, whirlwind, gale, mistral.  See b/140317527.
       'arkham-release': {

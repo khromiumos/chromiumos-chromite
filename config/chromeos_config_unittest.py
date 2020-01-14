@@ -641,6 +641,8 @@ class CBuildBotTest(ChromeosConfigTestBase):
         'expresso-release',
         'jacuzzi-release',
         'zork-release',
+        # See http://b/141387161.
+        'veyron_rialto-release',
     ))
     missing_tests = set()
     running_tests = set()
@@ -695,6 +697,10 @@ class CBuildBotTest(ChromeosConfigTestBase):
       # Jetstream boards currently do not run hwtests in the release builder,
       # b/140317527.
       if build_name.startswith(('arkham', 'gale', 'mistral', 'whirlwind')):
+        continue
+
+      # Veyron_rialto doesn't have DUTs now. See http://b/141387161.
+      if build_name.startswith(('veyron_rialto')):
         continue
 
       if (config.build_type == 'canary' and 'test' in config.images and
