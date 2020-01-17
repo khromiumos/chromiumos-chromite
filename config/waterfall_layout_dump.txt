@@ -438,7 +438,6 @@
     elm-release
     enguarde-release
     eve-arcnext-release
-    eve-kvm-release
     eve-release
     expresso-release
     falco_li-release
@@ -493,7 +492,6 @@
     samus-kernelnext-release
     samus-release
     sand-release
-    sarien-kvm-release
     sarien-release
     scarlet-release
     sentry-release
@@ -1317,17 +1315,6 @@
   eve-compile-only-pre-cq
   eve-factory-eve-9667.B-factorybranch-tryjob
   eve-full-tryjob
-  eve-kvm-chromium-pfq-tryjob
-  eve-kvm-compile-only-pre-cq
-  eve-kvm-full-tryjob
-  eve-kvm-llvm-next-toolchain-tryjob
-  eve-kvm-llvm-toolchain-tryjob
-  eve-kvm-no-vmtest-pre-cq
-  eve-kvm-paladin-tryjob
-  eve-kvm-pre-cq
-  eve-kvm-release-tryjob
-  eve-kvm-tot-chromium-pfq-informational-tryjob
-  eve-kvm-unittest-stress
   eve-llvm-next-toolchain-tryjob
   eve-llvm-toolchain-tryjob
   eve-llvm-tot-toolchain-tryjob
@@ -2449,7 +2436,6 @@
     elm-release-tryjob
     enguarde-release-tryjob
     eve-arcnext-release-tryjob
-    eve-kvm-release-tryjob
     eve-release-tryjob
     expresso-release-tryjob
     falco_li-release-tryjob
@@ -2504,7 +2490,6 @@
     samus-kernelnext-release-tryjob
     samus-release-tryjob
     sand-release-tryjob
-    sarien-kvm-release-tryjob
     sarien-release-tryjob
     scarlet-release-tryjob
     sentry-release-tryjob
@@ -3038,17 +3023,6 @@
   sarien-compile-only-pre-cq
   sarien-factory-sarien-12033.B-factorybranch-tryjob
   sarien-full-tryjob
-  sarien-kvm-chromium-pfq-tryjob
-  sarien-kvm-compile-only-pre-cq
-  sarien-kvm-full-tryjob
-  sarien-kvm-llvm-next-toolchain-tryjob
-  sarien-kvm-llvm-toolchain-tryjob
-  sarien-kvm-no-vmtest-pre-cq
-  sarien-kvm-paladin-tryjob
-  sarien-kvm-pre-cq
-  sarien-kvm-release-tryjob
-  sarien-kvm-tot-chromium-pfq-informational-tryjob
-  sarien-kvm-unittest-stress
   sarien-llvm-next-toolchain-tryjob
   sarien-llvm-toolchain-tryjob
   sarien-master-factorybranch-tryjob
