@@ -18464,6 +18464,7 @@
         "chrome_sdk": false,
         "hw_tests": [],
         "hw_tests_override": [],
+        "paygen": false,
         "sync_chrome": false,
         "vm_tests": [],
         "vm_tests_override": null
@@ -29264,6 +29265,8 @@
         "chrome_sdk": false,
         "hw_tests": [],
         "hw_tests_override": [],
+        "important": false,
+        "paygen": false,
         "sync_chrome": false,
         "vm_tests": [],
         "vm_tests_override": null
@@ -44921,6 +44924,7 @@
         "chrome_sdk": false,
         "hw_tests": [],
         "hw_tests_override": [],
+        "paygen": false,
         "sync_chrome": false,
         "vm_tests": [],
         "vm_tests_override": null
