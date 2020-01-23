@@ -29265,7 +29265,6 @@
         "chrome_sdk": false,
         "hw_tests": [],
         "hw_tests_override": [],
-        "important": false,
         "paygen": false,
         "sync_chrome": false,
         "vm_tests": [],
