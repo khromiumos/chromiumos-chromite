@@ -254,7 +254,6 @@
     buddy-release
     candy-release
     caroline-ndktranslation-release
-    caroline-release
     cave-release
     celes-release
     chell-release
@@ -1459,7 +1458,6 @@
     buddy-release-tryjob
     candy-release-tryjob
     caroline-ndktranslation-release-tryjob
-    caroline-release-tryjob
     cave-release-tryjob
     celes-release-tryjob
     chell-release-tryjob

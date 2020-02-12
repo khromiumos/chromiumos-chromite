@@ -7914,7 +7914,6 @@
         "boards": [
             "caroline"
         ],
-        "chrome_sdk_build_chrome": false,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -8042,7 +8041,6 @@
         "boards": [
             "caroline"
         ],
-        "chrome_sdk_build_chrome": false,
         "debug": true,
         "display_label": "tryjob",
         "hw_tests": [
@@ -28662,7 +28660,6 @@
             "buddy-release",
             "candy-release",
             "caroline-ndktranslation-release",
-            "caroline-release",
             "cave-release",
             "celes-release",
             "chell-release",
@@ -28792,7 +28789,6 @@
             "buddy-release-tryjob",
             "candy-release-tryjob",
             "caroline-ndktranslation-release-tryjob",
-            "caroline-release-tryjob",
             "cave-release-tryjob",
             "celes-release-tryjob",
             "chell-release-tryjob",
