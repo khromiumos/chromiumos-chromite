@@ -526,7 +526,9 @@ class ManifestCheckout(Manifest):
         path, manifest_path, search=search)
 
     self.manifest_path = os.path.realpath(manifest_path)
-    manifest_include_dir = os.path.dirname(self.manifest_path)
+    # The include dir is always the manifest repo, not where the manifest file
+    # happens to live.
+    manifest_include_dir = os.path.join(self.root, '.repo', 'manifests')
     self.manifest_branch = self._GetManifestsBranch(self.root)
     self._content_merging = {}
     self.configured_groups = self._GetManifestGroups(self.root)
