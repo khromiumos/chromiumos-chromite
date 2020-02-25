@@ -392,10 +392,11 @@ def UploadSymbolFile(upload_url, symbol, api_key):
                    {'debug_file': symbol.header.name,
                     'debug_id': symbol.header.id.replace('-', '')}
                   }
-    ExecRequest('put',
-                upload['uploadUrl'], timeout,
-                api_key=api_key,
-                data=open(symbol.file_name, 'r'))
+    with open(symbol.file_name, 'r') as fp:
+      ExecRequest('put',
+                  upload['uploadUrl'], timeout,
+                  api_key=api_key,
+                  data=fp.read())
     ExecRequest('post',
                 '%s/uploads/%s:complete' % (
                     upload_url, upload['uploadKey']),
