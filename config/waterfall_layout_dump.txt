@@ -300,7 +300,6 @@
     lulu-release
     mistral-release
     monroe-release
-    nami-kvm-release
     nami-release
     nautilus-release
     ninja-release
@@ -320,7 +319,6 @@
     samus-kernelnext-release
     samus-release
     sand-release
-    sarien-kvm-release
     sarien-release
     scarlet-release
     sentry-release
@@ -1506,7 +1504,6 @@
     lulu-release-tryjob
     mistral-release-tryjob
     monroe-release-tryjob
-    nami-kvm-release-tryjob
     nami-release-tryjob
     nautilus-release-tryjob
     ninja-release-tryjob
@@ -1526,7 +1523,6 @@
     samus-kernelnext-release-tryjob
     samus-release-tryjob
     sand-release-tryjob
-    sarien-kvm-release-tryjob
     sarien-release-tryjob
     scarlet-release-tryjob
     sentry-release-tryjob
@@ -1583,11 +1579,6 @@
   monroe-unittest-stress
   nami-factory-nami-10715.B-factorybranch-tryjob
   nami-full-tryjob
-  nami-kvm-full-tryjob
-  nami-kvm-llvm-next-toolchain-tryjob
-  nami-kvm-llvm-toolchain-tryjob
-  nami-kvm-release-tryjob
-  nami-kvm-unittest-stress
   nami-llvm-next-toolchain-tryjob
   nami-llvm-toolchain-tryjob
   nami-payloads-tryjob
@@ -1832,11 +1823,6 @@
   sand-unittest-stress
   sarien-factory-sarien-12033.B-factorybranch-tryjob
   sarien-full-tryjob
-  sarien-kvm-full-tryjob
-  sarien-kvm-llvm-next-toolchain-tryjob
-  sarien-kvm-llvm-toolchain-tryjob
-  sarien-kvm-release-tryjob
-  sarien-kvm-unittest-stress
   sarien-llvm-next-toolchain-tryjob
   sarien-llvm-toolchain-tryjob
   sarien-master-factorybranch-tryjob
