@@ -146,6 +146,18 @@
       ]
     },
     {
+      "name": "caroline",
+      "configs": [
+        {
+          "builder": "RELEASE",
+          "experimental": false,
+          "leader_board": false,
+          "board_group": "glados",
+          "arch": "X86_INTERNAL"
+        }
+      ]
+    },
+    {
       "name": "caroline-ndktranslation",
       "configs": [
         {
