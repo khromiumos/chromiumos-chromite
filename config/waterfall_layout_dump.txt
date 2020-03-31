@@ -240,7 +240,6 @@
   master-release
     arkham-release
     asuka-release
-    atlas-kvm-release
     atlas-release
     auron_paine-release
     auron_yuna-release
@@ -266,7 +265,6 @@
     endeavour-release
     enguarde-release
     eve-arcnext-release
-    eve-kvm-release
     eve-release
     excelsior-release
     expresso-release
@@ -283,7 +281,6 @@
     guado-kernelnext-release
     guado-release
     hana-release
-    hatch-kvm-release
     hatch-release
     heli-release
     jacuzzi-release
@@ -303,7 +300,6 @@
     lulu-release
     mistral-release
     monroe-release
-    nami-kvm-release
     nami-release
     nautilus-release
     ninja-release
@@ -324,7 +320,6 @@
     samus-kernelnext-release
     samus-release
     sand-release
-    sarien-kvm-release
     sarien-release
     scarlet-release
     sentry-release
@@ -435,11 +430,6 @@
   asuka-unittest-stress
   atlas-factory-atlas-11907.B-factorybranch-tryjob
   atlas-full-tryjob
-  atlas-kvm-full-tryjob
-  atlas-kvm-llvm-next-toolchain-tryjob
-  atlas-kvm-llvm-toolchain-tryjob
-  atlas-kvm-release-tryjob
-  atlas-kvm-unittest-stress
   atlas-llvm-next-toolchain-tryjob
   atlas-llvm-toolchain-tryjob
   atlas-master-factorybranch-tryjob
@@ -730,11 +720,6 @@
   eve-arcvm-mesa-virgl-next-vmpi-android-pfq-tryjob
   eve-factory-eve-9667.B-factorybranch-tryjob
   eve-full-tryjob
-  eve-kvm-full-tryjob
-  eve-kvm-llvm-next-toolchain-tryjob
-  eve-kvm-llvm-toolchain-tryjob
-  eve-kvm-release-tryjob
-  eve-kvm-unittest-stress
   eve-lacros-full-tryjob
   eve-lacros-llvm-next-toolchain-tryjob
   eve-lacros-llvm-toolchain-tryjob
@@ -1076,11 +1061,6 @@
   hatch-diskswap-unittest-stress
   hatch-factory-hatch-12692.B-factorybranch-tryjob
   hatch-full-tryjob
-  hatch-kvm-full-tryjob
-  hatch-kvm-llvm-next-toolchain-tryjob
-  hatch-kvm-llvm-toolchain-tryjob
-  hatch-kvm-release-tryjob
-  hatch-kvm-unittest-stress
   hatch-llvm-next-toolchain-tryjob
   hatch-llvm-toolchain-tryjob
   hatch-payloads-tryjob
@@ -1280,7 +1260,6 @@
   master-release-tryjob
     arkham-release-tryjob
     asuka-release-tryjob
-    atlas-kvm-release-tryjob
     atlas-release-tryjob
     auron_paine-release-tryjob
     auron_yuna-release-tryjob
@@ -1306,7 +1285,6 @@
     endeavour-release-tryjob
     enguarde-release-tryjob
     eve-arcnext-release-tryjob
-    eve-kvm-release-tryjob
     eve-release-tryjob
     excelsior-release-tryjob
     expresso-release-tryjob
@@ -1323,7 +1301,6 @@
     guado-kernelnext-release-tryjob
     guado-release-tryjob
     hana-release-tryjob
-    hatch-kvm-release-tryjob
     hatch-release-tryjob
     heli-release-tryjob
     jacuzzi-release-tryjob
@@ -1343,7 +1320,6 @@
     lulu-release-tryjob
     mistral-release-tryjob
     monroe-release-tryjob
-    nami-kvm-release-tryjob
     nami-release-tryjob
     nautilus-release-tryjob
     ninja-release-tryjob
@@ -1364,7 +1340,6 @@
     samus-kernelnext-release-tryjob
     samus-release-tryjob
     sand-release-tryjob
-    sarien-kvm-release-tryjob
     sarien-release-tryjob
     scarlet-release-tryjob
     sentry-release-tryjob
@@ -1423,11 +1398,6 @@
   mushu-unittest-stress
   nami-factory-nami-10715.B-factorybranch-tryjob
   nami-full-tryjob
-  nami-kvm-full-tryjob
-  nami-kvm-llvm-next-toolchain-tryjob
-  nami-kvm-llvm-toolchain-tryjob
-  nami-kvm-release-tryjob
-  nami-kvm-unittest-stress
   nami-llvm-next-toolchain-tryjob
   nami-llvm-toolchain-tryjob
   nami-payloads-tryjob
@@ -1616,11 +1586,6 @@
   sand-unittest-stress
   sarien-factory-sarien-12033.B-factorybranch-tryjob
   sarien-full-tryjob
-  sarien-kvm-full-tryjob
-  sarien-kvm-llvm-next-toolchain-tryjob
-  sarien-kvm-llvm-toolchain-tryjob
-  sarien-kvm-release-tryjob
-  sarien-kvm-unittest-stress
   sarien-llvm-next-toolchain-tryjob
   sarien-llvm-toolchain-tryjob
   sarien-master-factorybranch-tryjob
