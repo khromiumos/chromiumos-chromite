@@ -259,7 +259,6 @@
     coral-release
     cyan-kernelnext-release
     cyan-release
-    drallion-release
     edgar-release
     elm-release
     endeavour-release
@@ -1279,7 +1278,6 @@
     coral-release-tryjob
     cyan-kernelnext-release-tryjob
     cyan-release-tryjob
-    drallion-release-tryjob
     edgar-release-tryjob
     elm-release-tryjob
     endeavour-release-tryjob

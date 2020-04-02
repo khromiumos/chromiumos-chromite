@@ -1225,69 +1225,6 @@
       ]
     },
     {
-      "name": "drallion",
-      "reference_board_name": "drallion",
-      "arch": "X86_INTERNAL",
-      "builder": "RELEASE",
-      "experimental": false,
-      "models": [
-        {
-          "board_name": "drallion",
-          "name": "drallion",
-          "test_suites": [
-            "sanity",
-            "bvt-inline",
-            "bvt-tast-cq",
-            "bvt-installer",
-            "bvt-arc",
-            "au",
-            "bvt-cq",
-            "bvt-perbuild",
-            "bvt-tast-informational"
-          ],
-          "cq_test_enabled": false,
-          "release_builder_test_pool": "bvt",
-          "board_id": 402,
-          "is_active": true
-        },
-        {
-          "board_name": "drallion",
-          "name": "drallion360",
-          "test_suites": [
-            "sanity",
-            "bvt-inline",
-            "bvt-tast-cq",
-            "bvt-installer",
-            "bvt-arc",
-            "au",
-            "bvt-cq",
-            "bvt-perbuild",
-            "bvt-tast-informational"
-          ],
-          "cq_test_enabled": false,
-          "release_builder_test_pool": "bvt",
-          "board_id": 402,
-          "is_active": true
-        },
-        {
-          "board_name": "drallion",
-          "name": "drallion360_signed",
-          "cq_test_enabled": false,
-          "release_builder_test_pool": "bvt",
-          "board_id": 402,
-          "is_active": true
-        },
-        {
-          "board_name": "drallion",
-          "name": "drallion_signed",
-          "cq_test_enabled": false,
-          "release_builder_test_pool": "bvt",
-          "board_id": 402,
-          "is_active": true
-        }
-      ]
-    },
-    {
       "name": "endeavour",
       "reference_board_name": "endeavour",
       "arch": "X86_INTERNAL",
