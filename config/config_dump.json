@@ -640,7 +640,7 @@
         },
         "pi_android_pfq": {
             "_template": "pi_android_pfq",
-            "android_import_branch": "git_pi-arc",
+            "android_import_branch": "git_pi-arc-m83",
             "android_package": "android-container-pi",
             "android_rev": "latest_release",
             "build_type": "android",
@@ -15129,7 +15129,7 @@
     },
     "grunt-android-pi-pre-flight-branch": {
         "_template": "pre_flight_branch",
-        "android_import_branch": "git_pi-arc",
+        "android_import_branch": "git_pi-arc-m83",
         "android_package": "android-container-pi",
         "android_rev": "latest_release",
         "boards": [
@@ -15141,7 +15141,7 @@
     },
     "grunt-android-pi-pre-flight-branch-tryjob": {
         "_template": "pre_flight_branch",
-        "android_import_branch": "git_pi-arc",
+        "android_import_branch": "git_pi-arc-m83",
         "android_package": "android-container-pi",
         "android_rev": "latest_release",
         "boards": [
