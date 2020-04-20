@@ -260,7 +260,6 @@
     cyan-release
     drallion-release
     edgar-release
-    elm-kernelnext-release
     elm-release
     endeavour-release
     enguarde-release
@@ -705,11 +704,6 @@
   edgar-unittest-stress
   elm-factory-oak-8182.B-factorybranch-tryjob
   elm-full-tryjob
-  elm-kernelnext-full-tryjob
-  elm-kernelnext-llvm-next-toolchain-tryjob
-  elm-kernelnext-llvm-toolchain-tryjob
-  elm-kernelnext-release-tryjob
-  elm-kernelnext-unittest-stress
   elm-llvm-next-toolchain-tryjob
   elm-llvm-toolchain-tryjob
   elm-payloads-tryjob
@@ -1335,7 +1329,6 @@
     cyan-release-tryjob
     drallion-release-tryjob
     edgar-release-tryjob
-    elm-kernelnext-release-tryjob
     elm-release-tryjob
     endeavour-release-tryjob
     enguarde-release-tryjob
