@@ -3596,47 +3596,6 @@
           "is_active": true
         }
       ]
-    },
-    {
-      "name": "zork",
-      "reference_board_name": "zork",
-      "arch": "X86_INTERNAL",
-      "builder": "RELEASE",
-      "experimental": false,
-      "models": [
-        {
-          "board_name": "zork",
-          "name": "dalboz",
-          "cq_test_enabled": false,
-          "release_builder_test_pool": "bvt",
-          "board_id": 381,
-          "is_active": true
-        },
-        {
-          "board_name": "zork",
-          "name": "ezkinil",
-          "cq_test_enabled": false,
-          "release_builder_test_pool": "bvt",
-          "board_id": 381,
-          "is_active": true
-        },
-        {
-          "board_name": "zork",
-          "name": "morphius",
-          "cq_test_enabled": false,
-          "release_builder_test_pool": "bvt",
-          "board_id": 381,
-          "is_active": true
-        },
-        {
-          "board_name": "zork",
-          "name": "trembyle",
-          "cq_test_enabled": false,
-          "release_builder_test_pool": "bvt",
-          "board_id": 381,
-          "is_active": true
-        }
-      ]
     }
   ]
 }

@@ -348,7 +348,6 @@
     whirlwind-release
     winky-release
     wizpig-release
-    zork-release
 
 == rvc_android_pfq ==
   master-rvc-android-pfq
@@ -1417,7 +1416,6 @@
     whirlwind-release-tryjob
     winky-release-tryjob
     wizpig-release-tryjob
-    zork-release-tryjob
   master-rvc-android-pfq-tryjob
   master-toolchain-tryjob
     amd64-llvm-next-toolchain-tryjob
