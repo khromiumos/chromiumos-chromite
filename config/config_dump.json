@@ -25405,6 +25405,8 @@
             "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"puff\",\n    \"name\": \"duffy\",\n    \"test_suites\": []\n}",
             "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"puff\",\n    \"name\": \"kaisa\",\n    \"test_suites\": []\n}",
             "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"puff\",\n    \"name\": \"puff\",\n    \"test_suites\": []\n}",
+            "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"puff\",\n    \"name\": \"unprovisioned_duffy\",\n    \"test_suites\": []\n}",
+            "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"puff\",\n    \"name\": \"unprovisioned_kaisa\",\n    \"test_suites\": []\n}",
             "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"puff\",\n    \"name\": \"unprovisioned_puff\",\n    \"test_suites\": []\n}"
         ],
         "sign_types": [
@@ -25429,6 +25431,8 @@
             "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"puff\",\n    \"name\": \"duffy\",\n    \"test_suites\": []\n}",
             "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"puff\",\n    \"name\": \"kaisa\",\n    \"test_suites\": []\n}",
             "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"puff\",\n    \"name\": \"puff\",\n    \"test_suites\": []\n}",
+            "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"puff\",\n    \"name\": \"unprovisioned_duffy\",\n    \"test_suites\": []\n}",
+            "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"puff\",\n    \"name\": \"unprovisioned_kaisa\",\n    \"test_suites\": []\n}",
             "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"puff\",\n    \"name\": \"unprovisioned_puff\",\n    \"test_suites\": []\n}"
         ],
         "paygen": false,
