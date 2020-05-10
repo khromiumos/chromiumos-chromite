@@ -340,6 +340,7 @@
     whirlwind-release
     winky-release
     wizpig-release
+    zork-release
 
 == toolchain ==
   amd64-pgo-generate-llvm-next-toolchain
@@ -1356,6 +1357,7 @@
     whirlwind-release-tryjob
     winky-release-tryjob
     wizpig-release-tryjob
+    zork-release-tryjob
   master-toolchain-tryjob
     amd64-llvm-next-toolchain-tryjob
     arm-llvm-next-toolchain-tryjob
