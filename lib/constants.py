@@ -278,7 +278,7 @@ ANDROID_BUCKET_URL = 'gs://android-build-chromeos/builds'
 ANDROID_MST_BUILD_BRANCH = 'git_master-arc-dev'
 # TODO(b/155088760): Remove once R80 PFQ is gone.
 ANDROID_NYC_BUILD_BRANCH = 'git_nyc-mr1-arc'
-ANDROID_PI_BUILD_BRANCH = 'git_pi-arc'
+ANDROID_PI_BUILD_BRANCH = 'git_pi-arc-m84'
 ANDROID_QT_BUILD_BRANCH = 'git_qt-arc-dev'
 ANDROID_RVC_BUILD_BRANCH = 'git_rvc-arc-dev'
 ANDROID_VMRVC_BUILD_BRANCH = 'git_rvc-arc-dev'
