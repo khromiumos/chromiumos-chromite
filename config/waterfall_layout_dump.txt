@@ -247,7 +247,6 @@
     celes-release
     chell-release
     coral-release
-    cyan-kernelnext-release
     cyan-release
     drallion-release
     edgar-release
@@ -280,7 +279,6 @@
     jacuzzi-release
     kalista-cfm-release
     kalista-release
-    kefka-kernelnext-release
     kefka-release
     kevin-release
     kip-release
@@ -633,11 +631,6 @@
   coral-unittest-stress
   cyan-factory-strago-7458.B-factorybranch-tryjob
   cyan-full-tryjob
-  cyan-kernelnext-full-tryjob
-  cyan-kernelnext-llvm-next-toolchain-tryjob
-  cyan-kernelnext-llvm-toolchain-tryjob
-  cyan-kernelnext-release-tryjob
-  cyan-kernelnext-unittest-stress
   cyan-llvm-next-toolchain-tryjob
   cyan-llvm-toolchain-tryjob
   cyan-payloads-tryjob
@@ -1283,7 +1276,6 @@
     celes-release-tryjob
     chell-release-tryjob
     coral-release-tryjob
-    cyan-kernelnext-release-tryjob
     cyan-release-tryjob
     drallion-release-tryjob
     edgar-release-tryjob
@@ -1316,7 +1308,6 @@
     jacuzzi-release-tryjob
     kalista-cfm-release-tryjob
     kalista-release-tryjob
-    kefka-kernelnext-release-tryjob
     kefka-release-tryjob
     kevin-release-tryjob
     kip-release-tryjob
