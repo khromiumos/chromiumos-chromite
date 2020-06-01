@@ -105,7 +105,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "gru",
-          "arch": "UNKNOWN"
+          "arch": "ARM_INTERNAL"
         }
       ]
     },
@@ -249,7 +249,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "oak",
-          "arch": "UNKNOWN"
+          "arch": "ARM_INTERNAL"
         }
       ]
     },
@@ -381,7 +381,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "oak",
-          "arch": "UNKNOWN"
+          "arch": "ARM_INTERNAL"
         }
       ]
     },
@@ -429,7 +429,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "gru",
-          "arch": "UNKNOWN"
+          "arch": "ARM_INTERNAL"
         }
       ]
     },
@@ -537,7 +537,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "",
-          "arch": "UNKNOWN"
+          "arch": "ARM_INTERNAL"
         }
       ]
     },
@@ -825,7 +825,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "veyron",
-          "arch": "UNKNOWN"
+          "arch": "ARM_INTERNAL"
         }
       ]
     },
@@ -837,7 +837,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "veyron",
-          "arch": "UNKNOWN"
+          "arch": "ARM_INTERNAL"
         }
       ]
     },
@@ -849,7 +849,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "veyron",
-          "arch": "UNKNOWN"
+          "arch": "ARM_INTERNAL"
         }
       ]
     },
@@ -861,7 +861,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "veyron",
-          "arch": "UNKNOWN"
+          "arch": "ARM_INTERNAL"
         }
       ]
     },
@@ -873,7 +873,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "veyron",
-          "arch": "UNKNOWN"
+          "arch": "ARM_INTERNAL"
         }
       ]
     },
@@ -885,7 +885,7 @@
           "experimental": false,
           "leader_board": true,
           "board_group": "veyron",
-          "arch": "UNKNOWN"
+          "arch": "ARM_INTERNAL"
         }
       ]
     },
@@ -909,7 +909,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "veyron",
-          "arch": "UNKNOWN"
+          "arch": "ARM_INTERNAL"
         }
       ]
     },
@@ -921,7 +921,7 @@
           "experimental": false,
           "leader_board": false,
           "board_group": "veyron",
-          "arch": "UNKNOWN"
+          "arch": "ARM_INTERNAL"
         }
       ]
     },
@@ -2394,7 +2394,7 @@
     {
       "name": "jacuzzi",
       "reference_board_name": "jacuzzi",
-      "arch": "UNKNOWN",
+      "arch": "ARM_INTERNAL",
       "builder": "RELEASE",
       "experimental": false,
       "models": [
@@ -2491,7 +2491,7 @@
     {
       "name": "kukui",
       "reference_board_name": "kukui",
-      "arch": "UNKNOWN",
+      "arch": "ARM_INTERNAL",
       "builder": "RELEASE",
       "experimental": false,
       "models": [
@@ -3588,7 +3588,7 @@
     {
       "name": "scarlet",
       "reference_board_name": "scarlet",
-      "arch": "UNKNOWN",
+      "arch": "ARM_INTERNAL",
       "builder": "RELEASE",
       "experimental": false,
       "models": [
