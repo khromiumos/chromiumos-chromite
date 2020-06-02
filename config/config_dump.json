@@ -17069,6 +17069,7 @@
         "boards": [
             "kefka-kernelnext"
         ],
+        "chrome_sdk_build_chrome": false,
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -17077,6 +17078,7 @@
         "boards": [
             "kefka-kernelnext"
         ],
+        "chrome_sdk_build_chrome": false,
         "debug": true,
         "display_label": "tryjob",
         "hw_tests": [
@@ -21194,6 +21196,7 @@
             "jacuzzi-release",
             "kalista-cfm-release",
             "kalista-release",
+            "kefka-kernelnext-release",
             "kefka-release",
             "kevin-release",
             "kip-release",
@@ -21323,6 +21326,7 @@
             "jacuzzi-release-tryjob",
             "kalista-cfm-release-tryjob",
             "kalista-release-tryjob",
+            "kefka-kernelnext-release-tryjob",
             "kefka-release-tryjob",
             "kevin-release-tryjob",
             "kip-release-tryjob",
