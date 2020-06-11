@@ -22684,6 +22684,9 @@
         "boards": [
             "nocturne"
         ],
+        "models": [
+            "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"nocturne\",\n    \"name\": \"nocturne\",\n    \"test_suites\": []\n}"
+        ],
         "useflags": [
             "-cros-debug",
             "chrome_internal",
@@ -22710,6 +22713,9 @@
         ],
         "hw_tests_override": null,
         "luci_builder": "Try",
+        "models": [
+            "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"nocturne\",\n    \"name\": \"nocturne\",\n    \"test_suites\": []\n}"
+        ],
         "paygen": false,
         "push_image": false,
         "suite_scheduling": false,
