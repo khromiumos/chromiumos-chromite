@@ -278,18 +278,6 @@
       ]
     },
     {
-      "name": "eve-kvm",
-      "configs": [
-        {
-          "builder": "RELEASE",
-          "experimental": false,
-          "leader_board": false,
-          "board_group": "poppy",
-          "arch": "X86_INTERNAL"
-        }
-      ]
-    },
-    {
       "name": "expresso",
       "configs": [
         {
@@ -1277,6 +1265,23 @@
           "cq_test_enabled": false,
           "release_builder_test_pool": "bvt",
           "board_id": 294,
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "name": "eve-kvm",
+      "reference_board_name": "eve-kvm",
+      "arch": "X86_INTERNAL",
+      "builder": "RELEASE",
+      "experimental": false,
+      "models": [
+        {
+          "board_name": "eve-kvm",
+          "name": "eve",
+          "cq_test_enabled": false,
+          "release_builder_test_pool": "bvt",
+          "board_id": 329,
           "is_active": true
         }
       ]
