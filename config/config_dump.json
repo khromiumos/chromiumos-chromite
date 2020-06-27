@@ -2206,6 +2206,9 @@
         "boards": [
             "atlas"
         ],
+        "models": [
+            "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"atlas\",\n    \"name\": \"atlas\",\n    \"test_suites\": []\n}"
+        ],
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -2227,6 +2230,9 @@
         ],
         "hw_tests_override": null,
         "luci_builder": "Try",
+        "models": [
+            "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"atlas\",\n    \"name\": \"atlas\",\n    \"test_suites\": []\n}"
+        ],
         "notification_configs": [],
         "paygen": false,
         "push_image": false,
