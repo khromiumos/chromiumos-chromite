@@ -131,12 +131,6 @@ x86_internal_release_boards = frozenset([
     'kip',
     'kumo',
     'lakitu',
-    'lakitu-gpu',
-    'lakitu-nc',
-    'lakitu-st',
-    'lakitu_next',
-    'lars',
-    'lulu',
     'monroe',
     'mushu',
     'nami',
@@ -207,14 +201,7 @@ dustbuster_boards = frozenset([
 ])
 
 lakitu_boards = frozenset([
-    # Although its name doesn't indicate any lakitu relevance,
-    # kumo board is developed by the lakitu-dev team.
-    'kumo',
     'lakitu',
-    'lakitu-gpu',
-    'lakitu-nc',
-    'lakitu-st',
-    'lakitu_next',
 ])
 
 lassen_boards = frozenset([
@@ -273,10 +260,6 @@ noimagetest_boards = (lakitu_boards | loonix_boards | termina_boards
 nohwqual_boards = (lakitu_boards | lassen_boards | loonix_boards
                    | termina_boards | beaglebone_boards | wshwos_boards
                    | dustbuster_boards | reven_boards)
-
-norootfs_verification_boards = frozenset([
-    'kumo',
-])
 
 base_layout_boards = lakitu_boards | termina_boards
 
