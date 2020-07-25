@@ -288,11 +288,7 @@
     kevin-release
     kip-release
     kukui-release
-    kumo-release
-    lakitu-gpu-release
-    lakitu-nc-release
     lakitu-release
-    lakitu-st-release
     lars-release
     lulu-release
     mistral-release
@@ -1328,11 +1324,7 @@
     kevin-release-tryjob
     kip-release-tryjob
     kukui-release-tryjob
-    kumo-release-tryjob
-    lakitu-gpu-release-tryjob
-    lakitu-nc-release-tryjob
     lakitu-release-tryjob
-    lakitu-st-release-tryjob
     lars-release-tryjob
     lulu-release-tryjob
     mistral-release-tryjob
