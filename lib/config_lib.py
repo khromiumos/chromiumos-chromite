@@ -80,37 +80,27 @@ ALL_DISPLAY_LABEL = {
 #
 # https://chrome-internal.googlesource.com/chromeos/
 #     infra/config/+/refs/heads/master/luci/cr-buildbucket.cfg
-LUCI_BUILDER_COMMITQUEUE = 'CommitQueue'
-LUCI_BUILDER_CQ = 'CQ'
 LUCI_BUILDER_FACTORY = 'Factory'
 LUCI_BUILDER_FULL = 'Full'
 LUCI_BUILDER_INCREMENTAL = 'Incremental'
 LUCI_BUILDER_INFORMATIONAL = 'Informational'
 LUCI_BUILDER_INFRA = 'Infra'
-LUCI_BUILDER_INFRA_TESTING = 'InfraTesting'
 LUCI_BUILDER_LEGACY_RELEASE = 'LegacyRelease'
 LUCI_BUILDER_PFQ = 'PFQ'
-LUCI_BUILDER_PRECQ = 'PreCQ'
-LUCI_BUILDER_PRECQ_LAUNCHER = 'PreCQLauncher'
-LUCI_BUILDER_PROD = 'Prod'
+LUCI_BUILDER_RAPID = 'Rapid'
 LUCI_BUILDER_RELEASE = 'Release'
 LUCI_BUILDER_STAGING = 'Staging'
 LUCI_BUILDER_TRY = 'Try'
 
 ALL_LUCI_BUILDER = {
-    LUCI_BUILDER_COMMITQUEUE,
-    LUCI_BUILDER_CQ,
     LUCI_BUILDER_FACTORY,
     LUCI_BUILDER_FULL,
     LUCI_BUILDER_INCREMENTAL,
     LUCI_BUILDER_INFORMATIONAL,
     LUCI_BUILDER_INFRA,
-    LUCI_BUILDER_INFRA_TESTING,
     LUCI_BUILDER_LEGACY_RELEASE,
     LUCI_BUILDER_PFQ,
-    LUCI_BUILDER_PRECQ,
-    LUCI_BUILDER_PRECQ_LAUNCHER,
-    LUCI_BUILDER_PROD,
+    LUCI_BUILDER_RAPID,
     LUCI_BUILDER_RELEASE,
     LUCI_BUILDER_STAGING,
     LUCI_BUILDER_TRY,
@@ -126,7 +116,7 @@ def isTryjobConfig(build_config):
   Returns:
     Boolean. True if it's a tryjob config.
   """
-  return build_config.luci_builder in (LUCI_BUILDER_TRY, LUCI_BUILDER_PRECQ)
+  return build_config.luci_builder in [LUCI_BUILDER_RAPID, LUCI_BUILDER_TRY]
 
 
 # In the Json, this special build config holds the default values for all
@@ -645,7 +635,7 @@ def DefaultSettings():
       # https://chrome-internal.git.corp.google.com/chromeos/
       #    manifest-internal/+/infra/config/cr-buildbucket.cfg
       #
-      luci_builder=LUCI_BUILDER_PROD,
+      luci_builder=LUCI_BUILDER_LEGACY_RELEASE,
 
       # The profile of the variant to set up and build.
       profile=None,
