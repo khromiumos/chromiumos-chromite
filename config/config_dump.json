@@ -24970,7 +24970,9 @@
         "boards": [
             "pyro"
         ],
-        "chrome_sdk_build_chrome": false,
+        "models": [
+            "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"pyro\",\n    \"name\": \"pyro\",\n    \"test_suites\": []\n}"
+        ],
         "vm_tests": [],
         "vm_tests_override": null
     },
@@ -24979,7 +24981,6 @@
         "boards": [
             "pyro"
         ],
-        "chrome_sdk_build_chrome": false,
         "debug": true,
         "display_label": "tryjob",
         "hw_tests": [
@@ -24993,6 +24994,9 @@
         ],
         "hw_tests_override": null,
         "luci_builder": "Try",
+        "models": [
+            "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"pyro\",\n    \"name\": \"pyro\",\n    \"test_suites\": []\n}"
+        ],
         "paygen": false,
         "push_image": false,
         "suite_scheduling": false,
