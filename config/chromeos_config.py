@@ -1399,7 +1399,6 @@ def FullBuilders(site_config, boards_dict, ge_build_config):
       'arm-generic',
       'arm64-generic',
       'kevin',
-      'kevin64',
       'oak',
       'tael',
       'tatl',
@@ -2274,10 +2273,6 @@ def AddNotificationConfigs(site_config):
       'swanky-release': [
           config_lib.NotificationConfig(email='navil+spam@chromium.org'),
       ],
-      'dedede-release': [
-          config_lib.NotificationConfig(
-              email='dedede-release-builder-alerts@google.com', threshold=2),
-      ],
   }
 
   for config_name, notification_configs in notifiers.items():
@@ -2470,11 +2465,8 @@ def ApplyCustomOverrides(site_config):
       },
 
       # Run TestSimpleChromeWorkflow only on kevin64-release instead of
-      # arm64-generic/kevin64-full.
+      # arm64-generic.
       'arm64-generic-full': {
-          'chrome_sdk_build_chrome': False,
-      },
-      'kevin64-full': {
           'chrome_sdk_build_chrome': False,
       },
       'kevin64-release': {
@@ -2490,13 +2482,6 @@ def ApplyCustomOverrides(site_config):
       # --- start from here ---
       'cheza-release': {
           'sign_types': ['recovery', 'factory'],
-      },
-
-      'dedede-release': {
-          'sign_types': ['recovery', 'factory'],
-          'hw_tests': [],
-          'hw_tests_override': [],
-          'hw_tests_disabled_bug': 'https://b/144683687',
       },
 
       # See go/cros-fingerprint-firmware-branching-and-signing for details on
