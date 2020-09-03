@@ -235,7 +235,6 @@
     auron_yuna-release
     banjo-release
     banon-release
-    betty-arcmaster-release
     bob-release
     buddy-cfm-release
     buddy-release
@@ -471,11 +470,6 @@
   betty-arc-r-payloads-tryjob
   betty-arc-r-release-tryjob
   betty-arc-r-unittest-stress
-  betty-arcmaster-full-tryjob
-  betty-arcmaster-llvm-next-toolchain-tryjob
-  betty-arcmaster-llvm-toolchain-tryjob
-  betty-arcmaster-release-tryjob
-  betty-arcmaster-unittest-stress
   betty-arcvm-master-full-tryjob
   betty-arcvm-master-llvm-next-toolchain-tryjob
   betty-arcvm-master-llvm-toolchain-tryjob
@@ -1230,7 +1224,6 @@
     auron_yuna-release-tryjob
     banjo-release-tryjob
     banon-release-tryjob
-    betty-arcmaster-release-tryjob
     bob-release-tryjob
     buddy-cfm-release-tryjob
     buddy-release-tryjob
