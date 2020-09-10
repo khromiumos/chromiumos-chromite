@@ -10770,6 +10770,154 @@
         ],
         "vm_tests": []
     },
+    "fizz-labstation-full": {
+        "_template": "full",
+        "boards": [
+            "fizz-labstation"
+        ],
+        "prebuilts": "public",
+        "run_cpeexport": true,
+        "useflags": [
+            "-chrome_internal"
+        ],
+        "vm_tests": []
+    },
+    "fizz-labstation-full-tryjob": {
+        "_template": "full",
+        "boards": [
+            "fizz-labstation"
+        ],
+        "debug": true,
+        "display_label": "tryjob",
+        "hw_tests": [
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"enable_skylab\": true,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"offload_failures_only\": false,\n    \"pool\": \"quota\",\n    \"priority\": \"PostBuild\",\n    \"quota_account\": \"legacypool-suites\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_args\": null,\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"enable_skylab\": true,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"offload_failures_only\": false,\n    \"pool\": \"quota\",\n    \"priority\": \"PostBuild\",\n    \"quota_account\": \"legacypool-suites\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_args\": null,\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"enable_skylab\": true,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"offload_failures_only\": false,\n    \"pool\": \"quota\",\n    \"priority\": \"PostBuild\",\n    \"quota_account\": \"legacypool-suites\",\n    \"retry\": true,\n    \"suite\": \"bvt-tast-cq\",\n    \"suite_args\": null,\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"enable_skylab\": true,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"offload_failures_only\": false,\n    \"pool\": \"quota\",\n    \"priority\": \"PostBuild\",\n    \"quota_account\": \"legacypool-suites\",\n    \"retry\": true,\n    \"suite\": \"bvt-tast-informational\",\n    \"suite_args\": null,\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"enable_skylab\": true,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"offload_failures_only\": false,\n    \"pool\": \"quota\",\n    \"priority\": \"CQ\",\n    \"quota_account\": \"bvt-sync\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_args\": null,\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"enable_skylab\": true,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"offload_failures_only\": false,\n    \"pool\": \"quota\",\n    \"priority\": \"PostBuild\",\n    \"quota_account\": \"legacypool-suites\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_args\": null,\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"enable_skylab\": true,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"offload_failures_only\": false,\n    \"pool\": \"quota\",\n    \"priority\": \"PostBuild\",\n    \"quota_account\": \"legacypool-suites\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_args\": null,\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
+        ],
+        "hw_tests_override": null,
+        "luci_builder": "Try",
+        "prebuilts": "public",
+        "run_cpeexport": true,
+        "useflags": [
+            "-chrome_internal"
+        ],
+        "vm_tests": []
+    },
+    "fizz-labstation-llvm-next-toolchain": {
+        "_template": "llvm_next_toolchain",
+        "boards": [
+            "fizz-labstation"
+        ]
+    },
+    "fizz-labstation-llvm-next-toolchain-tryjob": {
+        "_template": "llvm_next_toolchain",
+        "boards": [
+            "fizz-labstation"
+        ],
+        "debug": true,
+        "display_label": "tryjob",
+        "hw_tests_override": null,
+        "luci_builder": "Try"
+    },
+    "fizz-labstation-llvm-toolchain": {
+        "_template": "llvm_toolchain",
+        "boards": [
+            "fizz-labstation"
+        ]
+    },
+    "fizz-labstation-llvm-toolchain-tryjob": {
+        "_template": "llvm_toolchain",
+        "boards": [
+            "fizz-labstation"
+        ],
+        "debug": true,
+        "display_label": "tryjob",
+        "hw_tests_override": null,
+        "luci_builder": "Try"
+    },
+    "fizz-labstation-payloads": {
+        "_template": "payloads",
+        "boards": [
+            "fizz-labstation"
+        ]
+    },
+    "fizz-labstation-payloads-tryjob": {
+        "_template": "payloads",
+        "boards": [
+            "fizz-labstation"
+        ],
+        "debug": true,
+        "hw_tests_override": null,
+        "luci_builder": "Try"
+    },
+    "fizz-labstation-release": {
+        "_template": "release",
+        "boards": [
+            "fizz-labstation"
+        ],
+        "hwqual": false,
+        "images": [
+            "base",
+            "test"
+        ],
+        "models": [
+            "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"fizz-labstation\",\n    \"name\": \"wukong\",\n    \"test_suites\": []\n}"
+        ],
+        "paygen": false,
+        "vm_tests": [],
+        "vm_tests_override": null
+    },
+    "fizz-labstation-release-tryjob": {
+        "_template": "release",
+        "boards": [
+            "fizz-labstation"
+        ],
+        "debug": true,
+        "display_label": "tryjob",
+        "hw_tests": [
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"enable_skylab\": true,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"offload_failures_only\": false,\n    \"pool\": \"quota\",\n    \"priority\": \"PostBuild\",\n    \"quota_account\": \"legacypool-suites\",\n    \"retry\": true,\n    \"suite\": \"bvt-inline\",\n    \"suite_args\": null,\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"enable_skylab\": true,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"offload_failures_only\": false,\n    \"pool\": \"quota\",\n    \"priority\": \"PostBuild\",\n    \"quota_account\": \"legacypool-suites\",\n    \"retry\": true,\n    \"suite\": \"bvt-arc\",\n    \"suite_args\": null,\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"enable_skylab\": true,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"offload_failures_only\": false,\n    \"pool\": \"quota\",\n    \"priority\": \"PostBuild\",\n    \"quota_account\": \"legacypool-suites\",\n    \"retry\": true,\n    \"suite\": \"bvt-tast-cq\",\n    \"suite_args\": null,\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"enable_skylab\": true,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"offload_failures_only\": false,\n    \"pool\": \"quota\",\n    \"priority\": \"PostBuild\",\n    \"quota_account\": \"legacypool-suites\",\n    \"retry\": true,\n    \"suite\": \"bvt-tast-informational\",\n    \"suite_args\": null,\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": false,\n    \"blocking\": true,\n    \"critical\": false,\n    \"enable_skylab\": true,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"offload_failures_only\": false,\n    \"pool\": \"quota\",\n    \"priority\": \"CQ\",\n    \"quota_account\": \"bvt-sync\",\n    \"retry\": true,\n    \"suite\": \"bvt-installer\",\n    \"suite_args\": null,\n    \"suite_min_duts\": 0,\n    \"timeout\": 10800,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"enable_skylab\": true,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"offload_failures_only\": false,\n    \"pool\": \"quota\",\n    \"priority\": \"PostBuild\",\n    \"quota_account\": \"legacypool-suites\",\n    \"retry\": true,\n    \"suite\": \"bvt-cq\",\n    \"suite_args\": null,\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}",
+            "{\n    \"async\": true,\n    \"blocking\": false,\n    \"critical\": false,\n    \"enable_skylab\": true,\n    \"file_bugs\": false,\n    \"max_retries\": 5,\n    \"minimum_duts\": 0,\n    \"offload_failures_only\": false,\n    \"pool\": \"quota\",\n    \"priority\": \"PostBuild\",\n    \"quota_account\": \"legacypool-suites\",\n    \"retry\": true,\n    \"suite\": \"bvt-perbuild\",\n    \"suite_args\": null,\n    \"suite_min_duts\": 1,\n    \"timeout\": 15000,\n    \"warn_only\": false\n}"
+        ],
+        "hw_tests_override": null,
+        "hwqual": false,
+        "images": [
+            "base",
+            "test"
+        ],
+        "luci_builder": "Try",
+        "models": [
+            "{\n    \"enable_skylab\": true,\n    \"lab_board_name\": \"fizz-labstation\",\n    \"name\": \"wukong\",\n    \"test_suites\": []\n}"
+        ],
+        "paygen": false,
+        "push_image": false,
+        "suite_scheduling": false,
+        "vm_tests": [],
+        "vm_tests_override": null
+    },
+    "fizz-labstation-unittest-stress": {
+        "_template": "unittest_stress",
+        "boards": [
+            "fizz-labstation"
+        ],
+        "hw_tests_override": null,
+        "internal": true,
+        "luci_builder": "Try",
+        "manifest": "official.xml",
+        "manifest_repo_url": "https://chrome-internal-review.googlesource.com/chromeos/manifest-internal",
+        "overlays": "both",
+        "useflags": [
+            "chrome_internal"
+        ]
+    },
     "fizz-llvm-next-toolchain": {
         "_template": "llvm_next_toolchain",
         "boards": [
@@ -16907,6 +17055,7 @@
             "auron_yuna-release",
             "banjo-release",
             "banon-release",
+            "beaglebone_servo-release",
             "bob-release",
             "buddy-cfm-release",
             "buddy-release",
@@ -16931,6 +17080,7 @@
             "expresso-release",
             "fizz-accelerator-release",
             "fizz-cfm-release",
+            "fizz-labstation-release",
             "fizz-moblab-release",
             "fizz-release",
             "gale-release",
@@ -16940,6 +17090,7 @@
             "grunt-release",
             "guado-cfm-release",
             "guado-release",
+            "guado_labstation-release",
             "hana-kernelnext-release",
             "hana-release",
             "hatch-arc-r-release",
@@ -17065,6 +17216,7 @@
             "auron_yuna-release-tryjob",
             "banjo-release-tryjob",
             "banon-release-tryjob",
+            "beaglebone_servo-release-tryjob",
             "bob-release-tryjob",
             "buddy-cfm-release-tryjob",
             "buddy-release-tryjob",
@@ -17089,6 +17241,7 @@
             "expresso-release-tryjob",
             "fizz-accelerator-release-tryjob",
             "fizz-cfm-release-tryjob",
+            "fizz-labstation-release-tryjob",
             "fizz-moblab-release-tryjob",
             "fizz-release-tryjob",
             "gale-release-tryjob",
@@ -17098,6 +17251,7 @@
             "grunt-release-tryjob",
             "guado-cfm-release-tryjob",
             "guado-release-tryjob",
+            "guado_labstation-release-tryjob",
             "hana-kernelnext-release-tryjob",
             "hana-release-tryjob",
             "hatch-arc-r-release-tryjob",

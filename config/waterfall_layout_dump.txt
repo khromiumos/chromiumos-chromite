@@ -241,6 +241,7 @@
     auron_yuna-release
     banjo-release
     banon-release
+    beaglebone_servo-release
     bob-release
     buddy-cfm-release
     buddy-release
@@ -265,6 +266,7 @@
     expresso-release
     fizz-accelerator-release
     fizz-cfm-release
+    fizz-labstation-release
     fizz-moblab-release
     fizz-release
     gale-release
@@ -274,6 +276,7 @@
     grunt-release
     guado-cfm-release
     guado-release
+    guado_labstation-release
     hana-kernelnext-release
     hana-release
     hatch-arc-r-release
@@ -851,6 +854,12 @@
   fizz-cfm-unittest-stress
   fizz-factory-fizz-10167.B-factorybranch-tryjob
   fizz-full-tryjob
+  fizz-labstation-full-tryjob
+  fizz-labstation-llvm-next-toolchain-tryjob
+  fizz-labstation-llvm-toolchain-tryjob
+  fizz-labstation-payloads-tryjob
+  fizz-labstation-release-tryjob
+  fizz-labstation-unittest-stress
   fizz-llvm-next-toolchain-tryjob
   fizz-llvm-toolchain-tryjob
   fizz-moblab-full-tryjob
@@ -1123,6 +1132,7 @@
     auron_yuna-release-tryjob
     banjo-release-tryjob
     banon-release-tryjob
+    beaglebone_servo-release-tryjob
     bob-release-tryjob
     buddy-cfm-release-tryjob
     buddy-release-tryjob
@@ -1147,6 +1157,7 @@
     expresso-release-tryjob
     fizz-accelerator-release-tryjob
     fizz-cfm-release-tryjob
+    fizz-labstation-release-tryjob
     fizz-moblab-release-tryjob
     fizz-release-tryjob
     gale-release-tryjob
@@ -1156,6 +1167,7 @@
     grunt-release-tryjob
     guado-cfm-release-tryjob
     guado-release-tryjob
+    guado_labstation-release-tryjob
     hana-kernelnext-release-tryjob
     hana-release-tryjob
     hatch-arc-r-release-tryjob
